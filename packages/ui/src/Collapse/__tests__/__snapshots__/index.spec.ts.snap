@@ -1,0 +1,12 @@
+// Vitest Snapshot v1
+
+exports[`Collapse > snapshot 1`] = `"<div class=\\"fx-collapse\\"></div>"`;
+
+exports[`CollapseItem > snapshot 1`] = `
+"<div class=\\"fx-collapse-item fx-horizontal-hairline\\">
+  <cell-stub arrowdirection=\\"down\\" label=\\"\\" description=\\"\\" content=\\"\\" clickable=\\"false\\" required=\\"false\\" islink=\\"true\\" disabled=\\"false\\" class=\\"fx-collapse-item_header\\"></cell-stub>
+  <div class=\\"fx-collapse-item_body fx-horizontal-hairline\\" style=\\"display: none;\\">
+    <div class=\\"fx-collapse-item_content\\"></div>
+  </div>
+</div>"
+`;

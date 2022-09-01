@@ -1,0 +1,82 @@
+@import '../style/var.scss';
+@import '../style/mixin.scss';
+
+.fx-swipe-cell {
+  --fx-color: #{$primary-color};
+  --fx-dark-color: var(--fx-color-primary-dark);
+
+  cursor: grab;
+  overflow: hidden;
+
+  + .fx-swipe-cell::before {
+    content: '';
+    margin-left: 16px;
+  }
+
+  &_inner {
+    transition: transform 0s ease;
+    position: relative;
+  }
+
+  &_buttons {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    white-space: nowrap;
+    right: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  &_button {
+    display: inline-flex;
+    vertical-align: top;
+    align-items: center;
+    padding: 0 12px;
+    position: relative;
+    font-size: 16px;
+    height: 100%;
+    margin: 0;
+    border: none;
+    outline: 0;
+    border-radius: 0;
+    cursor: pointer;
+    background-color: var(--fx-color);
+    color: #fff;
+    white-space: pre-line;
+    overflow: visible;
+    transition: transform 0s ease;
+
+    &:active {
+      background-color: var(--fx-dark-color);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 100vw;
+      transform: translate3d(100%, 0, 0);
+      background-color: var(--fx-color);
+    }
+
+    &.type--success,
+    &.type--success::before {
+      --fx-color: #{$success-color};
+      --fx-dark-color: var(--fx-color-success-dark);
+    }
+
+    &.type--warning,
+    &.type--warning::before {
+      --fx-color: #{$warning-color};
+      --fx-dark-color: var(--fx-color-warning-dark);
+    }
+
+    &.type--danger,
+    &.type--danger::before {
+      --fx-color: #{$danger-color};
+      --fx-dark-color: var(--fx-color-danger-dark);
+    }
+  }
+}

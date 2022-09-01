@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`Popover > snapshot 1`] = `
+"<teleport-stub>
+  <div class=\\"fx-popup fx-popover\\" style=\\"z-index: 2000; display: none;\\">
+    <div class=\\"fx-mask\\"></div>
+    <div class=\\"fx-popover_inner\\" style=\\"max-width: -16px; max-height: -16px;\\"><i class=\\"fx-popover_arrow\\" style=\\"left: 200vw; top: 200vh;\\"></i>
+      <div class=\\"fx-popover_content\\">
+        <div class=\\"fx-popover_text\\"></div>
+      </div>
+    </div>
+  </div>
+</teleport-stub>"
+`;

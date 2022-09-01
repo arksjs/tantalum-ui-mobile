@@ -1,0 +1,34 @@
+// Vitest Snapshot v1
+
+exports[`ScrollTab > ScrollTab should render default correctly 1`] = `
+"<div class=\\"fx-scroll-tab\\">
+  <div class=\\"fx-scroll-tab_sidebar\\">
+    <div class=\\"fx-sticky\\">
+      <div class=\\"fx-sticky_content\\">
+        <div class=\\"fx-side-tab\\">
+          <ul class=\\"fx-side-tab_list\\"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=\\"fx-scroll-tab_body\\">
+    <div class=\\"fx-sticky-view\\">
+      <div class=\\"fx-sticky-view_list\\"></div>
+      <div class=\\"fx-sticky fx-sticky-view_top\\">
+        <div class=\\"fx-sticky_content\\">
+          <div class=\\"fx-sticky-view_fixed\\">
+            <div class=\\"fx-sticky-view_fixed-inner\\" style=\\"transform: translate3d(0px, -100%, 0px);\\"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`ScrollTab > ScrollTabItem should render default correctly 1`] = `
+"<div class=\\"fx-sticky-view-item fx-scroll-tab-item\\" data-name=\\"item-1\\">
+  <div class=\\"fx-sticky-view-item_header\\">item-1</div>
+  <div class=\\"fx-sticky-view-item_body\\">content</div>
+</div>"
+`;

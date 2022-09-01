@@ -1,0 +1,18 @@
+@import '../style/var.scss';
+@import '../style/animation.scss';
+
+.fx-icon {
+  --fx-icon-size: 24px;
+  --fx-icon-color: #{$title-color};
+
+  display: inline-block;
+  width: var(--fx-icon-size);
+  height: var(--fx-icon-size);
+  overflow: hidden;
+  line-height: 0;
+  fill: var(--fx-icon-color);
+
+  &.spin {
+    @include rotate-360-animation(800ms);
+  }
+}

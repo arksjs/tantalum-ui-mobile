@@ -1,0 +1,49 @@
+@import './var.scss';
+@import './layer.scss';
+@import '../style/mixin.scss';
+
+.fx-overflow-hidden {
+  overflow: hidden !important;
+}
+
+.fx-mask {
+  display: block;
+  width: 100%;
+  height: 100%;
+  @include mask-background-4;
+}
+
+.fx-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: $default-z-index;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > .fx-mask {
+    opacity: 0;
+    transition: opacity 0.2s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+  }
+
+  &.visible {
+    > .fx-mask {
+      opacity: 1;
+    }
+  }
+
+  &.no--mask {
+    height: 0;
+
+    > .fx-mask {
+      display: none;
+    }
+  }
+}

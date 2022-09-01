@@ -1,0 +1,43 @@
+// Vitest Snapshot v1
+
+exports[`Step > snapshot 1`] = `
+"<div class=\\"fx-step fx-steps-item fx-horizontal-hairline finish\\">
+  <div class=\\"fx-step_line\\"></div>
+  <div class=\\"fx-step_index\\">0</div>
+  <div class=\\"fx-step_inner\\">
+    <!--v-if-->
+    <div class=\\"fx-step_content\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`Steps > snapshot 1`] = `"<div class=\\"fx-steps\\"></div>"`;
+
+exports[`Steps > snapshot baseList 1`] = `
+"<div class=\\"fx-steps\\">
+  <div class=\\"fx-step fx-steps-item fx-horizontal-hairline active\\">
+    <div class=\\"fx-step_line\\"></div>
+    <div class=\\"fx-step_index\\">0</div>
+    <div class=\\"fx-step_inner\\">
+      <div class=\\"fx-step_title\\">title 1</div>
+      <div class=\\"fx-step_content\\">content 1</div>
+    </div>
+  </div>
+  <div class=\\"fx-step fx-steps-item fx-horizontal-hairline active\\">
+    <div class=\\"fx-step_line\\"></div>
+    <div class=\\"fx-step_index\\">0</div>
+    <div class=\\"fx-step_inner\\">
+      <div class=\\"fx-step_title\\">title 2</div>
+      <div class=\\"fx-step_content\\">content 2</div>
+    </div>
+  </div>
+  <div class=\\"fx-step fx-steps-item fx-horizontal-hairline active\\">
+    <div class=\\"fx-step_line\\"></div>
+    <div class=\\"fx-step_index\\">0</div>
+    <div class=\\"fx-step_inner\\">
+      <div class=\\"fx-step_title\\">title 3</div>
+      <div class=\\"fx-step_content\\">content 3</div>
+    </div>
+  </div>
+</div>"
+`;

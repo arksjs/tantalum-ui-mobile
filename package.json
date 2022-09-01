@@ -1,0 +1,127 @@
+{
+  "name": "arkui-mobile-vue",
+  "version": "0.0.1",
+  "description": "Vue components include form, toast, modal, etc.",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "style": "es/style/index.css",
+  "typings": "es/index.d.ts",
+  "scripts": {
+    "test": "vitest",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix && stylelint packages/**/*.scss --fix",
+    "build": "node build/build.mjs",
+    "build:src": "node build/build.src.mjs",
+    "build:site": "node build/build.site.mjs",
+    "semantic-release": "semantic-release",
+    "prepare": "husky install",
+    "prettier": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arksjs/arkui-mobile-vue.git"
+  },
+  "keywords": [
+    "vue",
+    "components",
+    "API",
+    "UI"
+  ],
+  "author": "Arksjs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arksjs/arkui-mobile-vue/issues"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "es",
+    "global.d.ts"
+  ],
+  "homepage": "https://github.com/arksjs/arkui-mobile-vue#readme",
+  "dependencies": {
+    "colorfuls": "^1.0.2",
+    "dayjs": "^1.10.8",
+    "safe-area-insets": "^1.4.1",
+    "timeago.js": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/runtime-corejs3": "^7.17.2",
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-typescript": "^8.3.1",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.2",
+    "@semantic-release/npm": "^8.0.3",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@types/md5": "^2.3.2",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "@vitejs/plugin-vue": "^1.10.2",
+    "@vue/compiler-sfc": "^3.2.31",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
+    "@vue/test-utils": "^2.0.0-rc.18",
+    "commander": "^9.0.0",
+    "csstype": "^3.0.11",
+    "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.14.25",
+    "eslint": "^8.11.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "execa": "^6.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.3",
+    "gulp-sass": "^5.1.0",
+    "husky": "^7.0.4",
+    "jsdom": "^19.0.0",
+    "lint-staged": "^12.3.5",
+    "md5": "^2.3.0",
+    "ora": "^6.1.0",
+    "prettier": "^2.5.1",
+    "puppeteer": "^13.5.1",
+    "resize-observer-polyfill": "^1.5.1",
+    "rollup": "^2.70.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.49.9",
+    "semantic-release": "^18.0.1",
+    "stylelint": "^14.5.3",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "through2": "^4.0.2",
+    "ts-node": "^10.7.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.2",
+    "vite": "^2.9.8",
+    "vitest": "^0.10.2",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.14",
+    "vue-tsc": "^0.30.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "sideEffects": [
+    "**/style/*",
+    "*.css",
+    "*.scss",
+    "*.vue"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "lint-staged": {
+    "*.{md,js,ts,tsx,vue,scss}": "prettier --write",
+    "*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts}": "eslint --fix",
+    "*.{css,scss}": "stylelint --fix"
+  }
+}

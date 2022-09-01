@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`Divider > snapshot 1`] = `
+"<div class=\\"fx-divider fx-horizontal-hairline\\">
+  <!--v-if-->
+</div>"
+`;

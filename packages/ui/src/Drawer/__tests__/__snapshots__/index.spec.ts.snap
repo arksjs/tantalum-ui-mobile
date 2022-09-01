@@ -1,0 +1,13 @@
+// Vitest Snapshot v1
+
+exports[`Drawer > snapshot 1`] = `
+"<teleport-stub>
+  <div class=\\"fx-popup fx-drawer\\" style=\\"z-index: 2000; display: none;\\">
+    <div class=\\"fx-mask\\"></div>
+    <div class=\\"fx-drawer_inner fx-horizontal-hairline placement--bottom\\" style=\\"padding: 0px 0px 0px 0px;\\">
+      <!--v-if-->
+      <div class=\\"fx-drawer_body\\"></div>
+    </div>
+  </div>
+</teleport-stub>"
+`;

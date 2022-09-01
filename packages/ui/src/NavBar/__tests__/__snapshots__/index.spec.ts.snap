@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`NavBar > snapshot 1`] = `
+"<div class=\\"fx-nav-bar fx-horizontal-hairline\\">
+  <div class=\\"fx-nav-bar_inner\\">
+    <div class=\\"fx-nav-bar_left\\">
+      <!--v-if-->
+    </div>
+    <div class=\\"fx-nav-bar_title\\"></div>
+    <div class=\\"fx-nav-bar_right\\">
+      <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;

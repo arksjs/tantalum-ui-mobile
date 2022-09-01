@@ -1,0 +1,5 @@
+// Vitest Snapshot v1
+
+exports[`Dialog > should render default correctly 1`] = `"<modal-stub visible=\\"false\\" maskclosable=\\"false\\" showclose=\\"false\\" class=\\"fx-dialog\\"></modal-stub>"`;
+
+exports[`Dialog > should render prop showCancel=false correctly 1`] = `"<modal-stub visible=\\"false\\" maskclosable=\\"false\\" showclose=\\"false\\" class=\\"fx-dialog\\"></modal-stub>"`;

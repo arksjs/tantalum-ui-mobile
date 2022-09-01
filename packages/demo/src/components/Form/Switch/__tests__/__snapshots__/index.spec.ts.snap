@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`Switch > should render default correctly 1`] = `"<label class=\\"fx-switch\\"><input class=\\"fx-switch_checkbox\\" type=\\"checkbox\\" name=\\"\\" value=\\"false\\"></label>"`;
+
+exports[`Switch > should render prop disabled=true correctly 1`] = `"<label class=\\"fx-switch disabled\\"><input class=\\"fx-switch_checkbox\\" type=\\"checkbox\\" disabled=\\"\\" name=\\"\\" value=\\"false\\"></label>"`;
+
+exports[`Switch > should render prop value=true correctly 1`] = `"<label class=\\"fx-switch\\"><input class=\\"fx-switch_checkbox\\" type=\\"checkbox\\" name=\\"\\" value=\\"true\\"></label>"`;

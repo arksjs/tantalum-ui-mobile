@@ -1,0 +1,75 @@
+@import './var.scss';
+
+:root {
+  --fx-color-primary-lighter: #{$primary-color-2};
+  --fx-color-primary-light: #{$primary-color-5};
+  --fx-color-primary: #{$primary-color-6};
+  --fx-color-primary-dark: #{$primary-color-7};
+  --fx-color-primary-darker: #{$primary-color-10};
+  --fx-color-success-lighter: #{$success-color-2};
+  --fx-color-success-light: #{$success-color-5};
+  --fx-color-success: #{$success-color-6};
+  --fx-color-success-dark: #{$success-color-7};
+  --fx-color-success-darker: #{$success-color-10};
+  --fx-color-warning-lighter: #{$warning-color-2};
+  --fx-color-warning-light: #{$warning-color-5};
+  --fx-color-warning: #{$warning-color-6};
+  --fx-color-warning-dark: #{$warning-color-7};
+  --fx-color-warning-darker: #{$warning-color-10};
+  --fx-color-danger-lighter: #{$danger-color-2};
+  --fx-color-danger-light: #{$danger-color-5};
+  --fx-color-danger: #{$danger-color-6};
+  --fx-color-danger-dark: #{$danger-color-7};
+  --fx-color-danger-darker: #{$danger-color-10};
+  --fx-grey-1: 255, 255, 255;
+  --fx-grey-2: 250, 250, 250;
+  --fx-grey-3: 245, 245, 245;
+  --fx-grey-4: 240, 240, 240;
+  --fx-grey-5: 217, 217, 217;
+  --fx-grey-6: 191, 191, 191;
+  --fx-grey-7: 140, 140, 140;
+  --fx-grey-8: 89, 89, 89;
+  --fx-grey-9: 67, 67, 67;
+  --fx-grey-10: 38, 38, 38;
+  --fx-grey-11: 31, 31, 31;
+  --fx-grey-12: 20, 20, 20;
+  --fx-grey-13: 0, 0, 0;
+}
+
+body {
+  &[fx-theme='dark'] {
+    --fx-grey-13: 255, 255, 255;
+    --fx-grey-12: 250, 250, 250;
+    --fx-grey-11: 245, 245, 245;
+    --fx-grey-10: 240, 240, 240;
+    --fx-grey-9: 217, 217, 217;
+    --fx-grey-8: 191, 191, 191;
+    --fx-grey-7: 140, 140, 140;
+    --fx-grey-6: 89, 89, 89;
+    --fx-grey-5: 67, 67, 67;
+    --fx-grey-4: 38, 38, 38;
+    --fx-grey-3: 31, 31, 31;
+    --fx-grey-2: 20, 20, 20;
+    --fx-grey-1: 0, 0, 0;
+    --fx-color-primary-lighter: #{$primary-color-9};
+    --fx-color-primary-light: #{$primary-color-6};
+    --fx-color-primary: #{$primary-color-5};
+    --fx-color-primary-dark: #{$primary-color-4};
+    --fx-color-primary-darker: #{$primary-color-1};
+    --fx-color-success-lighter: #{$success-color-9};
+    --fx-color-success-light: #{$success-color-6};
+    --fx-color-success: #{$success-color-5};
+    --fx-color-success-dark: #{$success-color-4};
+    --fx-color-success-darker: #{$success-color-1};
+    --fx-color-warning-lighter: #{$warning-color-9};
+    --fx-color-warning-light: #{$warning-color-6};
+    --fx-color-warning: #{$warning-color-5};
+    --fx-color-warning-dark: #{$warning-color-4};
+    --fx-color-warning-darker: #{$warning-color-1};
+    --fx-color-danger-lighter: #{$danger-color-9};
+    --fx-color-danger-light: #{$danger-color-6};
+    --fx-color-danger: #{$danger-color-5};
+    --fx-color-danger-dark: #{$danger-color-4};
+    --fx-color-danger-darker: #{$danger-color-1};
+  }
+}

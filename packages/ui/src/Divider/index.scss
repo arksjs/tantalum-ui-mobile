@@ -1,0 +1,40 @@
+@import '../style/var.scss';
+
+.fx-divider {
+  --fx-font-color: #{$font3-color};
+  --fx-color: #{$divider-color};
+
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  border: 0 solid var(--fx-color);
+  color: var(--fx-font-color);
+
+  &.fx-horizontal-hairline {
+    &::before,
+    &::after {
+      flex: 1;
+      border-color: inherit;
+      border-style: inherit;
+    }
+  }
+
+  &::before {
+    content: '';
+  }
+
+  &.has--title::after {
+    content: '';
+  }
+
+  span {
+    display: block;
+    margin: 0 16px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &.border--dashed {
+    border-style: dashed;
+  }
+}

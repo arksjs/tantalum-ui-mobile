@@ -1,0 +1,9 @@
+// Vitest Snapshot v1
+
+exports[`Notify > should render default correctly 1`] = `"<anonymous-stub to=\\"body\\"></anonymous-stub>"`;
+
+exports[`Notify > should render prop type="danger" correctly 1`] = `"<anonymous-stub to=\\"body\\"></anonymous-stub>"`;
+
+exports[`Notify > should render prop type="success" correctly 1`] = `"<anonymous-stub to=\\"body\\"></anonymous-stub>"`;
+
+exports[`Notify > should render prop type="warning" correctly 1`] = `"<anonymous-stub to=\\"body\\"></anonymous-stub>"`;

@@ -1,0 +1,41 @@
+// Vitest Snapshot v1
+
+exports[`Fixed > should render default slot correctly 1`] = `
+"<div class=\\"fx-fixed\\">
+  <!--fixed start-->
+  <div class=\\"fx-fixed_inner placement--bottom fixed\\" style=\\"z-index: 1;\\">
+    <div class=\\"fx-fixed_content-wrapper\\">Fixed</div>
+  </div>
+  <!--fixed end-->
+</div>"
+`;
+
+exports[`Fixed > should render prop background="#ffffff" correctly 1`] = `
+"<div class=\\"fx-fixed\\">
+  <!--fixed start-->
+  <div class=\\"fx-fixed_inner placement--bottom fixed\\" style=\\"background: rgb(255, 255, 255); z-index: 1;\\">
+    <div class=\\"fx-fixed_content-wrapper\\">Fixed</div>
+  </div>
+  <!--fixed end-->
+</div>"
+`;
+
+exports[`Fixed > should render prop placement="top" correctly 1`] = `
+"<div class=\\"fx-fixed\\">
+  <!--fixed start-->
+  <div class=\\"fx-fixed_inner placement--top fixed\\" style=\\"z-index: 1;\\">
+    <div class=\\"fx-fixed_content-wrapper\\">Fixed</div>
+  </div>
+  <!--fixed end-->
+</div>"
+`;
+
+exports[`Fixed > should render prop spaceHold=true correctly 1`] = `
+"<div class=\\"fx-fixed\\">
+  <!--fixed start-->
+  <div class=\\"fx-fixed_inner placement--bottom fixed\\" style=\\"z-index: 1;\\">
+    <div class=\\"fx-fixed_content-wrapper\\">Fixed</div>
+  </div>
+  <!--fixed end-->
+</div>"
+`;

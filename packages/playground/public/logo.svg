@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 1280 1280">
+  <defs>
+    <linearGradient id="lg2XQplpqCVUPHiV" gradientUnits="userSpaceOnUse" x1="16.40625%" y1="15.625%" x2="82.03125%" y2="53.90625%">
+      <stop offset="0%" style="stop-color:rgb(238,147,58);"></stop>
+      <stop offset="100%" style="stop-color:rgb(235,64,43);"></stop>
+    </linearGradient>
+    <linearGradient id="lgujdBKo4U6D3F1" gradientUnits="userSpaceOnUse" x1="43.75%" y1="89.84375%" x2="92.1875%" y2="61.71875%">
+      <stop offset="0%" style="stop-color:rgb(237,80,57);"></stop>
+      <stop offset="100%" style="stop-color:rgb(251,154,58);"></stop>
+    </linearGradient>
+    <linearGradient id="lg1ZPpZ36UDj3o9x" gradientUnits="userSpaceOnUse" x1="13.28125%" y1="71.875%" x2="82.8125%" y2="71.875%">
+      <stop offset="0%" style="stop-color:rgb(250,221,193);"></stop>
+      <stop offset="98%" style="stop-color:rgb(243,210,203);"></stop>
+      <stop offset="99%" style="stop-color:rgb(244,210,202);"></stop>
+      <stop offset="100%" style="stop-color:rgb(243,209,203);"></stop>
+    </linearGradient>
+  </defs>
+  <g fill="rgb(236,100,38)" style="transform: none;">
+    <g style="transform: none;">
+      <path d="M660 1265 c-110 -36 -174 -153 -138 -256 31 -91 101 -139 200 -139 98 0 225 -27 291 -62 31 -17 86 -58 121 -92 l65 -61 5 40 c6 46 -14 160 -40 225 -59 151 -190 282 -328 330 -79 27 -126 31 -176 15z" fill="url(#lgujdBKo4U6D3F1)"></path>
+      <path d="M122 876 c-35 -97 -30 -267 14 -440 41 -163 135 -426 153 -426 16 0 118 111 146 159 17 28 33 51 37 51 4 0 15 -12 25 -27 24 -38 53 -67 85 -88 l27 -17 31 43 c17 24 33 54 36 68 3 14 7 31 9 37 2 6 20 19 42 29 64 30 128 82 171 139 50 65 140 127 221 151 l60 19 -29 40 c-63 85 -191 111 -415 81 -165 -21 -247 -21 -310 0 -65 22 -159 89 -223 159 -28 31 -54 56 -59 56 -5 0 -15 -15 -21 -34z" fill="url(#lg2XQplpqCVUPHiV)"></path>
+    </g>
+  </g>
+  <g fill="rgb(247,217,196)" style="transform: none;">
+    <g style="transform: none;">
+      <path d="M468 1236 c-85 -35 -150 -80 -215 -150 -57 -61 -123 -168 -123 -200 0 -24 84 -111 155 -161 116 -83 208 -94 478 -60 173 21 205 17 329 -45 82 -41 84 -40 35 23 -80 103 -235 165 -413 165 -85 0 -155 30 -203 89 -78 94 -77 254 2 341 25 27 25 27 -45 -2z" fill="url(#lg1ZPpZ36UDj3o9x)"></path>
+    </g>
+  </g>
+</svg>

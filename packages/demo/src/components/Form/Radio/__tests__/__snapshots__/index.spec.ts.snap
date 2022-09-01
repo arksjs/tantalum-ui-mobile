@@ -1,0 +1,30 @@
+// Vitest Snapshot v1
+
+exports[`Radio > should render default correctly 1`] = `
+"<label class=\\"fx-radio fx-horizontal-hairline\\"><input class=\\"fx-radio_input fx-form-input\\" type=\\"radio\\" name=\\"\\" value=\\"\\">
+  <div class=\\"fx-radio_box\\">
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"fx-radio_icon\\"></icon-stub>
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"fx-radio_checked-icon\\"></icon-stub>
+    <!--v-if-->
+  </div>
+</label>"
+`;
+
+exports[`Radio > should render prop disabled=true correctly 1`] = `
+"<label class=\\"fx-radio fx-horizontal-hairline disabled\\"><input class=\\"fx-radio_input fx-form-input\\" type=\\"radio\\" name=\\"\\" disabled=\\"\\" value=\\"\\">
+  <div class=\\"fx-radio_box\\">
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"fx-radio_icon\\"></icon-stub>
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"fx-radio_checked-icon\\"></icon-stub>
+    <!--v-if-->
+  </div>
+</label>"
+`;
+
+exports[`RadioGroup > should render 2 Radio slot correctly 1`] = `
+"<div class=\\"fx-radio-group vertical\\">
+  <fx-radio-stub checked=\\"false\\" disabled=\\"false\\" name=\\"\\" value=\\"\\"></fx-radio-stub>
+  <fx-radio-stub checked=\\"false\\" disabled=\\"false\\" name=\\"\\" value=\\"\\"></fx-radio-stub>
+</div>"
+`;
+
+exports[`RadioGroup > should render prop disabled=true correctly 1`] = `"<div class=\\"fx-radio-group vertical disabled\\"></div>"`;

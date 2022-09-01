@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`FlatList > should render default slot correctly 1`] = `"<scroll-view-stub scrollx=\\"false\\" scrolly=\\"true\\" scrollanimated=\\"false\\" upperthreshold=\\"50\\" lowerthreshold=\\"0\\" enablepulldirections=\\"\\" pullrefreshthreshold=\\"48\\" class=\\"fx-flat-list\\" data=\\"[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]\\"></scroll-view-stub>"`;

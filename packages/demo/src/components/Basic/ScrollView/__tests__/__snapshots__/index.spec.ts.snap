@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`ScrollView > should render prop scrollY=true correctly 1`] = `
+"<div class=\\"fx-scroll-view scroll-y\\">
+  <div class=\\"fx-scroll-view_inner\\">
+    <div class=\\"fx-scroll-view_content\\" style=\\"transition: transform 0ms; transform: translate3d(0px, 0, 0);\\">
+      <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;

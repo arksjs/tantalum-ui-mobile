@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`Stepper > should render default correctly 1`] = `
+"<div class=\\"fx-stepper\\">
+  <button-stub icon=\\"[object Object]\\" shape=\\"square\\" size=\\"small\\" loading=\\"false\\" disabled=\\"true\\" ghost=\\"false\\" transparent=\\"false\\"></button-stub><input class=\\"fx-stepper_input\\" type=\\"text\\" inputmode=\\"decimal\\" name=\\"\\">
+  <button-stub icon=\\"[object Object]\\" shape=\\"square\\" size=\\"small\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></button-stub>
+</div>"
+`;
+
+exports[`Stepper > should render prop disabled=true correctly 1`] = `
+"<div class=\\"fx-stepper disabled\\">
+  <button-stub icon=\\"[object Object]\\" shape=\\"square\\" size=\\"small\\" loading=\\"false\\" disabled=\\"true\\" ghost=\\"false\\" transparent=\\"false\\"></button-stub><input class=\\"fx-stepper_input\\" type=\\"text\\" inputmode=\\"decimal\\" name=\\"\\" disabled=\\"\\">
+  <button-stub icon=\\"[object Object]\\" shape=\\"square\\" size=\\"small\\" loading=\\"false\\" disabled=\\"true\\" ghost=\\"false\\" transparent=\\"false\\"></button-stub>
+</div>"
+`;

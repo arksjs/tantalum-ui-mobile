@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`Form > snapshot 1`] = `
+"<div class=\\"fx-form\\">
+  <!---->
+  <div class=\\"fx-form-footer\\">
+    <div class=\\"fx-form-footer\\"></div>
+  </div>
+</div>"
+`;

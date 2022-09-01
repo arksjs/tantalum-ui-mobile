@@ -1,0 +1,106 @@
+@import '../style/var.scss';
+
+.fx-rate {
+  --fx-size: 24px;
+  --fx-color: #{$border-color};
+  --fx-active-color: #{$danger-color};
+
+  display: flex;
+  align-items: center;
+  height: 32px;
+
+  &_item {
+    width: var(--fx-size);
+    height: var(--fx-size);
+    font-size: var(--fx-size);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .fx-icon {
+    --fx-icon-size: var(--fx-size);
+    --fx-icon-color: var(--fx-color);
+
+    flex-shrink: 0;
+    display: block;
+  }
+
+  &_icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  &_active-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+
+    .fx-icon {
+      --fx-icon-color: var(--fx-active-color);
+    }
+  }
+
+  &_half {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  &.readonly {
+    .fx-rate {
+      &_item {
+        cursor: default;
+      }
+    }
+  }
+
+  &.disabled {
+    opacity: 0.2;
+
+    .fx-rate {
+      &_item {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &_item.active {
+    .fx-rate {
+      &_icon {
+        display: none;
+      }
+
+      &_active-icon {
+        display: block;
+      }
+    }
+  }
+
+  &_item.active.half {
+    .fx-rate {
+      &_icon {
+        width: 50%;
+        margin-left: 50%;
+        display: flex;
+        justify-content: flex-end;
+        overflow: hidden;
+      }
+
+      &_active-icon {
+        display: block;
+        width: 50%;
+        overflow: hidden;
+      }
+    }
+  }
+}

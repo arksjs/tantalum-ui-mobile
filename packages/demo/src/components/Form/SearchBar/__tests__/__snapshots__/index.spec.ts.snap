@@ -1,0 +1,41 @@
+// Vitest Snapshot v1
+
+exports[`SearchBar > should render default correctly 1`] = `
+"<div class=\\"fx-search\\">
+  <form class=\\"fx-search_inner\\">
+    <input-stub modelvalue=\\"\\" name=\\"\\" disabled=\\"false\\" maxlength=\\"100\\" placeholder=\\"\\" type=\\"search\\" showclear=\\"true\\" showlimit=\\"false\\" class=\\"fx-search_field\\"></input-stub><button class=\\"fx-search_button\\">Search</button>
+    <!--v-if-->
+  </form>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`SearchBar > should render prop ghost=true slots correctly 1`] = `
+"<div class=\\"fx-search\\">
+  <form class=\\"fx-search_inner has--cancel\\">
+    <input-stub modelvalue=\\"\\" name=\\"\\" disabled=\\"false\\" maxlength=\\"100\\" placeholder=\\"\\" type=\\"search\\" showclear=\\"true\\" showlimit=\\"false\\" class=\\"fx-search_field ghost\\"></input-stub><button class=\\"fx-search_button\\">Search</button>
+    <button-stub size=\\"large\\" type=\\"default\\" formtype=\\"button\\" pattern=\\"borderless\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"true\\" transparent=\\"false\\" class=\\"fx-search_cancel-button\\"></button-stub>
+  </form>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`SearchBar > should render prop set placeholders correctly 1`] = `
+"<div class=\\"fx-search\\">
+  <form class=\\"fx-search_inner\\">
+    <input-stub modelvalue=\\"\\" name=\\"\\" disabled=\\"false\\" maxlength=\\"100\\" placeholder=\\"冰箱\\" type=\\"search\\" showclear=\\"true\\" showlimit=\\"false\\" class=\\"fx-search_field\\"></input-stub><button class=\\"fx-search_button\\">Search</button>
+    <!--v-if-->
+  </form>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`SearchBar > should render prop showCancel=true correctly 1`] = `
+"<div class=\\"fx-search\\">
+  <form class=\\"fx-search_inner has--cancel\\">
+    <input-stub modelvalue=\\"\\" name=\\"\\" disabled=\\"false\\" maxlength=\\"100\\" placeholder=\\"\\" type=\\"search\\" showclear=\\"true\\" showlimit=\\"false\\" class=\\"fx-search_field\\"></input-stub><button class=\\"fx-search_button\\">Search</button>
+    <button-stub size=\\"large\\" type=\\"default\\" formtype=\\"button\\" pattern=\\"borderless\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"true\\" class=\\"fx-search_cancel-button\\"></button-stub>
+  </form>
+  <!--v-if-->
+</div>"
+`;

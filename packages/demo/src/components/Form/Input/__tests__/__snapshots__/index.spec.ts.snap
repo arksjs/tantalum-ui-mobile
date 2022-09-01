@@ -1,0 +1,37 @@
+// Vitest Snapshot v1
+
+exports[`Input > should render default correctly 1`] = `
+"<label class=\\"fx-input\\">
+  <!--v-if--><input class=\\"fx-input_input\\" name=\\"\\" type=\\"text\\" inputmode=\\"text\\" placeholder=\\"\\" maxlength=\\"140\\">
+  <!--v-if-->
+  <!--v-if-->
+  <!--v-if-->
+</label>"
+`;
+
+exports[`Input > should render prop disabled=true correctly 1`] = `
+"<label class=\\"fx-input disabled\\">
+  <!--v-if--><input class=\\"fx-input_input\\" name=\\"\\" type=\\"text\\" inputmode=\\"text\\" disabled=\\"\\" placeholder=\\"\\" maxlength=\\"140\\">
+  <!--v-if-->
+  <!--v-if-->
+  <!--v-if-->
+</label>"
+`;
+
+exports[`Input > should render prop maxlength=200 correctly 1`] = `
+"<label class=\\"fx-input\\">
+  <!--v-if--><input class=\\"fx-input_input\\" name=\\"\\" type=\\"text\\" inputmode=\\"text\\" placeholder=\\"\\" maxlength=\\"200\\">
+  <!--v-if-->
+  <!--v-if-->
+  <!--v-if-->
+</label>"
+`;
+
+exports[`Input > should render prop showClear=true correctly 1`] = `
+"<label class=\\"fx-input\\">
+  <!--v-if--><input class=\\"fx-input_input\\" name=\\"\\" type=\\"text\\" inputmode=\\"text\\" placeholder=\\"\\" maxlength=\\"140\\">
+  <!--v-if-->
+  <!--v-if-->
+  <!--v-if-->
+</label>"
+`;

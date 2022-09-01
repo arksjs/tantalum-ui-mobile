@@ -1,0 +1,68 @@
+@import '../style/var.scss';
+
+.fx-tab-bar {
+  --fx-color: #{$font-color};
+  --fx-active-color: #{$primary-color};
+  --fx-front-color: var(--fx-color);
+
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    content: '';
+  }
+
+  &::after {
+    top: auto;
+    bottom: 0;
+  }
+
+  &_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100%;
+  }
+
+  &_item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--fx-front-color);
+    font-size: 10px;
+    line-height: 14px;
+    user-select: none;
+
+    &-icon {
+      display: block;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 2px;
+    }
+
+    .fx-image {
+      width: 28px;
+      height: 28px;
+    }
+
+    .fx-icon {
+      --fx-icon-size: 28px;
+      --fx-icon-color: var(--fx-front-color);
+    }
+
+    &.active {
+      --fx-front-color: var(--fx-active-color);
+    }
+  }
+}

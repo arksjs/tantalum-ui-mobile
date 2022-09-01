@@ -1,0 +1,37 @@
+// Vitest Snapshot v1
+
+exports[`Range > should render default correctly 1`] = `
+"<div class=\\"fx-range fx-slider\\">
+  <div class=\\"fx-slider_inner\\">
+    <div class=\\"fx-slider_box\\">
+      <div class=\\"fx-slider_track\\" style=\\"left: 0%; width: 100%;\\"></div>
+      <div class=\\"fx-slider_thumb\\" data-thumb=\\"true\\" data-index=\\"0\\" style=\\"left: 0%;\\"></div>
+      <div class=\\"fx-slider_thumb\\" data-thumb=\\"true\\" data-index=\\"1\\" style=\\"left: 100%;\\"></div>
+    </div><input type=\\"hidden\\" name=\\"\\" value=\\"0,100\\">
+  </div>
+</div>"
+`;
+
+exports[`Range > should render prop disabled=true correctly 1`] = `
+"<div class=\\"fx-range fx-slider disabled\\">
+  <div class=\\"fx-slider_inner\\">
+    <div class=\\"fx-slider_box\\">
+      <div class=\\"fx-slider_track\\" style=\\"left: 0%; width: 100%;\\"></div>
+      <div class=\\"fx-slider_thumb\\" data-thumb=\\"true\\" data-index=\\"0\\" style=\\"left: 0%;\\"></div>
+      <div class=\\"fx-slider_thumb\\" data-thumb=\\"true\\" data-index=\\"1\\" style=\\"left: 100%;\\"></div>
+    </div><input type=\\"hidden\\" name=\\"\\" disabled=\\"\\" value=\\"0,100\\">
+  </div>
+</div>"
+`;
+
+exports[`Range > should render prop showValue=true correctly 1`] = `
+"<div class=\\"fx-range fx-slider\\">
+  <div class=\\"fx-slider_inner\\">
+    <div class=\\"fx-slider_box\\">
+      <div class=\\"fx-slider_track\\" style=\\"left: 0%; width: 100%;\\"></div>
+      <div class=\\"fx-slider_thumb\\" data-thumb=\\"true\\" data-index=\\"0\\" style=\\"left: 0%;\\">0</div>
+      <div class=\\"fx-slider_thumb\\" data-thumb=\\"true\\" data-index=\\"1\\" style=\\"left: 100%;\\">100</div>
+    </div><input type=\\"hidden\\" name=\\"\\" value=\\"0,100\\">
+  </div>
+</div>"
+`;

@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`Modal > snapshot 1`] = `
+"<teleport-stub>
+  <div class=\\"fx-modal fx-popup\\" style=\\"z-index: 2000; display: none;\\">
+    <div class=\\"fx-mask\\"></div>
+    <div class=\\"fx-modal_box\\">
+      <div class=\\"fx-modal_box-inner\\"></div><i class=\\"fx-modal_close\\">
+        <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+      </i>
+    </div>
+  </div>
+</teleport-stub>"
+`;

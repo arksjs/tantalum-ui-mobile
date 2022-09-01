@@ -1,0 +1,16 @@
+
+# http://editorconfig.org
+
+root = true
+
+[*]
+charset = utf-8
+# 末尾行去掉尾随的空格
+trim_trailing_whitespace = true
+# 末尾行后加多一行空行
+insert_final_newline = true
+# <"tab" | "space"> 制表符类型
+indent_style = space
+indent_size = 2
+# <"lf" | "cr" | "crlf"> 换行符类型
+end_of_line = lf

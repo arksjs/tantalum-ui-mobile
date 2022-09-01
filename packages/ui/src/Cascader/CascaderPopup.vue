@@ -1,0 +1,63 @@
+<template>
+  <Drawer
+    class="fx-cascader-popup"
+    placement="bottom"
+    :visible="visible"
+    @visibleStateChange="onVisibleStateChange"
+    @confirm="onConfirm"
+    @cancel="onCancel"
+    @update:visible="onUpdateVisible"
+    ref="popup"
+  >
+    <CascaderView
+      ref="viewRef"
+      :modelValue="modelValue"
+      :options="options"
+      :fieldNames="fieldNames"
+      :formatter="formatter"
+      :parser="parser"
+      @select="onHeaderRightClick"
+    />
+  </Drawer>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { Drawer } from '../Drawer'
+import CascaderView from './CascaderView.vue'
+import { usePopupExtend } from '../popup/use-popup'
+import type { SelectorDetail } from '../SelectorField/types'
+import {
+  pickerPopupEmits,
+  commonProps,
+  pickerPopupProps
+} from '../Picker/props'
+import { usePickerPopup } from '../Picker/use-picker'
+import { mergeHandlers } from '../Picker/util'
+
+export default defineComponent({
+  name: 'fx-cascader-popup',
+  components: { Drawer, CascaderView },
+  props: {
+    ...pickerPopupProps,
+    ...commonProps
+  },
+  emits: {
+    ...pickerPopupEmits
+  },
+  setup(props, ctx) {
+    const popup = usePopupExtend<SelectorDetail>(ctx)
+    const pickerPopup = usePickerPopup(props, ctx, popup, {
+      handlers: mergeHandlers({
+        formatter: props.formatter,
+        parser: props.parser
+      })
+    })
+
+    return {
+      ...popup,
+      ...pickerPopup
+    }
+  }
+})
+</script>

@@ -1,0 +1,16 @@
+{
+  "name": "@arksjs/ui-mobile-vue",
+  "private": true,
+  "version": "1.0.0",
+  "description": "arkui-mobile-vue",
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "main": "index.ts",
+  "module": "index.ts",
+  "types": "module",
+  "dependencies": {
+    "@arksjs/test-utils": "^workspace: *"
+  }
+}
