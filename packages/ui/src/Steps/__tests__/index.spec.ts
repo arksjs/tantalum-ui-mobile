@@ -6,13 +6,13 @@ import { timeout } from '@arksjs/test-utils/utils'
 
 const StepsTmpl = {
   template: `
-<fx-steps v-model:activeIndex="stepIndex" :dot="dot">
-  <fx-step v-for="(item, index) in steps" :key="index" :title="item.title">
+<ak-steps v-model:activeIndex="stepIndex" :dot="dot">
+  <ak-step v-for="(item, index) in steps" :key="index" :title="item.title">
     {{ item.content }}
-  </fx-step>
-</fx-steps>
+  </ak-step>
+</ak-steps>
   `,
-  components: { 'fx-steps': Steps, 'fx-step': Step },
+  components: { 'ak-steps': Steps, 'ak-step': Step },
   props: {
     dot: Boolean
   },
@@ -48,7 +48,7 @@ describe('Steps', () => {
   test('status', async () => {
     const wrapper = mount(StepsTmpl)
 
-    const item0 = wrapper.findAll('.fx-steps-item')[0]
+    const item0 = wrapper.findAll('.ak-steps-item')[0]
 
     // -1
     await timeout(200)

@@ -36,7 +36,7 @@ import {
 import { useButtonConsumer } from './context'
 
 export default defineComponent({
-  name: 'fx-button',
+  name: 'ak-button',
   components: { Icon },
   props: {
     size: {

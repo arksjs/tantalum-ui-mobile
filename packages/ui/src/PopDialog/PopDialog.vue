@@ -1,6 +1,6 @@
 <template>
   <Popover
-    class="fx-pop-dialog"
+    class="ak-pop-dialog"
     :visible="visible"
     :selector="selector"
     :placement="placement"
@@ -11,12 +11,12 @@
     @update:visible="onUpdateVisible"
     ref="popup"
   >
-    <div class="fx-pop-dialog_body">
-      <div class="fx-popover_text">{{ content }}</div>
+    <div class="ak-pop-dialog_body">
+      <div class="ak-popover_text">{{ content }}</div>
     </div>
-    <div class="fx-pop-dialog_footer fx-horizontal-hairline">
+    <div class="ak-pop-dialog_footer ak-horizontal-hairline">
       <ButtonGroup
-        class="fx-pop-dialog_footer-inner"
+        class="ak-pop-dialog_footer-inner"
         pattern="borderless"
         size="middle"
       >
@@ -41,7 +41,7 @@ import { usePopupExtend } from '../popup/use-popup'
 import type { EmptyObject } from '../helpers/types'
 
 export default defineComponent({
-  name: 'fx-pop-dialog',
+  name: 'ak-pop-dialog',
   components: { Button, ButtonGroup, Popover },
   props: {
     ...popoverProps,

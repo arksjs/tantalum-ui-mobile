@@ -2,8 +2,8 @@ export const getClasses = (props: {
   loading?: boolean
   vertical?: boolean
 }) => [
-  'fx-load-more',
-  'fx-horizontal-hairline',
+  'ak-load-more',
+  'ak-horizontal-hairline',
   {
     loading: !!props.loading,
     vertical: !!props.vertical

@@ -1,9 +1,9 @@
 <template>
-  <div class="fx-calendar-view">
-    <div class="fx-calendar-view_header">
-      <div class="fx-calendar-view_weekdays">
+  <div class="ak-calendar-view">
+    <div class="ak-calendar-view_header">
+      <div class="ak-calendar-view_weekdays">
         <span
-          class="fx-calendar-view_weekday"
+          class="ak-calendar-view_weekday"
           :class="{ highlight: weekDay === '0' || weekDay === '6' }"
           v-for="weekDay in weekDays"
           :key="weekDay"
@@ -11,7 +11,7 @@
         </span>
       </div>
     </div>
-    <div class="fx-calendar-view_body" ref="bodyEl">
+    <div class="ak-calendar-view_body" ref="bodyEl">
       <VirtualList
         :ids="months.map(v => v.caption)"
         :itemSize="getItemSize"
@@ -26,7 +26,7 @@
           />
         </template>
       </VirtualList>
-      <div class="fx-calendar-view_month-caption fixed" ref="bodyTitleEl"></div>
+      <div class="ak-calendar-view_month-caption fixed" ref="bodyTitleEl"></div>
     </div>
   </div>
 </template>
@@ -76,7 +76,7 @@ function getDefaultSelectDay() {
 }
 
 export default defineComponent({
-  name: 'fx-calendar-view',
+  name: 'ak-calendar-view',
   components: { ViewMonth, VirtualList },
   props: { ...commonProps },
   emits: {
@@ -546,7 +546,7 @@ export default defineComponent({
       const h = 28
       const $items: HTMLDivElement[] = bodyEl.value
         ? [].slice.call(
-            bodyEl.value.querySelectorAll('.fx-virtual-list_item'),
+            bodyEl.value.querySelectorAll('.ak-virtual-list_item'),
             0
           )
         : []

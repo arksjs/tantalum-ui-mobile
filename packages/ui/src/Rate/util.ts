@@ -23,7 +23,7 @@ export const getClasses = ({
   disabled?: boolean
   readonly?: boolean
 }) => {
-  return ['fx-rate', { disabled: !!disabled, readonly: !!readonly }]
+  return ['ak-rate', { disabled: !!disabled, readonly: !!readonly }]
 }
 
 export const getStyles = ({
@@ -37,11 +37,11 @@ export const getStyles = ({
 }) => {
   const obj: CSSProperties = {}
 
-  color && (obj['--fx-color'] = color)
-  activeColor && (obj['--fx-active-color'] = activeColor)
+  color && (obj['--ak-color'] = color)
+  activeColor && (obj['--ak-active-color'] = activeColor)
   size != null &&
     size > 0 &&
-    (obj['--fx-size'] = getNumber(size as string) + 'px')
+    (obj['--ak-size'] = getNumber(size as string) + 'px')
 
   return obj
 }

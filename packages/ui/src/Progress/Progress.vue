@@ -1,9 +1,9 @@
 <template>
   <div :class="classes" :style="styles">
-    <div class="fx-progress_bar">
+    <div class="ak-progress_bar">
       <div :class="trackClasses" :style="trackStyles"></div>
     </div>
-    <div class="fx-progress_text" v-if="$slots.default || showText">
+    <div class="ak-progress_text" v-if="$slots.default || showText">
       <slot :progress="progress">
         {{ showText ? progress : '' }}
       </slot>
@@ -24,7 +24,7 @@ import {
 } from './util'
 
 export default defineComponent({
-  name: 'fx-progress',
+  name: 'ak-progress',
   props: {
     percentage: {
       type: [Number, String],

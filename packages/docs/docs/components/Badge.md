@@ -35,18 +35,18 @@ import { Badge } from 'vfox'
 ### #default
 
 ```vue
-<fx-badge :count="1" show-zero>
-  <fx-button>badge</fx-button>
-</fx-badge>
+<ak-badge :count="1" show-zero>
+  <ak-button>badge</ak-button>
+</ak-badge>
 ```
 
 ### #badge
 
 ```vue
-<fx-badge :content="1">
+<ak-badge :content="1">
   <div class="exp-badge-slot"></div>
   <template #badge>
-    <fx-icon icon="CheckOutlined"></fx-icon>
+    <ak-icon icon="CheckOutlined"></ak-icon>
   </template>
-</fx-badge>
+</ak-badge>
 ```

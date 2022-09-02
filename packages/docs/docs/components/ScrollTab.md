@@ -42,18 +42,18 @@ import type { ScrollTabOnChange } from 'vfox'
 注：其中只可放置 [ScrollTabItem](./ScrollTab.md#scrolltabitem-props) 组件，否则会导致未定义的行为。
 
 ```vue
-<fx-scroll-tab>
-  <fx-scroll-tab-item name="Dust Red">
+<ak-scroll-tab>
+  <ak-scroll-tab-item name="Dust Red">
     <div class="scroll-tab-box box-1"></div>
-  </fx-scroll-tab-item>
-  <fx-scroll-tab-item name="Volcano">
+  </ak-scroll-tab-item>
+  <ak-scroll-tab-item name="Volcano">
     <div class="scroll-tab-box box-2"></div>
-  </fx-scroll-tab-item>
-  <fx-scroll-tab-item name="Sunset Orange">
+  </ak-scroll-tab-item>
+  <ak-scroll-tab-item name="Sunset Orange">
     <div class="scroll-tab-box box-3"></div>
-  </fx-scroll-tab-item>
+  </ak-scroll-tab-item>
   ...
-</fx-scroll-tab>
+</ak-scroll-tab>
 ```
 
 ## ScrollTabItem Props
@@ -67,7 +67,7 @@ import type { ScrollTabOnChange } from 'vfox'
 ### #default
 
 ```vue
-<fx-scroll-tab-item name="Dust Red">
+<ak-scroll-tab-item name="Dust Red">
   <div class="scroll-tab-box box-1"></div>
-</fx-scroll-tab-item>
+</ak-scroll-tab-item>
 ```

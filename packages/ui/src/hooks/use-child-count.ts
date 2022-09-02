@@ -8,7 +8,7 @@ interface Options {
 }
 
 function getContextKey(name: string) {
-  return `fx${capitalize(name)}ChildCount`
+  return `ak${capitalize(name)}ChildCount`
 }
 
 export function useChildCountProvider(name: string) {

@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-@keyframes fx-skeleton-loading {
+@keyframes ak-skeleton-loading {
   0% {
     background-position: 100% 50%;
   }
@@ -21,10 +21,10 @@
 }
 
 @mixin skeleton-animation {
-  animation: fx-skeleton-loading 1.4s ease infinite;
+  animation: ak-skeleton-loading 1.4s ease infinite;
 }
 
-.fx-skeleton {
+.ak-skeleton {
   &_layout {
     display: flex;
     width: 100%;
@@ -32,7 +32,7 @@
     &-right {
       flex: 1;
 
-      .fx-skeleton_layout-left + & {
+      .ak-skeleton_layout-left + & {
         padding: 8px 0 0;
         margin-left: 12px;
       }
@@ -40,7 +40,7 @@
   }
 }
 
-.fx-skeleton-title {
+.ak-skeleton-title {
   display: block;
   width: 50%;
   height: 16px;
@@ -53,7 +53,7 @@
   }
 }
 
-.fx-skeleton-avatar {
+.ak-skeleton-avatar {
   display: block;
   width: 32px;
   height: 32px;
@@ -73,7 +73,7 @@
   }
 }
 
-.fx-skeleton-button {
+.ak-skeleton-button {
   display: block;
   width: 56px;
   height: 28px;
@@ -89,7 +89,7 @@
   }
 }
 
-.fx-skeleton-image {
+.ak-skeleton-image {
   display: block;
   width: 100px;
   height: 100px;
@@ -101,7 +101,7 @@
   }
 }
 
-.fx-skeleton-paragraph {
+.ak-skeleton-paragraph {
   overflow: hidden;
   list-style: none;
   padding: 0;
@@ -127,7 +127,7 @@
     }
   }
 
-  .fx-skeleton-title + & {
+  .ak-skeleton-title + & {
     margin-top: 20px;
   }
 }

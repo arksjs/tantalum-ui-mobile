@@ -1,34 +1,34 @@
 @import '../style/var.scss';
 
-.fx-notice-bar {
-  --fx-color: var(--fx-color-warning-lighter);
-  --fx-front-color: #{$warning-color};
+.ak-notice-bar {
+  --ak-color: var(--ak-color-warning-lighter);
+  --ak-front-color: #{$warning-color};
 
   position: relative;
   display: flex;
   padding: 10px 0 10px 16px;
   min-height: 40px;
   align-items: center;
-  background-color: var(--fx-color);
-  color: var(--fx-front-color);
+  background-color: var(--ak-color);
+  color: var(--ak-front-color);
   line-height: 20px;
   font-size: 14px;
   box-sizing: border-box;
   flex-grow: 1;
 
   &.type--success {
-    --fx-front-color: #{$success-color};
-    --fx-color: var(--fx-color-success-lighter);
+    --ak-front-color: #{$success-color};
+    --ak-color: var(--ak-color-success-lighter);
   }
 
   &.type--primary {
-    --fx-front-color: #{$primary-color};
-    --fx-color: var(--fx-color-primary-lighter);
+    --ak-front-color: #{$primary-color};
+    --ak-color: var(--ak-color-primary-lighter);
   }
 
   &.type--danger {
-    --fx-front-color: #{$danger-color};
-    --fx-color: var(--fx-color-danger-lighter);
+    --ak-front-color: #{$danger-color};
+    --ak-color: var(--ak-color-danger-lighter);
   }
 
   &_left-icon,
@@ -39,9 +39,9 @@
     margin-right: 8px;
     flex-shrink: 0;
 
-    .fx-icon {
-      --fx-icon-size: 17px;
-      --fx-icon-color: var(--fx-front-color);
+    .ak-icon {
+      --ak-icon-size: 17px;
+      --ak-icon-color: var(--ak-front-color);
     }
   }
 
@@ -58,7 +58,7 @@
     min-height: 20px;
     text-align: left;
 
-    + .fx-notice-bar_right-icon {
+    + .ak-notice-bar_right-icon {
       margin-left: -16px;
     }
   }

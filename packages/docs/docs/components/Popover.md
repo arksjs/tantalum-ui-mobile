@@ -52,9 +52,9 @@ import type { VisibleState, PopupOnVisibleStateChange } from 'vfox'
 ### #default
 
 ```vue
-<fx-popover>
+<ak-popover>
   自定义内容
-</fx-popover>
+</ak-popover>
 ```
 
 ## showPopover(object)

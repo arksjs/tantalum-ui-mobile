@@ -1,7 +1,7 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="默认" isLink @click="visible = true"></fx-cell>
-    <fx-cell
+  <ak-group title="基础用法">
+    <ak-cell label="默认" isLink @click="visible = true"></ak-cell>
+    <ak-cell
       label="蒙层可点击"
       isLink
       @click="
@@ -10,8 +10,8 @@
           visible = true
         }
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="隐藏关闭按钮"
       isLink
       @click="
@@ -21,13 +21,13 @@
           visible = true
         }
       "
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="Slot default">
-    <fx-cell label="图片" isLink @click="visible2 = true"></fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="Slot default">
+    <ak-cell label="图片" isLink @click="visible2 = true"></ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell
       label="cancel"
       isLink
       @click="
@@ -37,8 +37,8 @@
           visible = true
         }
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="visible-state-change"
       isLink
       @click="
@@ -46,23 +46,23 @@
           visibleEvent = true
         }
       "
-    ></fx-cell>
-  </fx-group>
-  <fx-modal
+    ></ak-cell>
+  </ak-group>
+  <ak-modal
     v-model:visible="visible"
     :maskClosable="maskClosable"
     :showClose="showClose"
     @cancel="onClose"
     @visibleStateChange="onVisibleStateChange"
   >
-  </fx-modal>
-  <fx-modal v-model:visible="visible2">
-    <fx-image
+  </ak-modal>
+  <ak-modal v-model:visible="visible2">
+    <ak-image
       class="exp-image-image"
       :src="imageUrl"
       :aspectRatio="1"
-    ></fx-image>
-  </fx-modal>
+    ></ak-image>
+  </ak-modal>
 </template>
 
 <script lang="ts">

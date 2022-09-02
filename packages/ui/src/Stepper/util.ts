@@ -2,7 +2,7 @@ import { formatInputNumber } from '../helpers/input'
 import { getNumber, rangeInteger, rangeNumber } from '../helpers/util'
 
 export const getClasses = (disabled?: boolean) => {
-  return ['fx-stepper', { disabled: !!disabled }]
+  return ['ak-stepper', { disabled: !!disabled }]
 }
 
 export function formateNumber(

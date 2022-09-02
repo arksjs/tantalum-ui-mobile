@@ -1,12 +1,12 @@
 <template>
   <teleport to="body">
     <div
-      class="fx-preview-image"
+      class="ak-preview-image"
       :class="popupClasses"
       :style="popupStyles"
       v-bind="$attrs"
     >
-      <div class="fx-mask"></div>
+      <div class="ak-mask"></div>
       <Swiper
         v-if="swiperInit"
         v-model:activeIndex="activeIndex"
@@ -16,7 +16,7 @@
         @animated="onSwiperAnimated"
       >
         <SwiperItem v-for="(item, index) in images" :key="index">
-          <div class="fx-preview-image_image-container">
+          <div class="ak-preview-image_image-container">
             <Image
               :src="item.src"
               :mode="'aspectFit'"
@@ -30,10 +30,10 @@
           </div>
         </SwiperItem>
       </Swiper>
-      <div class="fx-preview-image_pagination">
+      <div class="ak-preview-image_pagination">
         {{ activeIndex + 1 }} / {{ urls.length }}
       </div>
-      <div class="fx-preview-image_close">
+      <div class="ak-preview-image_close">
         <slot name="close" :activeIndex="activeIndex">
           <Button
             v-if="showClose"
@@ -96,7 +96,7 @@ interface ImageCoords {
 }
 
 export default defineComponent({
-  name: 'fx-image-preview',
+  name: 'ak-image-preview',
   components: { Button, Swiper, SwiperItem, Image },
   props: {
     ...popupProps,

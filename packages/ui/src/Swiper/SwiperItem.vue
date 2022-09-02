@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-swiper-item" ref="root">
+  <div class="ak-swiper-item" ref="root">
     <slot></slot>
   </div>
 </template>
@@ -9,7 +9,7 @@ import { ref, defineComponent } from 'vue'
 import { useListItem } from '../hooks/use-list'
 
 export default defineComponent({
-  name: 'fx-swiper-item',
+  name: 'ak-swiper-item',
   setup() {
     const root = ref<HTMLElement>()
 

@@ -46,7 +46,7 @@ describe('e2e: Picker', () => {
       expect(await texts('.selected')).toStrictEqual(['2000', '春'])
 
       // 模拟滚动滚动条
-      await page().$eval('.fx-picker-view_list', node => (node.scrollTop = 30))
+      await page().$eval('.ak-picker-view_list', node => (node.scrollTop = 30))
       await timeout(500)
       expect(await texts('.selected')).toStrictEqual(['2001', '春'])
     },

@@ -2,7 +2,7 @@
   <Badge :class="classes" :style="styles" v-bind="{ ...$attrs, ...badge2 }">
     <slot>
       <Image
-        class="fx-avatar_image"
+        class="ak-avatar_image"
         :src="src"
         mode="aspectFill"
         :loadingIcon="UserOutlined"
@@ -39,7 +39,7 @@ import UserOutlined from '../Icon/icons/UserOutlined'
 import { useConsumer } from './context'
 
 export default defineComponent({
-  name: 'fx-avatar',
+  name: 'ak-avatar',
   components: { Badge, Image, Icon },
   props: {
     ...avatarProps,

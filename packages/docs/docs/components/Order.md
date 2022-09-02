@@ -57,9 +57,9 @@ interface Item {
 ### 列表项（#default）
 
 ```vue
-<fx-order>
+<ak-order>
  <template #default="{ id, index }">
   {{ index }} : {{ id }}
  </template>
-</fx-order>
+</ak-order>
 ```

@@ -1,10 +1,10 @@
 <template>
-  <div class="fx-swipe-cell fx-horizontal-hairline" ref="root">
-    <div class="fx-swipe-cell_inner" :style="innerStyles">
+  <div class="ak-swipe-cell ak-horizontal-hairline" ref="root">
+    <div class="ak-swipe-cell_inner" :style="innerStyles">
       <slot></slot>
-      <div class="fx-swipe-cell_buttons" ref="buttonsEl">
+      <div class="ak-swipe-cell_buttons" ref="buttonsEl">
         <button
-          class="fx-swipe-cell_button"
+          class="ak-swipe-cell_button"
           :class="['type--' + item.type]"
           v-for="(item, index) in buttons2"
           :key="index"
@@ -43,7 +43,7 @@ interface SwipeCellCoords {
 }
 
 export default defineComponent({
-  name: 'fx-swipe-cell',
+  name: 'ak-swipe-cell',
   props: {
     buttons: {
       type: Array as PropType<ButtonOption[]>,

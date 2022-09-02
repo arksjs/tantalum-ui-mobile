@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-time-ago">
+  <div class="ak-time-ago">
     {{ timeAgo }}
   </div>
 </template>
@@ -12,7 +12,7 @@ import { getDate } from './util'
 import { useLocale } from '../ConfigProvider/context'
 
 export default defineComponent({
-  name: 'fx-time-ago',
+  name: 'ak-time-ago',
   props: {
     // 倒计时时间
     time: {

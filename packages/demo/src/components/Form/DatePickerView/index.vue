@@ -12,18 +12,18 @@ function onChange(e: SelectorModelValue) {
 </script>
 
 <template>
-  <fx-notice-bar
+  <ak-notice-bar
     class="top-notice-bar"
     title="基础展示参数可以参考 DatePicker"
   />
-  <fx-group title="initialMode=datetime">
-    <fx-date-picker-view initialMode="datetime" v-model="dateTimeValue" />
-  </fx-group>
-  <fx-group title="change 事件">
-    <fx-date-picker-view
+  <ak-group title="initialMode=datetime">
+    <ak-date-picker-view initialMode="datetime" v-model="dateTimeValue" />
+  </ak-group>
+  <ak-group title="change 事件">
+    <ak-date-picker-view
       initialMode="date"
       v-model="changeValue"
       @change="onChange"
     />
-  </fx-group>
+  </ak-group>
 </template>

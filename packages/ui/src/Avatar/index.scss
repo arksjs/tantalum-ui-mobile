@@ -1,66 +1,66 @@
 @import '../style/var.scss';
 
-.fx-avatar {
-  --fx-size: 48px;
-  --fx-font-size: 24px;
-  --fx-color: #{$background-color};
-  --fx-front-color: #{$font-color};
+.ak-avatar {
+  --ak-size: 48px;
+  --ak-font-size: 24px;
+  --ak-color: #{$background-color};
+  --ak-front-color: #{$font-color};
 
-  background-color: var(--fx-color);
-  width: var(--fx-size);
-  height: var(--fx-size);
+  background-color: var(--ak-color);
+  width: var(--ak-size);
+  height: var(--ak-size);
   display: inline-flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  font-size: var(--fx-font-size);
-  color: var(--fx-front-color);
+  font-size: var(--ak-font-size);
+  color: var(--ak-front-color);
   box-sizing: border-box;
 
-  .fx-image {
+  .ak-image {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 
-    .fx-icon {
-      --fx-icon-size: 1.333em;
-      --fx-icon-color: var(--fx-front-color);
+    .ak-icon {
+      --ak-icon-size: 1.333em;
+      --ak-icon-color: var(--ak-front-color);
     }
   }
 
   &.gender-man {
-    .fx-badge_badge {
-      --fx-color: #{$primary-color};
+    .ak-badge_badge {
+      --ak-color: #{$primary-color};
     }
   }
 
   &.gender-woman {
-    .fx-badge_badge {
-      --fx-color: #{$danger-color};
+    .ak-badge_badge {
+      --ak-color: #{$danger-color};
     }
   }
 
   &.shape--square {
     border-radius: 4px;
 
-    .fx-image {
+    .ak-image {
       border-radius: 4px;
     }
   }
 
   &.size--large {
-    --fx-size: 64px;
-    --fx-font-size: 32px;
+    --ak-size: 64px;
+    --ak-font-size: 32px;
   }
 
   &.size--small {
-    --fx-size: 36px;
-    --fx-font-size: 18px;
+    --ak-size: 36px;
+    --ak-font-size: 18px;
   }
 }
 
-.fx-avatar-group {
-  > .fx-avatar {
+.ak-avatar-group {
+  > .ak-avatar {
     border: 1px solid $white-color;
     margin-left: -0.5em;
 

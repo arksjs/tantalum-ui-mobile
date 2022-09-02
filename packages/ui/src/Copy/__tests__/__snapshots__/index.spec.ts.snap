@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Copy > snapshot 1`] = `
-"<div class=\\"fx-copy\\"><input type=\\"text\\" class=\\"fx-copy_input\\">
-  <div class=\\"fx-copy_box\\">content</div>
+"<div class=\\"ak-copy\\"><input type=\\"text\\" class=\\"ak-copy_input\\">
+  <div class=\\"ak-copy_box\\">content</div>
 </div>"
 `;

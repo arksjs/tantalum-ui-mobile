@@ -3,9 +3,9 @@
     <div :class="inputClasses">
       {{ label || placeholder }}
     </div>
-    <Icon class="fx-input_arrow" :icon="RightOutlined" />
+    <Icon class="ak-input_arrow" :icon="RightOutlined" />
     <input
-      class="fx-input_cover fx-form-input"
+      class="ak-input_cover ak-form-input"
       type="text"
       readonly
       :name="name"
@@ -25,7 +25,7 @@ import type { SelectorFieldEmits } from './types'
 import { returnTrue } from '../helpers/util'
 
 export default defineComponent({
-  name: 'fx-selector-field',
+  name: 'ak-selector-field',
   components: { Icon },
   props: {
     disabled: Boolean,

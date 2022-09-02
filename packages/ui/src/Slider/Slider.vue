@@ -1,13 +1,13 @@
 <template>
   <div :class="slideClasses" :style="slideStyles">
-    <div class="fx-slider_inner" ref="sliderEl">
-      <div class="fx-slider_box">
+    <div class="ak-slider_inner" ref="sliderEl">
+      <div class="ak-slider_box">
         <div
-          class="fx-slider_track"
+          class="ak-slider_track"
           :style="{ width: progress * 100 + '%' }"
         ></div>
         <div
-          class="fx-slider_thumb"
+          class="ak-slider_thumb"
           data-thumb="true"
           :style="{ left: progress * 100 + '%' }"
         >
@@ -33,7 +33,7 @@ import { slideProps } from '../Slider/props'
 import { useSlide } from '../Slider/use-slide'
 
 export default defineComponent({
-  name: 'fx-slider',
+  name: 'ak-slider',
   props: {
     ...formItemProps,
     ...slideProps,

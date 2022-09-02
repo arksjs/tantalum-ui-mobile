@@ -60,10 +60,10 @@ import type {
 ### #default
 
 ```vue
-<fx-dialog>
+<ak-dialog>
   提示内容
   ...
-</fx-dialog>
+</ak-dialog>
 ```
 
 ## showDialog(object)

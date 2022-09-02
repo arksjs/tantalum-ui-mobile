@@ -1,13 +1,13 @@
 @use 'sass:math';
 @import '../style/mixin.scss';
 
-.fx-button {
-  --fx-color: transparent;
-  --fx-dark-color: transparent;
-  --fx-light-color: transparent;
-  --fx-front-color: var(--fx-color);
-  --fx-button-icon-size: 20px;
-  --fx-size: 48px;
+.ak-button {
+  --ak-color: transparent;
+  --ak-dark-color: transparent;
+  --ak-light-color: transparent;
+  --ak-front-color: var(--ak-color);
+  --ak-button-icon-size: 20px;
+  --ak-size: 48px;
 
   display: inline-flex;
   flex-grow: 1;
@@ -18,7 +18,7 @@
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-  height: var(--fx-size);
+  height: var(--ak-size);
   padding: 0 12px;
   font-size: 17px;
   line-height: 24px;
@@ -29,19 +29,19 @@
   overflow: hidden;
   appearance: none;
   transform: translateZ(0);
-  background-color: var(--fx-color);
-  border: 1px solid var(--fx-color);
-  color: var(--fx-front-color);
+  background-color: var(--ak-color);
+  border: 1px solid var(--ak-color);
+  color: var(--ak-front-color);
 
-  + .fx-button {
+  + .ak-button {
     margin-left: 12px;
   }
 
-  .fx-icon {
+  .ak-icon {
     flex-shrink: 0;
 
-    --fx-icon-color: var(--fx-front-color);
-    --fx-icon-size: var(--fx-button-icon-size);
+    --ak-icon-color: var(--ak-front-color);
+    --ak-icon-size: var(--ak-button-icon-size);
   }
 
   &:disabled {
@@ -52,12 +52,12 @@
   &:not(.type--default) {
     &.pattern--default {
       &:not(.ghost) {
-        --fx-front-color: #fff;
+        --ak-front-color: #fff;
       }
 
       &:not(:disabled):active {
-        background-color: var(--fx-dark-color);
-        border-color: var(--fx-dark-color);
+        background-color: var(--ak-dark-color);
+        border-color: var(--ak-dark-color);
       }
     }
 
@@ -75,30 +75,30 @@
       background-color: $white-color;
 
       &:not(:disabled):active {
-        --fx-front-color: var(--fx-dark-color);
+        --ak-front-color: var(--ak-dark-color);
 
         background-color: $background-color;
-        border-color: var(--fx-dark-color);
+        border-color: var(--ak-dark-color);
       }
     }
 
     &.pattern--gradient {
       &:not(.ghost) {
-        --fx-front-color: #fff;
+        --ak-front-color: #fff;
       }
 
       background-image: linear-gradient(
         90deg,
-        var(--fx-light-color) 0%,
-        var(--fx-color) 100%
+        var(--ak-light-color) 0%,
+        var(--ak-color) 100%
       );
       border-color: transparent !important;
 
       &:not(:disabled):active {
         background-image: linear-gradient(
           90deg,
-          var(--fx-color) 0%,
-          var(--fx-dark-color) 100%
+          var(--ak-color) 0%,
+          var(--ak-dark-color) 100%
         );
       }
     }
@@ -107,10 +107,10 @@
       background: transparent;
 
       &:not(:disabled):active {
-        --fx-front-color: var(--fx-dark-color);
+        --ak-front-color: var(--ak-dark-color);
 
         background: transparent;
-        border-color: var(--fx-dark-color);
+        border-color: var(--ak-dark-color);
       }
     }
 
@@ -118,49 +118,49 @@
       background: transparent;
 
       &:not(:disabled):active {
-        --fx-front-color: var(--fx-light-color);
+        --ak-front-color: var(--ak-light-color);
 
         background: transparent;
-        border-color: var(--fx-light-color);
+        border-color: var(--ak-light-color);
       }
     }
   }
 
   &.type--primary {
-    --fx-color: #{$primary-color};
-    --fx-dark-color: var(--fx-color-primary-dark);
-    --fx-light-color: var(--fx-color-primary-light);
+    --ak-color: #{$primary-color};
+    --ak-dark-color: var(--ak-color-primary-dark);
+    --ak-light-color: var(--ak-color-primary-light);
   }
 
   &.type--success {
-    --fx-color: #{$success-color};
-    --fx-dark-color: var(--fx-color-success-dark);
-    --fx-light-color: var(--fx-color-success-light);
+    --ak-color: #{$success-color};
+    --ak-dark-color: var(--ak-color-success-dark);
+    --ak-light-color: var(--ak-color-success-light);
   }
 
   &.type--warning {
-    --fx-color: #{$warning-color};
-    --fx-dark-color: var(--fx-color-warning-dark);
-    --fx-light-color: var(--fx-color-warning-light);
+    --ak-color: #{$warning-color};
+    --ak-dark-color: var(--ak-color-warning-dark);
+    --ak-light-color: var(--ak-color-warning-light);
   }
 
   &.type--danger {
-    --fx-color: #{$danger-color};
-    --fx-dark-color: var(--fx-color-danger-dark);
-    --fx-light-color: var(--fx-color-danger-light);
+    --ak-color: #{$danger-color};
+    --ak-dark-color: var(--ak-color-danger-dark);
+    --ak-light-color: var(--ak-color-danger-light);
   }
 
   &.type--default {
     background-color: $white-color;
 
-    --fx-color: #{$border-color};
-    --fx-dark-color: #{$border-color};
-    --fx-light-color: #{$border-color};
-    --fx-front-color: #{$font-color};
+    --ak-color: #{$border-color};
+    --ak-dark-color: #{$border-color};
+    --ak-light-color: #{$border-color};
+    --ak-front-color: #{$font-color};
 
     &:not(:disabled):active {
       background-color: $background-color;
-      border-color: var(--fx-dark-color);
+      border-color: var(--ak-dark-color);
     }
 
     &.pattern--dashed {
@@ -172,8 +172,8 @@
     }
 
     &.ghost {
-      --fx-color: #fff;
-      --fx-front-color: #fff;
+      --ak-color: #fff;
+      --ak-front-color: #fff;
     }
 
     &.transparent,
@@ -199,16 +199,16 @@
     height: 12px;
     width: 1px;
     transform: translate3d(0, -50%, 0) scaleX(1);
-    background-color: var(--fx-color);
+    background-color: var(--ak-color);
   }
 
   &.shape--round {
-    border-radius: calc(var(--fx-size) / 2);
+    border-radius: calc(var(--ak-size) / 2);
   }
 
   &.shape--round,
   &.shape--rectangle {
-    .fx-icon {
+    .ak-icon {
       margin: 0 8px 0 -2px;
     }
   }
@@ -218,14 +218,14 @@
     flex-grow: 0;
     flex-shrink: 0;
 
-    --fx-button-icon-size: 24px;
+    --ak-button-icon-size: 24px;
 
     &.size--middle {
-      --fx-button-icon-size: 20px;
+      --ak-button-icon-size: 20px;
     }
 
     &.size--small {
-      --fx-button-icon-size: 18px;
+      --ak-button-icon-size: 18px;
     }
 
     span {
@@ -238,12 +238,12 @@
   }
 
   &.size--middle {
-    --fx-size: 40px;
+    --ak-size: 40px;
 
     line-height: 21px;
     font-size: 15px;
 
-    --fx-button-icon-size: 18px;
+    --ak-button-icon-size: 18px;
 
     &.shape--square,
     &.shape--circle {
@@ -261,15 +261,15 @@
 
     &.shape--round,
     &.shape--rectangle {
-      .fx-icon {
+      .ak-icon {
         margin: 0 4px 0 -2px;
       }
     }
   }
 
   &.size--small {
-    --fx-size: 28px;
-    --fx-button-icon-size: 16px;
+    --ak-size: 28px;
+    --ak-button-icon-size: 16px;
 
     line-height: 17px;
     font-size: 12px;
@@ -286,7 +286,7 @@
 
     &.shape--round,
     &.shape--rectangle {
-      .fx-icon {
+      .ak-icon {
         margin: 0 2px 0 -2px;
       }
     }
@@ -294,7 +294,7 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 2) {
-  .fx-button {
+  .ak-button {
     &::before {
       transform: translate3d(0, -50%, 0) scaleX(0.5);
     }
@@ -302,14 +302,14 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 3) {
-  .fx-button {
+  .ak-button {
     &::before {
       transform: translate3d(0, -50%, 0) scaleX(math.div(1, 3));
     }
   }
 }
 
-.fx-button-group {
+.ak-button-group {
   display: inline-flex;
   flex: 1;
 
@@ -318,12 +318,12 @@
     flex: 0;
   }
 
-  + .fx-button-group {
+  + .ak-button-group {
     margin-left: 16px;
   }
 
   &:not(.count--1) {
-    > .fx-button {
+    > .ak-button {
       &:first-child {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -340,7 +340,7 @@
         }
       }
 
-      + .fx-button {
+      + .ak-button {
         position: relative;
         margin-left: 0;
         border-left-width: 0;

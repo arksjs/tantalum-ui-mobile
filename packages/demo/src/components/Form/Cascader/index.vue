@@ -48,39 +48,39 @@ function onCallApi() {
 </script>
 
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="家电">
-      <fx-cascader :options="cascadeOptions" />
-    </fx-cell>
-    <fx-cell label="地区">
-      <fx-cascader :options="regionOptions" :fieldNames="{ value: 'label' }" />
-    </fx-cell>
-    <fx-cell label="placeholder">
-      <fx-cascader :options="cascadeOptions" :placeholder="placeholder" />
-    </fx-cell>
-    <fx-cell label="formatter/parser">
-      <fx-cascader
+  <ak-group title="基础用法">
+    <ak-cell label="家电">
+      <ak-cascader :options="cascadeOptions" />
+    </ak-cell>
+    <ak-cell label="地区">
+      <ak-cascader :options="regionOptions" :fieldNames="{ value: 'label' }" />
+    </ak-cell>
+    <ak-cell label="placeholder">
+      <ak-cascader :options="cascadeOptions" :placeholder="placeholder" />
+    </ak-cell>
+    <ak-cell label="formatter/parser">
+      <ak-cascader
         :options="cascadeOptions"
         :placeholder="placeholder"
         v-model="formatValue"
         :formatter="formatter"
         :parser="parser"
       />
-    </fx-cell>
-    <fx-cell label="禁用">
-      <fx-cascader
+    </ak-cell>
+    <ak-cell label="禁用">
+      <ak-cascader
         :modelValue="disableValue"
         :options="cascadeOptions"
         disabled
       />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell label="change">
-      <fx-cascader :options="cascadeOptions" @change="onChange" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="API">
-    <fx-cell label="showCascader" isLink @click="onCallApi()" />
-  </fx-group>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell label="change">
+      <ak-cascader :options="cascadeOptions" @change="onChange" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="API">
+    <ak-cell label="showCascader" isLink @click="onCallApi()" />
+  </ak-group>
 </template>

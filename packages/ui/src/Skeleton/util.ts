@@ -16,7 +16,7 @@ export const AVATAR_SHAPE_NAMES: AvatarShape[] = ['default', 'circle']
 export const BUTTON_SHAPE_NAMES: ButtonShape[] = ['default', 'round']
 
 export const getClasses = (animated?: boolean) => {
-  return ['fx-skeleton', { animated: !!animated }]
+  return ['ak-skeleton', { animated: !!animated }]
 }
 
 export const getAvatarClasses = (
@@ -24,7 +24,7 @@ export const getAvatarClasses = (
   parentProps?: SkeletonProps
 ) => {
   return [
-    'fx-skeleton-avatar',
+    'ak-skeleton-avatar',
     { animated: !!(parentProps?.animated || props.animated) },
     'shape--' +
       getEnumsValue(AVATAR_SHAPE_NAMES, props.shape ?? parentProps?.avatarShape)
@@ -36,7 +36,7 @@ export const getButtonClasses = (
   parentProps?: SkeletonProps
 ) => {
   return [
-    'fx-skeleton-button',
+    'ak-skeleton-button',
     { animated: !!(parentProps?.animated || props.animated) },
     'shape--' +
       getEnumsValue(BUTTON_SHAPE_NAMES, props.shape ?? parentProps?.buttonShape)
@@ -48,7 +48,7 @@ export const getImageClasses = (
   parentProps?: SkeletonProps
 ) => {
   return [
-    'fx-skeleton-image',
+    'ak-skeleton-image',
     { animated: !!(parentProps?.animated || props.animated) }
   ]
 }
@@ -58,7 +58,7 @@ export const getTitleClasses = (
   parentProps?: SkeletonProps
 ) => {
   return [
-    'fx-skeleton-title',
+    'ak-skeleton-title',
     { animated: !!(parentProps?.animated || props.animated) }
   ]
 }
@@ -68,7 +68,7 @@ export const getParagraphClasses = (
   parentProps?: SkeletonProps
 ) => {
   return [
-    'fx-skeleton-paragraph',
+    'ak-skeleton-paragraph',
     { animated: !!(parentProps?.animated || props.animated) }
   ]
 }

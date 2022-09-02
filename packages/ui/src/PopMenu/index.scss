@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-pop-menu {
+.ak-pop-menu {
   &_list {
     list-style: none;
     padding: 0;
@@ -33,9 +33,9 @@
       box-sizing: border-box;
       justify-content: center;
 
-      .fx-icon {
-        --fx-icon-size: 18px;
-        --fx-icon-color: #{$title-color};
+      .ak-icon {
+        --ak-icon-size: 18px;
+        --ak-icon-color: #{$title-color};
 
         vertical-align: middle;
         margin: 0 12px 0 0;
@@ -52,7 +52,7 @@
     }
 
     &.has--icon {
-      .fx-pop-menu_item-inner {
+      .ak-pop-menu_item-inner {
         justify-content: flex-start;
         padding: 0 20px;
       }

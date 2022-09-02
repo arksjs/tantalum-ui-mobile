@@ -1,28 +1,28 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-pagination v-model:current="current" :total="total"></fx-pagination>
-  </fx-group>
-  <fx-group title="Slot default">
-    <fx-pagination v-model:current="current2" :total="total">
+  <ak-group title="基础用法">
+    <ak-pagination v-model:current="current" :total="total"></ak-pagination>
+  </ak-group>
+  <ak-group title="Slot default">
+    <ak-pagination v-model:current="current2" :total="total">
       <template #default="{ current }"> 第 {{ current }} 页 </template>
-    </fx-pagination>
-  </fx-group>
-  <fx-group title="Slot prev & next">
-    <fx-pagination v-model:current="current3" :total="total">
+    </ak-pagination>
+  </ak-group>
+  <ak-group title="Slot prev & next">
+    <ak-pagination v-model:current="current3" :total="total">
       <template #prev> 上一页 </template>
       <template #next> 下一页 </template>
-    </fx-pagination>
-  </fx-group>
-  <fx-group title="CSS height=32px">
-    <fx-pagination
+    </ak-pagination>
+  </ak-group>
+  <ak-group title="CSS height=32px">
+    <ak-pagination
       style="height: 32px"
       v-model:current="current4"
       :total="total"
-    ></fx-pagination>
-  </fx-group>
-  <fx-group title="事件监听 change">
-    <fx-pagination :total="total" @change="onChange"></fx-pagination>
-  </fx-group>
+    ></ak-pagination>
+  </ak-group>
+  <ak-group title="事件监听 change">
+    <ak-pagination :total="total" @change="onChange"></ak-pagination>
+  </ak-group>
 </template>
 
 <script lang="ts">

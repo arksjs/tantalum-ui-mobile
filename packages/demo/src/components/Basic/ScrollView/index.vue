@@ -1,21 +1,21 @@
 <template>
-  <fx-group title="垂直滚动">
-    <fx-scroll-view class="exp-scrollView-box" scroll-y>
+  <ak-group title="垂直滚动">
+    <ak-scroll-view class="exp-scrollView-box" scroll-y>
       <div class="exp-scrollView-h-400">
         <p>垂直滚动条</p>
         <p>scroll-y="true"</p>
       </div>
-    </fx-scroll-view>
-  </fx-group>
-  <fx-group title="水平滚动">
-    <fx-scroll-view class="exp-scrollView-box" scroll-x>
+    </ak-scroll-view>
+  </ak-group>
+  <ak-group title="水平滚动">
+    <ak-scroll-view class="exp-scrollView-box" scroll-x>
       <div class="exp-scrollView-w-750">
         <p>水平滚动条 scroll-x="true"</p>
       </div>
-    </fx-scroll-view>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-scroll-view
+    </ak-scroll-view>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-scroll-view
       class="exp-scrollView-box"
       scroll-x
       scroll-y
@@ -28,10 +28,10 @@
         <p>scroll-x="true"</p>
         <p>监听到顶/底/最左/最右的事件</p>
       </div>
-    </fx-scroll-view>
-  </fx-group>
-  <fx-group title="下拉刷新">
-    <fx-scroll-view
+    </ak-scroll-view>
+  </ak-group>
+  <ak-group title="下拉刷新">
+    <ak-scroll-view
       class="exp-scrollView-box"
       :enable-pull-directions="['down', 'right', 'up', 'left']"
       scroll-y
@@ -43,10 +43,10 @@
         <p>pull-directions="['down', 'right', 'up', 'left']"</p>
         <p>由于有 scroll-y，上拉刷新要先滚到最底部</p>
       </div>
-    </fx-scroll-view>
-  </fx-group>
-  <fx-group title="下拉刷新（自定义指示器）">
-    <fx-scroll-view
+    </ak-scroll-view>
+  </ak-group>
+  <ak-group title="下拉刷新（自定义指示器）">
+    <ak-scroll-view
       class="exp-scrollView-box"
       :enable-pull-directions="['down']"
       scroll-y
@@ -64,8 +64,8 @@
         <p>scroll-y="true"</p>
         <p>pull-directions="['down']"</p>
       </div>
-    </fx-scroll-view>
-  </fx-group>
+    </ak-scroll-view>
+  </ak-group>
 </template>
 
 <script lang="ts">

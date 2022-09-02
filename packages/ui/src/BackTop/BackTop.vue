@@ -1,5 +1,5 @@
 <template>
-  <button class="fx-back-top" :style="styles" @click="onClick">
+  <button class="ak-back-top" :style="styles" @click="onClick">
     <slot>
       <Icon :icon="UpCircleOutlined" />
     </slot>
@@ -21,7 +21,7 @@ import { getNumber } from '../helpers/util'
 import type { BackTopEmits } from './types'
 
 export default defineComponent({
-  name: 'fx-back-top',
+  name: 'ak-back-top',
   components: { Icon },
   props: {
     visibleHeight: {

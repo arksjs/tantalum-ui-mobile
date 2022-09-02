@@ -10,7 +10,7 @@
     @refreshing="onRefreshing"
     ref="scrollViewRef"
   >
-    <div class="fx-flat-list_header" v-if="$slots.header">
+    <div class="ak-flat-list_header" v-if="$slots.header">
       <slot name="header"></slot>
     </div>
     <VirtualList
@@ -30,17 +30,17 @@
       </template>
     </VirtualList>
     <LoadMore
-      class="fx-flat-list_indicator"
+      class="ak-flat-list_indicator"
       loading
       :vertical="horizontal"
       v-if="lowerLoading && ids.length > 0"
     >
       {{ locale.flatListLoadingText }}
     </LoadMore>
-    <div class="fx-flat-list_empty" v-if="ids.length === 0">
+    <div class="ak-flat-list_empty" v-if="ids.length === 0">
       <slot name="empty"></slot>
     </div>
-    <div class="fx-flat-list_footer" v-if="$slots.footer">
+    <div class="ak-flat-list_footer" v-if="$slots.footer">
       <slot name="footer"></slot>
     </div>
   </ScrollView>
@@ -74,7 +74,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { FlatListEmits } from './types'
 
 export default defineComponent({
-  name: 'fx-flat-list',
+  name: 'ak-flat-list',
   components: { ScrollView, LoadMore, VirtualList },
   props: {
     ...virtualListProps,

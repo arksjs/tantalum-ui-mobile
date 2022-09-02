@@ -34,51 +34,51 @@ function onChange(res: SelectorModelValue) {
 </script>
 
 <template>
-  <fx-group title="initialMode=simple">
-    <fx-cell label="默认">
-      <fx-calendar v-model="simpleValue" />
-    </fx-cell>
-    <fx-cell label="showConfirm=true">
-      <fx-calendar showConfirm />
-    </fx-cell>
-    <fx-cell label="showClose=true">
-      <fx-calendar showClose />
-    </fx-cell>
-    <fx-cell label="firstDayOfWeek=1">
-      <fx-calendar :firstDayOfWeek="1" />
-    </fx-cell>
-    <fx-cell label="minDate/maxDate +-1month">
-      <fx-calendar :minDate="minDate" :maxDate="maxDate" />
-    </fx-cell>
-    <fx-cell label="formatter/parser">
-      <fx-calendar
+  <ak-group title="initialMode=simple">
+    <ak-cell label="默认">
+      <ak-calendar v-model="simpleValue" />
+    </ak-cell>
+    <ak-cell label="showConfirm=true">
+      <ak-calendar showConfirm />
+    </ak-cell>
+    <ak-cell label="showClose=true">
+      <ak-calendar showClose />
+    </ak-cell>
+    <ak-cell label="firstDayOfWeek=1">
+      <ak-calendar :firstDayOfWeek="1" />
+    </ak-cell>
+    <ak-cell label="minDate/maxDate +-1month">
+      <ak-calendar :minDate="minDate" :maxDate="maxDate" />
+    </ak-cell>
+    <ak-cell label="formatter/parser">
+      <ak-calendar
         :formatter="formatter"
         :parser="parser"
         v-model="formatValue"
         @change="onChange"
       />
-    </fx-cell>
-    <fx-cell label="禁用">
-      <fx-calendar v-model="simpleValue" disabled />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="initialMode=range">
-    <fx-cell label="默认">
-      <fx-calendar initialMode="range" v-model="rangeValue" />
-    </fx-cell>
-    <fx-cell label="allowSameDay">
-      <fx-calendar initialMode="range" allowSameDay />
-    </fx-cell>
-    <fx-cell label="maxRange=5">
-      <fx-calendar initialMode="range" :maxRange="5" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell label="change">
-      <fx-calendar @change="onChange" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="API">
-    <fx-cell label="showCalendar" isLink @click="onCallApi()" />
-  </fx-group>
+    </ak-cell>
+    <ak-cell label="禁用">
+      <ak-calendar v-model="simpleValue" disabled />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="initialMode=range">
+    <ak-cell label="默认">
+      <ak-calendar initialMode="range" v-model="rangeValue" />
+    </ak-cell>
+    <ak-cell label="allowSameDay">
+      <ak-calendar initialMode="range" allowSameDay />
+    </ak-cell>
+    <ak-cell label="maxRange=5">
+      <ak-calendar initialMode="range" :maxRange="5" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell label="change">
+      <ak-calendar @change="onChange" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="API">
+    <ak-cell label="showCalendar" isLink @click="onCallApi()" />
+  </ak-group>
 </template>

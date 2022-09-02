@@ -2,7 +2,7 @@ import { capitalize } from '../helpers/util'
 import { inject, onBeforeUnmount, provide, reactive } from 'vue'
 
 function getKey(name: string) {
-  return `fx${capitalize(name)}Group`
+  return `ak${capitalize(name)}Group`
 }
 
 interface GroupProvide {

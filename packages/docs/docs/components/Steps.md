@@ -28,11 +28,11 @@ import { Steps, Step } from 'vfox'
 注：其中只可放置 [Step](./Steps.md#step-props) 组件，否则会导致未定义的行为。
 
 ```vue
-<fx-steps>
-  <fx-step title="成功获得0.01元收益">搞半天就这点？</fx-step>
-  <fx-step title="十天后到账">0.01元还要十天到账？</fx-step>
-  <fx-step title="爱要不要">不要了，滚。</fx-step>
-</fx-steps>
+<ak-steps>
+  <ak-step title="成功获得0.01元收益">搞半天就这点？</ak-step>
+  <ak-step title="十天后到账">0.01元还要十天到账？</ak-step>
+  <ak-step title="爱要不要">不要了，滚。</ak-step>
+</ak-steps>
 ```
 
 ## Step Props
@@ -46,18 +46,18 @@ import { Steps, Step } from 'vfox'
 ### 内容（#default）
 
 ```vue
-<fx-step title="标题">自定义内容</fx-step>
+<ak-step title="标题">自定义内容</ak-step>
 ```
 
 ### 标题（#title）
 
 ```vue
-<fx-step>
+<ak-step>
   <template #title>
   【珠海市】【珠海一部】快递小哥正在派件（<a href="tel:10000">10000</a>）
   </template>
   2021-04-13 11:22:16
-</fx-step>
+</ak-step>
 ```
 
 注：优先级高于 Props `title`。
@@ -65,11 +65,11 @@ import { Steps, Step } from 'vfox'
 ### 步骤标（#step）
 
 ```vue
-<fx-step>
+<ak-step>
   <template #step="{ finish, index, active }">
-    <fx-icon v-if="finish" icon="CheckOutlined"></fx-icon>
+    <ak-icon v-if="finish" icon="CheckOutlined"></ak-icon>
   </template>
-</fx-step>
+</ak-step>
 ```
 
 注：只推荐写入 text 和 [Icon](./Icon.md) 组件，其他元素或组件可能会导致未定义的行为。

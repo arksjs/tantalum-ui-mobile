@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Tag > snapshot 1`] = `
-"<div class=\\"fx-tag type--default size--large pattern--light\\">
+"<div class=\\"ak-tag type--default size--large pattern--light\\">
   <!--v-if-->
 </div>"
 `;

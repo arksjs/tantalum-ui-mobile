@@ -19,7 +19,7 @@ export const MODE_NAMES: Mode[] = [
 ]
 
 export const getImgClasses = (mode?: Mode) => [
-  'fx-image_img',
+  'ak-image_img',
   'mode--' +
     camelCase2KebabCase(getEnumsValue(MODE_NAMES, mode)).replace(/\s+/g, '-')
 ]

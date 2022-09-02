@@ -1,4 +1,4 @@
 export const getClasses = (horizontal: boolean) => [
-  'fx-flat-list',
+  'ak-flat-list',
   { horizontal }
 ]

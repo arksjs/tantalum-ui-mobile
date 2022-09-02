@@ -1,29 +1,29 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-tab-bar :options="baseList" v-model:activeValue="activeValue" />
-  </fx-group>
-  <fx-group title="徽标">
-    <fx-tab-bar :options="badgeList" />
-  </fx-group>
-  <fx-group title="自定义图标">
-    <fx-tab-bar :options="customIconList" />
-  </fx-group>
-  <fx-group title="自定义颜色">
-    <fx-tab-bar
+  <ak-group title="基础用法">
+    <ak-tab-bar :options="baseList" v-model:activeValue="activeValue" />
+  </ak-group>
+  <ak-group title="徽标">
+    <ak-tab-bar :options="badgeList" />
+  </ak-group>
+  <ak-group title="自定义图标">
+    <ak-tab-bar :options="customIconList" />
+  </ak-group>
+  <ak-group title="自定义颜色">
+    <ak-tab-bar
       color="#8B8DB8"
       activeColor="#ffffff"
       style="background-color: #6667ab"
       :options="baseList"
     />
-  </fx-group>
-  <fx-group title="自定义图片（icon=URL）">
-    <fx-tab-bar class="exp-tabBar-custom" :options="imageList" />
-  </fx-group>
-  <fx-group title="配合 Fixed 实现置底">
-    <fx-fixed>
-      <fx-tab-bar :options="baseList" v-model:activeValue="activeValue" />
-    </fx-fixed>
-  </fx-group>
+  </ak-group>
+  <ak-group title="自定义图片（icon=URL）">
+    <ak-tab-bar class="exp-tabBar-custom" :options="imageList" />
+  </ak-group>
+  <ak-group title="配合 Fixed 实现置底">
+    <ak-fixed>
+      <ak-tab-bar :options="baseList" v-model:activeValue="activeValue" />
+    </ak-fixed>
+  </ak-group>
 </template>
 
 <script lang="ts">

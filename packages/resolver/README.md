@@ -57,7 +57,7 @@ module.exports = {
 
 ```HTML
 <template>
-  <fx-button>提交</fx-button>
+  <ak-button>提交</ak-button>
 </template>
 ```
 

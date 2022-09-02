@@ -49,31 +49,31 @@ function onCreateColor() {
 </script>
 
 <template>
-  <fx-group title="设置主题颜色">
-    <fx-form>
-      <fx-form-item name="primary" label="primary 色" required>
-        <fx-input v-model="primary" />
-      </fx-form-item>
-      <fx-form-item name="success" label="success 色" required>
-        <fx-input v-model="success" />
-      </fx-form-item>
-      <fx-form-item name="warning" label="warning 色" required>
-        <fx-input v-model="warning" />
-      </fx-form-item>
-      <fx-form-item name="danger" label="danger 色" required>
-        <fx-input v-model="danger" />
-      </fx-form-item>
+  <ak-group title="设置主题颜色">
+    <ak-form>
+      <ak-form-item name="primary" label="primary 色" required>
+        <ak-input v-model="primary" />
+      </ak-form-item>
+      <ak-form-item name="success" label="success 色" required>
+        <ak-input v-model="success" />
+      </ak-form-item>
+      <ak-form-item name="warning" label="warning 色" required>
+        <ak-input v-model="warning" />
+      </ak-form-item>
+      <ak-form-item name="danger" label="danger 色" required>
+        <ak-input v-model="danger" />
+      </ak-form-item>
       <template #footer>
-        <fx-button type="primary" @click="onCreateColor">生成主题</fx-button>
+        <ak-button type="primary" @click="onCreateColor">生成主题</ak-button>
       </template>
-    </fx-form>
+    </ak-form>
     <div class="exp-customTheme-code" v-if="themeCode">
       <pre>
       {{ themeCode }}
       </pre>
-      <fx-copy @success="showToast('复制成功')" :text="themeCode"
+      <ak-copy @success="showToast('复制成功')" :text="themeCode"
         >复制代码
-      </fx-copy>
+      </ak-copy>
     </div>
-  </fx-group>
+  </ak-group>
 </template>

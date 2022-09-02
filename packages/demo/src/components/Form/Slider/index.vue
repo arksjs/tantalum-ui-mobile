@@ -1,42 +1,42 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell class="exp-slider-box" :label="'value: ' + value">
-      <fx-slider v-model="value" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="显示数值 showValue=true">
-    <fx-cell class="exp-slider-box" :label="'value: ' + value2">
-      <fx-slider show-value v-model="value2" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="自定义颜色 color=#ff7875">
-    <fx-cell class="exp-slider-box" :label="'value: ' + value3">
-      <fx-slider color="#ff7875" v-model="value3" show-value />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="设置步进（step=5）">
-    <fx-cell class="exp-slider-box" :label="'value: ' + value4">
-      <fx-slider show-value v-model="value4" step="5" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="限制范围 min=40 & max=140">
-    <fx-cell class="exp-slider-box" :label="'value: ' + value5">
-      <fx-slider show-value :min="min" :max="max" v-model="value5" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="禁用">
-    <fx-cell class="exp-slider-box" :label="'value: ' + value6">
-      <fx-slider disabled v-model="value6" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell class="exp-slider-box" label="input"
-      ><fx-slider v-model="value7" @input="onInput" />
-    </fx-cell>
-    <fx-cell class="exp-slider-box" label="change"
-      ><fx-slider v-model="value8" @change="onChange" />
-    </fx-cell>
-  </fx-group>
+  <ak-group title="基础用法">
+    <ak-cell class="exp-slider-box" :label="'value: ' + value">
+      <ak-slider v-model="value" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="显示数值 showValue=true">
+    <ak-cell class="exp-slider-box" :label="'value: ' + value2">
+      <ak-slider show-value v-model="value2" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="自定义颜色 color=#ff7875">
+    <ak-cell class="exp-slider-box" :label="'value: ' + value3">
+      <ak-slider color="#ff7875" v-model="value3" show-value />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="设置步进（step=5）">
+    <ak-cell class="exp-slider-box" :label="'value: ' + value4">
+      <ak-slider show-value v-model="value4" step="5" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="限制范围 min=40 & max=140">
+    <ak-cell class="exp-slider-box" :label="'value: ' + value5">
+      <ak-slider show-value :min="min" :max="max" v-model="value5" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="禁用">
+    <ak-cell class="exp-slider-box" :label="'value: ' + value6">
+      <ak-slider disabled v-model="value6" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell class="exp-slider-box" label="input"
+      ><ak-slider v-model="value7" @input="onInput" />
+    </ak-cell>
+    <ak-cell class="exp-slider-box" label="change"
+      ><ak-slider v-model="value8" @change="onChange" />
+    </ak-cell>
+  </ak-group>
 </template>
 
 <script lang="ts">

@@ -40,7 +40,7 @@ import { Fixed } from 'vfox'
 ### 底部（#default）
 
 ```vue
-<fx-fixed placement="bottom">
+<ak-fixed placement="bottom">
   固定内容
-</fx-fixed>
+</ak-fixed>
 ```

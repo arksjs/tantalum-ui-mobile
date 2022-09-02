@@ -30,6 +30,6 @@ describe('Dropdown', () => {
         default: content
       }
     })
-    expect(wrapper.find('.fx-dropdown_inner').text()).toBe(content)
+    expect(wrapper.find('.ak-dropdown_inner').text()).toBe(content)
   })
 })

@@ -41,8 +41,8 @@ import type { CheckboxOptionItem } from 'vfox'
 ## Checkbox Slots
 
 ```vue
-<fx-checkbox>开朗</fx-checkbox>
-<fx-checkbox>活泼</fx-checkbox>
+<ak-checkbox>开朗</ak-checkbox>
+<ak-checkbox>活泼</ak-checkbox>
 ...
 ```
 
@@ -81,9 +81,9 @@ import type { CheckboxOptionItem } from 'vfox'
 ### #default
 
 ```vue
-<fx-checkbox-group>
-  <fx-checkbox>开朗</fx-checkbox>
-  <fx-checkbox>活泼</fx-checkbox>
+<ak-checkbox-group>
+  <ak-checkbox>开朗</ak-checkbox>
+  <ak-checkbox>活泼</ak-checkbox>
   ...
-</fx-checkbox-group>
+</ak-checkbox-group>
 ```

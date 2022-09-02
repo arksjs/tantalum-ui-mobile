@@ -13,21 +13,21 @@ describe('Col', () => {
     const wrapper = mount(Col, {
       props: { span: 12 }
     })
-    expect(wrapper.classes()).toContain('fx-col-12')
+    expect(wrapper.classes()).toContain('ak-col-12')
   })
 
   test('pull', () => {
     const wrapper = mount(Col, {
       props: { pull: 3 }
     })
-    expect(wrapper.classes()).toContain('fx-col-pull-3')
+    expect(wrapper.classes()).toContain('ak-col-pull-3')
   })
 
   test('push', () => {
     const wrapper = mount(Col, {
       props: { push: 3 }
     })
-    expect(wrapper.classes()).toContain('fx-col-push-3')
+    expect(wrapper.classes()).toContain('ak-col-push-3')
   })
 
   test('gutter', () => {
@@ -38,7 +38,7 @@ describe('Col', () => {
       }
     })
 
-    const colEl = wrapper.findComponent('.fx-col').element as HTMLElement
+    const colEl = wrapper.findComponent('.ak-col').element as HTMLElement
     expect(colEl.style.paddingLeft === '5px').toBeTruthy()
     expect(colEl.style.paddingRight === '5px').toBeTruthy()
   })

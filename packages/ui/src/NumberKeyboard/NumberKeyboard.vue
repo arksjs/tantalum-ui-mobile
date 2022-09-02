@@ -1,6 +1,6 @@
 <template>
   <Drawer
-    class="fx-number-keyboard"
+    class="ak-number-keyboard"
     placement="bottom"
     :visible="visible"
     :showMask="false"
@@ -14,34 +14,34 @@
   >
     <div @click.stop="noop">
       <div :class="bodyClasses">
-        <ul class="fx-number-keyboard_list">
+        <ul class="ak-number-keyboard_list">
           <li
-            class="fx-number-keyboard_item"
+            class="ak-number-keyboard_item"
             :class="['span-' + (item.span || 1)]"
             v-for="(item, index) in numberList"
             :key="index"
           >
-            <div class="fx-number-keyboard_button" @click="onNumberClick(item)">
+            <div class="ak-number-keyboard_button" @click="onNumberClick(item)">
               <Icon v-if="item.icon" :icon="item.icon" />
               <template v-else>{{ item.text }}</template>
             </div>
           </li>
         </ul>
         <div
-          class="fx-number-keyboard_right-column"
+          class="ak-number-keyboard_right-column"
           v-if="type === 'rightColumn'"
         >
-          <div class="fx-number-keyboard_backspace">
+          <div class="ak-number-keyboard_backspace">
             <div
-              class="fx-number-keyboard_button"
+              class="ak-number-keyboard_button"
               @click="onNumberClick(backspaceItem)"
             >
               <Icon :icon="BackspaceOutlined" />
             </div>
           </div>
-          <div class="fx-number-keyboard_confirm">
+          <div class="ak-number-keyboard_confirm">
             <div
-              class="fx-number-keyboard_confirm-button"
+              class="ak-number-keyboard_confirm-button"
               @click="onConfirmClick"
             >
               {{ locale.numberKeyboardConfirmText }}
@@ -75,7 +75,7 @@ import KeyboardOutlined from '../Icon/icons/KeyboardOutlined'
 import { getBodyClasses, isShowHeaderConfirm } from './util'
 
 export default defineComponent({
-  name: 'fx-number-keyboard',
+  name: 'ak-number-keyboard',
   components: { Drawer, Icon },
   props: {
     ...popupExtendProps,

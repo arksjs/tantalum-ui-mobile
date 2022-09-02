@@ -34,19 +34,19 @@ import type { EmptyType } from 'vfox'
 ### 底部（#default）
 
 ```vue
-<fx-empty description="网络错误" type="network">
-  <fx-button>刷新试试</fx-button>
-</fx-empty>
+<ak-empty description="网络错误" type="network">
+  <ak-button>刷新试试</ak-button>
+</ak-empty>
 ```
 
 ### 图片区域（#image）
 
 ```vue
-<fx-empty description="描述文字">
+<ak-empty description="描述文字">
   <template #image>
-    <fx-image src="xxx.jpg" />
+    <ak-image src="xxx.jpg" />
   </template>
-</fx-empty>
+</ak-empty>
 ```
 
 注：优先级比内置图片高。

@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-modal {
+.ak-modal {
   &_box {
     width: 400px;
     box-sizing: border-box;
@@ -18,7 +18,7 @@
   }
 
   &.visible {
-    .fx-modal_box {
+    .ak-modal_box {
       opacity: 1;
       transform: scale(1);
     }
@@ -38,15 +38,15 @@
     box-sizing: border-box;
     cursor: pointer;
 
-    .fx-icon {
-      --fx-icon-size: 32px;
-      --fx-icon-color: #{$font-color};
+    .ak-icon {
+      --ak-icon-size: 32px;
+      --ak-icon-color: #{$font-color};
     }
   }
 }
 
 @media (max-width: 575px) {
-  .fx-modal {
+  .ak-modal {
     &_box {
       width: calc(100% - 96px);
     }

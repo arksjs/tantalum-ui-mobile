@@ -40,8 +40,8 @@ import type { RadioOptionItem } from 'vfox'
 ## Radio Slots
 
 ```vue
-<fx-radio>男</fx-radio>
-<fx-radio>女</fx-radio>
+<ak-radio>男</ak-radio>
+<ak-radio>女</ak-radio>
 ```
 
 ## RadioGroup
@@ -79,9 +79,9 @@ import type { RadioOptionItem } from 'vfox'
 ### #default
 
 ```vue
-<fx-radio-group>
-  <fx-radio>男</fx-radio>
-  <fx-radio>女</fx-radio>
+<ak-radio-group>
+  <ak-radio>男</ak-radio>
+  <ak-radio>女</ak-radio>
   ...
-</fx-radio-group>
+</ak-radio-group>
 ```

@@ -78,7 +78,7 @@ import type { SizeType, StateType, ButtonShape, ButtonPattern } from 'vfox'
 ### #default
 
 ```vue
-<fx-button form-type="submit">提交</fx-button>
+<ak-button form-type="submit">提交</ak-button>
 ```
 
 ## ButtonGroup Props
@@ -94,8 +94,8 @@ import type { SizeType, StateType, ButtonShape, ButtonPattern } from 'vfox'
 ### #default
 
 ```vue
-<fx-button-group shape="square" size="small">
-  <fx-button type="default" icon="LeftOutlined"></fx-button>
-  <fx-button type="default" icon="HomeOutlined"></fx-button>
-</fx-button-group>
+<ak-button-group shape="square" size="small">
+  <ak-button type="default" icon="LeftOutlined"></ak-button>
+  <ak-button type="default" icon="HomeOutlined"></ak-button>
+</ak-button-group>
 ```

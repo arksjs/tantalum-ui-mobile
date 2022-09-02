@@ -1,6 +1,6 @@
 <template>
   <Popover
-    class="fx-pop-dialog"
+    class="ak-pop-dialog"
     :visible="visible"
     :selector="selector"
     :placement="placement"
@@ -12,7 +12,7 @@
     ref="popup"
   >
     <ul
-      class="fx-pop-menu_list fx-pop-menu_list"
+      class="ak-pop-menu_list ak-pop-menu_list"
       v-if="options2 && options2.length > 0"
     >
       <li
@@ -21,7 +21,7 @@
         :key="index"
         @click="onItemClick(index)"
       >
-        <div class="fx-pop-menu_item-inner">
+        <div class="ak-pop-menu_item-inner">
           <Icon v-if="item.icon" :icon="item.icon" />
           <span>{{ item.name }}</span>
         </div>
@@ -43,7 +43,7 @@ import { Popover } from '../Popover'
 import { usePopupExtend } from '../popup/use-popup'
 
 export default defineComponent({
-  name: 'fx-pop-menu',
+  name: 'ak-pop-menu',
   components: { Icon, Popover },
   props: {
     ...popoverProps,

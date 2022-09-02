@@ -1,90 +1,90 @@
 <template>
-  <fx-group title="基础键盘">
-    <fx-cell label="默认键盘" isLink @click="visible1 = true">
-      <fx-number-keyboard
+  <ak-group title="基础键盘">
+    <ak-cell label="默认键盘" isLink @click="visible1 = true">
+      <ak-number-keyboard
         v-model:visible="visible1"
         @input="onInput"
         @delete="onDelete"
         @close="onClose"
-      ></fx-number-keyboard>
-    </fx-cell>
-    <fx-cell label="带小数点（customKey='.'）" isLink @click="visible2 = true">
-      <fx-number-keyboard
+      ></ak-number-keyboard>
+    </ak-cell>
+    <ak-cell label="带小数点（customKey='.'）" isLink @click="visible2 = true">
+      <ak-number-keyboard
         v-model:visible="visible2"
         customKey="."
         @input="onInput"
         @delete="onDelete"
         @close="onClose"
-      ></fx-number-keyboard>
-    </fx-cell>
-    <fx-cell label="身份证（customKey='X'）" isLink @click="visible3 = true">
-      <fx-number-keyboard
+      ></ak-number-keyboard>
+    </ak-cell>
+    <ak-cell label="身份证（customKey='X'）" isLink @click="visible3 = true">
+      <ak-number-keyboard
         v-model:visible="visible3"
         customKey="X"
         @input="onInput"
         @delete="onDelete"
         @close="onClose"
-      ></fx-number-keyboard>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="带右侧栏键盘">
-    <fx-cell label="默认键盘" isLink @click="visible4 = true">
-      <fx-number-keyboard
+      ></ak-number-keyboard>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="带右侧栏键盘">
+    <ak-cell label="默认键盘" isLink @click="visible4 = true">
+      <ak-number-keyboard
         v-model:visible="visible4"
         type="rightColumn"
         @input="onInput"
         @delete="onDelete"
         @close="onClose"
-      ></fx-number-keyboard>
-    </fx-cell>
-    <fx-cell
+      ></ak-number-keyboard>
+    </ak-cell>
+    <ak-cell
       label="1个自定义值（customKey=['.']）"
       isLink
       @click="visible5 = true"
     >
-      <fx-number-keyboard
+      <ak-number-keyboard
         v-model:visible="visible5"
         type="rightColumn"
         customKey="."
         @input="onInput"
         @delete="onDelete"
         @close="onClose"
-      ></fx-number-keyboard>
-    </fx-cell>
-    <fx-cell
+      ></ak-number-keyboard>
+    </ak-cell>
+    <ak-cell
       label="2个自定义值（customKey=['00', '.']）"
       isLink
       @click="visible6 = true"
     >
-      <fx-number-keyboard
+      <ak-number-keyboard
         v-model:visible="visible6"
         type="rightColumn"
         :customKey="['00', '.']"
         @input="onInput"
         @delete="onDelete"
         @close="onClose"
-      ></fx-number-keyboard>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="其他">
-    <fx-cell label="设置标题" isLink @click="visible7 = true">
-      <fx-number-keyboard
+      ></ak-number-keyboard>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="其他">
+    <ak-cell label="设置标题" isLink @click="visible7 = true">
+      <ak-number-keyboard
         title="键盘标题"
         v-model:visible="visible7"
         @input="onInput"
         @change="onChange"
         @delete="onDelete"
         @close="onClose"
-      ></fx-number-keyboard>
-    </fx-cell>
-    <fx-form-item name="number" label="双向绑定" @click="visible8 = true">
-      <fx-input v-model="value" readonly />
-      <fx-number-keyboard
+      ></ak-number-keyboard>
+    </ak-cell>
+    <ak-form-item name="number" label="双向绑定" @click="visible8 = true">
+      <ak-input v-model="value" readonly />
+      <ak-number-keyboard
         v-model:visible="visible8"
         v-model="value"
-      ></fx-number-keyboard>
-    </fx-form-item>
-  </fx-group>
+      ></ak-number-keyboard>
+    </ak-form-item>
+  </ak-group>
 </template>
 
 <script lang="ts">

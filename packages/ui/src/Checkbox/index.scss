@@ -1,8 +1,8 @@
 @import '../style/var.scss';
 
-.fx-checkbox {
-  --fx-active-color: #{$primary-color};
-  --fx-checkbox-icon-size: 20px;
+.ak-checkbox {
+  --ak-active-color: #{$primary-color};
+  --ak-checkbox-icon-size: 20px;
 
   display: inline-flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
   text-align: left;
   position: relative;
 
-  + .fx-checkbox {
+  + .ak-checkbox {
     margin-left: 16px;
   }
 
@@ -26,14 +26,14 @@
 
   &_icon,
   &_checked-icon {
-    --fx-icon-size: var(--fx-checkbox-icon-size);
-    --fx-icon-color: #{$border-color};
+    --ak-icon-size: var(--ak-checkbox-icon-size);
+    --ak-icon-color: #{$border-color};
   }
 
   &_checked-icon {
     display: none;
 
-    --fx-icon-color: var(--fx-active-color);
+    --ak-icon-color: var(--ak-active-color);
   }
 
   &_input {
@@ -42,11 +42,11 @@
     top: 0;
     opacity: 0;
 
-    &:checked + .fx-checkbox_box .fx-checkbox_icon {
+    &:checked + .ak-checkbox_box .ak-checkbox_icon {
       display: none;
     }
 
-    &:checked + .fx-checkbox_box .fx-checkbox_checked-icon {
+    &:checked + .ak-checkbox_box .ak-checkbox_checked-icon {
       display: block;
     }
   }
@@ -62,7 +62,7 @@
   }
 }
 
-.fx-checkbox-group {
+.ak-checkbox-group {
   display: flex;
   height: 32px;
   align-items: center;
@@ -75,11 +75,11 @@
     height: auto;
     min-height: 32px;
 
-    > .fx-checkbox {
+    > .ak-checkbox {
       display: flex;
       width: 100%;
 
-      + .fx-checkbox {
+      + .ak-checkbox {
         margin-left: 0;
 
         &::before {

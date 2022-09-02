@@ -59,7 +59,7 @@ module.exports = {
 
 ```Vue
 <template>
-  <fx-button>提交</fx-button>
+  <ak-button>提交</ak-button>
 </template>
 ```
 
@@ -80,7 +80,7 @@ app.use(Button)
 
 ```Vue
 <template>
-  <fx-button>按钮</fx-button>
+  <ak-button>按钮</ak-button>
 </template>
 ```
 
@@ -93,12 +93,12 @@ import 'arkui-mobile-vue/es/Button/style'
 // import 'arkui-mobile-vue/es/Button/style/sass' // use sass
 
 export default {
-  components: { 'fx-button': Button }
+  components: { 'ak-button': Button }
 }
 </script>
 
 <template>
-  <fx-button>按钮</fx-button>
+  <ak-button>按钮</ak-button>
 </template>
 ```
 

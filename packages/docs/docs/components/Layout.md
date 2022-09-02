@@ -27,9 +27,9 @@ import { Row, Col } from 'vfox'
 ## Row Slots
 
 ```vue
-<fx-row :gutter="10">
-  <fx-col :span="24">Layout</fx-col>
-</fx-row>
+<ak-row :gutter="10">
+  <ak-col :span="24">Layout</ak-col>
+</ak-row>
 ```
 
 ## Col Props
@@ -44,7 +44,7 @@ import { Row, Col } from 'vfox'
 ## Col Slots
 
 ```vue
-<fx-row :gutter="10">
-  <fx-col :span="24">Layout</fx-col>
-</fx-row>
+<ak-row :gutter="10">
+  <ak-col :span="24">Layout</ak-col>
+</ak-row>
 ```

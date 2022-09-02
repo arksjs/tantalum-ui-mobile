@@ -1,7 +1,7 @@
 <template>
   <div :class="classes" ref="root" @scroll="onScroll">
-    <div class="fx-scroll-view_inner">
-      <div class="fx-scroll-view_content" :style="contentStyles">
+    <div class="ak-scroll-view_inner">
+      <div class="ak-scroll-view_content" :style="contentStyles">
         <div
           v-if="enablePullDirections && enablePullDirections.length > 0"
           :class="pullRefreshClasses"
@@ -14,12 +14,12 @@
           >
             <div :class="loadMoreClasses" :style="indicatorStyles">
               <ActivityIndicator
-                class="fx-load-more_icon"
+                class="ak-load-more_icon"
                 v-if="pullRefreshState === PullRefreshState.Refreshing"
                 :size="18"
               />
-              <Icon class="fx-load-more_icon" v-else :icon="CircleOutlined" />
-              <span class="fx-load-more_content">{{
+              <Icon class="ak-load-more_icon" v-else :icon="CircleOutlined" />
+              <span class="ak-load-more_content">{{
                 pullRefreshState === PullRefreshState.Refreshing
                   ? locale.scrollViewRefreshingText
                   : pullRefreshState === PullRefreshState.Holding
@@ -80,7 +80,7 @@ interface ScrollCoords {
 }
 
 export default defineComponent({
-  name: 'fx-scroll-view',
+  name: 'ak-scroll-view',
   components: { Icon, ActivityIndicator },
   props: {
     // 允许横向滚动

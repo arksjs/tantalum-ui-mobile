@@ -2,7 +2,7 @@ import type { ConfigProviderProps } from './types'
 import lang from '../locale'
 import { inject, provide, computed } from 'vue'
 
-const CONTEXT_KEY = 'fxConfigProvider'
+const CONTEXT_KEY = 'akConfigProvider'
 
 export function useConfigProvider(props: ConfigProviderProps) {
   provide(CONTEXT_KEY, props)

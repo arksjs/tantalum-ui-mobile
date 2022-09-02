@@ -1,13 +1,13 @@
 // Vitest Snapshot v1
 
 exports[`Group > snapshot 1`] = `
-"<div class=\\"fx-group fx-horizontal-hairline\\">
-  <div class=\\"fx-group_header\\">
-    <div class=\\"fx-group_title\\">title</div>
-    <div class=\\"fx-group_more\\"></div>
+"<div class=\\"ak-group ak-horizontal-hairline\\">
+  <div class=\\"ak-group_header\\">
+    <div class=\\"ak-group_title\\">title</div>
+    <div class=\\"ak-group_more\\"></div>
   </div>
-  <div class=\\"fx-group_body fx-horizontal-hairline hairline-reverse\\">
-    <div class=\\"fx-group_body-inner\\"></div>
+  <div class=\\"ak-group_body ak-horizontal-hairline hairline-reverse\\">
+    <div class=\\"ak-group_body-inner\\"></div>
   </div>
 </div>"
 `;

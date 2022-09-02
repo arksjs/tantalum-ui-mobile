@@ -97,7 +97,7 @@ export const buildSrcCompEntry = async () => {
   // index.ts
   const imports = []
   for (const name of config.components) {
-    imports.push(`export { default as ${name} } from '../${name}'\n`)
+    imports.push(`export { default as Ak${name} } from '../${name}'\n`)
   }
 
   await fs.promises.writeFile(
@@ -109,21 +109,21 @@ export const buildSrcCompEntry = async () => {
   // install.ts
   await fs.promises.writeFile(
     resolveCore('./src/components/install.ts'),
-    imports.join('').replace(/default/g, 'install'),
+    imports.join('').replace(/default as Ak/g, 'install as '),
     'utf-8'
   )
 
-  // fx.ts
-  const fxImports = []
-  for (const name of config.components) {
-    fxImports.push(`export { default as Fx${name} } from '../${name}'\n`)
-  }
+  // // fx.ts
+  // const fxImports = []
+  // for (const name of config.components) {
+  //   fxImports.push(`export { default as Fx${name} } from '../${name}'\n`)
+  // }
 
-  await fs.promises.writeFile(
-    resolveCore('./src/components/fx.ts'),
-    fxImports.join(''),
-    'utf-8'
-  )
+  // await fs.promises.writeFile(
+  //   resolveCore('./src/components/fx.ts'),
+  //   fxImports.join(''),
+  //   'utf-8'
+  // )
 
   // api.ts
   const apiImports = []

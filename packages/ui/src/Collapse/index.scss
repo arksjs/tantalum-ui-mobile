@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-collapse-item {
+.ak-collapse-item {
   &_body {
     overflow: hidden;
     transition: height 0.2s;
@@ -17,7 +17,7 @@
     line-height: 20px;
   }
 
-  + .fx-collapse-item::before {
+  + .ak-collapse-item::before {
     content: '';
   }
 
@@ -26,7 +26,7 @@
       content: none;
     }
 
-    .fx-cell_link-icon {
+    .ak-cell_link-icon {
       transition: transform 0.2s;
     }
   }

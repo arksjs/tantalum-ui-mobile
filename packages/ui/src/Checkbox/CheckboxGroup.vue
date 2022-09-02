@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-checkbox-group" :class="classes" ref="root">
+  <div class="ak-checkbox-group" :class="classes" ref="root">
     <slot>
       <Checkbox
         v-for="item in options2"
@@ -24,7 +24,7 @@ import type { PropsToEmits } from '../helpers/types'
 const isValue = (value: ModelValue[]) => isStringNumberMixArray(value)
 
 export default defineComponent({
-  name: 'fx-checkbox-group',
+  name: 'ak-checkbox-group',
   components: { Checkbox },
   props: {
     ...checkGroupProps,

@@ -1,62 +1,62 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-notice-bar class="exp-noticeBar-item" :title="text1" />
-    <fx-notice-bar class="exp-noticeBar-item" :title="text2" />
-  </fx-group>
-  <fx-group title="跑马灯">
-    <fx-notice-bar class="exp-noticeBar-item" marquee :title="text2">
-    </fx-notice-bar>
-  </fx-group>
-  <fx-group title="左侧图标">
-    <fx-notice-bar
+  <ak-group title="基础用法">
+    <ak-notice-bar class="exp-noticeBar-item" :title="text1" />
+    <ak-notice-bar class="exp-noticeBar-item" :title="text2" />
+  </ak-group>
+  <ak-group title="跑马灯">
+    <ak-notice-bar class="exp-noticeBar-item" marquee :title="text2">
+    </ak-notice-bar>
+  </ak-group>
+  <ak-group title="左侧图标">
+    <ak-notice-bar
       class="exp-noticeBar-item"
       left-icon="SoundOutlined"
       :title="text1"
       marquee
     />
-  </fx-group>
-  <fx-group title="mode closable/clickable">
-    <fx-notice-bar
+  </ak-group>
+  <ak-group title="mode closable/clickable">
+    <ak-notice-bar
       class="exp-noticeBar-item"
       mode="closable"
       :title="text1"
       @closeClick="showToast('点击了关闭按钮')"
     />
-    <fx-notice-bar
+    <ak-notice-bar
       class="exp-noticeBar-item"
       mode="clickable"
       :title="text1"
       @click="() => showToast('点击了通告栏')"
     />
-  </fx-group>
-  <fx-group title="type=success/primary/danger">
-    <fx-notice-bar
+  </ak-group>
+  <ak-group title="type=success/primary/danger">
+    <ak-notice-bar
       left-icon="SoundOutlined"
       class="exp-noticeBar-item"
       type="success"
       :title="text1"
     />
-    <fx-notice-bar
+    <ak-notice-bar
       left-icon="SoundOutlined"
       class="exp-noticeBar-item"
       type="primary"
       :title="text1"
     />
-    <fx-notice-bar
+    <ak-notice-bar
       left-icon="SoundOutlined"
       class="exp-noticeBar-item"
       type="danger"
       :title="text1"
     />
-  </fx-group>
-  <fx-group title="自定义颜色(#000000)">
-    <fx-notice-bar
+  </ak-group>
+  <ak-group title="自定义颜色(#000000)">
+    <ak-notice-bar
       class="exp-noticeBar-item"
       left-icon="SoundOutlined"
       :title="text1"
       color="#000000"
     />
-  </fx-group>
+  </ak-group>
 </template>
 
 <script lang="ts">

@@ -20,24 +20,24 @@ function onSubmitColor() {
 </script>
 
 <template>
-  <fx-group title="设置主色">
-    <fx-form>
-      <fx-form-item name="color" label="颜色值" required>
-        <fx-input v-model="primaryColor" focus placeholder="请输入颜色值" />
-      </fx-form-item>
+  <ak-group title="设置主色">
+    <ak-form>
+      <ak-form-item name="color" label="颜色值" required>
+        <ak-input v-model="primaryColor" focus placeholder="请输入颜色值" />
+      </ak-form-item>
       <template #footer>
-        <fx-button
+        <ak-button
           type="primary"
           form-type="submit"
           :color="(colors.length && primaryColor) || undefined"
           @click="onSubmitColor"
-          >生成色卡</fx-button
+          >生成色卡</ak-button
         >
       </template>
-    </fx-form>
-  </fx-group>
-  <fx-group title="色卡列表" v-if="colors.length">
-    <fx-copy
+    </ak-form>
+  </ak-group>
+  <ak-group title="色卡列表" v-if="colors.length">
+    <ak-copy
       :text="color"
       class="exp-colorCard-item"
       :class="['color-' + (index + 1)]"
@@ -47,6 +47,6 @@ function onSubmitColor() {
       @success="showToast('复制成功')"
     >
       {{ color }}
-    </fx-copy>
-  </fx-group>
+    </ak-copy>
+  </ak-group>
 </template>

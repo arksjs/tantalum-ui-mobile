@@ -1,6 +1,6 @@
 <template>
   <Drawer
-    class="fx-calendar-popup"
+    class="ak-calendar-popup"
     placement="bottom"
     :visible="visible"
     :title="title"
@@ -25,7 +25,7 @@
       ref="viewRef"
       @select="onViewSelect"
     />
-    <div class="fx-calendar-popup_confirm" v-if="showConfirm">
+    <div class="ak-calendar-popup_confirm" v-if="showConfirm">
       <Button type="primary" @click="onConfirmClick" :disabled="valueSize == 0"
         >{{ locale.calendarConfirmText }}
       </Button>
@@ -54,7 +54,7 @@ import { cloneData } from '../helpers/util'
 import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
-  name: 'fx-calendar-popup',
+  name: 'ak-calendar-popup',
   components: { CalendarView, Drawer, Button },
   props: {
     ...commonProps,

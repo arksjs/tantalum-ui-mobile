@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fx-swiper-item fx-tab-view-item"
+    class="ak-swiper-item ak-tab-view-item"
     :data-name="name"
     :data-sub-name="subName"
     ref="root"
@@ -24,7 +24,7 @@ interface TabViewItemCoords {
 }
 
 export default defineComponent({
-  name: 'fx-tab-view-item',
+  name: 'ak-tab-view-item',
   props: {
     name: {
       type: String,
@@ -37,7 +37,7 @@ export default defineComponent({
   },
   setup() {
     const root = ref<HTMLElement>()
-    const vertical = inject('fxTabViewVertical', false)
+    const vertical = inject('akTabViewVertical', false)
 
     useListItem('swiper')
     useListItem('tabView')

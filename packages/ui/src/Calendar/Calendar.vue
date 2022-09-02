@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-calendar" :class="{ disabled }" ref="root">
+  <div class="ak-calendar" :class="{ disabled }" ref="root">
     <SelectorField
       :label="fieldLabel"
       :value="fieldValue"
@@ -41,7 +41,7 @@ import { cloneDetail, isSameValue } from '../Picker/util'
 import { pickerEmits, pickerProps } from '../Picker/props'
 
 export default defineComponent({
-  name: 'fx-calendar',
+  name: 'ak-calendar',
   components: { SelectorField, CalendarPopup },
   props: {
     ...commonProps,

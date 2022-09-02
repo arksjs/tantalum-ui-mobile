@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-search">
+  <div class="ak-search">
     <form
       :class="innerClasses"
       @submit.prevent="onSearch(searchText)"
@@ -24,9 +24,9 @@
           <Icon :icon="SearchOutlined" />
         </template>
       </Input>
-      <button class="fx-search_button">Search</button>
+      <button class="ak-search_button">Search</button>
       <Button
-        class="fx-search_cancel-button"
+        class="ak-search_cancel-button"
         size="large"
         type="default"
         formType="button"
@@ -46,12 +46,12 @@
     >
       <template #default="{ height }">
         <div :style="getSuggestStyles(height)">
-          <div class="fx-search_suggest-list">
+          <div class="ak-search_suggest-list">
             <Cell
               v-for="item in suggestList"
               :key="item.text"
               :label="item.text.toString()"
-              class="fx-search_suggest-item"
+              class="ak-search_suggest-item"
               clickable
               @click="onSuggestItemClick(item.text)"
             >
@@ -99,7 +99,7 @@ const emitValidator: VoidFnToBooleanFn<OnInput> = (payload, setSuggestList) =>
   isString(payload) && typeof setSuggestList === 'function'
 
 export default defineComponent({
-  name: 'fx-search-bar',
+  name: 'ak-search-bar',
   components: { Icon, Input, Button, Dropdown, Cell, Tag },
   props: {
     ghost: {

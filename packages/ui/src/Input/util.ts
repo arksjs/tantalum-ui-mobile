@@ -74,11 +74,11 @@ export const getClasses = ({
   active: boolean
 }) => {
   return [
-    'fx-input',
+    'ak-input',
     {
       'has--prepend': prepend,
       'has--append': append,
-      'fx-textarea': type === 'textarea',
+      'ak-textarea': type === 'textarea',
       focus: active,
       readonly: !!readonly,
       disabled: !!disabled

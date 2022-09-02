@@ -45,9 +45,9 @@ import type { ResultType } from 'vfox'
 ### 附加内容（#default）
 
 ```vue
-<fx-result type="fail" title="支付失败" description="">
+<ak-result type="fail" title="支付失败" description="">
   <div class="result-extra">
     在这里可以附加组件元素或者相应的提示文案，样式自定。
   </div>
-</fx-result>
+</ak-result>
 ```

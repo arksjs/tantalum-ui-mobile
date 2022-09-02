@@ -39,14 +39,14 @@ describe('Modal', () => {
       }
     })
 
-    await wrapper.find('.fx-mask').trigger('click')
+    await wrapper.find('.ak-mask').trigger('click')
     await timeout(500)
     expect(wrapper.vm.isShow).toBeTruthy()
 
     await wrapper.setProps({
       maskClosable: true
     })
-    await wrapper.find('.fx-mask').trigger('click')
+    await wrapper.find('.ak-mask').trigger('click')
     await timeout(500)
     expect(wrapper.vm.isShow).toBeFalsy()
   })

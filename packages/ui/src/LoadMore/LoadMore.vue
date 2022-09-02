@@ -1,9 +1,9 @@
 <template>
   <div :class="classes">
-    <ActivityIndicator class="fx-load-more_icon" v-if="loading" :size="18" />
-    <span class="fx-load-more_content">
+    <ActivityIndicator class="ak-load-more_icon" v-if="loading" :size="18" />
+    <span class="ak-load-more_content">
       <slot>
-        <i class="fx-load-more_dot"></i>
+        <i class="ak-load-more_dot"></i>
       </slot>
     </span>
   </div>
@@ -15,7 +15,7 @@ import { ActivityIndicator } from '../ActivityIndicator'
 import { getClasses } from './util'
 
 export default defineComponent({
-  name: 'fx-load-more',
+  name: 'ak-load-more',
   components: { ActivityIndicator },
   props: {
     // 是否显示加载中

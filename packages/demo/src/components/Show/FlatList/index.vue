@@ -107,17 +107,17 @@ function scrollToEnd(animated: boolean) {
 </script>
 
 <template>
-  <fx-group title="基础用法">
-    <fx-flat-list class="exp-flatList-box" :ids="list.map(v => v.id)">
+  <ak-group title="基础用法">
+    <ak-flat-list class="exp-flatList-box" :ids="list.map(v => v.id)">
       <template #default="{ index }">
         <div class="exp-flatList-item">
           {{ list[index].text }}
         </div>
       </template>
-    </fx-flat-list>
-  </fx-group>
-  <fx-group title="水平列表">
-    <fx-flat-list
+    </ak-flat-list>
+  </ak-group>
+  <ak-group title="水平列表">
+    <ak-flat-list
       class="exp-flatList-box"
       :ids="list.map(v => v.id)"
       :itemSize="140"
@@ -128,10 +128,10 @@ function scrollToEnd(animated: boolean) {
           {{ list[index].text }}
         </div>
       </template>
-    </fx-flat-list>
-  </fx-group>
-  <fx-group title="开启下拉刷新">
-    <fx-flat-list
+    </ak-flat-list>
+  </ak-group>
+  <ak-group title="开启下拉刷新">
+    <ak-flat-list
       class="exp-flatList-box"
       :ids="list.map(v => v.id)"
       :itemSize="50"
@@ -143,10 +143,10 @@ function scrollToEnd(animated: boolean) {
           {{ list[index].text }}
         </div>
       </template>
-    </fx-flat-list>
-  </fx-group>
-  <fx-group title="展示底部加载更多提示">
-    <fx-flat-list
+    </ak-flat-list>
+  </ak-group>
+  <ak-group title="展示底部加载更多提示">
+    <ak-flat-list
       class="exp-flatList-box"
       :ids="loadList.map(v => v.id)"
       :lowerLoading="lowerLoading"
@@ -157,10 +157,10 @@ function scrollToEnd(animated: boolean) {
           {{ list[index].text }}
         </div>
       </template>
-    </fx-flat-list>
-  </fx-group>
-  <fx-group title="分割线（#separator）">
-    <fx-flat-list class="exp-flatList-box" :ids="list.map(v => v.id)">
+    </ak-flat-list>
+  </ak-group>
+  <ak-group title="分割线（#separator）">
+    <ak-flat-list class="exp-flatList-box" :ids="list.map(v => v.id)">
       <template #default="{ index }">
         <div class="exp-flatList-item">
           {{ list[index].text }}
@@ -172,10 +172,10 @@ function scrollToEnd(animated: boolean) {
           v-if="index < list.length - 1"
         ></div>
       </template>
-    </fx-flat-list>
-  </fx-group>
-  <fx-group title="瀑布流">
-    <fx-flat-list
+    </ak-flat-list>
+  </ak-group>
+  <ak-group title="瀑布流">
+    <ak-flat-list
       class="exp-flatList-box"
       :ids="list.map(v => v.id)"
       :itemSize="getItemSize"
@@ -187,10 +187,10 @@ function scrollToEnd(animated: boolean) {
           {{ list[index].text }}
         </div>
       </template>
-    </fx-flat-list>
-  </fx-group>
-  <fx-group title="事件监听（end-reached/visible-items-change）">
-    <fx-flat-list
+    </ak-flat-list>
+  </ak-group>
+  <ak-group title="事件监听（end-reached/visible-items-change）">
+    <ak-flat-list
       class="exp-flatList-box"
       :ids="list.map(v => v.id)"
       :itemSize="50"
@@ -202,17 +202,17 @@ function scrollToEnd(animated: boolean) {
           {{ list[index].text }}
         </div>
       </template>
-    </fx-flat-list>
-  </fx-group>
-  <fx-group title="Slot empty">
-    <fx-flat-list class="exp-flatList-box" :ids="[]" :itemSize="50">
+    </ak-flat-list>
+  </ak-group>
+  <ak-group title="Slot empty">
+    <ak-flat-list class="exp-flatList-box" :ids="[]" :itemSize="50">
       <template #empty>
-        <fx-empty description="暂无列表"></fx-empty>
+        <ak-empty description="暂无列表"></ak-empty>
       </template>
-    </fx-flat-list>
-  </fx-group>
-  <fx-group title="Method">
-    <fx-flat-list
+    </ak-flat-list>
+  </ak-group>
+  <ak-group title="Method">
+    <ak-flat-list
       class="exp-flatList-box"
       :ids="largeList.map(v => v.id)"
       :itemSize="50"
@@ -223,31 +223,31 @@ function scrollToEnd(animated: boolean) {
           {{ largeList[index].text }}
         </div>
       </template>
-    </fx-flat-list>
-    <fx-cell
+    </ak-flat-list>
+    <ak-cell
       label="scrollToIndex({ index: 49999 })"
       isLink
       @click="scrollToIndex(49999)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="同上加 viewPosition=0.5"
       isLink
       @click="scrollToIndex(49999, 0.5)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="同上加 viewPosition=1"
       isLink
       @click="scrollToIndex(49999, 1)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="scrollTo({ offset: 200 })"
       isLink
       @click="scrollTo(200)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="scrollToEnd(true)"
       isLink
       @click="scrollToEnd(true)"
-    ></fx-cell>
-  </fx-group>
+    ></ak-cell>
+  </ak-group>
 </template>

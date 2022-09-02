@@ -25,5 +25,5 @@ import { LoadMore } from 'vfox'
 ### 附加内容（#default）
 
 ```vue
-<fx-load-more loading>加载中...</fx-load-more>
+<ak-load-more loading>加载中...</ak-load-more>
 ```

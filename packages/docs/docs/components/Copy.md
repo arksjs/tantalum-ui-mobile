@@ -35,7 +35,7 @@ import { Copy } from 'vfox'
 ## Slots
 
 ```vue
-<fx-copy text="复制的内容">
-  <fx-button>复制</fx-button>
-</fx-copy>
+<ak-copy text="复制的内容">
+  <ak-button>复制</ak-button>
+</ak-copy>
 ```

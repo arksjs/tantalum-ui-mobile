@@ -29,7 +29,7 @@ describe('Progress', () => {
       props: { percentage: 50, showText: true }
     })
 
-    expect(wrapper.find('.fx-progress_text').text()).toBe('50%')
+    expect(wrapper.find('.ak-progress_text').text()).toBe('50%')
   })
 
   test('slot default', () => {
@@ -42,7 +42,7 @@ describe('Progress', () => {
       }
     })
 
-    expect(wrapper.find('.fx-progress_text').find('span').html()).toBe(
+    expect(wrapper.find('.ak-progress_text').find('span').html()).toBe(
       '<span>Sale 50%</span>'
     )
   })

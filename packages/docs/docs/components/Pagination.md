@@ -32,16 +32,16 @@ import { Pagination } from 'vfox'
 ### #default
 
 ```vue
-<fx-pagination>
+<ak-pagination>
   <template #default="{ current, total }"> 第 {{ current }} / {{ total }} 页 </template>
-</fx-pagination>
+</ak-pagination>
 ```
 
 ### 翻页按钮（#prev/#next）
 
 ```vue
-<fx-pagination>
+<ak-pagination>
   <template #prev> 上一页 </template>
   <template #next> 下一页 </template>
-</fx-pagination>
+</ak-pagination>
 ```

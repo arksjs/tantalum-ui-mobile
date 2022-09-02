@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-picker" :class="{ disabled }" ref="root">
+  <div class="ak-picker" :class="{ disabled }" ref="root">
     <SelectorField
       :label="fieldLabel"
       :value="fieldValue"
@@ -32,7 +32,7 @@ import { mergeHandlers } from './util'
 import { usePicker } from './use-picker'
 
 export default defineComponent({
-  name: 'fx-picker',
+  name: 'ak-picker',
   components: { SelectorField, PickerPopup },
   props: { ...commonProps, ...pickerProps },
   emits: { ...pickerEmits },

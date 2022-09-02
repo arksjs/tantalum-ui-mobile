@@ -1,24 +1,24 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-search-bar />
-  </fx-group>
-  <fx-group title="搜索建议">
-    <fx-search-bar @input="onInput" />
-  </fx-group>
-  <fx-group title="显示取消按钮">
-    <fx-search-bar show-cancel />
-  </fx-group>
-  <fx-group title="设置候选项">
-    <fx-search-bar :placeholders="placeholders" />
-  </fx-group>
-  <fx-group title="深色适配">
-    <fx-search-bar class="exp-searchBar-dark-style" show-cancel ghost />
-  </fx-group>
-  <fx-group title="只读（readonly=true）">
-    <fx-search-bar readonly :placeholders="placeholders" />
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-search-bar
+  <ak-group title="基础用法">
+    <ak-search-bar />
+  </ak-group>
+  <ak-group title="搜索建议">
+    <ak-search-bar @input="onInput" />
+  </ak-group>
+  <ak-group title="显示取消按钮">
+    <ak-search-bar show-cancel />
+  </ak-group>
+  <ak-group title="设置候选项">
+    <ak-search-bar :placeholders="placeholders" />
+  </ak-group>
+  <ak-group title="深色适配">
+    <ak-search-bar class="exp-searchBar-dark-style" show-cancel ghost />
+  </ak-group>
+  <ak-group title="只读（readonly=true）">
+    <ak-search-bar readonly :placeholders="placeholders" />
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-search-bar
       show-cancel
       :placeholders="placeholders"
       @input="onInput2"
@@ -27,15 +27,15 @@
       @cancel="onCancel"
       @search="onSearch"
     >
-    </fx-search-bar>
-  </fx-group>
-  <fx-group title="事件监听（readonly=true）">
-    <fx-search-bar
+    </ak-search-bar>
+  </ak-group>
+  <ak-group title="事件监听（readonly=true）">
+    <ak-search-bar
       readonly
       :placeholders="placeholders"
       @field-click="onClick"
     />
-  </fx-group>
+  </ak-group>
 </template>
 
 <script lang="ts">

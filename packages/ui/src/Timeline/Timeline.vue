@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-timeline">
+  <div class="ak-timeline">
     <slot></slot>
   </div>
 </template>
@@ -8,6 +8,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'fx-timeline'
+  name: 'ak-timeline'
 })
 </script>

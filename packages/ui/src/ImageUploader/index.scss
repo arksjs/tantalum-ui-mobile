@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-image-uploader {
+.ak-image-uploader {
   padding: 13px;
 
   &_upload-button {
@@ -21,9 +21,9 @@
       opacity: 0.2;
     }
 
-    .fx-icon {
-      --fx-icon-size: 40px;
-      --fx-icon-color: #{$font3-color};
+    .ak-icon {
+      --ak-icon-size: 40px;
+      --ak-icon-color: #{$font3-color};
     }
 
     input {
@@ -45,7 +45,7 @@
     border: 1px solid $border-color;
     box-sizing: border-box;
 
-    .fx-image {
+    .ak-image {
       width: 100%;
       height: 100%;
     }
@@ -74,9 +74,9 @@
       line-height: 20px;
       background-color: rgba($color: #000, $alpha: 40%);
 
-      .fx-icon {
-        --fx-icon-color: #fff;
-        --fx-icon-size: 40px;
+      .ak-icon {
+        --ak-icon-color: #fff;
+        --ak-icon-size: 40px;
 
         margin-bottom: 4px;
       }

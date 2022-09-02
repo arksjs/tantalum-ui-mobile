@@ -66,7 +66,7 @@ type ImageUploaderBeforeUpload = (file: File, handlers: {
 
 ```vue
 <template>
-  <fx-image-uploader :beforeUpload="onBeforeUpload" />
+  <ak-image-uploader :beforeUpload="onBeforeUpload" />
 </template>
 
 <script>
@@ -115,7 +115,7 @@ type ImageUploaderUploadReady = (
 
 ```vue
 <template>
-  <fx-image-uploader :uploadReady="onUpload" />
+  <ak-image-uploader :uploadReady="onUpload" />
 </template>
 
 <script>

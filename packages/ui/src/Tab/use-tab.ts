@@ -230,7 +230,7 @@ export function useTab(
 
       if (tabName === 'Tab' && underlineEl.value) {
         const $inner = $activeItem.querySelector(
-          '.fx-tab_item-inner'
+          '.ak-tab_item-inner'
         ) as HTMLElement
 
         underlineEl.value.style.width = $inner.offsetWidth + 'px'

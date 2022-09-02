@@ -2,7 +2,7 @@ import type { SkeletonProps } from './types'
 import { provide, inject } from 'vue'
 
 const KEY = 'Skeleton'
-const CONTEXT_KEY = `fx${KEY}Options`
+const CONTEXT_KEY = `ak${KEY}Options`
 
 export function useProvider(props: SkeletonProps) {
   provide<SkeletonProps>(CONTEXT_KEY, props)

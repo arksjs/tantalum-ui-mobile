@@ -1,13 +1,13 @@
 <template>
   <div :class="classes" @click="onClick" ref="root">
-    <div class="fx-swiper_list" ref="listEl">
+    <div class="ak-swiper_list" ref="listEl">
       <slot></slot>
     </div>
     <div :class="indicatorsClasses" v-if="indicatorDots">
       <span
         v-for="item in pagination"
         :key="item"
-        class="fx-swiper_indicator"
+        class="ak-swiper_indicator"
         :class="getPaginationItemClasses(item, index)"
         :style="
           getPaginationItemStyles(
@@ -19,10 +19,10 @@
       ></span>
     </div>
     <template v-if="navigationButtons && pagination.length > 1">
-      <button class="fx-swiper_prev" @click="prev(true)">
+      <button class="ak-swiper_prev" @click="prev(true)">
         <Icon :icon="LeftOutlined" />
       </button>
-      <button class="fx-swiper_next" @click="next(true)">
+      <button class="ak-swiper_next" @click="next(true)">
         <Icon :icon="RightOutlined" /></button
     ></template>
   </div>
@@ -68,7 +68,7 @@ interface SwiperCoords {
 }
 
 export default defineComponent({
-  name: 'fx-swiper',
+  name: 'ak-swiper',
   components: { Icon },
   props: {
     // 是否显示面板指示点

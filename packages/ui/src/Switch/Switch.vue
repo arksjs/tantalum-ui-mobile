@@ -1,7 +1,7 @@
 <template>
   <label :class="classes" :style="styles">
     <input
-      class="fx-switch_checkbox"
+      class="ak-switch_checkbox"
       type="checkbox"
       :disabled="disabled"
       :name="name"
@@ -23,7 +23,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { SwitchEmits } from './types'
 
 export default defineComponent({
-  name: 'fx-switch',
+  name: 'ak-switch',
   props: {
     ...formItemProps,
     modelValue: {

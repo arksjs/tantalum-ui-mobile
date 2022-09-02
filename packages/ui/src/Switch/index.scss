@@ -1,20 +1,20 @@
 @import '../style/var.scss';
 
-.fx-switch {
-  --fx-color: #{$border-color};
-  --fx-active-color: #{$primary-color};
-  --fx-size: 32px;
+.ak-switch {
+  --ak-color: #{$border-color};
+  --ak-active-color: #{$primary-color};
+  --ak-size: 32px;
 
-  height: var(--fx-size);
+  height: var(--ak-size);
 
   &_checkbox {
     position: relative;
     width: 1.875em;
     height: 1em;
-    background: var(--fx-color);
+    background: var(--ak-color);
     border: 0;
     border-radius: 1em;
-    font-size: var(--fx-size);
+    font-size: var(--ak-size);
     outline: 0;
     cursor: pointer;
     transition: all 0.2s linear;
@@ -24,7 +24,7 @@
     appearance: none;
 
     &:checked {
-      background-color: var(--fx-active-color);
+      background-color: var(--ak-active-color);
     }
 
     &::after {

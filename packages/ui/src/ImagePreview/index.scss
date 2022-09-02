@@ -1,11 +1,11 @@
 @import '../style/var.scss';
 
-.fx-preview-image {
-  .fx-mask {
+.ak-preview-image {
+  .ak-mask {
     background-color: rgba($color: #000, $alpha: 90%);
   }
 
-  .fx-swiper {
+  .ak-swiper {
     display: block;
     width: 100%;
     height: 100%;
@@ -14,7 +14,7 @@
   }
 
   &.visible {
-    .fx-swiper {
+    .ak-swiper {
       opacity: 1;
     }
   }
@@ -28,7 +28,7 @@
     transform: translateZ();
     overflow: hidden;
 
-    .fx-image {
+    .ak-image {
       position: absolute;
       left: 50%;
       top: 50%;

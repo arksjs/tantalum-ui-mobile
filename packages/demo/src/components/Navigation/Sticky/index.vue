@@ -1,32 +1,32 @@
 <template>
-  <fx-group title="Sticky View">
-    <fx-sticky-view
+  <ak-group title="Sticky View">
+    <ak-sticky-view
       class="exp-sticky-box"
       v-model:activeIndex="activeIndex"
       @change="onChange"
     >
-      <fx-sticky-view-item name="Sticky 1">
+      <ak-sticky-view-item name="Sticky 1">
         <div class="exp-sticky-box-1"></div>
-      </fx-sticky-view-item>
-      <fx-sticky-view-item name="Sticky 2">
+      </ak-sticky-view-item>
+      <ak-sticky-view-item name="Sticky 2">
         <div class="exp-sticky-box-2"></div>
-      </fx-sticky-view-item>
-      <fx-sticky-view-item name="Sticky 3">
+      </ak-sticky-view-item>
+      <ak-sticky-view-item name="Sticky 3">
         <div class="exp-sticky-box-3"></div>
-      </fx-sticky-view-item>
-      <fx-sticky-view-item name="Sticky 4">
+      </ak-sticky-view-item>
+      <ak-sticky-view-item name="Sticky 4">
         <div class="exp-sticky-box-4"></div>
-      </fx-sticky-view-item>
-    </fx-sticky-view>
+      </ak-sticky-view-item>
+    </ak-sticky-view>
     <!-- <div class="exp-sticky-box" id="stickyContainer">
       <div class="exp-sticky-header">
         头部
       </div>
       <div class="exp-sticky-box-1">
-        <fx-sticky-view :container="'#stickyContainer'" :offset-top="50">哈哈哈</fx-sticky-view>
+        <ak-sticky-view :container="'#stickyContainer'" :offset-top="50">哈哈哈</ak-sticky-view>
       </div>
     </div> -->
-  </fx-group>
+  </ak-group>
 </template>
 
 <script lang="ts">

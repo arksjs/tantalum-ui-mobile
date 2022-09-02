@@ -1,7 +1,7 @@
 <template>
-  <label class="fx-radio" :class="classes" :style="styles">
+  <label class="ak-radio" :class="classes" :style="styles">
     <input
-      class="fx-radio_input fx-form-input"
+      class="ak-radio_input ak-form-input"
       type="radio"
       :name="name2"
       :value="value"
@@ -9,10 +9,10 @@
       @change="onChange"
       ref="input"
     />
-    <div class="fx-radio_box">
-      <Icon class="fx-radio_icon" :icon="CircleOutlined" />
-      <Icon class="fx-radio_checked-icon" :icon="CheckCircleFilled" />
-      <span class="fx-radio_text" v-if="$slots.default">
+    <div class="ak-radio_box">
+      <Icon class="ak-radio_icon" :icon="CircleOutlined" />
+      <Icon class="ak-radio_checked-icon" :icon="CheckCircleFilled" />
+      <span class="ak-radio_text" v-if="$slots.default">
         <slot></slot>
       </span>
     </div>
@@ -28,7 +28,7 @@ import CircleOutlined from '../Icon/icons/CircleOutlined'
 import CheckCircleFilled from '../Icon/icons/CheckCircleFilled'
 
 export default defineComponent({
-  name: 'fx-radio',
+  name: 'ak-radio',
   components: { Icon },
   props: {
     ...checkProps

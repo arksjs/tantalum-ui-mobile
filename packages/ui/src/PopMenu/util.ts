@@ -27,8 +27,8 @@ export const getOptions = (options?: Option[]) => {
 
 export const getItemClasses = (option: Option) => {
   return [
-    'fx-pop-menu_item',
-    'fx-horizontal-hairline',
+    'ak-pop-menu_item',
+    'ak-horizontal-hairline',
     { disabled: !!option.disabled, 'has--icon': !!option.icon }
   ]
 }

@@ -1,34 +1,34 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="默认"><fx-rate /></fx-cell>
-    <fx-cell label="modelValue=3"><fx-rate modelValue="3" /></fx-cell>
-  </fx-group>
-  <fx-group title="风格">
-    <fx-cell label="爱心 icon='HeartOutlined' activeIcon='HeartFilled'"
-      ><fx-rate icon="HeartOutlined" activeIcon="HeartFilled" modelValue="3"
-    /></fx-cell>
-    <fx-cell label="换色 activeColor='#F5A511'"
-      ><fx-rate modelValue="3" activeColor="#F5A511"
-    /></fx-cell>
-    <fx-cell label="变小 size='16px'"
-      ><fx-rate modelValue="3" size="16"
-    /></fx-cell>
-  </fx-group>
-  <fx-group title="自定义数量">
-    <fx-cell label="count=8"><fx-rate count="8" /></fx-cell>
-  </fx-group>
-  <fx-group title="半星">
-    <fx-cell label="modelValue=2.5"
-      ><fx-rate allow-half v-model="value" :count="count"
-    /></fx-cell>
-  </fx-group>
-  <fx-group title="状态">
-    <fx-cell label="只读"><fx-rate readonly :modelValue="3" /></fx-cell>
-    <fx-cell label="禁用"><fx-rate disabled :modelValue="3" /></fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell label="change"><fx-rate allow-half @change="onChange" /></fx-cell>
-  </fx-group>
+  <ak-group title="基础用法">
+    <ak-cell label="默认"><ak-rate /></ak-cell>
+    <ak-cell label="modelValue=3"><ak-rate modelValue="3" /></ak-cell>
+  </ak-group>
+  <ak-group title="风格">
+    <ak-cell label="爱心 icon='HeartOutlined' activeIcon='HeartFilled'"
+      ><ak-rate icon="HeartOutlined" activeIcon="HeartFilled" modelValue="3"
+    /></ak-cell>
+    <ak-cell label="换色 activeColor='#F5A511'"
+      ><ak-rate modelValue="3" activeColor="#F5A511"
+    /></ak-cell>
+    <ak-cell label="变小 size='16px'"
+      ><ak-rate modelValue="3" size="16"
+    /></ak-cell>
+  </ak-group>
+  <ak-group title="自定义数量">
+    <ak-cell label="count=8"><ak-rate count="8" /></ak-cell>
+  </ak-group>
+  <ak-group title="半星">
+    <ak-cell label="modelValue=2.5"
+      ><ak-rate allow-half v-model="value" :count="count"
+    /></ak-cell>
+  </ak-group>
+  <ak-group title="状态">
+    <ak-cell label="只读"><ak-rate readonly :modelValue="3" /></ak-cell>
+    <ak-cell label="禁用"><ak-rate disabled :modelValue="3" /></ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell label="change"><ak-rate allow-half @change="onChange" /></ak-cell>
+  </ak-group>
 </template>
 
 <script lang="ts">

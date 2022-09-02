@@ -1,21 +1,21 @@
 <template>
-  <fx-group title="基础">
-    <fx-form>
-      <fx-form-item label="昵称">
-        <fx-input v-model="baseForm.nickname" placeholder="请输入昵称" />
-      </fx-form-item>
-      <fx-form-item label="性别">
-        <fx-radio-group
+  <ak-group title="基础">
+    <ak-form>
+      <ak-form-item label="昵称">
+        <ak-input v-model="baseForm.nickname" placeholder="请输入昵称" />
+      </ak-form-item>
+      <ak-form-item label="性别">
+        <ak-radio-group
           v-model="baseForm.gender"
           :options="genderOptions"
-        ></fx-radio-group>
-      </fx-form-item>
+        ></ak-radio-group>
+      </ak-form-item>
       <template #footer>
-        <fx-button type="primary" @click="onBaseSubmit">提交</fx-button>
+        <ak-button type="primary" @click="onBaseSubmit">提交</ak-button>
       </template>
-    </fx-form>
-  </fx-group>
-  <fx-group title="Formily">
+    </ak-form>
+  </ak-group>
+  <ak-group title="Formily">
     <FormProvider :form="form">
       <Field
         name="nickname"
@@ -117,21 +117,21 @@
           <pre class="exp-form-json">{{
             JSON.stringify(form.values, null, 2)
           }}</pre>
-          <fx-form-footer>
-            <fx-button
+          <ak-form-footer>
+            <ak-button
               type="primary"
               @click="
                 () => {
                   form.submit(onSubmit)
                 }
               "
-              >提交</fx-button
+              >提交</ak-button
             >
-          </fx-form-footer>
+          </ak-form-footer>
         </template>
       </FormConsumer>
     </FormProvider>
-  </fx-group>
+  </ak-group>
 </template>
 
 <script lang="ts">

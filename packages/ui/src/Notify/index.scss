@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-popup.fx-notify {
+.ak-popup.ak-notify {
   position: fixed;
   left: 0;
   top: 0;
@@ -8,7 +8,7 @@
   height: auto;
 }
 
-.fx-notify {
+.ak-notify {
   &_inner {
     width: 100%;
     transform: translate3d(0, calc(-100%), 0);
@@ -17,7 +17,7 @@
   }
 
   &.visible {
-    .fx-notify_inner {
+    .ak-notify_inner {
       transform: translate3d(0, 0, 0);
       opacity: 1;
     }

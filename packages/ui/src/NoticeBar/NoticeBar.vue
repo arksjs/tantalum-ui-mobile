@@ -1,9 +1,9 @@
 <template>
   <div :class="classes" :style="styles" @click="onClick">
-    <div v-if="leftIcon" class="fx-notice-bar_left-icon">
+    <div v-if="leftIcon" class="ak-notice-bar_left-icon">
       <Icon :icon="leftIcon" />
     </div>
-    <div class="fx-notice-bar_content">
+    <div class="ak-notice-bar_content">
       <div ref="contentEl" :class="contentClasses" :style="contentStyles">
         <slot>
           {{ title }}
@@ -12,7 +12,7 @@
     </div>
     <div
       v-if="rightIcon2"
-      class="fx-notice-bar_right-icon"
+      class="ak-notice-bar_right-icon"
       @click="onRightIconClick"
     >
       <Icon :icon="rightIcon2" />
@@ -57,7 +57,7 @@ const modeMaps = new Map<Mode, IconData | null>([
 ])
 
 export default defineComponent({
-  name: 'fx-notice-bar',
+  name: 'ak-notice-bar',
   components: { Icon },
   props: {
     title: {

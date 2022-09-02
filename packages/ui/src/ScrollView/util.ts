@@ -47,7 +47,7 @@ export const getClasses = ({
   scrollY: boolean
   scrollAnimated: boolean
 }) => [
-  'fx-scroll-view',
+  'ak-scroll-view',
   {
     'scroll-x': scrollX,
     'scroll-y': scrollY,
@@ -58,12 +58,12 @@ export const getClasses = ({
 export const getPullRefreshClasses = (
   pullDirection: PullDirectionOrDefault
 ) => [
-  'fx-scroll-view_pull-refresh',
+  'ak-scroll-view_pull-refresh',
   'direction--' + (pullDirection || 'unknown')
 ]
 
 export const getLoadMoreClasses = (pullDirection: PullDirectionOrDefault) => [
-  'fx-load-more',
+  'ak-load-more',
   {
     vertical: pullDirection === 'left' || pullDirection === 'right'
   }

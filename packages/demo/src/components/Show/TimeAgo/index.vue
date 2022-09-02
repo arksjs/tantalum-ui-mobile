@@ -1,17 +1,17 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="当前">
-      <fx-time-ago :time="time" />
-    </fx-cell>
-    <fx-cell label="2021-05-01">
-      <fx-time-ago :time="time2" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="间隔">
-    <fx-cell label="interval=2">
-      <fx-time-ago :time="time" :interval="interval" />
-    </fx-cell>
-  </fx-group>
+  <ak-group title="基础用法">
+    <ak-cell label="当前">
+      <ak-time-ago :time="time" />
+    </ak-cell>
+    <ak-cell label="2021-05-01">
+      <ak-time-ago :time="time2" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="间隔">
+    <ak-cell label="interval=2">
+      <ak-time-ago :time="time" :interval="interval" />
+    </ak-cell>
+  </ak-group>
 </template>
 
 <script lang="ts">

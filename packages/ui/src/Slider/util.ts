@@ -1,7 +1,7 @@
 import type { CSSProperties } from '../helpers/types'
 
 export const getSlideClasses = (disabled?: boolean) => [
-  'fx-slider',
+  'ak-slider',
   {
     disabled: !!disabled
   }
@@ -10,7 +10,7 @@ export const getSlideClasses = (disabled?: boolean) => [
 export const getSlideStyles = (color?: string) => {
   const styles: CSSProperties = {}
 
-  color && (styles['--fx-color'] = color)
+  color && (styles['--ak-color'] = color)
 
   return styles
 }

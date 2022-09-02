@@ -49,8 +49,8 @@ describe('Result', () => {
         description
       }
     })
-    expect(wrapper.find('.fx-result_title').text()).toBe(title)
-    expect(wrapper.find('.fx-result_description').text()).toBe(description)
+    expect(wrapper.find('.ak-result_title').text()).toBe(title)
+    expect(wrapper.find('.ak-result_description').text()).toBe(description)
   })
 
   test('showBack', () => {
@@ -59,7 +59,7 @@ describe('Result', () => {
         showBack: true
       }
     })
-    expect(wrapper.findAllComponents('.fx-button').length).toBe(2)
+    expect(wrapper.findAllComponents('.ak-button').length).toBe(2)
   })
 
   const confirmText = 'confirmText'
@@ -75,8 +75,8 @@ describe('Result', () => {
     })
     expect(
       wrapper
-        .findAllComponents('.fx-button')
-        .map(v => v.find('.fx-button').text())
+        .findAllComponents('.ak-button')
+        .map(v => v.find('.ak-button').text())
     ).toEqual([confirmText, backText])
   })
 })

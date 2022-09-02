@@ -1,6 +1,6 @@
 <template>
   <Drawer
-    class="fx-picker-popup fx-date-picker-popup"
+    class="ak-picker-popup ak-date-picker-popup"
     placement="bottom"
     :visible="visible"
     @visibleStateChange="onVisibleStateChange"
@@ -11,7 +11,7 @@
   >
     <template #header>
       <NavBar
-        class="fx-drawer_header"
+        class="ak-drawer_header"
         :title="title"
         :leftButtons="[{ text: locale.datePickerCancelText, type: 'primary' }]"
         :rightButtons="[
@@ -46,7 +46,7 @@ import { useLocale } from '../ConfigProvider/context'
 import type { SelectorDetail } from '../SelectorField/types'
 
 export default defineComponent({
-  name: 'fx-date-picker-popup',
+  name: 'ak-date-picker-popup',
   components: { PickerView, Drawer, NavBar },
   props: {
     ...pickerPopupProps,

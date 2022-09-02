@@ -52,13 +52,13 @@ import type {
 支持自定义风格显示
 
 ```vue
-<fx-count-down :initial-timing="timestamp">
+<ak-count-down :initial-timing="timestamp">
   <template #default="countTime">
     {{ countTime.fullHours }}:{{ countTime.minutes }}:{{
         countTime.seconds
     }}.{{ countTime.milliseconds }}
   </template>
-</fx-count-down>
+</ak-count-down>
 ```
 
 ### countTime 的结构

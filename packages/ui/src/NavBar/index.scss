@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-nav-bar {
+.ak-nav-bar {
   position: relative;
   height: 52px;
   background-color: $white-color;
@@ -55,7 +55,7 @@
     max-height: 64px;
   }
 
-  &_button.fx-button {
+  &_button.ak-button {
     border-radius: 0;
     height: 100%;
   }

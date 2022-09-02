@@ -1,15 +1,15 @@
 @import '../style/var.scss';
 @import '../style/mixin.scss';
 
-.fx-dropdown {
-  &.fx-popup {
+.ak-dropdown {
+  &.ak-popup {
     height: auto;
     right: 0;
     bottom: 0;
     overflow: hidden;
   }
 
-  .fx-mask {
+  .ak-mask {
     @include mask-background-1;
   }
 
@@ -27,7 +27,7 @@
   }
 
   &.visible {
-    .fx-dropdown {
+    .ak-dropdown {
       &_inner {
         transform: translate3d(0, 0, 0);
       }

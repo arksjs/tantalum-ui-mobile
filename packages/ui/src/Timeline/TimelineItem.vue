@@ -1,16 +1,16 @@
 <template>
-  <div class="fx-timeline-item fx-horizontal-hairline" ref="root">
-    <div class="fx-timeline-item_line"></div>
-    <div class="fx-timeline-item_index">
+  <div class="ak-timeline-item ak-horizontal-hairline" ref="root">
+    <div class="ak-timeline-item_line"></div>
+    <div class="ak-timeline-item_index">
       <slot name="dot">
-        <i class="fx-timeline-item_dot" :style="{ borderColor: dotColor }"></i>
+        <i class="ak-timeline-item_dot" :style="{ borderColor: dotColor }"></i>
       </slot>
     </div>
-    <div class="fx-timeline-item_inner">
-      <div class="fx-timeline-item_title" v-if="title || $slots.title">
+    <div class="ak-timeline-item_inner">
+      <div class="ak-timeline-item_title" v-if="title || $slots.title">
         <slot name="title">{{ title }}</slot>
       </div>
-      <div class="fx-timeline-item_content">
+      <div class="ak-timeline-item_content">
         <slot></slot>
       </div>
     </div>
@@ -22,7 +22,7 @@ import { defineComponent } from 'vue'
 import { colorValidator } from '../helpers/validator'
 
 export default defineComponent({
-  name: 'fx-timeline-item',
+  name: 'ak-timeline-item',
   props: {
     // dot颜色
     dotColor: {

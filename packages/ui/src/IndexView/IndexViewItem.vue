@@ -1,6 +1,6 @@
 <template>
   <Group
-    class="fx-sticky-view-item fx-index-view-item"
+    class="ak-sticky-view-item ak-index-view-item"
     :title="name"
     :data-name="name"
   >
@@ -14,7 +14,7 @@ import { Group } from '../Group'
 import { createUpdateInItem } from '../hooks/use-list'
 
 export default defineComponent({
-  name: 'fx-index-view-item',
+  name: 'ak-index-view-item',
   components: { Group },
   props: {
     name: {
@@ -24,7 +24,7 @@ export default defineComponent({
   },
   setup() {
     const update = inject(
-      'fxStickyViewUpdate',
+      'akStickyViewUpdate',
       createUpdateInItem('index-view')
     )
 

@@ -14,9 +14,9 @@ import enUS from 'vfox/es/locale/lang/en-US'
 </script>
 
 <template>
-  <fx-config-provider :locale="enUS">
+  <ak-config-provider :locale="enUS">
     <App />
-  </fx-config-provider>
+  </ak-config-provider>
 </template>
 ```
 

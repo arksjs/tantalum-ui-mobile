@@ -16,7 +16,7 @@ describe('NoticeBar', () => {
     const wrapper = mount(NoticeBar, {
       props: { marquee: true }
     })
-    expect(wrapper.find('.fx-notice-bar_content-inner').classes()).toContain(
+    expect(wrapper.find('.ak-notice-bar_content-inner').classes()).toContain(
       'marquee'
     )
   })
@@ -75,14 +75,14 @@ describe('NoticeBar', () => {
       }
     })
 
-    expect(wrapper.attributes('style')).toContain('--fx-color: #6667AB;')
-    expect(wrapper.attributes('style')).toContain('--fx-front-color: #ffffff;')
+    expect(wrapper.attributes('style')).toContain('--ak-color: #6667AB;')
+    expect(wrapper.attributes('style')).toContain('--ak-front-color: #ffffff;')
 
     await wrapper.setProps({
       color: '#E2C0BF'
     })
 
-    expect(wrapper.attributes('style')).toContain('--fx-color: #E2C0BF;')
-    expect(wrapper.attributes('style')).toContain('--fx-front-color: #493234;')
+    expect(wrapper.attributes('style')).toContain('--ak-color: #E2C0BF;')
+    expect(wrapper.attributes('style')).toContain('--ak-front-color: #493234;')
   })
 })

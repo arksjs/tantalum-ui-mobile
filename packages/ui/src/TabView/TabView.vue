@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <div class="fx-tab-view_header fx-horizontal-hairline">
+    <div class="ak-tab-view_header ak-horizontal-hairline">
       <SideTab
         v-if="vertical"
         :options="tabList"
@@ -13,7 +13,7 @@
         :scroll-threshold="scrollThreshold"
       />
     </div>
-    <div class="fx-tab-view_body" ref="listEl">
+    <div class="ak-tab-view_body" ref="listEl">
       <Swiper
         v-model:activeIndex="activeIndex"
         @change="onChange"
@@ -45,7 +45,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { TabViewEmits } from './types'
 
 export default defineComponent({
-  name: 'fx-tab-view',
+  name: 'ak-tab-view',
   components: { Tab, SideTab, Swiper },
   props: {
     // 纵向
@@ -100,7 +100,7 @@ export default defineComponent({
       swiper.value?.swipeTo(activeIndex)
     }
 
-    provide('fxTabViewVertical', vertical.value)
+    provide('akTabViewVertical', vertical.value)
 
     const classes = getClasses(vertical.value)
 

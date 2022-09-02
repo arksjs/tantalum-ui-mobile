@@ -1,16 +1,16 @@
 <template>
-  <fx-group title="基础用法">
+  <ak-group title="基础用法">
     <!-- <div class="scroll-tab-header">占位头部</div> -->
-    <fx-index-view :stickyOffsetTop="offsetTop" @change="onChange">
-      <fx-index-view-item :name="item" v-for="item in indexList" :key="item">
-        <fx-cell label="单元格"></fx-cell>
-        <fx-cell label="单元格"></fx-cell>
-        <fx-cell label="单元格"></fx-cell>
-        <fx-cell label="单元格"></fx-cell>
-        <fx-cell label="单元格"></fx-cell>
-      </fx-index-view-item>
-    </fx-index-view>
-  </fx-group>
+    <ak-index-view :stickyOffsetTop="offsetTop" @change="onChange">
+      <ak-index-view-item :name="item" v-for="item in indexList" :key="item">
+        <ak-cell label="单元格"></ak-cell>
+        <ak-cell label="单元格"></ak-cell>
+        <ak-cell label="单元格"></ak-cell>
+        <ak-cell label="单元格"></ak-cell>
+        <ak-cell label="单元格"></ak-cell>
+      </ak-index-view-item>
+    </ak-index-view>
+  </ak-group>
 </template>
 
 <script lang="ts">

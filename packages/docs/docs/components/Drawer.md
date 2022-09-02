@@ -56,7 +56,7 @@ import type {
 ## Slots
 
 ```vue
-<fx-drawer title="菜单" placement="right">
+<ak-drawer title="菜单" placement="right">
   内容
-</fx-drawer>
+</ak-drawer>
 ```

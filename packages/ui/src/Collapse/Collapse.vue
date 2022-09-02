@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-collapse">
+  <div class="ak-collapse">
     <slot></slot>
   </div>
 </template>
@@ -14,7 +14,7 @@ import type { ActiveName, CollapseEmits } from './types'
 import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
-  name: 'fx-collapse',
+  name: 'ak-collapse',
   props: {
     activeNames: {
       type: [Number, String, Array] as PropType<ActiveName | ActiveName[]>,
@@ -99,7 +99,7 @@ export default defineComponent({
       val => updateValue(val)
     )
 
-    provide('fxCollapseChange', onChange)
+    provide('akCollapseChange', onChange)
 
     return {}
   }

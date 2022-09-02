@@ -93,7 +93,7 @@ export function createShowPopup<T, E = EmptyObject>({
             visible: true
           })
         )
-        app.provide('fxApis', {
+        app.provide('akApis', {
           in(hookEvent, res) {
             if (hookEvent === 'visibleStateChange' && res.state === 'hidden') {
               app.unmount()

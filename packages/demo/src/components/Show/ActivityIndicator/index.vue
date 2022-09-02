@@ -1,19 +1,19 @@
 <template>
-  <fx-group title="基础用法">
+  <ak-group title="基础用法">
     <div class="exp-activityIndicator-box">
-      <fx-activity-indicator />
+      <ak-activity-indicator />
     </div>
-  </fx-group>
-  <fx-group title="颜色 color=#ff4d4f">
+  </ak-group>
+  <ak-group title="颜色 color=#ff4d4f">
     <div class="exp-activityIndicator-box">
-      <fx-activity-indicator color="#ff4d4f" />
+      <ak-activity-indicator color="#ff4d4f" />
     </div>
-  </fx-group>
-  <fx-group title="大小 size=48">
+  </ak-group>
+  <ak-group title="大小 size=48">
     <div class="exp-activityIndicator-box">
-      <fx-activity-indicator :size="48" />
+      <ak-activity-indicator :size="48" />
     </div>
-  </fx-group>
+  </ak-group>
 </template>
 
 <script lang="ts">

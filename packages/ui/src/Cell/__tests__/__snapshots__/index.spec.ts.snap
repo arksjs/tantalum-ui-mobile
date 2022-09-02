@@ -1,11 +1,11 @@
 // Vitest Snapshot v1
 
 exports[`Cell > snapshot 1`] = `
-"<div class=\\"fx-cell fx-horizontal-hairline\\">
-  <div class=\\"fx-cell_header\\">
+"<div class=\\"ak-cell ak-horizontal-hairline\\">
+  <div class=\\"ak-cell_header\\">
     <!--v-if-->
     <!--v-if-->
-    <div class=\\"fx-cell_content\\"></div>
+    <div class=\\"ak-cell_content\\"></div>
     <!--v-if-->
   </div>
   <!--v-if-->

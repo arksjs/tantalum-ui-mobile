@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-sticky-view {
+.ak-sticky-view {
   position: relative;
 
   &.self {
@@ -13,7 +13,7 @@
     top: 0;
     width: 100%;
 
-    .fx-sticky_content {
+    .ak-sticky_content {
       overflow: hidden;
     }
   }
@@ -39,7 +39,7 @@
   }
 }
 
-.fx-sticky-view-item {
+.ak-sticky-view-item {
   &_header {
     width: 100%;
     height: 28px;

@@ -9,8 +9,8 @@
     <script>
       // process shim for old versions of @vue/compiler-sfc dependency
       window.process = { env: {} }
-      const darkKey = 'vfox-playground-prefer-dark'
-      const saved = localStorage.getItem('vfox-playground-prefer-dark')
+      const darkKey = 'playground-prefer-dark'
+      const saved = localStorage.getItem('playground-prefer-dark')
       if (
         saved !== 'false' ||
         window.matchMedia('(prefers-color-scheme: dark)').matches

@@ -1,6 +1,6 @@
 <template>
   <Drawer
-    class="fx-picker-popup"
+    class="ak-picker-popup"
     placement="bottom"
     :visible="visible"
     @visibleStateChange="onVisibleStateChange"
@@ -11,7 +11,7 @@
   >
     <template #header>
       <NavBar
-        class="fx-drawer_header"
+        class="ak-drawer_header"
         :title="title"
         :leftButtons="[{ text: locale.pickerCancelText, type: 'primary' }]"
         :rightButtons="[{ text: locale.pickerConfirmText, type: 'primary' }]"
@@ -46,7 +46,7 @@ import type { PickerHandlers } from './types'
 import { mergeHandlers } from './util'
 
 export default defineComponent({
-  name: 'fx-picker-popup',
+  name: 'ak-picker-popup',
   components: { PickerView, Drawer, NavBar },
   props: {
     ...pickerPopupProps,
@@ -61,7 +61,7 @@ export default defineComponent({
   },
   setup(props, ctx) {
     const { locale } = useLocale()
-    const handlers = inject<Partial<PickerHandlers>>('fxPickerHandlers', {})
+    const handlers = inject<Partial<PickerHandlers>>('akPickerHandlers', {})
 
     const popup = usePopupExtend<SelectorDetail>(ctx)
     const pickerPopup = usePickerPopup(props, ctx, popup, {

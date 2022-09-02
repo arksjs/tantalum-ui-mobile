@@ -62,14 +62,14 @@ describe('Avatar', () => {
         color: '#6667AB'
       }
     })
-    expect(wrapper.attributes('style')).toContain('--fx-color: #6667AB;')
-    expect(wrapper.attributes('style')).toContain('--fx-front-color: #ffffff;')
+    expect(wrapper.attributes('style')).toContain('--ak-color: #6667AB;')
+    expect(wrapper.attributes('style')).toContain('--ak-front-color: #ffffff;')
 
     await wrapper.setProps({
       color: '#E2C0BF'
     })
-    expect(wrapper.attributes('style')).toContain('--fx-color: #E2C0BF;')
-    expect(wrapper.attributes('style')).toContain('--fx-front-color: #493234;')
+    expect(wrapper.attributes('style')).toContain('--ak-color: #E2C0BF;')
+    expect(wrapper.attributes('style')).toContain('--ak-front-color: #493234;')
   })
 
   test('slot', () => {
@@ -122,7 +122,7 @@ describe('AvatarGroup', () => {
       }
     })
     const $last = wrapper.findAllComponents(Avatar).at(-1) as VueWrapper<any>
-    const $text = $last.find('.fx-avatar-group_count-number')
+    const $text = $last.find('.ak-avatar-group_count-number')
     expect($text.text()).toBe('1')
     expect($text.classes()).toContain('size--1')
 
@@ -145,13 +145,13 @@ describe('AvatarGroup', () => {
     })
 
     const $last = wrapper.findAllComponents(Avatar).at(-1) as VueWrapper<any>
-    expect($last.attributes('style')).toContain('--fx-color: #6667AB;')
-    expect($last.attributes('style')).toContain('--fx-front-color: #ffffff;')
+    expect($last.attributes('style')).toContain('--ak-color: #6667AB;')
+    expect($last.attributes('style')).toContain('--ak-front-color: #ffffff;')
 
     await wrapper.setProps({
       countColor: '#E2C0BF'
     })
-    expect($last.attributes('style')).toContain('--fx-color: #E2C0BF;')
-    expect($last.attributes('style')).toContain('--fx-front-color: #493234;')
+    expect($last.attributes('style')).toContain('--ak-color: #E2C0BF;')
+    expect($last.attributes('style')).toContain('--ak-front-color: #493234;')
   })
 })

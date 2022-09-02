@@ -41,9 +41,9 @@ import type { CellArrowDirection } from 'vfox'
 ### 内容区（#default）
 
 ```vue
-<fx-cell label="右侧图标">
-  <fx-icon icon="CloseOutlined"></fx-icon>
-</fx-cell>
+<ak-cell label="右侧图标">
+  <ak-icon icon="CloseOutlined"></ak-icon>
+</ak-cell>
 ```
 
 注：添加 slot 后 `content` prop 属性失效。

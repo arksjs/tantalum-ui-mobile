@@ -50,83 +50,83 @@ function onCallApi() {
 </script>
 
 <template>
-  <fx-group title="initialMode">
-    <fx-cell label="日期 date">
-      <fx-date-picker initialMode="date" v-model="dateValue" />
-    </fx-cell>
-    <fx-cell label="时间 time">
-      <fx-date-picker initialMode="time" v-model="timeValue" />
-    </fx-cell>
-    <fx-cell label="日期时间 datetime">
-      <fx-date-picker initialMode="datetime" v-model="dateTimeValue" />
-    </fx-cell>
-    <fx-cell label="分秒 minute-second">
-      <fx-date-picker initialMode="minute-second" />
-    </fx-cell>
-    <fx-cell label="时分 hour-minute">
-      <fx-date-picker initialMode="hour-minute" />
-    </fx-cell>
-    <fx-cell label="天时 day-hour">
-      <fx-date-picker initialMode="day-hour" />
-    </fx-cell>
-    <fx-cell label="月日 month-day">
-      <fx-date-picker initialMode="month-day" />
-    </fx-cell>
-    <fx-cell label="月日时 month-day-hour">
-      <fx-date-picker initialMode="month-day-hour" />
-    </fx-cell>
-    <fx-cell label="月日时分 month-day-hour-minute">
-      <fx-date-picker initialMode="month-day-hour-minute" />
-    </fx-cell>
-    <fx-cell label="年月 year-month">
-      <fx-date-picker initialMode="year-month" />
-    </fx-cell>
-    <fx-cell label="年月日时 year-month-day-hour">
-      <fx-date-picker initialMode="year-month-day-hour" />
-    </fx-cell>
-    <fx-cell name="date-picker" label="年月日时分 year-month-day-hour-minute">
-      <fx-date-picker initialMode="year-month-day-hour-minute" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="minDate & maxDate">
-    <fx-cell label="-5year ~ 5year">
-      <fx-date-picker
+  <ak-group title="initialMode">
+    <ak-cell label="日期 date">
+      <ak-date-picker initialMode="date" v-model="dateValue" />
+    </ak-cell>
+    <ak-cell label="时间 time">
+      <ak-date-picker initialMode="time" v-model="timeValue" />
+    </ak-cell>
+    <ak-cell label="日期时间 datetime">
+      <ak-date-picker initialMode="datetime" v-model="dateTimeValue" />
+    </ak-cell>
+    <ak-cell label="分秒 minute-second">
+      <ak-date-picker initialMode="minute-second" />
+    </ak-cell>
+    <ak-cell label="时分 hour-minute">
+      <ak-date-picker initialMode="hour-minute" />
+    </ak-cell>
+    <ak-cell label="天时 day-hour">
+      <ak-date-picker initialMode="day-hour" />
+    </ak-cell>
+    <ak-cell label="月日 month-day">
+      <ak-date-picker initialMode="month-day" />
+    </ak-cell>
+    <ak-cell label="月日时 month-day-hour">
+      <ak-date-picker initialMode="month-day-hour" />
+    </ak-cell>
+    <ak-cell label="月日时分 month-day-hour-minute">
+      <ak-date-picker initialMode="month-day-hour-minute" />
+    </ak-cell>
+    <ak-cell label="年月 year-month">
+      <ak-date-picker initialMode="year-month" />
+    </ak-cell>
+    <ak-cell label="年月日时 year-month-day-hour">
+      <ak-date-picker initialMode="year-month-day-hour" />
+    </ak-cell>
+    <ak-cell name="date-picker" label="年月日时分 year-month-day-hour-minute">
+      <ak-date-picker initialMode="year-month-day-hour-minute" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="minDate & maxDate">
+    <ak-cell label="-5year ~ 5year">
+      <ak-date-picker
         initialMode="date"
         :minDate="maxDate"
         :maxDate="minDate"
         v-model="minMaxValue"
       />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="filter">
-    <fx-cell label="秒步进5">
-      <fx-date-picker
+    </ak-cell>
+  </ak-group>
+  <ak-group title="filter">
+    <ak-cell label="秒步进5">
+      <ak-date-picker
         initialMode="datetime"
         :filter="filter"
         v-model="filterValue"
       />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="formatTemplate">
-    <fx-cell label="YYYY年MM月DD日">
-      <fx-date-picker
+    </ak-cell>
+  </ak-group>
+  <ak-group title="formatTemplate">
+    <ak-cell label="YYYY年MM月DD日">
+      <ak-date-picker
         initialMode="date"
         formatTemplate="YYYY年MM月DD日"
         v-model="formatValue"
       />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="disabled">
-    <fx-cell label="禁用">
-      <fx-date-picker initialMode="date" disabled :modelValue="disableValue" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell label="change">
-      <fx-date-picker initialMode="datetime" @change="onChange" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="API">
-    <fx-cell label="showDatePicker" isLink @click="onCallApi" />
-  </fx-group>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="disabled">
+    <ak-cell label="禁用">
+      <ak-date-picker initialMode="date" disabled :modelValue="disableValue" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell label="change">
+      <ak-date-picker initialMode="datetime" @change="onChange" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="API">
+    <ak-cell label="showDatePicker" isLink @click="onCallApi" />
+  </ak-group>
 </template>

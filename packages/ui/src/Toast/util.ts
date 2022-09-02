@@ -8,7 +8,7 @@ export const STATE_TYPES: StateType[] = [
 ]
 
 export const getBoxClasses = (props: ToastProps) => [
-  'fx-toast_box',
+  'ak-toast_box',
   {
     'has--icon': !!(
       props.icon ||

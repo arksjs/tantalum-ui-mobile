@@ -20,33 +20,33 @@ function onChangeEvent(res: SelectorModelValue) {
 </script>
 
 <template>
-  <fx-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Picker" />
-  <fx-group title="单列">
-    <fx-picker-view
+  <ak-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Picker" />
+  <ak-group title="单列">
+    <ak-picker-view
       :options="options"
       @change="onChange"
       v-model="colValue"
-    ></fx-picker-view>
-  </fx-group>
-  <fx-group title="多列">
-    <fx-picker-view
+    ></ak-picker-view>
+  </ak-group>
+  <ak-group title="多列">
+    <ak-picker-view
       :options="multiOptions"
       @change="onChange"
       v-model="multiValue"
-    ></fx-picker-view>
-  </fx-group>
-  <fx-group title="级联">
-    <fx-picker-view
+    ></ak-picker-view>
+  </ak-group>
+  <ak-group title="级联">
+    <ak-picker-view
       :options="cascadeOptions"
       @change="onChange"
       v-model="cascadeValue"
-    ></fx-picker-view>
-  </fx-group>
-  <fx-group title="change 事件">
-    <fx-picker-view
+    ></ak-picker-view>
+  </ak-group>
+  <ak-group title="change 事件">
+    <ak-picker-view
       :options="multiOptions"
       @change="onChangeEvent"
       v-model="changeValue"
-    ></fx-picker-view>
-  </fx-group>
+    ></ak-picker-view>
+  </ak-group>
 </template>

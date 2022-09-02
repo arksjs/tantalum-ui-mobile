@@ -32,7 +32,7 @@ export const getRowStyles = ([gH, gV]: number[]) => {
 }
 
 export const getRowClasses = (props: RowProps) => {
-  const classes = [`fx-row`]
+  const classes = [`ak-row`]
 
   props.justify &&
     JUSTIFY_TYPES.includes(props.justify) &&

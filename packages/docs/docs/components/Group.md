@@ -28,17 +28,17 @@ import { Group } from 'vfox'
 ### #default
 
 ```vue
-<fx-group title="基础用法">
-  <fx-cell label="单元格" content="内容"></fx-cell>
-  <fx-cell label="单元格" content="内容" description="描述信息"></fx-cell>
-</fx-group>
+<ak-group title="基础用法">
+  <ak-cell label="单元格" content="内容"></ak-cell>
+  <ak-cell label="单元格" content="内容" description="描述信息"></ak-cell>
+</ak-group>
 ```
 
 ### 右上角（#header）
 
 ```vue
-<fx-group title="基础风格">
+<ak-group title="基础风格">
   <template #header> 右侧文案 </template>
   ...
-</fx-group>
+</ak-group>
 ```

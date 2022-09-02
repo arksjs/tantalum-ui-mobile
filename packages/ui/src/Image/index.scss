@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-image {
+.ak-image {
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -16,8 +16,8 @@
     align-items: center;
     justify-content: center;
 
-    .fx-icon {
-      --fx-icon-color: #{$border-color};
+    .ak-icon {
+      --ak-icon-color: #{$border-color};
     }
   }
 

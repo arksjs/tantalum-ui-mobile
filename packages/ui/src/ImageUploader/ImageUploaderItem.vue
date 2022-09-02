@@ -1,12 +1,12 @@
 <template>
   <div
-    class="fx-image-uploader_item"
+    class="ak-image-uploader_item"
     @contextmenu.prevent="noop"
     @click="onClick(item)"
   >
     <Image :src="item.url" :draggable="false" :mode="imageMode" />
     <div
-      class="fx-image-uploader_item-status"
+      class="ak-image-uploader_item-status"
       v-if="item.status !== 'uploaded' && item.status !== 'reading'"
     >
       <ActivityIndicator
@@ -32,7 +32,7 @@ import type { FileItem } from './types'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'
 
 export default defineComponent({
-  name: 'fx-image-uploader-item',
+  name: 'ak-image-uploader-item',
   components: { ActivityIndicator, Image, Icon },
   props: {
     item: {

@@ -56,15 +56,15 @@ describe('Tag', () => {
       }
     })
 
-    expect(wrapper.attributes('style')).toContain('--fx-color: #6667AB;')
-    expect(wrapper.attributes('style')).toContain('--fx-black-color: #090812;')
+    expect(wrapper.attributes('style')).toContain('--ak-color: #6667AB;')
+    expect(wrapper.attributes('style')).toContain('--ak-black-color: #090812;')
 
     await wrapper.setProps({
       color: '#E2C0BF'
     })
 
-    expect(wrapper.attributes('style')).toContain('--fx-color: #E2C0BF;')
-    expect(wrapper.attributes('style')).toContain('--fx-black-color: #493234;')
+    expect(wrapper.attributes('style')).toContain('--ak-color: #E2C0BF;')
+    expect(wrapper.attributes('style')).toContain('--ak-black-color: #493234;')
   })
 
   test('closable', () => {

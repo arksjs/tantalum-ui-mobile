@@ -9,7 +9,7 @@ import { computed, defineComponent } from 'vue'
 import { getClasses } from './util'
 
 export default defineComponent({
-  name: 'fx-divider',
+  name: 'ak-divider',
   props: {
     title: {
       type: String

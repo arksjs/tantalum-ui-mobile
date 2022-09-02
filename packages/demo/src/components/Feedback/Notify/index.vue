@@ -1,24 +1,24 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="主要" isLink @click="show({ title: '通知文本' })"></fx-cell>
-    <fx-cell
+  <ak-group title="基础用法">
+    <ak-cell label="主要" isLink @click="show({ title: '通知文本' })"></ak-cell>
+    <ak-cell
       label="成功"
       isLink
       @click="show({ title: '成功文本', type: 'success' })"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="警告"
       isLink
       @click="show({ title: '警告文本', type: 'warning' })"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="危险"
       isLink
       @click="show({ title: '危险文本', type: 'danger' })"
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="自定义图标">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="自定义图标">
+    <ak-cell
       label="成功"
       isLink
       @click="
@@ -28,8 +28,8 @@
           icon: 'CheckCircleOutlined'
         })
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="警告"
       isLink
       @click="
@@ -39,8 +39,8 @@
           icon: 'ExclamationCircleOutlined'
         })
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="危险"
       isLink
       @click="
@@ -50,15 +50,15 @@
           icon: 'CloseCircleOutlined'
         })
       "
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="其他">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="其他">
+    <ak-cell
       label="自定义时长"
       isLink
       @click="show({ title: '5秒后消失', duration: 5000 })"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="自定义颜色"
       isLink
       @click="
@@ -69,18 +69,18 @@
           color: '#ffffff'
         })
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="手动关闭"
       isLink
       @click="show({ title: '常驻可手动关闭', duration: 0, closable: true })"
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="API">
-    <fx-cell label="showNotify" isLink @click="callShowApi"></fx-cell>
-    <fx-cell label="hideNotify" isLink @click="callHideApi"></fx-cell>
-  </fx-group>
-  <fx-notify
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="API">
+    <ak-cell label="showNotify" isLink @click="callShowApi"></ak-cell>
+    <ak-cell label="hideNotify" isLink @click="callHideApi"></ak-cell>
+  </ak-group>
+  <ak-notify
     v-model:visible="visible"
     :title="title"
     :type="type"
@@ -90,7 +90,7 @@
     :duration="duration"
     :closable="closable"
     @cancel="onCancel"
-  ></fx-notify>
+  ></ak-notify>
 </template>
 
 <script lang="ts">

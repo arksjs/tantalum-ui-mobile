@@ -52,15 +52,15 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'vfox'
 注：其中只可放置 [SwiperItem](./Swiper.md#swiperitem-slots) 组件，否则会导致未定义的行为。
 
 ```vue
-<fx-swiper>
-  <fx-swiper-item>
-    <fx-image src="a.jpg" />
-  </fx-swiper-item>
-  <fx-swiper-item>
-    <fx-image src="b.jpg" />
-  </fx-swiper-item>
+<ak-swiper>
+  <ak-swiper-item>
+    <ak-image src="a.jpg" />
+  </ak-swiper-item>
+  <ak-swiper-item>
+    <ak-image src="b.jpg" />
+  </ak-swiper-item>
   ...
-</fx-swiper>
+</ak-swiper>
 ```
 
 ## SwiperItem Slots
@@ -68,7 +68,7 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'vfox'
 ### 内容（#default）
 
 ```vue
-<fx-swiper-item>
-  <fx-image src="b.jpg" />
-</fx-swiper-item>
+<ak-swiper-item>
+  <ak-image src="b.jpg" />
+</ak-swiper-item>
 ```

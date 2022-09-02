@@ -1,14 +1,14 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell
+  <ak-group title="基础用法">
+    <ak-cell
       label="基础"
       isLink
       id="dropdownCell"
       @click=";(selector = '#dropdownCell'), (visible = true)"
     />
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell
       label="visible-state-change"
       id="dropdownCellEvent"
       @click="
@@ -17,13 +17,13 @@
           (visible = true)
       "
     />
-  </fx-group>
-  <fx-dropdown
+  </ak-group>
+  <ak-dropdown
     v-model:visible="visible"
     :selector="selector"
     @visibleStateChange="onVisibleStateChange"
   >
-  </fx-dropdown>
+  </ak-dropdown>
 </template>
 
 <script lang="ts">

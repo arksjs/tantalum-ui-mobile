@@ -28,7 +28,7 @@ import { CircleProgress } from 'vfox'
 ### 内容区（#default）
 
 ```vue
-<fx-circle-progress :percentage="5">
+<ak-circle-progress :percentage="5">
   <template #default="{ progress }"> 已抢{{ progress }} </template>
-</fx-circle-progress>
+</ak-circle-progress>
 ```

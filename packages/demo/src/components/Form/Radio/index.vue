@@ -1,56 +1,56 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="默认">
-      <fx-radio />
-    </fx-cell>
-    <fx-cell label="带文案">
-      <fx-radio v-model:checked="value">勾选</fx-radio>
-    </fx-cell>
-    <fx-cell label="默认激活">
-      <fx-radio checked>勾选</fx-radio>
-    </fx-cell>
-    <fx-cell label="自定义颜色">
-      <fx-radio checked activeColor="#8b1721">勾选</fx-radio>
-    </fx-cell>
-    <fx-cell label="禁用">
-      <fx-radio disabled>勾选</fx-radio>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="RadioGroup">
-    <fx-cell label="默认">
-      <fx-radio-group v-model="groupValue">
-        <fx-radio v-for="item in options" :key="item.value" :value="item.value">
+  <ak-group title="基础用法">
+    <ak-cell label="默认">
+      <ak-radio />
+    </ak-cell>
+    <ak-cell label="带文案">
+      <ak-radio v-model:checked="value">勾选</ak-radio>
+    </ak-cell>
+    <ak-cell label="默认激活">
+      <ak-radio checked>勾选</ak-radio>
+    </ak-cell>
+    <ak-cell label="自定义颜色">
+      <ak-radio checked activeColor="#8b1721">勾选</ak-radio>
+    </ak-cell>
+    <ak-cell label="禁用">
+      <ak-radio disabled>勾选</ak-radio>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="RadioGroup">
+    <ak-cell label="默认">
+      <ak-radio-group v-model="groupValue">
+        <ak-radio v-for="item in options" :key="item.value" :value="item.value">
           {{ item.label }}
-        </fx-radio>
-      </fx-radio-group>
-    </fx-cell>
-    <fx-cell label="内联">
-      <fx-radio-group inline v-model="groupValue" activeColor="#8b1721">
-        <fx-radio v-for="item in options" :key="item.value" :value="item.value">
+        </ak-radio>
+      </ak-radio-group>
+    </ak-cell>
+    <ak-cell label="内联">
+      <ak-radio-group inline v-model="groupValue" activeColor="#8b1721">
+        <ak-radio v-for="item in options" :key="item.value" :value="item.value">
           {{ item.label }}
-        </fx-radio>
-      </fx-radio-group>
-    </fx-cell>
-    <fx-cell label="禁用">
-      <fx-radio-group modelValue="man" disabled>
-        <fx-radio v-for="item in options" :key="item.value" :value="item.value">
+        </ak-radio>
+      </ak-radio-group>
+    </ak-cell>
+    <ak-cell label="禁用">
+      <ak-radio-group modelValue="man" disabled>
+        <ak-radio v-for="item in options" :key="item.value" :value="item.value">
           {{ item.label }}
-        </fx-radio>
-      </fx-radio-group>
-    </fx-cell>
-    <fx-cell label="通过options设置">
-      <fx-radio-group v-model="groupOptionValue" :options="options" />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell label="change">
-      <fx-radio-group @change="onChange" name="gender">
-        <fx-radio v-for="item in options" :key="item.value" :value="item.value">
+        </ak-radio>
+      </ak-radio-group>
+    </ak-cell>
+    <ak-cell label="通过options设置">
+      <ak-radio-group v-model="groupOptionValue" :options="options" />
+    </ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell label="change">
+      <ak-radio-group @change="onChange" name="gender">
+        <ak-radio v-for="item in options" :key="item.value" :value="item.value">
           {{ item.label }}
-        </fx-radio>
-      </fx-radio-group>
-    </fx-cell>
-  </fx-group>
+        </ak-radio>
+      </ak-radio-group>
+    </ak-cell>
+  </ak-group>
 </template>
 
 <script lang="ts">

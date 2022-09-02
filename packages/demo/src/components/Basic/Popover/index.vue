@@ -1,7 +1,7 @@
 <template>
-  <fx-group title="基础用法">
+  <ak-group title="基础用法">
     <div class="exp-popover-box">
-      <fx-button
+      <ak-button
         size="small"
         id="popoverLeft"
         shape="circle"
@@ -9,8 +9,8 @@
         @click=";(selector = '#popoverLeft'), (visible = true)"
       >
         左
-      </fx-button>
-      <fx-button
+      </ak-button>
+      <ak-button
         size="small"
         id="popoverCenter"
         shape="circle"
@@ -18,8 +18,8 @@
         @click=";(selector = '#popoverCenter'), (visible = true)"
       >
         中
-      </fx-button>
-      <fx-button
+      </ak-button>
+      <ak-button
         size="small"
         id="popoverRight"
         shape="circle"
@@ -27,13 +27,13 @@
         @click=";(selector = '#popoverRight'), (visible = true)"
       >
         右
-      </fx-button>
+      </ak-button>
     </div>
-  </fx-group>
-  <fx-group title="方向 placement=top/bottom/left/right">
+  </ak-group>
+  <ak-group title="方向 placement=top/bottom/left/right">
     <div class="exp-popover-box2">
       <div>
-        <fx-button
+        <ak-button
           size="small"
           id="popoverTop2"
           shape="circle"
@@ -43,10 +43,10 @@
           "
         >
           上
-        </fx-button>
+        </ak-button>
       </div>
       <div>
-        <fx-button
+        <ak-button
           size="small"
           id="popoverLeft2"
           shape="circle"
@@ -58,8 +58,8 @@
           "
         >
           左
-        </fx-button>
-        <fx-button
+        </ak-button>
+        <ak-button
           class="exp-popover-box2-ml"
           size="small"
           id="popoverRight2"
@@ -72,10 +72,10 @@
           "
         >
           右
-        </fx-button>
+        </ak-button>
       </div>
       <div>
-        <fx-button
+        <ak-button
           size="small"
           id="popoverBottom2"
           shape="circle"
@@ -87,13 +87,13 @@
           "
         >
           下
-        </fx-button>
+        </ak-button>
       </div>
     </div>
-  </fx-group>
-  <fx-group title="带选项">
-    <fx-cell label="长文案">
-      <fx-button
+  </ak-group>
+  <ak-group title="带选项">
+    <ak-cell label="长文案">
+      <ak-button
         size="small"
         id="popoverLongContent"
         shape="circle"
@@ -105,22 +105,22 @@
             (visible = true)
         "
       >
-      </fx-button>
-    </fx-cell>
-    <fx-cell label="不展示蒙层">
-      <fx-button
+      </ak-button>
+    </ak-cell>
+    <ak-cell label="不展示蒙层">
+      <ak-button
         size="small"
         id="popoverNoMask"
         shape="circle"
         icon="PlusOutlined"
         @click="onShowNoMask"
       >
-      </fx-button>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell label="visible-state-change">
-      <fx-button
+      </ak-button>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell label="visible-state-change">
+      <ak-button
         size="small"
         id="popoverEvent"
         shape="circle"
@@ -129,36 +129,36 @@
           ;(selector = '#popoverEvent'), (visibleEvent = true), (visible = true)
         "
       >
-      </fx-button>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="API">
-    <fx-cell label="showPopover">
-      <fx-button
+      </ak-button>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="API">
+    <ak-cell label="showPopover">
+      <ak-button
         size="small"
         id="popoverApi"
         shape="circle"
         icon="PlusOutlined"
         @click="onCallApi('#popoverApi')"
       >
-      </fx-button>
-    </fx-cell>
-  </fx-group>
-  <fx-popover
+      </ak-button>
+    </ak-cell>
+  </ak-group>
+  <ak-popover
     v-model:visible="visible"
     :selector="selector"
     :placement="placement"
     :content="content"
     @visibleStateChange="onVisibleStateChange"
   >
-  </fx-popover>
-  <fx-popover
+  </ak-popover>
+  <ak-popover
     v-model:visible="noMaskVisible"
     selector="#popoverNoMask"
     :showMask="false"
     content="无蒙层气泡内容"
   >
-  </fx-popover>
+  </ak-popover>
 </template>
 
 <script lang="ts">

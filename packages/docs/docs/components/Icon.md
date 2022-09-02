@@ -53,7 +53,7 @@ export default defineConfig({
 <template>
   <MyIcon />
   // or:
-  <fx-icon :icon="MyIcon">
+  <ak-icon :icon="MyIcon">
 </template>
 
 <script setup>
@@ -109,7 +109,7 @@ createApp(App).use(router).mount('#app')
 #### 4. Icon 组件通过展示
 
 ```vue
-<fx-icon icon="icon-homeTab" />
+<ak-icon icon="icon-homeTab" />
 ```
 
 ### 附录：示例图标库

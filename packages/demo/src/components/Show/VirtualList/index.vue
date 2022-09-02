@@ -30,8 +30,8 @@ function scrollToEnd(animated: boolean) {
 </script>
 
 <template>
-  <fx-group title="Method">
-    <fx-virtual-list
+  <ak-group title="Method">
+    <ak-virtual-list
       class="exp-flatList-box"
       :ids="largeList.map(v => v.id)"
       ref="methodList"
@@ -42,31 +42,31 @@ function scrollToEnd(animated: boolean) {
           {{ largeList[index].text }}
         </div>
       </template>
-    </fx-virtual-list>
-    <fx-cell
+    </ak-virtual-list>
+    <ak-cell
       label="scrollToIndex({ index: 49999 })"
       isLink
       @click="scrollToIndex(49999)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="同上加 viewPosition=0.5"
       isLink
       @click="scrollToIndex(49999, 0.5)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="同上加 viewPosition=1"
       isLink
       @click="scrollToIndex(49999, 1)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="scrollTo({ offset: 200 })"
       isLink
       @click="scrollTo(200)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="scrollToEnd(true)"
       isLink
       @click="scrollToEnd(true)"
-    ></fx-cell>
-  </fx-group>
+    ></ak-cell>
+  </ak-group>
 </template>

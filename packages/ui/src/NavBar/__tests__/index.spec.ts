@@ -50,7 +50,7 @@ describe('NavBar', () => {
         right: 'rightSlot'
       }
     })
-    expect(wrapper.find('.fx-nav-bar_left').text()).toBe('leftSlot')
-    expect(wrapper.find('.fx-nav-bar_right').text()).toBe('rightSlot')
+    expect(wrapper.find('.ak-nav-bar_left').text()).toBe('leftSlot')
+    expect(wrapper.find('.ak-nav-bar_right').text()).toBe('rightSlot')
   })
 })

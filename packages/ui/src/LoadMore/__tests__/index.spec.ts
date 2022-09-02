@@ -25,6 +25,6 @@ describe('LoadMore', () => {
         default: content
       }
     })
-    expect(wrapper.find('.fx-load-more_content').text()).toBe(content)
+    expect(wrapper.find('.ak-load-more_content').text()).toBe(content)
   })
 })

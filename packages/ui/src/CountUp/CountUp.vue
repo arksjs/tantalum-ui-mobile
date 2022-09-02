@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-count-up">
+  <div class="ak-count-up">
     {{ content }}
   </div>
 </template>
@@ -18,7 +18,7 @@ const emitValidator: VoidFnToBooleanFn<OnCancel> = payload =>
   payload && isNumber(payload.number)
 
 export default defineComponent({
-  name: 'fx-count-up',
+  name: 'ak-count-up',
   props: {
     // 初始数值
     initialNumber: {

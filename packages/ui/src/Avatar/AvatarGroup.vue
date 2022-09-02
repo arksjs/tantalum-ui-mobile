@@ -2,7 +2,7 @@
   <div :class="classes">
     <slot></slot>
     <Avatar
-      class="fx-avatar-group_count"
+      class="ak-avatar-group_count"
       v-if="totalCount != null"
       :color="countColor"
     >
@@ -21,7 +21,7 @@ import { useProvider } from './context'
 import { getGroupClasses, getGroupCountClasses, getShowCount } from './util'
 
 export default defineComponent({
-  name: 'fx-avatar-group',
+  name: 'ak-avatar-group',
   components: { Avatar },
   props: {
     ...avatarProps,

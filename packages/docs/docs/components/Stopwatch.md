@@ -68,11 +68,11 @@ import type { CountTime, StopwatchOnStop } from 'vfox'
 ### 自定义风格显示（#default）
 
 ```vue
-<fx-stopwatch>
+<ak-stopwatch>
   <template #default="countTime">
     {{ countTime.fullHours }}:{{ countTime.minutes }}:{{
         countTime.seconds
     }}.{{ countTime.milliseconds }}
   </template>
-</fx-stopwatch>
+</ak-stopwatch>
 ```

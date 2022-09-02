@@ -55,20 +55,20 @@ const onCancel: PopupOnCancel = res => {
 </script>
 
 <template>
-  <fx-notice-bar
+  <ak-notice-bar
     class="top-notice-bar"
     title="基础展示参数可以参考 DatePicker"
   />
-  <fx-group title="基础用法">
-    <fx-cell
+  <ak-group title="基础用法">
+    <ak-cell
       label="默认"
       isLink
       @click="visible = true"
       :content="popupValue"
     />
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell
       label="change"
       isLink
       @click="
@@ -78,7 +78,7 @@ const onCancel: PopupOnCancel = res => {
         }
       "
     />
-    <fx-cell
+    <ak-cell
       label="confirm/cancel"
       isLink
       @click="
@@ -88,7 +88,7 @@ const onCancel: PopupOnCancel = res => {
         }
       "
     />
-    <fx-cell
+    <ak-cell
       label="visible-state-change"
       isLink
       @click="
@@ -98,8 +98,8 @@ const onCancel: PopupOnCancel = res => {
         }
       "
     />
-  </fx-group>
-  <fx-date-picker-popup
+  </ak-group>
+  <ak-date-picker-popup
     initialMode="date"
     formatTemplate="YYYY年MM月DD日"
     v-model:visible="visible"

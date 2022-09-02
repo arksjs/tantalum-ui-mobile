@@ -8,7 +8,7 @@
       @click="onMinusClick"
     ></Button>
     <input
-      class="fx-stepper_input"
+      class="ak-stepper_input"
       :type="allowDecimal ? 'text' : 'tel'"
       :inputmode="allowDecimal ? 'decimal' : 'numeric'"
       :name="name"
@@ -48,7 +48,7 @@ import { emitClickValidator } from '../helpers/validator'
 import { StepperEmits } from './types'
 
 export default defineComponent({
-  name: 'fx-stepper',
+  name: 'ak-stepper',
   components: { Button },
   props: {
     ...formItemProps,

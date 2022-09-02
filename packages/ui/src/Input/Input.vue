@@ -1,11 +1,11 @@
 <template>
   <label :class="classes">
-    <div class="fx-input_prepend" v-if="$slots.prepend">
+    <div class="ak-input_prepend" v-if="$slots.prepend">
       <slot name="prepend"></slot>
     </div>
     <textarea
       v-if="type === 'textarea'"
-      class="fx-input_input fx-input_textarea"
+      class="ak-input_input ak-input_textarea"
       :name="name"
       :disabled="disabled"
       :placeholder="placeholder"
@@ -19,7 +19,7 @@
     ></textarea>
     <input
       v-else
-      class="fx-input_input"
+      class="ak-input_input"
       :name="name"
       :type="typeMode.inputType"
       :inputmode="typeMode.inputMode"
@@ -35,16 +35,16 @@
       @compositionend="onCompositionEnd"
       ref="inputEl"
     />
-    <span class="fx-input_limit" v-if="showLimit && maxLength > 0"
+    <span class="ak-input_limit" v-if="showLimit && maxLength > 0"
       >{{ inputValue.length }}/{{ maxLength }}</span
     >
     <Icon
       v-if="showClear && isShowClear"
-      class="fx-input_clear"
+      class="ak-input_clear"
       :icon="CloseCircleFilled"
       @mousedown.prevent="onClear"
     />
-    <div class="fx-input_append" v-if="$slots.append">
+    <div class="ak-input_append" v-if="$slots.append">
       <slot name="append"></slot>
     </div>
   </label>
@@ -65,7 +65,7 @@ import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
 import type { OnFocus } from '../helpers/types'
 
 export default defineComponent({
-  name: 'fx-input',
+  name: 'ak-input',
   components: { Icon },
   props: {
     ...formItemProps,

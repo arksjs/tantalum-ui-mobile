@@ -40,7 +40,7 @@ export function useList(name: string, updateCallback: ListUpdateCallback) {
     const $items = getItems()
 
     $items.forEach(($item, index) => {
-      $item._fxSetIndex && $item._fxSetIndex(index)
+      $item._akSetIndex && $item._akSetIndex(index)
     })
 
     updateCallback($items)
@@ -65,13 +65,13 @@ export function useList(name: string, updateCallback: ListUpdateCallback) {
     }
   }
 
-  provide(`fx${capitalize(name)}Update`, update)
+  provide(`ak${capitalize(name)}Update`, update)
 
   function getItems(): ListItemElement[] {
     return listEl.value
       ? [].slice.call(
           listEl.value.querySelectorAll(
-            `.fx-${camelCase2KebabCase(name)}-item`
+            `.ak-${camelCase2KebabCase(name)}-item`
           ),
           0
         )
@@ -88,7 +88,7 @@ export function useList(name: string, updateCallback: ListUpdateCallback) {
 }
 
 interface ListItemElement extends HTMLElement {
-  _fxSetIndex?(_index: number): void
+  _akSetIndex?(_index: number): void
 }
 
 export function useListItem(
@@ -96,11 +96,11 @@ export function useListItem(
   root?: Ref<ListItemElement | undefined>
 ) {
   const index = ref(-1)
-  const update = inject(`fx${capitalize(name)}Update`, createUpdateInItem(name))
+  const update = inject(`ak${capitalize(name)}Update`, createUpdateInItem(name))
 
   onMounted(() => {
     if (root?.value) {
-      root.value._fxSetIndex = _index => (index.value = _index)
+      root.value._akSetIndex = _index => (index.value = _index)
     }
 
     update()

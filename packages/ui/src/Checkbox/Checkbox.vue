@@ -1,7 +1,7 @@
 <template>
-  <label class="fx-checkbox" :class="classes" :style="styles">
+  <label class="ak-checkbox" :class="classes" :style="styles">
     <input
-      class="fx-checkbox_input fx-form-input"
+      class="ak-checkbox_input ak-form-input"
       type="checkbox"
       :name="name2"
       :value="value"
@@ -9,16 +9,16 @@
       @change="onChange"
       ref="input"
     />
-    <div class="fx-checkbox_box">
+    <div class="ak-checkbox_box">
       <Icon
-        class="fx-checkbox_icon"
+        class="ak-checkbox_icon"
         :icon="circle ? CircleOutlined : BorderOutlined"
       />
       <Icon
-        class="fx-checkbox_checked-icon"
+        class="ak-checkbox_checked-icon"
         :icon="circle ? CheckCircleFilled : CheckSquareFilled"
       />
-      <span class="fx-checkbox_text" v-if="$slots.default">
+      <span class="ak-checkbox_text" v-if="$slots.default">
         <slot></slot>
       </span>
     </div>
@@ -36,7 +36,7 @@ import BorderOutlined from '../Icon/icons/BorderOutlined'
 import CheckSquareFilled from '../Icon/icons/CheckSquareFilled'
 
 export default defineComponent({
-  name: 'fx-checkbox',
+  name: 'ak-checkbox',
   components: { Icon },
   props: {
     ...checkProps,

@@ -46,23 +46,23 @@ import type {
 注：其中只可放置 [CollapseItem](./Collapse.md#collapseitem-折叠面板子项) 组件，否则会导致未定义的行为。
 
 ```vue
-<fx-collapse>
-  <fx-collapse-item title="标题1" name="row1">
+<ak-collapse>
+  <ak-collapse-item title="标题1" name="row1">
     <div class="pad">
     代码是写出来给人看的，附带能在机器上运行
     </div>
-  </fx-collapse-item>
-  <fx-collapse-item title="标题2" name="row2">
+  </ak-collapse-item>
+  <ak-collapse-item title="标题2" name="row2">
     <div class="pad">
     代码是写出来给人看的，附带能在机器上运行
     </div>
-  </fx-collapse-item>
-  <fx-collapse-item title="标题3" name="row3">
+  </ak-collapse-item>
+  <ak-collapse-item title="标题3" name="row3">
     <div class="pad">
     代码是写出来给人看的，附带能在机器上运行
     </div>
-  </fx-collapse-item>
-</fx-collapse>
+  </ak-collapse-item>
+</ak-collapse>
 ```
 
 ## CollapseItem Props

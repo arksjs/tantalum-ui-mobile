@@ -9,7 +9,7 @@ import { propAnimated } from './props'
 import { getTitleClasses } from './util'
 
 export default defineComponent({
-  name: 'fx-skeleton-title',
+  name: 'ak-skeleton-title',
   props: {
     // 是否显示动画
     animated: propAnimated

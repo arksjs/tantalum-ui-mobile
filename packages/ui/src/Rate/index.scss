@@ -1,18 +1,18 @@
 @import '../style/var.scss';
 
-.fx-rate {
-  --fx-size: 24px;
-  --fx-color: #{$border-color};
-  --fx-active-color: #{$danger-color};
+.ak-rate {
+  --ak-size: 24px;
+  --ak-color: #{$border-color};
+  --ak-active-color: #{$danger-color};
 
   display: flex;
   align-items: center;
   height: 32px;
 
   &_item {
-    width: var(--fx-size);
-    height: var(--fx-size);
-    font-size: var(--fx-size);
+    width: var(--ak-size);
+    height: var(--ak-size);
+    font-size: var(--ak-size);
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -22,9 +22,9 @@
     }
   }
 
-  .fx-icon {
-    --fx-icon-size: var(--fx-size);
-    --fx-icon-color: var(--fx-color);
+  .ak-icon {
+    --ak-icon-size: var(--ak-size);
+    --ak-icon-color: var(--ak-color);
 
     flex-shrink: 0;
     display: block;
@@ -43,8 +43,8 @@
     width: 100%;
     height: 100%;
 
-    .fx-icon {
-      --fx-icon-color: var(--fx-active-color);
+    .ak-icon {
+      --ak-icon-color: var(--ak-active-color);
     }
   }
 
@@ -57,7 +57,7 @@
   }
 
   &.readonly {
-    .fx-rate {
+    .ak-rate {
       &_item {
         cursor: default;
       }
@@ -67,7 +67,7 @@
   &.disabled {
     opacity: 0.2;
 
-    .fx-rate {
+    .ak-rate {
       &_item {
         cursor: not-allowed;
       }
@@ -75,7 +75,7 @@
   }
 
   &_item.active {
-    .fx-rate {
+    .ak-rate {
       &_icon {
         display: none;
       }
@@ -87,7 +87,7 @@
   }
 
   &_item.active.half {
-    .fx-rate {
+    .ak-rate {
       &_icon {
         width: 50%;
         margin-left: 50%;

@@ -1,20 +1,20 @@
 <template>
   <div :class="classes" @click="onClick">
-    <div class="fx-cell_header">
-      <div class="fx-cell_icon" v-if="$slots.icon">
+    <div class="ak-cell_header">
+      <div class="ak-cell_icon" v-if="$slots.icon">
         <slot name="icon"></slot>
       </div>
-      <div class="fx-cell_icon" v-else-if="icon"><Icon :icon="icon" /></div>
-      <div class="fx-cell_label" v-if="label">
+      <div class="ak-cell_icon" v-else-if="icon"><Icon :icon="icon" /></div>
+      <div class="ak-cell_label" v-if="label">
         {{ label }}
-        <span class="fx-cell_required" v-if="required">*</span>
+        <span class="ak-cell_required" v-if="required">*</span>
       </div>
-      <div class="fx-cell_content">
+      <div class="ak-cell_content">
         <slot>{{ content }}</slot>
       </div>
       <Icon v-if="isLink" :class="arrowClasses" :icon="RightOutlined" />
     </div>
-    <div class="fx-cell_body" v-if="description">
+    <div class="ak-cell_body" v-if="description">
       {{ description }}
     </div>
   </div>
@@ -36,7 +36,7 @@ import { getCellArrowClasses, getCellClasses, LINK_ICON_NAMES } from './util'
 import type { OnClick, PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
-  name: 'fx-cell',
+  name: 'ak-cell',
   components: { Icon },
   props: {
     icon: {

@@ -1,10 +1,10 @@
 <template>
-  <div class="fx-empty">
+  <div class="ak-empty">
     <slot name="image" v-if="$slots.image"></slot>
     <template v-else>
-      <img class="fx-empty_image" :src="imageUrl" />
+      <img class="ak-empty_image" :src="imageUrl" />
     </template>
-    <p class="fx-empty_description" v-if="description">
+    <p class="ak-empty_description" v-if="description">
       {{ description }}
     </p>
     <slot></slot>
@@ -19,7 +19,7 @@ import type { EmptyType } from './types'
 import { getImageUrl, TYPE_NAMES } from './util'
 
 export default defineComponent({
-  name: 'fx-empty',
+  name: 'ak-empty',
   props: {
     // 描述文字
     description: {

@@ -1,7 +1,7 @@
 @import '../style/var.scss';
 @import '../style/mixin.scss';
 
-.fx-swiper {
+.ak-swiper {
   position: relative;
   box-sizing: border-box;
 
@@ -55,8 +55,8 @@
     user-select: none;
     color: #fff;
 
-    .fx-icon {
-      --fx-icon-color: #fff;
+    .ak-icon {
+      --ak-icon-color: #fff;
     }
   }
 
@@ -75,6 +75,6 @@
   }
 }
 
-.fx-swiper-item {
+.ak-swiper-item {
   height: 100%;
 }

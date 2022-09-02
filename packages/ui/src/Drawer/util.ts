@@ -5,7 +5,7 @@ import type { SafeAreaInsets } from '../hooks/types'
 import type { DrawerProps } from './types'
 
 export const getClasses = (showMask?: boolean) => [
-  'fx-drawer',
+  'ak-drawer',
   { 'no--mask': !showMask }
 ]
 
@@ -45,8 +45,8 @@ export const getInnerClasses = ({
   placement?: PlacementType
   hasHeader: boolean
 }) => [
-  'fx-drawer_inner',
-  'fx-horizontal-hairline',
+  'ak-drawer_inner',
+  'ak-horizontal-hairline',
   'placement--' + getEnumsValue(PLACEMENT_TYPES, placement),
   {
     'has--header': hasHeader

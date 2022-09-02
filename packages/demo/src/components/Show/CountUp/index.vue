@@ -1,60 +1,60 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="默认">
-      <fx-count-up :number="1000" />
-    </fx-cell>
-    <fx-cell label="千分位 thousands">
-      <fx-count-up :initialNumber="initialNumber" :number="number" thousands />
-    </fx-cell>
-    <fx-cell label="小数位 decimalDigits=2">
-      <fx-count-up
+  <ak-group title="基础用法">
+    <ak-cell label="默认">
+      <ak-count-up :number="1000" />
+    </ak-cell>
+    <ak-cell label="千分位 thousands">
+      <ak-count-up :initialNumber="initialNumber" :number="number" thousands />
+    </ak-cell>
+    <ak-cell label="小数位 decimalDigits=2">
+      <ak-count-up
         :initialNumber="initialNumber"
         :number="number"
         :decimalDigits="2"
       />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="速度">
-    <fx-cell label="speed=slow">
-      <fx-count-up
+    </ak-cell>
+  </ak-group>
+  <ak-group title="速度">
+    <ak-cell label="speed=slow">
+      <ak-count-up
         :initialNumber="initialNumber"
         :number="number"
         :decimalDigits="2"
         speed="slow"
       />
-    </fx-cell>
-    <fx-cell label="speed=normal">
-      <fx-count-up
+    </ak-cell>
+    <ak-cell label="speed=normal">
+      <ak-count-up
         :initialNumber="initialNumber"
         :number="number"
         :decimalDigits="2"
         speed="normal"
       />
-    </fx-cell>
-    <fx-cell label="speed=fast">
-      <fx-count-up
+    </ak-cell>
+    <ak-cell label="speed=fast">
+      <ak-count-up
         :initialNumber="initialNumber"
         :number="number"
         :decimalDigits="2"
         speed="fast"
       />
-    </fx-cell>
-    <fx-cell label="speed=10000（固定10秒动画）">
-      <fx-count-up
+    </ak-cell>
+    <ak-cell label="speed=10000（固定10秒动画）">
+      <ak-count-up
         :initialNumber="initialNumber"
         :number="number"
         :decimalDigits="2"
         :speed="10000"
       />
-    </fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell label="animated">
-      <fx-count-up :number="500" @animated="onAnimated" />
-    </fx-cell>
-    <fx-cell label="cancel" class="exp-countUp-box">
+    </ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell label="animated">
+      <ak-count-up :number="500" @animated="onAnimated" />
+    </ak-cell>
+    <ak-cell label="cancel" class="exp-countUp-box">
       <div class="exp-countUp-r">
-        <fx-count-up
+        <ak-count-up
           :initialNumber="0"
           :number="number2"
           thousands
@@ -63,11 +63,11 @@
           @cancel="onCancel"
         />
       </div>
-      <fx-button @click="cancel" size="small">{{
+      <ak-button @click="cancel" size="small">{{
         isCancel ? '开始' : '取消'
-      }}</fx-button>
-    </fx-cell>
-  </fx-group>
+      }}</ak-button>
+    </ak-cell>
+  </ak-group>
 </template>
 
 <script lang="ts">

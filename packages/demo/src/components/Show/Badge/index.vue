@@ -1,161 +1,161 @@
 <template>
-  <fx-group title="基础用法">
+  <ak-group title="基础用法">
     <div class="exp-badge-flex">
-      <fx-row :gutter="[16, 16]">
-        <fx-col :span="6">
-          <fx-badge :content="1"> <div class="exp-badge-slot"></div> </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-badge :content="99">
+      <ak-row :gutter="[16, 16]">
+        <ak-col :span="6">
+          <ak-badge :content="1"> <div class="exp-badge-slot"></div> </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-badge :content="99">
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-      </fx-row>
+          </ak-badge>
+        </ak-col>
+      </ak-row>
     </div>
-  </fx-group>
-  <fx-group title="小红点">
+  </ak-group>
+  <ak-group title="小红点">
     <div class="exp-badge-flex">
-      <fx-row :gutter="[16, 16]">
-        <fx-col :span="6">
-          <fx-badge :content="1" dot>
+      <ak-row :gutter="[16, 16]">
+        <ak-col :span="6">
+          <ak-badge :content="1" dot>
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-      </fx-row>
+          </ak-badge>
+        </ak-col>
+      </ak-row>
     </div>
-  </fx-group>
-  <fx-group title="图标（Slot）">
+  </ak-group>
+  <ak-group title="图标（Slot）">
     <div class="exp-badge-flex">
-      <fx-row :gutter="[16, 16]">
-        <fx-col :span="6">
-          <fx-badge :content="1">
+      <ak-row :gutter="[16, 16]">
+        <ak-col :span="6">
+          <ak-badge :content="1">
             <div class="exp-badge-slot"></div>
             <template #badge>
-              <fx-icon icon="CheckOutlined"></fx-icon>
+              <ak-icon icon="CheckOutlined"></ak-icon>
             </template>
-          </fx-badge>
-        </fx-col>
-      </fx-row>
+          </ak-badge>
+        </ak-col>
+      </ak-row>
     </div>
-  </fx-group>
-  <fx-group title="文本">
+  </ak-group>
+  <ak-group title="文本">
     <div class="exp-badge-flex">
-      <fx-row :gutter="[16, 16]">
-        <fx-col :span="6">
-          <fx-badge content="惠"> <div class="exp-badge-slot"></div> </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-badge content="热"> <div class="exp-badge-slot"></div> </fx-badge>
-        </fx-col>
-      </fx-row>
+      <ak-row :gutter="[16, 16]">
+        <ak-col :span="6">
+          <ak-badge content="惠"> <div class="exp-badge-slot"></div> </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-badge content="热"> <div class="exp-badge-slot"></div> </ak-badge>
+        </ak-col>
+      </ak-row>
     </div>
-  </fx-group>
-  <fx-group title="自定义颜色">
+  </ak-group>
+  <ak-group title="自定义颜色">
     <div class="exp-badge-flex">
-      <fx-row :gutter="[16, 16]">
-        <fx-col :span="6">
-          <fx-badge :content="99" color="#6667AB">
+      <ak-row :gutter="[16, 16]">
+        <ak-col :span="6">
+          <ak-badge :content="99" color="#6667AB">
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-badge :content="1" dot color="#6667AB">
+          </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-badge :content="1" dot color="#6667AB">
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-badge :content="1" color="#E2C0BF">
+          </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-badge :content="1" color="#E2C0BF">
             <div class="exp-badge-slot"></div>
             <template #badge>
-              <fx-icon icon="CheckOutlined"></fx-icon>
+              <ak-icon icon="CheckOutlined"></ak-icon>
             </template>
-          </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-badge content="惠" color="#E2C0BF">
+          </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-badge content="惠" color="#E2C0BF">
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-      </fx-row>
+          </ak-badge>
+        </ak-col>
+      </ak-row>
     </div>
-  </fx-group>
-  <fx-group title="限制最大数">
+  </ak-group>
+  <ak-group title="限制最大数">
     <div class="exp-badge-flex">
-      <fx-row :gutter="[16, 16]">
-        <fx-col :span="6">
-          <fx-badge :content="1000" :max-count="9">
+      <ak-row :gutter="[16, 16]">
+        <ak-col :span="6">
+          <ak-badge :content="1000" :max-count="9">
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-badge :content="1000" :max-count="10">
+          </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-badge :content="1000" :max-count="10">
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-badge :content="1000" :max-count="99">
+          </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-badge :content="1000" :max-count="99">
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-      </fx-row>
+          </ak-badge>
+        </ak-col>
+      </ak-row>
     </div>
-  </fx-group>
-  <fx-group title="展示 0">
+  </ak-group>
+  <ak-group title="展示 0">
     <div class="exp-badge-flex">
-      <fx-row :gutter="[16, 16]">
-        <fx-col :span="6">
-          <fx-badge :content="0" show-zero>
+      <ak-row :gutter="[16, 16]">
+        <ak-col :span="6">
+          <ak-badge :content="0" show-zero>
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-badge :content="0" dot show-zero>
+          </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-badge :content="0" dot show-zero>
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-      </fx-row>
+          </ak-badge>
+        </ak-col>
+      </ak-row>
     </div>
-  </fx-group>
-  <fx-group title="偏移">
+  </ak-group>
+  <ak-group title="偏移">
     <div class="exp-badge-flex">
-      <fx-row :gutter="[16, 16]">
-        <fx-col :span="6">
-          <fx-badge :content="1" :offset="[10, -10]">
+      <ak-row :gutter="[16, 16]">
+        <ak-col :span="6">
+          <ak-badge :content="1" :offset="[10, -10]">
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-badge :content="1" dot :offset="[-20, 20]">
+          </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-badge :content="1" dot :offset="[-20, 20]">
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-      </fx-row>
+          </ak-badge>
+        </ak-col>
+      </ak-row>
     </div>
-  </fx-group>
-  <fx-group title="展示动画">
+  </ak-group>
+  <ak-group title="展示动画">
     <div class="exp-badge-flex">
-      <fx-row :gutter="[16, 16]">
-        <fx-col :span="6">
-          <fx-badge :content="count" show-zero animated :maxCount="maxCount">
+      <ak-row :gutter="[16, 16]">
+        <ak-col :span="6">
+          <ak-badge :content="count" show-zero animated :maxCount="maxCount">
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-switch @change="onSwitch"></fx-switch>
-        </fx-col>
-      </fx-row>
-      <fx-row :gutter="[16, 16]">
-        <fx-col :span="6">
-          <fx-badge :content="count2" dot animated>
+          </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-switch @change="onSwitch"></ak-switch>
+        </ak-col>
+      </ak-row>
+      <ak-row :gutter="[16, 16]">
+        <ak-col :span="6">
+          <ak-badge :content="count2" dot animated>
             <div class="exp-badge-slot"></div>
-          </fx-badge>
-        </fx-col>
-        <fx-col :span="6">
-          <fx-switch @change="onSwitch2"></fx-switch>
-        </fx-col>
-      </fx-row>
+          </ak-badge>
+        </ak-col>
+        <ak-col :span="6">
+          <ak-switch @change="onSwitch2"></ak-switch>
+        </ak-col>
+      </ak-row>
     </div>
-  </fx-group>
+  </ak-group>
 </template>
 
 <script lang="ts">

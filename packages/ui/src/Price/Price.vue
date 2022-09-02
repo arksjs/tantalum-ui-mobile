@@ -1,9 +1,9 @@
 <template>
-  <div class="fx-price">
+  <div class="ak-price">
     <slot></slot>
-    <span class="fx-price_symbol" v-if="symbol">{{ symbol }}</span>
-    <span class="fx-price_integer">{{ priceStr.split('.')[0] }}</span>
-    <span class="fx-price_decimal" v-if="decimalDigits > 0"
+    <span class="ak-price_symbol" v-if="symbol">{{ symbol }}</span>
+    <span class="ak-price_integer">{{ priceStr.split('.')[0] }}</span>
+    <span class="ak-price_decimal" v-if="decimalDigits > 0"
       >.{{ priceStr.split('.')[1] }}</span
     >
   </div>
@@ -15,7 +15,7 @@ import { isNumeric } from '../helpers/util'
 import { getPrice } from './util'
 
 export default defineComponent({
-  name: 'fx-price',
+  name: 'ak-price',
   props: {
     // 金额
     price: {

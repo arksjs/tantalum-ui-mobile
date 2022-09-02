@@ -1,18 +1,18 @@
 <template>
   <label
-    class="fx-form-item fx-cell fx-horizontal-hairline"
+    class="ak-form-item ak-cell ak-horizontal-hairline"
     :class="[validateStatus]"
   >
-    <div class="fx-cell_header">
-      <div class="fx-cell_label" v-if="label">
+    <div class="ak-cell_header">
+      <div class="ak-cell_label" v-if="label">
         {{ label }}
-        <span class="fx-form-item_required" v-if="required">*</span>
+        <span class="ak-form-item_required" v-if="required">*</span>
       </div>
-      <div class="fx-cell_content">
+      <div class="ak-cell_content">
         <slot></slot>
       </div>
     </div>
-    <ol class="fx-cell_body" v-if="errors.length > 0">
+    <ol class="ak-cell_body" v-if="errors.length > 0">
       <li v-for="(error, k) in errors" :key="error">
         {{ errors.length > 1 ? k + 1 + '. ' : '' }}{{ error }}
       </li>
@@ -26,7 +26,7 @@ import type { PropType } from 'vue'
 import { isStringArray } from '../helpers/util'
 
 export default defineComponent({
-  name: 'fx-form-item',
+  name: 'ak-form-item',
   props: {
     label: {
       type: String

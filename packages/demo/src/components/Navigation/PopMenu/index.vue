@@ -1,30 +1,30 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="基础">
-      <fx-button
+  <ak-group title="基础用法">
+    <ak-cell label="基础">
+      <ak-button
         size="small"
         id="popMenu"
         shape="circle"
         icon="MenuOutlined"
         @click=";(selector = '#popMenu'), (visible = true)"
       >
-      </fx-button>
-    </fx-cell>
-    <fx-cell label="不展示蒙层">
-      <fx-button
+      </ak-button>
+    </ak-cell>
+    <ak-cell label="不展示蒙层">
+      <ak-button
         size="small"
         id="popMenuNoMask"
         shape="circle"
         icon="MenuOutlined"
         @click="visible3 = true"
       >
-      </fx-button>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="方向 placement=top/bottom/left/right">
+      </ak-button>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="方向 placement=top/bottom/left/right">
     <div class="exp-popover-box2">
       <div>
-        <fx-button
+        <ak-button
           size="small"
           id="popMenuTop2"
           shape="circle"
@@ -36,10 +36,10 @@
           "
         >
           上
-        </fx-button>
+        </ak-button>
       </div>
       <div>
-        <fx-button
+        <ak-button
           size="small"
           id="popMenuLeft2"
           shape="circle"
@@ -51,8 +51,8 @@
           "
         >
           左
-        </fx-button>
-        <fx-button
+        </ak-button>
+        <ak-button
           class="exp-popover-box2-ml"
           size="small"
           id="popMenuRight2"
@@ -65,10 +65,10 @@
           "
         >
           右
-        </fx-button>
+        </ak-button>
       </div>
       <div>
-        <fx-button
+        <ak-button
           size="small"
           id="popMenuBottom2"
           shape="circle"
@@ -80,13 +80,13 @@
           "
         >
           下
-        </fx-button>
+        </ak-button>
       </div>
     </div>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell label="confirm/cancel">
-      <fx-button
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell label="confirm/cancel">
+      <ak-button
         size="small"
         id="popMenuEvent"
         shape="circle"
@@ -95,10 +95,10 @@
           ;(selector = '#popMenuEvent'), (showEvent = true), (visible = true)
         "
       >
-      </fx-button>
-    </fx-cell>
-    <fx-cell label="visible-state-change">
-      <fx-button
+      </ak-button>
+    </ak-cell>
+    <ak-cell label="visible-state-change">
+      <ak-button
         size="small"
         id="popMenuPopupEvent"
         shape="circle"
@@ -109,22 +109,22 @@
             (visible = true)
         "
       >
-      </fx-button>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="API">
-    <fx-cell label="showPopMenu">
-      <fx-button
+      </ak-button>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="API">
+    <ak-cell label="showPopMenu">
+      <ak-button
         size="small"
         id="popMenuApi"
         shape="circle"
         icon="MenuOutlined"
         @click="onCallApi('#popMenuApi')"
       >
-      </fx-button>
-    </fx-cell>
-  </fx-group>
-  <fx-pop-menu
+      </ak-button>
+    </ak-cell>
+  </ak-group>
+  <ak-pop-menu
     v-model:visible="visible"
     :selector="selector"
     :options="options"
@@ -132,8 +132,8 @@
     @cancel="onCancel"
     @visibleStateChange="onVisibleStateChange"
   >
-  </fx-pop-menu>
-  <fx-pop-menu
+  </ak-pop-menu>
+  <ak-pop-menu
     v-model:visible="visible2"
     :selector="selector2"
     :placement="placement2"
@@ -141,8 +141,8 @@
     @confirm="onConfirm"
     @cancel="onCancel"
   >
-  </fx-pop-menu>
-  <fx-pop-menu
+  </ak-pop-menu>
+  <ak-pop-menu
     v-model:visible="visible3"
     selector="#popMenuNoMask"
     :options="options"
@@ -150,7 +150,7 @@
     @confirm="onConfirm"
     @cancel="onCancel"
   >
-  </fx-pop-menu>
+  </ak-pop-menu>
 </template>
 
 <script lang="ts">

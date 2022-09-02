@@ -45,9 +45,9 @@ import { BackTop } from 'vfox'
 ### 点击区域（#default）
 
 ```vue
-<fx-back-top>
+<ak-back-top>
   回顶部
-</fx-back-top>
+</ak-back-top>
 ```
 
 #### default 的缺省内容

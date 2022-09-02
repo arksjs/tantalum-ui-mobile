@@ -4,7 +4,7 @@ export const getStepsClasses = ({
 }: {
   dot?: boolean
   horizontal?: boolean
-}) => ['fx-steps', { dot: !!dot, horizontal: !!horizontal }]
+}) => ['ak-steps', { dot: !!dot, horizontal: !!horizontal }]
 
 export const getStepClasses = ({
   active,
@@ -12,4 +12,4 @@ export const getStepClasses = ({
 }: {
   active: boolean
   finish: boolean
-}) => ['fx-step', 'fx-steps-item', 'fx-horizontal-hairline', { active, finish }]
+}) => ['ak-step', 'ak-steps-item', 'ak-horizontal-hairline', { active, finish }]

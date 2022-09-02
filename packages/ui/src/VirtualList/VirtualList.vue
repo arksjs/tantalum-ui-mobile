@@ -1,8 +1,8 @@
 <template>
   <div :class="classes" ref="root">
-    <ul class="fx-virtual-list_list" :style="listStyles" ref="listEl">
+    <ul class="ak-virtual-list_list" :style="listStyles" ref="listEl">
       <li
-        class="fx-virtual-list_item"
+        class="ak-virtual-list_item"
         v-for="item in renderList"
         :key="item.id"
         :data-index="item.index"
@@ -11,9 +11,9 @@
         <slot :id="item.id" :index="item.index"></slot>
       </li>
     </ul>
-    <ul class="fx-virtual-list_list pool" ref="poolEl">
+    <ul class="ak-virtual-list_list pool" ref="poolEl">
       <li
-        class="fx-virtual-list_item"
+        class="ak-virtual-list_item"
         v-for="item in poolList"
         :key="item.id"
         :data-index="item.index"
@@ -46,7 +46,7 @@ import type { ScrollToOffsetOptions } from '../hooks/types'
 import { getClasses, getItemStyles, getListStyles } from './util'
 
 export default defineComponent({
-  name: 'fx-virtual-list',
+  name: 'ak-virtual-list',
   props: {
     ...virtualListProps
   },

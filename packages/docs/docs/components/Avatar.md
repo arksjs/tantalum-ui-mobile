@@ -74,7 +74,7 @@ type BadgeOption =
 #### children
 
 ```vue
-<fx-avatar>曹</fx-avatar>
+<ak-avatar>曹</ak-avatar>
 ```
 
 ## AvatarGroup
@@ -94,9 +94,9 @@ type BadgeOption =
 注：其中只可放置 [Avatar](./Avatar.md#avatar) 组件，否则会导致未定义的行为。
 
 ```vue
-<fx-avatar-group>
-  <fx-avatar src="https://cdn.fox2.cn/vfox/avatar/5.png" />
-  <fx-avatar src="https://cdn.fox2.cn/vfox/avatar/6.png" />
-  <fx-avatar src="https://cdn.fox2.cn/vfox/avatar/7.png" />
-</fx-avatar-group>
+<ak-avatar-group>
+  <ak-avatar src="https://cdn.fox2.cn/vfox/avatar/5.png" />
+  <ak-avatar src="https://cdn.fox2.cn/vfox/avatar/6.png" />
+  <ak-avatar src="https://cdn.fox2.cn/vfox/avatar/7.png" />
+</ak-avatar-group>
 ```

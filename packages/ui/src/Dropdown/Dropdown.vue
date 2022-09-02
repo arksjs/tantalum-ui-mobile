@@ -1,14 +1,14 @@
 <template>
   <teleport to="body">
     <div
-      class="fx-dropdown"
+      class="ak-dropdown"
       :class="popupClasses"
       :style="popupStyles"
       v-bind="$attrs"
       ref="popupEl"
     >
-      <div class="fx-mask" @click="onMaskClick"></div>
-      <div class="fx-dropdown_inner">
+      <div class="ak-mask" @click="onMaskClick"></div>
+      <div class="ak-dropdown_inner">
         <slot :height="height"></slot>
       </div>
     </div>
@@ -26,7 +26,7 @@ import { querySelector } from '../helpers/dom'
 import type { Selector } from '../helpers/types'
 
 export default defineComponent({
-  name: 'fx-dropdown',
+  name: 'ak-dropdown',
   props: {
     ...popupProps,
     selector: {

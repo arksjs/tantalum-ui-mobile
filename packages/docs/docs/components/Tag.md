@@ -70,5 +70,5 @@ import type { StateType, SizeType, TagPattern } from 'vfox'
 ### #default
 
 ```vue
-<fx-tag>标签</fx-tag>
+<ak-tag>标签</ak-tag>
 ```

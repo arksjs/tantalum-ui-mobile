@@ -1,31 +1,31 @@
 <template>
-  <!-- <fx-group title="基础用法">
+  <!-- <ak-group title="基础用法">
     <div class="exp-order-box">
-      <fx-order v-model:items="items">
+      <ak-order v-model:items="items">
         <template #default="{ id }">
           <div class="exp-order-item" :class="[maps.get(id)]"></div>
         </template>
-      </fx-order>
+      </ak-order>
     </div>
-  </fx-group> -->
-  <fx-group title="设置列数">
+  </ak-group> -->
+  <ak-group title="设置列数">
     <div class="exp-order-box">
-      <fx-order v-model:items="items2" :columnNumber="4">
+      <ak-order v-model:items="items2" :columnNumber="4">
         <template #default="{ id }">
           <div class="exp-order-item" :class="[maps.get(id as number)]"></div>
         </template>
-      </fx-order>
+      </ak-order>
     </div>
-  </fx-group>
-  <fx-group title="允许删除">
+  </ak-group>
+  <ak-group title="允许删除">
     <div class="exp-order-box">
-      <fx-order v-model:items="items3" :deletable="true">
+      <ak-order v-model:items="items3" :deletable="true">
         <template #default="{ id }">
           <div class="exp-order-item" :class="[maps.get(id as number)]"></div>
         </template>
-      </fx-order>
+      </ak-order>
     </div>
-  </fx-group>
+  </ak-group>
 </template>
 
 <script lang="ts">

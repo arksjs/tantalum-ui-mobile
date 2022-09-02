@@ -1,32 +1,32 @@
 <template>
-  <fx-group title="基础用法">
+  <ak-group title="基础用法">
     <div class="exp-tab-box">
-      <fx-tab
+      <ak-tab
         :options="shortTabList"
         v-model:activeValue="shortActiveValue"
-      ></fx-tab>
+      ></ak-tab>
     </div>
-  </fx-group>
-  <fx-group title="滚动（阈值 scrollThreshold = 4）">
+  </ak-group>
+  <ak-group title="滚动（阈值 scrollThreshold = 4）">
     <div class="exp-tab-box">
-      <fx-tab :options="tabList" v-model:activeValue="activeValue"></fx-tab>
+      <ak-tab :options="tabList" v-model:activeValue="activeValue"></ak-tab>
     </div>
-  </fx-group>
-  <fx-group title="Mix">
+  </ak-group>
+  <ak-group title="Mix">
     <div class="exp-tab-box">
-      <fx-tab :options="mixTabList"></fx-tab>
+      <ak-tab :options="mixTabList"></ak-tab>
     </div>
-  </fx-group>
-  <fx-group title="带副标签">
+  </ak-group>
+  <ak-group title="带副标签">
     <div class="exp-tab-box">
-      <fx-tab :options="subTabList"></fx-tab>
+      <ak-tab :options="subTabList"></ak-tab>
     </div>
-  </fx-group>
-  <fx-group title="change 事件">
+  </ak-group>
+  <ak-group title="change 事件">
     <div class="exp-tab-box">
-      <fx-tab :options="shortTabList" @change="onChange"></fx-tab>
+      <ak-tab :options="shortTabList" @change="onChange"></ak-tab>
     </div>
-  </fx-group>
+  </ak-group>
 </template>
 
 <script lang="ts">

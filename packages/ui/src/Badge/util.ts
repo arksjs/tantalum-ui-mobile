@@ -24,7 +24,7 @@ export function handleBadge(badge?: BadgeOption): BadgeProps {
 
 export const getClasses = (props: BadgeProps) => {
   return [
-    'fx-badge',
+    'ak-badge',
     {
       animated: !!props.animated
     }
@@ -33,7 +33,7 @@ export const getClasses = (props: BadgeProps) => {
 
 export const getBadgeClasses = (props: BadgeProps) => {
   return [
-    'fx-badge_badge',
+    'ak-badge_badge',
     {
       dot: !!props.dot
     }
@@ -58,8 +58,8 @@ export const getBadgeStyles = (props: BadgeProps) => {
   const colorObj = getColorObject(props.color)
 
   if (colorObj.hasColor) {
-    styles[`--fx-color`] = colorObj.varBackgroundColor
-    styles[`--fx-front-color`] = colorObj.varFrontColor
+    styles[`--ak-color`] = colorObj.varBackgroundColor
+    styles[`--ak-front-color`] = colorObj.varFrontColor
   }
 
   return styles

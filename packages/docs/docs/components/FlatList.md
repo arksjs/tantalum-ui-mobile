@@ -70,30 +70,30 @@ import type {
 ### 列表项（#default）
 
 ```vue
-<fx-flat-list>
+<ak-flat-list>
  <template #default="{ id, index }">
   {{ index }} : {{ id }}
  </template>
-</fx-flat-list>
+</ak-flat-list>
 ```
 
 ### 列表为空（#empty）
 
 ```vue
-<fx-flat-list>
+<ak-flat-list>
   <template #empty>暂无数据</template>
   ...
-</fx-flat-list>
+</ak-flat-list>
 ```
 
 ### 分割线（#separator）
 
 ```vue
-<fx-flat-list>
+<ak-flat-list>
   <template #separator>
     <div class="line"></div>
   </template>
-</fx-flat-list>
+</ak-flat-list>
 ```
 
 注： `itemSize` 设定值需要把分割线也考虑进去。
@@ -101,10 +101,10 @@ import type {
 ### 前置（#header）
 
 ```vue
-<fx-flat-list>
+<ak-flat-list>
   <template #header></template>
   ...
-</fx-flat-list>
+</ak-flat-list>
 ```
 
 也可以传入 [Icon](./Icon.md)，比如常见的搜索。
@@ -114,10 +114,10 @@ import type {
 常见的方式是可以通过 footer 插槽来定义底部效果，替代默认的 `lowerLoading` 来实现无限滚动的加载效果。
 
 ```vue
-<fx-flat-list>
+<ak-flat-list>
   ...
   <template #footer>暂时没有更多了</template>
-</fx-flat-list>
+</ak-flat-list>
 ```
 
 ## Methods

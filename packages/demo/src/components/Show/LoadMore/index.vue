@@ -1,13 +1,13 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-load-more></fx-load-more>
-  </fx-group>
-  <fx-group title="Slot defaut">
-    <fx-load-more>暂无数据</fx-load-more>
-  </fx-group>
-  <fx-group title="loading=true">
-    <fx-load-more loading>加载中...</fx-load-more>
-  </fx-group>
+  <ak-group title="基础用法">
+    <ak-load-more></ak-load-more>
+  </ak-group>
+  <ak-group title="Slot defaut">
+    <ak-load-more>暂无数据</ak-load-more>
+  </ak-group>
+  <ak-group title="loading=true">
+    <ak-load-more loading>加载中...</ak-load-more>
+  </ak-group>
 </template>
 
 <script lang="ts">

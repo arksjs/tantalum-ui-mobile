@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-cascader" :class="{ disabled }" ref="root">
+  <div class="ak-cascader" :class="{ disabled }" ref="root">
     <SelectorField
       :label="fieldLabel"
       :value="fieldValue"
@@ -31,7 +31,7 @@ import { mergeHandlers } from '../Picker/util'
 import { usePicker } from '../Picker/use-picker'
 
 export default defineComponent({
-  name: 'fx-cascader',
+  name: 'ak-cascader',
   components: { CascaderPopup, SelectorField },
   props: { ...commonProps, ...pickerProps },
   emits: { ...pickerEmits },

@@ -1,17 +1,17 @@
 <template>
-  <fx-group title="基础用法">
+  <ak-group title="基础用法">
     <div class="exp-sideTab-box">
-      <fx-side-tab
+      <ak-side-tab
         :options="tabList"
         v-model:activeValue="activeValue"
-      ></fx-side-tab>
+      ></ak-side-tab>
     </div>
-  </fx-group>
-  <fx-group title="Mix">
+  </ak-group>
+  <ak-group title="Mix">
     <div class="exp-sideTab-box">
-      <fx-side-tab :options="mixTabList"></fx-side-tab>
+      <ak-side-tab :options="mixTabList"></ak-side-tab>
     </div>
-  </fx-group>
+  </ak-group>
 </template>
 
 <script lang="ts">

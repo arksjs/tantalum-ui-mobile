@@ -2,9 +2,9 @@
 
 exports[`Dropdown > snapshot 1`] = `
 "<teleport-stub>
-  <div class=\\"fx-dropdown fx-popup\\" style=\\"z-index: 2000; top: 100vh;\\">
-    <div class=\\"fx-mask\\"></div>
-    <div class=\\"fx-dropdown_inner\\"></div>
+  <div class=\\"ak-dropdown ak-popup\\" style=\\"z-index: 2000; top: 100vh;\\">
+    <div class=\\"ak-mask\\"></div>
+    <div class=\\"ak-dropdown_inner\\"></div>
   </div>
 </teleport-stub>"
 `;

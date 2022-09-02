@@ -1,11 +1,11 @@
 <template>
-  <fx-group title="基本用法">
-    <fx-fixed>
+  <ak-group title="基本用法">
+    <ak-fixed>
       <div class="exp-fixed-box">
-        <fx-button type="primary">固定布局</fx-button>
+        <ak-button type="primary">固定布局</ak-button>
       </div>
-    </fx-fixed>
-  </fx-group>
+    </ak-fixed>
+  </ak-group>
 </template>
 
 <script lang="ts">

@@ -1,14 +1,14 @@
 <template>
-  <div class="fx-image" ref="root">
+  <div class="ak-image" ref="root">
     <span
       v-if="aspectRatio != null && aspectRatio > 0"
-      class="fx-image_ratio"
+      class="ak-image_ratio"
       :style="ratioStyles"
     ></span>
-    <i class="fx-image_loading" v-if="loading">
+    <i class="ak-image_loading" v-if="loading">
       <Icon :icon="loadingIcon" :size="iconSize" />
     </i>
-    <i class="fx-image_error" v-if="error">
+    <i class="ak-image_error" v-if="error">
       <Icon :icon="errorIcon" :size="iconSize" />
     </i>
     <img
@@ -51,7 +51,7 @@ import { getImgClasses, getRatioStyles, MODE_NAMES } from './util'
 import { isString } from '../helpers/util'
 
 export default defineComponent({
-  name: 'fx-image',
+  name: 'ak-image',
   components: { Icon },
   props: {
     // 图片资源地址

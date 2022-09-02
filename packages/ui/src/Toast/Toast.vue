@@ -1,29 +1,29 @@
 <template>
   <teleport to="body">
     <div
-      :class="['fx-toast', popupClasses, { 'no--mask': !showMask }]"
+      :class="['ak-toast', popupClasses, { 'no--mask': !showMask }]"
       :style="popupStyles"
       v-bind="$attrs"
     >
       <div :class="boxClasses">
         <ActivityIndicator
-          class="fx-toast_icon"
+          class="ak-toast_icon"
           :size="21"
           color="#ffffff"
           v-if="type === 'loading'"
         />
         <Icon
           v-else-if="type === 'success'"
-          class="fx-toast_icon"
+          class="ak-toast_icon"
           :icon="CheckOutlined"
         />
         <Icon
           v-else-if="type === 'fail'"
-          class="fx-toast_icon"
+          class="ak-toast_icon"
           :icon="CloseOutlined"
         />
-        <Icon v-else-if="icon" class="fx-toast_icon" :icon="icon" />
-        <div class="fx-toast_text">
+        <Icon v-else-if="icon" class="ak-toast_icon" :icon="icon" />
+        <div class="ak-toast_text">
           {{ title }}
         </div>
       </div>
@@ -47,7 +47,7 @@ import { getBoxClasses, STATE_TYPES } from './util'
 import { useDelay } from '../hooks/use-delay'
 
 export default defineComponent({
-  name: 'fx-toast',
+  name: 'ak-toast',
   components: { Icon, ActivityIndicator },
   props: {
     ...popupProps,

@@ -37,7 +37,7 @@ export const getButtonClasses = (
   props: ButtonProps,
   groupProps?: ButtonGroupProps
 ) => [
-  'fx-button',
+  'ak-button',
   {
     'has--icon': props.loading || props.icon,
     ghost: !!props.ghost,
@@ -53,7 +53,7 @@ export const getButtonClasses = (
 ]
 
 export const getGroupClasses = (props: ButtonGroupProps, count: number) => [
-  'fx-button-group',
+  'ak-button-group',
   getCommonClasses(props),
   'count--' + (count || 1)
 ]
@@ -66,13 +66,13 @@ export const getButtonStyles = (color?: string) => {
     const isDark = isDarkColor(color)
     const pattern = getEnumsValue(BUTTON_PATTERN_TYPES)
 
-    obj[`--fx-color`] = colors[5]
-    obj[`--fx-dark-color`] = colors[6]
-    obj[`--fx-light-color`] = colors[4]
+    obj[`--ak-color`] = colors[5]
+    obj[`--ak-dark-color`] = colors[6]
+    obj[`--ak-light-color`] = colors[4]
 
     if (!isDark && (pattern === 'default' || pattern === 'gradient')) {
       // 浅色背景情况，字体颜色升四阶
-      obj[`--fx-front-color`] = colors[9]
+      obj[`--ak-front-color`] = colors[9]
     }
   }
 

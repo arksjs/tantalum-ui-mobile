@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-count-down">
+  <div class="ak-count-down">
     <slot
       :time="countTime.time"
       :days="countTime.days"
@@ -31,7 +31,7 @@ const pauseOrResumeValidator: VoidFnToBooleanFn<OnPauseOrResume> = payload =>
   payload && typeof payload.remainTime === 'number'
 
 export default defineComponent({
-  name: 'fx-count-down',
+  name: 'ak-count-down',
   props: {
     // 初始倒计时时间
     initialTiming: {

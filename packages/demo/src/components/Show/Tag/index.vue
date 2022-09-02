@@ -1,63 +1,63 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="pattern=light" class="exp-tag-compact-box">
-      <fx-tag type="default">default</fx-tag>
-      <fx-tag type="primary">primary</fx-tag>
-      <fx-tag type="success">success</fx-tag>
-      <fx-tag type="warning">warning</fx-tag>
-      <fx-tag type="danger">danger</fx-tag>
-    </fx-cell>
-    <fx-cell label="pattern=dark" class="exp-tag-compact-box">
-      <fx-tag type="default" pattern="dark">default</fx-tag>
-      <fx-tag type="primary" pattern="dark">primary</fx-tag>
-      <fx-tag type="success" pattern="dark">success</fx-tag>
-      <fx-tag type="warning" pattern="dark">warning</fx-tag>
-      <fx-tag type="danger" pattern="dark">danger</fx-tag>
-    </fx-cell>
-    <fx-cell label="pattern=plain" class="exp-tag-compact-box">
-      <fx-tag type="default" pattern="plain">default</fx-tag>
-      <fx-tag type="primary" pattern="plain">primary</fx-tag>
-      <fx-tag type="success" pattern="plain">success</fx-tag>
-      <fx-tag type="warning" pattern="plain">warning</fx-tag>
-      <fx-tag type="danger" pattern="plain">danger</fx-tag>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="自定义颜色">
-    <fx-cell label="长春花色#6667AB">
-      <fx-tag type="default" pattern="plain" color="#6667AB">plain</fx-tag>
-    </fx-cell>
-    <fx-cell label="莲花色#E2C0BF">
-      <fx-tag type="default" color="#6667AB">dark</fx-tag>
-      <fx-tag type="default" closable color="#E2C0BF">light</fx-tag>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="标签大小">
-    <fx-cell label="size=small">
-      <fx-tag type="primary" pattern="light" size="small">标签</fx-tag>
-      <fx-tag type="primary" pattern="dark" size="small">标签</fx-tag>
-      <fx-tag type="primary" pattern="plain" size="small">标签</fx-tag>
-    </fx-cell>
-    <fx-cell label="size=middle">
-      <fx-tag type="primary" pattern="light" size="middle">标签</fx-tag>
-      <fx-tag type="primary" pattern="dark" size="middle">标签</fx-tag>
-      <fx-tag type="primary" pattern="plain" size="middle">标签</fx-tag>
-    </fx-cell>
-    <fx-cell label="size=large">
-      <fx-tag type="primary" pattern="light" size="large">标签</fx-tag>
-      <fx-tag type="primary" pattern="dark" size="large">标签</fx-tag>
-      <fx-tag type="primary" pattern="plain" size="large">标签</fx-tag>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="其他">
-    <fx-cell label="可关闭的">
-      <fx-tag type="primary" pattern="dark" size="large" closable>
+  <ak-group title="基础用法">
+    <ak-cell label="pattern=light" class="exp-tag-compact-box">
+      <ak-tag type="default">default</ak-tag>
+      <ak-tag type="primary">primary</ak-tag>
+      <ak-tag type="success">success</ak-tag>
+      <ak-tag type="warning">warning</ak-tag>
+      <ak-tag type="danger">danger</ak-tag>
+    </ak-cell>
+    <ak-cell label="pattern=dark" class="exp-tag-compact-box">
+      <ak-tag type="default" pattern="dark">default</ak-tag>
+      <ak-tag type="primary" pattern="dark">primary</ak-tag>
+      <ak-tag type="success" pattern="dark">success</ak-tag>
+      <ak-tag type="warning" pattern="dark">warning</ak-tag>
+      <ak-tag type="danger" pattern="dark">danger</ak-tag>
+    </ak-cell>
+    <ak-cell label="pattern=plain" class="exp-tag-compact-box">
+      <ak-tag type="default" pattern="plain">default</ak-tag>
+      <ak-tag type="primary" pattern="plain">primary</ak-tag>
+      <ak-tag type="success" pattern="plain">success</ak-tag>
+      <ak-tag type="warning" pattern="plain">warning</ak-tag>
+      <ak-tag type="danger" pattern="plain">danger</ak-tag>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="自定义颜色">
+    <ak-cell label="长春花色#6667AB">
+      <ak-tag type="default" pattern="plain" color="#6667AB">plain</ak-tag>
+    </ak-cell>
+    <ak-cell label="莲花色#E2C0BF">
+      <ak-tag type="default" color="#6667AB">dark</ak-tag>
+      <ak-tag type="default" closable color="#E2C0BF">light</ak-tag>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="标签大小">
+    <ak-cell label="size=small">
+      <ak-tag type="primary" pattern="light" size="small">标签</ak-tag>
+      <ak-tag type="primary" pattern="dark" size="small">标签</ak-tag>
+      <ak-tag type="primary" pattern="plain" size="small">标签</ak-tag>
+    </ak-cell>
+    <ak-cell label="size=middle">
+      <ak-tag type="primary" pattern="light" size="middle">标签</ak-tag>
+      <ak-tag type="primary" pattern="dark" size="middle">标签</ak-tag>
+      <ak-tag type="primary" pattern="plain" size="middle">标签</ak-tag>
+    </ak-cell>
+    <ak-cell label="size=large">
+      <ak-tag type="primary" pattern="light" size="large">标签</ak-tag>
+      <ak-tag type="primary" pattern="dark" size="large">标签</ak-tag>
+      <ak-tag type="primary" pattern="plain" size="large">标签</ak-tag>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="其他">
+    <ak-cell label="可关闭的">
+      <ak-tag type="primary" pattern="dark" size="large" closable>
         标签
-      </fx-tag>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell label="click & close &long-press">
-      <fx-tag
+      </ak-tag>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell label="click & close &long-press">
+      <ak-tag
         type="default"
         closable
         @click="showToast('点击事件')"
@@ -65,9 +65,9 @@
         @long-press="showToast('长按事件')"
       >
         标签
-      </fx-tag>
-    </fx-cell>
-  </fx-group>
+      </ak-tag>
+    </ak-cell>
+  </ak-group>
 </template>
 
 <script lang="ts">

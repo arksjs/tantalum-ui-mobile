@@ -1,16 +1,16 @@
 @import '../style/var.scss';
 @import '../style/mixin.scss';
 
-.fx-number-keyboard {
-  .fx-drawer_inner {
+.ak-number-keyboard {
+  .ak-drawer_inner {
     background: $background2-color;
 
-    .fx-nav-bar::after {
+    .ak-nav-bar::after {
       content: none;
     }
   }
 
-  .fx-nav-bar {
+  .ak-nav-bar {
     &_inner {
       &::after {
         content: none;
@@ -60,9 +60,9 @@
     user-select: none;
     @include box-shadow;
 
-    .fx-icon {
-      --fx-icon-size: 36px;
-      --fx-icon-color: #{$font-color};
+    .ak-icon {
+      --ak-icon-size: 36px;
+      --ak-icon-color: #{$font-color};
     }
   }
 
@@ -93,7 +93,7 @@
       font-weight: 500;
 
       &:active {
-        background-color: var(--fx-color-primary-dark);
+        background-color: var(--ak-color-primary-dark);
       }
     }
   }

@@ -47,7 +47,7 @@ import type { VisibleState, PopupOnVisibleStateChange } from 'vfox'
 ## Slots
 
 ```vue
-<fx-dropdown>
+<ak-dropdown>
   展开的内容
-</fx-dropdown>
+</ak-dropdown>
 ```

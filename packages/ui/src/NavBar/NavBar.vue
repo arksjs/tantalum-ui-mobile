@@ -1,17 +1,17 @@
 <template>
-  <div class="fx-nav-bar fx-horizontal-hairline">
-    <div class="fx-nav-bar_inner">
-      <div class="fx-nav-bar_left">
+  <div class="ak-nav-bar ak-horizontal-hairline">
+    <div class="ak-nav-bar_inner">
+      <div class="ak-nav-bar_left">
         <slot name="left" v-if="$slots.left"></slot>
         <ButtonGroup
           v-else-if="leftButtons.length > 0 || showBack || showHome"
-          class="fx-nav-bar_button-group"
+          class="ak-nav-bar_button-group"
           :shape="iconOnly ? 'square' : 'rectangle'"
           pattern="borderless"
         >
           <template v-if="leftButtons.length > 0">
             <Button
-              class="fx-nav-bar_button"
+              class="ak-nav-bar_button"
               transparent
               :type="item.type || 'default'"
               :icon="item.icon"
@@ -23,7 +23,7 @@
           </template>
           <template v-else>
             <Button
-              class="fx-nav-bar_button"
+              class="ak-nav-bar_button"
               type="default"
               :icon="LeftOutlined"
               transparent
@@ -32,7 +32,7 @@
               >{{ locale.navBarBackButtonText }}</Button
             >
             <Button
-              class="fx-nav-bar_button"
+              class="ak-nav-bar_button"
               type="default"
               :icon="HomeOutlined"
               transparent
@@ -43,20 +43,20 @@
           </template>
         </ButtonGroup>
       </div>
-      <div class="fx-nav-bar_title" ref="titleEl">
+      <div class="ak-nav-bar_title" ref="titleEl">
         {{ title }}
       </div>
-      <div class="fx-nav-bar_right">
+      <div class="ak-nav-bar_right">
         <slot name="right" v-if="$slots.right"></slot>
         <template v-else>
           <ButtonGroup
-            class="fx-nav-bar_button-group"
+            class="ak-nav-bar_button-group"
             :shape="iconOnly ? 'square' : 'rectangle'"
             pattern="borderless"
             v-if="rightButtons.length > 0"
           >
             <Button
-              class="fx-nav-bar_button"
+              class="ak-nav-bar_button"
               :type="item.type || 'default'"
               :icon="item.icon"
               v-for="(item, index) in rightButtons"
@@ -115,7 +115,7 @@ const emitTitleDbClickValidator: VoidFnToBooleanFn<OnTitleDbClick> = titleEl =>
   titleEl instanceof HTMLElement
 
 export default defineComponent({
-  name: 'fx-nav-bar',
+  name: 'ak-nav-bar',
   components: { Button, ButtonGroup },
   props: {
     // 标题

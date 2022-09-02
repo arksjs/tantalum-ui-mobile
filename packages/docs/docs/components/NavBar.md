@@ -82,18 +82,18 @@ type Payload = {
 ### 左侧区域自定义（#left）
 
 ```vue
-<fx-nav-bar
+<ak-nav-bar
   title="标题"
   :right-buttons="[{ icon: 'MenuOutlined', text: '菜单' }]"
 >
   <template #left>Left Slot</template>
-</fx-nav-bar>
+</ak-nav-bar>
 ```
 
 ### 右侧区域自定义（#right）
 
 ```vue
-<fx-nav-bar title="标题" :show-back="true" :show-home="true">
+<ak-nav-bar title="标题" :show-back="true" :show-home="true">
   <template #right>Right Slot</template>
-</fx-nav-bar>
+</ak-nav-bar>
 ```

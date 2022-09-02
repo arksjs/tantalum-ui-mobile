@@ -35,7 +35,7 @@ type UseOptions = Partial<
 >
 
 function useApiHook(emit: any) {
-  const apis = inject<PopupBridge>('fxApis', {})
+  const apis = inject<PopupBridge>('akApis', {})
 
   const emitHook: UseEmitFn<PropsToEmits<PopupEmits>> = (event, res) => {
     apis.in ? apis.in(event, res) : emit(event, res)
@@ -57,7 +57,7 @@ export function usePopup(
   useOptions: UseOptions
 ) {
   const { emitHook, cancelHook } = useApiHook(ctx.emit)
-  // const isParent = inject<boolean>('fxPopupExtend', false)
+  // const isParent = inject<boolean>('akPopupExtend', false)
 
   const isShow = ref(false)
   const zIndex = ref(popupZIndex)
@@ -91,7 +91,7 @@ export function usePopup(
 
     // 如果禁止滚动
     if (forbidScroll) {
-      addClassName(document.body, 'fx-overflow-hidden')
+      addClassName(document.body, 'ak-overflow-hidden')
     } else {
       position.value = 'absolute'
       absTop.value = getScrollTop()
@@ -133,7 +133,7 @@ export function usePopup(
     }
     isHiding = true
     isShowing = false
-    removeClassName(document.body, 'fx-overflow-hidden')
+    removeClassName(document.body, 'ak-overflow-hidden')
     visible2.value = false
 
     clearTimeout(visibleTimer)
@@ -220,7 +220,7 @@ export function usePopup(
     getPopupStyles(zIndex.value, absTop.value, isShow.value)
   )
 
-  const popupClasses = computed(() => ['fx-popup', { visible: visible2.value }])
+  const popupClasses = computed(() => ['ak-popup', { visible: visible2.value }])
 
   watch(
     () => props.visible,
@@ -282,7 +282,7 @@ export function usePopupExtend<T>(ctx: SetupContext<any>) {
     emitHook('update:visible', value)
   }
 
-  // provide('fxPopupExtend', true)
+  // provide('akPopupExtend', true)
   cancelHook(customCancel)
 
   return {

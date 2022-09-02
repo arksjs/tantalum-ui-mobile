@@ -56,14 +56,14 @@ const onCancel: PopupOnCancel = res => {
 </script>
 
 <template>
-  <fx-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Picker" />
-  <fx-group title="基础用法">
-    <fx-cell label="v-model" isLink @click="visible = true">{{
+  <ak-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Picker" />
+  <ak-group title="基础用法">
+    <ak-cell label="v-model" isLink @click="visible = true">{{
       popupValue
-    }}</fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell
+    }}</ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell
       label="change"
       isLink
       @click="
@@ -73,7 +73,7 @@ const onCancel: PopupOnCancel = res => {
         }
       "
     />
-    <fx-cell
+    <ak-cell
       label="confirm/cancel"
       isLink
       @click="
@@ -83,7 +83,7 @@ const onCancel: PopupOnCancel = res => {
         }
       "
     />
-    <fx-cell
+    <ak-cell
       label="visible-state-change"
       isLink
       @click="
@@ -93,8 +93,8 @@ const onCancel: PopupOnCancel = res => {
         }
       "
     />
-  </fx-group>
-  <fx-picker-popup
+  </ak-group>
+  <ak-picker-popup
     v-model:visible="visible"
     title="PickerPopup"
     :options="multiOptions"

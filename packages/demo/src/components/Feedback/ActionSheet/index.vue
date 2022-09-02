@@ -1,17 +1,17 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="默认" isLink @click="visible = true"></fx-cell>
-    <fx-cell
+  <ak-group title="基础用法">
+    <ak-cell label="默认" isLink @click="visible = true"></ak-cell>
+    <ak-cell
       label="展示标题"
       isLink
       @click=";(title = '标题'), (visible = true)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="展示取消按钮"
       isLink
       @click=";(showCancel = true), (visible = true)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="设置取消按钮文案"
       isLink
       @click="
@@ -19,10 +19,10 @@
           (cancelText = '自定义取消按钮文案'),
           (visible = true)
       "
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="options 扩展">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="options 扩展">
+    <ak-cell
       label="选项描述"
       isLink
       @click="
@@ -40,8 +40,8 @@
         ]),
           (visible = true)
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="选项高亮"
       isLink
       @click="
@@ -59,24 +59,24 @@
         ]),
           (visible = true)
       "
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell
       label="confirm/cancel"
       isLink
       @click=";(showCancel = true), (showEvent = true), (visible = true)"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="visible-state-change"
       isLink
       @click=";(visibleEvent = true), (visible = true)"
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="API">
-    <fx-cell label="showActionSheet" isLink @click="onCallApi()"></fx-cell>
-  </fx-group>
-  <fx-action-sheet
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="API">
+    <ak-cell label="showActionSheet" isLink @click="onCallApi()"></ak-cell>
+  </ak-group>
+  <ak-action-sheet
     v-model:visible="visible"
     :title="title"
     :options="options"
@@ -85,7 +85,7 @@
     @confirm="onConfirm"
     @cancel="onCancel"
     @visibleStateChange="onVisibleStateChange"
-  ></fx-action-sheet>
+  ></ak-action-sheet>
 </template>
 
 <script lang="ts">

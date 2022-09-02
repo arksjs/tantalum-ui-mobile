@@ -18,7 +18,7 @@ import { getNumber } from '../helpers/util'
 const DEFAULT_SIZE = 20
 
 export default defineComponent({
-  name: 'fx-activity-indicator',
+  name: 'ak-activity-indicator',
   components: { LoadingIcon },
   props: {
     animated: {

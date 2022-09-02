@@ -1,6 +1,6 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell
+  <ak-group title="基础用法">
+    <ak-cell
       label="默认"
       isLink
       @click="
@@ -9,8 +9,8 @@
           content: '提示内容提示内容提示内容提示内容提示内容提示内容'
         })
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="不带标题"
       isLink
       @click="
@@ -18,8 +18,8 @@
           content: '提示内容提示内容提示内容提示内容提示内容提示内容'
         })
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="不显示取消按钮"
       isLink
       @click="
@@ -29,8 +29,8 @@
           showCancel: false
         })
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="自定义按钮文案"
       isLink
       @click="
@@ -41,10 +41,10 @@
           confirmText: '接受'
         })
       "
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell
       label="confirm/cancel"
       isLink
       @click="
@@ -56,8 +56,8 @@
           true
         )
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="visible-state-change"
       isLink
       @click="
@@ -70,19 +70,19 @@
           true
         )
       "
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="API">
-    <fx-cell label="showDialog" isLink @click="onCallApi()"></fx-cell>
-  </fx-group>
-  <fx-dialog
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="API">
+    <ak-cell label="showDialog" isLink @click="onCallApi()"></ak-cell>
+  </ak-group>
+  <ak-dialog
     v-model:visible="visible"
     v-bind="dialogArgs"
     @confirm="onConfirm"
     @cancel="onCancel"
     @visibleStateChange="onVisibleStateChange"
   >
-  </fx-dialog>
+  </ak-dialog>
 </template>
 
 <script lang="ts">

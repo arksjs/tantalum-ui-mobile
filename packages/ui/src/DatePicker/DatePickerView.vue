@@ -1,6 +1,6 @@
 <template>
   <PickerView
-    class="fx-date-picker-view"
+    class="ak-date-picker-view"
     @update:modelValue="onUpdateValue"
     @change="onChange"
   >
@@ -16,7 +16,7 @@ import { useHandlers } from '../DatePicker/use-date-picker'
 import type { SelectorModelValue } from '../SelectorField/types'
 
 export default defineComponent({
-  name: 'fx-date-picker-view',
+  name: 'ak-date-picker-view',
   components: { PickerView },
   props: {
     ...commonProps

@@ -34,7 +34,7 @@ const onClick = () => {
 </script>
 
 <template>
-  <fx-button type="primary" @click="onClick">{{ msg }}</fx-button>
+  <ak-button type="primary" @click="onClick">{{ msg }}</ak-button>
 </template>
 `
 

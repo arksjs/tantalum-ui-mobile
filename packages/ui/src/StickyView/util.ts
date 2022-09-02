@@ -1,5 +1,5 @@
 export const getClasses = (isSelfContainer: boolean) => [
-  'fx-sticky-view',
+  'ak-sticky-view',
   {
     self: isSelfContainer
   }

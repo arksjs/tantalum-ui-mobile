@@ -68,19 +68,19 @@ function addOneDay() {
 </script>
 
 <template>
-  <fx-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Calendar" />
-  <fx-group title="基础用法">
-    <fx-cell
+  <ak-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Calendar" />
+  <ak-group title="基础用法">
+    <ak-cell
       label="默认"
       @click="
         () => {
           popupVisible = true
         }
       "
-      >{{ popupValue }}</fx-cell
+      >{{ popupValue }}</ak-cell
     >
-    <fx-cell label="+1day" isLink @click="addOneDay">click</fx-cell>
-    <fx-cell
+    <ak-cell label="+1day" isLink @click="addOneDay">click</ak-cell>
+    <ak-cell
       label="showConfirm=true"
       isLink
       @click="
@@ -90,14 +90,14 @@ function addOneDay() {
         }
       "
     />
-    <fx-cell
+    <ak-cell
       label="initialMode=range"
       isLink
       @click="popupRangeVisible = true"
     />
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell
       label="confirm/cancel"
       isLink
       @click="
@@ -108,7 +108,7 @@ function addOneDay() {
         }
       "
     />
-    <fx-cell
+    <ak-cell
       label="visible-state-change"
       isLink
       @click="
@@ -118,8 +118,8 @@ function addOneDay() {
         }
       "
     />
-  </fx-group>
-  <fx-calendar-popup
+  </ak-group>
+  <ak-calendar-popup
     v-model:visible="popupVisible"
     :title="title"
     :showConfirm="popupShowConfirm"
@@ -132,7 +132,7 @@ function addOneDay() {
     @change="onChange"
     @visibleStateChange="onVisibleStateChange"
   />
-  <fx-calendar-popup
+  <ak-calendar-popup
     v-model:visible="popupRangeVisible"
     :title="title"
     initialMode="range"

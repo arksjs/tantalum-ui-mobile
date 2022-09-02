@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-index-view {
+.ak-index-view {
   overflow-y: auto;
   position: relative;
 
@@ -40,10 +40,10 @@
   }
 }
 
-.fx-index-view-item {
+.ak-index-view-item {
   margin-bottom: 0;
 
-  .fx-group_header {
+  .ak-group_header {
     height: 28px;
     background-color: $background-color;
   }

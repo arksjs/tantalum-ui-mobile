@@ -1,7 +1,7 @@
 <template>
-  <div class="fx-sticky-view-item fx-scroll-tab-item" :data-name="name">
-    <div class="fx-sticky-view-item_header">{{ name }}</div>
-    <div class="fx-sticky-view-item_body"><slot></slot></div>
+  <div class="ak-sticky-view-item ak-scroll-tab-item" :data-name="name">
+    <div class="ak-sticky-view-item_header">{{ name }}</div>
+    <div class="ak-sticky-view-item_body"><slot></slot></div>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import { defineComponent, inject, onMounted, onUnmounted } from 'vue'
 import { createUpdateInItem } from '../hooks/use-list'
 
 export default defineComponent({
-  name: 'fx-scroll-tab-item',
+  name: 'ak-scroll-tab-item',
   props: {
     name: {
       type: String,
@@ -19,7 +19,7 @@ export default defineComponent({
   },
   setup() {
     const update = inject(
-      'fxStickyViewUpdate',
+      'akStickyViewUpdate',
       createUpdateInItem('scroll-tab')
     )
 

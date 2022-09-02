@@ -1,31 +1,31 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="预览图片" isLink @click="show({})" />
-    <fx-cell
+  <ak-group title="基础用法">
+    <ak-cell label="预览图片" isLink @click="show({})" />
+    <ak-cell
       label="指定初始图片"
       isLink
       @click="
         show({ current: 'https://cdn.fox2.cn/vfox/swiper/different-2.jpg' })
       "
     />
-    <fx-cell label="展示关闭按钮" isLink @click="show({ showClose: true })" />
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell
+    <ak-cell label="展示关闭按钮" isLink @click="show({ showClose: true })" />
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell
       label="change/cancel"
       isLink
       @click="show({ changeEvent: true })"
     />
-    <fx-cell
+    <ak-cell
       label="visible-state-change"
       isLink
       @click="show({ visibleEvent: true })"
     />
-  </fx-group>
-  <fx-group title="API">
-    <fx-cell label="showImagePreview" isLink @click="onCallApi" />
-  </fx-group>
-  <fx-image-preview
+  </ak-group>
+  <ak-group title="API">
+    <ak-cell label="showImagePreview" isLink @click="onCallApi" />
+  </ak-group>
+  <ak-image-preview
     v-model:visible="visible"
     :urls="imageUrls"
     v-model:current="current"

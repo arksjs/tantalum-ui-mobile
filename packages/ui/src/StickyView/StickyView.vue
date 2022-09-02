@@ -1,17 +1,17 @@
 <template>
   <div ref="root" :class="classes">
-    <div class="fx-sticky-view_list" ref="listEl">
+    <div class="ak-sticky-view_list" ref="listEl">
       <slot></slot>
     </div>
     <Sticky
       :offsetTop="offsetTop"
       :containSelector="containSelector"
       :disabled="disabled"
-      class="fx-sticky-view_top"
+      class="ak-sticky-view_top"
       ref="stickyRef"
     >
-      <div class="fx-sticky-view_fixed">
-        <div class="fx-sticky-view_fixed-inner" ref="fixedEl"></div>
+      <div class="ak-sticky-view_fixed">
+        <div class="ak-sticky-view_fixed-inner" ref="fixedEl"></div>
       </div>
     </Sticky>
   </div>
@@ -45,7 +45,7 @@ import { getClasses, getFixedStyles, FIXED_HEIGHT } from './util'
 import { isNumber, isString } from '../helpers/util'
 
 export default defineComponent({
-  name: 'fx-sticky-view',
+  name: 'ak-sticky-view',
   components: { Sticky },
   props: {
     // 纵向

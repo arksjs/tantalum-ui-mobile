@@ -7,18 +7,18 @@ function rangeCol(number: number | string = 0) {
 }
 
 export const getColClasses = (props: ColProps) => {
-  const classes = [`fx-col`, `fx-col-${rangeCol(props.span || 24)}`]
+  const classes = [`ak-col`, `ak-col-${rangeCol(props.span || 24)}`]
 
   if (props.offset && props.offset > 0) {
-    classes.push(`fx-col-offset-${Math.min(24, rangeCol(props.offset))}`)
+    classes.push(`ak-col-offset-${Math.min(24, rangeCol(props.offset))}`)
   }
 
   if (props.push && props.push > 0) {
-    classes.push(`fx-col-push-${rangeCol(props.push)}`)
+    classes.push(`ak-col-push-${rangeCol(props.push)}`)
   }
 
   if (props.pull && props.pull > 0) {
-    classes.push(`fx-col-pull-${rangeCol(props.pull)}`)
+    classes.push(`ak-col-pull-${rangeCol(props.pull)}`)
   }
 
   return classes

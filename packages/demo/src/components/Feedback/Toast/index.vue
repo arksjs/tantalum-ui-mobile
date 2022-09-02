@@ -1,81 +1,81 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell
+  <ak-group title="基础用法">
+    <ak-cell
       label="纯文字"
       isLink
       @click="onShowToast({ title: '提示文本' })"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="长文字"
       isLink
       @click="
         onShowToast({ title: '提示文本提示文本提示文本提示文本提示文本' })
       "
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="成功"
       isLink
       @click="onShowToast({ title: '成功文本', type: 'success' })"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="失败"
       isLink
       @click="onShowToast({ title: '失败文本', type: 'fail' })"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="加载中"
       isLink
       @click="onShowToast({ title: '加载文本', type: 'loading' })"
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="自定义图标">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="自定义图标">
+    <ak-cell
       label="收藏"
       isLink
       @click="onShowToast({ title: '已收藏', icon: 'StarFilled' })"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="警告"
       isLink
       @click="
         onShowToast({ title: '警告文本', icon: 'ExclamationCircleOutlined' })
       "
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="其他">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="其他">
+    <ak-cell
       label="自定义时长"
       isLink
       @click="onShowToast({ title: '5秒后消失', duration: 5000 })"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="展示透明蒙层"
       isLink
       @click="onShowToast({ title: '不可穿透', showMask: true })"
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="API">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="API">
+    <ak-cell
       label="showToast"
       isLink
       @click="showToast({ title: '提示文本', duration: 5000 })"
-    ></fx-cell>
-    <fx-cell label="hideToast" isLink @click="hideToast()"></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell label="hideToast" isLink @click="hideToast()"></ak-cell>
+    <ak-cell
       label="showLoading"
       isLink
       @click="showLoading({ title: '加载中' })"
-    ></fx-cell>
-    <fx-cell label="hideLoading" isLink @click="hideLoading()"></fx-cell>
-  </fx-group>
-  <fx-toast
+    ></ak-cell>
+    <ak-cell label="hideLoading" isLink @click="hideLoading()"></ak-cell>
+  </ak-group>
+  <ak-toast
     v-model:visible="visible"
     :title="title"
     :type="type"
     :showMask="showMask"
     :icon="icon"
     :duration="duration"
-  ></fx-toast>
+  ></ak-toast>
 </template>
 
 <script lang="ts">

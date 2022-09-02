@@ -1,9 +1,9 @@
 @import '../style/var.scss';
 
-.fx-tab-bar {
-  --fx-color: #{$font-color};
-  --fx-active-color: #{$primary-color};
-  --fx-front-color: var(--fx-color);
+.ak-tab-bar {
+  --ak-color: #{$font-color};
+  --ak-active-color: #{$primary-color};
+  --ak-front-color: var(--ak-color);
 
   height: 52px;
   display: flex;
@@ -39,7 +39,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--fx-front-color);
+    color: var(--ak-front-color);
     font-size: 10px;
     line-height: 14px;
     user-select: none;
@@ -51,18 +51,18 @@
       margin-bottom: 2px;
     }
 
-    .fx-image {
+    .ak-image {
       width: 28px;
       height: 28px;
     }
 
-    .fx-icon {
-      --fx-icon-size: 28px;
-      --fx-icon-color: var(--fx-front-color);
+    .ak-icon {
+      --ak-icon-size: 28px;
+      --ak-icon-color: var(--ak-front-color);
     }
 
     &.active {
-      --fx-front-color: var(--fx-active-color);
+      --ak-front-color: var(--ak-active-color);
     }
   }
 }

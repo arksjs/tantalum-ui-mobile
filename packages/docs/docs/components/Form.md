@@ -26,19 +26,19 @@ import { Form, FormFooter, FormItem } from 'vfox'
 ### #default
 
 ```vue
-<fx-form>
-  <fx-input type="text" />
-</fx-form>
+<ak-form>
+  <ak-input type="text" />
+</ak-form>
 ```
 
 ### footer
 
 ```vue
-<fx-form>
+<ak-form>
   <template #footer>
-    <fx-button form-type="submit">提交</fx-button>
+    <ak-button form-type="submit">提交</ak-button>
   </template>
-</fx-form>
+</ak-form>
 ```
 
 ## FormFooter Slots
@@ -46,9 +46,9 @@ import { Form, FormFooter, FormItem } from 'vfox'
 ### #default
 
 ```vue
-<fx-form-footer>
-  <fx-button form-type="submit">提交</fx-button>
-</fx-form-footer>
+<ak-form-footer>
+  <ak-button form-type="submit">提交</ak-button>
+</ak-form-footer>
 ```
 
 ## FormItem Props
@@ -64,9 +64,9 @@ import { Form, FormFooter, FormItem } from 'vfox'
 ### default
 
 ```vue
-<fx-form-item>
-  <fx-input type="text" />
-</fx-form-item>
+<ak-form-item>
+  <ak-input type="text" />
+</ak-form-item>
 ```
 
 ## 支持表单的组件
@@ -157,17 +157,17 @@ export default connect(
         <pre class="exp-form-json">{{
           JSON.stringify(form.values, null, 2)
         }}</pre>
-        <fx-form-footer>
-          <fx-button
+        <ak-form-footer>
+          <ak-button
             type="primary"
             @click="
               () => {
                 form.submit(onSubmit)
               }
             "
-            >提交</fx-button
+            >提交</ak-button
           >
-        </fx-form-footer>
+        </ak-form-footer>
       </template>
     </FormConsumer>
   </FormProvider>

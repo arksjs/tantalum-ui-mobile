@@ -10,7 +10,7 @@ export const getClasses = (props: TagProps) => {
   const { hasColor, isDark } = getColorObject(props.color)
 
   return [
-    'fx-tag',
+    'ak-tag',
     'type--' +
       (hasColor ? STATE_TYPES[1] : getEnumsValue(STATE_TYPES, props.type)),
     'size--' + getEnumsValue(SIZE_TYPES, props.size),
@@ -30,8 +30,8 @@ export const getStyles = (color?: string) => {
   const colorObj = getColorObject(color)
 
   if (colorObj.hasColor) {
-    styles[`--fx-color`] = colorObj.varColor
-    styles[`--fx-black-color`] = colorObj.varBlackColor
+    styles[`--ak-color`] = colorObj.varColor
+    styles[`--ak-black-color`] = colorObj.varBlackColor
   }
 
   return styles

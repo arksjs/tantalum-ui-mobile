@@ -1,7 +1,7 @@
 import { getNumber } from '../helpers/util'
 import type { Position } from './types'
 
-export const getClasses = (dragOn: boolean) => ['fx-order', { drag: dragOn }]
+export const getClasses = (dragOn: boolean) => ['ak-order', { drag: dragOn }]
 
 export const getStyles = (orderHeight: number) => ({
   height: orderHeight + 'px'
@@ -13,7 +13,7 @@ export const getItemClasses = (
   dragCurrent: number,
   dragFixed: number
 ) => [
-  'fx-order_item',
+  'ak-order_item',
   {
     current: dragCurrent === index,
     deleted: item.deleted,

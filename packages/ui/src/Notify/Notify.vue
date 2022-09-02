@@ -1,13 +1,13 @@
 <template>
   <teleport to="body">
     <div
-      class="fx-notify"
+      class="ak-notify"
       :class="popupClasses"
       :style="popupStyles"
       v-bind="$attrs"
     >
       <NoticeBar
-        class="fx-notify_inner"
+        class="ak-notify_inner"
         :type="type"
         :leftIcon="icon"
         :title="title"
@@ -32,7 +32,7 @@ import { useDelay } from '../hooks/use-delay'
 import type { NotifyEmits } from './types'
 
 export default defineComponent({
-  name: 'fx-notify',
+  name: 'ak-notify',
   components: { NoticeBar },
   props: {
     ...popupProps,

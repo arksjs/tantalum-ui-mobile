@@ -21,25 +21,25 @@ const onSelect: CascaderOnSelect = res => {
 </script>
 
 <template>
-  <fx-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Cascader" />
-  <fx-group title="家电">
-    <fx-cascader-view :options="cascadeOptions" v-model="baseValue" />
-  </fx-group>
-  <fx-group title="空数据">
-    <fx-cascader-view :options="[]" />
-  </fx-group>
-  <fx-group title="change 事件">
-    <fx-cascader-view
+  <ak-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Cascader" />
+  <ak-group title="家电">
+    <ak-cascader-view :options="cascadeOptions" v-model="baseValue" />
+  </ak-group>
+  <ak-group title="空数据">
+    <ak-cascader-view :options="[]" />
+  </ak-group>
+  <ak-group title="change 事件">
+    <ak-cascader-view
       :options="cascadeOptions"
       @change="onChange"
       v-model="changeValue"
     />
-  </fx-group>
-  <fx-group title="select 事件（跟 change 的区别是重复选一样的也触发）">
-    <fx-cascader-view
+  </ak-group>
+  <ak-group title="select 事件（跟 change 的区别是重复选一样的也触发）">
+    <ak-cascader-view
       :options="cascadeOptions"
       @select="onSelect"
       v-model="selectValue"
     />
-  </fx-group>
+  </ak-group>
 </template>

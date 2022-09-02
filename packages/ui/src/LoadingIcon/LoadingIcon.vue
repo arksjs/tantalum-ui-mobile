@@ -1,12 +1,12 @@
 <template>
   <svg
-    class="fx-loading-icon"
+    class="ak-loading-icon"
     :height="size"
     :width="size"
     viewBox="0 0 1024 1024"
   >
     <circle
-      class="fx-loading-icon_track"
+      class="ak-loading-icon_track"
       r="448"
       cx="512"
       cy="512"
@@ -15,7 +15,7 @@
       :style="{ stroke: backgroundColor }"
     ></circle>
     <circle
-      class="fx-loading-icon_thumb"
+      class="ak-loading-icon_thumb"
       r="448"
       cx="512"
       cy="512"
@@ -36,7 +36,7 @@ import { colorValidator } from '../helpers/validator'
 import { getRealStrokeWidth } from './util'
 
 export default defineComponent({
-  name: 'fx-loading-icon',
+  name: 'ak-loading-icon',
   props: {
     rate: {
       type: Number,

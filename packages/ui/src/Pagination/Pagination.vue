@@ -1,7 +1,7 @@
 <template>
-  <div class="fx-pagination">
+  <div class="ak-pagination">
     <button
-      class="fx-pagination_prev"
+      class="ak-pagination_prev"
       :disabled="pageNum <= 1"
       @click="onClick('prev')"
     >
@@ -9,13 +9,13 @@
         <Icon :icon="LeftOutlined" />
       </slot>
     </button>
-    <div class="fx-pagination_content">
+    <div class="ak-pagination_content">
       <slot :current="current" :total="totalNum"
         >{{ pageNum }} / {{ totalNum }}</slot
       >
     </div>
     <button
-      class="fx-pagination_next"
+      class="ak-pagination_next"
       :disabled="pageNum >= totalNum"
       @click="onClick('next')"
     >
@@ -37,7 +37,7 @@ import { isNumber, isNumeric, rangeInteger } from '../helpers/util'
 import { getTotal } from './util'
 
 export default defineComponent({
-  name: 'fx-pagination',
+  name: 'ak-pagination',
   components: { Icon },
   props: {
     // 栅格占据的列数

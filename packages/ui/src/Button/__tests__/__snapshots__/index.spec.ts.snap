@@ -1,9 +1,9 @@
 // Vitest Snapshot v1
 
 exports[`Button > snapshot 1`] = `
-"<button class=\\"fx-button type--default pattern--default size--large shape--rectangle\\" type=\\"button\\">
+"<button class=\\"ak-button type--default pattern--default size--large shape--rectangle\\" type=\\"button\\">
   <!--v-if--><span>button</span>
 </button>"
 `;
 
-exports[`ButtonGroup > snapshot 1`] = `"<div class=\\"fx-button-group pattern--default size--large shape--rectangle count--1\\"></div>"`;
+exports[`ButtonGroup > snapshot 1`] = `"<div class=\\"ak-button-group pattern--default size--large shape--rectangle count--1\\"></div>"`;

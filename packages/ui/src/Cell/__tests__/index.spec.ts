@@ -23,9 +23,9 @@ describe('Cell', () => {
       }
     })
 
-    expect(wrapper.find('.fx-cell_label').text()).toBe(label)
-    expect(wrapper.find('.fx-cell_content').text()).toBe(content)
-    expect(wrapper.find('.fx-cell_body').text()).toBe(description)
+    expect(wrapper.find('.ak-cell_label').text()).toBe(label)
+    expect(wrapper.find('.ak-cell_content').text()).toBe(content)
+    expect(wrapper.find('.ak-cell_body').text()).toBe(description)
   })
 
   test('clickable', async () => {
@@ -46,8 +46,8 @@ describe('Cell', () => {
     })
 
     // isLink
-    expect(wrapper.find('.fx-cell_link-icon').exists()).toBeTruthy()
-    expect(wrapper.find('.fx-cell_link-icon').classes()).toContain(
+    expect(wrapper.find('.ak-cell_link-icon').exists()).toBeTruthy()
+    expect(wrapper.find('.ak-cell_link-icon').classes()).toContain(
       'arrow--right'
     )
 
@@ -55,17 +55,17 @@ describe('Cell', () => {
     await wrapper.setProps({
       arrowDirection: 'up'
     })
-    expect(wrapper.find('.fx-cell_link-icon').classes()).toContain('arrow--up')
+    expect(wrapper.find('.ak-cell_link-icon').classes()).toContain('arrow--up')
     await wrapper.setProps({
       arrowDirection: 'down'
     })
-    expect(wrapper.find('.fx-cell_link-icon').classes()).toContain(
+    expect(wrapper.find('.ak-cell_link-icon').classes()).toContain(
       'arrow--down'
     )
     await wrapper.setProps({
       arrowDirection: 'left'
     })
-    expect(wrapper.find('.fx-cell_link-icon').classes()).toContain(
+    expect(wrapper.find('.ak-cell_link-icon').classes()).toContain(
       'arrow--left'
     )
   })
@@ -79,6 +79,6 @@ describe('Cell', () => {
     })
 
     expect(wrapper.findComponent(CircleOutlined).exists()).toBeTruthy()
-    expect(wrapper.find('.fx-cell_content').text()).toBe(content)
+    expect(wrapper.find('.ak-cell_content').text()).toBe(content)
   })
 })

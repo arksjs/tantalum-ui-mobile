@@ -1,19 +1,19 @@
 /* stylelint-disable selector-class-pattern */
 
-$primary-color: #{var(--fx-color-primary)};
-$success-color: #{var(--fx-color-success)};
-$warning-color: #{var(--fx-color-warning)};
-$danger-color: #{var(--fx-color-danger)};
-$white-color: #{rgb(var(--fx-grey-1))};
-$background2-color: #{rgb(var(--fx-grey-2))};
-$background-color: #{rgb(var(--fx-grey-3))};
-$divider-color: #{rgb(var(--fx-grey-4))};
-$border-color: #{rgb(var(--fx-grey-5))};
-$font3-color: #{rgb(var(--fx-grey-6))};
-$font2-color: #{rgb(var(--fx-grey-7))};
-$font-color: #{rgb(var(--fx-grey-8))};
-$title-color: #{rgb(var(--fx-grey-10))};
-$black-color: #{rgb(var(--fx-grey-13))};
+$primary-color: #{var(--ak-color-primary)};
+$success-color: #{var(--ak-color-success)};
+$warning-color: #{var(--ak-color-warning)};
+$danger-color: #{var(--ak-color-danger)};
+$white-color: #{rgb(var(--ak-grey-1))};
+$background2-color: #{rgb(var(--ak-grey-2))};
+$background-color: #{rgb(var(--ak-grey-3))};
+$divider-color: #{rgb(var(--ak-grey-4))};
+$border-color: #{rgb(var(--ak-grey-5))};
+$font3-color: #{rgb(var(--ak-grey-6))};
+$font2-color: #{rgb(var(--ak-grey-7))};
+$font-color: #{rgb(var(--ak-grey-8))};
+$title-color: #{rgb(var(--ak-grey-10))};
+$black-color: #{rgb(var(--ak-grey-13))};
 
 body {
   margin: 0;
@@ -80,19 +80,19 @@ body {
     margin: 0 auto;
 
     &.color-primary {
-      --fx-icon-color: #{$primary-color};
+      --ak-icon-color: #{$primary-color};
     }
 
     &.color-success {
-      --fx-icon-color: #{$success-color};
+      --ak-icon-color: #{$success-color};
     }
 
     &.color-warning {
-      --fx-icon-color: #{$warning-color};
+      --ak-icon-color: #{$warning-color};
     }
 
     &.color-danger {
-      --fx-icon-color: #{$danger-color};
+      --ak-icon-color: #{$danger-color};
     }
   }
 
@@ -222,7 +222,7 @@ body {
 
 .exp-range {
   &-box {
-    .fx-cell_content {
+    .ak-cell_content {
       width: 100%;
     }
   }
@@ -236,7 +236,7 @@ body {
 
 .exp-slider {
   &-box {
-    .fx-cell_content {
+    .ak-cell_content {
       width: 100%;
     }
   }
@@ -378,8 +378,8 @@ body {
     background: $primary-color;
     background-image: linear-gradient(
       to bottom,
-      var(--fx-color-primary-light) 0%,
-      var(--fx-color-primary-dark) 100%
+      var(--ak-color-primary-light) 0%,
+      var(--ak-color-primary-dark) 100%
     );
   }
 
@@ -388,8 +388,8 @@ body {
     background: $success-color;
     background-image: linear-gradient(
       to bottom,
-      var(--fx-color-success-light) 0%,
-      var(--fx-color-success-dark) 100%
+      var(--ak-color-success-light) 0%,
+      var(--ak-color-success-dark) 100%
     );
   }
 
@@ -398,8 +398,8 @@ body {
     background: $warning-color;
     background-image: linear-gradient(
       to bottom,
-      var(--fx-color-warning-light) 0%,
-      var(--fx-color-warning-dark) 100%
+      var(--ak-color-warning-light) 0%,
+      var(--ak-color-warning-dark) 100%
     );
   }
 
@@ -408,8 +408,8 @@ body {
     background: $danger-color;
     background-image: linear-gradient(
       to bottom,
-      var(--fx-color-danger-light) 0%,
-      var(--fx-color-danger-dark) 100%
+      var(--ak-color-danger-light) 0%,
+      var(--ak-color-danger-dark) 100%
     );
   }
 }
@@ -419,7 +419,7 @@ body {
 }
 
 .exp-tabBar-custom {
-  --fx-active-color: #{$title-color};
+  --ak-active-color: #{$title-color};
 }
 
 .exp-tabView {
@@ -466,7 +466,7 @@ body {
     display: flex;
     align-items: center;
 
-    .fx-avatar {
+    .ak-avatar {
       margin-left: 12px;
     }
   }
@@ -478,7 +478,7 @@ body {
     padding: 8px 0 0 16px;
     overflow: hidden;
 
-    .fx-avatar {
+    .ak-avatar {
       margin: 0 12px 8px 0;
     }
   }
@@ -559,7 +559,7 @@ body {
       float: left;
       margin: 0 16px 12px 0;
 
-      .fx-circle-progress {
+      .ak-circle-progress {
         float: left;
       }
     }
@@ -576,7 +576,7 @@ body {
 
 .exp-countDown {
   &-box {
-    .fx-button {
+    .ak-button {
       flex-grow: 0;
     }
   }
@@ -598,7 +598,7 @@ body {
 
 .exp-countUp {
   &-box {
-    .fx-button {
+    .ak-button {
       flex-grow: 0;
     }
   }
@@ -610,7 +610,7 @@ body {
 
 .exp-divider-custom-color {
   color: $primary-color;
-  border-color: var(--fx-color-primary-light);
+  border-color: var(--ak-color-primary-light);
 }
 
 .exp-empty-custom-image {
@@ -618,7 +618,7 @@ body {
   height: 214px;
 }
 
-.fx-empty + .fx-empty {
+.ak-empty + .ak-empty {
   border-top: 12px solid $background-color;
 }
 
@@ -692,7 +692,7 @@ body {
     background-clip: content-box;
 
     &:nth-child(even) {
-      background-color: var(--fx-color-primary-light);
+      background-color: var(--ak-color-primary-light);
     }
   }
 }
@@ -773,7 +773,7 @@ body {
   &-sub-component {
     overflow: hidden;
 
-    .fx-icon {
+    .ak-icon {
       float: left;
     }
 
@@ -795,22 +795,22 @@ body {
   &-custom {
     overflow: hidden;
 
-    .fx-skeleton-image {
+    .ak-skeleton-image {
       float: left;
       width: 100px !important;
       height: 100px !important;
     }
 
-    .fx-skeleton-title {
+    .ak-skeleton-title {
       margin-left: 112px;
       margin-bottom: 20px;
     }
 
-    .fx-skeleton-paragraph {
+    .ak-skeleton-paragraph {
       margin-left: 112px;
     }
 
-    .fx-skeleton-button {
+    .ak-skeleton-button {
       margin: 20px 0 0 112px;
     }
   }
@@ -838,7 +838,7 @@ body {
       padding: 12px 0;
       text-align: center;
 
-      .fx-button {
+      .ak-button {
         width: 120px;
       }
     }
@@ -859,7 +859,7 @@ body {
       background-color: $primary-color;
 
       &.even {
-        background-color: var(--fx-color-primary-light);
+        background-color: var(--ak-color-primary-light);
       }
     }
   }
@@ -872,7 +872,7 @@ body {
 
 .exp-tag {
   &-compact-box {
-    .fx-tag + .fx-tag {
+    .ak-tag + .ak-tag {
       margin-left: 2px;
     }
   }
@@ -888,9 +888,9 @@ body {
     justify-content: center;
     align-items: center;
 
-    .fx-icon {
-      --fx-icon-size: 13px;
-      --fx-icon-color: #fff;
+    .ak-icon {
+      --ak-icon-size: 13px;
+      --ak-icon-color: #fff;
     }
   }
 }
@@ -914,7 +914,7 @@ body {
     background-color: $background-color;
     margin: 0;
 
-    .fx-copy {
+    .ak-copy {
       position: absolute;
       right: 0;
       top: 0;

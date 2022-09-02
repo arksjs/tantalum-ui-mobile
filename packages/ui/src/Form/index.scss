@@ -1,12 +1,12 @@
 @import '../style/var.scss';
 
-.fx-form-footer {
+.ak-form-footer {
   padding: 8px 16px;
   display: flex;
 }
 
-.fx-form-item {
-  &.fx-cell .fx-cell_body {
+.ak-form-item {
+  &.ak-cell .ak-cell_body {
     color: $danger-color;
     list-style: none;
     padding: 0 0 12px;

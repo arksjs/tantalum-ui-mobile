@@ -1,16 +1,16 @@
 <template>
   <teleport to="body">
     <div
-      :class="['fx-modal', popupClasses]"
+      :class="['ak-modal', popupClasses]"
       :style="popupStyles"
       v-bind="$attrs"
     >
-      <div class="fx-mask" @click="onMaskClick"></div>
-      <div class="fx-modal_box" :style="boxStyles">
-        <div class="fx-modal_box-inner">
+      <div class="ak-mask" @click="onMaskClick"></div>
+      <div class="ak-modal_box" :style="boxStyles">
+        <div class="ak-modal_box-inner">
           <slot></slot>
         </div>
-        <i v-if="showClose" class="fx-modal_close" @click="onCloseClick">
+        <i v-if="showClose" class="ak-modal_close" @click="onCloseClick">
           <Icon :icon="CloseCircleFilled" />
         </i>
       </div>
@@ -27,7 +27,7 @@ import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
 import { getBoxStyles } from './util'
 
 export default defineComponent({
-  name: 'fx-modal',
+  name: 'ak-modal',
   components: { Icon },
   props: {
     ...popupProps,

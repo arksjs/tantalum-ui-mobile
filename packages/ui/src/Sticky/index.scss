@@ -1,12 +1,12 @@
 @import '../style/var.scss';
 
-.fx-sticky {
-  --fx-background-color: transparent;
+.ak-sticky {
+  --ak-background-color: transparent;
 
-  background-color: var(--fx-background-color);
+  background-color: var(--ak-background-color);
 
   &_content {
-    background-color: var(--fx-background-color);
+    background-color: var(--ak-background-color);
 
     // &.fixed {
     //   position: fixed;

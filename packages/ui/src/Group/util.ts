@@ -1,6 +1,6 @@
 export function getClasses(strongHeader: boolean) {
   return [
-    ['fx-group', 'fx-horizontal-hairline'],
+    ['ak-group', 'ak-horizontal-hairline'],
     { 'strong-header': strongHeader }
   ]
 }

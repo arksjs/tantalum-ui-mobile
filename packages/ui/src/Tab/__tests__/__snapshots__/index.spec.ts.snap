@@ -1,97 +1,97 @@
 // Vitest Snapshot v1
 
 exports[`Tab > snapshot 1`] = `
-"<div class=\\"fx-tab no--scroll\\">
-  <ul class=\\"fx-tab_list\\"></ul><span class=\\"fx-tab_underline\\"></span>
+"<div class=\\"ak-tab no--scroll\\">
+  <ul class=\\"ak-tab_list\\"></ul><span class=\\"ak-tab_underline\\"></span>
 </div>"
 `;
 
 exports[`Tab > snapshot mixTabList 1`] = `
-"<div class=\\"fx-tab no--scroll\\">
-  <ul class=\\"fx-tab_list\\">
-    <li class=\\"fx-tab_item fx-vertical-hairline active\\">
-      <div class=\\"fx-badge fx-tab_item-inner\\"><svg class=\\"fx-icon\\">
+"<div class=\\"ak-tab no--scroll\\">
+  <ul class=\\"ak-tab_list\\">
+    <li class=\\"ak-tab_item ak-vertical-hairline active\\">
+      <div class=\\"ak-badge ak-tab_item-inner\\"><svg class=\\"ak-icon\\">
           <use xlink:href=\\"#CheckSquareFilled\\"></use>
-        </svg><span class=\\"fx-tab_item-text\\">买过</span>
-        <div class=\\"fx-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+        </svg><span class=\\"ak-tab_item-text\\">买过</span>
+        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
       </div>
       <!--v-if-->
     </li>
-    <li class=\\"fx-tab_item fx-vertical-hairline active-next\\">
-      <div class=\\"fx-badge fx-tab_item-inner\\">
-        <!--v-if--><span class=\\"fx-tab_item-text\\">秒杀</span>
-        <div class=\\"fx-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">惠</div>
+    <li class=\\"ak-tab_item ak-vertical-hairline active-next\\">
+      <div class=\\"ak-badge ak-tab_item-inner\\">
+        <!--v-if--><span class=\\"ak-tab_item-text\\">秒杀</span>
+        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">惠</div>
       </div>
       <!--v-if-->
     </li>
-    <li class=\\"fx-tab_item fx-vertical-hairline\\">
-      <div class=\\"fx-badge fx-tab_item-inner\\">
-        <!--v-if--><span class=\\"fx-tab_item-text\\">天天半价工作餐</span>
-        <div class=\\"fx-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+    <li class=\\"ak-tab_item ak-vertical-hairline\\">
+      <div class=\\"ak-badge ak-tab_item-inner\\">
+        <!--v-if--><span class=\\"ak-tab_item-text\\">天天半价工作餐</span>
+        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
       </div>
       <!--v-if-->
     </li>
-    <li class=\\"fx-tab_item fx-vertical-hairline\\">
-      <div class=\\"fx-badge fx-tab_item-inner\\">
-        <!--v-if--><span class=\\"fx-tab_item-text\\">套餐</span>
-        <div class=\\"fx-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">1</div>
+    <li class=\\"ak-tab_item ak-vertical-hairline\\">
+      <div class=\\"ak-badge ak-tab_item-inner\\">
+        <!--v-if--><span class=\\"ak-tab_item-text\\">套餐</span>
+        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">1</div>
       </div>
       <!--v-if-->
     </li>
-  </ul><span class=\\"fx-tab_underline\\"></span>
+  </ul><span class=\\"ak-tab_underline\\"></span>
 </div>"
 `;
 
 exports[`Tab > snapshot mixTabList 2`] = `
-"<div class=\\"fx-tab no--scroll\\">
-  <ul class=\\"fx-tab_list\\">
-    <li class=\\"fx-tab_item fx-vertical-hairline active\\">
-      <badge-stub content=\\"0\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"fx-tab_item-inner\\"></badge-stub>
+"<div class=\\"ak-tab no--scroll\\">
+  <ul class=\\"ak-tab_list\\">
+    <li class=\\"ak-tab_item ak-vertical-hairline active\\">
+      <badge-stub content=\\"0\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ak-tab_item-inner\\"></badge-stub>
       <!--v-if-->
     </li>
-    <li class=\\"fx-tab_item fx-vertical-hairline active-next\\">
-      <badge-stub content=\\"惠\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"fx-tab_item-inner\\"></badge-stub>
+    <li class=\\"ak-tab_item ak-vertical-hairline active-next\\">
+      <badge-stub content=\\"惠\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ak-tab_item-inner\\"></badge-stub>
       <!--v-if-->
     </li>
-    <li class=\\"fx-tab_item fx-vertical-hairline\\">
-      <badge-stub content=\\"0\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"fx-tab_item-inner\\"></badge-stub>
+    <li class=\\"ak-tab_item ak-vertical-hairline\\">
+      <badge-stub content=\\"0\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ak-tab_item-inner\\"></badge-stub>
       <!--v-if-->
     </li>
-    <li class=\\"fx-tab_item fx-vertical-hairline\\">
-      <badge-stub content=\\"1\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"fx-tab_item-inner\\"></badge-stub>
+    <li class=\\"ak-tab_item ak-vertical-hairline\\">
+      <badge-stub content=\\"1\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ak-tab_item-inner\\"></badge-stub>
       <!--v-if-->
     </li>
-  </ul><span class=\\"fx-tab_underline\\"></span>
+  </ul><span class=\\"ak-tab_underline\\"></span>
 </div>"
 `;
 
 exports[`Tab > snapshot subTabList 1`] = `
-"<div class=\\"fx-tab no--scroll has--sub\\">
-  <ul class=\\"fx-tab_list\\">
-    <li class=\\"fx-tab_item fx-vertical-hairline active\\">
-      <div class=\\"fx-badge fx-tab_item-inner\\">
-        <!--v-if--><span class=\\"fx-tab_item-text\\">精选</span>
-        <div class=\\"fx-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
-      </div><span class=\\"fx-tab_item-sub-text\\">为你推荐</span>
+"<div class=\\"ak-tab no--scroll has--sub\\">
+  <ul class=\\"ak-tab_list\\">
+    <li class=\\"ak-tab_item ak-vertical-hairline active\\">
+      <div class=\\"ak-badge ak-tab_item-inner\\">
+        <!--v-if--><span class=\\"ak-tab_item-text\\">精选</span>
+        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+      </div><span class=\\"ak-tab_item-sub-text\\">为你推荐</span>
     </li>
-    <li class=\\"fx-tab_item fx-vertical-hairline active-next\\">
-      <div class=\\"fx-badge fx-tab_item-inner\\">
-        <!--v-if--><span class=\\"fx-tab_item-text\\">折扣</span>
-        <div class=\\"fx-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
-      </div><span class=\\"fx-tab_item-sub-text\\">今日折扣</span>
+    <li class=\\"ak-tab_item ak-vertical-hairline active-next\\">
+      <div class=\\"ak-badge ak-tab_item-inner\\">
+        <!--v-if--><span class=\\"ak-tab_item-text\\">折扣</span>
+        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+      </div><span class=\\"ak-tab_item-sub-text\\">今日折扣</span>
     </li>
-    <li class=\\"fx-tab_item fx-vertical-hairline\\">
-      <div class=\\"fx-badge fx-tab_item-inner\\">
-        <!--v-if--><span class=\\"fx-tab_item-text\\">好物</span>
-        <div class=\\"fx-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
-      </div><span class=\\"fx-tab_item-sub-text\\">好物必备</span>
+    <li class=\\"ak-tab_item ak-vertical-hairline\\">
+      <div class=\\"ak-badge ak-tab_item-inner\\">
+        <!--v-if--><span class=\\"ak-tab_item-text\\">好物</span>
+        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+      </div><span class=\\"ak-tab_item-sub-text\\">好物必备</span>
     </li>
-    <li class=\\"fx-tab_item fx-vertical-hairline\\">
-      <div class=\\"fx-badge fx-tab_item-inner\\">
-        <!--v-if--><span class=\\"fx-tab_item-text\\">新品</span>
-        <div class=\\"fx-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
-      </div><span class=\\"fx-tab_item-sub-text\\">新品速递</span>
+    <li class=\\"ak-tab_item ak-vertical-hairline\\">
+      <div class=\\"ak-badge ak-tab_item-inner\\">
+        <!--v-if--><span class=\\"ak-tab_item-text\\">新品</span>
+        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+      </div><span class=\\"ak-tab_item-sub-text\\">新品速递</span>
     </li>
-  </ul><span class=\\"fx-tab_underline\\"></span>
+  </ul><span class=\\"ak-tab_underline\\"></span>
 </div>"
 `;

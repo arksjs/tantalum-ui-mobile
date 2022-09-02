@@ -1,7 +1,7 @@
 <template>
-  <div class="fx-picker-view_col">
+  <div class="ak-picker-view_col">
     <VirtualList
-      class="fx-picker-view_list"
+      class="ak-picker-view_list"
       :data-index="listIndex"
       :ids="list.map(v => v.value)"
       :itemSize="getItemSize"
@@ -9,7 +9,7 @@
     >
       <template #default="{ index }">
         <div
-          class="fx-picker-view_item"
+          class="ak-picker-view_item"
           :class="{
             selected: list[index].selected,
             disabled: list[index].disabled
@@ -30,7 +30,7 @@ import type { ColRow } from './types'
 import { DEFAULT_ITEM_HEIGHT } from './util'
 
 export default defineComponent({
-  name: 'fx-picker-view-col',
+  name: 'ak-picker-view-col',
   components: { VirtualList },
   props: {
     list: {

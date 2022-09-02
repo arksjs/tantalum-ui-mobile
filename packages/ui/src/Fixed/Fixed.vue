@@ -1,8 +1,8 @@
 <template>
-  <div class="fx-fixed" :style="styles" ref="root">
+  <div class="ak-fixed" :style="styles" ref="root">
     <!--fixed start-->
     <div :class="innerClasses" :style="innerStyles" ref="innerEl">
-      <div class="fx-fixed_content-wrapper" ref="contentEl">
+      <div class="ak-fixed_content-wrapper" ref="contentEl">
         <slot></slot>
       </div>
     </div>
@@ -30,7 +30,7 @@ import { useResizeObserver } from '../hooks/use-resize-observer'
 import { getStyles, getInnerClasses, getInnerStyles } from './util'
 
 export default defineComponent({
-  name: 'fx-fixed',
+  name: 'ak-fixed',
   inject: {
     disableFixed: {
       default: false

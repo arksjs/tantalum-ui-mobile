@@ -1,81 +1,81 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-cell label="单元格" content="内容"></fx-cell>
-    <fx-cell label="单元格" content="内容" description="描述信息"></fx-cell>
-  </fx-group>
-  <fx-group title="包含图标">
-    <fx-cell label="单元格" content="内容" icon="EditOutlined"></fx-cell>
-    <fx-cell
+  <ak-group title="基础用法">
+    <ak-cell label="单元格" content="内容"></ak-cell>
+    <ak-cell label="单元格" content="内容" description="描述信息"></ak-cell>
+  </ak-group>
+  <ak-group title="包含图标">
+    <ak-cell label="单元格" content="内容" icon="EditOutlined"></ak-cell>
+    <ak-cell
       label="单元格"
       content="内容"
       description="描述信息"
       icon="EditOutlined"
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="展示箭头">
-    <fx-cell label="单元格" isLink></fx-cell>
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="展示箭头">
+    <ak-cell label="单元格" isLink></ak-cell>
+    <ak-cell
       label="单元格"
       content="内容"
       isLink
       arrow-direction="down"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="单元格"
       content="内容"
       isLink
       arrow-direction="left"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="单元格"
       description="描述信息"
       isLink
       arrow-direction="up"
-    ></fx-cell>
-    <fx-cell
+    ></ak-cell>
+    <ak-cell
       label="单元格"
       content="内容"
       description="描述信息"
       isLink
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="其他">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="其他">
+    <ak-cell
       label="必填"
       content="内容"
       isLink
       arrow-direction="down"
       required
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="事件监听">
-    <fx-cell
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="事件监听">
+    <ak-cell
       label="单元格"
       content="内容"
       description="描述信息"
       isLink
       @click="showToast('点击事件')"
-    ></fx-cell>
-  </fx-group>
-  <fx-group title="Slot default">
-    <fx-cell label="右侧图标" content="内容">
-      <fx-icon icon="CloseOutlined"></fx-icon>
-    </fx-cell>
-    <fx-cell>
+    ></ak-cell>
+  </ak-group>
+  <ak-group title="Slot default">
+    <ak-cell label="右侧图标" content="内容">
+      <ak-icon icon="CloseOutlined"></ak-icon>
+    </ak-cell>
+    <ak-cell>
       <div class="exp-cell-user-item">
-        <fx-image
+        <ak-image
           class="exp-cell-user-item-avatar"
           src="https://cdn.fox2.cn/vfox/swiper/center-2.jpg"
           mode="aspectFill"
         />
         <span class="exp-cell-user-item-nickname">小明</span>
       </div>
-    </fx-cell>
-  </fx-group>
-  <fx-group title="Slot icon">
-    <fx-cell>
+    </ak-cell>
+  </ak-group>
+  <ak-group title="Slot icon">
+    <ak-cell>
       <div class="exp-cell-user-item">
-        <fx-image
+        <ak-image
           class="exp-cell-user-item-avatar"
           src="https://cdn.fox2.cn/vfox/swiper/center-2.jpg"
           mode="aspectFill"
@@ -83,10 +83,10 @@
         <span class="exp-cell-user-item-nickname">小明</span>
       </div>
       <template #icon>
-        <fx-checkbox circle @change="onCheckboxChange" />
+        <ak-checkbox circle @change="onCheckboxChange" />
       </template>
-    </fx-cell>
-  </fx-group>
+    </ak-cell>
+  </ak-group>
 </template>
 
 <script lang="ts">

@@ -1,13 +1,13 @@
 <template>
-  <div class="fx-tab-bar fx-horizontal-hairline" :style="styles">
-    <ul class="fx-tab-bar_list" ref="listEl">
+  <div class="ak-tab-bar ak-horizontal-hairline" :style="styles">
+    <ul class="ak-tab-bar_list" ref="listEl">
       <li
         :class="getItemClasses(index, activeIndex)"
         v-for="(item, index) in options2"
         :key="item.value"
         @click="onChange(item.value)"
       >
-        <Badge class="fx-tab-bar_item-icon" v-bind="item.badge">
+        <Badge class="ak-tab-bar_item-icon" v-bind="item.badge">
           <Image
             v-if="item.iconLink"
             :src="index === activeIndex ? item.activeIconLink : item.iconLink"
@@ -17,7 +17,7 @@
             :icon="index === activeIndex ? item.activeIcon : item.icon"
           />
         </Badge>
-        <span class="fx-tab-bar_item-text">{{ item.label }}</span>
+        <span class="ak-tab-bar_item-text">{{ item.label }}</span>
       </li>
     </ul>
   </div>
@@ -33,7 +33,7 @@ import { useTab } from '../Tab/use-tab'
 import { getItemClasses } from './util'
 
 export default defineComponent({
-  name: 'fx-tab-bar',
+  name: 'ak-tab-bar',
   components: { Image, Icon, Badge },
   props: {
     ...tabProps,

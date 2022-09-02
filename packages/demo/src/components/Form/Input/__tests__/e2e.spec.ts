@@ -17,7 +17,7 @@ describe('e2e: Input', () => {
         const ArkUI = (window as any).ArkUI
         createApp({
           template: `
-            <fx-input type="digit" v-model="inputValue" />
+            <ak-input type="digit" v-model="inputValue" />
           `,
           setup: () => {
             const inputValue = ref('123')
@@ -43,7 +43,7 @@ describe('e2e: Input', () => {
         const ArkUI = (window as any).ArkUI
         createApp({
           template: `
-            <fx-input focus />
+            <ak-input focus />
           `
         })
           .use(ArkUI)
@@ -63,7 +63,7 @@ describe('e2e: Input', () => {
         const ArkUI = (window as any).ArkUI
         createApp({
           template: `
-            <fx-input show-clear />
+            <ak-input show-clear />
           `
         })
           .use(ArkUI)
@@ -72,17 +72,17 @@ describe('e2e: Input', () => {
 
       // 默认focus 没有 showClear 按钮
       await focus('input')
-      expect(await isVisible('.fx-input_clear')).toBe(false)
+      expect(await isVisible('.ak-input_clear')).toBe(false)
 
       // 当出现文字的时候有 showClear 按钮
       await typeValue('input', '123')
       await timeout(200)
-      expect(await isVisible('.fx-input_clear')).toBe(true)
+      expect(await isVisible('.ak-input_clear')).toBe(true)
 
       // 当失去焦点的时候没有 showClear 按钮
       await blur('input')
       await timeout(1000)
-      expect(await isVisible('.fx-input_clear')).toBe(false)
+      expect(await isVisible('.ak-input_clear')).toBe(false)
     },
     E2E_TIMEOUT
   )

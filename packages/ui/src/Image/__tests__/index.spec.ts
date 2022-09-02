@@ -16,7 +16,7 @@ describe('Image', () => {
     wrapper.vm.currentSrc = imgUrl
 
     await nextTick()
-    const $img = wrapper.find('.fx-image_img')
+    const $img = wrapper.find('.ak-image_img')
 
     expect($img.classes()).toContain('mode--scale-to-fill')
 
@@ -82,7 +82,7 @@ describe('Image', () => {
         aspectRatio: 1
       }
     })
-    const $el = wrapper.find('.fx-image_ratio').element as HTMLDivElement
+    const $el = wrapper.find('.ak-image_ratio').element as HTMLDivElement
     expect($el.style.paddingTop).toContain('100%')
   })
 })

@@ -1,14 +1,14 @@
 <template>
-  <div class="fx-result" :class="typeClass">
-    <div class="fx-result_header">
-      <Icon class="fx-result_icon" :class="typeClass" :icon="icon" />
-      <div class="fx-result_title" v-if="title">{{ title }}</div>
-      <div class="fx-result_description" v-if="description">
+  <div class="ak-result" :class="typeClass">
+    <div class="ak-result_header">
+      <Icon class="ak-result_icon" :class="typeClass" :icon="icon" />
+      <div class="ak-result_title" v-if="title">{{ title }}</div>
+      <div class="ak-result_description" v-if="description">
         {{ description }}
       </div>
     </div>
     <slot></slot>
-    <div class="fx-result_footer">
+    <div class="ak-result_footer">
       <Button type="primary" @click="onConfirmClick">
         {{ confirmText || locale.resultConfirmText }}
       </Button>
@@ -43,7 +43,7 @@ const iconMap = new Map<ResultType, IconData>([
 ])
 
 export default defineComponent({
-  name: 'fx-result',
+  name: 'ak-result',
   components: { Icon, Button },
   props: {
     // 类型

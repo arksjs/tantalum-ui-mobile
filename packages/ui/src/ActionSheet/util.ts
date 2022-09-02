@@ -21,8 +21,8 @@ export const getOptions = (options?: Option[]) => {
 
 export const getItemClasses = (option: Option) => {
   return [
-    'fx-action-sheet_item',
-    'fx-horizontal-hairline',
+    'ak-action-sheet_item',
+    'ak-horizontal-hairline',
     { disabled: !!option.disabled, highlight: !!option.highlight }
   ]
 }

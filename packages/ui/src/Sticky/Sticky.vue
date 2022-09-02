@@ -1,6 +1,6 @@
 <template>
-  <div class="fx-sticky" :style="styles" ref="root">
-    <div class="fx-sticky_content" ref="contentEl">
+  <div class="ak-sticky" :style="styles" ref="root">
+    <div class="ak-sticky_content" ref="contentEl">
       <slot></slot>
     </div>
   </div>
@@ -24,7 +24,7 @@ import type { ResetContainer } from './types'
 import { getStyles } from './util'
 
 export default defineComponent({
-  name: 'fx-sticky',
+  name: 'ak-sticky',
   props: {
     containSelector: {
       type: [String, HTMLElement] as PropType<Selector>,

@@ -1,6 +1,6 @@
 <template>
-  <fx-group title="基础用法">
-    <fx-image-uploader
+  <ak-group title="基础用法">
+    <ak-image-uploader
       :uploadReady="hookUploadOrFail"
       @change="onChange"
       @delete="onDelete"
@@ -9,9 +9,9 @@
       v-model="imageList"
       multiple
     />
-  </fx-group>
-  <fx-group title="上传前置处理">
-    <fx-image-uploader
+  </ak-group>
+  <ak-group title="上传前置处理">
+    <ak-image-uploader
       :beforeUpload="hookBeforeUpload"
       :uploadReady="hookUpload"
       :accept="['png', 'jpg']"
@@ -19,17 +19,17 @@
       v-model="imageList3"
       multiple
     />
-  </fx-group>
-  <fx-group title="禁用删除">
-    <fx-image-uploader
+  </ak-group>
+  <ak-group title="禁用删除">
+    <ak-image-uploader
       v-model="imageList2"
       :deletable="false"
       :uploadReady="hookUpload"
     />
-  </fx-group>
-  <fx-group title="禁用上传">
-    <fx-image-uploader disabled />
-  </fx-group>
+  </ak-group>
+  <ak-group title="禁用上传">
+    <ak-image-uploader disabled />
+  </ak-group>
 </template>
 
 <script lang="ts">

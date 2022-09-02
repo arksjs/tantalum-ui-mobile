@@ -1,7 +1,7 @@
 import type { CSSProperties } from '../helpers/types'
 
 export const getClasses = (disabled?: boolean) => {
-  return ['fx-switch', { disabled: !!disabled }]
+  return ['ak-switch', { disabled: !!disabled }]
 }
 
 export const getStyles = (props: {
@@ -11,11 +11,11 @@ export const getStyles = (props: {
 }) => {
   const styles: CSSProperties = {}
 
-  props.color && (styles['--fx-color'] = props.color)
-  props.activeColor && (styles['--fx-active-color'] = props.activeColor)
+  props.color && (styles['--ak-color'] = props.color)
+  props.activeColor && (styles['--ak-active-color'] = props.activeColor)
   props.size != null &&
     props.size > 0 &&
-    (styles['--fx-size'] = parseFloat(props.size as string) + 'px')
+    (styles['--ak-size'] = parseFloat(props.size as string) + 'px')
 
   return styles
 }

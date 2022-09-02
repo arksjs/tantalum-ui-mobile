@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-order {
+.ak-order {
   position: relative;
 
   &_item {
@@ -43,13 +43,13 @@
       transform: scale(0);
     }
 
-    .fx-order.forbid-animation & {
+    .ak-order.forbid-animation & {
       transition: transform 0.2s;
     }
   }
 
   &_delete {
-    .fx-drawer_inner {
+    .ak-drawer_inner {
       background-color: $danger-color;
       opacity: 0.9;
       min-height: 48px;
@@ -64,9 +64,9 @@
       font-size: 17px;
       color: #fff;
 
-      .fx-icon {
-        --fx-icon-size: 20px;
-        --fx-icon-color: #fff;
+      .ak-icon {
+        --ak-icon-size: 20px;
+        --ak-icon-color: #fff;
 
         margin: 0 8px 0 -2px;
       }

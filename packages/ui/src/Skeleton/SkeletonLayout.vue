@@ -1,11 +1,11 @@
 <template>
   <div :class="classes">
     <slot>
-      <div class="fx-skeleton_layout">
-        <div class="fx-skeleton_layout-left" v-if="avatar">
+      <div class="ak-skeleton_layout">
+        <div class="ak-skeleton_layout-left" v-if="avatar">
           <SkeletonAvatar />
         </div>
-        <div class="fx-skeleton_layout-right">
+        <div class="ak-skeleton_layout-right">
           <SkeletonTitle />
           <SkeletonParagraph />
         </div>
@@ -22,7 +22,7 @@ import SkeletonParagraph from './SkeletonParagraph.vue'
 import { getClasses } from './util'
 
 export default defineComponent({
-  name: 'fx-skeleton-layout',
+  name: 'ak-skeleton-layout',
   props: { animated: Boolean, avatar: Boolean },
   components: {
     SkeletonAvatar,

@@ -1,7 +1,7 @@
 <template>
   <div :class="classes">
     <Cell
-      class="fx-collapse-item_header"
+      class="ak-collapse-item_header"
       :label="title"
       :icon="icon"
       :disabled="disabled"
@@ -10,11 +10,11 @@
       @click="onClick"
     />
     <div
-      class="fx-collapse-item_body fx-horizontal-hairline"
+      class="ak-collapse-item_body ak-horizontal-hairline"
       style="display: none"
       ref="bodyEl"
     >
-      <div class="fx-collapse-item_content">
+      <div class="ak-collapse-item_content">
         <slot></slot>
       </div>
     </div>
@@ -35,7 +35,7 @@ import { getItemClasses } from './util'
 import { isBoolean } from '../helpers/util'
 
 export default defineComponent({
-  name: 'fx-collapse-item',
+  name: 'ak-collapse-item',
   components: { Cell },
   props: {
     icon: {
@@ -62,7 +62,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const active = ref(false)
     const bodyEl = ref<HTMLElement>()
-    const onChange = inject('fxCollapseChange', collapseItemChange)
+    const onChange = inject('akCollapseChange', collapseItemChange)
     const uid = Symbol()
 
     function collapseItemChange(uid: symbol) {

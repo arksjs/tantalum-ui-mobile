@@ -27,9 +27,9 @@ import { Progress } from 'vfox'
 ### 内容区（#default）
 
 ```vue
-<fx-progress :percentage="5">
+<ak-progress :percentage="5">
   <template #default="{ progress }"> 已抢{{ progress }} </template>
-</fx-progress>
+</ak-progress>
 ```
 
 注：添加 slot 后 `show-text` prop 属性失效。

@@ -1,7 +1,7 @@
 <template>
-  <div class="fx-copy" @click="onCopy">
-    <input type="text" :value="text" class="fx-copy_input" ref="inputEl" />
-    <div class="fx-copy_box">
+  <div class="ak-copy" @click="onCopy">
+    <input type="text" :value="text" class="ak-copy_input" ref="inputEl" />
+    <div class="ak-copy_box">
       <slot>{{ locale.copyText }}</slot>
     </div>
   </div>
@@ -17,7 +17,7 @@ import type { CopyEmits } from './types'
 import { isString } from '../helpers/util'
 
 export default defineComponent({
-  name: 'fx-copy',
+  name: 'ak-copy',
   props: {
     // 需要复制的文本
     text: {

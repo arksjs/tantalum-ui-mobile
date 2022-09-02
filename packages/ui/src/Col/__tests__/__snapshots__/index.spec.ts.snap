@@ -1,5 +1,5 @@
 // Vitest Snapshot v1
 
-exports[`Col > snapshot 1`] = `"<div class=\\"fx-col fx-col-24\\"></div>"`;
+exports[`Col > snapshot 1`] = `"<div class=\\"ak-col ak-col-24\\"></div>"`;
 
-exports[`Row > snapshot 1`] = `"<div class=\\"fx-row\\"></div>"`;
+exports[`Row > snapshot 1`] = `"<div class=\\"ak-row\\"></div>"`;

@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-picker" :class="{ disabled }" ref="root">
+  <div class="ak-picker" :class="{ disabled }" ref="root">
     <SelectorField
       :label="fieldLabel"
       :value="fieldValue"
@@ -30,7 +30,7 @@ import { commonProps } from './props'
 import { useHandlers } from '../DatePicker/use-date-picker'
 
 export default defineComponent({
-  name: 'fx-date-picker',
+  name: 'ak-date-picker',
   components: { SelectorField, PickerPopup },
   props: { ...commonProps, ...pickerProps },
   emits: { ...pickerEmits },

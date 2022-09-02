@@ -39,7 +39,7 @@ import type { StickyViewOnChange } from 'vfox'
 ### #default
 
 ```vue
-<fx-sticky>自定义内容</fx-sticky>
+<ak-sticky>自定义内容</ak-sticky>
 ```
 
 ## StickyView
@@ -67,23 +67,23 @@ import type { StickyViewOnChange } from 'vfox'
 注：其中只可放置 [StickyViewItem](./Sticky.md#stickyviewitem-props) 组件，否则会导致未定义的行为。
 
 ```vue
-<fx-sticky-view>
-  <fx-sticky-view-item name="Sticky 1">
+<ak-sticky-view>
+  <ak-sticky-view-item name="Sticky 1">
     <div class="sticky-box-1"></div>
-  </fx-sticky-view-item>
-  <fx-sticky-view-item name="Sticky 1">
+  </ak-sticky-view-item>
+  <ak-sticky-view-item name="Sticky 1">
     <div class="sticky-box-1"></div>
-  </fx-sticky-view-item>
-  <fx-sticky-view-item name="Sticky 2">
+  </ak-sticky-view-item>
+  <ak-sticky-view-item name="Sticky 2">
     <div class="sticky-box-2"></div>
-  </fx-sticky-view-item>
-  <fx-sticky-view-item name="Sticky 3">
+  </ak-sticky-view-item>
+  <ak-sticky-view-item name="Sticky 3">
     <div class="sticky-box-3"></div>
-  </fx-sticky-view-item>
-  <fx-sticky-view-item name="Sticky 4">
+  </ak-sticky-view-item>
+  <ak-sticky-view-item name="Sticky 4">
     <div class="sticky-box-4"></div>
-  </fx-sticky-view-item>
-</fx-sticky-view>
+  </ak-sticky-view-item>
+</ak-sticky-view>
 ```
 
 ## StickyViewItem Props
@@ -97,7 +97,7 @@ import type { StickyViewOnChange } from 'vfox'
 ### #default
 
 ```vue
-<fx-sticky-view-item name="Sticky 1">
+<ak-sticky-view-item name="Sticky 1">
   <div class="sticky-box-1"></div>
-</fx-sticky-view-item>
+</ak-sticky-view-item>
 ```

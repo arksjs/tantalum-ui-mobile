@@ -33,7 +33,7 @@ export function getAccepts(val?: Accept | Accept[]) {
 }
 
 export const getUploadButtonClasses = (disabled?: boolean) => [
-  'fx-image-uploader_upload-button',
+  'ak-image-uploader_upload-button',
   { disabled: !!disabled }
 ]
 

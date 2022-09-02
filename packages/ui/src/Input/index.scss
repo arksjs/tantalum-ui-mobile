@@ -1,10 +1,10 @@
 @import '../style/var.scss';
 
-.fx-input {
-  --fx-font-size: 17px;
-  --fx-input-icon-size: 20px;
-  --fx-front-color: #{$title-color};
-  --fx-secondary-color: #{$font3-color};
+.ak-input {
+  --ak-font-size: 17px;
+  --ak-input-icon-size: 20px;
+  --ak-front-color: #{$title-color};
+  --ak-secondary-color: #{$font3-color};
 
   height: 48px;
   width: 100%;
@@ -15,13 +15,13 @@
   border-radius: 0;
   box-sizing: border-box;
   padding: 11px 16px;
-  font-size: var(--fx-font-size);
+  font-size: var(--ak-font-size);
   background-color: $white-color;
-  color: var(--fx-front-color);
+  color: var(--ak-front-color);
 
-  .fx-icon {
-    --fx-icon-size: var(--fx-input-icon-size);
-    --fx-icon-color: var(--fx-secondary-color);
+  .ak-icon {
+    --ak-icon-size: var(--ak-input-icon-size);
+    --ak-icon-color: var(--ak-secondary-color);
   }
 
   &.disabled {
@@ -35,7 +35,7 @@
     display: flex;
     align-items: center;
     padding: 0 8px 0 0;
-    color: var(--fx-secondary-color);
+    color: var(--ak-secondary-color);
   }
 
   &_append,
@@ -45,9 +45,9 @@
   }
 
   &.has--value {
-    .fx-input {
+    .ak-input {
       &_arrow {
-        --fx-icon-color: var(--fx-front-color);
+        --ak-icon-color: var(--ak-front-color);
       }
     }
   }
@@ -70,9 +70,9 @@
     height: 100%;
     line-height: 1.412;
     padding: 0;
-    font-size: var(--fx-font-size);
+    font-size: var(--ak-font-size);
     cursor: pointer;
-    color: var(--fx-front-color);
+    color: var(--ak-front-color);
     background: none;
     box-sizing: border-box;
     box-shadow: none;
@@ -121,10 +121,10 @@
   }
 }
 
-.fx-textarea {
+.ak-textarea {
   height: 108px;
 
-  .fx-input_limit {
+  .ak-input_limit {
     position: absolute;
     right: 16px;
     bottom: 8px;

@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.fx-dialog {
+.ak-dialog {
   &_header {
     flex: 1;
     font-size: 17px;
@@ -37,7 +37,7 @@
       white-space: pre-line;
     }
 
-    .fx-dialog_header + & {
+    .ak-dialog_header + & {
       margin-top: 0;
     }
   }
@@ -62,7 +62,7 @@
       justify-content: space-between;
       position: relative;
 
-      > .fx-button + .fx-button::before {
+      > .ak-button + .ak-button::before {
         height: 100%;
         background-color: $border-color;
       }

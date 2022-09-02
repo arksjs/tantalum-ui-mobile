@@ -9,7 +9,7 @@ import { useConsumer } from './context'
 import { getButtonClasses } from './util'
 
 export default defineComponent({
-  name: 'fx-skeleton-button',
+  name: 'ak-skeleton-button',
   props: {
     // 是否显示动画
     animated: propAnimated,

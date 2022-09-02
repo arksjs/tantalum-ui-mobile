@@ -1,12 +1,12 @@
 <template>
   <teleport to="body">
     <div :class="popoverClasses" :style="popupStyles" v-bind="$attrs">
-      <div class="fx-mask" @click="onMaskClick"></div>
-      <div class="fx-popover_inner" ref="innerEl" :style="innerStyles">
-        <i class="fx-popover_arrow" :style="arrowStyles"></i>
-        <div class="fx-popover_content">
+      <div class="ak-mask" @click="onMaskClick"></div>
+      <div class="ak-popover_inner" ref="innerEl" :style="innerStyles">
+        <i class="ak-popover_arrow" :style="arrowStyles"></i>
+        <div class="ak-popover_content">
           <slot>
-            <div class="fx-popover_text">{{ content }}</div>
+            <div class="ak-popover_text">{{ content }}</div>
           </slot>
         </div>
       </div>
@@ -24,7 +24,7 @@ import { useResizeObserver } from '../hooks/use-resize-observer'
 import { getArrowStyles, getInnerStyles, getShowPos, DEFAULT_POS } from './util'
 
 export default defineComponent({
-  name: 'fx-popover',
+  name: 'ak-popover',
   props: {
     ...popoverProps,
     content: {
@@ -103,7 +103,7 @@ export default defineComponent({
     const popoverClasses = computed(() => [
       popup.popupClasses.value,
       { 'no--mask': !props.showMask },
-      'fx-popover'
+      'ak-popover'
     ])
 
     return {

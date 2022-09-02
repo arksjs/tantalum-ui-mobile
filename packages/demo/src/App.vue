@@ -75,9 +75,9 @@ const activeValue = computed(() => {
 </script>
 
 <template>
-  <fx-config-provider>
-    <fx-fixed placement="top">
-      <fx-nav-bar
+  <ak-config-provider>
+    <ak-fixed placement="top">
+      <ak-nav-bar
         :title="navBarTitle"
         v-show="$route.path !== '/' && !isDocs"
         :show-back="true"
@@ -89,24 +89,24 @@ const activeValue = computed(() => {
           { icon: 'MenuOutlined', text: 'menu' }
         ]"
         @rightButtonClick="onRightButtonClick"
-      ></fx-nav-bar>
-    </fx-fixed>
+      ></ak-nav-bar>
+    </ak-fixed>
     <router-view v-slot="{ Component }">
       <keep-alive include="ExpHome">
         <component :is="Component" />
       </keep-alive>
     </router-view>
-    <fx-drawer
+    <ak-drawer
       ref="drawer"
       title="Menu"
       placement="right"
       v-model:visible="menuVisible"
     >
-      <fx-side-tab
+      <ak-side-tab
         :options="menuList"
         :activeValue="activeValue"
         @change="onMenuChange"
-      ></fx-side-tab>
-    </fx-drawer>
-  </fx-config-provider>
+      ></ak-side-tab>
+    </ak-drawer>
+  </ak-config-provider>
 </template>

@@ -1,8 +1,8 @@
 @import '../style/var.scss';
 
-.fx-radio {
-  --fx-active-color: #{$primary-color};
-  --fx-radio-icon-size: 20px;
+.ak-radio {
+  --ak-active-color: #{$primary-color};
+  --ak-radio-icon-size: 20px;
 
   display: inline-flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
   text-align: left;
   position: relative;
 
-  + .fx-radio {
+  + .ak-radio {
     margin-left: 16px;
   }
 
@@ -26,14 +26,14 @@
 
   &_icon,
   &_checked-icon {
-    --fx-icon-size: var(--fx-radio-icon-size);
-    --fx-icon-color: #{$border-color};
+    --ak-icon-size: var(--ak-radio-icon-size);
+    --ak-icon-color: #{$border-color};
   }
 
   &_checked-icon {
     display: none;
 
-    --fx-icon-color: var(--fx-active-color);
+    --ak-icon-color: var(--ak-active-color);
   }
 
   &_input {
@@ -42,11 +42,11 @@
     top: 0;
     opacity: 0;
 
-    &:checked + .fx-radio_box .fx-radio_icon {
+    &:checked + .ak-radio_box .ak-radio_icon {
       display: none;
     }
 
-    &:checked + .fx-radio_box .fx-radio_checked-icon {
+    &:checked + .ak-radio_box .ak-radio_checked-icon {
       display: block;
     }
   }
@@ -62,7 +62,7 @@
   }
 }
 
-.fx-radio-group {
+.ak-radio-group {
   display: flex;
   height: 32px;
   align-items: center;
@@ -75,11 +75,11 @@
     height: auto;
     min-height: 32px;
 
-    > .fx-radio {
+    > .ak-radio {
       display: flex;
       width: 100%;
 
-      + .fx-radio {
+      + .ak-radio {
         margin-left: 0;
 
         &::before {

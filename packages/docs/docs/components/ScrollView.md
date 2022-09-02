@@ -60,17 +60,17 @@ import type {
 ### #default
 
 ```vue
-<fx-scroll-view>自定义内容</fx-scroll-view>
+<ak-scroll-view>自定义内容</ak-scroll-view>
 ```
 
 ### 下拉指示器（#indicator）
 
 ```vue
-<fx-scroll-view>
+<ak-scroll-view>
   <template #indicator="slotProps">
     方向：{{ slotProps.pullDirection }} 状态：{{
       slotProps.pullRefreshState
     }}
   </template>
-</fx-scroll-view>
+</ak-scroll-view>
 ```

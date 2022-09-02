@@ -57,9 +57,9 @@ import { Input } from 'vfox'
 ### 前置元素（#prepend）
 
 ```vue
-<fx-input>
+<ak-input>
   <template #prepend>https://</template>
-</fx-input>
+</ak-input>
 ```
 
 注：也可以传入 `Icon`，比如常见的搜索。
@@ -67,7 +67,7 @@ import { Input } from 'vfox'
 ### 后置元素（#append）
 
 ```vue
-<fx-input>
+<ak-input>
   <template #append>.com</template>
-</fx-input>
+</ak-input>
 ```

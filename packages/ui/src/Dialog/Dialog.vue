@@ -1,6 +1,6 @@
 <template>
   <Modal
-    class="fx-dialog"
+    class="ak-dialog"
     :visible="visible"
     :showClose="false"
     :maskClosable="maskClosable"
@@ -10,26 +10,26 @@
     @update:visible="onUpdateVisible"
     ref="popup"
   >
-    <div class="fx-dialog_header" v-if="title">
+    <div class="ak-dialog_header" v-if="title">
       {{ title }}
     </div>
-    <div class="fx-dialog_content">
-      <div class="fx-dialog_content-text" v-if="content">
+    <div class="ak-dialog_content">
+      <div class="ak-dialog_content-text" v-if="content">
         {{ content }}
       </div>
       <slot v-else></slot>
     </div>
-    <div class="fx-dialog_footer fx-horizontal-hairline">
-      <ButtonGroup class="fx-dialog_footer-inner" pattern="borderless">
+    <div class="ak-dialog_footer ak-horizontal-hairline">
+      <ButtonGroup class="ak-dialog_footer-inner" pattern="borderless">
         <Button
           v-if="showCancel"
-          class="fx-dialog_button"
+          class="ak-dialog_button"
           type="default"
           @click="onCancelClick"
         >
           {{ cancelText || locale.dialogCancelText }}
         </Button>
-        <Button class="fx-dialog_button" type="primary" @click="onConfirmClick">
+        <Button class="ak-dialog_button" type="primary" @click="onConfirmClick">
           {{ confirmText || locale.dialogConfirmText }}
         </Button>
       </ButtonGroup>
@@ -47,7 +47,7 @@ import { useLocale } from '../ConfigProvider/context'
 import type { EmptyObject } from '../helpers/types'
 
 export default defineComponent({
-  name: 'fx-dialog',
+  name: 'ak-dialog',
   components: { Button, ButtonGroup, Modal },
   props: {
     ...popupExtendProps,

@@ -13,7 +13,7 @@ import { getStepsClasses } from './util'
 import type { StepsEmits } from './types'
 
 export default defineComponent({
-  name: 'fx-steps',
+  name: 'ak-steps',
   props: {
     activeIndex: {
       type: Number,
@@ -38,7 +38,7 @@ export default defineComponent({
       }
     })
 
-    provide(`fxStepsActiveIndex`, toRef(props, 'activeIndex'))
+    provide(`akStepsActiveIndex`, toRef(props, 'activeIndex'))
 
     const classes = computed(() => getStepsClasses(props))
 

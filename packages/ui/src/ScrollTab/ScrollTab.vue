@@ -1,6 +1,6 @@
 <template>
-  <div class="fx-scroll-tab">
-    <div class="fx-scroll-tab_sidebar">
+  <div class="ak-scroll-tab">
+    <div class="ak-scroll-tab_sidebar">
       <Sticky
         ref="sideRef"
         :offsetTop="stickyOffsetTop"
@@ -9,7 +9,7 @@
         <SideTab :options="tabList" v-model:activeValue="activeIndex" />
       </Sticky>
     </div>
-    <div class="fx-scroll-tab_body">
+    <div class="ak-scroll-tab_body">
       <StickyView
         :offsetTop="stickyOffsetTop"
         ref="bodyRef"
@@ -37,7 +37,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { ScrollTabEmits } from './types'
 
 export default defineComponent({
-  name: 'fx-scroll-tab',
+  name: 'ak-scroll-tab',
   components: { SideTab, Sticky, StickyView },
   props: {
     stickyOffsetTop: {

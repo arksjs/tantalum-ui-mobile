@@ -1,12 +1,12 @@
 <template>
   <teleport to="body">
     <div :class="[popupClasses, classes]" :style="popupStyles" v-bind="$attrs">
-      <div class="fx-mask" @click="onMaskClick"></div>
+      <div class="ak-mask" @click="onMaskClick"></div>
       <div :class="innerClasses" :style="innerStyles">
         <slot name="header">
           <NavBar
             v-if="hasHeader"
-            class="fx-drawer_header"
+            class="ak-drawer_header"
             :title="title"
             :rightButtons="
               showClose ? [{ icon: CloseOutlined, text: 'close' }] : []
@@ -16,7 +16,7 @@
           >
           </NavBar>
         </slot>
-        <div class="fx-drawer_body">
+        <div class="ak-drawer_body">
           <slot></slot>
         </div>
       </div>
@@ -38,7 +38,7 @@ import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { getClasses, getInnerClasses, getInnerStyles } from './util'
 
 export default defineComponent({
-  name: 'fx-drawer',
+  name: 'ak-drawer',
   components: { NavBar },
   props: {
     ...popupProps,

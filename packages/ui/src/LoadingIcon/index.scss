@@ -1,8 +1,8 @@
 @import '../style/var.scss';
 
-.fx-loading-icon {
+.ak-loading-icon {
   &_track {
-    stroke: rgba(#{var(--fx-grey-13)}, 0.15);
+    stroke: rgba(#{var(--ak-grey-13)}, 0.15);
   }
 
   &_thumb {

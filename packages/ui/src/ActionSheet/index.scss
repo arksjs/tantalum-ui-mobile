@@ -1,7 +1,7 @@
 @import '../style/var.scss';
 
-.fx-action-sheet {
-  &.fx-drawer .fx-nav-bar {
+.ak-action-sheet {
+  &.ak-drawer .ak-nav-bar {
     height: 56px;
 
     &_title {
@@ -11,7 +11,7 @@
     }
   }
 
-  .fx-drawer {
+  .ak-drawer {
     &_body {
       background-color: $background-color;
     }
@@ -23,7 +23,7 @@
     margin: 0;
     background-color: $white-color;
 
-    + .fx-action-sheet_list {
+    + .ak-action-sheet_list {
       margin-top: 8px;
     }
   }
@@ -81,7 +81,7 @@
     }
 
     &.highlight {
-      .fx-action-sheet_item-inner span {
+      .ak-action-sheet_item-inner span {
         color: $primary-color;
       }
     }

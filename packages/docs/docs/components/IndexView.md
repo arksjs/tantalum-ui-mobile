@@ -48,14 +48,14 @@ import type { IndexViewOnChange } from 'vfox'
 注：其中只可放置 [IndexViewItem](./IndexView.md#indexviewitem-索引子项) 组件，否则会导致未定义的行为。
 
 ```vue
-<fx-index-view>
-  <fx-index-view-item name="A">
-    <fx-cell label="单元格"></fx-cell>
-    <fx-cell label="单元格"></fx-cell>
-    <fx-cell label="单元格"></fx-cell>
-  </fx-index-view-item>
+<ak-index-view>
+  <ak-index-view-item name="A">
+    <ak-cell label="单元格"></ak-cell>
+    <ak-cell label="单元格"></ak-cell>
+    <ak-cell label="单元格"></ak-cell>
+  </ak-index-view-item>
   ...
-</fx-index-view>
+</ak-index-view>
 ```
 
 ## IndexViewItem Props
@@ -69,10 +69,10 @@ import type { IndexViewOnChange } from 'vfox'
 ### #default
 
 ```vue
-<fx-index-view-item name="A">
-  <fx-cell label="单元格"></fx-cell>
-  <fx-cell label="单元格"></fx-cell>
-  <fx-cell label="单元格"></fx-cell>
+<ak-index-view-item name="A">
+  <ak-cell label="单元格"></ak-cell>
+  <ak-cell label="单元格"></ak-cell>
+  <ak-cell label="单元格"></ak-cell>
   ...
-</fx-index-view-item>
+</ak-index-view-item>
 ```

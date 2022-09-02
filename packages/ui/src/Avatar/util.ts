@@ -32,12 +32,12 @@ export const getAvatarShape = (props: AvatarProps, hasGroup?: boolean) =>
   getEnumsValue(AVATAR_SHAPE_TYPES, hasGroup ? 'circle' : props.shape)
 
 export const getGroupClasses = (count: number) => [
-  'fx-avatar-group',
+  'ak-avatar-group',
   'count--' + (count || 1)
 ]
 
 export const getGroupCountClasses = (showCount: string) => [
-  'fx-avatar-group_count-number',
+  'ak-avatar-group_count-number',
   'size--' + showCount.length
 ]
 
@@ -49,7 +49,7 @@ export const getAvatarClasses = (
   size: UserSizeType,
   shape: ShapeType
 ) => [
-  'fx-avatar',
+  'ak-avatar',
   'size--' + size,
   'shape--' + shape,
   {
@@ -69,8 +69,8 @@ export const getAvatarStyles = (props: AvatarProps, size: UserSizeType) => {
 
   const colorObj = getColorObject(props.color)
   if (colorObj.hasColor) {
-    styles[`--fx-color`] = colorObj.varBackgroundColor
-    styles[`--fx-front-color`] = colorObj.varFrontColor
+    styles[`--ak-color`] = colorObj.varBackgroundColor
+    styles[`--ak-front-color`] = colorObj.varFrontColor
   }
 
   return styles

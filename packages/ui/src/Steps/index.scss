@@ -1,9 +1,9 @@
 @import '../style/var.scss';
 
-.fx-step {
+.ak-step {
   position: relative;
 
-  + .fx-step {
+  + .ak-step {
     &::before {
       content: '';
       margin-left: 40px;
@@ -21,18 +21,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--fx-dot-color);
+    border: 1px solid var(--ak-dot-color);
     box-sizing: border-box;
     border-radius: 50%;
-    color: var(--fx-dot-color);
+    color: var(--ak-dot-color);
     background-color: $white-color;
     font-size: 13px;
     font-weight: 500;
     overflow: hidden;
 
-    .fx-icon {
-      --fx-icon-size: 14px;
-      --fx-icon-color: var(--fx-dot-color);
+    .ak-icon {
+      --ak-icon-size: 14px;
+      --ak-icon-color: var(--ak-dot-color);
     }
   }
 
@@ -80,48 +80,48 @@
       color: $primary-color;
     }
 
-    .fx-step_title + & {
+    .ak-step_title + & {
       margin-top: 4px;
     }
   }
 
   &:last-child {
-    .fx-step_line {
+    .ak-step_line {
       display: none;
     }
   }
 
   &.finish {
-    --fx-dot-color: var(--fx-color);
+    --ak-dot-color: var(--ak-color);
 
-    .fx-step {
+    .ak-step {
       &_line {
-        background-color: var(--fx-color);
+        background-color: var(--ak-color);
       }
     }
   }
 
   &.active {
-    --fx-dot-color: var(--fx-color);
+    --ak-dot-color: var(--ak-color);
 
-    .fx-step {
+    .ak-step {
       &_index {
-        border-color: var(--fx-color);
-        background-color: var(--fx-color);
+        border-color: var(--ak-color);
+        background-color: var(--ak-color);
         color: #fff;
 
-        .fx-icon {
-          --fx-icon-color: #fff;
+        .ak-icon {
+          --ak-icon-color: #fff;
         }
       }
 
       &_inner {
-        color: var(--fx-color);
+        color: var(--ak-color);
       }
     }
   }
 
-  .fx-steps.horizontal & {
+  .ak-steps.horizontal & {
     flex: 1;
 
     &_index {
@@ -153,26 +153,26 @@
       color: $font-color;
     }
 
-    .fx-step_title + .fx-step_content {
+    .ak-step_title + .ak-step_content {
       margin-top: 4px;
     }
 
     &.active {
-      .fx-step {
+      .ak-step {
         &_title,
         &_content {
-          color: var(--fx-color);
+          color: var(--ak-color);
         }
       }
     }
   }
 }
 
-.fx-steps {
-  --fx-color: #{$primary-color};
-  --fx-dot-color: #{$border-color};
+.ak-steps {
+  --ak-color: #{$primary-color};
+  --ak-dot-color: #{$border-color};
 
-  &.dot .fx-step_index {
+  &.dot .ak-step_index {
     width: 10px;
     height: 10px;
     border-width: 2px;
@@ -189,7 +189,7 @@
     display: flex;
     margin: 0 -8px;
 
-    &.dot .fx-step_index {
+    &.dot .ak-step_index {
       left: 50%;
       top: 18px;
       margin-left: -5px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="fx-image-uploader" v-bind="$attrs">
+  <div class="ak-image-uploader" v-bind="$attrs">
     <Order
       :columnNumber="columnNumber"
       :deletable="deletable"
@@ -34,7 +34,7 @@
     <input type="hidden" :name="name" :value="formValue" ref="input" />
   </div>
   <ImagePreview
-    class="fx-image-uploader_preview"
+    class="ak-image-uploader_preview"
     :urls="formValue"
     v-model:visible="previewVisible"
     v-model:current="previewCurrent"
@@ -96,7 +96,7 @@ const isValue = (val: string[]) => isStringArray(val)
 const addButtonID = -1
 
 export default defineComponent({
-  name: 'fx-image-uploader',
+  name: 'ak-image-uploader',
   components: {
     Order,
     Icon,

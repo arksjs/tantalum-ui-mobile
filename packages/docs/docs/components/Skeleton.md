@@ -50,9 +50,9 @@ import type { SkeletonAvatarShape, SkeletonButtonShape } from 'vfox'
 ### #default
 
 ```vue
-<fx-skeleton>
+<ak-skeleton>
   <div>详情...</div>
-</fx-skeleton>
+</ak-skeleton>
 ```
 
 ### 骨架屏重新布局（#layout）
@@ -60,14 +60,14 @@ import type { SkeletonAvatarShape, SkeletonButtonShape } from 'vfox'
 还可以在 layout 插槽中重新组合骨架屏，目前提供 [SkeletonAvatar](./Skeleton.md#skeletonavatar-props)、[SkeletonImage](./Skeleton.md#skeletonimage-props)、[SkeletonTitle](./Skeleton.md#skeletontitle-props)、[SkeletonParagraph](./Skeleton.md#skeletonparagraph-props)、[SkeletonButton](./Skeleton.md#skeletonbutton-props) 5 款子组件。
 
 ```vue
-<fx-skeleton>
+<ak-skeleton>
   <template #layout>
-    <fx-skeleton-image></fx-skeleton-image>
-    <fx-skeleton-title></fx-skeleton-title>
-    <fx-skeleton-paragraph></fx-skeleton-paragraph>
+    <ak-skeleton-image></ak-skeleton-image>
+    <ak-skeleton-title></ak-skeleton-title>
+    <ak-skeleton-paragraph></ak-skeleton-paragraph>
   </template>
   <div>详情...</div>
-</fx-skeleton>
+</ak-skeleton>
 ```
 
 ## SkeletonAvatar Props

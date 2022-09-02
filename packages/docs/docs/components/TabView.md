@@ -44,14 +44,14 @@ import type { TabViewOnChange, TabViewOnAnimated } from 'vfox'
 注：其中只可放置 [TabViewItem](./TabView.md#tabviewitem-props) 组件，否则会导致未定义的行为。
 
 ```vue
-<fx-tab-view>
-  <fx-tab-view-item name="Tab 1">
-    <fx-empty description="Tab 1"/>
-  </fx-tab-view-item>
-  <fx-tab-view-item name="Tab 2">
-    <fx-empty description="Tab 1" />
-  </fx-tab-view-item>
-</fx-tab-view>
+<ak-tab-view>
+  <ak-tab-view-item name="Tab 1">
+    <ak-empty description="Tab 1"/>
+  </ak-tab-view-item>
+  <ak-tab-view-item name="Tab 2">
+    <ak-empty description="Tab 1" />
+  </ak-tab-view-item>
+</ak-tab-view>
 ```
 
 ## TabViewItem Props
@@ -65,7 +65,7 @@ import type { TabViewOnChange, TabViewOnAnimated } from 'vfox'
 ### 内容（#default）
 
 ```vue
-<fx-tab-view-item name="Tab 1">
-  <fx-empty description="Tab 1"/>
-</fx-tab-view-item>
+<ak-tab-view-item name="Tab 1">
+  <ak-empty description="Tab 1"/>
+</ak-tab-view-item>
 ```

@@ -26,9 +26,9 @@ export default function useDark() {
 
   function switchTheme(isDark: boolean) {
     if (!isDark) {
-      document.body.removeAttribute('fx-theme')
+      document.body.removeAttribute('ak-theme')
     } else {
-      document.body.setAttribute('fx-theme', 'dark')
+      document.body.setAttribute('ak-theme', 'dark')
     }
     isDarkTheme.value = isDark
   }

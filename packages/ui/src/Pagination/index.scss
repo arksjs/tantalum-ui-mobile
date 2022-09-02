@@ -1,13 +1,13 @@
 @import '../style/var.scss';
 
-.fx-pagination {
-  --fx-front-color: #{$font-color};
+.ak-pagination {
+  --ak-front-color: #{$font-color};
 
   display: flex;
   align-items: center;
   justify-content: center;
   height: 48px;
-  color: var(--fx-front-color);
+  color: var(--ak-front-color);
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
@@ -25,9 +25,9 @@
     padding: 0 12px;
     outline: 0;
 
-    .fx-icon {
-      --fx-icon-color: var(--fx-front-color);
-      --fx-icon-size: 16px;
+    .ak-icon {
+      --ak-icon-color: var(--ak-front-color);
+      --ak-icon-size: 16px;
     }
 
     &:active {

@@ -1,13 +1,13 @@
 <template>
   <div :class="classes">
-    <div class="fx-group_header">
-      <div class="fx-group_title">{{ title }}</div>
-      <div class="fx-group_more">
+    <div class="ak-group_header">
+      <div class="ak-group_title">{{ title }}</div>
+      <div class="ak-group_more">
         <slot name="header"></slot>
       </div>
     </div>
-    <div class="fx-group_body fx-horizontal-hairline hairline-reverse">
-      <div class="fx-group_body-inner">
+    <div class="ak-group_body ak-horizontal-hairline hairline-reverse">
+      <div class="ak-group_body-inner">
         <slot></slot>
       </div>
     </div>
@@ -19,7 +19,7 @@ import { computed, defineComponent } from 'vue'
 import { getClasses } from './util'
 
 export default defineComponent({
-  name: 'fx-group',
+  name: 'ak-group',
   props: {
     title: {
       type: String,

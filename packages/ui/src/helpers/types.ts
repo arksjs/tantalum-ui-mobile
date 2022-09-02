@@ -45,17 +45,17 @@ export type UniqueID = number | string
 /**
  * Style
  */
-interface FxCSS {
-  '--fx-color'?: string
-  '--fx-dark-color'?: string
-  '--fx-light-color'?: string
-  '--fx-front-color'?: string
-  '--fx-icon-color'?: string
-  '--fx-icon-size'?: string
-  '--fx-white-color'?: string
-  '--fx-black-color'?: string
-  '--fx-active-color'?: string
-  '--fx-size'?: string
+interface AkCSS {
+  '--ak-color'?: string
+  '--ak-dark-color'?: string
+  '--ak-light-color'?: string
+  '--ak-front-color'?: string
+  '--ak-icon-color'?: string
+  '--ak-icon-size'?: string
+  '--ak-white-color'?: string
+  '--ak-black-color'?: string
+  '--ak-active-color'?: string
+  '--ak-size'?: string
 }
 
 export type { default as TypeException } from './exception'
@@ -135,7 +135,7 @@ export type PropsToEmits<P> = Required<P> extends infer T
 import * as Vue from 'vue'
 export type SFCWithInstall<T> = T & { install(app: Vue.App): void }
 
-export interface CSSProperties extends Vue.CSSProperties, FxCSS {}
+export interface CSSProperties extends Vue.CSSProperties, AkCSS {}
 
 export type OnError = (e: TypeException) => void
 export type OnClick = (e: MouseEvent) => void

@@ -65,7 +65,7 @@ const buttons: SwipeCellButtonOption[] = [
 ### 被挂载元素（#default）
 
 ```vue
-<fx-swipe-cell :buttons="buttons">
-  <fx-cell label="单元格" content="向左划"></fx-cell>
-</fx-swipe-cell>
+<ak-swipe-cell :buttons="buttons">
+  <ak-cell label="单元格" content="向左划"></ak-cell>
+</ak-swipe-cell>
 ```
