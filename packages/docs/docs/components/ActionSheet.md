@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { ActionSheet } from 'vfox'
+import { FxActionSheet } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -25,7 +25,7 @@ import type {
   VisibleState,
   PopupOnVisibleStateChange,
   PopupOnCancel
-} from 'vfox'
+} from 'arkui-mobile-vue'
 ```
 
 ## Props

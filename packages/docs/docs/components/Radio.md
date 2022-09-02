@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { Radio, RadioGroup } from 'vfox'
+import { FxRadio, FxRadioGroup } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { Radio, RadioGroup } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { RadioOptionItem } from 'vfox'
+import type { RadioOptionItem } from 'arkui-mobile-vue'
 ```
 
 ## Radio Props

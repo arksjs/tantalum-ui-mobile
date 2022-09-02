@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { Swiper, SwiperItem } from 'vfox'
+import { FxSwiper, FxSwiperItem } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { Swiper, SwiperItem } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { SwiperOnChange, SwiperOnAnimated } from 'vfox'
+import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-vue'
 ```
 
 ## Swiper Props

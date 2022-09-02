@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { Skeleton } from 'vfox'
+import { FxSkeleton } from 'arkui-mobile-vue'
 ```
 
 如果想要自定义布局，可以再引入子组件：
@@ -21,7 +21,7 @@ import {
   SkeletonTitle,
   SkeletonParagraph,
   SkeletonButton
-} from 'vfox'
+} from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -31,7 +31,7 @@ import {
 组件导出的类型定义：
 
 ```ts
-import type { SkeletonAvatarShape, SkeletonButtonShape } from 'vfox'
+import type { SkeletonAvatarShape, SkeletonButtonShape } from 'arkui-mobile-vue'
 ```
 
 ## Skeleton Props

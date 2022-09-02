@@ -14,12 +14,12 @@ npm i -S @arksjs/ui-icons arkui-mobile-vue
 
 ```vue
 <script setup>
-import { Icon } from 'arkui-mobile-vue'
+import { AkIcon } from 'arkui-mobile-vue'
 import '@arksjs/ui-icons'
 </script>
 
 <template>
-  <Icon :icon="BackspaceOutlined">
+  <AkIcon :icon="BackspaceOutlined">
 </template>
 ```
 

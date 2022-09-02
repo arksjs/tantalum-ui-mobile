@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { Empty } from 'vfox'
+import { FxEmpty } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { Empty } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { EmptyType } from 'vfox'
+import type { EmptyType } from 'arkui-mobile-vue'
 ```
 
 ## Props

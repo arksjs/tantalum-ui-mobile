@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { Avatar, AvatarGroup } from 'vfox'
+import { FxAvatar, FxAvatarGroup } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { Avatar, AvatarGroup } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { BadgeOption, AvatarShape, AvatarSize } from 'vfox'
+import type { BadgeOption, AvatarShape, AvatarSize } from 'arkui-mobile-vue'
 ```
 
 ## Avatar

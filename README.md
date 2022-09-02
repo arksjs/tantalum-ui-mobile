@@ -15,11 +15,11 @@
 
 ## 参考文档
 
-[Demo](https://godxiaoji.github.io/vfox/demo/) | [国内站点](https://godxiaoji.gitee.io/vfox/demo/)
+[Demo](https://arksjs.github.io/arkui-mobile-vue/demo/)
 
-[Docs](https://godxiaoji.github.io/vfox/) | [国内站点](https://godxiaoji.gitee.io/vfox/)
+[Docs](https://arksjs.github.io/arkui-mobile-vue/)
 
-[Playground](https://godxiaoji.github.io/vfox/playground/) | [国内站点](https://godxiaoji.gitee.io/vfox/playground/)
+[Playground](https://arksjs.github.io/arkui-mobile-vue/playground/)
 
 ## 支持环境
 

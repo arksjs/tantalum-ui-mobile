@@ -2,9 +2,9 @@
 
 组件库的样式是基于 SCSS 开发的，可以通过提供的工具完成主题的个性化定制，主要是色彩相关。
 
-在主题定制之前，推荐通过 [色卡](https://godxiaoji.github.io/vfox/demo/#/ColorCard) 查看下你钟意的颜色在色卡中的效果。推荐颜色值在 HSV 模式下 **S > 70% 且 V > 70%**。
+在主题定制之前，推荐通过 [色卡](https://arksjs.github.io/arkui-mobile-vue/demo/#/ColorCard) 查看下你钟意的颜色在色卡中的效果。推荐颜色值在 HSV 模式下 **S > 70% 且 V > 70%**。
 
-1. 打开 [主题定制](https://godxiaoji.github.io/vfox/demo/#/CustomTheme) 工具，按操作完成定制并复制定制后的代码。
+1. 打开 [主题定制](https://arksjs.github.io/arkui-mobile-vue/demo/#/CustomTheme) 工具，按操作完成定制并复制定制后的代码。
 2. 新建自定义 SCSS 文件 `my-style.scss`，粘贴定制代码，如：
 
    `path/to/my-style.scss` :

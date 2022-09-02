@@ -88,12 +88,12 @@ app.use(Button)
 
 ```Vue
 <script>
-import { Button } from 'arkui-mobile-vue/es/Button'
+import { AkButton } from 'arkui-mobile-vue/es/Button'
 import 'arkui-mobile-vue/es/Button/style'
 // import 'arkui-mobile-vue/es/Button/style/sass' // use sass
 
 export default {
-  components: { 'ak-button': Button }
+  components: { AkButton }
 }
 </script>
 

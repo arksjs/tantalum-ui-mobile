@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { TabView, TabViewItem } from 'vfox'
+import { FxTabView, FxTabViewItem } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { TabView, TabViewItem } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { TabViewOnChange, TabViewOnAnimated } from 'vfox'
+import type { TabViewOnChange, TabViewOnAnimated } from 'arkui-mobile-vue'
 ```
 
 ## TabView Props

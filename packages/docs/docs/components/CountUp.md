@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { CountUp } from 'vfox'
+import { FxCountUp } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,11 @@ import { CountUp } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { CountUpSpeed, CountUpOnCancel, CountUpOnAnimated } from 'vfox'
+import type {
+  CountUpSpeed,
+  CountUpOnCancel,
+  CountUpOnAnimated
+} from 'arkui-mobile-vue'
 ```
 
 ## Props

@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { Sticky, StickyView, StickyViewItem } from 'vfox'
+import { FxSticky, FxStickyView, FxStickyViewItem } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { Sticky, StickyView, StickyViewItem } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { StickyViewOnChange } from 'vfox'
+import type { StickyViewOnChange } from 'arkui-mobile-vue'
 ```
 
 ## Sticky

@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { SideTab } from 'vfox'
+import { FxSideTab } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { SideTab } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { SideTabOnChange, TabOptions, BadgeOption } from 'vfox'
+import type { SideTabOnChange, TabOptions, BadgeOption } from 'arkui-mobile-vue'
 ```
 
 ## Props

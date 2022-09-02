@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { SearchBar } from 'vfox'
+import { FxSearchBar } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -30,7 +30,7 @@ import type {
   SearchBarOnInput,
   SearchBarOnSearch,
   SearchBarOnFieldClick
-} from 'vfox'
+} from 'arkui-mobile-vue'
 ```
 
 ## Props

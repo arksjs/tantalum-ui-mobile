@@ -10,7 +10,7 @@
 
 ```vue
 <script setup>
-import enUS from 'vfox/es/locale/lang/en-US'
+import enUS from 'arkui-mobile-vue/es/locale/lang/en-US'
 </script>
 
 <template>

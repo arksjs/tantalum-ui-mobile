@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { Collapse, CollapseItem } from 'vfox'
+import { FxCollapse, FxCollapseItem } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,7 @@ import type {
   CollapseActiveName,
   CollapseOnChange,
   CollapseItemOnToggle
-} from 'vfox'
+} from 'arkui-mobile-vue'
 ```
 
 ## Collapse Props

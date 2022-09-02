@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { Popover } from 'vfox'
+import { FxPopover } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { Popover } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { VisibleState, PopupOnVisibleStateChange } from 'vfox'
+import type { VisibleState, PopupOnVisibleStateChange } from 'arkui-mobile-vue'
 ```
 
 ## Props

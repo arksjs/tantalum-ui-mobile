@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { IndexView, IndexViewItem } from 'vfox'
+import { FxIndexView, FxIndexViewItem } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { IndexView, IndexViewItem } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { IndexViewOnChange } from 'vfox'
+import type { IndexViewOnChange } from 'arkui-mobile-vue'
 ```
 
 ## IndexView Props

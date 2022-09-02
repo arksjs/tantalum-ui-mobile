@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { Image } from 'vfox'
+import { FxImage } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { Image } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { ImageMode, ImageOnLoad } from 'vfox'
+import type { ImageMode, ImageOnLoad } from 'arkui-mobile-vue'
 ```
 
 ## Props

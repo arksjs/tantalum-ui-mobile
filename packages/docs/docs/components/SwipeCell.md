@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { SwipeCell } from 'vfox'
+import { FxSwipeCell } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,10 @@ import { SwipeCell } from 'vfox'
 组件导出的类型定义：
 
 ```ts
-import type { SwipeCellButtonOption, SwipeCellOnButtonClick } from 'vfox'
+import type {
+  SwipeCellButtonOption,
+  SwipeCellOnButtonClick
+} from 'arkui-mobile-vue'
 ```
 
 ## Props

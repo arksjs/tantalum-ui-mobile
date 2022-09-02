@@ -16,7 +16,7 @@
 ## Import
 
 ```js
-import { Form, FormFooter, FormItem } from 'vfox'
+import { FxForm, FxFormFooter, FxFormItem } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -100,7 +100,7 @@ npm install --save @formily/core @formily/vue
 `FormilyFormItem.js`:
 
 ```js
-import { FormItem } from 'vfox'
+import { FormItem } from 'arkui-mobile-vue'
 import { connect, mapProps } from '@formily/vue'
 import { isVoidField } from '@formily/core'
 
@@ -175,7 +175,7 @@ export default connect(
 
 <script>
 import { multiOptions, regionOptions } from '../Picker/data'
-import { Input, RadioGroup, Dialog } from 'vfox'
+import { Input, RadioGroup, Dialog } from 'arkui-mobile-vue'
 import { createForm, setValidateLanguage } from '@formily/core'
 import { FormProvider, Field, FormConsumer } from '@formily/vue'
 import FormilyFormItem from './FormilyFormItem'

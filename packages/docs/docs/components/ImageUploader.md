@@ -14,7 +14,7 @@
 ## Import
 
 ```js
-import { ImageUploader } from 'vfox'
+import { FxImageUploader } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -29,7 +29,7 @@ import type {
   ImageUploaderBeforeUpload,
   ImageUploaderUploadReady,
   ImageUploaderOnDelete
-} from 'vfox'
+} from 'arkui-mobile-vue'
 ```
 
 ## Props

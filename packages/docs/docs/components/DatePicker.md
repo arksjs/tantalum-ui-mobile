@@ -7,7 +7,11 @@
 ## Import
 
 ```js
-import { DatePicker, DatePickerPopup, DatePickerView } from 'vfox'
+import {
+  FxDatePicker,
+  FxDatePickerPopup,
+  FxDatePickerView
+} from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -29,7 +33,7 @@ import type {
   VisibleState,
   PopupOnVisibleStateChange,
   PopupOnCancel
-} from 'vfox'
+} from 'arkui-mobile-vue'
 ```
 
 ## 公共 Props

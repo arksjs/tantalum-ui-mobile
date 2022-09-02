@@ -54,12 +54,12 @@ module.exports = {
       '/components/': getComponentsSideBar(),
       '/': getGuideSideBar()
     },
-    logo: '/logo.svg',
-    algolia: {
-      appId: 'KFPGH0VHYY',
-      apiKey: '3c12cf0838cd4e24fbb78cf52980117d',
-      indexName: 'vfox'
-    }
+    logo: '/logo.svg'
+    // algolia: {
+    //   appId: 'KFPGH0VHYY',
+    //   apiKey: '3c12cf0838cd4e24fbb78cf52980117d',
+    //   indexName: 'vfox'
+    // }
   },
   markdown: {
     /**
