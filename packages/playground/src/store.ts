@@ -12,7 +12,7 @@ const isDev = import.meta.env.DEV
 
 const coreImports = {
   vue: !isDev ? `./vue.runtime.esm-browser.js` : `./src/vue-dev-proxy`,
-  ui: !isDev
+  'arkui-mobile-vue': !isDev
     ? `./ui.esm-browser.js`
     : genUnpkgLink('arkui-mobile-vue', undefined, '/dist/index.esm-browser.js')
 }

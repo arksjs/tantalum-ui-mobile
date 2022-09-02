@@ -39,13 +39,13 @@ function copyUIPlugin(): Plugin {
       }
       this.emitFile({
         type: 'asset',
-        fileName: 'arkui.esm-browser.js',
+        fileName: 'ui.esm-browser.js',
         source: fs.readFileSync(jsPath, 'utf-8')
       })
 
       this.emitFile({
         type: 'asset',
-        fileName: 'arkui.css',
+        fileName: 'ui.css',
         source: fs.readFileSync(
           path.resolve(__dirname, '../../dist/index.css'),
           'utf-8'
