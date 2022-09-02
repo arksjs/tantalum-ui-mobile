@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { VirtualList, ViewPosition } from '@/index'
+import { AkVirtualList, ViewPosition } from '@/index'
 
 interface ExpList {
   id: number
@@ -17,7 +17,7 @@ for (let i = 0; i < 100000; i++) {
 }
 
 // 方法调用
-const methodList = ref<InstanceType<typeof VirtualList>>()
+const methodList = ref<InstanceType<typeof AkVirtualList>>()
 function scrollToIndex(index: number, viewPosition: ViewPosition = 0) {
   methodList.value?.scrollToIndex({ index, viewPosition })
 }

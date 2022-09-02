@@ -30,14 +30,14 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { CountTime, Stopwatch, StopwatchOnStop } from '@/index'
+import { CountTime, AkStopwatch, StopwatchOnStop } from '@/index'
 
 export default defineComponent({
   name: 'ExpStopwatch',
   setup() {
     const paused = ref(true)
     const laps = ref<string[]>([])
-    const stopWatch = ref<InstanceType<typeof Stopwatch>>()
+    const stopWatch = ref<InstanceType<typeof AkStopwatch>>()
 
     const setLaps = (_laps: CountTime[] = []) => {
       laps.value = _laps.reverse().map(countTime => {

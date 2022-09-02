@@ -2,7 +2,7 @@
   <ak-group title="基础">
     <ak-form>
       <ak-form-item label="昵称">
-        <ak-input v-model="baseForm.nickname" placeholder="请输入昵称" />
+        <ak-AkInput v-model="baseForm.nickname" placeholder="请输入昵称" />
       </ak-form-item>
       <ak-form-item label="性别">
         <ak-radio-group
@@ -21,7 +21,7 @@
         name="nickname"
         title="昵称"
         required
-        :component="[Input, { placeholder: '请输入昵称', showClear: true }]"
+        :component="[AkInput, { placeholder: '请输入昵称', showClear: true }]"
         :decorator="[FormItem]"
       />
       <Field
@@ -29,7 +29,7 @@
         title="头像"
         required
         :component="[
-          ImageUploader,
+          AkImageUploader,
           { uploadReady: hookUpload, columnNumber: 1, maxCount: 1 }
         ]"
         :decorator="[FormItem]"
@@ -39,7 +39,7 @@
         title="性别"
         required
         :component="[
-          RadioGroup,
+          AkRadioGroup,
           {
             options: genderOptions
           }
@@ -50,7 +50,7 @@
         name="weight"
         title="体重Kg"
         required
-        :component="[Slider, { showValue: true, min: 35, max: 120 }]"
+        :component="[AkSlider, { showValue: true, min: 35, max: 120 }]"
         :decorator="[FormItem]"
       />
       <Field
@@ -58,7 +58,7 @@
         title="季节"
         required
         :component="[
-          Picker,
+          AkPicker,
           { options: multiOptions, placeholder: '选择季节' }
         ]"
         :decorator="[FormItem]"
@@ -67,14 +67,14 @@
         name="birthday"
         title="生日"
         required
-        :component="[Calendar, { placeholder: '选择生日' }]"
+        :component="[AkCalendar, { placeholder: '选择生日' }]"
         :decorator="[FormItem]"
       />
       <Field
         name="character"
         title="性格"
         required
-        :component="[CheckboxGroup, { options: characters }]"
+        :component="[AkCheckboxGroup, { options: characters }]"
         :decorator="[FormItem]"
       />
       <Field
@@ -82,7 +82,7 @@
         title="地区"
         required
         :component="[
-          Cascader,
+          AkCascader,
           {
             placeholder: '选择地区',
             fieldNames: { value: 'label' },
@@ -95,21 +95,21 @@
         name="happinessIndex"
         title="幸福指数"
         required
-        :component="[Rate, { allowHalf: true }]"
+        :component="[AkRate, { allowHalf: true }]"
         :decorator="[FormItem]"
       />
       <Field
-        name="stepper"
+        name="AkStepper"
         title="步进器"
         required
-        :component="[Stepper, { max: 10, step: 0.2, decimalLength: 1 }]"
+        :component="[AkStepper, { max: 10, step: 0.2, decimalLength: 1 }]"
         :decorator="[FormItem]"
       />
       <Field
         name="agree"
         title="认可"
         required
-        :component="[Switch]"
+        :component="[AkSwitch]"
         :decorator="[FormItem]"
       />
       <FormConsumer>
@@ -138,18 +138,18 @@
 import { defineComponent } from 'vue'
 import { multiOptions, regionOptions } from '../Picker/data'
 import {
-  Input,
-  Picker,
-  Calendar,
-  Cascader,
-  Switch,
-  Rate,
-  Slider,
-  Range,
-  Stepper,
-  RadioGroup,
-  CheckboxGroup,
-  ImageUploader,
+  AkInput,
+  AkPicker,
+  AkCalendar,
+  AkCascader,
+  AkSwitch,
+  AkRate,
+  AkSlider,
+  AkRange,
+  AkStepper,
+  AkRadioGroup,
+  AkCheckboxGroup,
+  AkImageUploader,
   showToast,
   showDialog,
   ImageUploaderUploadReady
@@ -192,18 +192,18 @@ export default defineComponent({
       },
 
       FormItem,
-      Input,
-      Picker,
-      Calendar,
-      Cascader,
-      Switch,
-      Rate,
-      Slider,
-      Range,
-      Stepper,
-      RadioGroup,
-      CheckboxGroup,
-      ImageUploader,
+      AkInput,
+      AkPicker,
+      AkCalendar,
+      AkCascader,
+      AkSwitch,
+      AkRate,
+      AkSlider,
+      AkRange,
+      AkStepper,
+      AkRadioGroup,
+      AkCheckboxGroup,
+      AkImageUploader,
       form: createForm({ validateFirst: true }),
 
       genderOptions: [

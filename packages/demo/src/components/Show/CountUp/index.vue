@@ -72,7 +72,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { CountUp, CountUpOnAnimated, CountUpOnCancel, showToast } from '@/index'
+import {
+  AkCountUp,
+  CountUpOnAnimated,
+  CountUpOnCancel,
+  showToast
+} from '@/index'
 
 export default defineComponent({
   name: 'ExpCountUp',
@@ -80,7 +85,7 @@ export default defineComponent({
     const number = ref(5000)
     const number2 = ref(1000)
     const isCancel = ref(false)
-    const countUp = ref<InstanceType<typeof CountUp>>()
+    const countUp = ref<InstanceType<typeof AkCountUp>>()
 
     const onAnimated: CountUpOnAnimated = e => {
       console.log(e)

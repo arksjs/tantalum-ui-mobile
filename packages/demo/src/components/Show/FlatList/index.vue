@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import {
-  FlatList,
+  AkFlatList,
   FlatListOnEndReached,
   FlatListOnRefreshing,
   FlatListOnVisibleItemsChange,
@@ -94,7 +94,7 @@ const onEndReached: FlatListOnEndReached = res => {
 }
 
 // 方法调用
-const methodList = ref<InstanceType<typeof FlatList>>()
+const methodList = ref<InstanceType<typeof AkFlatList>>()
 function scrollToIndex(index: number, viewPosition: ViewPosition = 0) {
   methodList.value?.scrollToIndex({ index, viewPosition })
 }
