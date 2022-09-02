@@ -1,0 +1,25 @@
+@import '../style/var.scss';
+
+.ak-popup.ak-notify {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.ak-notify {
+  &_inner {
+    width: 100%;
+    transform: translate3d(0, calc(-100%), 0);
+    transition: all 0.2s;
+    opacity: 0;
+  }
+
+  &.visible {
+    .ak-notify_inner {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
+}

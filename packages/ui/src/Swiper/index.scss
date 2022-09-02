@@ -1,0 +1,80 @@
+@import '../style/var.scss';
+@import '../style/mixin.scss';
+
+.ak-swiper {
+  position: relative;
+  box-sizing: border-box;
+
+  &_indicators {
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    text-align: center;
+    transform: translate3d(-50%, 0, 0);
+    display: flex;
+
+    &.vertical {
+      left: 6px;
+      top: 50%;
+      bottom: auto;
+      transform: translate3d(0, -50%, 0);
+      flex-direction: column;
+    }
+  }
+
+  &_indicator {
+    display: block;
+    margin: 2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba($color: #000, $alpha: 40%);
+    box-sizing: border-box;
+
+    &.active {
+      background-color: rgba($color: #fff, $alpha: 80%);
+    }
+  }
+
+  &_prev,
+  &_next {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: rgba($color: #000, $alpha: 40%);
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    user-select: none;
+    color: #fff;
+
+    .ak-icon {
+      --ak-icon-color: #fff;
+    }
+  }
+
+  &_next {
+    left: auto;
+    right: 12px;
+  }
+
+  &_prev:active,
+  &_next:active {
+    background-color: rgba($color: #000, $alpha: 60%);
+  }
+
+  &_list {
+    height: 100%;
+  }
+}
+
+.ak-swiper-item {
+  height: 100%;
+}

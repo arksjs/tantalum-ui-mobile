@@ -1,0 +1,73 @@
+@import '../style/var.scss';
+
+.ak-notice-bar {
+  --ak-color: var(--ak-color-warning-lighter);
+  --ak-front-color: #{$warning-color};
+
+  position: relative;
+  display: flex;
+  padding: 10px 0 10px 16px;
+  min-height: 40px;
+  align-items: center;
+  background-color: var(--ak-color);
+  color: var(--ak-front-color);
+  line-height: 20px;
+  font-size: 14px;
+  box-sizing: border-box;
+  flex-grow: 1;
+
+  &.type--success {
+    --ak-front-color: #{$success-color};
+    --ak-color: var(--ak-color-success-lighter);
+  }
+
+  &.type--primary {
+    --ak-front-color: #{$primary-color};
+    --ak-color: var(--ak-color-primary-lighter);
+  }
+
+  &.type--danger {
+    --ak-front-color: #{$danger-color};
+    --ak-color: var(--ak-color-danger-lighter);
+  }
+
+  &_left-icon,
+  &_right-icon {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: 8px;
+    flex-shrink: 0;
+
+    .ak-icon {
+      --ak-icon-size: 17px;
+      --ak-icon-color: var(--ak-front-color);
+    }
+  }
+
+  &_right-icon {
+    padding: 0 16px 0 8px;
+    margin: -10px 0;
+  }
+
+  &_content {
+    flex-grow: 1;
+    overflow: hidden;
+    margin-right: 16px;
+    position: relative;
+    min-height: 20px;
+    text-align: left;
+
+    + .ak-notice-bar_right-icon {
+      margin-left: -16px;
+    }
+  }
+
+  &_content-inner {
+    &.marquee {
+      position: absolute;
+      white-space: nowrap;
+      transition-timing-function: linear;
+    }
+  }
+}

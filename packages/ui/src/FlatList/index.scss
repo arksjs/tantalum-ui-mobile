@@ -1,0 +1,15 @@
+@import '../style/var.scss';
+
+.ak-flat-list {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  &_header,
+  &_footer {
+    .ak-flat-list.horizontal & {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+}

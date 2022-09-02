@@ -1,0 +1,24 @@
+@import './var.scss';
+
+@mixin box-shadow {
+  box-shadow: 0 2px 4px rgba(#{var(--ak-grey-13)}, 0.04);
+}
+
+// popover
+@mixin box-shadow-2 {
+  box-shadow: 0 0 4px rgba(#{var(--ak-grey-13)}, 0.1);
+}
+
+@mixin mask-background($opacity: 1) {
+  background-color: rgba(#{var(--ak-grey-13)}, $opacity);
+}
+
+// popover/dropdown
+@mixin mask-background-1 {
+  @include mask-background(0.1);
+}
+
+// normal
+@mixin mask-background-4 {
+  @include mask-background(0.4);
+}

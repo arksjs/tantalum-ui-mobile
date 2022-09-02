@@ -1,0 +1,12 @@
+@import '../style/var.scss';
+
+.ak-loading-icon {
+  &_track {
+    stroke: rgba(#{var(--ak-grey-13)}, 0.15);
+  }
+
+  &_thumb {
+    stroke: $primary-color;
+    transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;
+  }
+}

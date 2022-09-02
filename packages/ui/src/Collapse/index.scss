@@ -1,0 +1,33 @@
+@import '../style/var.scss';
+
+.ak-collapse-item {
+  &_body {
+    overflow: hidden;
+    transition: height 0.2s;
+    will-change: height;
+
+    &::before {
+      content: '';
+    }
+  }
+
+  &_content {
+    font-size: 14px;
+    color: $font-color;
+    line-height: 20px;
+  }
+
+  + .ak-collapse-item::before {
+    content: '';
+  }
+
+  &_header {
+    &:not(:last-child)::after {
+      content: none;
+    }
+
+    .ak-cell_link-icon {
+      transition: transform 0.2s;
+    }
+  }
+}

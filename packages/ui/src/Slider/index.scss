@@ -1,0 +1,73 @@
+@import '../style/var.scss';
+@import '../style/mixin.scss';
+
+.ak-slider {
+  --ak-color: #{$primary-color};
+
+  position: relative;
+  height: 32px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  &_inner {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 13px 12px;
+  }
+
+  &_box {
+    position: relative;
+    height: 2px;
+    width: 100%;
+    background: $border-color;
+    border-radius: 2px;
+  }
+
+  &_track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--ak-color);
+    border-radius: 2px;
+  }
+
+  &_thumb {
+    position: absolute;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid $divider-color;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 12px;
+    transform: translate3d(-50%, -13px, 0);
+    color: var(--ak-color);
+    z-index: 0;
+    @include box-shadow-2;
+
+    &.active {
+      z-index: 1;
+    }
+  }
+
+  &_range {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  &.disabled {
+    opacity: 0.2;
+  }
+}

@@ -1,0 +1,60 @@
+@use 'sass:math';
+@import '../style/var.scss';
+
+.ak-badge {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+
+  &_badge {
+    --ak-color: #{$danger-color};
+    --ak-front-color: #fff;
+
+    position: absolute;
+    height: 17px;
+    min-width: 17px;
+    line-height: 17px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border-radius: 8.5px;
+    box-sizing: border-box;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--ak-front-color);
+    background-color: var(--ak-color);
+    transform: scale(0);
+    border: 1px solid $white-color;
+
+    .ak-icon {
+      --ak-icon-size: 11px;
+      --ak-icon-color: var(--ak-front-color);
+
+      margin: 0 -4px;
+    }
+
+    &.dot {
+      right: -6px;
+      top: -6px;
+      height: 12px;
+      width: 12px;
+      min-width: 0;
+      padding: 0;
+      overflow: hidden;
+      text-indent: -9999px;
+
+      * {
+        display: none;
+      }
+    }
+  }
+
+  &.animated {
+    .ak-badge {
+      &_badge {
+        transition: transform 0.2s;
+      }
+    }
+  }
+}

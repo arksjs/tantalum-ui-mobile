@@ -1,0 +1,33 @@
+@import '../style/var.scss';
+
+.ak-pop-dialog {
+  &_body {
+    user-select: none;
+  }
+
+  &_footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      border-color: $border-color;
+    }
+
+    &-inner {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+
+      > .ak-button + .ak-button::before {
+        height: 100%;
+        background-color: $border-color;
+      }
+    }
+  }
+}

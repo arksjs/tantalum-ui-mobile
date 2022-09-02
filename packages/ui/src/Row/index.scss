@@ -1,0 +1,45 @@
+@import '../style/var.scss';
+
+.ak-row {
+  display: flex;
+  flex-flow: row wrap;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  &.justify {
+    &--start {
+      justify-content: flex-start;
+    }
+
+    &--end {
+      justify-content: flex-end;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--space-around {
+      justify-content: space-around;
+    }
+
+    &--space-between {
+      justify-content: space-between;
+    }
+  }
+
+  &.align {
+    &--top {
+      align-items: flex-start;
+    }
+
+    &--middle {
+      align-items: center;
+    }
+
+    &--bottom {
+      align-items: flex-end;
+    }
+  }
+}

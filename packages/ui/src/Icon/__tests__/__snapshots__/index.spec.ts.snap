@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`Icon > snapshot 1`] = `
+"<svg class=\\"ak-icon\\">
+  <use xlink:href=\\"#strIcon\\"></use>
+</svg>"
+`;

@@ -1,0 +1,120 @@
+@import '../style/var.scss';
+
+.ak-image {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+
+  &_loading,
+  &_error {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .ak-icon {
+      --ak-icon-color: #{$border-color};
+    }
+  }
+
+  &_ratio {
+    padding-top: 100%;
+    float: left;
+  }
+
+  &_img {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+
+    &.mode--scale-to-fill {
+      object-fit: fill;
+    }
+
+    &.mode--aspect-fit {
+      object-fit: contain;
+    }
+
+    &.mode--aspect-fill {
+      object-fit: cover;
+    }
+
+    &.mode--width-fix {
+      height: auto;
+    }
+
+    &.mode--top,
+    &.mode--bottom {
+      left: 50%;
+      width: auto;
+      height: auto;
+      transform: translateX(-50%);
+    }
+
+    &.mode--top {
+      top: 0;
+    }
+
+    &.mode--bottom {
+      bottom: 0;
+    }
+
+    &.mode--center {
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+    }
+
+    &.mode--left,
+    &.mode--right {
+      top: 50%;
+      width: auto;
+      height: auto;
+      transform: translateY(-50%);
+    }
+
+    &.mode--left {
+      left: 0;
+    }
+
+    &.mode--right {
+      right: 0;
+    }
+
+    &.mode--top-left {
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+    }
+
+    &.mode--top-right {
+      top: 0;
+      right: 0;
+      width: auto;
+      height: auto;
+    }
+
+    &.mode--bottom-left {
+      bottom: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+    }
+
+    &.mode--bottom-right {
+      right: 0;
+      bottom: 0;
+      width: auto;
+      height: auto;
+    }
+  }
+}

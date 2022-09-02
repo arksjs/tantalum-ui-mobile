@@ -1,0 +1,27 @@
+@import '../style/var.scss';
+
+.ak-circle-progress {
+  display: inline-block;
+  position: relative;
+
+  &_bar {
+    display: block;
+  }
+
+  &_text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-align: center;
+    color: $title-color;
+  }
+}

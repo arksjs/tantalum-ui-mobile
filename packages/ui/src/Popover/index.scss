@@ -1,0 +1,63 @@
+@import '../style/var.scss';
+@import '../style/mixin.scss';
+
+.ak-popover {
+  .ak-mask {
+    @include mask-background-1;
+  }
+
+  &_arrow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    background-color: $white-color;
+    opacity: 0;
+    transition: transform 0.2s;
+    z-index: 0;
+    @include box-shadow-2;
+  }
+
+  &_inner {
+    position: absolute;
+    border-radius: 4px;
+    @include box-shadow-2;
+
+    opacity: 0;
+    transition: transform 0.2s;
+    transform: translateZ(0);
+  }
+
+  &_content {
+    position: relative;
+    z-index: 1;
+    min-height: 40px;
+    min-width: 40px;
+    background-color: $white-color;
+    border-radius: 4px;
+    color: $title-color;
+    transform: translateZ(0);
+    overflow: hidden;
+  }
+
+  &_text {
+    font-size: 16px;
+    line-height: 22px;
+    padding: 16px;
+    white-space: pre-line;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
+  &.visible {
+    .ak-popover {
+      &_inner {
+        opacity: 1;
+      }
+
+      &_arrow {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+// Vitest Snapshot v1
+
+exports[`SwipeCell > should render default slot correctly 1`] = `
+"<div class=\\"fx-swipe-cell fx-horizontal-hairline\\">
+  <div class=\\"fx-swipe-cell_inner\\" style=\\"transform: translate3d(-0px, 0px, 0px); transition-duration: 0s;\\">
+    <div class=\\"fx-swipe-cell_buttons\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`SwipeCell > should render set buttons correctly 1`] = `
+"<div class=\\"fx-swipe-cell fx-horizontal-hairline\\">
+  <div class=\\"fx-swipe-cell_inner\\" style=\\"transform: translate3d(-0px, 0px, 0px); transition-duration: 0s;\\">
+    <div class=\\"fx-swipe-cell_buttons\\"><button class=\\"fx-swipe-cell_button type--warning\\" style=\\"transform: translate3d(-0px, 0px, 0px); transition-duration: 0s;\\">加入收藏</button><button class=\\"fx-swipe-cell_button type--danger\\" style=\\"transform: translate3d(-0px, 0px, 0px); transition-duration: 0s;\\">删除</button></div>
+  </div>
+</div>"
+`;

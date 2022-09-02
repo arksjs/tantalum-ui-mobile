@@ -1,0 +1,88 @@
+@use 'sass:math';
+@import './var.scss';
+
+.ak-horizontal-hairline,
+.ak-vertical-hairline {
+  &::before,
+  &::after {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 1px;
+    border-color: $divider-color;
+    border-width: 1px 0 0;
+    border-style: solid;
+    transform-origin: 0 0;
+  }
+}
+
+.ak-horizontal-hairline {
+  &::after {
+    transform-origin: 0 100%;
+  }
+
+  &.hairline-reverse {
+    &::before {
+      transform-origin: 0 100%;
+    }
+
+    &::after {
+      transform-origin: 0 0;
+    }
+  }
+}
+
+.ak-vertical-hairline {
+  &::before,
+  &::after {
+    height: 100%;
+    width: 1px;
+    border-width: 0 1px 0 0;
+  }
+
+  &::after {
+    transform-origin: 100% 0;
+  }
+
+  &.hairline-reverse {
+    &::before {
+      transform-origin: 100% 0;
+    }
+
+    &::after {
+      transform-origin: 0 0;
+    }
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) {
+  .ak-horizontal-hairline {
+    &::before,
+    &::after {
+      transform: scaleY(0.5);
+    }
+  }
+
+  .ak-vertical-hairline {
+    &::before,
+    &::after {
+      transform: scaleX(0.5);
+    }
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 3) {
+  .ak-horizontal-hairline {
+    &::before,
+    &::after {
+      transform: scaleY(math.div(1, 3));
+    }
+  }
+
+  .ak-vertical-hairline {
+    &::before,
+    &::after {
+      transform: scaleX(math.div(1, 3));
+    }
+  }
+}

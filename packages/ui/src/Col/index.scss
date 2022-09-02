@@ -1,0 +1,35 @@
+@use 'sass:math';
+@import '../style/var.scss';
+
+.ak-col {
+  position: relative;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  max-width: 100%;
+  min-height: 1px;
+  box-sizing: border-box;
+
+  &-0 {
+    display: none;
+  }
+
+  @for $i from 1 through 24 {
+    &-#{$i} {
+      flex-basis: math.percentage(math.div($i, 24));
+      max-width: math.percentage(math.div($i, 24));
+    }
+
+    &-offset-#{$i} {
+      margin-left: math.percentage(math.div($i, 24));
+    }
+
+    &-push-#{$i} {
+      left: math.percentage(math.div($i, 24));
+    }
+
+    &-pull-#{$i} {
+      right: math.percentage(math.div($i, 24));
+    }
+  }
+}

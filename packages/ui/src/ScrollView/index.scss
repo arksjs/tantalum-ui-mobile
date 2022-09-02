@@ -1,0 +1,94 @@
+@import '../style/var.scss';
+
+.ak-scroll-view {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+
+  &.scroll-x {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  &.scroll-y {
+    overflow-y: auto;
+  }
+
+  &.smooth {
+    scroll-behavior: smooth;
+  }
+
+  &_inner {
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    transform: translateZ(0);
+
+    .ak-scroll-view.scroll-x & {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .ak-scroll-view.scroll-x:not(.scroll-y) & {
+      height: 100%;
+    }
+  }
+
+  &_content {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+
+    .ak-scroll-view.scroll-x:not(.scroll-y) & {
+      height: 100%;
+    }
+  }
+
+  &_pull-refresh {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transform: translate3d(0, -100%, 0);
+
+    .ak-icon,
+    .ak-loading-icon {
+      --ak-icon-size: 18px;
+      --ak-icon-color: #{$border-color};
+
+      margin-right: 8px;
+    }
+
+    &.direction--unknown {
+      display: none;
+    }
+
+    &.direction--up {
+      top: auto;
+      bottom: 0;
+      align-items: flex-start;
+      transform: translate3d(0, 100%, 0);
+    }
+
+    &.direction--left,
+    &.direction--right {
+      left: 0;
+      top: 0;
+      bottom: 0;
+      height: auto;
+      justify-content: flex-end;
+      align-items: center;
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    &.direction--left {
+      left: auto;
+      right: 0;
+      transform: translate3d(100%, 0, 0);
+      justify-content: flex-start;
+    }
+  }
+}

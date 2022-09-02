@@ -1,0 +1,85 @@
+@import '../style/var.scss';
+
+.ak-timeline-item {
+  --ak-color: #{$border-color};
+
+  position: relative;
+
+  &_index {
+    position: absolute;
+    left: 26px;
+    top: 24px;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  &_dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--ak-color);
+    box-sizing: border-box;
+    border-radius: 50%;
+    color: var(--ak-color);
+    background-color: $white-color;
+    overflow: hidden;
+  }
+
+  &_line {
+    position: absolute;
+    left: 25.5px;
+    top: 24px;
+    width: 1px;
+    height: 100%;
+    background-color: var(--ak-color);
+  }
+
+  &_inner {
+    padding: 12px 16px 12px 44px;
+  }
+
+  &_title {
+    font-size: 17px;
+    line-height: 24px;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-weight: 500;
+    color: $font-color;
+
+    a {
+      text-decoration: none;
+      color: $primary-color;
+    }
+  }
+
+  &_content {
+    font-size: 14px;
+    line-height: 20px;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+    color: $font2-color;
+
+    a {
+      text-decoration: none;
+      color: $primary-color;
+    }
+
+    .ak-timeline-item_title + & {
+      margin-top: 4px;
+    }
+  }
+
+  &:last-child {
+    .ak-timeline-item_line {
+      display: none;
+    }
+  }
+
+  + .ak-timeline-item {
+    &::before {
+      content: '';
+      margin-left: 40px;
+    }
+  }
+}

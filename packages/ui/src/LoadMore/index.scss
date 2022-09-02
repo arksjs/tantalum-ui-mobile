@@ -1,0 +1,63 @@
+@import '../style/var.scss';
+
+.ak-load-more {
+  --ak-color: #{$font3-color};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 64px;
+  color: var(--ak-color);
+  font-size: 15px;
+  line-height: 20px;
+  height: 48px;
+  border: 0 solid $divider-color;
+
+  &_icon {
+    margin-right: 8px;
+  }
+
+  &_content {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_dot {
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--ak-color);
+  }
+
+  &.ak-horizontal-hairline:not(.loading):not(.horizontal) {
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      border-color: inherit;
+      border-style: inherit;
+      margin: 0 8px;
+    }
+  }
+
+  &.vertical {
+    display: inline-flex;
+    height: 100%;
+    flex-direction: column;
+    width: 48px;
+    padding: 0;
+    vertical-align: top;
+
+    .ak-load-more {
+      &_icon {
+        margin: 0 0 8px;
+      }
+
+      &_content {
+        writing-mode: tb-rl;
+      }
+    }
+  }
+}

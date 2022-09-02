@@ -1,0 +1,7 @@
+@import '../style/animation.scss';
+
+.ak-activity-indicator {
+  &.animated {
+    @include rotate-360-animation(800ms);
+  }
+}

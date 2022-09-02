@@ -1,0 +1,10 @@
+dist/
+es/
+lib/
+node_modules/
+
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+CHANGELOG.md
+build/ts-files.json

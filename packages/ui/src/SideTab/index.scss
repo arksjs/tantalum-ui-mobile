@@ -1,0 +1,78 @@
+@import '../style/var.scss';
+
+.ak-side-tab {
+  --ak-color: #{$font-color};
+  --ak-active-color: #{$primary-color};
+  --ak-front-color: var(--ak-color);
+
+  height: 100%;
+  background-color: $background-color;
+
+  &_list {
+    margin: 0;
+    width: 100%;
+    white-space: nowrap;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100%;
+    height: auto;
+    background-color: $white-color;
+    padding: 0;
+  }
+
+  &_item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    position: relative;
+    box-sizing: border-box;
+    color: var(--ak-front-color);
+    min-height: 40px;
+    cursor: pointer;
+    background-color: $background-color;
+    padding: 10px 12px;
+    user-select: none;
+
+    .ak-icon {
+      --ak-icon-size: 17px;
+      --ak-icon-color: var(--ak-front-color);
+
+      margin-right: 4px;
+    }
+
+    &.active {
+      --ak-front-color: var(--ak-active-color);
+
+      background-color: $white-color;
+      font-weight: 700;
+    }
+
+    &.active-prev {
+      border-radius: 0 0 4px;
+    }
+
+    &.active-next {
+      border-radius: 0 4px 0 0;
+    }
+
+    &-inner {
+      display: inline-flex;
+      vertical-align: middle;
+      position: relative;
+      align-items: center;
+    }
+
+    &-text {
+      display: block;
+      word-break: break-all;
+      white-space: pre-wrap;
+    }
+  }
+}

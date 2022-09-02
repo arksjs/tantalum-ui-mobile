@@ -1,0 +1,13 @@
+@keyframes ak-rotate-360 {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin rotate-360-animation($duration: 800ms) {
+  animation: ak-rotate-360 $duration infinite linear both;
+}

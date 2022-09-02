@@ -1,0 +1,63 @@
+@import '../style/var.scss';
+
+.ak-result {
+  padding: 60px 16px;
+
+  &_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  &_icon {
+    --ak-icon-size: 64px;
+    --ak-icon-color: #{$primary-color};
+
+    &.type {
+      &--success {
+        --ak-icon-color: #{$success-color};
+      }
+
+      &--warning {
+        --ak-icon-color: #{$warning-color};
+      }
+
+      &--fail {
+        --ak-icon-color: #{$danger-color};
+      }
+    }
+  }
+
+  &_title {
+    margin-top: 20px;
+    line-height: 31px;
+    font-weight: 700;
+    font-size: 22px;
+    color: $title-color;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+
+  &_description {
+    margin-top: 16px;
+    font-size: 17px;
+    line-height: 24px;
+    color: $font-color;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &_footer {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+
+    .ak-button + .ak-button {
+      margin: 12px 0 0;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+@import '../style/var.scss';
+
+.ak-radio {
+  --ak-active-color: #{$primary-color};
+  --ak-radio-icon-size: 20px;
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 17px;
+  color: $title-color;
+  text-align: left;
+  position: relative;
+
+  + .ak-radio {
+    margin-left: 16px;
+  }
+
+  &_box {
+    display: flex;
+    width: 100%;
+    height: 32px;
+    box-sizing: border-box;
+    align-items: center;
+  }
+
+  &_icon,
+  &_checked-icon {
+    --ak-icon-size: var(--ak-radio-icon-size);
+    --ak-icon-color: #{$border-color};
+  }
+
+  &_checked-icon {
+    display: none;
+
+    --ak-icon-color: var(--ak-active-color);
+  }
+
+  &_input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+
+    &:checked + .ak-radio_box .ak-radio_icon {
+      display: none;
+    }
+
+    &:checked + .ak-radio_box .ak-radio_checked-icon {
+      display: block;
+    }
+  }
+
+  &_text {
+    display: block;
+    line-height: 1;
+    margin-left: 12px;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+  }
+}
+
+.ak-radio-group {
+  display: flex;
+  height: 32px;
+  align-items: center;
+  color: $title-color;
+  box-sizing: border-box;
+  flex: 1;
+
+  &.vertical {
+    flex-direction: column;
+    height: auto;
+    min-height: 32px;
+
+    > .ak-radio {
+      display: flex;
+      width: 100%;
+
+      + .ak-radio {
+        margin-left: 0;
+
+        &::before {
+          content: '';
+        }
+      }
+    }
+  }
+}

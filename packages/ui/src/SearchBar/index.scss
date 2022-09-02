@@ -1,0 +1,98 @@
+@import '../style/var.scss';
+@import '../style/mixin.scss';
+
+.ak-search {
+  flex: 1;
+  height: 52px;
+
+  &_inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 12px;
+
+    &.has--cancel {
+      padding: 0 0 0 12px;
+    }
+  }
+
+  &_field {
+    flex: 1;
+    background-color: $background-color;
+    padding: 0 8px;
+    height: 36px;
+    border-radius: 4px;
+
+    &.ghost {
+      background-color: $white-color;
+      border-color: transparent;
+
+      &:focus {
+        border-color: transparent;
+      }
+
+      @include box-shadow;
+    }
+  }
+
+  &_back-button {
+    height: 100%;
+    border-radius: 0;
+
+    &.type--default {
+      background-color: transparent;
+    }
+  }
+
+  &_button {
+    display: block;
+    width: 0;
+    height: 0;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+  }
+
+  &_cancel-button {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 36px;
+  }
+
+  &_suggest {
+    overflow-y: auto;
+    background-color: $background-color;
+
+    &::before {
+      content: '';
+    }
+
+    &-list {
+      overflow: hidden;
+    }
+
+    &-item {
+      .ak-cell {
+        &_label {
+          font-size: 15px;
+        }
+      }
+    }
+
+    &-tag {
+      font-size: 14px;
+      padding: 0 8px;
+      height: 24px;
+      box-sizing: border-box;
+      background-color: $background-color;
+      display: flex;
+      align-items: center;
+      margin-left: 8px;
+      border-radius: 2px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}

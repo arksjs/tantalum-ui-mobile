@@ -1,0 +1,62 @@
+@import '../style/var.scss';
+
+.ak-nav-bar {
+  position: relative;
+  height: 52px;
+  background-color: $white-color;
+  width: 100%;
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+
+  &::after {
+    content: '';
+  }
+
+  &_inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  &_title {
+    flex: 1;
+    margin: 0 90px;
+    font-weight: 500;
+    font-size: 17px;
+    color: $title-color;
+    height: 24px;
+    line-height: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &_left,
+  &_right {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &_right {
+    left: auto;
+    right: 0;
+  }
+
+  &_button-group {
+    height: 100%;
+    max-height: 64px;
+  }
+
+  &_button.ak-button {
+    border-radius: 0;
+    height: 100%;
+  }
+}

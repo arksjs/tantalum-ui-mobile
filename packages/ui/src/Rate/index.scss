@@ -1,0 +1,106 @@
+@import '../style/var.scss';
+
+.ak-rate {
+  --ak-size: 24px;
+  --ak-color: #{$border-color};
+  --ak-active-color: #{$danger-color};
+
+  display: flex;
+  align-items: center;
+  height: 32px;
+
+  &_item {
+    width: var(--ak-size);
+    height: var(--ak-size);
+    font-size: var(--ak-size);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .ak-icon {
+    --ak-icon-size: var(--ak-size);
+    --ak-icon-color: var(--ak-color);
+
+    flex-shrink: 0;
+    display: block;
+  }
+
+  &_icon {
+    width: 100%;
+    height: 100%;
+  }
+
+  &_active-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+
+    .ak-icon {
+      --ak-icon-color: var(--ak-active-color);
+    }
+  }
+
+  &_half {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  &.readonly {
+    .ak-rate {
+      &_item {
+        cursor: default;
+      }
+    }
+  }
+
+  &.disabled {
+    opacity: 0.2;
+
+    .ak-rate {
+      &_item {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &_item.active {
+    .ak-rate {
+      &_icon {
+        display: none;
+      }
+
+      &_active-icon {
+        display: block;
+      }
+    }
+  }
+
+  &_item.active.half {
+    .ak-rate {
+      &_icon {
+        width: 50%;
+        margin-left: 50%;
+        display: flex;
+        justify-content: flex-end;
+        overflow: hidden;
+      }
+
+      &_active-icon {
+        display: block;
+        width: 50%;
+        overflow: hidden;
+      }
+    }
+  }
+}

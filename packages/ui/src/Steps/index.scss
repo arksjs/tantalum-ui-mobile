@@ -1,0 +1,198 @@
+@import '../style/var.scss';
+
+.ak-step {
+  position: relative;
+
+  + .ak-step {
+    &::before {
+      content: '';
+      margin-left: 40px;
+    }
+  }
+
+  &_index {
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    width: 20px;
+    height: 20px;
+    line-height: 16px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--ak-dot-color);
+    box-sizing: border-box;
+    border-radius: 50%;
+    color: var(--ak-dot-color);
+    background-color: $white-color;
+    font-size: 13px;
+    font-weight: 500;
+    overflow: hidden;
+
+    .ak-icon {
+      --ak-icon-size: 14px;
+      --ak-icon-color: var(--ak-dot-color);
+    }
+  }
+
+  &_line {
+    position: absolute;
+    left: 25.5px;
+    top: 24px;
+    width: 1px;
+    height: 100%;
+    background-color: $border-color;
+  }
+
+  &_inner {
+    padding: 12px 16px 12px 44px;
+    overflow: hidden;
+    color: $font-color;
+  }
+
+  &_title {
+    min-height: 24px;
+    font-size: 17px;
+    line-height: 24px;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-weight: 500;
+
+    a {
+      text-decoration: none;
+      color: $primary-color;
+    }
+  }
+
+  &_content {
+    margin-top: 2px;
+    font-size: 14px;
+    line-height: 20px;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: hidden;
+    opacity: 0.8;
+
+    a {
+      text-decoration: none;
+      color: $primary-color;
+    }
+
+    .ak-step_title + & {
+      margin-top: 4px;
+    }
+  }
+
+  &:last-child {
+    .ak-step_line {
+      display: none;
+    }
+  }
+
+  &.finish {
+    --ak-dot-color: var(--ak-color);
+
+    .ak-step {
+      &_line {
+        background-color: var(--ak-color);
+      }
+    }
+  }
+
+  &.active {
+    --ak-dot-color: var(--ak-color);
+
+    .ak-step {
+      &_index {
+        border-color: var(--ak-color);
+        background-color: var(--ak-color);
+        color: #fff;
+
+        .ak-icon {
+          --ak-icon-color: #fff;
+        }
+      }
+
+      &_inner {
+        color: var(--ak-color);
+      }
+    }
+  }
+
+  .ak-steps.horizontal & {
+    flex: 1;
+
+    &_index {
+      left: 50%;
+      top: 13px;
+      margin-left: -10px;
+    }
+
+    &_line {
+      width: 100%;
+      height: 1px;
+      top: 22.5px;
+      left: 50%;
+    }
+
+    &_inner {
+      padding: 40px 8px 16px;
+      text-align: center;
+    }
+
+    &_title {
+      font-size: 15px;
+      line-height: 21px;
+      min-height: 21px;
+    }
+
+    &_content {
+      margin-top: -1px;
+      color: $font-color;
+    }
+
+    .ak-step_title + .ak-step_content {
+      margin-top: 4px;
+    }
+
+    &.active {
+      .ak-step {
+        &_title,
+        &_content {
+          color: var(--ak-color);
+        }
+      }
+    }
+  }
+}
+
+.ak-steps {
+  --ak-color: #{$primary-color};
+  --ak-dot-color: #{$border-color};
+
+  &.dot .ak-step_index {
+    width: 10px;
+    height: 10px;
+    border-width: 2px;
+    text-indent: -9999px;
+    left: 21px;
+    top: 19px;
+
+    * {
+      display: none;
+    }
+  }
+
+  &.horizontal {
+    display: flex;
+    margin: 0 -8px;
+
+    &.dot .ak-step_index {
+      left: 50%;
+      top: 18px;
+      margin-left: -5px;
+    }
+  }
+}

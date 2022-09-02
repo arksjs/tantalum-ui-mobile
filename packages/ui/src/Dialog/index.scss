@@ -1,0 +1,71 @@
+@import '../style/var.scss';
+
+.ak-dialog {
+  &_header {
+    flex: 1;
+    font-size: 17px;
+    line-height: 24px;
+    height: 24px;
+    font-weight: 500;
+    color: $title-color;
+    margin: 32px 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: center;
+    white-space: pre-line;
+    user-select: none;
+  }
+
+  &_content {
+    margin-top: 16px;
+    padding: 16px 24px;
+    font-size: 17px;
+    line-height: 24px;
+    color: $font-color;
+    user-select: none;
+
+    &-text {
+      min-height: 24px;
+      max-height: 300px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      word-break: break-all;
+      word-wrap: break-word;
+      text-align: center;
+      white-space: pre-line;
+    }
+
+    .ak-dialog_header + & {
+      margin-top: 0;
+    }
+  }
+
+  &_footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      border-color: $border-color;
+    }
+
+    &-inner {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+
+      > .ak-button + .ak-button::before {
+        height: 100%;
+        background-color: $border-color;
+      }
+    }
+  }
+}

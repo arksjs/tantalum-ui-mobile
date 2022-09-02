@@ -1,0 +1,132 @@
+@import '../style/var.scss';
+
+.ak-input {
+  --ak-font-size: 17px;
+  --ak-input-icon-size: 20px;
+  --ak-front-color: #{$title-color};
+  --ak-secondary-color: #{$font3-color};
+
+  height: 48px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid $border-color;
+  border-radius: 0;
+  box-sizing: border-box;
+  padding: 11px 16px;
+  font-size: var(--ak-font-size);
+  background-color: $white-color;
+  color: var(--ak-front-color);
+
+  .ak-icon {
+    --ak-icon-size: var(--ak-input-icon-size);
+    --ak-icon-color: var(--ak-secondary-color);
+  }
+
+  &.disabled {
+    background-color: $background-color;
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
+
+  &_prepend,
+  &_append {
+    display: flex;
+    align-items: center;
+    padding: 0 8px 0 0;
+    color: var(--ak-secondary-color);
+  }
+
+  &_append,
+  &_clear,
+  &_arrow {
+    padding: 0 0 0 8px;
+  }
+
+  &.has--value {
+    .ak-input {
+      &_arrow {
+        --ak-icon-color: var(--ak-front-color);
+      }
+    }
+  }
+
+  &_limit {
+    font-size: 17px;
+    line-height: 24px;
+    height: 24px;
+    color: $font-color;
+    margin-left: 8px;
+  }
+
+  &_input {
+    flex: 1;
+    display: block;
+    margin: 0;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    line-height: 1.412;
+    padding: 0;
+    font-size: var(--ak-font-size);
+    cursor: pointer;
+    color: var(--ak-front-color);
+    background: none;
+    box-sizing: border-box;
+    box-shadow: none;
+    resize: none;
+
+    // white-space: nowrap;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+
+    &:read-only {
+      cursor: auto;
+    }
+
+    &[type='search']::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    &.placeholder,
+    &::placeholder {
+      color: $font3-color;
+    }
+
+    &:disabled {
+      user-select: none;
+    }
+  }
+
+  &:not(.readonly).focus {
+    border-color: $primary-color;
+  }
+
+  &_cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.ak-textarea {
+  height: 108px;
+
+  .ak-input_limit {
+    position: absolute;
+    right: 16px;
+    bottom: 8px;
+  }
+}

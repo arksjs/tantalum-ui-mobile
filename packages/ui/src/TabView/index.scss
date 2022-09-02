@@ -1,0 +1,54 @@
+@import '../style/var.scss';
+
+.ak-tab-view {
+  background-color: $white-color;
+
+  &_header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    // &::after {
+    //   content: '';
+    // }
+  }
+
+  &_body {
+    height: calc(100% - 37px);
+
+    .ak-swiper {
+      height: 100%;
+    }
+  }
+
+  &.vertical {
+    display: flex;
+
+    .ak-tab-view {
+      &_header {
+        width: 80px;
+        height: 100%;
+        background-color: $background-color;
+
+        &::after {
+          content: none;
+        }
+      }
+
+      &_body {
+        flex: 1;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.ak-tab-view-item {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  position: relative;
+}

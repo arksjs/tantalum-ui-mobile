@@ -1,0 +1,14 @@
+@import '../style/var.scss';
+
+.ak-price {
+  display: inline;
+  color: $title-color;
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 500;
+
+  &_symbol,
+  &_decimal {
+    font-size: 0.706em;
+  }
+}

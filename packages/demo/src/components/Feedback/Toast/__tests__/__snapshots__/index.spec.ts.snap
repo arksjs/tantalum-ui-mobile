@@ -1,0 +1,9 @@
+// Vitest Snapshot v1
+
+exports[`Toast > should render default correctly 1`] = `"<anonymous-stub to=\\"body\\"></anonymous-stub>"`;
+
+exports[`Toast > should render prop type="fail" correctly 1`] = `"<anonymous-stub to=\\"body\\"></anonymous-stub>"`;
+
+exports[`Toast > should render prop type="loading" correctly 1`] = `"<anonymous-stub to=\\"body\\"></anonymous-stub>"`;
+
+exports[`Toast > should render prop type="success" correctly 1`] = `"<anonymous-stub to=\\"body\\"></anonymous-stub>"`;

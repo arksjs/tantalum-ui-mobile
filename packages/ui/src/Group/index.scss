@@ -1,0 +1,62 @@
+@import '../style/var.scss';
+
+.ak-group {
+  overflow: hidden;
+  margin-bottom: 12px;
+
+  &_header {
+    height: 44px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &_title {
+    font-size: 14px;
+    color: $font2-color;
+    flex-shrink: 0;
+    flex-grow: 1;
+    text-align: left;
+  }
+
+  &_more {
+    font-size: 14px;
+    color: $font3-color;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &.strong-header {
+    background-color: $white-color;
+
+    .ak-group {
+      &_header {
+        height: 48px;
+        background-color: $white-color;
+      }
+
+      &_title {
+        font-size: 17px;
+        font-weight: 700;
+        color: $title-color;
+      }
+    }
+
+    &::before {
+      content: '';
+    }
+  }
+
+  &_body {
+    &::before,
+    &::after {
+      content: '';
+    }
+
+    &-inner {
+      background-color: $white-color;
+    }
+  }
+}

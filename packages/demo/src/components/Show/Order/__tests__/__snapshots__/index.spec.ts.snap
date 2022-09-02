@@ -1,0 +1,6 @@
+// Vitest Snapshot v1
+
+exports[`Order > should render default slot correctly 1`] = `
+"<div class=\\"fx-order\\" style=\\"height: 0px;\\"></div>
+<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"false\\" class=\\"fx-order_delete\\"></drawer-stub>"
+`;

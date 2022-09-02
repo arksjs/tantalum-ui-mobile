@@ -1,0 +1,143 @@
+@import '../style/var.scss';
+
+.ak-tab {
+  --ak-color: #{$font-color};
+  --ak-active-color: #{$primary-color};
+  --ak-front-color: var(--ak-color);
+
+  background-color: $white-color;
+  height: 40px;
+  position: relative;
+
+  &_underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--ak-active-color);
+    transition: all 0.2s;
+  }
+
+  &_list {
+    padding: 0 4px;
+    margin: 0;
+    width: 100%;
+    height: inherit;
+    white-space: nowrap;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: auto;
+  }
+
+  &_item {
+    height: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    padding: 0 12px;
+    position: relative;
+    box-sizing: border-box;
+    user-select: none;
+
+    .ak-icon {
+      --ak-icon-size: 20px;
+      --ak-icon-color: var(--ak-front-color);
+
+      margin-right: 4px;
+    }
+
+    &-inner {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      position: relative;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 500;
+      color: var(--ak-front-color);
+    }
+
+    &-text {
+      display: block;
+      word-break: break-all;
+      white-space: pre-wrap;
+    }
+
+    &-sub-text {
+      display: block;
+      height: 17px;
+      line-height: 17px;
+      padding: 0 5px;
+      border-radius: 2px;
+      margin-top: 2px;
+      font-size: 12px;
+      color: var(--ak-front-color);
+      opacity: 0.8;
+    }
+
+    &.active {
+      --ak-front-color: var(--ak-active-color);
+
+      .ak-tab_item {
+        &-inner {
+          font-weight: 700;
+        }
+
+        &-sub-text {
+          background-color: var(--ak-front-color);
+          color: #fff;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.has--sub {
+    height: 48px;
+
+    .ak-tab {
+      &_underline {
+        display: none;
+      }
+
+      &_item {
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 50%;
+          height: 20px;
+          margin-top: -10px;
+        }
+
+        &-inner {
+          &::before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+
+  &.no--scroll:not(.vertical) {
+    .ak-tab {
+      &_list {
+        display: flex;
+        padding: 0;
+      }
+
+      &_item {
+        flex: 1;
+        padding: 0;
+
+        &-text {
+          flex-grow: 1;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,93 @@
+@import '../style/var.scss';
+
+.ak-avatar {
+  --ak-size: 48px;
+  --ak-font-size: 24px;
+  --ak-color: #{$background-color};
+  --ak-front-color: #{$font-color};
+
+  background-color: var(--ak-color);
+  width: var(--ak-size);
+  height: var(--ak-size);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: var(--ak-font-size);
+  color: var(--ak-front-color);
+  box-sizing: border-box;
+
+  .ak-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+    .ak-icon {
+      --ak-icon-size: 1.333em;
+      --ak-icon-color: var(--ak-front-color);
+    }
+  }
+
+  &.gender-man {
+    .ak-badge_badge {
+      --ak-color: #{$primary-color};
+    }
+  }
+
+  &.gender-woman {
+    .ak-badge_badge {
+      --ak-color: #{$danger-color};
+    }
+  }
+
+  &.shape--square {
+    border-radius: 4px;
+
+    .ak-image {
+      border-radius: 4px;
+    }
+  }
+
+  &.size--large {
+    --ak-size: 64px;
+    --ak-font-size: 32px;
+  }
+
+  &.size--small {
+    --ak-size: 36px;
+    --ak-font-size: 18px;
+  }
+}
+
+.ak-avatar-group {
+  > .ak-avatar {
+    border: 1px solid $white-color;
+    margin-left: -0.5em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &_count {
+    &-number {
+      font-size: 0.667em;
+
+      &.size--2 {
+        font-size: 0.611em;
+      }
+
+      &.size--3 {
+        font-size: 0.556em;
+      }
+
+      &.size--4 {
+        font-size: 0.556em;
+      }
+
+      &.size--5 {
+        font-size: 0.5em;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`Modal > snapshot 1`] = `
+"<teleport-stub>
+  <div class=\\"ak-modal ak-popup\\" style=\\"z-index: 2000; display: none;\\">
+    <div class=\\"ak-mask\\"></div>
+    <div class=\\"ak-modal_box\\">
+      <div class=\\"ak-modal_box-inner\\"></div><i class=\\"ak-modal_close\\">
+        <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+      </i>
+    </div>
+  </div>
+</teleport-stub>"
+`;

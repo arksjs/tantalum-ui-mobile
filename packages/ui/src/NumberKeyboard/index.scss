@@ -1,0 +1,100 @@
+@import '../style/var.scss';
+@import '../style/mixin.scss';
+
+.ak-number-keyboard {
+  .ak-drawer_inner {
+    background: $background2-color;
+
+    .ak-nav-bar::after {
+      content: none;
+    }
+  }
+
+  .ak-nav-bar {
+    &_inner {
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &_body {
+    padding: 10px 0 0 10px;
+    display: flex;
+
+    &.has--header {
+      padding-top: 0;
+    }
+  }
+
+  &_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+
+  &_item {
+    flex: 1 1 33%;
+    padding: 0 10px 10px 0;
+    box-sizing: border-box;
+
+    &.span-2 {
+      flex-basis: 66%;
+    }
+  }
+
+  &_button,
+  &_confirm-button {
+    display: flex;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: $white-color;
+    font-size: 26px;
+    font-weight: 700;
+    color: $font-color;
+    user-select: none;
+    @include box-shadow;
+
+    .ak-icon {
+      --ak-icon-size: 36px;
+      --ak-icon-color: #{$font-color};
+    }
+  }
+
+  &_button:active {
+    background-color: $background-color;
+  }
+
+  &_right-column {
+    width: 25%;
+  }
+
+  &_backspace {
+    height: 25%;
+    padding: 0 10px 10px 0;
+    box-sizing: border-box;
+  }
+
+  &_confirm {
+    height: 75%;
+    padding: 0 10px 10px 0;
+    box-sizing: border-box;
+
+    &-button {
+      height: 100%;
+      background-color: $primary-color;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 500;
+
+      &:active {
+        background-color: var(--ak-color-primary-dark);
+      }
+    }
+  }
+}

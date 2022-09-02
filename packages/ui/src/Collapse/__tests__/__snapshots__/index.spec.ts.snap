@@ -1,0 +1,12 @@
+// Vitest Snapshot v1
+
+exports[`Collapse > snapshot 1`] = `"<div class=\\"ak-collapse\\"></div>"`;
+
+exports[`CollapseItem > snapshot 1`] = `
+"<div class=\\"ak-collapse-item ak-horizontal-hairline\\">
+  <cell-stub arrowdirection=\\"down\\" label=\\"\\" description=\\"\\" content=\\"\\" clickable=\\"false\\" required=\\"false\\" islink=\\"true\\" disabled=\\"false\\" class=\\"ak-collapse-item_header\\"></cell-stub>
+  <div class=\\"ak-collapse-item_body ak-horizontal-hairline\\" style=\\"display: none;\\">
+    <div class=\\"ak-collapse-item_content\\"></div>
+  </div>
+</div>"
+`;

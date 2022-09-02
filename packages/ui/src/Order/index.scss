@@ -1,0 +1,75 @@
+@import '../style/var.scss';
+
+.ak-order {
+  position: relative;
+
+  &_item {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33.33%;
+    z-index: 1;
+    transition: all 0.2s;
+    transform: translateZ(0);
+    user-select: none;
+
+    &-ratio {
+      padding-top: 100%;
+      float: left;
+    }
+
+    &-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 3px;
+      box-sizing: border-box;
+    }
+
+    &.fixed {
+      position: fixed;
+      transform: scale(0.8);
+    }
+
+    &.current {
+      transform: scale(1.05);
+      transition: transform 0.2s;
+      z-index: 2;
+      opacity: 0.8;
+    }
+
+    &.deleted {
+      transform: scale(0);
+    }
+
+    .ak-order.forbid-animation & {
+      transition: transform 0.2s;
+    }
+  }
+
+  &_delete {
+    .ak-drawer_inner {
+      background-color: $danger-color;
+      opacity: 0.9;
+      min-height: 48px;
+    }
+
+    &-button {
+      width: 100%;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      color: #fff;
+
+      .ak-icon {
+        --ak-icon-size: 20px;
+        --ak-icon-color: #fff;
+
+        margin: 0 8px 0 -2px;
+      }
+    }
+  }
+}

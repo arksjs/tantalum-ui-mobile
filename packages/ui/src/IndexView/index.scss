@@ -1,0 +1,50 @@
+@import '../style/var.scss';
+
+.ak-index-view {
+  overflow-y: auto;
+  position: relative;
+
+  &_sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 36px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+
+    li {
+      padding: 0 0 0 10px;
+      text-align: center;
+      height: 18px;
+      line-height: 18px;
+      font-size: 10px;
+      color: $font3-color;
+      font-weight: 500;
+      cursor: pointer;
+
+      &.active {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+.ak-index-view-item {
+  margin-bottom: 0;
+
+  .ak-group_header {
+    height: 28px;
+    background-color: $background-color;
+  }
+}

@@ -1,0 +1,37 @@
+@import '../style/var.scss';
+
+.ak-stepper {
+  flex: 1 0 0%;
+  display: flex;
+  height: 32px;
+  align-items: center;
+  justify-content: flex-end;
+
+  &_input {
+    height: 28px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    margin: 0 4px;
+    padding: 0;
+    box-sizing: border-box;
+    background: none;
+    color: $title-color;
+    outline: 0;
+    font-size: 17px;
+
+    &:disabled {
+      color: $font3-color;
+      -webkit-text-fill-color: $font3-color;
+      opacity: 1;
+      cursor: not-allowed;
+    }
+
+    &:read-only {
+      cursor: default;
+    }
+  }
+}

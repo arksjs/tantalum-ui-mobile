@@ -1,0 +1,19 @@
+@import '../style/var.scss';
+
+.ak-scroll-tab {
+  display: flex;
+  overflow-y: auto;
+  position: relative;
+  background-color: $background-color;
+
+  &_sidebar {
+    width: 80px;
+    height: 100%;
+    flex-grow: 0;
+    background-color: $background-color;
+  }
+
+  &_body {
+    flex: 1;
+  }
+}

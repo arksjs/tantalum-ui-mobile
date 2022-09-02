@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`Result > snapshot 1`] = `
+"<div class=\\"ak-result type--info\\">
+  <div class=\\"ak-result_header\\">
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"ak-result_icon type--info\\"></icon-stub>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  <div class=\\"ak-result_footer\\">
+    <button-stub type=\\"primary\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></button-stub>
+    <button-stub type=\\"default\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></button-stub>
+  </div>
+</div>"
+`;

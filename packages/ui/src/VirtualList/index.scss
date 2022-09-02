@@ -1,0 +1,52 @@
+@import '../style/var.scss';
+
+.ak-virtual-list {
+  &_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    transform: translateZ(0);
+
+    &.pool {
+      visibility: hidden;
+    }
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    position: absolute;
+
+    &-inner {
+      height: 100%;
+      flex-grow: 1;
+    }
+  }
+
+  &:not(.horizontal) {
+    overflow-y: auto;
+  }
+
+  &.horizontal {
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 100%;
+
+    .ak-virtual-list {
+      &_list {
+        display: inline-flex;
+        height: 100%;
+      }
+
+      &_item {
+        display: inline-flex;
+        flex-direction: row;
+        height: 100%;
+        vertical-align: top;
+      }
+    }
+  }
+}

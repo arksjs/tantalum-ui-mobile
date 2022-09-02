@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`Price > snapshot 1`] = `
+"<div class=\\"ak-price\\">
+  <!--v-if--><span class=\\"ak-price_integer\\">1111</span><span class=\\"ak-price_decimal\\">.11</span>
+</div>"
+`;

@@ -1,0 +1,31 @@
+@import '../style/var.scss';
+
+.ak-back-top {
+  --ak-color: #{$title-color};
+
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  font-size: 17px;
+  color: var(--ak-color);
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  outline: 0;
+
+  .ak-icon {
+    --ak-icon-size: 40px;
+    --ak-icon-color: var(--ak-color);
+
+    display: block;
+  }
+}

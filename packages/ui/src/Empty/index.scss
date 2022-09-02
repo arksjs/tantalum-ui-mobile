@@ -1,0 +1,29 @@
+@import '../style/var.scss';
+
+.ak-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0;
+  box-sizing: border-box;
+
+  &_image {
+    width: 160px;
+    height: 160px;
+  }
+
+  &_description {
+    color: $font2-color;
+    text-align: center;
+    word-break: break-all;
+    word-wrap: break-word;
+    margin: 16px 0 0;
+    font-size: 14px;
+    line-height: 19.6px;
+
+    + * {
+      margin-top: 16px;
+    }
+  }
+}

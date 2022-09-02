@@ -1,0 +1,75 @@
+@import './var.scss';
+
+:root {
+  --ak-color-primary-lighter: #{$primary-color-2};
+  --ak-color-primary-light: #{$primary-color-5};
+  --ak-color-primary: #{$primary-color-6};
+  --ak-color-primary-dark: #{$primary-color-7};
+  --ak-color-primary-darker: #{$primary-color-10};
+  --ak-color-success-lighter: #{$success-color-2};
+  --ak-color-success-light: #{$success-color-5};
+  --ak-color-success: #{$success-color-6};
+  --ak-color-success-dark: #{$success-color-7};
+  --ak-color-success-darker: #{$success-color-10};
+  --ak-color-warning-lighter: #{$warning-color-2};
+  --ak-color-warning-light: #{$warning-color-5};
+  --ak-color-warning: #{$warning-color-6};
+  --ak-color-warning-dark: #{$warning-color-7};
+  --ak-color-warning-darker: #{$warning-color-10};
+  --ak-color-danger-lighter: #{$danger-color-2};
+  --ak-color-danger-light: #{$danger-color-5};
+  --ak-color-danger: #{$danger-color-6};
+  --ak-color-danger-dark: #{$danger-color-7};
+  --ak-color-danger-darker: #{$danger-color-10};
+  --ak-grey-1: 255, 255, 255;
+  --ak-grey-2: 250, 250, 250;
+  --ak-grey-3: 245, 245, 245;
+  --ak-grey-4: 240, 240, 240;
+  --ak-grey-5: 217, 217, 217;
+  --ak-grey-6: 191, 191, 191;
+  --ak-grey-7: 140, 140, 140;
+  --ak-grey-8: 89, 89, 89;
+  --ak-grey-9: 67, 67, 67;
+  --ak-grey-10: 38, 38, 38;
+  --ak-grey-11: 31, 31, 31;
+  --ak-grey-12: 20, 20, 20;
+  --ak-grey-13: 0, 0, 0;
+}
+
+body {
+  &[ak-theme='dark'] {
+    --ak-grey-13: 255, 255, 255;
+    --ak-grey-12: 250, 250, 250;
+    --ak-grey-11: 245, 245, 245;
+    --ak-grey-10: 240, 240, 240;
+    --ak-grey-9: 217, 217, 217;
+    --ak-grey-8: 191, 191, 191;
+    --ak-grey-7: 140, 140, 140;
+    --ak-grey-6: 89, 89, 89;
+    --ak-grey-5: 67, 67, 67;
+    --ak-grey-4: 38, 38, 38;
+    --ak-grey-3: 31, 31, 31;
+    --ak-grey-2: 20, 20, 20;
+    --ak-grey-1: 0, 0, 0;
+    --ak-color-primary-lighter: #{$primary-color-9};
+    --ak-color-primary-light: #{$primary-color-6};
+    --ak-color-primary: #{$primary-color-5};
+    --ak-color-primary-dark: #{$primary-color-4};
+    --ak-color-primary-darker: #{$primary-color-1};
+    --ak-color-success-lighter: #{$success-color-9};
+    --ak-color-success-light: #{$success-color-6};
+    --ak-color-success: #{$success-color-5};
+    --ak-color-success-dark: #{$success-color-4};
+    --ak-color-success-darker: #{$success-color-1};
+    --ak-color-warning-lighter: #{$warning-color-9};
+    --ak-color-warning-light: #{$warning-color-6};
+    --ak-color-warning: #{$warning-color-5};
+    --ak-color-warning-dark: #{$warning-color-4};
+    --ak-color-warning-darker: #{$warning-color-1};
+    --ak-color-danger-lighter: #{$danger-color-9};
+    --ak-color-danger-light: #{$danger-color-6};
+    --ak-color-danger: #{$danger-color-5};
+    --ak-color-danger-dark: #{$danger-color-4};
+    --ak-color-danger-darker: #{$danger-color-1};
+  }
+}

@@ -1,0 +1,30 @@
+// Vitest Snapshot v1
+
+exports[`Skeleton > slot layout 1`] = `
+"<div class=\\"ak-skeleton\\">
+  <div class=\\"ak-skeleton-image\\"></div>
+  <div class=\\"ak-skeleton-title\\"></div>
+  <ul class=\\"ak-skeleton-paragraph\\">
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <div class=\\"ak-skeleton-button shape--default\\"></div>
+</div>"
+`;
+
+exports[`Skeleton > snapshot 1`] = `
+"<div class=\\"ak-skeleton\\">
+  <div class=\\"ak-skeleton_layout\\">
+    <!--v-if-->
+    <div class=\\"ak-skeleton_layout-right\\">
+      <div class=\\"ak-skeleton-title\\"></div>
+      <ul class=\\"ak-skeleton-paragraph\\">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+</div>"
+`;

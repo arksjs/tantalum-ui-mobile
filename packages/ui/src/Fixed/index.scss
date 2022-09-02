@@ -1,0 +1,39 @@
+@import '../style/var.scss';
+
+.ak-fixed {
+  &_inner {
+    &.fixed {
+      position: fixed;
+
+      &.placement {
+        &--top {
+          top: 0;
+          left: 0;
+          right: 0;
+        }
+
+        &--bottom {
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+
+        &--left {
+          top: 0;
+          bottom: 0;
+          left: 0;
+        }
+
+        &--right {
+          top: 0;
+          bottom: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  &_content-wrapper {
+    position: relative;
+  }
+}

@@ -1,0 +1,22 @@
+@import '../style/var.scss';
+
+.ak-form-footer {
+  padding: 8px 16px;
+  display: flex;
+}
+
+.ak-form-item {
+  &.ak-cell .ak-cell_body {
+    color: $danger-color;
+    list-style: none;
+    padding: 0 0 12px;
+
+    li {
+      line-height: 20px;
+    }
+  }
+
+  &_required {
+    color: $danger-color;
+  }
+}

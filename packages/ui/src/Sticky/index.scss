@@ -1,0 +1,18 @@
+@import '../style/var.scss';
+
+.ak-sticky {
+  --ak-background-color: transparent;
+
+  background-color: var(--ak-background-color);
+
+  &_content {
+    background-color: var(--ak-background-color);
+
+    // &.fixed {
+    //   position: fixed;
+    //   left: 0;
+    //   top: 0;
+    //   z-index: 1000;
+    // }
+  }
+}
