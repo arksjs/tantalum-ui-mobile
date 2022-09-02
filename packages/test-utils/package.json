@@ -1,7 +1,0 @@
-{
-  "name": "@arksjs/test-utils",
-  "version": "0.0.1",
-  "description": "arkui test-utils",
-  "main": "dist/index.js",
-  "private": true
-}

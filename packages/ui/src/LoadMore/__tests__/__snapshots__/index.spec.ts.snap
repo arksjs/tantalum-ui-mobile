@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`LoadMore > snapshot 1`] = `
-"<div class=\\"ak-load-more ak-horizontal-hairline\\">
-  <!--v-if--><span class=\\"ak-load-more_content\\"><i class=\\"ak-load-more_dot\\"></i></span>
-</div>"
-`;

@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Divider > snapshot 1`] = `
-"<div class=\\"ak-divider ak-horizontal-hairline\\">
-  <!--v-if-->
-</div>"
-`;

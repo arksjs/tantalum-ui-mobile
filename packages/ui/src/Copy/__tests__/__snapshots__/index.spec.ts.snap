@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Copy > snapshot 1`] = `
-"<div class=\\"ak-copy\\"><input type=\\"text\\" class=\\"ak-copy_input\\">
-  <div class=\\"ak-copy_box\\">content</div>
-</div>"
-`;

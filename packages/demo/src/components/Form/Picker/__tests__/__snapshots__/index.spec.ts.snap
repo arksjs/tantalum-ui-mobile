@@ -1,8 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Picker > should render prop set options correctly 1`] = `
-"<div class=\\"fx-picker\\">
-  <selector-field-stub label=\\"\\" name=\\"\\" placeholder=\\"\\" disabled=\\"false\\" value=\\"\\"></selector-field-stub>
-  <!--v-if-->
-</div>"
-`;

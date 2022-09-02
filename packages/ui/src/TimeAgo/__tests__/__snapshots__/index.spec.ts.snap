@@ -1,3 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`TimeAgo > snapshot 1`] = `"<div class=\\"fx-time-ago\\">刚刚</div>"`;

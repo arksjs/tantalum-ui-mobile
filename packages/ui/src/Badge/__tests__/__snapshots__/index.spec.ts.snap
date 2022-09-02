@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Badge > snapshot 1`] = `
-"<div class=\\"ak-badge\\">
-  <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
-</div>"
-`;

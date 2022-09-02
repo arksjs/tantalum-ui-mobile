@@ -1,5 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`CountDown > should render default slot correctly 1`] = `"<div class=\\"fx-count-down\\">0:00:00</div>"`;
-
-exports[`CountDown > should render prop showDays=true correctly 1`] = `"<div class=\\"fx-count-down\\">0天 00:00:00</div>"`;

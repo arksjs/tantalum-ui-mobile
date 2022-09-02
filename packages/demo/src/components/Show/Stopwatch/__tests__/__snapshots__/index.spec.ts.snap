@@ -1,3 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Stopwatch > should render default correctly 1`] = `"<div class=\\"fx-stopwatch\\">00:00.000</div>"`;

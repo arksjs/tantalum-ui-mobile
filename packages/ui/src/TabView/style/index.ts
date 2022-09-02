@@ -1,5 +1,0 @@
-import '../../style/common/style/index'
-import '../../Tab/style/index'
-import '../../SideTab/style/index'
-import '../../Swiper/style/index'
-import '../index.scss'
