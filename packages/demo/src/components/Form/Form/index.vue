@@ -2,7 +2,7 @@
   <ak-group title="基础">
     <ak-form>
       <ak-form-item label="昵称">
-        <ak-AkInput v-model="baseForm.nickname" placeholder="请输入昵称" />
+        <ak-input v-model="baseForm.nickname" placeholder="请输入昵称" />
       </ak-form-item>
       <ak-form-item label="性别">
         <ak-radio-group

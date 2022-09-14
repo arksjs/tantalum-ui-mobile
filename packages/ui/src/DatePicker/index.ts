@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import DatePicker from './DatePicker.vue'
 import DatePickerPopup from './DatePickerPopup.vue'
 import DatePickerView from './DatePickerView.vue'
@@ -18,4 +17,3 @@ const showDatePicker = createShowPopup<
 
 export { DatePicker, DatePickerPopup, DatePickerView, showDatePicker }
 export default DatePicker
-export const install = withInstall(DatePicker)

@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import Dialog from './Dialog.vue'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
@@ -23,4 +22,3 @@ const showDialog = createShowPopup<
 
 export { Dialog, showDialog }
 export default Dialog
-export const install = withInstall(Dialog)

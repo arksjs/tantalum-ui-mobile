@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import Calendar from './Calendar.vue'
 import CalendarPopup from './CalendarPopup.vue'
 import CalendarView from './CalendarView.vue'
@@ -17,4 +16,3 @@ const showCalendar = createShowPopup<
 
 export { Calendar, CalendarPopup, CalendarView, showCalendar }
 export default Calendar
-export const install = withInstall(Calendar)

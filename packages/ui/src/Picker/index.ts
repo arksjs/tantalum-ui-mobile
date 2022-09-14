@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import Picker from './Picker.vue'
 import PickerPopup from './PickerPopup.vue'
 import PickerView from './PickerView.vue'
@@ -18,4 +17,3 @@ const showPicker = createShowPopup<
 
 export { Picker, PickerPopup, PickerView, showPicker }
 export default Picker
-export const install = withInstall(Picker)

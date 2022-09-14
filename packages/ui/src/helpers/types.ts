@@ -133,7 +133,6 @@ export type PropsToEmits<P> = Required<P> extends infer T
  * VUE
  */
 import * as Vue from 'vue'
-export type SFCWithInstall<T> = T & { install(app: Vue.App): void }
 
 export interface CSSProperties extends Vue.CSSProperties, AkCSS {}
 

@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import Notify from './Notify.vue'
 import { createAlertHook, createShowPopup, createHidePopup } from '../popup/api'
 import type { PopupSuccessAlertArgs } from '../popup/types'
@@ -37,4 +36,3 @@ const hideNotify = createHidePopup({
 
 export { Notify, showNotify, hideNotify }
 export default Notify
-export const install = withInstall(Notify)

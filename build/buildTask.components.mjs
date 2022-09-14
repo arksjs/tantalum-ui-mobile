@@ -106,12 +106,12 @@ export const buildSrcCompEntry = async () => {
     'utf-8'
   )
 
-  // install.ts
-  await fs.promises.writeFile(
-    resolveCore('./src/components/install.ts'),
-    imports.join('').replace(/default as Ak/g, 'install as '),
-    'utf-8'
-  )
+  // // install.ts
+  // await fs.promises.writeFile(
+  //   resolveCore('./src/components/install.ts'),
+  //   imports.join('').replace(/default as Ak/g, 'install as '),
+  //   'utf-8'
+  // )
 
   // // fx.ts
   // const fxImports = []

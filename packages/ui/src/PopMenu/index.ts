@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import PopMenu from './PopMenu.vue'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
@@ -20,4 +19,3 @@ const showPopMenu = createShowPopup<
 
 export { PopMenu, showPopMenu }
 export default PopMenu
-export const install = withInstall(PopMenu)

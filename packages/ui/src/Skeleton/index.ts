@@ -1,4 +1,3 @@
-import { multiWithInstall } from '../helpers/with-install'
 import Skeleton from './Skeleton.vue'
 import SkeletonAvatar from './SkeletonAvatar.vue'
 import SkeletonTitle from './SkeletonTitle.vue'
@@ -15,10 +14,3 @@ export {
   SkeletonImage
 }
 export default Skeleton
-export const install = multiWithInstall(Skeleton, [
-  SkeletonAvatar,
-  SkeletonTitle,
-  SkeletonParagraph,
-  SkeletonButton,
-  SkeletonImage
-])

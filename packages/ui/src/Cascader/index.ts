@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import Cascader from './Cascader.vue'
 import CascaderPopup from './CascaderPopup.vue'
 import CascaderView from './CascaderView.vue'
@@ -18,4 +17,3 @@ const showCascader = createShowPopup<
 
 export { Cascader, CascaderPopup, CascaderView, showCascader }
 export default Cascader
-export const install = withInstall(Cascader)

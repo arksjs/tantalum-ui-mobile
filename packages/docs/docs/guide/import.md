@@ -69,21 +69,6 @@ module.exports = {
 
 在不使用插件的情况下，可以手动引入需要的组件。
 
-按需引入全局注册：
-
-```JavaScript
-import { install as Button } from 'arkui-mobile-vue/es/Button'
-import 'arkui-mobile-vue/es/Button/style'
-
-app.use(Button)
-```
-
-```Vue
-<template>
-  <ak-button>按钮</ak-button>
-</template>
-```
-
 按需引入局部注册：
 
 ```Vue
@@ -106,7 +91,7 @@ export default {
 
 ```JavaScript
 import ArkUI from 'arkui-mobile-vue'
-import 'arkui-mobile-vue/es/style'
+import 'arkui-mobile-vue/dist/index.css'
 // import 'arkui-mobile-vue/es/style/sass' // use sass
 
 app.use(ArkUI)

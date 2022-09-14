@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import Popover from './Popover.vue'
 import { createAlertHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessAlertArgs } from '../popup/types'
@@ -18,4 +17,3 @@ const showPopover = createShowPopup<ShowPopoverOptions, PopupSuccessAlertArgs>({
 
 export { Popover, showPopover }
 export default Popover
-export const install = withInstall(Popover)

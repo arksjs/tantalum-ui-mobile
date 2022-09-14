@@ -1,11 +1,11 @@
 import IndexPlugin from './index'
-import * as componentPlugins from './components/install'
+import * as Components from './components'
 import * as apis from './components/api'
 
 export default Object.assign(
   {
     install: IndexPlugin.install
   },
-  componentPlugins,
+  Components,
   apis
 )

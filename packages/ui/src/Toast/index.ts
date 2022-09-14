@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import Toast from './Toast.vue'
 import { createAlertHook, createShowPopup, createHidePopup } from '../popup/api'
 import type { PopupSuccessAlertArgs } from '../popup/types'
@@ -61,4 +60,3 @@ const hideLoading = createHidePopup({
 
 export { Toast, showToast, hideToast, showLoading, hideLoading }
 export default Toast
-export const install = withInstall(Toast)

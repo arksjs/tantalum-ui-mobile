@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import ImagePreview from './ImagePreview.vue'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { EmptyObject } from '../helpers/types'
@@ -21,4 +20,3 @@ const showImagePreview = createShowPopup<
 
 export { ImagePreview, showImagePreview }
 export default ImagePreview
-export const install = withInstall(ImagePreview)

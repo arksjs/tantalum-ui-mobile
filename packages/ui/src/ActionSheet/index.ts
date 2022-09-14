@@ -1,4 +1,3 @@
-import { withInstall } from '../helpers/with-install'
 import ActionSheet from './ActionSheet.vue'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
@@ -20,4 +19,3 @@ const showActionSheet = createShowPopup<
 
 export { ActionSheet, showActionSheet }
 export default ActionSheet
-export const install = withInstall(ActionSheet)

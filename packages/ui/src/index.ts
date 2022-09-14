@@ -1,10 +1,10 @@
-import type { App } from 'vue'
-import * as ComponentPlugins from './components/install'
+import type { Plugin } from 'vue'
+import * as Components from './components'
 
-const ArkUI = {
-  install(app: App) {
-    Object.values(ComponentPlugins).forEach(plugin => {
-      app.use(plugin)
+const ArkUI: Plugin = {
+  install(app) {
+    Object.values(Components).forEach(Component => {
+      app.component(Component.name, Component)
     })
   }
 }
