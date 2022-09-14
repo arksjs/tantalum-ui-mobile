@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`Swiper > snapshot 1`] = `
+"<div class=\\"ak-swiper\\">
+  <div class=\\"ak-swiper_list\\"></div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`SwiperItem > snapshot 1`] = `"<div class=\\"ak-swiper-item\\"></div>"`;

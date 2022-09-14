@@ -1,3 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`ImagePreview > should render props set urls correctly 1`] = `"<anonymous-stub to=\\"body\\"></anonymous-stub>"`;

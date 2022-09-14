@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`ScrollView > snapshot 1`] = `
+"<div class=\\"ak-scroll-view\\">
+  <div class=\\"ak-scroll-view_inner\\">
+    <div class=\\"ak-scroll-view_content\\" style=\\"transition: transform 0ms; transform: translate3d(0px, 0, 0);\\">
+      <!--v-if-->
+    </div>
+  </div>
+</div>"
+`;

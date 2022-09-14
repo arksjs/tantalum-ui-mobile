@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`CountUp > snapshot 1`] = `"<div class=\\"ak-count-up\\"></div>"`;

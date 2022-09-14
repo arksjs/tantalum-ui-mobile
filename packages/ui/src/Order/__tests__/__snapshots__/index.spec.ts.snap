@@ -1,0 +1,6 @@
+// Vitest Snapshot v1
+
+exports[`Order > snapshot 1`] = `
+"<div class=\\"ak-order\\" style=\\"height: 0px;\\"></div>
+<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"false\\" class=\\"ak-order_delete\\"></drawer-stub>"
+`;

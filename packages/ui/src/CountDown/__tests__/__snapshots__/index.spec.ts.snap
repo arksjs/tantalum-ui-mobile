@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`CountDown > snapshot 1`] = `"<div class=\\"ak-count-down\\">0:00:00</div>"`;

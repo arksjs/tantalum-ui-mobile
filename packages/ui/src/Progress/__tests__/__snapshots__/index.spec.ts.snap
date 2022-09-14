@@ -1,9 +1,9 @@
 // Vitest Snapshot v1
 
 exports[`Progress > snapshot 1`] = `
-"<div class=\\"fx-progress\\">
-  <div class=\\"fx-progress_bar\\">
-    <div class=\\"fx-progress_track animated\\" style=\\"width: 0%;\\"></div>
+"<div class=\\"ak-progress\\">
+  <div class=\\"ak-progress_bar\\">
+    <div class=\\"ak-progress_track animated\\" style=\\"width: 0%;\\"></div>
   </div>
   <!--v-if-->
 </div>"

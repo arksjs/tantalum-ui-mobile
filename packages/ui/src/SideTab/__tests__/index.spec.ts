@@ -6,7 +6,11 @@ import { nextTick } from 'vue'
 
 describe('SideTab', () => {
   test('snapshot', () => {
-    const wrapper = shallowMount(SideTab, {})
+    const wrapper = shallowMount(SideTab, {
+      props: {
+        options: []
+      }
+    })
 
     expect(wrapper.html()).toMatchSnapshot()
   })

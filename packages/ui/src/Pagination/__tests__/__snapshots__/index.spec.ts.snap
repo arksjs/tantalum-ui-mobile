@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`Pagination > snapshot 1`] = `
+"<div class=\\"ak-pagination\\"><button class=\\"ak-pagination_prev\\" disabled=\\"\\">
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+  </button>
+  <div class=\\"ak-pagination_content\\">1 / 1</div><button class=\\"ak-pagination_next\\" disabled=\\"\\">
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+  </button>
+</div>"
+`;

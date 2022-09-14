@@ -6,7 +6,11 @@ import { baseList, badgeList } from './data'
 
 describe('TabBar', () => {
   test('snapshot', () => {
-    const wrapper = shallowMount(TabBar, {})
+    const wrapper = shallowMount(TabBar, {
+      props: {
+        options: []
+      }
+    })
 
     expect(wrapper.html()).toMatchSnapshot()
   })

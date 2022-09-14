@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`ImagePreview > snapshot 1`] = `
+"<teleport-stub>
+  <div class=\\"ak-preview-image ak-popup\\" style=\\"z-index: 2000; display: none;\\">
+    <div class=\\"ak-mask\\"></div>
+    <!--v-if-->
+    <div class=\\"ak-preview-image_pagination\\">1 / 0</div>
+    <div class=\\"ak-preview-image_close\\">
+      <!--v-if-->
+    </div>
+  </div>
+</teleport-stub>"
+`;
