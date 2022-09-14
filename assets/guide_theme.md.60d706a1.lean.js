@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,e as p}from"./app.d5ee8cac.js";const v='{"title":"\u4E3B\u9898\u5B9A\u5236","description":"","frontmatter":{},"headers":[],"relativePath":"guide/theme.md"}',t={},o=p("",13),e=[o];function c(l,r,u,i,k,d){return a(),s("div",null,e)}var b=n(t,[["render",c]]);export{v as __pageData,b as default};

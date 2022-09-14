@@ -575,113 +575,150 @@ var require_customParseFormat = __commonJS({
   }
 });
 
-// packages/ui/src/components/install.ts
-var install_exports = {};
-__export(install_exports, {
-  ActionSheet: () => install5,
-  ActivityIndicator: () => install7,
-  Avatar: () => install10,
-  AvatarGroup: () => install11,
-  BackTop: () => install12,
-  Badge: () => install8,
-  Button: () => install2,
-  ButtonGroup: () => install13,
-  Calendar: () => install17,
-  CalendarPopup: () => install18,
-  CalendarView: () => install19,
-  Cascader: () => install22,
-  CascaderPopup: () => install23,
-  CascaderView: () => install24,
-  Cell: () => install25,
-  Checkbox: () => install26,
-  CheckboxGroup: () => install27,
-  CircleProgress: () => install28,
-  Col: () => install29,
-  Collapse: () => install30,
-  CollapseItem: () => install31,
-  ConfigProvider: () => install32,
-  Copy: () => install33,
-  CountDown: () => install34,
-  CountUp: () => install35,
-  DatePicker: () => install37,
-  DatePickerPopup: () => install38,
-  DatePickerView: () => install39,
-  Dialog: () => install41,
-  Divider: () => install42,
-  Drawer: () => install4,
-  Dropdown: () => install43,
-  Empty: () => install21,
-  Fixed: () => install44,
-  FlatList: () => install47,
-  Form: () => install48,
-  FormFooter: () => install49,
-  FormItem: () => install50,
-  Group: () => install51,
-  Icon: () => install,
-  Image: () => install9,
-  ImagePreview: () => install53,
-  ImageUploader: () => install55,
-  IndexView: () => install58,
-  IndexViewItem: () => install59,
-  Input: () => install60,
-  LoadMore: () => install45,
-  LoadingIcon: () => install6,
-  Modal: () => install40,
-  NavBar: () => install3,
-  NoticeBar: () => install61,
-  Notify: () => install62,
-  NumberKeyboard: () => install63,
-  Order: () => install54,
-  Pagination: () => install64,
-  Picker: () => install36,
-  PickerPopup: () => install65,
-  PickerView: () => install66,
-  PopDialog: () => install68,
-  PopMenu: () => install69,
-  Popover: () => install67,
-  Price: () => install70,
-  Progress: () => install71,
-  Radio: () => install72,
-  RadioGroup: () => install73,
-  Range: () => install74,
-  Rate: () => install75,
-  Result: () => install76,
-  Row: () => install77,
-  ScrollTab: () => install79,
-  ScrollTabItem: () => install80,
-  ScrollView: () => install46,
-  SearchBar: () => install82,
-  SelectorField: () => install14,
-  SideTab: () => install78,
-  Skeleton: () => install83,
-  SkeletonAvatar: () => install84,
-  SkeletonButton: () => install85,
-  SkeletonImage: () => install86,
-  SkeletonParagraph: () => install87,
-  SkeletonTitle: () => install88,
-  Slider: () => install89,
-  Step: () => install91,
-  Stepper: () => install92,
-  Steps: () => install90,
-  Sticky: () => install56,
-  StickyView: () => install57,
-  StickyViewItem: () => install93,
-  Stopwatch: () => install94,
-  SwipeCell: () => install95,
-  Swiper: () => install52,
-  SwiperItem: () => install96,
-  Switch: () => install97,
-  Tab: () => install20,
-  TabBar: () => install98,
-  TabView: () => install99,
-  TabViewItem: () => install100,
-  Tag: () => install81,
-  TimeAgo: () => install101,
-  Timeline: () => install102,
-  TimelineItem: () => install103,
-  Toast: () => install15,
-  VirtualList: () => install16
+// packages/ui/src/components/index.ts
+var components_exports = {};
+__export(components_exports, {
+  AkActionSheet: () => ActionSheet_default,
+  AkActivityIndicator: () => ActivityIndicator_default,
+  AkAvatar: () => Avatar_default,
+  AkAvatarGroup: () => AvatarGroup_default,
+  AkBackTop: () => BackTop_default,
+  AkBadge: () => Badge_default,
+  AkButton: () => Button_default,
+  AkButtonGroup: () => ButtonGroup_default,
+  AkCalendar: () => Calendar_default,
+  AkCalendarPopup: () => CalendarPopup_default,
+  AkCalendarView: () => CalendarView_default,
+  AkCascader: () => Cascader_default,
+  AkCascaderPopup: () => CascaderPopup_default,
+  AkCascaderView: () => CascaderView_default,
+  AkCell: () => Cell_default,
+  AkCheckbox: () => Checkbox_default,
+  AkCheckboxGroup: () => CheckboxGroup_default,
+  AkCircleProgress: () => CircleProgress_default,
+  AkCol: () => Col_default,
+  AkCollapse: () => Collapse_default,
+  AkCollapseItem: () => CollapseItem_default,
+  AkConfigProvider: () => ConfigProvider_default,
+  AkCopy: () => Copy_default,
+  AkCountDown: () => CountDown_default,
+  AkCountUp: () => CountUp_default,
+  AkDatePicker: () => DatePicker_default,
+  AkDatePickerPopup: () => DatePickerPopup_default,
+  AkDatePickerView: () => DatePickerView_default,
+  AkDialog: () => Dialog_default,
+  AkDivider: () => Divider_default,
+  AkDrawer: () => Drawer_default,
+  AkDropdown: () => Dropdown_default,
+  AkEmpty: () => Empty_default,
+  AkFixed: () => Fixed_default,
+  AkFlatList: () => FlatList_default,
+  AkForm: () => Form_default,
+  AkFormFooter: () => FormFooter_default,
+  AkFormItem: () => FormItem_default,
+  AkGroup: () => Group_default,
+  AkIcon: () => Icon_default,
+  AkImage: () => Image_default,
+  AkImagePreview: () => ImagePreview_default,
+  AkImageUploader: () => ImageUploader_default,
+  AkIndexView: () => IndexView_default,
+  AkIndexViewItem: () => IndexViewItem_default,
+  AkInput: () => Input_default,
+  AkLoadMore: () => LoadMore_default,
+  AkLoadingIcon: () => LoadingIcon_default,
+  AkModal: () => Modal_default,
+  AkNavBar: () => NavBar_default,
+  AkNoticeBar: () => NoticeBar_default,
+  AkNotify: () => Notify_default,
+  AkNumberKeyboard: () => NumberKeyboard_default,
+  AkOrder: () => Order_default,
+  AkPagination: () => Pagination_default,
+  AkPicker: () => Picker_default,
+  AkPickerPopup: () => PickerPopup_default,
+  AkPickerView: () => PickerView_default,
+  AkPopDialog: () => PopDialog_default,
+  AkPopMenu: () => PopMenu_default,
+  AkPopover: () => Popover_default,
+  AkPrice: () => Price_default,
+  AkProgress: () => Progress_default,
+  AkRadio: () => Radio_default,
+  AkRadioGroup: () => RadioGroup_default,
+  AkRange: () => Range_default,
+  AkRate: () => Rate_default,
+  AkResult: () => Result_default,
+  AkRow: () => Row_default,
+  AkScrollTab: () => ScrollTab_default,
+  AkScrollTabItem: () => ScrollTabItem_default,
+  AkScrollView: () => ScrollView_default,
+  AkSearchBar: () => SearchBar_default,
+  AkSelectorField: () => SelectorField_default,
+  AkSideTab: () => SideTab_default,
+  AkSkeleton: () => Skeleton_default,
+  AkSkeletonAvatar: () => SkeletonAvatar_default,
+  AkSkeletonButton: () => SkeletonButton_default,
+  AkSkeletonImage: () => SkeletonImage_default,
+  AkSkeletonParagraph: () => SkeletonParagraph_default,
+  AkSkeletonTitle: () => SkeletonTitle_default,
+  AkSlider: () => Slider_default,
+  AkStep: () => Step_default,
+  AkStepper: () => Stepper_default,
+  AkSteps: () => Steps_default,
+  AkSticky: () => Sticky_default,
+  AkStickyView: () => StickyView_default,
+  AkStickyViewItem: () => StickyViewItem_default,
+  AkStopwatch: () => Stopwatch_default,
+  AkSwipeCell: () => SwipeCell_default,
+  AkSwiper: () => Swiper_default,
+  AkSwiperItem: () => SwiperItem_default,
+  AkSwitch: () => Switch_default,
+  AkTab: () => Tab_default,
+  AkTabBar: () => TabBar_default,
+  AkTabView: () => TabView_default,
+  AkTabViewItem: () => TabViewItem_default,
+  AkTag: () => Tag_default,
+  AkTimeAgo: () => TimeAgo_default,
+  AkTimeline: () => Timeline_default,
+  AkTimelineItem: () => TimelineItem_default,
+  AkToast: () => Toast_default,
+  AkVirtualList: () => VirtualList_default
 });
+
+// vue:./ActionSheet.vue
+import { computed as computed7, defineComponent as defineComponent7 } from "vue";
+
+// vue:./Drawer.vue
+import { defineComponent as defineComponent6, computed as computed6, toRef, watch as watch3 } from "vue";
+
+// vue:./NavBar.vue
+import { defineComponent as defineComponent5, ref as ref3 } from "vue";
+
+// vue:./Button.vue
+import { defineComponent as defineComponent3, computed as computed2 } from "vue";
+
+// vue:./Icon.vue
+import { computed, defineComponent as defineComponent2 } from "vue";
+
+// vue:./SpriteSVG.vue
+import { defineComponent } from "vue";
+import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
+var _sfc_script = defineComponent({
+  name: "ak-sprite-icon",
+  props: {
+    iconName: {
+      type: String
+    }
+  }
+});
+var _hoisted_1 = ["xlink:href"];
+function render(_ctx, _cache) {
+  return _openBlock(), _createElementBlock("svg", null, [
+    _createElementVNode("use", {
+      "xlink:href": "#" + _ctx.iconName
+    }, null, 8, _hoisted_1)
+  ]);
+}
+_sfc_script.render = render;
+_sfc_script.__file = "packages/ui/src/Icon/SpriteSVG.vue";
 
 // packages/ui/src/helpers/util.ts
 function kebabCase2CamelCase(name) {
@@ -821,70 +858,6 @@ var isPromiseLike = (object) => {
 var isURL = (object) => {
   return typeof object === "string" && /^https?:\/\/(([a-zA-Z0-9_-])+(\.)?)*(:\d+)?(\/((\.)?(\?)?(@?)?=?&?[a-zA-Z0-9_-](\?)?)*)*$/i.test(object);
 };
-
-// packages/ui/src/helpers/with-install.ts
-var withInstall = function(component) {
-  const _component = Object.assign(component, {
-    install(app) {
-      app.component(component.name, component);
-    }
-  });
-  return _component;
-};
-var multiWithInstall = function(component, moreComponents) {
-  const _component = Object.assign(component, {
-    install(app) {
-      app.component(component.name, component);
-      moreComponents.forEach((moreComponent) => {
-        app.component(moreComponent.name, moreComponent);
-      });
-    }
-  });
-  return _component;
-};
-var withNoopInstall = function(component) {
-  const _component = Object.assign(component, {
-    install: noop
-  });
-  return _component;
-};
-
-// vue:./ActionSheet.vue
-import { computed as computed7, defineComponent as defineComponent7 } from "vue";
-
-// vue:./Drawer.vue
-import { defineComponent as defineComponent6, computed as computed6, toRef, watch as watch3 } from "vue";
-
-// vue:./NavBar.vue
-import { defineComponent as defineComponent5, ref as ref3 } from "vue";
-
-// vue:./Button.vue
-import { defineComponent as defineComponent3, computed as computed2 } from "vue";
-
-// vue:./Icon.vue
-import { computed, defineComponent as defineComponent2 } from "vue";
-
-// vue:./SpriteSVG.vue
-import { defineComponent } from "vue";
-import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue";
-var _sfc_script = defineComponent({
-  name: "ak-sprite-icon",
-  props: {
-    iconName: {
-      type: String
-    }
-  }
-});
-var _hoisted_1 = ["xlink:href"];
-function render(_ctx, _cache) {
-  return _openBlock(), _createElementBlock("svg", null, [
-    _createElementVNode("use", {
-      "xlink:href": "#" + _ctx.iconName
-    }, null, 8, _hoisted_1)
-  ]);
-}
-_sfc_script.render = render;
-_sfc_script.__file = "packages/ui/src/Icon/SpriteSVG.vue";
 
 // packages/ui/src/helpers/dom.ts
 function addClassName($el, className) {
@@ -2148,7 +2121,6 @@ _sfc_script2.render = render2;
 _sfc_script2.__file = "packages/ui/src/Icon/Icon.vue";
 
 // packages/ui/src/Icon/index.ts
-var install = withInstall(_sfc_script2);
 var Icon_default = _sfc_script2;
 
 // packages/ui/src/helpers/constants.ts
@@ -2410,7 +2382,6 @@ _sfc_script5.__file = "packages/ui/src/Button/ButtonGroup.vue";
 
 // packages/ui/src/Button/index.ts
 var Button_default = _sfc_script4;
-var install2 = multiWithInstall(_sfc_script4, [_sfc_script5]);
 
 // packages/ui/src/locale/lang/zh-CN.ts
 var zh_CN_default = {
@@ -2916,7 +2887,6 @@ _sfc_script8.render = render8;
 _sfc_script8.__file = "packages/ui/src/NavBar/NavBar.vue";
 
 // packages/ui/src/NavBar/index.ts
-var install3 = withInstall(_sfc_script8);
 var NavBar_default = _sfc_script8;
 
 // packages/ui/src/popup/use-popup.ts
@@ -3359,7 +3329,6 @@ _sfc_script10.render = render10;
 _sfc_script10.__file = "packages/ui/src/Drawer/Drawer.vue";
 
 // packages/ui/src/Drawer/index.ts
-var install4 = withInstall(_sfc_script10);
 var Drawer_default = _sfc_script10;
 
 // packages/ui/src/ActionSheet/util.ts
@@ -3643,7 +3612,6 @@ var showActionSheet = createShowPopup({
   createHook: createConfirmHook
 });
 var ActionSheet_default = _sfc_script11;
-var install5 = withInstall(_sfc_script11);
 
 // vue:./ActivityIndicator.vue
 import { computed as computed9, defineComponent as defineComponent9 } from "vue";
@@ -3731,7 +3699,6 @@ _sfc_script12.__file = "packages/ui/src/LoadingIcon/LoadingIcon.vue";
 
 // packages/ui/src/LoadingIcon/index.ts
 var LoadingIcon_default = _sfc_script12;
-var install6 = withNoopInstall(_sfc_script12);
 
 // packages/ui/src/ActivityIndicator/util.ts
 var getActivityIndicatorClasses = (animated) => {
@@ -3785,7 +3752,6 @@ _sfc_script13.render = render13;
 _sfc_script13.__file = "packages/ui/src/ActivityIndicator/ActivityIndicator.vue";
 
 // packages/ui/src/ActivityIndicator/index.ts
-var install7 = withInstall(_sfc_script13);
 var ActivityIndicator_default = _sfc_script13;
 
 // vue:./Avatar.vue
@@ -4053,7 +4019,6 @@ _sfc_script14.render = render14;
 _sfc_script14.__file = "packages/ui/src/Badge/Badge.vue";
 
 // packages/ui/src/Badge/index.ts
-var install8 = withInstall(_sfc_script14);
 var Badge_default = _sfc_script14;
 
 // vue:./Image.vue
@@ -4389,7 +4354,6 @@ _sfc_script17.render = render17;
 _sfc_script17.__file = "packages/ui/src/Image/Image.vue";
 
 // packages/ui/src/Image/index.ts
-var install9 = withInstall(_sfc_script17);
 var Image_default = _sfc_script17;
 
 // packages/ui/src/helpers/digital-conversion.ts
@@ -4692,11 +4656,9 @@ _sfc_script22.__file = "packages/ui/src/Avatar/AvatarGroup.vue";
 
 // packages/ui/src/Avatar/index.ts
 var Avatar_default = _sfc_script21;
-var install10 = multiWithInstall(_sfc_script21, [_sfc_script22]);
 
 // packages/ui/src/AvatarGroup/index.ts
 var AvatarGroup_default = _sfc_script22;
-var install11 = withNoopInstall(_sfc_script22);
 
 // vue:./BackTop.vue
 import { defineComponent as defineComponent14, computed as computed14, toRef as toRef2, ref as ref7, onMounted as onMounted6 } from "vue";
@@ -4848,12 +4810,10 @@ _sfc_script24.render = render24;
 _sfc_script24.__file = "packages/ui/src/BackTop/BackTop.vue";
 
 // packages/ui/src/BackTop/index.ts
-var install12 = withInstall(_sfc_script24);
 var BackTop_default = _sfc_script24;
 
 // packages/ui/src/ButtonGroup/index.ts
 var ButtonGroup_default = _sfc_script5;
-var install13 = withNoopInstall(_sfc_script5);
 
 // vue:./Calendar.vue
 import { defineComponent as defineComponent21, ref as ref11, watch as watch10 } from "vue";
@@ -4944,7 +4904,6 @@ _sfc_script26.__file = "packages/ui/src/SelectorField/SelectorField.vue";
 
 // packages/ui/src/SelectorField/index.ts
 var SelectorField_default = _sfc_script26;
-var install14 = withNoopInstall(_sfc_script26);
 
 // vue:./CalendarPopup.vue
 import { defineComponent as defineComponent20, nextTick as nextTick2, onMounted as onMounted10, ref as ref10, watch as watch9 } from "vue";
@@ -5130,7 +5089,6 @@ var hideLoading = createHidePopup({
   apiName: "hideLoading"
 });
 var Toast_default = _sfc_script28;
-var install15 = withInstall(_sfc_script28);
 
 // packages/ui/src/Picker/util.ts
 var getDefaultFieldNames = () => {
@@ -6249,7 +6207,6 @@ _sfc_script30.render = render30;
 _sfc_script30.__file = "packages/ui/src/VirtualList/VirtualList.vue";
 
 // packages/ui/src/VirtualList/index.ts
-var install16 = withInstall(_sfc_script30);
 var VirtualList_default = _sfc_script30;
 
 // vue:./CalendarView.vue
@@ -6986,14 +6943,11 @@ var showCalendar = createShowPopup({
   createHook: createConfirmHook
 });
 var Calendar_default = _sfc_script33;
-var install17 = withInstall(_sfc_script33);
 
 // packages/ui/src/CalendarPopup/index.ts
 var CalendarPopup_default = _sfc_script32;
-var install18 = withInstall(_sfc_script32);
 
 // packages/ui/src/CalendarView/index.ts
-var install19 = withInstall(_sfc_script31);
 var CalendarView_default = _sfc_script31;
 
 // vue:./Cascader.vue
@@ -7323,7 +7277,6 @@ _sfc_script34.render = render34;
 _sfc_script34.__file = "packages/ui/src/Tab/Tab.vue";
 
 // packages/ui/src/Tab/index.ts
-var install20 = withInstall(_sfc_script34);
 var Tab_default = _sfc_script34;
 
 // vue:./Empty.vue
@@ -7384,7 +7337,6 @@ _sfc_script35.render = render35;
 _sfc_script35.__file = "packages/ui/src/Empty/Empty.vue";
 
 // packages/ui/src/Empty/index.ts
-var install21 = withInstall(_sfc_script35);
 var Empty_default = _sfc_script35;
 
 // packages/ui/src/Picker/use-picker.ts
@@ -8125,14 +8077,11 @@ var showCascader = createShowPopup({
   createHook: createConfirmHook
 });
 var Cascader_default = _sfc_script38;
-var install22 = withInstall(_sfc_script38);
 
 // packages/ui/src/CascaderPopup/index.ts
 var CascaderPopup_default = _sfc_script37;
-var install23 = withInstall(_sfc_script37);
 
 // packages/ui/src/CascaderView/index.ts
-var install24 = withInstall(_sfc_script36);
 var CascaderView_default = _sfc_script36;
 
 // vue:./Cell.vue
@@ -8276,7 +8225,6 @@ _sfc_script39.render = render39;
 _sfc_script39.__file = "packages/ui/src/Cell/Cell.vue";
 
 // packages/ui/src/Cell/index.ts
-var install25 = withInstall(_sfc_script39);
 var Cell_default = _sfc_script39;
 
 // vue:./Checkbox.vue
@@ -8716,11 +8664,9 @@ _sfc_script45.__file = "packages/ui/src/Checkbox/CheckboxGroup.vue";
 
 // packages/ui/src/Checkbox/index.ts
 var Checkbox_default = _sfc_script44;
-var install26 = multiWithInstall(_sfc_script44, [_sfc_script45]);
 
 // packages/ui/src/CheckboxGroup/index.ts
 var CheckboxGroup_default = _sfc_script45;
-var install27 = withNoopInstall(_sfc_script45);
 
 // vue:./CircleProgress.vue
 import { computed as computed23, defineComponent as defineComponent30 } from "vue";
@@ -8795,7 +8741,6 @@ _sfc_script46.render = render46;
 _sfc_script46.__file = "packages/ui/src/CircleProgress/CircleProgress.vue";
 
 // packages/ui/src/CircleProgress/index.ts
-var install28 = withInstall(_sfc_script46);
 var CircleProgress_default = _sfc_script46;
 
 // vue:./Col.vue
@@ -8875,7 +8820,6 @@ _sfc_script47.render = render47;
 _sfc_script47.__file = "packages/ui/src/Col/Col.vue";
 
 // packages/ui/src/Col/index.ts
-var install29 = withInstall(_sfc_script47);
 var Col_default = _sfc_script47;
 
 // vue:./Collapse.vue
@@ -9092,11 +9036,9 @@ _sfc_script49.__file = "packages/ui/src/Collapse/CollapseItem.vue";
 
 // packages/ui/src/Collapse/index.ts
 var Collapse_default = _sfc_script48;
-var install30 = multiWithInstall(_sfc_script48, [_sfc_script49]);
 
 // packages/ui/src/CollapseItem/index.ts
 var CollapseItem_default = _sfc_script49;
-var install31 = withNoopInstall(_sfc_script49);
 
 // vue:./ConfigProvider.vue
 import { defineComponent as defineComponent34 } from "vue";
@@ -9119,7 +9061,6 @@ _sfc_script50.render = render50;
 _sfc_script50.__file = "packages/ui/src/ConfigProvider/ConfigProvider.vue";
 
 // packages/ui/src/ConfigProvider/index.ts
-var install32 = withInstall(_sfc_script50);
 var ConfigProvider_default = _sfc_script50;
 
 // vue:./Copy.vue
@@ -9190,7 +9131,6 @@ _sfc_script51.render = render51;
 _sfc_script51.__file = "packages/ui/src/Copy/Copy.vue";
 
 // packages/ui/src/Copy/index.ts
-var install33 = withInstall(_sfc_script51);
 var Copy_default = _sfc_script51;
 
 // vue:./CountDown.vue
@@ -9369,7 +9309,6 @@ _sfc_script52.render = render52;
 _sfc_script52.__file = "packages/ui/src/CountDown/CountDown.vue";
 
 // packages/ui/src/CountDown/index.ts
-var install34 = withInstall(_sfc_script52);
 var CountDown_default = _sfc_script52;
 
 // vue:./CountUp.vue
@@ -9468,7 +9407,6 @@ _sfc_script53.render = render53;
 _sfc_script53.__file = "packages/ui/src/CountUp/CountUp.vue";
 
 // packages/ui/src/CountUp/index.ts
-var install35 = withInstall(_sfc_script53);
 var CountUp_default = _sfc_script53;
 
 // vue:./DatePicker.vue
@@ -9825,7 +9763,6 @@ var showPicker = createShowPopup({
   createHook: createConfirmHook
 });
 var Picker_default = _sfc_script57;
-var install36 = withInstall(_sfc_script57);
 
 // packages/ui/src/DatePicker/date.ts
 var MODE_NAMES3 = [
@@ -10356,14 +10293,11 @@ var showDatePicker = createShowPopup({
   createHook: createConfirmHook
 });
 var DatePicker_default = _sfc_script58;
-var install37 = withInstall(_sfc_script58);
 
 // packages/ui/src/DatePickerPopup/index.ts
 var DatePickerPopup_default = _sfc_script59;
-var install38 = withInstall(_sfc_script59);
 
 // packages/ui/src/DatePickerView/index.ts
-var install39 = withInstall(_sfc_script60);
 var DatePickerView_default = _sfc_script60;
 
 // vue:./Dialog.vue
@@ -10457,7 +10391,6 @@ _sfc_script62.render = render62;
 _sfc_script62.__file = "packages/ui/src/Modal/Modal.vue";
 
 // packages/ui/src/Modal/index.ts
-var install40 = withInstall(_sfc_script62);
 var Modal_default = _sfc_script62;
 
 // vue:./Dialog.vue
@@ -10579,7 +10512,6 @@ var showDialog = createShowPopup({
   createHook: createConfirmHook
 });
 var Dialog_default = _sfc_script63;
-var install41 = withInstall(_sfc_script63);
 
 // vue:./Divider.vue
 import { computed as computed27, defineComponent as defineComponent47 } from "vue";
@@ -10628,7 +10560,6 @@ _sfc_script64.render = render64;
 _sfc_script64.__file = "packages/ui/src/Divider/Divider.vue";
 
 // packages/ui/src/Divider/index.ts
-var install42 = withInstall(_sfc_script64);
 var Divider_default = _sfc_script64;
 
 // vue:./Dropdown.vue
@@ -10703,7 +10634,6 @@ _sfc_script65.render = render65;
 _sfc_script65.__file = "packages/ui/src/Dropdown/Dropdown.vue";
 
 // packages/ui/src/Dropdown/index.ts
-var install43 = withInstall(_sfc_script65);
 var Dropdown_default = _sfc_script65;
 
 // vue:./Fixed.vue
@@ -10892,7 +10822,6 @@ _sfc_script66.render = render66;
 _sfc_script66.__file = "packages/ui/src/Fixed/Fixed.vue";
 
 // packages/ui/src/Fixed/index.ts
-var install44 = withInstall(_sfc_script66);
 var Fixed_default = _sfc_script66;
 
 // vue:./FlatList.vue
@@ -10959,7 +10888,6 @@ _sfc_script67.render = render67;
 _sfc_script67.__file = "packages/ui/src/LoadMore/LoadMore.vue";
 
 // packages/ui/src/LoadMore/index.ts
-var install45 = withInstall(_sfc_script67);
 var LoadMore_default = _sfc_script67;
 
 // vue:./ScrollView.vue
@@ -11452,7 +11380,6 @@ _sfc_script68.render = render68;
 _sfc_script68.__file = "packages/ui/src/ScrollView/ScrollView.vue";
 
 // packages/ui/src/ScrollView/index.ts
-var install46 = withInstall(_sfc_script68);
 var ScrollView_default = _sfc_script68;
 
 // packages/ui/src/FlatList/util.ts
@@ -11650,7 +11577,6 @@ _sfc_script69.render = render69;
 _sfc_script69.__file = "packages/ui/src/FlatList/FlatList.vue";
 
 // packages/ui/src/FlatList/index.ts
-var install47 = withInstall(_sfc_script69);
 var FlatList_default = _sfc_script69;
 
 // vue:./Form.vue
@@ -11760,15 +11686,12 @@ _sfc_script72.__file = "packages/ui/src/Form/FormItem.vue";
 
 // packages/ui/src/Form/index.ts
 var Form_default = _sfc_script71;
-var install48 = multiWithInstall(_sfc_script71, [_sfc_script72, _sfc_script70]);
 
 // packages/ui/src/FormFooter/index.ts
 var FormFooter_default = _sfc_script70;
-var install49 = withNoopInstall(_sfc_script70);
 
 // packages/ui/src/FormItem/index.ts
 var FormItem_default = _sfc_script72;
-var install50 = withNoopInstall(_sfc_script72);
 
 // vue:./Group.vue
 import { computed as computed34, defineComponent as defineComponent56 } from "vue";
@@ -11828,7 +11751,6 @@ _sfc_script73.render = render72;
 _sfc_script73.__file = "packages/ui/src/Group/Group.vue";
 
 // packages/ui/src/Group/index.ts
-var install51 = withInstall(_sfc_script73);
 var Group_default = _sfc_script73;
 
 // vue:./ImagePreview.vue
@@ -12433,7 +12355,6 @@ _sfc_script75.__file = "packages/ui/src/Swiper/SwiperItem.vue";
 
 // packages/ui/src/Swiper/index.ts
 var Swiper_default = _sfc_script74;
-var install52 = multiWithInstall(_sfc_script74, [_sfc_script75]);
 
 // packages/ui/src/ImagePreview/util.ts
 var mergeLoadedData = (old, {
@@ -12822,7 +12743,6 @@ var showImagePreview = createShowPopup({
   createHook: createConfirmHook
 });
 var ImagePreview_default = _sfc_script76;
-var install53 = withInstall(_sfc_script76);
 
 // vue:./ImageUploader.vue
 import { defineComponent as defineComponent62, reactive as reactive6, computed as computed36, watch as watch23, ref as ref32 } from "vue";
@@ -13268,7 +13188,6 @@ _sfc_script78.render = render77;
 _sfc_script78.__file = "packages/ui/src/Order/Order.vue";
 
 // packages/ui/src/Order/index.ts
-var install54 = withInstall(_sfc_script78);
 var Order_default = _sfc_script78;
 
 // vue:./PlusOutlined.vue
@@ -13795,7 +13714,6 @@ _sfc_script81.render = render80;
 _sfc_script81.__file = "packages/ui/src/ImageUploader/ImageUploader.vue";
 
 // packages/ui/src/ImageUploader/index.ts
-var install55 = withInstall(_sfc_script81);
 var ImageUploader_default = _sfc_script81;
 
 // vue:./IndexView.vue
@@ -13935,7 +13853,6 @@ _sfc_script82.render = render81;
 _sfc_script82.__file = "packages/ui/src/Sticky/Sticky.vue";
 
 // packages/ui/src/Sticky/index.ts
-var install56 = withInstall(_sfc_script82);
 var Sticky_default = _sfc_script82;
 
 // packages/ui/src/StickyView/props.ts
@@ -14197,7 +14114,6 @@ _sfc_script84.__file = "packages/ui/src/StickyView/StickyViewItem.vue";
 
 // packages/ui/src/StickyView/index.ts
 var StickyView_default = _sfc_script83;
-var install57 = multiWithInstall(_sfc_script83, [_sfc_script84]);
 
 // vue:./IndexView.vue
 import { renderList as _renderList14, Fragment as _Fragment15, openBlock as _openBlock83, createElementBlock as _createElementBlock73, toDisplayString as _toDisplayString30, normalizeClass as _normalizeClass39, createElementVNode as _createElementVNode57, renderSlot as _renderSlot38, resolveComponent as _resolveComponent42, withCtx as _withCtx20, createVNode as _createVNode30 } from "vue";
@@ -14385,11 +14301,9 @@ _sfc_script86.__file = "packages/ui/src/IndexView/IndexViewItem.vue";
 
 // packages/ui/src/IndexView/index.ts
 var IndexView_default = _sfc_script85;
-var install58 = multiWithInstall(_sfc_script85, [_sfc_script86]);
 
 // packages/ui/src/IndexViewItem/index.ts
 var IndexViewItem_default = _sfc_script86;
-var install59 = withNoopInstall(_sfc_script86);
 
 // vue:./Input.vue
 import { computed as computed39, defineComponent as defineComponent68, onMounted as onMounted27, ref as ref37, watch as watch26 } from "vue";
@@ -14760,7 +14674,6 @@ _sfc_script87.render = render86;
 _sfc_script87.__file = "packages/ui/src/Input/Input.vue";
 
 // packages/ui/src/Input/index.ts
-var install60 = withInstall(_sfc_script87);
 var Input_default = _sfc_script87;
 
 // vue:./NoticeBar.vue
@@ -14958,7 +14871,6 @@ _sfc_script88.render = render87;
 _sfc_script88.__file = "packages/ui/src/NoticeBar/NoticeBar.vue";
 
 // packages/ui/src/NoticeBar/index.ts
-var install61 = withInstall(_sfc_script88);
 var NoticeBar_default = _sfc_script88;
 
 // vue:./Notify.vue
@@ -15047,7 +14959,6 @@ var hideNotify = createHidePopup({
   apiName: "hideNotify"
 });
 var Notify_default = _sfc_script89;
-var install62 = withInstall(_sfc_script89);
 
 // vue:./NumberKeyboard.vue
 import { computed as computed41, defineComponent as defineComponent71 } from "vue";
@@ -15328,7 +15239,6 @@ _sfc_script92.render = render91;
 _sfc_script92.__file = "packages/ui/src/NumberKeyboard/NumberKeyboard.vue";
 
 // packages/ui/src/NumberKeyboard/index.ts
-var install63 = withInstall(_sfc_script92);
 var NumberKeyboard_default = _sfc_script92;
 
 // vue:./Pagination.vue
@@ -15418,15 +15328,12 @@ _sfc_script93.render = render92;
 _sfc_script93.__file = "packages/ui/src/Pagination/Pagination.vue";
 
 // packages/ui/src/Pagination/index.ts
-var install64 = withInstall(_sfc_script93);
 var Pagination_default = _sfc_script93;
 
 // packages/ui/src/PickerPopup/index.ts
 var PickerPopup_default = _sfc_script56;
-var install65 = withInstall(_sfc_script56);
 
 // packages/ui/src/PickerView/index.ts
-var install66 = withInstall(_sfc_script55);
 var PickerView_default = _sfc_script55;
 
 // vue:./PopDialog.vue
@@ -15648,7 +15555,6 @@ var showPopover = createShowPopup({
   createHook: createAlertHook
 });
 var Popover_default = _sfc_script94;
-var install67 = withInstall(_sfc_script94);
 
 // vue:./PopDialog.vue
 import { toDisplayString as _toDisplayString36, createElementVNode as _createElementVNode65, createTextVNode as _createTextVNode17, resolveComponent as _resolveComponent49, withCtx as _withCtx23, openBlock as _openBlock93, createBlock as _createBlock38, createCommentVNode as _createCommentVNode37, createVNode as _createVNode35 } from "vue";
@@ -15754,7 +15660,6 @@ var showPopDialog = createShowPopup({
   createHook: createConfirmHook
 });
 var PopDialog_default = _sfc_script95;
-var install68 = withInstall(_sfc_script95);
 
 // vue:./PopMenu.vue
 import { computed as computed44, defineComponent as defineComponent75 } from "vue";
@@ -15877,7 +15782,6 @@ var showPopMenu = createShowPopup({
   createHook: createConfirmHook
 });
 var PopMenu_default = _sfc_script96;
-var install69 = withInstall(_sfc_script96);
 
 // vue:./Price.vue
 import { defineComponent as defineComponent76, computed as computed45 } from "vue";
@@ -15948,7 +15852,6 @@ _sfc_script97.render = render96;
 _sfc_script97.__file = "packages/ui/src/Price/Price.vue";
 
 // packages/ui/src/Price/index.ts
-var install70 = withInstall(_sfc_script97);
 var Price_default = _sfc_script97;
 
 // vue:./Progress.vue
@@ -16045,7 +15948,6 @@ _sfc_script98.render = render97;
 _sfc_script98.__file = "packages/ui/src/Progress/Progress.vue";
 
 // packages/ui/src/Progress/index.ts
-var install71 = withInstall(_sfc_script98);
 var Progress_default = _sfc_script98;
 
 // vue:./Radio.vue
@@ -16195,11 +16097,9 @@ _sfc_script100.__file = "packages/ui/src/Radio/RadioGroup.vue";
 
 // packages/ui/src/Radio/index.ts
 var Radio_default = _sfc_script99;
-var install72 = multiWithInstall(_sfc_script99, [_sfc_script100]);
 
 // packages/ui/src/RadioGroup/index.ts
 var RadioGroup_default = _sfc_script100;
-var install73 = withNoopInstall(_sfc_script100);
 
 // vue:./Range.vue
 import { defineComponent as defineComponent80, watch as watch30, nextTick as nextTick10, reactive as reactive7, computed as computed48 } from "vue";
@@ -16533,7 +16433,6 @@ _sfc_script101.render = render100;
 _sfc_script101.__file = "packages/ui/src/Range/Range.vue";
 
 // packages/ui/src/Range/index.ts
-var install74 = withInstall(_sfc_script101);
 var Range_default = _sfc_script101;
 
 // vue:./Rate.vue
@@ -16786,7 +16685,6 @@ _sfc_script104.render = render103;
 _sfc_script104.__file = "packages/ui/src/Rate/Rate.vue";
 
 // packages/ui/src/Rate/index.ts
-var install75 = withInstall(_sfc_script104);
 var Rate_default = _sfc_script104;
 
 // vue:./Result.vue
@@ -16941,7 +16839,6 @@ _sfc_script107.render = render106;
 _sfc_script107.__file = "packages/ui/src/Result/Result.vue";
 
 // packages/ui/src/Result/index.ts
-var install76 = withInstall(_sfc_script107);
 var Result_default = _sfc_script107;
 
 // vue:./Row.vue
@@ -17027,7 +16924,6 @@ _sfc_script108.render = render107;
 _sfc_script108.__file = "packages/ui/src/Row/Row.vue";
 
 // packages/ui/src/Row/index.ts
-var install77 = withInstall(_sfc_script108);
 var Row_default = _sfc_script108;
 
 // vue:./ScrollTab.vue
@@ -17105,7 +17001,6 @@ _sfc_script109.render = render108;
 _sfc_script109.__file = "packages/ui/src/SideTab/SideTab.vue";
 
 // packages/ui/src/SideTab/index.ts
-var install78 = withInstall(_sfc_script109);
 var SideTab_default = _sfc_script109;
 
 // vue:./ScrollTab.vue
@@ -17246,11 +17141,9 @@ _sfc_script111.__file = "packages/ui/src/ScrollTab/ScrollTabItem.vue";
 
 // packages/ui/src/ScrollTab/index.ts
 var ScrollTab_default = _sfc_script110;
-var install79 = multiWithInstall(_sfc_script110, [_sfc_script111]);
 
 // packages/ui/src/ScrollTabItem/index.ts
 var ScrollTabItem_default = _sfc_script111;
-var install80 = withNoopInstall(_sfc_script111);
 
 // vue:./SearchBar.vue
 import {
@@ -17373,7 +17266,6 @@ _sfc_script112.render = render111;
 _sfc_script112.__file = "packages/ui/src/Tag/Tag.vue";
 
 // packages/ui/src/Tag/index.ts
-var install81 = withInstall(_sfc_script112);
 var Tag_default = _sfc_script112;
 
 // vue:./SearchOutlined.vue
@@ -17686,7 +17578,6 @@ _sfc_script114.render = render113;
 _sfc_script114.__file = "packages/ui/src/SearchBar/SearchBar.vue";
 
 // packages/ui/src/SearchBar/index.ts
-var install82 = withInstall(_sfc_script114);
 var SearchBar_default = _sfc_script114;
 
 // vue:./Skeleton.vue
@@ -17994,33 +17885,21 @@ _sfc_script121.__file = "packages/ui/src/Skeleton/SkeletonImage.vue";
 
 // packages/ui/src/Skeleton/index.ts
 var Skeleton_default = _sfc_script119;
-var install83 = multiWithInstall(_sfc_script119, [
-  _sfc_script115,
-  _sfc_script116,
-  _sfc_script117,
-  _sfc_script120,
-  _sfc_script121
-]);
 
 // packages/ui/src/SkeletonAvatar/index.ts
 var SkeletonAvatar_default = _sfc_script115;
-var install84 = withNoopInstall(_sfc_script115);
 
 // packages/ui/src/SkeletonButton/index.ts
 var SkeletonButton_default = _sfc_script120;
-var install85 = withNoopInstall(_sfc_script120);
 
 // packages/ui/src/SkeletonImage/index.ts
 var SkeletonImage_default = _sfc_script121;
-var install86 = withNoopInstall(_sfc_script121);
 
 // packages/ui/src/SkeletonParagraph/index.ts
 var SkeletonParagraph_default = _sfc_script117;
-var install87 = withNoopInstall(_sfc_script117);
 
 // packages/ui/src/SkeletonTitle/index.ts
 var SkeletonTitle_default = _sfc_script116;
-var install88 = withNoopInstall(_sfc_script116);
 
 // vue:./Slider.vue
 import { ref as ref48, defineComponent as defineComponent96, watch as watch34, nextTick as nextTick11 } from "vue";
@@ -18143,7 +18022,6 @@ _sfc_script122.render = render120;
 _sfc_script122.__file = "packages/ui/src/Slider/Slider.vue";
 
 // packages/ui/src/Slider/index.ts
-var install89 = withInstall(_sfc_script122);
 var Slider_default = _sfc_script122;
 
 // vue:./Steps.vue
@@ -18276,11 +18154,9 @@ _sfc_script124.__file = "packages/ui/src/Steps/Step.vue";
 
 // packages/ui/src/Steps/index.ts
 var Steps_default = _sfc_script123;
-var install90 = multiWithInstall(_sfc_script123, [_sfc_script124]);
 
 // packages/ui/src/Step/index.ts
 var Step_default = _sfc_script124;
-var install91 = withNoopInstall(_sfc_script124);
 
 // vue:./Stepper.vue
 import { onMounted as onMounted32, ref as ref50, defineComponent as defineComponent99, watch as watch35, computed as computed62 } from "vue";
@@ -18480,12 +18356,10 @@ _sfc_script126.render = render124;
 _sfc_script126.__file = "packages/ui/src/Stepper/Stepper.vue";
 
 // packages/ui/src/Stepper/index.ts
-var install92 = withInstall(_sfc_script126);
 var Stepper_default = _sfc_script126;
 
 // packages/ui/src/StickyViewItem/index.ts
 var StickyViewItem_default = _sfc_script84;
-var install93 = withNoopInstall(_sfc_script84);
 
 // vue:./Stopwatch.vue
 import { defineComponent as defineComponent100 } from "vue";
@@ -18591,7 +18465,6 @@ _sfc_script127.render = render125;
 _sfc_script127.__file = "packages/ui/src/Stopwatch/Stopwatch.vue";
 
 // packages/ui/src/Stopwatch/index.ts
-var install94 = withInstall(_sfc_script127);
 var Stopwatch_default = _sfc_script127;
 
 // vue:./SwipeCell.vue
@@ -18789,12 +18662,10 @@ _sfc_script128.render = render126;
 _sfc_script128.__file = "packages/ui/src/SwipeCell/SwipeCell.vue";
 
 // packages/ui/src/SwipeCell/index.ts
-var install95 = withInstall(_sfc_script128);
 var SwipeCell_default = _sfc_script128;
 
 // packages/ui/src/SwiperItem/index.ts
 var SwiperItem_default = _sfc_script75;
-var install96 = withNoopInstall(_sfc_script75);
 
 // vue:./Switch.vue
 import { onMounted as onMounted33, ref as ref52, watch as watch36, defineComponent as defineComponent102, computed as computed64 } from "vue";
@@ -18894,7 +18765,6 @@ _sfc_script129.render = render127;
 _sfc_script129.__file = "packages/ui/src/Switch/Switch.vue";
 
 // packages/ui/src/Switch/index.ts
-var install97 = withInstall(_sfc_script129);
 var Switch_default = _sfc_script129;
 
 // vue:./TabBar.vue
@@ -18973,7 +18843,6 @@ _sfc_script130.render = render128;
 _sfc_script130.__file = "packages/ui/src/TabBar/TabBar.vue";
 
 // packages/ui/src/TabBar/index.ts
-var install98 = withInstall(_sfc_script130);
 var TabBar_default = _sfc_script130;
 
 // vue:./TabView.vue
@@ -19184,11 +19053,9 @@ _sfc_script132.__file = "packages/ui/src/TabView/TabViewItem.vue";
 
 // packages/ui/src/TabView/index.ts
 var TabView_default = _sfc_script131;
-var install99 = multiWithInstall(_sfc_script131, [_sfc_script132]);
 
 // packages/ui/src/TabViewItem/index.ts
 var TabViewItem_default = _sfc_script132;
-var install100 = withNoopInstall(_sfc_script132);
 
 // vue:./TimeAgo.vue
 import { defineComponent as defineComponent106, ref as ref55, toRef as toRef7, watch as watch37 } from "vue";
@@ -19374,7 +19241,6 @@ _sfc_script133.render = render132;
 _sfc_script133.__file = "packages/ui/src/TimeAgo/TimeAgo.vue";
 
 // packages/ui/src/TimeAgo/index.ts
-var install101 = withInstall(_sfc_script133);
 var TimeAgo_default = _sfc_script133;
 
 // vue:./Timeline.vue
@@ -19447,17 +19313,15 @@ _sfc_script135.__file = "packages/ui/src/Timeline/TimelineItem.vue";
 
 // packages/ui/src/Timeline/index.ts
 var Timeline_default = _sfc_script134;
-var install102 = multiWithInstall(_sfc_script134, [_sfc_script135]);
 
 // packages/ui/src/TimelineItem/index.ts
 var TimelineItem_default = _sfc_script135;
-var install103 = withNoopInstall(_sfc_script135);
 
 // packages/ui/src/index.ts
 var ArkUI = {
   install(app) {
-    Object.values(install_exports).forEach((plugin) => {
-      app.use(plugin);
+    Object.values(components_exports).forEach((Component2) => {
+      app.component(Component2.name, Component2);
     });
   }
 };
