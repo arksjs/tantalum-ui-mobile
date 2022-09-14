@@ -1,11 +1,11 @@
 {
-  "name": "@arksjs/ui-mobile-vue",
+  "name": "@arksjs/ui",
   "private": true,
-  "version": "1.0.0",
-  "description": "arkui-mobile-vue",
+  "version": "0.0.0",
+  "description": "ArkUI",
   "keywords": [
     "vue",
-    "ui"
+    "UI"
   ],
   "main": "index.ts",
   "module": "index.ts",

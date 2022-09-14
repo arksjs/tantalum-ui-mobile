@@ -1,9 +1,10 @@
 {
-  "name": "@arksjs/ui-mobile-vue-docs",
+  "name": "@arksjs/docs",
   "private": true,
-  "version": "0.0.1",
-  "description": "arkui-mobile-vue docs",
+  "version": "0.0.0",
+  "description": "ArkUI docs",
   "keywords": [
+    "ArkUI",
     "docs"
   ],
   "license": "MIT",
@@ -13,6 +14,6 @@
     "serve": "vitepress serve docs"
   },
   "devDependencies": {
-    "vitepress": "^0.22.3"
+    "vitepress": "^0.22.4"
   }
 }

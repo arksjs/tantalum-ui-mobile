@@ -1,10 +1,10 @@
 {
-  "name": "@arksjs/ui-mobile-vue-demo",
+  "name": "@arksjs/demo",
   "private": true,
   "version": "0.0.0",
-  "description": "arkui-mobile-vue demo",
+  "description": "ArkUI demo",
   "keywords": [
-    "vue",
+    "ArkUI",
     "demo"
   ],
   "scripts": {
