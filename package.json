@@ -8,6 +8,7 @@
   "typings": "es/index.d.ts",
   "scripts": {
     "test": "vitest",
+    "coverage": "vitest run --coverage",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix && stylelint packages/**/*.scss --fix",
     "build": "node build/build.mjs",
     "build:src": "node build/build.src.mjs",
@@ -62,6 +63,7 @@
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "@vitejs/plugin-vue": "^3.1.0",
+    "@vitest/coverage-c8": "^0.23.2",
     "@vue/compiler-sfc": "^3.2.31",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^9.1.0",
