@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { FxNavBar } from 'arkui-mobile-vue'
+import { AkNavBar } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。

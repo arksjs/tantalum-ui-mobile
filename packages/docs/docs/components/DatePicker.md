@@ -8,9 +8,9 @@
 
 ```js
 import {
-  FxDatePicker,
-  FxDatePickerPopup,
-  FxDatePickerView
+  AkDatePicker,
+  AkDatePickerPopup,
+  AkDatePickerView
 } from 'arkui-mobile-vue'
 ```
 

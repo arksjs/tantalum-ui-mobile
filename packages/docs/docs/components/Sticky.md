@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { FxSticky, FxStickyView, FxStickyViewItem } from 'arkui-mobile-vue'
+import { AkSticky, AkStickyView, AkStickyViewItem } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。

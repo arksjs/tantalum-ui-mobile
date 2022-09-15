@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { FxImage } from 'arkui-mobile-vue'
+import { AkImage } from 'arkui-mobile-vue'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。

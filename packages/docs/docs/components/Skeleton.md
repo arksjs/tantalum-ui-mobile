@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { FxSkeleton } from 'arkui-mobile-vue'
+import { AkSkeleton } from 'arkui-mobile-vue'
 ```
 
 如果想要自定义布局，可以再引入子组件：
