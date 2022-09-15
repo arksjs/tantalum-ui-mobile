@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`Input > snapshot 1`] = `
+"<label class=\\"ak-input\\">
+  <!--v-if--><input class=\\"ak-input_input\\" name=\\"\\" type=\\"text\\" inputmode=\\"text\\" placeholder=\\"\\" maxlength=\\"140\\">
+  <!--v-if-->
+  <!--v-if-->
+  <!--v-if-->
+</label>"
+`;

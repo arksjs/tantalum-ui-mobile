@@ -1,0 +1,31 @@
+// Vitest Snapshot v1
+
+exports[`Rate > snapshot 1`] = `
+"<div class=\\"ak-rate\\"><input name=\\"\\" type=\\"hidden\\" value=\\"0\\">
+  <div class=\\"ak-rate_item\\" data-value=\\"1\\"><i class=\\"ak-rate_icon\\">
+      <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    </i><i class=\\"ak-rate_active-icon\\">
+      <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    </i></div>
+  <div class=\\"ak-rate_item\\" data-value=\\"2\\"><i class=\\"ak-rate_icon\\">
+      <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    </i><i class=\\"ak-rate_active-icon\\">
+      <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    </i></div>
+  <div class=\\"ak-rate_item\\" data-value=\\"3\\"><i class=\\"ak-rate_icon\\">
+      <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    </i><i class=\\"ak-rate_active-icon\\">
+      <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    </i></div>
+  <div class=\\"ak-rate_item\\" data-value=\\"4\\"><i class=\\"ak-rate_icon\\">
+      <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    </i><i class=\\"ak-rate_active-icon\\">
+      <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    </i></div>
+  <div class=\\"ak-rate_item\\" data-value=\\"5\\"><i class=\\"ak-rate_icon\\">
+      <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    </i><i class=\\"ak-rate_active-icon\\">
+      <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    </i></div>
+</div>"
+`;

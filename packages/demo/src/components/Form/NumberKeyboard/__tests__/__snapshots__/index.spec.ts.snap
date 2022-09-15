@@ -1,9 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`NumberKeyboard > should render default correctly 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"false\\" class=\\"fx-number-keyboard\\"></drawer-stub>"`;
-
-exports[`NumberKeyboard > should render props customKey="." correctly 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"true\\" enablesafeareainsets=\\"true\\" showmask=\\"false\\" class=\\"fx-number-keyboard\\"></drawer-stub>"`;
-
-exports[`NumberKeyboard > should render props type="rightColumn" and customKey=["00", "."] correctly 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"false\\" class=\\"fx-number-keyboard\\"></drawer-stub>"`;
-
-exports[`NumberKeyboard > should render props type="rightColumn" correctly 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"false\\" class=\\"fx-number-keyboard\\"></drawer-stub>"`;

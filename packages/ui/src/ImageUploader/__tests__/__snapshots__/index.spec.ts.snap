@@ -1,0 +1,8 @@
+// Vitest Snapshot v1
+
+exports[`ImageUploader > snapshot 1`] = `
+"<div class=\\"ak-image-uploader\\">
+  <order-stub items=\\"[object Object]\\" columnnumber=\\"3\\" deletable=\\"true\\" aspectratio=\\"1\\"></order-stub><input type=\\"hidden\\" name=\\"\\" value=\\"\\">
+</div>
+<image-preview-stub urls=\\"\\" visible=\\"false\\" maskclosable=\\"true\\" current=\\"\\" showclose=\\"true\\" navigationbuttons=\\"false\\" imagehighrendering=\\"true\\" class=\\"ak-image-uploader_preview\\"></image-preview-stub>"
+`;

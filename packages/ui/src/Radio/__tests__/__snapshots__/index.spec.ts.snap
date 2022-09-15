@@ -1,0 +1,13 @@
+// Vitest Snapshot v1
+
+exports[`Radio > snapshot 1`] = `
+"<label class=\\"ak-radio ak-horizontal-hairline\\"><input class=\\"ak-radio_input ak-form-input\\" type=\\"radio\\" name=\\"\\" value=\\"\\">
+  <div class=\\"ak-radio_box\\">
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"ak-radio_icon\\"></icon-stub>
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"ak-radio_checked-icon\\"></icon-stub>
+    <!--v-if-->
+  </div>
+</label>"
+`;
+
+exports[`RadioGroup > snapshot 1`] = `"<div class=\\"ak-radio-group vertical\\"></div>"`;

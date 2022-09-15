@@ -3,7 +3,7 @@ import { mount, shallowMount } from '@vue/test-utils'
 import { Stepper } from '@/Stepper'
 
 describe('Stepper', () => {
-  test('snapshot', () => {
+  test.concurrent('snapshot', () => {
     const wrapper = shallowMount(Stepper, {})
 
     expect(wrapper.html()).toMatchSnapshot()

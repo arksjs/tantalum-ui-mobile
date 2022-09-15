@@ -1,8 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`Calendar > should render default correctly 1`] = `
-"<div class=\\"fx-calendar\\">
-  <selector-field-stub label=\\"\\" name=\\"\\" placeholder=\\"\\" disabled=\\"false\\" value=\\"\\"></selector-field-stub>
-  <!--v-if-->
-</div>"
-`;

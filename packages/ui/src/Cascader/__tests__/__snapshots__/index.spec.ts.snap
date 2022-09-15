@@ -1,0 +1,19 @@
+// Vitest Snapshot v1
+
+exports[`Cascader > snapshot 1`] = `
+"<div class=\\"ak-cascader\\">
+  <selector-field-stub label=\\"\\" name=\\"\\" placeholder=\\"\\" disabled=\\"false\\" value=\\"\\"></selector-field-stub>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`CascaderPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"ak-cascader-popup\\"></drawer-stub>"`;
+
+exports[`CascaderView > snapshot 1`] = `
+"<div class=\\"ak-cascader-view\\">
+  <tab-stub activevalue=\\"0\\" options=\\"\\" scrollthreshold=\\"0\\" class=\\"ak-cascader-view_header\\"></tab-stub>
+  <div class=\\"ak-cascader-view_body\\">
+    <empty-stub description=\\"暂无选择可选\\" type=\\"default\\"></empty-stub>
+  </div>
+</div>"
+`;
