@@ -4981,7 +4981,7 @@ var _sfc_script28 = defineComponent16({
     ...popupProps,
     title: {
       type: String,
-      required: true
+      default: ""
     },
     type: {
       type: String,
@@ -18165,15 +18165,15 @@ import { onMounted as onMounted32, ref as ref50, defineComponent as defineCompon
 var getClasses20 = (disabled) => {
   return ["ak-stepper", { disabled: !!disabled }];
 };
-function formateNumber(value, decimalLength) {
+function formatNumber2(value, decimalLength) {
   return formatInputNumber(value, getNumber(decimalLength, -1));
 }
 function getRangeNumber(props, value) {
-  value = formateNumber(value, props.decimalLength);
+  value = formatNumber2(value, props.decimalLength);
   if (value === "") {
     value = props.min;
   }
-  if (props.allowDecimal) {
+  if (props.decimalLength != 0) {
     value = rangeNumber(parseFloat(value), props.min, props.max);
   } else {
     value = rangeInteger(Math.floor(value), props.min, props.max);
@@ -18228,16 +18228,12 @@ var _sfc_script126 = defineComponent99({
       type: [Number, String],
       default: Infinity
     },
-    allowDecimal: {
-      type: Boolean,
-      default: true
-    },
     step: {
       type: [Number, String],
       default: 1
     },
     decimalLength: {
-      type: Number
+      type: [Number, String]
     }
   },
   emits: {
@@ -18257,7 +18253,6 @@ var _sfc_script126 = defineComponent99({
       const newVal = getRangeNumber({
         min: nMin.value,
         max: nMax.value,
-        allowDecimal: props.allowDecimal,
         decimalLength: props.decimalLength
       }, val);
       if (newVal != props.modelValue) {
@@ -18276,7 +18271,7 @@ var _sfc_script126 = defineComponent99({
       updateValue(getInputValue());
     }
     function onInput() {
-      const val = formateNumber(getInputValue());
+      const val = formatNumber2(getInputValue(), props.decimalLength);
       setInputValue(val);
       emit("input", val);
     }
@@ -18332,8 +18327,8 @@ function render124(_ctx, _cache) {
     }, null, 8, ["icon", "disabled", "onClick"]),
     _createElementVNode86("input", {
       class: "ak-stepper_input",
-      type: _ctx.allowDecimal ? "text" : "tel",
-      inputmode: _ctx.allowDecimal ? "decimal" : "numeric",
+      type: _ctx.decimalLength != 0 ? "text" : "tel",
+      inputmode: _ctx.decimalLength != 0 ? "decimal" : "numeric",
       name: _ctx.name,
       disabled: _ctx.disabled,
       readonly: _ctx.disabledInput,
