@@ -4,7 +4,7 @@ import type { PopupProps, PopupEmits } from '../popup/types'
 export type StateType = 'default' | 'success' | 'loading' | 'fail'
 
 export interface ToastProps extends PopupProps {
-  title: string
+  title?: string
   type?: StateType
   icon?: IconData
   showMask?: boolean

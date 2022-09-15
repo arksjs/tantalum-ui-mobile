@@ -8,7 +8,6 @@ import type {
   VisibleState,
   PopupCustomCancel,
   PopupCustomConfirm,
-  PopupStyles,
   PopupBridge,
   OnVisibleStateChange,
   OnCancel,

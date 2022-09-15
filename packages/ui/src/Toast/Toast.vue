@@ -53,7 +53,7 @@ export default defineComponent({
     ...popupProps,
     title: {
       type: String,
-      required: true
+      default: ''
     },
     type: {
       type: String as PropType<StateType>,
