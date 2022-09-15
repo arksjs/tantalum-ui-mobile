@@ -9,8 +9,8 @@
     ></Button>
     <input
       class="ak-stepper_input"
-      :type="allowDecimal ? 'text' : 'tel'"
-      :inputmode="allowDecimal ? 'decimal' : 'numeric'"
+      :type="decimalLength != 0 ? 'text' : 'tel'"
+      :inputmode="decimalLength != 0 ? 'decimal' : 'numeric'"
       :name="name"
       :disabled="disabled"
       :readonly="disabledInput"
@@ -34,7 +34,7 @@
 import { onMounted, ref, defineComponent, watch, computed } from 'vue'
 import { Button } from '../Button'
 import { getNumber } from '../helpers/util'
-import { formateNumber, getRangeNumber, getClasses } from './util'
+import { formatNumber, getRangeNumber, getClasses } from './util'
 import {
   formStringValueEmits,
   formItemProps,
@@ -78,16 +78,13 @@ export default defineComponent({
       type: [Number, String],
       default: Infinity
     },
-    allowDecimal: {
-      type: Boolean,
-      default: true
-    },
     step: {
       type: [Number, String],
       default: 1
     },
+    // 小数位数，设置0位整数
     decimalLength: {
-      type: Number
+      type: [Number, String]
     }
   },
   emits: {
@@ -111,7 +108,6 @@ export default defineComponent({
         {
           min: nMin.value,
           max: nMax.value,
-          allowDecimal: props.allowDecimal,
           decimalLength: props.decimalLength
         },
         val
@@ -140,7 +136,7 @@ export default defineComponent({
     }
 
     function onInput() {
-      const val = formateNumber(getInputValue())
+      const val = formatNumber(getInputValue(), props.decimalLength)
       setInputValue(val)
 
       emit('input', val)

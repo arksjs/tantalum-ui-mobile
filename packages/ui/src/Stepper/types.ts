@@ -8,7 +8,6 @@ export interface StepperProps extends FormItemCommonProps {
   disabledMinus?: boolean
   disabledPlus?: boolean
   disabledInput?: boolean
-  allowDecimal?: boolean
   min?: number | string
   max?: number | string
   step?: number | string

@@ -5,7 +5,7 @@ export const getClasses = (disabled?: boolean) => {
   return ['ak-stepper', { disabled: !!disabled }]
 }
 
-export function formateNumber(
+export function formatNumber(
   value: string | number,
   decimalLength?: number | string
 ): string {
@@ -16,18 +16,17 @@ export function getRangeNumber(
   props: {
     min: number
     max: number
-    allowDecimal?: boolean
     decimalLength?: number | string
   },
   value: string | number
 ) {
-  value = formateNumber(value, props.decimalLength)
+  value = formatNumber(value, props.decimalLength)
 
   if (value === '') {
     value = props.min
   }
 
-  if (props.allowDecimal) {
+  if (props.decimalLength != 0) {
     value = rangeNumber(parseFloat(value as string), props.min, props.max)
   } else {
     value = rangeInteger(Math.floor(value as number), props.min, props.max)

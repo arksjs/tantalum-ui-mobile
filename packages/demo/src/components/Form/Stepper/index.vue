@@ -10,7 +10,7 @@
       <ak-stepper :min="5" :max="10" />
     </ak-cell>
     <ak-cell label="限制输入整数">
-      <ak-stepper :allow-decimal="false" />
+      <ak-stepper :decimal-length="0" />
     </ak-cell>
     <ak-cell label="禁用状态">
       <ak-stepper :disabled="true" />
