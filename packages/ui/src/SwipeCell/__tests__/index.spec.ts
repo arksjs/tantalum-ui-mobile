@@ -1,29 +1,36 @@
+import { describe, test, expect } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
 import { SwipeCell } from '@/SwipeCell'
 
 describe('SwipeCell', () => {
-  test('should render default slot correctly', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(SwipeCell, {})
 
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  test('should render set buttons correctly', () => {
+  test('set buttons', () => {
     const wrapper = shallowMount(SwipeCell, {
       props: {
         buttons: [
           {
-            text: '加入收藏',
+            text: 'Add',
             type: 'warning'
           },
           {
-            text: '删除',
+            text: 'Delete',
             type: 'danger'
           }
         ]
       }
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    const $buttons = wrapper.findAll('.ak-swipe-cell_button')
+
+    expect($buttons[0].text()).toBe('Add')
+    expect($buttons[1].text()).toBe('Delete')
+
+    expect($buttons[0].classes()).toContain('type--warning')
+    expect($buttons[1].classes()).toContain('type--danger')
   })
 })

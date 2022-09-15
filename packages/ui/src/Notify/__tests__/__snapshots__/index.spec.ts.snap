@@ -1,0 +1,9 @@
+// Vitest Snapshot v1
+
+exports[`Notify > snapshot 1`] = `
+"<teleport-stub>
+  <div class=\\"ak-notify ak-popup\\" style=\\"z-index: 2000; display: none;\\">
+    <notice-bar-stub title=\\"\\" mode=\\"default\\" marquee=\\"false\\" class=\\"ak-notify_inner\\"></notice-bar-stub>
+  </div>
+</teleport-stub>"
+`;

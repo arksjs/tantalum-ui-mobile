@@ -1,5 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`ActionSheet > should render prop set options correctly 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"fx-action-sheet\\"></drawer-stub>"`;
-
-exports[`ActionSheet > should render props showCancel=true & cancelText="Custom Cancel" correctly 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"fx-action-sheet\\"></drawer-stub>"`;

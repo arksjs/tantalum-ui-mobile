@@ -1,12 +1,28 @@
 import { describe, test, expect } from 'vitest'
 import { mount, shallowMount } from '@vue/test-utils'
-import { Popover } from '@/Popover'
+import { PopMenu } from '@/PopMenu'
+
+const options = [
+  {
+    icon: 'HeartOutlined',
+    name: 'Heart'
+  },
+  {
+    icon: 'StarOutlined',
+    name: 'Star'
+  },
+  {
+    icon: 'CircleOutlined',
+    name: 'Circle',
+    disabled: true
+  }
+]
 
 const selector = 'body'
 
-describe('Popover', () => {
+describe('PopMenu', () => {
   test.concurrent('snapshot', () => {
-    const wrapper = shallowMount(Popover, {
+    const wrapper = shallowMount(PopMenu, {
       global: {
         stubs: { teleport: true }
       },
@@ -14,25 +30,29 @@ describe('Popover', () => {
         selector
       }
     })
+
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  test('content', () => {
-    const content = 'content'
-    const wrapper = mount(Popover, {
+  test('set options', () => {
+    const wrapper = mount(PopMenu, {
       global: {
         stubs: { teleport: true }
       },
       props: {
-        content,
+        options,
         selector
       }
     })
-    expect(wrapper.find('.ak-popover_text').text()).toBe(content)
+
+    expect(wrapper.findAll('.ak-pop-menu_item').length).toBe(3)
+    expect(wrapper.findAll('.ak-pop-menu_item')[0].text()).toBe('Heart')
+    expect(wrapper.findAll('.ak-pop-menu_item')[1].text()).toBe('Star')
+    expect(wrapper.findAll('.ak-pop-menu_item')[2].text()).toBe('Circle')
   })
 
   test.concurrent('showMask', async () => {
-    const wrapper = mount(Popover, {
+    const wrapper = mount(PopMenu, {
       global: {
         stubs: { teleport: true }
       },

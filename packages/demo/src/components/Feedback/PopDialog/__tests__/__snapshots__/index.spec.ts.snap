@@ -1,5 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`PopDialog > should render default correctly 1`] = `"<anonymous-stub to=\\"body\\" title=\\"title\\"></anonymous-stub>"`;
-
-exports[`PopDialog > should render prop showCancel=false correctly 1`] = `"<anonymous-stub to=\\"body\\" title=\\"title\\"></anonymous-stub>"`;
