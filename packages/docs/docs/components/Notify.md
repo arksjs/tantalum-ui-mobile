@@ -19,15 +19,20 @@ import { AkNotify } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { VisibleState, PopupOnVisibleStateChange } from 'arkui-mobile-vue'
+import type {
+  VisibleState,
+  PopupOnVisibleStateChange,
+  StateType
+} from 'arkui-mobile-vue'
 ```
 
 ## Props
 
 | 属性            | 类型      | 默认值    | 必填 | 说明                                                                               |
 | --------------- | --------- | --------- | ---- | ---------------------------------------------------------------------------------- |
-| v-model:visible | boolean   | false     | 是   | 是否显示                                                                           |
-| closable        | boolean   | false     | 是   | 是否显示关闭按钮                                                                   |
+| v-model:visible | boolean   | false     | 否   | 是否显示                                                                           |
+| title           | string    |           | 否   | 提示内容                                                                           |
+| closable        | boolean   | false     | 否   | 是否显示关闭按钮                                                                   |
 | icon            | string    |           | 否   | 图标，使用 [Icon](./Icon.md) 组件，图标优先级高于 `type`                           |
 | type            | StateType | 'default' | 否   | 提示类型                                                                           |
 | duration        | number    | 0         | 否   | visible=true 展示后，duration 毫秒后消失，0 为不消失，在 `v-model:visible` 下生效  |
@@ -68,12 +73,12 @@ import type { VisibleState, PopupOnVisibleStateChange } from 'arkui-mobile-vue'
 
 | 属性     | 类型                                        | 默认值    | 必填 | 说明                                                                               |
 | -------- | ------------------------------------------- | --------- | ---- | ---------------------------------------------------------------------------------- |
-| title    | string                                      |           | 是   | 提示内容                                                                           |
+| title    | string                                      |           | 否   | 提示内容                                                                           |
 | type     | [StateType](./Notify.md#statetype-的合法值) | 'default' | 否   | 提示类型                                                                           |
 | icon     | string                                      |           | 否   | 图标，使用 [Icon](../components/Icon.md) 组件，图标优先级高于 `type`               |
 | duration | number                                      | 1500      | 否   | 展示时长(单位 ms)，值为 0 时，`notify` 不会消失                                    |
 | color    | string                                      |           | 否   | 自定义色彩，支持 hex rgb hsl 等写法，详细效果[查看](../design/color.md#自定义色彩) |
-| closable | boolean                                     | false     | 是   | 是否显示关闭按钮                                                                   |
+| closable | boolean                                     | false     | 否   | 是否显示关闭按钮                                                                   |
 | success  | () => void                                  |           | 否   | 接口调用成功的回调函数                                                             |
 | fail     | (e: Error) => void                          |           | 否   | 接口调用失败的回调函数（不传入 fail 遇错误直接抛出）                               |
 | complete | () => void                                  |           | 否   | 接口调用结束的回调函数（调用成功、失败都会执行）                                   |
