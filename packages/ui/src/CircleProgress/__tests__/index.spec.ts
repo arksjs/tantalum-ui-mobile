@@ -5,7 +5,7 @@ import { h } from 'vue'
 import { LoadingIcon } from '@/LoadingIcon'
 
 describe('CircleProgress', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(CircleProgress, {
       props: { percentage: 0 }
     })

@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { Picker, PickerPopup, PickerView } from '@/Picker'
 
 describe('Picker', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Picker, {
       props: {
         options: []
@@ -15,7 +15,7 @@ describe('Picker', () => {
 })
 
 describe('PickerPopup', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(PickerPopup, {
       props: {
         options: []
@@ -30,7 +30,7 @@ describe('PickerPopup', () => {
 })
 
 describe('PickerView', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(PickerView, {
       props: {
         options: []

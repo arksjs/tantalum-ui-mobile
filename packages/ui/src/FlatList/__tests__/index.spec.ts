@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { FlatList } from '@/FlatList'
 
 describe('FlatList', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(FlatList, {
       props: {
         ids: []

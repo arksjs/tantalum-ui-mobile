@@ -7,7 +7,7 @@ import CheckCircleFilled from '@/Icon/icons/CheckCircleFilled'
 import CloseCircleFilled from '@/Icon/icons/CloseCircleFilled'
 
 describe('Result', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Result, {})
     expect(wrapper.html()).toMatchSnapshot()
   })

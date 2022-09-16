@@ -4,7 +4,7 @@ import Row from '@/Row'
 import Col from '@/Col'
 
 describe('Col', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Col, {})
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -45,7 +45,7 @@ describe('Col', () => {
 })
 
 describe('Row', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Row, {})
     expect(wrapper.html()).toMatchSnapshot()
   })

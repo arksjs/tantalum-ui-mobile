@@ -4,7 +4,7 @@ import { Tag } from '@/Tag'
 import CloseOutlined from '@/Icon/icons/CloseOutlined'
 
 describe('Tag', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Tag, {})
     expect(wrapper.html()).toMatchSnapshot()
   })

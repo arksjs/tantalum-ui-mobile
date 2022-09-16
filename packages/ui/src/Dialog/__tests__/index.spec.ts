@@ -4,7 +4,7 @@ import { Dialog } from '@/Dialog'
 import { Button } from '@/Button'
 
 describe('Dialog', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Dialog, {
       global: {
         stubs: { teleport: true }

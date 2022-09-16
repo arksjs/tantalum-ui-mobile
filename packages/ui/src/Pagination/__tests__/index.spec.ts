@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { Pagination } from '@/Pagination'
 
 describe('Pagination', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Pagination, {})
 
     expect(wrapper.html()).toMatchSnapshot()

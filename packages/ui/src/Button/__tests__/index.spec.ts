@@ -6,7 +6,7 @@ import CircleOutlined from '@/Icon/icons/CircleOutlined'
 import LoadingOutlined from '@/Icon/icons/LoadingOutlined'
 
 describe('Button', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Button, {})
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -151,7 +151,7 @@ describe('Button', () => {
 })
 
 describe('ButtonGroup', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(ButtonGroup, {})
 
     expect(wrapper.html()).toMatchSnapshot()

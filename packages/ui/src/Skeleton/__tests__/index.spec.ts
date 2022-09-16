@@ -8,7 +8,7 @@ import { SkeletonParagraph } from '@/SkeletonParagraph'
 import { SkeletonButton } from '@/SkeletonButton'
 
 describe('Skeleton', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = mount(Skeleton, {})
     expect(wrapper.html()).toMatchSnapshot()
   })

@@ -3,7 +3,7 @@ import { mount, shallowMount } from '@vue/test-utils'
 import { Radio, RadioGroup } from '@/Radio'
 
 describe('Radio', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Radio, {})
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -22,7 +22,7 @@ describe('Radio', () => {
 })
 
 describe('RadioGroup', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(RadioGroup, {})
 
     expect(wrapper.html()).toMatchSnapshot()

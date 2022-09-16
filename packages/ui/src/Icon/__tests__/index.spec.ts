@@ -7,7 +7,7 @@ import { markRaw } from 'vue'
 const icon = 'strIcon'
 
 describe('Icon', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = mount(Icon, {
       props: {
         icon

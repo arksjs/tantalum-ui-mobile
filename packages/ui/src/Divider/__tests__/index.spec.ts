@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { Divider } from '@/Divider'
 
 describe('Divider', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Divider, {})
 
     expect(wrapper.html()).toMatchSnapshot()

@@ -3,7 +3,7 @@ import { mount, shallowMount } from '@vue/test-utils'
 import { Range } from '@/Range'
 
 describe('Range', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Range, {})
 
     expect(wrapper.html()).toMatchSnapshot()

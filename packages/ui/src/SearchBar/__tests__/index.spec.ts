@@ -2,10 +2,9 @@ import { describe, test, expect } from 'vitest'
 import { mount, shallowMount } from '@vue/test-utils'
 import { SearchBar } from '@/SearchBar'
 import { timeout } from '@arksjs/test-utils/utils'
-// import { placeholders } from '../data'
 
 describe('SearchBar', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(SearchBar, {})
 
     expect(wrapper.html()).toMatchSnapshot()

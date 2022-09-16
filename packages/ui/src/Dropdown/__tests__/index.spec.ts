@@ -5,7 +5,7 @@ import { Dropdown } from '@/Dropdown'
 describe('Dropdown', () => {
   const selector = 'body'
 
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Dropdown, {
       global: {
         stubs: { teleport: true }

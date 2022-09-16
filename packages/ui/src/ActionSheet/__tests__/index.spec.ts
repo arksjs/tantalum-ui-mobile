@@ -15,7 +15,7 @@ const options = [
 ]
 
 describe('ActionSheet', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(ActionSheet, {
       global: {
         stubs: { teleport: true }

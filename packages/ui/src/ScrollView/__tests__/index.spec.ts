@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { ScrollView } from '@/ScrollView'
 
 describe('ScrollView', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(ScrollView, {})
 
     expect(wrapper.html()).toMatchSnapshot()

@@ -1,0 +1,8 @@
+// Vitest Snapshot v1
+
+exports[`VirtualList > snapshot 1`] = `
+"<div class=\\"ak-virtual-list\\">
+  <ul class=\\"ak-virtual-list_list\\" style=\\"height: 0px;\\"></ul>
+  <ul class=\\"ak-virtual-list_list pool\\"></ul>
+</div>"
+`;

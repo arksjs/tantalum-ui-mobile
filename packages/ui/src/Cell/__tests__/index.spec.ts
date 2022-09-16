@@ -8,7 +8,7 @@ const content = 'content'
 const description = 'description'
 
 describe('Cell', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Cell, {})
 
     expect(wrapper.html()).toMatchSnapshot()

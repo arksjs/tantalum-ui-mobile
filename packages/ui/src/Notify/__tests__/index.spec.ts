@@ -5,7 +5,7 @@ import { Notify } from '@/Notify'
 const title = 'title'
 
 describe('Notify', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Notify, {
       global: {
         stubs: { teleport: true }

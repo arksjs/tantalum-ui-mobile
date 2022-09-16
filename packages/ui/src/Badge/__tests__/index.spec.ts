@@ -4,7 +4,7 @@ import { Badge } from '@/Badge'
 import CloseOutlined from '@/Icon/icons/CloseOutlined'
 
 describe('Badge', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Badge, {})
     expect(wrapper.html()).toMatchSnapshot()
   })
