@@ -21,7 +21,7 @@ const options = [
 const selector = 'body'
 
 describe('PopMenu', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(PopMenu, {
       global: {
         stubs: { teleport: true }

@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`Sticky > snapshot 1`] = `
+"<div class=\\"ak-sticky\\">
+  <div class=\\"ak-sticky_content\\"></div>
+</div>"
+`;

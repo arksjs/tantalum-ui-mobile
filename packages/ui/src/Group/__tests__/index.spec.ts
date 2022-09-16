@@ -7,7 +7,7 @@ import CircleOutlined from '@/Icon/icons/CircleOutlined'
 const title = 'title'
 
 describe('Group', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Group, {
       props: {
         title

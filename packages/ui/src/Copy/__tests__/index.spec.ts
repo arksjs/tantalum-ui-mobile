@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { Copy } from '@/Copy'
 
 describe('Copy', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Copy, {
       props: {
         text: 'content'

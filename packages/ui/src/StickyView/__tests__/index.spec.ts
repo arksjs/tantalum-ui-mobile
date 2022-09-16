@@ -1,18 +1,20 @@
+import { describe, test, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { StickyView, StickyViewItem } from '@/StickyView'
 
 describe('StickyView', () => {
-  test('StickyView should render default correctly', () => {
+  test('snapshot', () => {
     const wrapper = mount(StickyView, {})
 
     expect(wrapper.html()).toMatchSnapshot()
   })
+})
 
-  test('StickyViewItem should render default correctly', () => {
+describe('StickyViewItem', () => {
+  test('snapshot', () => {
     const wrapper = mount(StickyViewItem, {
-      props: { name: 'item-1' },
-      slots: {
-        default: 'content'
+      props: {
+        name: 'name'
       }
     })
 

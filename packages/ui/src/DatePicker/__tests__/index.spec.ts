@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { DatePicker, DatePickerPopup, DatePickerView } from '@/DatePicker'
 
 describe('DatePicker', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(DatePicker, {
       props: {
         options: []
@@ -15,7 +15,7 @@ describe('DatePicker', () => {
 })
 
 describe('DatePickerPopup', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(DatePickerPopup, {
       props: {
         options: []
@@ -30,7 +30,7 @@ describe('DatePickerPopup', () => {
 })
 
 describe('DatePickerView', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(DatePickerView, {
       props: {
         options: []

@@ -9,7 +9,7 @@ import { ImagePreview } from '@/ImagePreview'
 // ]
 
 describe('ImagePreview', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(ImagePreview, {
       global: {
         stubs: { teleport: true }

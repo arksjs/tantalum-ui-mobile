@@ -4,7 +4,7 @@ import { LoadMore } from '@/LoadMore'
 import { LoadingIcon } from '@/LoadingIcon'
 
 describe('LoadMore', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(LoadMore, {})
     expect(wrapper.html()).toMatchSnapshot()
   })

@@ -7,7 +7,7 @@ const selector = 'body'
 const content = 'content'
 
 describe('PopDialog', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(PopDialog, {
       global: {
         stubs: { teleport: true }

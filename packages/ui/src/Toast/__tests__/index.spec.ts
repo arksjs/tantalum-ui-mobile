@@ -8,7 +8,7 @@ import CloseOutlined from '@/Icon/icons/CloseOutlined'
 const title = 'title'
 
 describe('Toast', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Toast, {
       global: {
         stubs: { teleport: true }

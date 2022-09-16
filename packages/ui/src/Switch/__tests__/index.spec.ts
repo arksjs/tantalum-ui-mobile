@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { Switch } from '@/Switch'
 
 describe('Switch', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Switch, {})
 
     expect(wrapper.html()).toMatchSnapshot()

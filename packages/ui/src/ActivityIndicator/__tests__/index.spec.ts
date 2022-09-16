@@ -3,7 +3,7 @@ import { shallowMount, mount } from '@vue/test-utils'
 import { ActivityIndicator } from '@/ActivityIndicator'
 
 describe('ActivityIndicator', () => {
-  test.concurrent('snapshot', async () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(ActivityIndicator, {})
 
     expect(wrapper.html()).toMatchSnapshot()

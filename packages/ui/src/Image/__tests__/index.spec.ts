@@ -6,7 +6,7 @@ import { nextTick } from 'vue'
 const imgUrl = 'https://cdn.fox2.cn/vfox/swiper/center-2.jpg'
 
 describe('Image', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Image, {})
     expect(wrapper.html()).toMatchSnapshot()
   })

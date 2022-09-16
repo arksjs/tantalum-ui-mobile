@@ -3,7 +3,7 @@ import { mount, shallowMount } from '@vue/test-utils'
 import { Slider } from '@/Slider'
 
 describe('Slider', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Slider, {})
 
     expect(wrapper.html()).toMatchSnapshot()

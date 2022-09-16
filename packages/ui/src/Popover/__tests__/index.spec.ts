@@ -5,7 +5,7 @@ import { Popover } from '@/Popover'
 const selector = 'body'
 
 describe('Popover', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Popover, {
       global: {
         stubs: { teleport: true }

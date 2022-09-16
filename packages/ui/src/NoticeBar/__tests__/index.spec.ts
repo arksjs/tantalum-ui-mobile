@@ -7,7 +7,7 @@ import RightOutlined from '@/Icon/icons/RightOutlined'
 import { markRaw } from 'vue'
 
 describe('NoticeBar', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(NoticeBar, {})
     expect(wrapper.html()).toMatchSnapshot()
   })

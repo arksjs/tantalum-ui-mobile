@@ -7,7 +7,7 @@ import UserOutlined from '@/Icon/icons/UserOutlined'
 const imgUrl = 'https://cdn.fox2.cn/vfox/avatar/5.png'
 
 describe('Avatar', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Avatar, {})
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -83,7 +83,7 @@ describe('Avatar', () => {
 })
 
 describe('AvatarGroup', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(AvatarGroup, {})
     expect(wrapper.html()).toMatchSnapshot()
   })

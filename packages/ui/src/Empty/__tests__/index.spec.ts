@@ -4,7 +4,7 @@ import { Empty } from '@/Empty'
 import { Image } from '@/Image'
 
 describe('Empty', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Empty, {})
 
     expect(wrapper.html()).toMatchSnapshot()

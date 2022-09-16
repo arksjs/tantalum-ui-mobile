@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils'
 import { Form, FormFooter } from '@/Form'
 
 describe('Form', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = mount(Form, {
       slots: {
         footer: FormFooter

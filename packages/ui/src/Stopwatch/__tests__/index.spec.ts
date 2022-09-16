@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { Stopwatch } from '@/Stopwatch'
 
 describe('Stopwatch', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Stopwatch, {})
 
     expect(wrapper.html()).toMatchSnapshot()

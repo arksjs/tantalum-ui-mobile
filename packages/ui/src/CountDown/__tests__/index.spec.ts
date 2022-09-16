@@ -4,7 +4,7 @@ import { CountDown } from '@/CountDown'
 import { timeout } from '@arksjs/test-utils/utils'
 
 describe('CountDown', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(CountDown, {})
 
     expect(wrapper.html()).toMatchSnapshot()

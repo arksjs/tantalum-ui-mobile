@@ -4,7 +4,7 @@ import { TimeAgo } from '@/TimeAgo'
 import { timeout } from '@arksjs/test-utils/utils'
 
 describe('TimeAgo', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(TimeAgo, {
       props: {
         time: new Date()

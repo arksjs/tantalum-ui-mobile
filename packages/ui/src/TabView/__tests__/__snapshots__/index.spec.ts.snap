@@ -1,14 +1,14 @@
 // Vitest Snapshot v1
 
-exports[`TabView > TabView should render default correctly 1`] = `
-"<div class=\\"fx-tab-view\\">
-  <div class=\\"fx-tab-view_header fx-horizontal-hairline\\">
+exports[`TabView > snapshot 1`] = `
+"<div class=\\"ak-tab-view\\">
+  <div class=\\"ak-tab-view_header ak-horizontal-hairline\\">
     <tab-stub activevalue=\\"0\\" options=\\"\\" scrollthreshold=\\"4\\"></tab-stub>
   </div>
-  <div class=\\"fx-tab-view_body\\">
+  <div class=\\"ak-tab-view_body\\">
     <swiper-stub indicatordots=\\"false\\" navigationbuttons=\\"false\\" autoplay=\\"false\\" interval=\\"5000\\" initialcircular=\\"false\\" activeindex=\\"0\\" initialvertical=\\"false\\" bounces=\\"false\\"></swiper-stub>
   </div>
 </div>"
 `;
 
-exports[`TabView > TabViewItem should render default correctly 1`] = `"<div class=\\"fx-swiper-item fx-tab-view-item\\" data-name=\\"item-1\\">content</div>"`;
+exports[`TabViewItem > snapshot 1`] = `"<div class=\\"ak-swiper-item ak-tab-view-item\\" data-name=\\"name\\"></div>"`;

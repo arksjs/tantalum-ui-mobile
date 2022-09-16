@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { Order } from '@/Order'
 
 describe('Order', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Order, {
       props: {
         items: []

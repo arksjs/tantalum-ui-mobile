@@ -3,7 +3,7 @@ import { shallowMount, mount } from '@vue/test-utils'
 import { Checkbox, CheckboxGroup } from '@/Checkbox'
 
 describe('Checkbox', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Checkbox, {})
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -22,7 +22,7 @@ describe('Checkbox', () => {
 })
 
 describe('CheckboxGroup', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = mount(CheckboxGroup, {})
 
     expect(wrapper.html()).toMatchSnapshot()

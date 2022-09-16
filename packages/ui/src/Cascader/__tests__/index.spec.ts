@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { Cascader, CascaderPopup, CascaderView } from '@/Cascader'
 
 describe('Cascader', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Cascader, {
       props: {
         options: []
@@ -15,7 +15,7 @@ describe('Cascader', () => {
 })
 
 describe('CascaderPopup', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(CascaderPopup, {
       props: {
         options: []
@@ -30,7 +30,7 @@ describe('CascaderPopup', () => {
 })
 
 describe('CascaderView', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(CascaderView, {
       props: {
         options: []

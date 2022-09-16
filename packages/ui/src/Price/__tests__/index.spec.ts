@@ -5,7 +5,7 @@ import { Price } from '@/Price'
 const price = 1111.11
 
 describe('Price', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Price, {
       props: {
         price

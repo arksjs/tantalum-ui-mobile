@@ -4,7 +4,7 @@ import { Progress } from '@/Progress'
 import { h } from 'vue'
 
 describe('Progress', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Progress, {
       props: { percentage: 0 }
     })

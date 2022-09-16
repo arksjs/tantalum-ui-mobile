@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils'
 import { Calendar, CalendarPopup, CalendarView } from '@/Calendar'
 
 describe('Calendar', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(Calendar, {
       props: {
         options: []
@@ -15,7 +15,7 @@ describe('Calendar', () => {
 })
 
 describe('CalendarPopup', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(CalendarPopup, {
       props: {
         options: []
@@ -30,7 +30,7 @@ describe('CalendarPopup', () => {
 })
 
 describe('CalendarView', () => {
-  test.concurrent('snapshot', () => {
+  test('snapshot', () => {
     const wrapper = shallowMount(CalendarView, {
       props: {
         options: []
