@@ -9,6 +9,7 @@
   "scripts": {
     "test": "vitest",
     "coverage": "vitest run --coverage",
+    "cypress:open": "cypress open",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix && stylelint packages/**/*.scss --fix",
     "build": "node build/build.mjs",
     "build:src": "node build/build.src.mjs",
@@ -70,6 +71,7 @@
     "@vue/test-utils": "^2.0.2",
     "commander": "^9.0.0",
     "csstype": "^3.0.11",
+    "cypress": "^10.8.0",
     "cz-conventional-changelog": "^3.3.0",
     "esbuild": "^0.14.25",
     "eslint": "^8.11.0",
@@ -88,7 +90,6 @@
     "md5": "^2.3.0",
     "ora": "^6.1.0",
     "prettier": "^2.5.1",
-    "puppeteer": "^13.5.1",
     "resize-observer-polyfill": "^1.5.1",
     "rollup": "^2.70.0",
     "rollup-plugin-terser": "^7.0.2",

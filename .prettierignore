@@ -2,6 +2,7 @@ dist/
 es/
 lib/
 node_modules/
+coverage/
 
 pnpm-lock.yaml
 pnpm-workspace.yaml

@@ -21,6 +21,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
-    "rollup-plugin-svg-sprites": "^1.2.3"
+    "rollup-plugin-svg-sprites": "^1.2.5"
   }
 }
