@@ -2693,7 +2693,7 @@ var emitClickValidator2 = (payload, buttonEl) => payload && typeof payload.index
 var emitTitleDbClickValidator = (titleEl) => titleEl instanceof HTMLElement;
 var _sfc_script8 = defineComponent5({
   name: "ak-nav-bar",
-  components: { Button: _sfc_script4, ButtonGroup: _sfc_script5 },
+  components: { AkButton: _sfc_script4, ButtonGroup: _sfc_script5 },
   props: {
     title: {
       type: String,
@@ -2789,7 +2789,7 @@ var _hoisted_25 = { class: "ak-nav-bar_inner" };
 var _hoisted_34 = { class: "ak-nav-bar_left" };
 var _hoisted_4 = { class: "ak-nav-bar_right" };
 function render8(_ctx, _cache) {
-  const _component_Button = _resolveComponent2("Button");
+  const _component_AkButton = _resolveComponent2("AkButton");
   const _component_ButtonGroup = _resolveComponent2("ButtonGroup");
   return _openBlock8(), _createElementBlock7("div", _hoisted_16, [
     _createElementVNode6("div", _hoisted_25, [
@@ -2802,7 +2802,7 @@ function render8(_ctx, _cache) {
         }, {
           default: _withCtx(() => [
             _ctx.leftButtons.length > 0 ? (_openBlock8(true), _createElementBlock7(_Fragment, { key: 0 }, _renderList(_ctx.leftButtons, (item, index) => {
-              return _openBlock8(), _createBlock3(_component_Button, {
+              return _openBlock8(), _createBlock3(_component_AkButton, {
                 class: "ak-nav-bar_button",
                 transparent: "",
                 type: item.type || "default",
@@ -2816,7 +2816,7 @@ function render8(_ctx, _cache) {
                 _: 2
               }, 1032, ["type", "icon", "onClick"]);
             }), 128)) : (_openBlock8(), _createElementBlock7(_Fragment, { key: 1 }, [
-              _ctx.showBack ? (_openBlock8(), _createBlock3(_component_Button, {
+              _ctx.showBack ? (_openBlock8(), _createBlock3(_component_AkButton, {
                 key: 0,
                 class: "ak-nav-bar_button",
                 type: "default",
@@ -2829,7 +2829,7 @@ function render8(_ctx, _cache) {
                 ]),
                 _: 1
               }, 8, ["icon", "onClick"])) : _createCommentVNode2("v-if", true),
-              _ctx.showHome ? (_openBlock8(), _createBlock3(_component_Button, {
+              _ctx.showHome ? (_openBlock8(), _createBlock3(_component_AkButton, {
                 key: 1,
                 class: "ak-nav-bar_button",
                 type: "default",
@@ -2861,7 +2861,7 @@ function render8(_ctx, _cache) {
           }, {
             default: _withCtx(() => [
               (_openBlock8(true), _createElementBlock7(_Fragment, null, _renderList(_ctx.rightButtons, (item, index) => {
-                return _openBlock8(), _createBlock3(_component_Button, {
+                return _openBlock8(), _createBlock3(_component_AkButton, {
                   class: "ak-nav-bar_button",
                   type: item.type || "default",
                   icon: item.icon,
@@ -4534,7 +4534,7 @@ function useConsumer() {
 import { renderSlot as _renderSlot6, resolveComponent as _resolveComponent7, createVNode as _createVNode2, openBlock as _openBlock21, createBlock as _createBlock7, createCommentVNode as _createCommentVNode7, mergeProps as _mergeProps2, withCtx as _withCtx3 } from "vue";
 var _sfc_script21 = defineComponent12({
   name: "ak-avatar",
-  components: { Badge: _sfc_script14, Image: _sfc_script17, Icon: _sfc_script2 },
+  components: { Badge: _sfc_script14, AkImage: _sfc_script17, Icon: _sfc_script2 },
   props: {
     ...avatarProps,
     shape: {
@@ -4575,7 +4575,7 @@ var _sfc_script21 = defineComponent12({
   }
 });
 function render21(_ctx, _cache) {
-  const _component_Image = _resolveComponent7("Image");
+  const _component_AkImage = _resolveComponent7("AkImage");
   const _component_Icon = _resolveComponent7("Icon");
   const _component_Badge = _resolveComponent7("Badge");
   return _openBlock21(), _createBlock7(_component_Badge, _mergeProps2({
@@ -4593,7 +4593,7 @@ function render21(_ctx, _cache) {
     ]),
     default: _withCtx3(() => [
       _renderSlot6(_ctx.$slots, "default", {}, () => [
-        _createVNode2(_component_Image, {
+        _createVNode2(_component_AkImage, {
           class: "ak-avatar_image",
           src: _ctx.src,
           mode: "aspectFill",
@@ -5910,7 +5910,7 @@ var _sfc_script30 = defineComponent18({
       const newVisibleIndexList = [];
       const startCols = getStartCols(scrollSize);
       let renderEntered = false;
-      let newCols = cloneData(startCols.cols);
+      const newCols = cloneData(startCols.cols);
       for (let i = startCols.index, len = list.value.length; i < len; i++) {
         const item = list.value[i];
         const itemSize = item.size;
@@ -6675,7 +6675,7 @@ _sfc_script31.__file = "packages/ui/src/Calendar/CalendarView.vue";
 import { resolveComponent as _resolveComponent13, createVNode as _createVNode6, toDisplayString as _toDisplayString9, createTextVNode as _createTextVNode5, withCtx as _withCtx6, openBlock as _openBlock32, createElementBlock as _createElementBlock27, createCommentVNode as _createCommentVNode11, createBlock as _createBlock10 } from "vue";
 var _sfc_script32 = defineComponent20({
   name: "ak-calendar-popup",
-  components: { CalendarView: _sfc_script31, Drawer: _sfc_script10, Button: _sfc_script4 },
+  components: { CalendarView: _sfc_script31, Drawer: _sfc_script10, AkButton: _sfc_script4 },
   props: {
     ...commonProps2,
     ...popupExtendProps,
@@ -6766,7 +6766,7 @@ var _hoisted_125 = {
 };
 function render32(_ctx, _cache) {
   const _component_CalendarView = _resolveComponent13("CalendarView");
-  const _component_Button = _resolveComponent13("Button");
+  const _component_AkButton = _resolveComponent13("AkButton");
   const _component_Drawer = _resolveComponent13("Drawer");
   return _openBlock32(), _createBlock10(_component_Drawer, {
     class: "ak-calendar-popup",
@@ -6796,7 +6796,7 @@ function render32(_ctx, _cache) {
         onSelect: _ctx.onViewSelect
       }, null, 8, ["modelValue", "minDate", "maxDate", "initialMode", "allowSameDay", "maxRange", "dayHandler", "firstDayOfWeek", "formatter", "parser", "onSelect"]),
       _ctx.showConfirm ? (_openBlock32(), _createElementBlock27("div", _hoisted_125, [
-        _createVNode6(_component_Button, {
+        _createVNode6(_component_AkButton, {
           type: "primary",
           onClick: _ctx.onConfirmClick,
           disabled: _ctx.valueSize == 0
@@ -10397,7 +10397,7 @@ var Modal_default = _sfc_script62;
 import { toDisplayString as _toDisplayString20, openBlock as _openBlock62, createElementBlock as _createElementBlock53, createCommentVNode as _createCommentVNode23, renderSlot as _renderSlot22, createElementVNode as _createElementVNode40, createTextVNode as _createTextVNode11, resolveComponent as _resolveComponent32, withCtx as _withCtx14, createBlock as _createBlock25, createVNode as _createVNode22 } from "vue";
 var _sfc_script63 = defineComponent46({
   name: "ak-dialog",
-  components: { Button: _sfc_script4, ButtonGroup: _sfc_script5, Modal: _sfc_script62 },
+  components: { AkButton: _sfc_script4, ButtonGroup: _sfc_script5, Modal: _sfc_script62 },
   props: {
     ...popupExtendProps,
     title: {
@@ -10448,7 +10448,7 @@ var _hoisted_330 = {
 };
 var _hoisted_410 = { class: "ak-dialog_footer ak-horizontal-hairline" };
 function render63(_ctx, _cache) {
-  const _component_Button = _resolveComponent32("Button");
+  const _component_AkButton = _resolveComponent32("AkButton");
   const _component_ButtonGroup = _resolveComponent32("ButtonGroup");
   const _component_Modal = _resolveComponent32("Modal");
   return _openBlock62(), _createBlock25(_component_Modal, {
@@ -10473,7 +10473,7 @@ function render63(_ctx, _cache) {
           pattern: "borderless"
         }, {
           default: _withCtx14(() => [
-            _ctx.showCancel ? (_openBlock62(), _createBlock25(_component_Button, {
+            _ctx.showCancel ? (_openBlock62(), _createBlock25(_component_AkButton, {
               key: 0,
               class: "ak-dialog_button",
               type: "default",
@@ -10484,7 +10484,7 @@ function render63(_ctx, _cache) {
               ]),
               _: 1
             }, 8, ["onClick"])) : _createCommentVNode23("v-if", true),
-            _createVNode22(_component_Button, {
+            _createVNode22(_component_AkButton, {
               class: "ak-dialog_button",
               type: "primary",
               onClick: _ctx.onConfirmClick
@@ -12395,7 +12395,7 @@ function getImageStyles(item) {
 import { createElementVNode as _createElementVNode48, renderList as _renderList12, Fragment as _Fragment12, openBlock as _openBlock74, createElementBlock as _createElementBlock64, resolveComponent as _resolveComponent37, normalizeClass as _normalizeClass35, normalizeStyle as _normalizeStyle17, createVNode as _createVNode25, withCtx as _withCtx16, createBlock as _createBlock30, createCommentVNode as _createCommentVNode31, toDisplayString as _toDisplayString26, renderSlot as _renderSlot33, withModifiers as _withModifiers2, mergeProps as _mergeProps7, Teleport as _Teleport5 } from "vue";
 var _sfc_script76 = defineComponent59({
   name: "ak-image-preview",
-  components: { Button: _sfc_script4, Swiper: _sfc_script74, SwiperItem: _sfc_script75, Image: _sfc_script17 },
+  components: { AkButton: _sfc_script4, Swiper: _sfc_script74, SwiperItem: _sfc_script75, AkImage: _sfc_script17 },
   props: {
     ...popupProps,
     urls: {
@@ -12674,10 +12674,10 @@ var _hoisted_241 = { class: "ak-preview-image_image-container" };
 var _hoisted_334 = { class: "ak-preview-image_pagination" };
 var _hoisted_413 = { class: "ak-preview-image_close" };
 function render75(_ctx, _cache) {
-  const _component_Image = _resolveComponent37("Image");
+  const _component_AkImage = _resolveComponent37("AkImage");
   const _component_SwiperItem = _resolveComponent37("SwiperItem");
   const _component_Swiper = _resolveComponent37("Swiper");
-  const _component_Button = _resolveComponent37("Button");
+  const _component_AkButton = _resolveComponent37("AkButton");
   return _openBlock74(), _createBlock30(_Teleport5, { to: "body" }, [
     _createElementVNode48("div", _mergeProps7({
       class: ["ak-preview-image", _ctx.popupClasses],
@@ -12698,7 +12698,7 @@ function render75(_ctx, _cache) {
             return _openBlock74(), _createBlock30(_component_SwiperItem, { key: index }, {
               default: _withCtx16(() => [
                 _createElementVNode48("div", _hoisted_241, [
-                  _createVNode25(_component_Image, {
+                  _createVNode25(_component_AkImage, {
                     src: item.src,
                     mode: "aspectFit",
                     onLoad: _ctx.onImageLoad,
@@ -12719,7 +12719,7 @@ function render75(_ctx, _cache) {
       _createElementVNode48("div", _hoisted_334, _toDisplayString26(_ctx.activeIndex + 1) + " / " + _toDisplayString26(_ctx.urls.length), 1),
       _createElementVNode48("div", _hoisted_413, [
         _renderSlot33(_ctx.$slots, "close", { activeIndex: _ctx.activeIndex }, () => [
-          _ctx.showClose ? (_openBlock74(), _createBlock30(_component_Button, {
+          _ctx.showClose ? (_openBlock74(), _createBlock30(_component_AkButton, {
             key: 0,
             onClick: _withModifiers2(_ctx.onCloseClick, ["stop"]),
             icon: _ctx.CloseOutlined,
@@ -13258,7 +13258,7 @@ import { defineComponent as defineComponent61 } from "vue";
 import { resolveComponent as _resolveComponent39, createVNode as _createVNode27, openBlock as _openBlock78, createBlock as _createBlock31, createCommentVNode as _createCommentVNode32, toDisplayString as _toDisplayString28, createElementVNode as _createElementVNode52, createElementBlock as _createElementBlock68, withModifiers as _withModifiers3 } from "vue";
 var _sfc_script80 = defineComponent61({
   name: "ak-image-uploader-item",
-  components: { ActivityIndicator: _sfc_script13, Image: _sfc_script17, Icon: _sfc_script2 },
+  components: { ActivityIndicator: _sfc_script13, AkImage: _sfc_script17, Icon: _sfc_script2 },
   props: {
     item: {
       type: Object,
@@ -13282,7 +13282,7 @@ var _hoisted_160 = {
   class: "ak-image-uploader_item-status"
 };
 function render79(_ctx, _cache) {
-  const _component_Image = _resolveComponent39("Image");
+  const _component_AkImage = _resolveComponent39("AkImage");
   const _component_ActivityIndicator = _resolveComponent39("ActivityIndicator");
   const _component_Icon = _resolveComponent39("Icon");
   return _openBlock78(), _createElementBlock68("div", {
@@ -13290,7 +13290,7 @@ function render79(_ctx, _cache) {
     onContextmenu: _cache[0] || (_cache[0] = _withModifiers3((...args) => _ctx.noop && _ctx.noop(...args), ["prevent"])),
     onClick: _cache[1] || (_cache[1] = ($event) => _ctx.onClick(_ctx.item))
   }, [
-    _createVNode27(_component_Image, {
+    _createVNode27(_component_AkImage, {
       src: _ctx.item.url,
       draggable: false,
       mode: _ctx.imageMode
@@ -13321,7 +13321,7 @@ var _sfc_script81 = defineComponent62({
     Order: _sfc_script78,
     Icon: _sfc_script2,
     ImagePreview: _sfc_script76,
-    Button: _sfc_script4,
+    AkButton: _sfc_script4,
     UploaderItem: _sfc_script80
   },
   props: {
@@ -13645,7 +13645,7 @@ function render80(_ctx, _cache) {
   const _component_Icon = _resolveComponent40("Icon");
   const _component_UploaderItem = _resolveComponent40("UploaderItem");
   const _component_Order = _resolveComponent40("Order");
-  const _component_Button = _resolveComponent40("Button");
+  const _component_AkButton = _resolveComponent40("AkButton");
   const _component_ImagePreview = _resolveComponent40("ImagePreview");
   return _openBlock79(), _createElementBlock69(_Fragment14, null, [
     _createElementVNode53("div", _mergeProps9({ class: "ak-image-uploader" }, _ctx.$attrs), [
@@ -13697,7 +13697,7 @@ function render80(_ctx, _cache) {
       showClose: ""
     }, {
       close: _withCtx18(({ activeIndex }) => [
-        _createVNode28(_component_Button, {
+        _createVNode28(_component_AkButton, {
           onClick: _withModifiers4(($event) => _ctx.onPreviewDelete(activeIndex), ["stop"]),
           icon: _ctx.DeleteOutlined,
           size: "large",
@@ -15560,7 +15560,7 @@ var Popover_default = _sfc_script94;
 import { toDisplayString as _toDisplayString36, createElementVNode as _createElementVNode65, createTextVNode as _createTextVNode17, resolveComponent as _resolveComponent49, withCtx as _withCtx23, openBlock as _openBlock93, createBlock as _createBlock38, createCommentVNode as _createCommentVNode37, createVNode as _createVNode35 } from "vue";
 var _sfc_script95 = defineComponent74({
   name: "ak-pop-dialog",
-  components: { Button: _sfc_script4, ButtonGroup: _sfc_script5, Popover: _sfc_script94 },
+  components: { AkButton: _sfc_script4, ButtonGroup: _sfc_script5, Popover: _sfc_script94 },
   props: {
     ...popoverProps,
     content: {
@@ -15597,7 +15597,7 @@ var _hoisted_173 = { class: "ak-pop-dialog_body" };
 var _hoisted_256 = { class: "ak-popover_text" };
 var _hoisted_345 = { class: "ak-pop-dialog_footer ak-horizontal-hairline" };
 function render94(_ctx, _cache) {
-  const _component_Button = _resolveComponent49("Button");
+  const _component_AkButton = _resolveComponent49("AkButton");
   const _component_ButtonGroup = _resolveComponent49("ButtonGroup");
   const _component_Popover = _resolveComponent49("Popover");
   return _openBlock93(), _createBlock38(_component_Popover, {
@@ -15623,7 +15623,7 @@ function render94(_ctx, _cache) {
           size: "middle"
         }, {
           default: _withCtx23(() => [
-            _ctx.showCancel ? (_openBlock93(), _createBlock38(_component_Button, {
+            _ctx.showCancel ? (_openBlock93(), _createBlock38(_component_AkButton, {
               key: 0,
               type: "default",
               onClick: _ctx.onCancelClick
@@ -15633,7 +15633,7 @@ function render94(_ctx, _cache) {
               ]),
               _: 1
             }, 8, ["onClick"])) : _createCommentVNode37("v-if", true),
-            _createVNode35(_component_Button, {
+            _createVNode35(_component_AkButton, {
               type: "primary",
               onClick: _ctx.onConfirmClick
             }, {
@@ -16739,7 +16739,7 @@ var iconMap = /* @__PURE__ */ new Map([
 ]);
 var _sfc_script107 = defineComponent82({
   name: "ak-result",
-  components: { Icon: _sfc_script2, Button: _sfc_script4 },
+  components: { Icon: _sfc_script2, AkButton: _sfc_script4 },
   props: {
     type: {
       type: String,
@@ -16799,7 +16799,7 @@ var _hoisted_355 = {
 var _hoisted_422 = { class: "ak-result_footer" };
 function render106(_ctx, _cache) {
   const _component_Icon = _resolveComponent54("Icon");
-  const _component_Button = _resolveComponent54("Button");
+  const _component_AkButton = _resolveComponent54("AkButton");
   return _openBlock105(), _createElementBlock91("div", {
     class: _normalizeClass49(["ak-result", _ctx.typeClass])
   }, [
@@ -16813,7 +16813,7 @@ function render106(_ctx, _cache) {
     ]),
     _renderSlot48(_ctx.$slots, "default"),
     _createElementVNode76("div", _hoisted_422, [
-      _createVNode38(_component_Button, {
+      _createVNode38(_component_AkButton, {
         type: "primary",
         onClick: _ctx.onConfirmClick
       }, {
@@ -16822,7 +16822,7 @@ function render106(_ctx, _cache) {
         ]),
         _: 1
       }, 8, ["onClick"]),
-      _ctx.showBack ? (_openBlock105(), _createBlock41(_component_Button, {
+      _ctx.showBack ? (_openBlock105(), _createBlock41(_component_AkButton, {
         key: 0,
         type: "default",
         onClick: _ctx.onCancelClick
@@ -17302,7 +17302,7 @@ import { resolveComponent as _resolveComponent58, createVNode as _createVNode42,
 var emitValidator2 = (payload, setSuggestList) => isString(payload) && typeof setSuggestList === "function";
 var _sfc_script114 = defineComponent88({
   name: "ak-search-bar",
-  components: { Icon: _sfc_script2, Input: _sfc_script87, Button: _sfc_script4, Dropdown: _sfc_script65, Cell: _sfc_script39, Tag: _sfc_script112 },
+  components: { Icon: _sfc_script2, AkInput: _sfc_script87, AkButton: _sfc_script4, Dropdown: _sfc_script65, Cell: _sfc_script39, Tag: _sfc_script112 },
   props: {
     ghost: {
       type: Boolean,
@@ -17485,8 +17485,8 @@ var _hoisted_360 = { class: "ak-search_suggest-list" };
 function render113(_ctx, _cache) {
   var _a;
   const _component_Icon = _resolveComponent58("Icon");
-  const _component_Input = _resolveComponent58("Input");
-  const _component_Button = _resolveComponent58("Button");
+  const _component_AkInput = _resolveComponent58("AkInput");
+  const _component_AkButton = _resolveComponent58("AkButton");
   const _component_Tag = _resolveComponent58("Tag");
   const _component_Cell = _resolveComponent58("Cell");
   const _component_Dropdown = _resolveComponent58("Dropdown");
@@ -17497,7 +17497,7 @@ function render113(_ctx, _cache) {
       ref: "innerEl",
       style: _normalizeStyle28(_ctx.innerStyles)
     }, [
-      _createVNode42(_component_Input, {
+      _createVNode42(_component_AkInput, {
         class: _normalizeClass53(_ctx.fieldClasses),
         placeholder: _ctx.placeholder,
         type: "search",
@@ -17518,7 +17518,7 @@ function render113(_ctx, _cache) {
         _: 1
       }, 8, ["class", "placeholder", "readonly", "modelValue", "focus", "maxlength", "onInput", "onFocus", "onBlur", "onClick"]),
       _hoisted_272,
-      _ctx.showCancel ? (_openBlock112(), _createBlock43(_component_Button, {
+      _ctx.showCancel ? (_openBlock112(), _createBlock43(_component_AkButton, {
         key: 0,
         class: "ak-search_cancel-button",
         size: "large",
@@ -18202,7 +18202,7 @@ _sfc_script125.__file = "packages/ui/src/Icon/icons/MinusOutlined/MinusOutlined.
 import { resolveComponent as _resolveComponent60, createVNode as _createVNode44, createElementVNode as _createElementVNode86, normalizeClass as _normalizeClass63, openBlock as _openBlock123, createElementBlock as _createElementBlock109 } from "vue";
 var _sfc_script126 = defineComponent99({
   name: "ak-stepper",
-  components: { Button: _sfc_script4 },
+  components: { AkButton: _sfc_script4 },
   props: {
     ...formItemProps,
     modelValue: {
@@ -18314,11 +18314,11 @@ var _sfc_script126 = defineComponent99({
 });
 var _hoisted_196 = ["type", "inputmode", "name", "disabled", "readonly"];
 function render124(_ctx, _cache) {
-  const _component_Button = _resolveComponent60("Button");
+  const _component_AkButton = _resolveComponent60("AkButton");
   return _openBlock123(), _createElementBlock109("div", {
     class: _normalizeClass63(_ctx.classes)
   }, [
-    _createVNode44(_component_Button, {
+    _createVNode44(_component_AkButton, {
       icon: _ctx.MinusOutlined,
       shape: "square",
       size: "small",
@@ -18338,7 +18338,7 @@ function render124(_ctx, _cache) {
       onChange: _cache[3] || (_cache[3] = (...args) => _ctx.onChange && _ctx.onChange(...args)),
       ref: "inputEl"
     }, null, 40, _hoisted_196),
-    _createVNode44(_component_Button, {
+    _createVNode44(_component_AkButton, {
       icon: _ctx.PlusOutlined,
       shape: "square",
       size: "small",
@@ -18779,7 +18779,7 @@ var getItemClasses7 = (index, activeIndex) => {
 import { renderList as _renderList23, Fragment as _Fragment24, openBlock as _openBlock127, createElementBlock as _createElementBlock113, resolveComponent as _resolveComponent61, createBlock as _createBlock44, createCommentVNode as _createCommentVNode48, mergeProps as _mergeProps13, withCtx as _withCtx30, createVNode as _createVNode45, toDisplayString as _toDisplayString50, createElementVNode as _createElementVNode89, normalizeClass as _normalizeClass66, normalizeStyle as _normalizeStyle32 } from "vue";
 var _sfc_script130 = defineComponent103({
   name: "ak-tab-bar",
-  components: { Image: _sfc_script17, Icon: _sfc_script2, Badge: _sfc_script14 },
+  components: { AkImage: _sfc_script17, Icon: _sfc_script2, Badge: _sfc_script14 },
   props: {
     ...tabProps,
     scrollThreshold: {
@@ -18802,7 +18802,7 @@ var _hoisted_1100 = {
 var _hoisted_278 = ["onClick"];
 var _hoisted_366 = { class: "ak-tab-bar_item-text" };
 function render128(_ctx, _cache) {
-  const _component_Image = _resolveComponent61("Image");
+  const _component_AkImage = _resolveComponent61("AkImage");
   const _component_Icon = _resolveComponent61("Icon");
   const _component_Badge = _resolveComponent61("Badge");
   return _openBlock127(), _createElementBlock113("div", {
@@ -18818,7 +18818,7 @@ function render128(_ctx, _cache) {
         }, [
           _createVNode45(_component_Badge, _mergeProps13({ class: "ak-tab-bar_item-icon" }, item.badge), {
             default: _withCtx30(() => [
-              item.iconLink ? (_openBlock127(), _createBlock44(_component_Image, {
+              item.iconLink ? (_openBlock127(), _createBlock44(_component_AkImage, {
                 key: 0,
                 src: index === _ctx.activeIndex ? item.activeIconLink : item.iconLink
               }, null, 8, ["src"])) : item.icon ? (_openBlock127(), _createBlock44(_component_Icon, {
@@ -19315,8 +19315,8 @@ var TimelineItem_default = _sfc_script135;
 // packages/ui/src/index.ts
 var ArkUI = {
   install(app) {
-    Object.values(components_exports).forEach((Component2) => {
-      app.component(Component2.name, Component2);
+    Object.values(components_exports).forEach((Component) => {
+      app.component(Component.name, Component);
     });
   }
 };
@@ -19425,21 +19425,5 @@ export {
   TimelineItem_default as AkTimelineItem,
   Toast_default as AkToast,
   VirtualList_default as AkVirtualList,
-  src_default as default,
-  hideLoading,
-  hideNotify,
-  hideToast,
-  showActionSheet,
-  showCalendar,
-  showCascader,
-  showDatePicker,
-  showDialog,
-  showImagePreview,
-  showLoading,
-  showNotify,
-  showPicker,
-  showPopDialog,
-  showPopMenu,
-  showPopover,
-  showToast
+  src_default as default
 };
