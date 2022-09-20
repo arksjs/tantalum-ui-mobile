@@ -12,10 +12,6 @@
   --c-brand-light: #2e74a8;
 }
 
-.container {
-  max-width: 64em !important;
-}
-
 .code-demo {
   height: 669px;
   display: flex;
@@ -31,7 +27,7 @@
 }
 
 .code-demo-iframe {
-  width: 375px;
+  width: 360px;
   height: 100%;
 }
 

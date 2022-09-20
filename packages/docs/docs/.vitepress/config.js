@@ -83,19 +83,29 @@ module.exports = {
 
 function getGuideSideBar() {
   return [
-    { text: '介绍', link: '/' },
-    { text: '引入组件', link: '/guide/import' },
-    { text: '主题定制', link: '/guide/theme' },
-    { text: '黑暗模式', link: '/guide/dark' },
-    { text: '国际化', link: '/guide/locale' }
+    {
+      text: '指南',
+      items: [
+        { text: '介绍', link: '/' },
+        { text: '引入组件', link: '/guide/import' },
+        { text: '主题定制', link: '/guide/theme' },
+        { text: '黑暗模式', link: '/guide/dark' },
+        { text: '国际化', link: '/guide/locale' }
+      ]
+    }
   ]
 }
 
 function getDesignSideBar() {
   return [
-    { text: '设计', link: '/design/' },
-    { text: '色彩', link: '/design/color' },
-    { text: '渐进式组件', link: '/design/progressive' }
+    {
+      text: '设计',
+      items: [
+        { text: '设计', link: '/design/' },
+        { text: '色彩', link: '/design/color' },
+        { text: '渐进式组件', link: '/design/progressive' }
+      ]
+    }
   ]
 }
 
@@ -106,7 +116,7 @@ function getComponentsSideBar() {
       frontmatter: {
         sidebarDepth: 2
       },
-      children: [
+      items: [
         { text: 'Button', link: '/components/Button' },
         { text: 'Icon', link: '/components/Icon' },
         { text: 'Image', link: '/components/Image' },
@@ -119,7 +129,7 @@ function getComponentsSideBar() {
     },
     {
       text: '反馈',
-      children: [
+      items: [
         { text: 'Toast', link: '/components/Toast' },
         { text: 'Dialog', link: '/components/Dialog' },
         { text: 'Notify', link: '/components/Notify' },
@@ -130,7 +140,7 @@ function getComponentsSideBar() {
     },
     {
       text: '数据输入',
-      children: [
+      items: [
         { text: 'Form', link: '/components/Form' },
         { text: 'Input', link: '/components/Input' },
         { text: 'Radio', link: '/components/Radio' },
@@ -151,7 +161,7 @@ function getComponentsSideBar() {
     },
     {
       text: '导航',
-      children: [
+      items: [
         { text: 'BackTop', link: '/components/BackTop' },
         { text: 'NavBar', link: '/components/NavBar' },
         { text: 'PopMenu', link: '/components/PopMenu' },
@@ -168,7 +178,7 @@ function getComponentsSideBar() {
     },
     {
       text: '展示',
-      children: [
+      items: [
         { text: 'Layout', link: '/components/Layout' },
         { text: 'Cell', link: '/components/Cell' },
         { text: 'Group', link: '/components/Group' },
@@ -200,7 +210,7 @@ function getComponentsSideBar() {
     },
     {
       text: '其他',
-      children: [{ text: 'Copy', link: '/components/Copy' }]
+      items: [{ text: 'Copy', link: '/components/Copy' }]
     }
   ]
 }
