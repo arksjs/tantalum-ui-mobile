@@ -26,9 +26,12 @@
       @select="onViewSelect"
     />
     <div class="ak-calendar-popup_confirm" v-if="showConfirm">
-      <Button type="primary" @click="onConfirmClick" :disabled="valueSize == 0"
+      <AkButton
+        type="primary"
+        @click="onConfirmClick"
+        :disabled="valueSize == 0"
         >{{ locale.calendarConfirmText }}
-      </Button>
+      </AkButton>
     </div>
   </Drawer>
 </template>
@@ -37,7 +40,7 @@
 import { defineComponent, nextTick, onMounted, ref, watch } from 'vue'
 import CalendarView from './CalendarView.vue'
 import { Drawer } from '../Drawer'
-import { Button } from '../Button'
+import { Button as AkButton } from '../Button'
 import { commonProps, calendarDetailValidator } from './props'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupExtendProps } from '../popup/popup'
@@ -55,7 +58,7 @@ import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
   name: 'ak-calendar-popup',
-  components: { CalendarView, Drawer, Button },
+  components: { CalendarView, Drawer, AkButton },
   props: {
     ...commonProps,
     ...popupExtendProps,

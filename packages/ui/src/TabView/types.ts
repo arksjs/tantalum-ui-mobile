@@ -1,4 +1,4 @@
-import { OnChange, OnAnimated } from '../Swiper/types'
+import type { OnChange, OnAnimated } from '../Swiper/types'
 
 export interface TabViewProps {
   initialVertical?: boolean

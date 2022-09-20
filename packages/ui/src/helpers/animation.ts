@@ -1,4 +1,4 @@
-import { EasingType } from './types'
+import type { EasingType } from './types'
 
 type TaskRef = {
   idle: number | null

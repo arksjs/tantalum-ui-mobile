@@ -159,10 +159,10 @@ import {
   showToast,
   showDialog,
   showPopMenu,
-  PopupOnVisibleStateChange,
-  PopMenuOnConfirm,
-  PopupOnCancel,
-  PlacementType
+  type PopupOnVisibleStateChange,
+  type PopMenuOnConfirm,
+  type PopupOnCancel,
+  type PlacementType
 } from '@/index'
 
 export default defineComponent({

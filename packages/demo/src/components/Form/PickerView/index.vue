@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { showToast, SelectorModelValue } from '@/index'
+import { showToast, type SelectorModelValue } from '@/index'
 import { cascadeOptions, multiOptions, options } from '../Picker/data'
 
 const colValue = ref([2001])
@@ -16,6 +16,12 @@ function onChangeEvent(res: SelectorModelValue) {
   onChange(res)
 
   showToast(`change: ${res}`)
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpPickerView'
 }
 </script>
 

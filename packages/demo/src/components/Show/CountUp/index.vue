@@ -74,8 +74,8 @@
 import { defineComponent, ref } from 'vue'
 import {
   AkCountUp,
-  CountUpOnAnimated,
-  CountUpOnCancel,
+  type CountUpOnAnimated,
+  type CountUpOnCancel,
   showToast
 } from '@/index'
 

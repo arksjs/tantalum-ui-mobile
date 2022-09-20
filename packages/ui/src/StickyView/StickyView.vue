@@ -33,7 +33,7 @@ import { selectorValidator, sizeValidator } from '../helpers/validator'
 import { useScroll } from '../hooks/use-scroll'
 import { useList } from '../hooks/use-list'
 import { emitChangeValidator } from './props'
-import {
+import type {
   StickyViewItem,
   ScrollToOptions,
   ScrollToIndexOptions,

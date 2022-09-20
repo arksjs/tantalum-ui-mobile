@@ -21,7 +21,11 @@
   </ak-group>
   <ak-group title="配合 Fixed 实现置底">
     <ak-fixed>
-      <ak-tab-bar :options="baseList" v-model:activeValue="activeValue" />
+      <ak-tab-bar
+        :options="baseList"
+        v-model:activeValue="activeValue"
+        class="exp-tabBar-w"
+      />
     </ak-fixed>
   </ak-group>
 </template>

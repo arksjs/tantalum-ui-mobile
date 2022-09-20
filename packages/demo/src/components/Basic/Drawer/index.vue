@@ -89,10 +89,10 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import {
-  PlacementType,
+  type PlacementType,
   showToast,
-  PopupOnVisibleStateChange,
-  PopupOnCancel
+  type PopupOnVisibleStateChange,
+  type PopupOnCancel
 } from '@/index'
 
 interface showArgs {

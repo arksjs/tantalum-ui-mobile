@@ -41,9 +41,9 @@
 <script lang="ts">
 import { placeholders } from './data'
 import {
-  SearchBarOnFieldClick,
-  SearchBarOnInput,
-  SearchBarOnSearch,
+  type SearchBarOnFieldClick,
+  type SearchBarOnInput,
+  type SearchBarOnSearch,
   showToast
 } from '@/index'
 import { defineComponent } from 'vue'

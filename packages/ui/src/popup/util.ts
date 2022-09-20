@@ -1,5 +1,5 @@
 import { popupZIndex } from '../helpers/layer'
-import { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers/types'
 import type { VisibleState } from './types'
 
 export const VISIBLE_STATE_TYPES: VisibleState[] = [

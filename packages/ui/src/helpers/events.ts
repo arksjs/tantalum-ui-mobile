@@ -1,5 +1,5 @@
 import { isMobile } from './device'
-import { LongPressEventCallback } from './types'
+import type { LongPressEventCallback } from './types'
 
 export function addEvent(
   type: string,

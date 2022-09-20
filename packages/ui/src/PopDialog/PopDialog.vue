@@ -20,12 +20,12 @@
         pattern="borderless"
         size="middle"
       >
-        <Button v-if="showCancel" type="default" @click="onCancelClick">
+        <AkButton v-if="showCancel" type="default" @click="onCancelClick">
           {{ cancelText || locale.popDialogCancelText }}
-        </Button>
-        <Button type="primary" @click="onConfirmClick">
+        </AkButton>
+        <AkButton type="primary" @click="onConfirmClick">
           {{ confirmText || locale.popDialogConfirmText }}
-        </Button>
+        </AkButton>
       </ButtonGroup>
     </div>
   </Popover>
@@ -34,7 +34,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { popoverProps, popoverEmits } from '../Popover/props'
-import { Button, ButtonGroup } from '../Button'
+import { Button as AkButton, ButtonGroup } from '../Button'
 import { useLocale } from '../ConfigProvider/context'
 import { Popover } from '../Popover'
 import { usePopupExtend } from '../popup/use-popup'
@@ -42,7 +42,7 @@ import type { EmptyObject } from '../helpers/types'
 
 export default defineComponent({
   name: 'ak-pop-dialog',
-  components: { Button, ButtonGroup, Popover },
+  components: { AkButton, ButtonGroup, Popover },
   props: {
     ...popoverProps,
     content: {

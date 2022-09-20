@@ -9,12 +9,12 @@
     </div>
     <slot></slot>
     <div class="ak-result_footer">
-      <Button type="primary" @click="onConfirmClick">
+      <AkButton type="primary" @click="onConfirmClick">
         {{ confirmText || locale.resultConfirmText }}
-      </Button>
-      <Button v-if="showBack" type="default" @click="onCancelClick">
+      </AkButton>
+      <AkButton v-if="showBack" type="default" @click="onCancelClick">
         {{ backText || locale.resultBackText }}
-      </Button>
+      </AkButton>
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@
 import { computed, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
-import { Button } from '../Button'
+import { Button as AkButton } from '../Button'
 import { createEnumsValidator, emitEventValidator } from '../helpers/validator'
 import { useLocale } from '../ConfigProvider/context'
 import type { ResultEmits, ResultType } from './types'
@@ -44,7 +44,7 @@ const iconMap = new Map<ResultType, IconData>([
 
 export default defineComponent({
   name: 'ak-result',
-  components: { Icon, Button },
+  components: { Icon, AkButton },
   props: {
     // 类型
     type: {

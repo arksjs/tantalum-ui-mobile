@@ -1,4 +1,4 @@
-import { PopupEmits, PopupProps } from '../popup/types'
+import type { PopupEmits, PopupProps } from '../popup/types'
 
 export type OnChange = (
   current: string,

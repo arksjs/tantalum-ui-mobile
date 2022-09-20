@@ -10,7 +10,7 @@
           pattern="borderless"
         >
           <template v-if="leftButtons.length > 0">
-            <Button
+            <AkButton
               class="ak-nav-bar_button"
               transparent
               :type="item.type || 'default'"
@@ -18,27 +18,27 @@
               v-for="(item, index) in leftButtons"
               :key="index"
               @click="onLeftIconClick($event, item, index)"
-              >{{ item.text }}</Button
+              >{{ item.text }}</AkButton
             >
           </template>
           <template v-else>
-            <Button
+            <AkButton
               class="ak-nav-bar_button"
               type="default"
               :icon="LeftOutlined"
               transparent
               v-if="showBack"
               @click="onBack"
-              >{{ locale.navBarBackButtonText }}</Button
+              >{{ locale.navBarBackButtonText }}</AkButton
             >
-            <Button
+            <AkButton
               class="ak-nav-bar_button"
               type="default"
               :icon="HomeOutlined"
               transparent
               v-if="showHome"
               @click="onBackHome"
-              >{{ locale.navBarHomeButtonText }}</Button
+              >{{ locale.navBarHomeButtonText }}</AkButton
             >
           </template>
         </ButtonGroup>
@@ -55,7 +55,7 @@
             pattern="borderless"
             v-if="rightButtons.length > 0"
           >
-            <Button
+            <AkButton
               class="ak-nav-bar_button"
               :type="item.type || 'default'"
               :icon="item.icon"
@@ -63,7 +63,7 @@
               :key="index"
               transparent
               @click="onRightIconClick($event, item, index)"
-              >{{ item.text }}</Button
+              >{{ item.text }}</AkButton
             >
           </ButtonGroup>
         </template>
@@ -75,7 +75,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import type { PropType } from 'vue'
-import { Button, ButtonGroup } from '../Button'
+import { Button as AkButton, ButtonGroup } from '../Button'
 import type {
   ButtonOption,
   NavBarEmits,
@@ -116,7 +116,7 @@ const emitTitleDbClickValidator: VoidFnToBooleanFn<OnTitleDbClick> = titleEl =>
 
 export default defineComponent({
   name: 'ak-nav-bar',
-  components: { Button, ButtonGroup },
+  components: { AkButton, ButtonGroup },
   props: {
     // 标题
     title: {

@@ -89,8 +89,8 @@
 
 <script lang="ts">
 import {
-  NumberKeyboardOnClose,
-  NumberKeyboardOnDelete,
+  type NumberKeyboardOnClose,
+  type NumberKeyboardOnDelete,
   showToast
 } from '@/index'
 import { defineComponent, ref } from 'vue'

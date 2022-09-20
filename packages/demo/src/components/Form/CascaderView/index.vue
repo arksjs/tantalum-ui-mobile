@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { showToast, SelectorModelValue, CascaderOnSelect } from '@/index'
+import {
+  showToast,
+  type SelectorModelValue,
+  type CascaderOnSelect
+} from '@/index'
 import { cascadeOptions } from '../Picker/data'
 
 const changeValue = ref([])
@@ -17,6 +21,12 @@ const onSelect: CascaderOnSelect = res => {
   console.log('select', res)
 
   showToast(`select: ${res.value}`)
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpCascaderView'
 }
 </script>
 

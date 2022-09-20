@@ -2,7 +2,6 @@ import { PLACEMENT_TYPES } from '../helpers/constants'
 import type { CSSProperties, PlacementType } from '../helpers/types'
 import { getEnumsValue } from '../helpers/validator'
 import type { SafeAreaInsets } from '../hooks/types'
-import type { DrawerProps } from './types'
 
 export const getClasses = (showMask?: boolean) => [
   'ak-drawer',

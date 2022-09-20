@@ -35,9 +35,9 @@
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
 import {
-  ImageUploaderBeforeUpload,
-  ImageUploaderOnDelete,
-  ImageUploaderUploadReady,
+  type ImageUploaderBeforeUpload,
+  type ImageUploaderOnDelete,
+  type ImageUploaderUploadReady,
   showToast
 } from '@/index'
 

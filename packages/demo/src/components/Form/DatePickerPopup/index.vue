@@ -2,10 +2,10 @@
 import { ref } from 'vue'
 import {
   showToast,
-  SelectorModelValue,
-  DatePickerOnConfirm,
-  PopupOnVisibleStateChange,
-  PopupOnCancel
+  type SelectorModelValue,
+  type DatePickerOnConfirm,
+  type PopupOnVisibleStateChange,
+  type PopupOnCancel
 } from '@/index'
 
 const popupValue = ref('')
@@ -51,6 +51,12 @@ const onCancel: PopupOnCancel = res => {
       showToast('点击了蒙层')
     }
   }
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpDatePickerPopup'
 }
 </script>
 

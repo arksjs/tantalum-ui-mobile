@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { CalendarOnSelect, showToast } from '@/index'
+import { type CalendarOnSelect, showToast } from '@/index'
 import { formatter, parser } from '../Calendar/utils'
 
 const viewValue = ref('')
@@ -10,6 +10,12 @@ const onSelect: CalendarOnSelect = res => {
   console.log('select', res)
 
   showToast(`选择：${res.label}`)
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpCalendarView'
 }
 </script>
 

@@ -85,7 +85,7 @@ import {
   showLoading,
   hideToast,
   hideLoading,
-  ToastType
+  type ToastType
 } from '@/index'
 
 interface showArgs {

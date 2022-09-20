@@ -152,7 +152,7 @@ import {
   AkImageUploader,
   showToast,
   showDialog,
-  ImageUploaderUploadReady
+  type ImageUploaderUploadReady
 } from '@/index'
 import { createForm, setValidateLanguage } from '@formily/core'
 import { FormProvider, Field, FormConsumer } from '@formily/vue'

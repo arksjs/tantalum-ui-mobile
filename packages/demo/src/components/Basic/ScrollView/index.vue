@@ -71,9 +71,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import {
-  ScrollViewOnRefreshing,
-  ScrollViewOnScrollToLower,
-  ScrollViewOnScrollToUpper,
+  type ScrollViewOnRefreshing,
+  type ScrollViewOnScrollToLower,
+  type ScrollViewOnScrollToUpper,
   showToast
 } from '@/index'
 

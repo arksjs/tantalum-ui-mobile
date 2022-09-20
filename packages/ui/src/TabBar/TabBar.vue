@@ -8,7 +8,7 @@
         @click="onChange(item.value)"
       >
         <Badge class="ak-tab-bar_item-icon" v-bind="item.badge">
-          <Image
+          <AkImage
             v-if="item.iconLink"
             :src="index === activeIndex ? item.activeIconLink : item.iconLink"
           />
@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Image } from '../Image'
+import { Image as AkImage } from '../Image'
 import { Icon } from '../Icon'
 import { Badge } from '../Badge'
 import { tabEmits, tabProps } from '../Tab/tab'
@@ -34,7 +34,7 @@ import { getItemClasses } from './util'
 
 export default defineComponent({
   name: 'ak-tab-bar',
-  components: { Image, Icon, Badge },
+  components: { AkImage, Icon, Badge },
   props: {
     ...tabProps,
     scrollThreshold: {

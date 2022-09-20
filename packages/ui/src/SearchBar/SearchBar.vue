@@ -6,7 +6,7 @@
       ref="innerEl"
       :style="innerStyles"
     >
-      <Input
+      <AkInput
         :class="fieldClasses"
         :placeholder="placeholder"
         type="search"
@@ -23,9 +23,9 @@
         <template #prepend>
           <Icon :icon="SearchOutlined" />
         </template>
-      </Input>
+      </AkInput>
       <button class="ak-search_button">Search</button>
-      <Button
+      <AkButton
         class="ak-search_cancel-button"
         size="large"
         type="default"
@@ -37,7 +37,7 @@
         @click="onCancel"
       >
         {{ locale.searchBarCancelText }}
-      </Button>
+      </AkButton>
     </form>
     <Dropdown
       :selector="innerEl ?? undefined"
@@ -75,8 +75,8 @@ import {
 } from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
-import { Input } from '../Input'
-import { Button } from '../Button'
+import { Input as AkInput } from '../Input'
+import { Button as AkButton } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { Cell } from '../Cell'
 import { Tag } from '../Tag'
@@ -100,7 +100,7 @@ const emitValidator: VoidFnToBooleanFn<OnInput> = (payload, setSuggestList) =>
 
 export default defineComponent({
   name: 'ak-search-bar',
-  components: { Icon, Input, Button, Dropdown, Cell, Tag },
+  components: { Icon, AkInput, AkButton, Dropdown, Cell, Tag },
   props: {
     ghost: {
       type: Boolean,

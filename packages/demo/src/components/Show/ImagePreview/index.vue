@@ -39,9 +39,9 @@
 
 <script lang="ts">
 import {
-  ImagePreviewOnChange,
-  PopupOnCancel,
-  PopupOnVisibleStateChange,
+  type ImagePreviewOnChange,
+  type PopupOnCancel,
+  type PopupOnVisibleStateChange,
   showImagePreview,
   showToast
 } from '@/index'

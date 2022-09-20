@@ -132,7 +132,7 @@ export type PropsToEmits<P> = Required<P> extends infer T
 /**
  * VUE
  */
-import * as Vue from 'vue'
+import type * as Vue from 'vue'
 
 export interface CSSProperties extends Vue.CSSProperties, AkCSS {}
 

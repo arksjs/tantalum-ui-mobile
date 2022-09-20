@@ -17,7 +17,7 @@
       >
         <SwiperItem v-for="(item, index) in images" :key="index">
           <div class="ak-preview-image_image-container">
-            <Image
+            <AkImage
               :src="item.src"
               :mode="'aspectFit'"
               @load="onImageLoad"
@@ -35,7 +35,7 @@
       </div>
       <div class="ak-preview-image_close">
         <slot name="close" :activeIndex="activeIndex">
-          <Button
+          <AkButton
             v-if="showClose"
             @click.stop="onCloseClick"
             :icon="CloseOutlined"
@@ -43,7 +43,7 @@
             pattern="borderless"
             shape="square"
             :ghost="true"
-          ></Button>
+          ></AkButton>
         </slot>
       </div>
     </div>
@@ -53,8 +53,8 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, watch } from 'vue'
 import type { PropType } from 'vue'
-import { Button } from '../Button'
-import { Image } from '../Image'
+import { Button as AkButton } from '../Button'
+import { Image as AkImage } from '../Image'
 import { Swiper, SwiperItem } from '../Swiper'
 import { isStringArray, rangeNumber, isString, isNumber } from '../helpers/util'
 import { usePopup } from '../popup/use-popup'
@@ -97,7 +97,7 @@ interface ImageCoords {
 
 export default defineComponent({
   name: 'ak-image-preview',
-  components: { Button, Swiper, SwiperItem, Image },
+  components: { AkButton, Swiper, SwiperItem, AkImage },
   props: {
     ...popupProps,
     urls: {

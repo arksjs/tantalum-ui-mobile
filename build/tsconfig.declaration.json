@@ -1,21 +1,12 @@
 {
+  "extends": "../tsconfig.json",
+  "files": ["../packages/ui/src/index.ts"],
   "compilerOptions": {
-    "allowJs": true,
     "declaration": true,
     "declarationDir": "../es",
     "emitDeclarationOnly": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "lib": ["esnext", "dom"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "noEmit": false,
     "sourceMap": true,
-    "strict": true,
-    "target": "es2018",
-    "types": ["vite/client"],
-    "useDefineForClassFields": true
-  },
-  "files": ["../packages/ui/src/index.ts"],
-  "include": ["**/*.ts", "**/*.tsx", "**/*.vue"]
+    "target": "es2018"
+  }
 }

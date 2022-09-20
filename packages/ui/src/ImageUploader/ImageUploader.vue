@@ -41,14 +41,14 @@
     showClose
   >
     <template #close="{ activeIndex }">
-      <Button
+      <AkButton
         @click.stop="onPreviewDelete(activeIndex)"
         :icon="DeleteOutlined"
         size="large"
         pattern="borderless"
         shape="square"
         :ghost="true"
-      ></Button>
+      ></AkButton>
     </template>
   </ImagePreview>
 </template>
@@ -56,7 +56,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed, watch, ref } from 'vue'
 import type { PropType } from 'vue'
-import { Button } from '../Button'
+import { Button as AkButton } from '../Button'
 import { Icon } from '../Icon'
 import { Order } from '../Order'
 import { ImagePreview } from '../ImagePreview'
@@ -101,7 +101,7 @@ export default defineComponent({
     Order,
     Icon,
     ImagePreview,
-    Button,
+    AkButton,
     UploaderItem
   },
   props: {

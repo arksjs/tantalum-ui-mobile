@@ -1,4 +1,4 @@
-import { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers/types'
 import { getNumber, isInteger, isNumeric, rangeInteger } from '../helpers/util'
 
 export const DEFAULT_COUNT = 5

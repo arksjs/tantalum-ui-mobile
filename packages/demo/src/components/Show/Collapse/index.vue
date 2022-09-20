@@ -92,7 +92,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { showToast, CollapseOnChange, CollapseItemOnToggle } from '@/index'
+import {
+  showToast,
+  type CollapseOnChange,
+  type CollapseItemOnToggle
+} from '@/index'
 
 export default defineComponent({
   name: 'ExpCollapse',

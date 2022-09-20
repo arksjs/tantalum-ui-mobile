@@ -1,5 +1,5 @@
 import { cloneData, isObject } from '../helpers/util'
-import { Option } from './types'
+import type { Option } from './types'
 
 export const getOptions = (options?: Option[]) => {
   const newOptions: Option[] = []

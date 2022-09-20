@@ -1,7 +1,7 @@
 <template>
   <Badge :class="classes" :style="styles" v-bind="{ ...$attrs, ...badge2 }">
     <slot>
-      <Image
+      <AkImage
         class="ak-avatar_image"
         :src="src"
         mode="aspectFill"
@@ -20,7 +20,7 @@ import { defineComponent, computed } from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import { Badge } from '../Badge'
-import { Image } from '../Image'
+import { Image as AkImage } from '../Image'
 import { colorValidator, createEnumsValidator } from '../helpers/validator'
 import { avatarProps } from './props'
 import {
@@ -40,7 +40,7 @@ import { useConsumer } from './context'
 
 export default defineComponent({
   name: 'ak-avatar',
-  components: { Badge, Image, Icon },
+  components: { Badge, AkImage, Icon },
   props: {
     ...avatarProps,
     shape: {

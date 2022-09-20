@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { CalendarValueFormatter, CalendarValueParser } from '@/index'
+import type { CalendarValueFormatter, CalendarValueParser } from '@/index'
 
 export const template = 'YYYY年MM月DD日'
 

@@ -2,7 +2,7 @@ import type {
   BadgeOption,
   BadgeProps as HandleBadgeOption
 } from '../Badge/types'
-import { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers/types'
 import type { IconData } from '../Icon/types'
 
 export type ActiveValue = number | string

@@ -4,7 +4,7 @@
     @contextmenu.prevent="noop"
     @click="onClick(item)"
   >
-    <Image :src="item.url" :draggable="false" :mode="imageMode" />
+    <AkImage :src="item.url" :draggable="false" :mode="imageMode" />
     <div
       class="ak-image-uploader_item-status"
       v-if="item.status !== 'uploaded' && item.status !== 'reading'"
@@ -23,7 +23,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import { Image } from '../Image'
+import { Image as AkImage } from '../Image'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
 import { noop } from '../helpers/util'
@@ -33,7 +33,7 @@ import DeleteOutlined from '../Icon/icons/DeleteOutlined'
 
 export default defineComponent({
   name: 'ak-image-uploader-item',
-  components: { ActivityIndicator, Image, Icon },
+  components: { ActivityIndicator, AkImage, Icon },
   props: {
     item: {
       type: Object as PropType<FileItem>,

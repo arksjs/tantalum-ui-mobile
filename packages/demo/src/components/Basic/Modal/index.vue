@@ -67,7 +67,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { PopupOnCancel, PopupOnVisibleStateChange, showToast } from '@/index'
+import {
+  type PopupOnCancel,
+  type PopupOnVisibleStateChange,
+  showToast
+} from '@/index'
 
 export default defineComponent({
   name: 'ExpModal',

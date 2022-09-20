@@ -1,4 +1,4 @@
-import { PlacementType, Selector } from '../helpers/types'
+import type { PlacementType, Selector } from '../helpers/types'
 import type { PopupProps, PopupEmits } from '../popup/types'
 
 export interface PopoverProps extends PopupProps {

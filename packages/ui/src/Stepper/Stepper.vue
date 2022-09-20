@@ -1,12 +1,12 @@
 <template>
   <div :class="classes">
-    <Button
+    <AkButton
       :icon="MinusOutlined"
       shape="square"
       size="small"
       :disabled="disabled || disabledMinus || parseFloat(formValue) <= nMin"
       @click="onMinusClick"
-    ></Button>
+    />
     <input
       class="ak-stepper_input"
       :type="decimalLength != 0 ? 'text' : 'tel'"
@@ -20,19 +20,19 @@
       @change="onChange"
       ref="inputEl"
     />
-    <Button
+    <AkButton
       :icon="PlusOutlined"
       shape="square"
       size="small"
       :disabled="disabled || disabledPlus || parseFloat(formValue) >= nMax"
       @click="onPlusClick"
-    ></Button>
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { onMounted, ref, defineComponent, watch, computed } from 'vue'
-import { Button } from '../Button'
+import { Button as AkButton } from '../Button'
 import { getNumber } from '../helpers/util'
 import { formatNumber, getRangeNumber, getClasses } from './util'
 import {
@@ -45,11 +45,11 @@ import PlusOutlined from '../Icon/icons/PlusOutlined'
 import MinusOutlined from '../Icon/icons/MinusOutlined'
 import type { OnFocus, OnClick, PropsToEmits } from '../helpers/types'
 import { emitClickValidator } from '../helpers/validator'
-import { StepperEmits } from './types'
+import type { StepperEmits } from './types'
 
 export default defineComponent({
   name: 'ak-stepper',
-  components: { Button },
+  components: { AkButton },
   props: {
     ...formItemProps,
     modelValue: {

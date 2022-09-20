@@ -4,7 +4,7 @@ import { isNumber, isObject, isStringNumberMix, isURL } from '../helpers/util'
 import Exception from '../helpers/exception'
 import { handleBadge } from '../Badge/util'
 import type { OptionItem, HandleOptionItem, ActiveValue } from './types'
-import { tabEmits, tabProps } from './tab'
+import type { tabEmits, tabProps } from './tab'
 import { getStyles } from './util'
 import { useFrameTask } from '../hooks/use-frame-task'
 

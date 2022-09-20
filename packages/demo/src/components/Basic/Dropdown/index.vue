@@ -28,7 +28,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { PopupOnVisibleStateChange, showToast } from '@/index'
+import { type PopupOnVisibleStateChange, showToast } from '@/index'
 
 export default defineComponent({
   name: 'ExpDropdown',

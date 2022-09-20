@@ -81,7 +81,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { showToast, showDialog, NavBarOnButtonClick } from '@/index'
+import { showToast, showDialog, type NavBarOnButtonClick } from '@/index'
 
 export default defineComponent({
   name: 'ExpNavBar',

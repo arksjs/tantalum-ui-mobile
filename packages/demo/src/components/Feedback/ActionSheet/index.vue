@@ -91,13 +91,13 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import {
-  ActionSheetOption,
-  ActionSheetOnConfirm,
+  type ActionSheetOption,
+  type ActionSheetOnConfirm,
   showToast,
   showDialog,
-  PopupOnCancel,
+  type PopupOnCancel,
   showActionSheet,
-  PopupOnVisibleStateChange
+  type PopupOnVisibleStateChange
 } from '@/index'
 
 const defaultOptions: ActionSheetOption[] = [

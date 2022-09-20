@@ -247,7 +247,7 @@ export default defineComponent({
 
       const startCols = getStartCols(scrollSize)
       let renderEntered = false // 是否已经进入渲染列表的计算
-      let newCols = cloneData(startCols.cols)
+      const newCols = cloneData(startCols.cols)
 
       for (let i = startCols.index, len = list.value.length; i < len; i++) {
         const item = list.value[i]

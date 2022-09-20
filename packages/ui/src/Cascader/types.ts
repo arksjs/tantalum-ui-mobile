@@ -1,6 +1,5 @@
 import type { FormItemCommonProps, FocusWithoutEventEmits } from '../Form/types'
 import type {
-  ColRow,
   PickerCommonProps,
   PickerPopupRef,
   PickerCommonEmits,

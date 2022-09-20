@@ -3,10 +3,10 @@ import { ref } from 'vue'
 import { cascadeOptions } from '../Picker/data'
 import {
   showToast,
-  SelectorModelValue,
-  PopupOnVisibleStateChange,
-  PopupOnCancel,
-  CascaderOnConfirm
+  type SelectorModelValue,
+  type PopupOnVisibleStateChange,
+  type PopupOnCancel,
+  type CascaderOnConfirm
 } from '@/index'
 
 const popupValue = ref(['bingxiang', 'duikaimen'])
@@ -51,6 +51,12 @@ const onCancel: PopupOnCancel = res => {
       showToast('点击了蒙层')
     }
   }
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpCascaderPopup'
 }
 </script>
 

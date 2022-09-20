@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { StickyViewOnChange } from '@/index'
+import type { StickyViewOnChange } from '@/index'
 
 export default defineComponent({
   name: 'ExpSticky',

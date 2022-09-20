@@ -49,7 +49,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { ScrollTabOnChange } from '@/index'
+import type { ScrollTabOnChange } from '@/index'
 
 export default defineComponent({
   name: 'ExpScrollTab',

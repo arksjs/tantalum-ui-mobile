@@ -8,7 +8,7 @@ import type {
   CheckGroupCommonProps,
   CheckCommonProps
 } from './types'
-import { checkEmits } from './props'
+import type { checkEmits } from './props'
 import { getCheckClasses, getCheckGroupClasses, getCheckStyles } from './util'
 
 interface GroupOptions {

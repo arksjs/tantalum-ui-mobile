@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { SkeletonAvatarShape, SkeletonButtonShape } from '@/index'
+import type { SkeletonAvatarShape, SkeletonButtonShape } from '@/index'
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({

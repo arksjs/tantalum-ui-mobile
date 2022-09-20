@@ -1,4 +1,5 @@
-import { createApp, Component } from 'vue'
+import { createApp } from 'vue'
+import type { Component } from 'vue'
 import { isObject, objectForEach } from '../helpers/util'
 import { getCallbackFns } from '../apis/callback'
 import type { AnyObject, EmptyObject } from '../helpers/types'

@@ -259,7 +259,7 @@
 </template>
 
 <script lang="ts">
-import { ButtonShape } from '@/index'
+import type { ButtonShape } from '@/index'
 import { defineComponent } from 'vue'
 
 export default defineComponent({

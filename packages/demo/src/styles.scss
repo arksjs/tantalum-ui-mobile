@@ -422,6 +422,10 @@ body {
   --ak-active-color: #{$title-color};
 }
 
+.exp-tabBar-w {
+  background-color: #{$white-color};
+}
+
 .exp-tabView {
   height: 500px;
   border-top: 1px solid $border-color;

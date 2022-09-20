@@ -3,10 +3,10 @@ import { ref } from 'vue'
 import { multiOptions } from '../Picker/data'
 import {
   showToast,
-  SelectorModelValue,
-  PickerOnConfirm,
-  PopupOnVisibleStateChange,
-  PopupOnCancel
+  type SelectorModelValue,
+  type PickerOnConfirm,
+  type PopupOnVisibleStateChange,
+  type PopupOnCancel
 } from '@/index'
 
 const popupValue = ref([2000, '夏'])
@@ -52,6 +52,12 @@ const onCancel: PopupOnCancel = res => {
       showToast('点击了蒙层')
     }
   }
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpPickerPopup'
 }
 </script>
 

@@ -92,7 +92,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { showToast, SwiperOnAnimated, SwiperOnChange } from '@/index'
+import { showToast, type SwiperOnAnimated, type SwiperOnChange } from '@/index'
 
 export default defineComponent({
   name: 'ExpSwiper',

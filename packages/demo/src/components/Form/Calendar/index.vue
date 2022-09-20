@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import dayjs from 'dayjs'
-import { showToast, showCalendar, SelectorModelValue } from '@/index'
+import { showToast, showCalendar, type SelectorModelValue } from '@/index'
 import { formatter, parser, template } from '../Calendar/utils'
 
 const simpleValue = ref([new Date()])
@@ -30,6 +30,12 @@ function onChange(res: SelectorModelValue) {
   console.log('change', res)
 
   showToast('change: ' + (res as any)[0])
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpCalendar'
 }
 </script>
 

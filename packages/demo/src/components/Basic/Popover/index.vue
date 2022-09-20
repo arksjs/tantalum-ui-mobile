@@ -166,8 +166,8 @@ import { defineComponent, ref } from 'vue'
 import {
   showToast,
   showPopover,
-  PlacementType,
-  PopupOnVisibleStateChange
+  type PlacementType,
+  type PopupOnVisibleStateChange
 } from '@/index'
 
 export default defineComponent({

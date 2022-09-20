@@ -9,7 +9,7 @@ import type {
   UserSizeType
 } from './types'
 import { simpleNumber } from '../helpers/digital-conversion'
-import { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers/types'
 import { getColorObject } from '../helpers/color'
 import type { BadgeProps } from '../Badge/types'
 import { handleBadge } from '../Badge/util'

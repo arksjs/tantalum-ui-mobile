@@ -90,8 +90,8 @@ import { defineComponent, ref, reactive } from 'vue'
 import {
   showToast,
   showDialog,
-  PopupOnVisibleStateChange,
-  PopupOnCancel
+  type PopupOnVisibleStateChange,
+  type PopupOnCancel
 } from '@/index'
 
 interface DialogArgs {
@@ -129,7 +129,7 @@ export default defineComponent({
         obj
       )
 
-      for (let k in obj) {
+      for (const k in obj) {
         dialogArgs[k as 'title'] = obj[k as 'title']
       }
 

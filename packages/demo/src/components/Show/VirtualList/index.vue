@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { AkVirtualList, ViewPosition } from '@/index'
+import { AkVirtualList, type ViewPosition } from '@/index'
 
 interface ExpList {
   id: number
@@ -26,6 +26,12 @@ function scrollTo(offset: number) {
 }
 function scrollToEnd(animated: boolean) {
   methodList.value?.scrollToEnd(animated)
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpVirtualList'
 }
 </script>
 

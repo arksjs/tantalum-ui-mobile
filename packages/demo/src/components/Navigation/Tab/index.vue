@@ -32,7 +32,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { shortTabList, tabList, mixTabList, subTabList } from './data'
-import { TabOnChange, showToast } from '@/index'
+import { type TabOnChange, showToast } from '@/index'
 
 export default defineComponent({
   name: 'ExpTab',

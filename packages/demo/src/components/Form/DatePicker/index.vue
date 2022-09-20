@@ -4,8 +4,8 @@ import dayjs from 'dayjs'
 import {
   showToast,
   showDatePicker,
-  DatePickerOptionFilter,
-  SelectorModelValue
+  type DatePickerOptionFilter,
+  type SelectorModelValue
 } from '@/index'
 
 const title = 'DatePicker'
@@ -46,6 +46,12 @@ function onCallApi() {
       }
     }
   })
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpDatePicker'
 }
 </script>
 

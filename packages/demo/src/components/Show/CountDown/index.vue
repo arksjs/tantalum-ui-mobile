@@ -58,10 +58,10 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import {
-  CountDownOnEnd,
-  CountDownOnPause,
-  CountDownOnResume,
-  CountDownRef,
+  type CountDownOnEnd,
+  type CountDownOnPause,
+  type CountDownOnResume,
+  type CountDownRef,
   showToast
 } from '@/index'
 

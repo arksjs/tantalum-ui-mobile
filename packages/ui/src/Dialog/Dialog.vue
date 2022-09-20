@@ -21,17 +21,21 @@
     </div>
     <div class="ak-dialog_footer ak-horizontal-hairline">
       <ButtonGroup class="ak-dialog_footer-inner" pattern="borderless">
-        <Button
+        <AkButton
           v-if="showCancel"
           class="ak-dialog_button"
           type="default"
           @click="onCancelClick"
         >
           {{ cancelText || locale.dialogCancelText }}
-        </Button>
-        <Button class="ak-dialog_button" type="primary" @click="onConfirmClick">
+        </AkButton>
+        <AkButton
+          class="ak-dialog_button"
+          type="primary"
+          @click="onConfirmClick"
+        >
           {{ confirmText || locale.dialogConfirmText }}
-        </Button>
+        </AkButton>
       </ButtonGroup>
     </div>
   </Modal>
@@ -39,7 +43,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Button, ButtonGroup } from '../Button'
+import { Button as AkButton, ButtonGroup } from '../Button'
 import { Modal } from '../Modal'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupExtendProps } from '../popup/popup'
@@ -48,7 +52,7 @@ import type { EmptyObject } from '../helpers/types'
 
 export default defineComponent({
   name: 'ak-dialog',
-  components: { Button, ButtonGroup, Modal },
+  components: { AkButton, ButtonGroup, Modal },
   props: {
     ...popupExtendProps,
     title: {

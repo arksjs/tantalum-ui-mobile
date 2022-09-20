@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { showToast, SelectorModelValue } from '@/index'
+import { showToast, type SelectorModelValue } from '@/index'
 
 const dateTimeValue = ref('')
 const changeValue = ref('')
@@ -8,6 +8,12 @@ const changeValue = ref('')
 function onChange(e: SelectorModelValue) {
   console.log('change', e)
   showToast(`change: ${e}`)
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpDatePickerView'
 }
 </script>
 

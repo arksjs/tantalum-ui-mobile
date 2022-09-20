@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { CountTime, AkStopwatch, StopwatchOnStop } from '@/index'
+import type { CountTime, AkStopwatch, StopwatchOnStop } from '@/index'
 
 export default defineComponent({
   name: 'ExpStopwatch',

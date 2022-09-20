@@ -4,9 +4,9 @@ import { cascadeOptions, multiOptions, options, regionOptions } from './data'
 import {
   showToast,
   showPicker,
-  SelectorModelValue,
-  SelectorValueFormatter,
-  SelectorValueParser
+  type SelectorModelValue,
+  type SelectorValueFormatter,
+  type SelectorValueParser
 } from '@/index'
 
 const regionValue = ref([])
@@ -42,6 +42,12 @@ function onCallApi() {
 
 function onChange(res: SelectorModelValue) {
   console.log('change', res)
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpPicker'
 }
 </script>
 

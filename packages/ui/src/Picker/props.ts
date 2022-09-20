@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import type { PropsToEmits, VoidFnToBooleanFn } from '../helpers/types'
+import type { PropsToEmits } from '../helpers/types'
 import type {
   PickerEmits,
   PickerPopupEmits,

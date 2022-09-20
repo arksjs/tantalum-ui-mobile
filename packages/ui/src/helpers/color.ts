@@ -1,5 +1,5 @@
 import Color from 'colorfuls'
-import { ColorOptions } from 'colorfuls/lib/color'
+import type { ColorOptions } from 'colorfuls/lib/color'
 
 const hueStep = 2
 const saturationStep = 0.16

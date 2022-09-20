@@ -2,11 +2,11 @@
 import { reactive, ref } from 'vue'
 import {
   AkFlatList,
-  FlatListOnEndReached,
-  FlatListOnRefreshing,
-  FlatListOnVisibleItemsChange,
+  type FlatListOnEndReached,
+  type FlatListOnRefreshing,
+  type FlatListOnVisibleItemsChange,
   showToast,
-  ViewPosition
+  type ViewPosition
 } from '@/index'
 
 interface ExpList {
@@ -103,6 +103,12 @@ function scrollTo(offset: number) {
 }
 function scrollToEnd(animated: boolean) {
   methodList.value?.scrollToEnd(animated)
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpFlatList'
 }
 </script>
 

@@ -15,8 +15,8 @@
 import { defineComponent } from 'vue'
 import {
   showToast,
-  SwipeCellButtonOption,
-  SwipeCellOnButtonClick
+  type SwipeCellButtonOption,
+  type SwipeCellOnButtonClick
 } from '@/index'
 
 export default defineComponent({

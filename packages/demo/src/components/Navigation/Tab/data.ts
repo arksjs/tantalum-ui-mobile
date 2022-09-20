@@ -1,4 +1,4 @@
-import { TabOptions } from '@/index'
+import type { TabOptions } from '@/index'
 
 export const shortTabList: TabOptions = [
   {

@@ -4,9 +4,9 @@ import { cascadeOptions, regionOptions } from '../Picker/data'
 import {
   showToast,
   showCascader,
-  SelectorModelValue,
-  SelectorValueFormatter,
-  SelectorValueParser
+  type SelectorModelValue,
+  type SelectorValueFormatter,
+  type SelectorValueParser
 } from '@/index'
 
 const separator = '-'
@@ -44,6 +44,12 @@ function onCallApi() {
       }
     }
   })
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpCascader'
 }
 </script>
 

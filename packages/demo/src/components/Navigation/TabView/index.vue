@@ -48,7 +48,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { ScrollViewOnRefreshing } from '@/index'
+import type { ScrollViewOnRefreshing } from '@/index'
 
 export default defineComponent({
   name: 'ExpTabView',

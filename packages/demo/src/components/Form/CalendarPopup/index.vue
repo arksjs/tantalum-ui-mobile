@@ -3,10 +3,10 @@ import { ref } from 'vue'
 import dayjs from 'dayjs'
 import {
   showToast,
-  CalendarOnConfirm,
-  PopupOnVisibleStateChange,
-  PopupOnCancel,
-  SelectorModelValue
+  type CalendarOnConfirm,
+  type PopupOnVisibleStateChange,
+  type PopupOnCancel,
+  type SelectorModelValue
 } from '@/index'
 import { formatter, parser, template } from '../Calendar/utils'
 
@@ -64,6 +64,12 @@ function addOneDay() {
   popupValue.value = dayjs(popupValue.value, template, true)
     .add(1, 'day')
     .format(template)
+}
+</script>
+
+<script lang="ts">
+export default {
+  name: 'ExpCalendarPopup'
 }
 </script>
 

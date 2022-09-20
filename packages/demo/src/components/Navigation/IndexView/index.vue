@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { IndexViewOnChange } from '@/index'
+import type { IndexViewOnChange } from '@/index'
 
 export default defineComponent({
   name: 'ExpIndexView',
