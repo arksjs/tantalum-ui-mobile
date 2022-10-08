@@ -56,13 +56,6 @@ const defaultParser: SelectorValueParser = value => {
   return []
 }
 
-export function getDefaultDetail(): SelectorDetail {
-  return {
-    value: [],
-    label: ''
-  }
-}
-
 export function mergeHandlers(...handlersArray: Partial<PickerHandlers>[]) {
   const handlers: PickerHandlers = {
     formatter: defaultFormatter,
@@ -345,7 +338,7 @@ export function validateValues(
 }
 
 export function getFormatOptions(
-  options: UserOptionItem[],
+  options: UserOptionItem[] | UserOptionItem[][],
   fieldNames: UserFieldNames,
   virtualHandler: PickerOptionsHandler | null | undefined,
   cascader = false

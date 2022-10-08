@@ -220,17 +220,17 @@ interface CascaderDetail {
 }
 ```
 
-### PickerFieldNames
+### CascaderFieldNames
 
 ```ts
-interface PickerFieldNames {
+interface CascaderFieldNames {
   label?: string
   value?: string
   children?: string
 }
 ```
 
-#### SelectorValueFormatter
+### SelectorValueFormatter
 
 ```ts
 interface SelectorValueFormatter {
@@ -242,7 +242,7 @@ interface SelectorValueFormatter {
 
 将 v-model 的原始值转为需要的自定义值，值需要满足 `SelectorModelValue` 的类型约束，可以返回 { value, label } 对两个数据进行修改，或者单独返回 value。
 
-#### SelectorValueParser
+### SelectorValueParser
 
 ```ts
 interface SelectorValueParser {

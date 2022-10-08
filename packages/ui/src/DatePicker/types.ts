@@ -42,7 +42,10 @@ export interface RowsParser {
   ): ColRow[]
 }
 
-export type DatePickerDetail = PickerDetail
+export interface DatePickerDetail {
+  value: number[]
+  label: string
+}
 
 export type OnConfirm = (payload: DatePickerDetail) => void
 

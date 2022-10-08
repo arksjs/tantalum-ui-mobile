@@ -97,7 +97,7 @@ export function useHandlers(props: DatePickerCommonProps) {
 
     const label = labelFormatter(labelArray)
     return {
-      value: props.formatTemplate ? label : array2Date(valueArray, mode),
+      value: props.formatTemplate ? label : valueArray,
       label
     }
   }

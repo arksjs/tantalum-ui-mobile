@@ -61,13 +61,6 @@ export interface PickerHandlers {
   labelFormatter: PickerLabelFormatter
 }
 
-export interface ShowPickerOptions {
-  options: UserOptionItem[] | UserOptionItem[][]
-  title?: string
-  value?: SelectorModelValue
-  fieldNames?: UserFieldNames
-}
-
 export interface PickerDetail {
   value: (string | number)[]
   label: string
@@ -80,10 +73,13 @@ export type OnConfirm = (payload: PickerDetail) => void
  */
 export interface PickerCommonProps {
   modelValue?: SelectorModelValue
-  options: UserOptionItem[]
-  fieldNames?: UserFieldNames
   formatter?: SelectorValueFormatter
   parser?: SelectorValueParser
+}
+
+export interface PickerOptionsProps {
+  options: UserOptionItem[] | UserOptionItem[][]
+  fieldNames?: UserFieldNames
 }
 
 export interface PickerCommonEmits {
@@ -91,10 +87,17 @@ export interface PickerCommonEmits {
   onUpdateModelValue?: (payload: SelectorModelValue) => void
 }
 
+export interface ShowPickerOptions extends PickerOptionsProps {
+  title?: string
+  value?: (string | number)[]
+}
+
 /**
  * PickerView
  */
-export type PickerViewProps = PickerCommonProps
+export interface PickerViewProps
+  extends PickerCommonProps,
+    PickerOptionsProps {}
 
 export type PickerViewEmits = PickerCommonEmits
 
@@ -106,7 +109,10 @@ export interface PickerViewRef {
 /**
  * PickerPopup
  */
-export interface PickerPopupProps extends PopupProps, PickerCommonProps {
+export interface PickerPopupProps
+  extends PopupProps,
+    PickerCommonProps,
+    PickerOptionsProps {
   title?: string
 }
 
@@ -121,7 +127,10 @@ export interface PickerPopupRef extends PopupRef {
 /**
  * Picker
  */
-export interface PickerProps extends FormItemCommonProps, PickerCommonProps {
+export interface PickerProps
+  extends FormItemCommonProps,
+    PickerCommonProps,
+    PickerOptionsProps {
   placeholder?: string
 }
 

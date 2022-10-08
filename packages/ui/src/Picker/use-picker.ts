@@ -10,10 +10,11 @@ import type {
   PickerProps,
   PickerPopupEmits,
   PickerViewEmits,
-  PickerViewProps,
   PickerPopupProps,
   PickerEmits,
-  PickerViewRef
+  PickerViewRef,
+  PickerCommonProps,
+  PickerViewProps
 } from './types'
 import type {
   SelectorValue,
