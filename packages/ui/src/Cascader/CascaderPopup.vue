@@ -26,7 +26,7 @@ import { defineComponent } from 'vue'
 import { Drawer } from '../Drawer'
 import CascaderView from './CascaderView.vue'
 import { usePopupExtend } from '../popup/use-popup'
-import type { SelectorDetail } from '../SelectorField/types'
+import type { CascaderDetail } from './types'
 import {
   pickerPopupEmits,
   commonProps,
@@ -46,7 +46,7 @@ export default defineComponent({
     ...pickerPopupEmits
   },
   setup(props, ctx) {
-    const popup = usePopupExtend<SelectorDetail>(ctx)
+    const popup = usePopupExtend<CascaderDetail>(ctx)
     const pickerPopup = usePickerPopup(props, ctx, popup, {
       handlers: mergeHandlers({
         formatter: props.formatter,

@@ -49,12 +49,14 @@ import { cloneDetail, isSameDetail, isValidValue } from '../Picker/util'
 import type {
   CalendarDetail,
   CalendarPopupEmits,
-  CalendarViewRef
+  CalendarViewRef,
+  CalendarSourceDetail
 } from './types'
 import { useLocale } from '../ConfigProvider/context'
 import { useHandlers } from './use-calendar'
 import { cloneData } from '../helpers/util'
 import type { PropsToEmits } from '../helpers/types'
+import { getSourceDetail } from './util'
 
 export default defineComponent({
   name: 'ak-calendar-popup',
@@ -88,9 +90,11 @@ export default defineComponent({
 
     let detail: CalendarDetail = getDefaultDetail()
 
-    const popup = usePopupExtend<CalendarDetail>(ctx)
+    const popup = usePopupExtend<CalendarSourceDetail>(ctx)
 
-    function onViewSelect(newDetail: CalendarDetail) {
+    function onViewSelect() {
+      const newDetail = getViewDetail()
+
       valueSize.value = newDetail.valueArray.length
 
       if (!props.showConfirm) {
@@ -117,7 +121,7 @@ export default defineComponent({
         updateDetail(newDetail)
       }
 
-      popup.customConfirm(getDetail())
+      popup.customConfirm(getSourceDetail(getDetail()))
     }
 
     function getDetail() {

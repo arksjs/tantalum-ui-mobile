@@ -1,22 +1,25 @@
 import type { FocusWithoutEventEmits, FormItemCommonProps } from '../Form/types'
 import type { PickerCommonEmits } from '../Picker/types'
 import type { PopupEmits, PopupProps, PopupRef } from '../popup/types'
-import type {
-  SelectorValue,
-  SelectorModelValue,
-  SelectorDetail
-} from '../SelectorField/types'
+import type { SelectorModelValue, SelectorDetail } from '../SelectorField/types'
 
 export interface CalendarDetail extends SelectorDetail {
   valueArray: number[][]
   rangeCount: number
+  source: {
+    label: string
+    value: Date[]
+  }
 }
-export interface CalendarOriginalDetail extends CalendarDetail {
-  value: SelectorValue[]
+export interface CalendarSourceDetail {
+  value: Date[]
+  label: string
+  valueArray: number[][]
+  rangeCount: number
 }
 
-export type OnConfirm = (payload: CalendarDetail) => void
-export type OnSelect = (payload: CalendarDetail) => void
+export type OnConfirm = (payload: CalendarSourceDetail) => void
+export type OnSelect = (payload: CalendarSourceDetail) => void
 
 export type Mode = 'single' | 'range'
 
@@ -56,7 +59,9 @@ export type ShowCalendarOptions = Partial<{
 }>
 
 export interface ValueFormatter {
-  (valueArray: Date[], mode: Mode): SelectorDetail | SelectorModelValue
+  (valueArray: Date[], mode: Mode):
+    | { value: SelectorModelValue; label: string }
+    | SelectorModelValue
 }
 export interface ValueParser {
   (value: unknown, mode: Mode): Date[]

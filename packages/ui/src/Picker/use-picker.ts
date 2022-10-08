@@ -18,7 +18,8 @@ import type {
 import type {
   SelectorValue,
   SelectorModelValue,
-  SelectorDetail
+  SelectorDetail,
+  SelectorSourceDetail
 } from '../SelectorField/types'
 import {
   cloneDetail,
@@ -56,6 +57,10 @@ export function usePicker(
   const popup = ref()
 
   let detail = getDefaultDetail(handlers)
+
+  function getPopupDetail(): SelectorDetail {
+    return popup.value?.getDetail() || getDefaultDetail(handlers)
+  }
 
   function updateValue(val: unknown) {
     if (val == null) {
@@ -111,7 +116,9 @@ export function usePicker(
     return cloneDetail(detail)
   }
 
-  function onConfirm(newDetail: SelectorDetail) {
+  function onConfirm() {
+    const newDetail = getPopupDetail()
+
     if (!isSameDetail(newDetail, detail)) {
       updateDetail(newDetail)
 
@@ -156,7 +163,7 @@ export function usePickerPopup(
     customConfirm,
     onCancelClick
   }: {
-    customConfirm: PopupCustomConfirm<SelectorDetail>
+    customConfirm: PopupCustomConfirm<SelectorSourceDetail>
     onCancelClick: () => void
   },
   { handlers }: { handlers: PickerHandlers }
@@ -178,7 +185,7 @@ export function usePickerPopup(
       detail = newDetail
     }
 
-    return getDetail()
+    return getDetail().source
   }
 
   function onHeaderLeftClick() {
@@ -727,13 +734,21 @@ const formatter: PickerFormatter = (valueArray, labelArray, handlers) => {
   if ((ret as SelectorDetail)?.value != null) {
     return {
       value: (ret as SelectorDetail).value,
-      label: (ret as SelectorDetail).label ?? ''
+      label: (ret as SelectorDetail).label ?? '',
+      source: {
+        value: valueArray,
+        label: defaultLabel
+      }
     }
   }
 
   return {
     value: ret as SelectorModelValue,
-    label: defaultLabel
+    label: defaultLabel,
+    source: {
+      value: valueArray,
+      label: defaultLabel
+    }
   }
 }
 

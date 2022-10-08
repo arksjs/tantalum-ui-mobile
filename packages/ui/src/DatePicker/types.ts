@@ -1,10 +1,9 @@
 import type {
-  SelectorDetail,
   SelectorModelValue,
   SelectorValueFormatter,
   SelectorValueParser
 } from '../SelectorField/types'
-import type { ColRow, PickerCommonEmits } from '../Picker/types'
+import type { ColRow, PickerCommonEmits, PickerDetail } from '../Picker/types'
 import type { PopupEmits, PopupProps } from '../popup/types'
 import type { FocusWithoutEventEmits, FormItemCommonProps } from '../Form/types'
 
@@ -43,7 +42,9 @@ export interface RowsParser {
   ): ColRow[]
 }
 
-export type OnConfirm = (payload: SelectorDetail) => void
+export type DatePickerDetail = PickerDetail
+
+export type OnConfirm = (payload: DatePickerDetail) => void
 
 export type ShowDatePickerOptions = Partial<{
   title: string

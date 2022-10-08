@@ -69,6 +69,10 @@ export default defineComponent({
 
     let detail: CalendarDetail = getDefaultDetail()
 
+    function getPopupDetail() {
+      return popup.value?.getDetail() || getDefaultDetail()
+    }
+
     function updateValue(val: unknown) {
       if (val == null) {
         // 解决 formily 强制null的问题
@@ -102,7 +106,9 @@ export default defineComponent({
       return cloneDetail(detail)
     }
 
-    function onConfirm(newDetail: CalendarDetail) {
+    function onConfirm() {
+      const newDetail = getPopupDetail()
+
       if (isSameValue(detail.value, newDetail.value)) {
         return
       }

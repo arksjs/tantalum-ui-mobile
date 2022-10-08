@@ -43,7 +43,7 @@ import { usePickerPopup } from '../Picker/use-picker'
 import { commonProps } from './props'
 import { useHandlers } from '../DatePicker/use-date-picker'
 import { useLocale } from '../ConfigProvider/context'
-import type { SelectorDetail } from '../SelectorField/types'
+import type { DatePickerDetail } from './types'
 
 export default defineComponent({
   name: 'ak-date-picker-popup',
@@ -62,7 +62,7 @@ export default defineComponent({
   setup(props, ctx) {
     const { handlers } = useHandlers(props)
     const { locale } = useLocale()
-    const popup = usePopupExtend<SelectorDetail>(ctx)
+    const popup = usePopupExtend<DatePickerDetail>(ctx)
     const pickerPopup = usePickerPopup(props, ctx, popup, { handlers })
 
     return {

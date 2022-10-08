@@ -41,8 +41,7 @@ import { usePopupExtend } from '../popup/use-popup'
 import { pickerPopupProps, pickerPopupEmits, commonProps } from './props'
 import { usePickerPopup } from '../Picker/use-picker'
 import { useLocale } from '../ConfigProvider/context'
-import type { SelectorDetail } from '../SelectorField/types'
-import type { PickerHandlers } from './types'
+import type { PickerDetail, PickerHandlers } from './types'
 import { mergeHandlers } from './util'
 
 export default defineComponent({
@@ -63,7 +62,7 @@ export default defineComponent({
     const { locale } = useLocale()
     const handlers = inject<Partial<PickerHandlers>>('akPickerHandlers', {})
 
-    const popup = usePopupExtend<SelectorDetail>(ctx)
+    const popup = usePopupExtend<PickerDetail>(ctx)
     const pickerPopup = usePickerPopup(props, ctx, popup, {
       handlers: mergeHandlers(
         {

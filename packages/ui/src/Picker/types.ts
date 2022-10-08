@@ -68,7 +68,12 @@ export interface ShowPickerOptions {
   fieldNames?: UserFieldNames
 }
 
-export type OnConfirm = (payload: SelectorDetail) => void
+export interface PickerDetail {
+  value: (string | number)[]
+  label: string
+}
+
+export type OnConfirm = (payload: PickerDetail) => void
 
 /**
  * PickerCommon

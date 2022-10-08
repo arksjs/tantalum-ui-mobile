@@ -3,11 +3,11 @@ import CalendarPopup from './CalendarPopup.vue'
 import CalendarView from './CalendarView.vue'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
-import type { ShowCalendarOptions, CalendarDetail } from './types'
+import type { ShowCalendarOptions, CalendarSourceDetail } from './types'
 
 const showCalendar = createShowPopup<
   ShowCalendarOptions,
-  PopupSuccessConfirmArgs<CalendarDetail>
+  PopupSuccessConfirmArgs<CalendarSourceDetail>
 >({
   apiName: 'showCalendar',
   component: CalendarPopup,

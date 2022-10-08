@@ -5,9 +5,10 @@ import type {
   PickerCommonEmits,
   UserFieldNames,
   UserOptionItem,
-  PickerViewRef
+  PickerViewRef,
+  PickerDetail
 } from '../Picker/types'
-import type { SelectorModelValue, SelectorDetail } from '../SelectorField/types'
+import type { SelectorModelValue } from '../SelectorField/types'
 import type { PopupEmits, PopupProps } from '../popup/types'
 
 export interface ShowCascaderOptions {
@@ -16,8 +17,10 @@ export interface ShowCascaderOptions {
   fieldNames?: UserFieldNames
 }
 
-export type OnSelect = (payload: SelectorDetail) => void
-export type OnConfirm = (payload: SelectorDetail) => void
+export type CascaderDetail = PickerDetail
+
+export type OnSelect = (payload: CascaderDetail) => void
+export type OnConfirm = (payload: CascaderDetail) => void
 
 /**
  * CascaderView
