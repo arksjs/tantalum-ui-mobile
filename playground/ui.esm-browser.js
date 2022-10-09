@@ -5343,6 +5343,9 @@ function cloneValue(value) {
 function cloneDetail(detail) {
   const newDetail = cloneData(detail);
   newDetail.value = cloneValue(detail.value);
+  if (detail.source) {
+    newDetail.source.value = cloneValue(detail.source.value);
+  }
   return newDetail;
 }
 var DEFAULT_ITEM_HEIGHT = 48;
@@ -5395,7 +5398,7 @@ var isModelValue = (value) => {
   return isValue(value);
 };
 var isPickerDetail = (detail) => {
-  return detail && isModelValue(detail.value) && typeof detail.label === "string";
+  return detail && detail.value && typeof detail.label === "string";
 };
 var commonProps = {
   modelValue: {
@@ -5445,13 +5448,19 @@ var pickerEmits = {
 // packages/ui/src/Calendar/util.ts
 var DEFAULT_MONTH_RANGE = 6;
 var MODE_NAMES2 = ["single", "range"];
-function getDefaultDetail() {
+function getDefaultSourceDetail() {
   return {
     value: [],
-    valueArray: [],
     label: "",
+    valueArray: [],
     rangeCount: 0
   };
+}
+function getSourceDetail(newDetail) {
+  return Object.assign(newDetail.source, {
+    valueArray: newDetail.valueArray,
+    rangeCount: newDetail.rangeCount
+  });
 }
 function printError2(message) {
   console.error(new exception_default(message, exception_default.TYPE.PROP_ERROR, "Calendar"));
@@ -5535,8 +5544,8 @@ function valueParser(val, mode) {
   }
   return values;
 }
-function detailFormatter(timeArray, mode) {
-  const detail = getDefaultDetail();
+function sourceFormatter(timeArray, mode) {
+  const detail = getDefaultSourceDetail();
   const start = timeArray[0];
   const end = timeArray[1];
   if (start) {
@@ -5578,12 +5587,19 @@ function useHandlers(props) {
     return valueParser(val, mode);
   };
   const formatter2 = function(valueArray) {
-    const detail = detailFormatter(valueArray, mode);
+    const sourceDetail = sourceFormatter(valueArray, mode);
+    const detail = Object.assign(sourceDetail, {
+      source: {
+        value: sourceDetail.value.map((v) => new Date(v)),
+        label: sourceDetail.label
+      }
+    });
     if (props.formatter) {
       const ret = props.formatter(valueArray.map((v) => new Date(v)), mode);
       if ((ret == null ? void 0 : ret.label) != null) {
         detail.label = ret.label;
         detail.value = ret.value;
+        detail.source.label = detail.label;
       } else {
         detail.value = ret;
       }
@@ -6507,7 +6523,7 @@ var _sfc_script31 = defineComponent19({
     }
     function onSelect() {
       onChange();
-      emit("select", getDetail());
+      emit("select", getSourceDetail(getDetail()));
     }
     function getDetail() {
       return formatter2([start.timestamp, end.timestamp]);
@@ -6700,10 +6716,11 @@ var _sfc_script32 = defineComponent20({
     const { locale } = useLocale();
     const viewRef = ref10();
     const valueSize = ref10(0);
-    const { getDefaultDetail: getDefaultDetail3 } = useHandlers(props);
-    let detail = getDefaultDetail3();
+    const { getDefaultDetail: getDefaultDetail2 } = useHandlers(props);
+    let detail = getDefaultDetail2();
     const popup = usePopupExtend(ctx);
-    function onViewSelect(newDetail) {
+    function onViewSelect() {
+      const newDetail = getViewDetail();
       valueSize.value = newDetail.valueArray.length;
       if (!props.showConfirm) {
         confirm();
@@ -6723,7 +6740,7 @@ var _sfc_script32 = defineComponent20({
       } else {
         updateDetail(newDetail);
       }
-      popup.customConfirm(getDetail());
+      popup.customConfirm(getSourceDetail(getDetail()));
     }
     function getDetail() {
       return cloneDetail(detail);
@@ -6734,7 +6751,7 @@ var _sfc_script32 = defineComponent20({
     }
     function getViewDetail() {
       var _a;
-      return ((_a = viewRef.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail3();
+      return ((_a = viewRef.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail2();
     }
     if (isValidValue(props.modelValue)) {
       detail.value = cloneData(props.modelValue);
@@ -6840,8 +6857,12 @@ var _sfc_script33 = defineComponent21({
     const fieldValue = ref11("");
     const popup = ref11();
     const root = ref11();
-    const { formatter: formatter2, parser: parser2, getDefaultDetail: getDefaultDetail3 } = useHandlers(props);
-    let detail = getDefaultDetail3();
+    const { formatter: formatter2, parser: parser2, getDefaultDetail: getDefaultDetail2 } = useHandlers(props);
+    let detail = getDefaultDetail2();
+    function getPopupDetail() {
+      var _a;
+      return ((_a = popup.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail2();
+    }
     function updateValue(val) {
       if (val == null) {
         return;
@@ -6865,7 +6886,8 @@ var _sfc_script33 = defineComponent21({
     function getDetail() {
       return cloneDetail(detail);
     }
-    function onConfirm(newDetail) {
+    function onConfirm() {
+      const newDetail = getPopupDetail();
       if (isSameValue(detail.value, newDetail.value)) {
         return;
       }
@@ -7341,7 +7363,7 @@ var Empty_default = _sfc_script35;
 
 // packages/ui/src/Picker/use-picker.ts
 import { nextTick as nextTick4, onMounted as onMounted11, ref as ref13, watch as watch12 } from "vue";
-function getDefaultDetail2(handlers) {
+function getDefaultDetail(handlers) {
   return formatter([], [], handlers);
 }
 function usePicker(props, ctx, {
@@ -7355,13 +7377,17 @@ function usePicker(props, ctx, {
   const fieldValue = ref13("");
   const fieldLabel = ref13("");
   const popup = ref13();
-  let detail = getDefaultDetail2(handlers);
+  let detail = getDefaultDetail(handlers);
+  function getPopupDetail() {
+    var _a;
+    return ((_a = popup.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail(handlers);
+  }
   function updateValue(val) {
     if (val == null) {
       return;
     }
     if (!isValidValue(val)) {
-      updateDetail(getDefaultDetail2(handlers));
+      updateDetail(getDefaultDetail(handlers));
       return;
     }
     if (!isSameValue(val, detail.value)) {
@@ -7389,7 +7415,8 @@ function usePicker(props, ctx, {
   function getDetail() {
     return cloneDetail(detail);
   }
-  function onConfirm(newDetail) {
+  function onConfirm() {
+    const newDetail = getPopupDetail();
     if (!isSameDetail(newDetail, detail)) {
       updateDetail(newDetail);
       emit("update:modelValue", getDetail().value);
@@ -7423,7 +7450,7 @@ function usePickerPopup(props, { emit }, {
   onCancelClick
 }, { handlers }) {
   const viewRef = ref13();
-  let detail = getDefaultDetail2(handlers);
+  let detail = getDefaultDetail(handlers);
   function beforeConfirm() {
     const newDetail = getViewDetail();
     if (!isSameDetail(newDetail, detail)) {
@@ -7433,7 +7460,7 @@ function usePickerPopup(props, { emit }, {
     } else {
       detail = newDetail;
     }
-    return getDetail();
+    return getDetail().source;
   }
   function onHeaderLeftClick() {
     onCancelClick();
@@ -7446,7 +7473,7 @@ function usePickerPopup(props, { emit }, {
   }
   function getViewDetail() {
     var _a;
-    return ((_a = viewRef.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail2(handlers);
+    return ((_a = viewRef.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail(handlers);
   }
   watch12(() => props.visible, (val) => {
     var _a;
@@ -7459,7 +7486,7 @@ function usePickerPopup(props, { emit }, {
       if (isValidValue(val)) {
         detail = getViewDetail();
       } else {
-        detail = getDefaultDetail2(handlers);
+        detail = getDefaultDetail(handlers);
       }
     });
   }, {
@@ -7793,12 +7820,20 @@ var formatter = (valueArray, labelArray, handlers) => {
   if ((ret == null ? void 0 : ret.value) != null) {
     return {
       value: ret.value,
-      label: (_a = ret.label) != null ? _a : ""
+      label: (_a = ret.label) != null ? _a : "",
+      source: {
+        value: valueArray,
+        label: defaultLabel
+      }
     };
   }
   return {
     value: ret,
-    label: defaultLabel
+    label: defaultLabel,
+    source: {
+      value: valueArray,
+      label: defaultLabel
+    }
   };
 };
 var parser = (val, handlers) => {
@@ -7841,7 +7876,7 @@ var _sfc_script36 = defineComponent24({
     }
     function onSelect(selecteds) {
       const selectDetail = updateOriginalValue(selecteds);
-      emit("select", selectDetail);
+      emit("select", selectDetail.source);
     }
     const {
       currentValues,
@@ -10121,7 +10156,7 @@ function useHandlers2(props) {
     }
     const label = labelFormatter2(labelArray);
     return {
-      value: props.formatTemplate ? label : array2Date(valueArray, mode),
+      value: props.formatTemplate ? label : valueArray,
       label
     };
   };
@@ -10195,7 +10230,8 @@ var _sfc_script59 = defineComponent43({
     }
   },
   emits: {
-    ...pickerPopupEmits
+    ...pickerPopupEmits,
+    confirm: (payload) => isPickerDetail(payload)
   },
   setup(props, ctx) {
     const { handlers } = useHandlers2(props);
@@ -19425,5 +19461,21 @@ export {
   TimelineItem_default as AkTimelineItem,
   Toast_default as AkToast,
   VirtualList_default as AkVirtualList,
-  src_default as default
+  src_default as default,
+  hideLoading,
+  hideNotify,
+  hideToast,
+  showActionSheet,
+  showCalendar,
+  showCascader,
+  showDatePicker,
+  showDialog,
+  showImagePreview,
+  showLoading,
+  showNotify,
+  showPicker,
+  showPopDialog,
+  showPopMenu,
+  showPopover,
+  showToast
 };
