@@ -30,12 +30,14 @@ import PickerPopup from './PickerPopup.vue'
 import { pickerEmits, pickerProps, commonProps } from './props'
 import { mergeHandlers } from './util'
 import { usePicker } from './use-picker'
+import type { PropsToEmits } from '../helpers/types'
+import type { PickerEmits } from './types'
 
 export default defineComponent({
   name: 'ak-picker',
   components: { SelectorField, PickerPopup },
   props: { ...commonProps, ...pickerProps },
-  emits: { ...pickerEmits },
+  emits: { ...pickerEmits } as PropsToEmits<PickerEmits>,
   setup(props, ctx) {
     return {
       ...usePicker(props, ctx, {

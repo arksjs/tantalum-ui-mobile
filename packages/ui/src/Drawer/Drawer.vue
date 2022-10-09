@@ -33,9 +33,10 @@ import { popupEmits, popupProps } from '../popup/popup'
 import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
 import { createEnumsValidator, getEnumsValue } from '../helpers/validator'
 import { PLACEMENT_TYPES } from '../helpers/constants'
-import type { PlacementType } from '../helpers/types'
+import type { PlacementType, PropsToEmits } from '../helpers/types'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { getClasses, getInnerClasses, getInnerStyles } from './util'
+import type { DrawerEmits } from './types'
 
 export default defineComponent({
   name: 'ak-drawer',
@@ -65,7 +66,7 @@ export default defineComponent({
       default: true
     }
   },
-  emits: { ...popupEmits },
+  emits: { ...popupEmits } as PropsToEmits<DrawerEmits>,
   setup(props, ctx) {
     const popup = usePopup(props, ctx, {})
     const { safeAreaInsets } = useSafeAreaInsets(

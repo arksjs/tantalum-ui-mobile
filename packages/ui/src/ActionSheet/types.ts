@@ -27,3 +27,5 @@ export interface ActionSheetProps extends PopupProps {
 export interface ActionSheetEmits extends PopupEmits {
   onConfirm?: OnConfirm
 }
+
+export type { Option as ActionSheetOption, OnConfirm as ActionSheetOnConfirm }

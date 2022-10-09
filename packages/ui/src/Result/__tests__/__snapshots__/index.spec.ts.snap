@@ -8,8 +8,8 @@ exports[`Result > snapshot 1`] = `
     <!--v-if-->
   </div>
   <div class=\\"ak-result_footer\\">
-    <button-stub type=\\"primary\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></button-stub>
-    <button-stub type=\\"default\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></button-stub>
+    <ak-button-stub type=\\"primary\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></ak-button-stub>
+    <ak-button-stub type=\\"default\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></ak-button-stub>
   </div>
 </div>"
 `;

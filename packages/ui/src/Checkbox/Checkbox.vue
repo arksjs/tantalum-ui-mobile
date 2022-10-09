@@ -34,6 +34,8 @@ import CircleOutlined from '../Icon/icons/CircleOutlined'
 import CheckCircleFilled from '../Icon/icons/CheckCircleFilled'
 import BorderOutlined from '../Icon/icons/BorderOutlined'
 import CheckSquareFilled from '../Icon/icons/CheckSquareFilled'
+import type { PropsToEmits } from '../helpers/types'
+import type { CheckboxEmits } from './types'
 
 export default defineComponent({
   name: 'ak-checkbox',
@@ -45,7 +47,7 @@ export default defineComponent({
       default: false
     }
   },
-  emits: { ...checkEmits },
+  emits: { ...checkEmits } as PropsToEmits<CheckboxEmits>,
   setup(props, ctx) {
     return {
       ...useCheck(props, ctx, 'checkbox'),

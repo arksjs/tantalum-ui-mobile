@@ -24,3 +24,5 @@ export interface PopMenuProps extends PopoverProps {
 export interface PopMenuEmits extends PopupEmits {
   onConfirm?: OnConfirm
 }
+
+export type { Option as PopMenuOption, OnConfirm as PopMenuOnConfirm }

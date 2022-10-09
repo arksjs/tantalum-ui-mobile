@@ -25,6 +25,8 @@ import { popupEmits, popupProps } from '../popup/popup'
 import { Icon } from '../Icon'
 import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
 import { getBoxStyles } from './util'
+import type { PropsToEmits } from '../helpers/types'
+import type { ModalEmits } from './types'
 
 export default defineComponent({
   name: 'ak-modal',
@@ -40,7 +42,7 @@ export default defineComponent({
       default: true
     }
   },
-  emits: { ...popupEmits },
+  emits: { ...popupEmits } as PropsToEmits<ModalEmits>,
   setup(props, ctx) {
     const popup = usePopup(props, ctx, {})
     const boxStyles = computed(() => getBoxStyles(props.width))

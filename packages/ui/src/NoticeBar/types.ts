@@ -17,3 +17,5 @@ export interface NoticeBarEmits {
   onClick?: OnClick
   onCloseClick?: OnClick
 }
+
+export type { Mode as NoticeBarMode }

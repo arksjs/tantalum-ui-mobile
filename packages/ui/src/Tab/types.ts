@@ -49,3 +49,11 @@ export interface TabRef {
   switchTo: (value: ActiveValue) => void
   switchToIndex: (index: number) => void
 }
+
+export type {
+  OnChange as TabOnChange,
+  OnChange as TabBarOnChange,
+  OnChange as SideTabOnChange,
+  OptionList as TabOptions,
+  OptionItem as TabOption
+}

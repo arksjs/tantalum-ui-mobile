@@ -105,7 +105,7 @@ export default defineComponent({
 
     function onSelect(selecteds: SelectorValue[]) {
       const selectDetail = updateOriginalValue(selecteds)
-      emit('select', selectDetail)
+      emit('select', selectDetail.source)
     }
 
     const {

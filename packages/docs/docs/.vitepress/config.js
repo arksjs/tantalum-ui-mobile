@@ -56,9 +56,9 @@ module.exports = {
     },
     logo: '/logo.svg'
     // algolia: {
-    //   appId: 'KFPGH0VHYY',
-    //   apiKey: '3c12cf0838cd4e24fbb78cf52980117d',
-    //   indexName: 'vfox'
+    //   appId: 'UX7FWQ5P9G',
+    //   apiKey: '318e0b67d262ed1870dc20120fce2d77',
+    //   indexName: 'arkui-mobile-vue'
     // }
   },
   markdown: {

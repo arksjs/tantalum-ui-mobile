@@ -28,12 +28,14 @@ import { pickerEmits, pickerProps } from '../Picker/props'
 import { usePicker } from '../Picker/use-picker'
 import { commonProps } from './props'
 import { useHandlers } from '../DatePicker/use-date-picker'
+import type { DatePickerEmits } from './types'
+import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
   name: 'ak-date-picker',
   components: { SelectorField, PickerPopup },
   props: { ...commonProps, ...pickerProps },
-  emits: { ...pickerEmits },
+  emits: { ...pickerEmits } as PropsToEmits<DatePickerEmits>,
   setup(props, ctx) {
     const { handlers } = useHandlers(props)
 

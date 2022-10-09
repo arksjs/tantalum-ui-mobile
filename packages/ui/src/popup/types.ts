@@ -48,3 +48,9 @@ export interface PopupRef {
   customCancel: PopupCustomCancel
   onCancelClick: Noop
 }
+
+export type {
+  VisibleState as PopupVisibleState,
+  OnVisibleStateChange as PopupOnVisibleStateChange,
+  OnCancel as PopupOnCancel
+}

@@ -44,6 +44,8 @@ import {
   DEFAULT_COUNT,
   getMax
 } from './util'
+import type { PropsToEmits } from '../helpers/types'
+import type { RateEmits } from './types'
 
 interface RateCoords {
   size: number
@@ -98,7 +100,7 @@ export default defineComponent({
       type: [Number, String]
     }
   },
-  emits: { ...formNumberValueEmits },
+  emits: { ...formNumberValueEmits } as PropsToEmits<RateEmits>,
   setup(props, ctx) {
     const { emit } = ctx
     const root = ref<HTMLElement>()

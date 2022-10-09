@@ -46,3 +46,5 @@ export type SwiperRef = {
   prev: Noop
   next: Noop
 }
+
+export type { OnChange as SwiperOnChange, OnAnimated as SwiperOnAnimated }

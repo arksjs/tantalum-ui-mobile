@@ -18,3 +18,5 @@ export interface CellProps {
 export interface CellEmits {
   onClick?: OnClick
 }
+
+export type { ArrowDirection as CellArrowDirection }

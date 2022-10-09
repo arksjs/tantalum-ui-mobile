@@ -1,8 +1,8 @@
 import type {
-  SelectorDetail,
   SelectorModelValue,
   SelectorValueFormatter,
-  SelectorValueParser
+  SelectorValueParser,
+  SelectorOnChange
 } from '../SelectorField/types'
 import type { ColRow, PickerCommonEmits } from '../Picker/types'
 import type { PopupEmits, PopupProps } from '../popup/types'
@@ -43,7 +43,12 @@ export interface RowsParser {
   ): ColRow[]
 }
 
-export type OnConfirm = (payload: SelectorDetail) => void
+export interface DatePickerDetail {
+  value: number[]
+  label: string
+}
+
+export type OnConfirm = (payload: DatePickerDetail) => void
 
 export type ShowDatePickerOptions = Partial<{
   title: string
@@ -85,3 +90,10 @@ export interface DatePickerProps
 export interface DatePickerEmits
   extends FocusWithoutEventEmits,
     PickerCommonEmits {}
+
+export type {
+  Mode as DatePickerMode,
+  OptionFilter as DatePickerOptionFilter,
+  OnConfirm as DatePickerOnConfirm,
+  SelectorOnChange as DatePickerOnChange
+}

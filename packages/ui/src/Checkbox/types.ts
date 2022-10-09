@@ -43,3 +43,8 @@ export interface CheckCommonEmits {
 }
 
 export type CheckboxEmits = CheckCommonEmits
+
+export type {
+  UserOptionItem as CheckboxOptionItem,
+  UserOptionItem as RadioOptionItem
+}

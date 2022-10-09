@@ -36,3 +36,5 @@ export interface DistanceOptions {
   pageX: number
   pageY: number
 }
+
+export type { OnChange as ImagePreviewOnChange }

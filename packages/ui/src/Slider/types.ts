@@ -1,5 +1,7 @@
 import type { FormItemCommonProps } from '../Form/types'
 
+type OnChange = (value: number) => void
+
 export interface SlideCommonProps extends FormItemCommonProps {
   showValue?: boolean
   color?: string
@@ -13,6 +15,7 @@ export interface SliderProps extends SlideCommonProps {
 }
 
 export interface SliderEmits {
-  onInput?: (value: number) => void
-  onChange?: (value: number) => void
+  onUpdateModelValue?: OnChange
+  onInput?: OnChange
+  onChange?: OnChange
 }

@@ -39,12 +39,13 @@ import { ActivityIndicator } from '../ActivityIndicator'
 import { usePopup } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/popup'
 import { createEnumsValidator, iconValidator } from '../helpers/validator'
-import type { StateType } from './types'
+import type { StateType, ToastEmits } from './types'
 import CheckOutlined from '../Icon/icons/CheckOutlined'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import type { IconData } from '../Icon/types'
 import { getBoxClasses, STATE_TYPES } from './util'
 import { useDelay } from '../hooks/use-delay'
+import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
   name: 'ak-toast',
@@ -74,7 +75,7 @@ export default defineComponent({
       default: 0
     }
   },
-  emits: { ...popupEmits },
+  emits: { ...popupEmits } as PropsToEmits<ToastEmits>,
   setup(props, ctx) {
     const { addDelayTask, removeDelayTask } = useDelay(() => {
       popup.customCancel('auto', true)

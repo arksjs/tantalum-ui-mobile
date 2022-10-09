@@ -35,10 +35,15 @@ import { defineComponent, ref, watch } from 'vue'
 import { SelectorField } from '../SelectorField'
 import CalendarPopup from './CalendarPopup.vue'
 import { commonProps } from './props'
-import type { CalendarDetail, CalendarPopupRef } from './types'
+import type {
+  CalendarSelectorDetail,
+  CalendarPopupRef,
+  CalendarEmits
+} from './types'
 import { useHandlers } from '../Calendar/use-calendar'
 import { cloneDetail, isSameValue } from '../Picker/util'
 import { pickerEmits, pickerProps } from '../Picker/props'
+import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
   name: 'ak-calendar',
@@ -55,7 +60,7 @@ export default defineComponent({
       default: false
     }
   },
-  emits: { ...pickerEmits },
+  emits: { ...pickerEmits } as PropsToEmits<CalendarEmits>,
   setup(props, ctx) {
     const { emit } = ctx
     const isInitPopup = ref(false)
@@ -67,7 +72,11 @@ export default defineComponent({
 
     const { formatter, parser, getDefaultDetail } = useHandlers(props)
 
-    let detail: CalendarDetail = getDefaultDetail()
+    let detail: CalendarSelectorDetail = getDefaultDetail()
+
+    function getPopupDetail() {
+      return popup.value?.getDetail() || getDefaultDetail()
+    }
 
     function updateValue(val: unknown) {
       if (val == null) {
@@ -78,7 +87,7 @@ export default defineComponent({
       updateDetail(formatter(parser(val)))
     }
 
-    function updateDetail(newDetail: CalendarDetail) {
+    function updateDetail(newDetail: CalendarSelectorDetail) {
       detail = newDetail
 
       fieldLabel.value = newDetail.label
@@ -102,7 +111,9 @@ export default defineComponent({
       return cloneDetail(detail)
     }
 
-    function onConfirm(newDetail: CalendarDetail) {
+    function onConfirm() {
+      const newDetail = getPopupDetail()
+
       if (isSameValue(detail.value, newDetail.value)) {
         return
       }

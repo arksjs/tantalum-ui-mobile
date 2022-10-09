@@ -16,7 +16,7 @@ export const buildGlobalDeclaration = async () => {
   const imports = []
 
   for (const name of config.components) {
-    imports.push(`Ak${name}: typeof import('arkui-mobile-vue/es')['${name}']`)
+    imports.push(`Ak${name}: typeof import('arkui-mobile-vue/es')['Ak${name}']`)
   }
 
   const code = `declare module 'vue' {

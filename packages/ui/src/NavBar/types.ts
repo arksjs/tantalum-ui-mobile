@@ -35,3 +35,9 @@ export interface NavBarEmits {
   onRightButtonClick?: OnButtonClick
   onTitleDbclick?: OnTitleDbClick
 }
+
+export type {
+  ButtonOption as NavBarButtonOption,
+  OnButtonClick as NavBarOnButtonClick,
+  OnTitleDbClick as NavBarOnTitleDbClick
+}

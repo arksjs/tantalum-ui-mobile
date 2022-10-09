@@ -1,6 +1,8 @@
 import type { FormItemCommonProps } from '../Form/types'
 import type { IconData } from '../Icon/types'
 
+type OnChange = (value: number) => void
+
 export interface RateProps extends FormItemCommonProps {
   value?: number | string
   count?: number | string
@@ -14,6 +16,7 @@ export interface RateProps extends FormItemCommonProps {
 }
 
 export interface RateEmits {
-  onInput?: (value: number) => void
-  onChange?: (value: number) => void
+  onUpdateModelValue?: OnChange
+  onInput?: OnChange
+  onChange?: OnChange
 }

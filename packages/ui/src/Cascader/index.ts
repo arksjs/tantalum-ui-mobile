@@ -3,12 +3,11 @@ import CascaderPopup from './CascaderPopup.vue'
 import CascaderView from './CascaderView.vue'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
-import type { SelectorDetail } from '../SelectorField/types'
-import type { ShowCascaderOptions } from './types'
+import type { ShowCascaderOptions, CascaderDetail } from './types'
 
 const showCascader = createShowPopup<
   ShowCascaderOptions,
-  PopupSuccessConfirmArgs<SelectorDetail>
+  PopupSuccessConfirmArgs<CascaderDetail>
 >({
   apiName: 'showCascader',
   component: CascaderPopup,

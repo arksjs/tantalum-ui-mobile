@@ -1,4 +1,5 @@
-import type { TabCommonEmits, TabCommonProps } from '../Tab/types'
-
-export type TabBarProps = TabCommonProps
-export type TabBarEmits = TabCommonEmits
+export type {
+  TabCommonEmits as TabBarEmits,
+  TabCommonProps as TabBarProps,
+  OnChange as TabBarOnChange
+} from '../Tab/types'

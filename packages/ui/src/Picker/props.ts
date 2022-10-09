@@ -5,12 +5,13 @@ import type {
   PickerPopupEmits,
   PickerCommonEmits,
   UserFieldNames,
-  UserOptionItem
+  UserOptionItem,
+  PickerDetail
 } from './types'
 import type {
   SelectorValue,
   SelectorModelValue,
-  SelectorDetail,
+  SelectorSourceDetail,
   SelectorValueParser,
   SelectorValueFormatter
 } from '../SelectorField/types'
@@ -34,12 +35,8 @@ const isModelValue = (value: SelectorModelValue) => {
   return isValue(value)
 }
 
-export const isPickerDetail = <T extends SelectorDetail = SelectorDetail>(
-  detail: T
-) => {
-  return (
-    detail && isModelValue(detail.value) && typeof detail.label === 'string'
-  )
+export const isPickerDetail = <T extends SelectorSourceDetail>(detail: T) => {
+  return detail && detail.value && typeof detail.label === 'string'
 }
 
 export const commonProps = {
@@ -84,7 +81,7 @@ export const pickerPopupProps = {
 export const pickerPopupEmits: PropsToEmits<PickerPopupEmits> = {
   ...popupEmits,
   ...commonEmits,
-  confirm: (payload: SelectorDetail) => isPickerDetail(payload)
+  confirm: (payload: PickerDetail) => isPickerDetail(payload)
 }
 
 /**

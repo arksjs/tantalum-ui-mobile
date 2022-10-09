@@ -15,3 +15,5 @@ export type IndexViewItemProps = StickyViewItemProps
 export interface IndexViewRef {
   switchToIndex?: (index: number) => void
 }
+
+export type { OnChange as IndexViewOnChange }

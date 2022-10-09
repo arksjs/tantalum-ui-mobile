@@ -1,6 +1,6 @@
 {
   "name": "arkui-mobile-vue",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Vue components include form, toast, modal, etc.",
   "main": "lib/index.js",
   "module": "es/index.js",

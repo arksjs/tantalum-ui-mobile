@@ -1,4 +1,4 @@
-import type { CalendarOriginalDetail, Mode } from './types'
+import type { CalendarDetail, CalendarSelectorDetail, Mode } from './types'
 import Exception from '../helpers/exception'
 import { getNumber, isInNumberRange } from '../helpers/util'
 import dayjs from '../helpers/day'
@@ -6,13 +6,22 @@ import dayjs from '../helpers/day'
 const DEFAULT_MONTH_RANGE = 6
 export const MODE_NAMES: Mode[] = ['single', 'range']
 
-export function getDefaultDetail(): CalendarOriginalDetail {
+export function getDefaultSourceDetail(): CalendarDetail {
   return {
     value: [],
-    valueArray: [],
     label: '',
+    valueArray: [],
     rangeCount: 0
   }
+}
+
+export function getSourceDetail(
+  newDetail: CalendarSelectorDetail
+): CalendarDetail {
+  return Object.assign(newDetail.source, {
+    valueArray: newDetail.valueArray,
+    rangeCount: newDetail.rangeCount
+  })
 }
 
 export function printError(message: string) {

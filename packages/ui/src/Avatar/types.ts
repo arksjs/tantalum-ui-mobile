@@ -24,3 +24,5 @@ export interface AvatarGroupProps extends AvatarCommonProps {
   totalCount?: number | string
   countColor?: string
 }
+
+export type { ShapeType as AvatarShape, UserSizeType as AvatarSize }

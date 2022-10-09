@@ -1,7 +1,8 @@
 import type { FormItemCommonProps, FocusEmits } from '../Form/types'
-import type { OnClick } from '../helpers/types'
 
 export type Mode = 'search' | 'numeric' | 'decimal' | 'tel' | 'text' | 'none'
+
+type OnChange = (value: string) => void
 
 export interface InputProps extends FormItemCommonProps {
   maxlength?: number | string
@@ -15,7 +16,7 @@ export interface InputProps extends FormItemCommonProps {
 }
 
 export interface InputEmits extends FocusEmits {
-  onInput?: (value: string) => void
-  onChange?: (value: string) => void
-  onClick?: OnClick
+  onUpdateModelValue?: OnChange
+  onInput?: OnChange
+  onChange?: OnChange
 }

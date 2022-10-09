@@ -55,3 +55,11 @@ export interface ScrollViewRef {
   scrollToEnd: ScrollToEnd
   getScrollEl: () => HTMLDivElement | null
 }
+
+export type {
+  PullDirection as ScrollViewPullDirection,
+  OnScrollToUpper as ScrollViewOnScrollToUpper,
+  OnScrollToLower as ScrollViewOnScrollToLower,
+  OnRefreshing as ScrollViewOnRefreshing,
+  OnScroll as ScrollViewOnScroll
+}

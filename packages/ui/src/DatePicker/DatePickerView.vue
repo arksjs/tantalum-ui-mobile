@@ -14,6 +14,8 @@ import { pickerViewEmits } from '../Picker/props'
 import { commonProps } from './props'
 import { useHandlers } from '../DatePicker/use-date-picker'
 import type { SelectorModelValue } from '../SelectorField/types'
+import type { PropsToEmits } from '../helpers/types'
+import type { DatePickerViewEmits } from './types'
 
 export default defineComponent({
   name: 'ak-date-picker-view',
@@ -21,7 +23,7 @@ export default defineComponent({
   props: {
     ...commonProps
   },
-  emits: { ...pickerViewEmits },
+  emits: { ...pickerViewEmits } as PropsToEmits<DatePickerViewEmits>,
   setup(props, ctx) {
     const { emit } = ctx
 

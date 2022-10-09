@@ -31,3 +31,9 @@ export interface CountDownRef {
   resume: Noop
   reset: (timing: number, autoStart?: boolean) => void
 }
+
+export type {
+  OnEnd as CountDownOnEnd,
+  OnPauseOrResume as CountDownOnPause,
+  OnPauseOrResume as CountDownOnResume
+}

@@ -75,3 +75,5 @@ export interface VirtualListEmits {
   onVisibleItemsChange?: OnVisibleItemsChange
   onResize?: (size: number) => void
 }
+
+export type { OnVisibleItemsChange as VirtualListOnVisibleItemsChange }

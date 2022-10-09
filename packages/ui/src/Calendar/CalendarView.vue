@@ -44,7 +44,8 @@ import {
   getMaxTime,
   getTimeByDate,
   getFirstDayOfWeek,
-  getViewBodyTitleStyles
+  getViewBodyTitleStyles,
+  getSourceDetail
 } from './util'
 import type { CalendarViewEmits, DayInfo, Month } from './types'
 import { useHandlers } from '../Calendar/use-calendar'
@@ -477,7 +478,7 @@ export default defineComponent({
 
     function onSelect() {
       onChange()
-      emit('select', getDetail())
+      emit('select', getSourceDetail(getDetail()))
     }
 
     function getDetail() {

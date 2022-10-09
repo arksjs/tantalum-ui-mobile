@@ -12,3 +12,5 @@ export interface ToastProps extends PopupProps {
 }
 
 export type ToastEmits = PopupEmits
+
+export type { StateType as ToastType }

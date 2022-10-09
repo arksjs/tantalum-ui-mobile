@@ -3,12 +3,11 @@ import PickerPopup from './PickerPopup.vue'
 import PickerView from './PickerView.vue'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
-import type { ShowPickerOptions } from './types'
-import type { SelectorDetail } from '../SelectorField/types'
+import type { ShowPickerOptions, PickerDetail } from './types'
 
 const showPicker = createShowPopup<
   ShowPickerOptions,
-  PopupSuccessConfirmArgs<SelectorDetail>
+  PopupSuccessConfirmArgs<PickerDetail>
 >({
   apiName: 'showPicker',
   component: PickerPopup,
