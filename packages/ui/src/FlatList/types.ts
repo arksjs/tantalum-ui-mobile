@@ -29,3 +29,10 @@ export interface FlatListRef {
   scrollToEnd: ScrollToEnd
   recordInteraction: Noop
 }
+
+export type {
+  OnEndReached as FlatListOnEndReached,
+  OnRefreshing as FlatListOnRefreshing,
+  OnScroll as FlatListOnScroll,
+  OnVisibleItemsChange as FlatListOnVisibleItemsChange
+}

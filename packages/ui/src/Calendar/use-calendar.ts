@@ -1,9 +1,8 @@
 import dayjs from '../helpers/day'
 import { getDefaultSourceDetail, MODE_NAMES } from './util'
-import type { Mode, CalendarDetail, CalendarCommonProps } from './types'
+import type { Mode, CalendarSelectorDetail, CalendarCommonProps } from './types'
 import type { SelectorModelValue, SelectorDetail } from '../SelectorField/types'
 import { getEnumsValue } from '../helpers/validator'
-import { cloneData } from '../helpers/util'
 
 function valueParser(val: unknown, mode: Mode) {
   const values: number[] = []
@@ -92,9 +91,9 @@ export function useHandlers(props: CalendarCommonProps) {
 
   const formatter = function (valueArray: number[]) {
     const sourceDetail = sourceFormatter(valueArray, mode)
-    const detail: CalendarDetail = Object.assign(sourceDetail, {
+    const detail: CalendarSelectorDetail = Object.assign(sourceDetail, {
       source: {
-        value: cloneData(sourceDetail.value),
+        value: sourceDetail.value.map(v => new Date(v)),
         label: sourceDetail.label
       }
     })
@@ -108,6 +107,7 @@ export function useHandlers(props: CalendarCommonProps) {
       if ((ret as SelectorDetail)?.label != null) {
         detail.label = (ret as SelectorDetail).label
         detail.value = (ret as SelectorDetail).value
+        detail.source.label = detail.label
       } else {
         detail.value = ret as SelectorModelValue
       }

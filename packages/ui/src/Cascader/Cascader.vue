@@ -29,12 +29,14 @@ import { SelectorField } from '../SelectorField'
 import { pickerEmits, pickerProps, commonProps } from '../Picker/props'
 import { mergeHandlers } from '../Picker/util'
 import { usePicker } from '../Picker/use-picker'
+import type { PropsToEmits } from '../helpers/types'
+import type { CascaderEmits } from './types'
 
 export default defineComponent({
   name: 'ak-cascader',
   components: { CascaderPopup, SelectorField },
   props: { ...commonProps, ...pickerProps },
-  emits: { ...pickerEmits },
+  emits: { ...pickerEmits } as PropsToEmits<CascaderEmits>,
   setup(props, ctx) {
     return {
       ...usePicker(props, ctx, {

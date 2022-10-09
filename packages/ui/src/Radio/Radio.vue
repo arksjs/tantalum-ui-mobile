@@ -26,6 +26,8 @@ import { checkEmits, checkProps } from '../Checkbox/props'
 import { useCheck } from '../Checkbox/use-check'
 import CircleOutlined from '../Icon/icons/CircleOutlined'
 import CheckCircleFilled from '../Icon/icons/CheckCircleFilled'
+import type { PropsToEmits } from '../helpers/types'
+import type { RadioEmits } from './types'
 
 export default defineComponent({
   name: 'ak-radio',
@@ -33,7 +35,7 @@ export default defineComponent({
   props: {
     ...checkProps
   },
-  emits: { ...checkEmits },
+  emits: { ...checkEmits } as PropsToEmits<RadioEmits>,
   setup(props, ctx) {
     return {
       ...useCheck(props, ctx, 'radio'),

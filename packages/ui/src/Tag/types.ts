@@ -16,3 +16,5 @@ export interface TagEmits {
   onClose?: Noop
   onLongPress?: Noop
 }
+
+export type { PatternType as TagPattern }

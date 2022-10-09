@@ -19,10 +19,11 @@ import { Empty } from '../Empty'
 import { frameTo } from '../helpers/animation'
 import { pickerViewEmits, pickerViewProps } from './props'
 import { usePickerView } from '../Picker/use-picker'
-import type { PickerHandlers } from './types'
+import type { PickerHandlers, PickerViewEmits } from './types'
 import { useLocale } from '../ConfigProvider/context'
 import ViewCol from './PickerViewCol.vue'
 import { DEFAULT_ITEM_HEIGHT, mergeHandlers } from './util'
+import type { PropsToEmits } from '../helpers/types'
 
 interface ScrollElement extends HTMLElement {
   scrolling?: boolean
@@ -35,7 +36,7 @@ export default defineComponent({
   props: {
     ...pickerViewProps
   },
-  emits: { ...pickerViewEmits },
+  emits: { ...pickerViewEmits } as PropsToEmits<PickerViewEmits>,
   setup(props, ctx) {
     const { locale } = useLocale()
     const root = ref<HTMLElement>()

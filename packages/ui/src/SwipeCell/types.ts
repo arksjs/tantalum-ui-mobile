@@ -17,3 +17,8 @@ export interface SwipeCellProps {
 export interface SwipeCellEmits {
   onButtonClick?: OnButtonClick
 }
+
+export type {
+  ButtonOption as SwipeCellButtonOption,
+  OnButtonClick as SwipeCellOnButtonClick
+}

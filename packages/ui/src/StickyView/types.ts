@@ -54,3 +54,5 @@ export interface StickyViewEmits {
 export interface StickyViewItemProps {
   name?: string | number
 }
+
+export type { OnChange as StickyViewOnChange }

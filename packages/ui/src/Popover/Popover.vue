@@ -22,6 +22,8 @@ import { querySelector } from '../helpers/dom'
 import { usePopup } from '../popup/use-popup'
 import { useResizeObserver } from '../hooks/use-resize-observer'
 import { getArrowStyles, getInnerStyles, getShowPos, DEFAULT_POS } from './util'
+import type { PropsToEmits } from '../helpers/types'
+import type { PopoverEmits } from './types'
 
 export default defineComponent({
   name: 'ak-popover',
@@ -32,7 +34,7 @@ export default defineComponent({
       default: ''
     }
   },
-  emits: { ...popoverEmits },
+  emits: { ...popoverEmits } as PropsToEmits<PopoverEmits>,
   setup(props, ctx) {
     const container = ref<HTMLElement>()
     const innerEl = ref<HTMLDivElement>()

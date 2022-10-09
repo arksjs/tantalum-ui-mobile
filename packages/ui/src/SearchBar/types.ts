@@ -34,3 +34,12 @@ export interface SearchBarEmits {
   onSearch?: OnSearch
   onFieldClick?: OnFieldClick
 }
+
+export type {
+  SetSuggestList as SearchBarSetSuggestList,
+  OnInput as SearchBarOnFocus,
+  OnInput as SearchBarOnBlur,
+  OnInput as SearchBarOnInput,
+  OnSearch as SearchBarOnSearch,
+  OnFieldClick as SearchBarOnFieldClick
+}

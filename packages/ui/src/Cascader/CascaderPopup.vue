@@ -26,7 +26,7 @@ import { defineComponent } from 'vue'
 import { Drawer } from '../Drawer'
 import CascaderView from './CascaderView.vue'
 import { usePopupExtend } from '../popup/use-popup'
-import type { CascaderDetail } from './types'
+import type { CascaderDetail, CascaderPopupEmits } from './types'
 import {
   pickerPopupEmits,
   commonProps,
@@ -34,6 +34,7 @@ import {
 } from '../Picker/props'
 import { usePickerPopup } from '../Picker/use-picker'
 import { mergeHandlers } from '../Picker/util'
+import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
   name: 'ak-cascader-popup',
@@ -44,7 +45,7 @@ export default defineComponent({
   },
   emits: {
     ...pickerPopupEmits
-  },
+  } as PropsToEmits<CascaderPopupEmits>,
   setup(props, ctx) {
     const popup = usePopupExtend<CascaderDetail>(ctx)
     const pickerPopup = usePickerPopup(props, ctx, popup, {

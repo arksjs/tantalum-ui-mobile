@@ -27,7 +27,7 @@ import type {
   DatePickerOnConfirm,
   SelectorOnChange,
   SelectorModelValue,
-  SelectorDetail,
+  DatePickerDetail,
   SelectorValueParser,
   SelectorValueFormatter,
   VisibleState,
@@ -38,16 +38,16 @@ import type {
 
 ## 公共 Props
 
-| 属性            | 类型                                                             | 默认值                       | 必填 | 说明                                                                                                                                                                                                                                                                                                             |
-| --------------- | ---------------------------------------------------------------- | ---------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| v-model         | [SelectorModelValue](./DatePicker.md#selectormodelvalue)         |                              | 否   | 选中值                                                                                                                                                                                                                                                                                                           |
-| initial-mode    | [DatePickerMode](./DatePicker.md#datepickermode)                 |                              | 否   | 选择的模式，可选 'date', 'time', 'datetime' 等                                                                                                                                                                                                                                                                   |
-| min-date        | Date                                                             | 当天对应 10 年前的 Date 实例 | 否   | 最小时间对应的 Date 实例（含）                                                                                                                                                                                                                                                                                   |
-| max-date        | Date                                                             | 当天最后一秒的 Date 实例     | 否   | 最大时间对应的 Date 实例（含）                                                                                                                                                                                                                                                                                   |
-| format-template | string                                                           |                              | 否   | 格式的模板，如 `YYYY-MM-DD`，模板规则参考 [Dayjs](https://dayjs.fenxianglu.cn/category/parse.html#%E5%AD%97%E7%AC%A6%E4%B8%B2)。设置后 v-model 的绑定变为格式化后的 string 类型，不再是 number[] 实例。推荐根据 `initialMode` 选型来确定，如 `initialMode='minute-second'`，则可设置 `formatTemplate='mm分ss秒'` |
-| filter          | [DatePickerOptionFilter](./DatePicker.md#datepickeroptionfilter) |                              | 否   | 选项过滤器                                                                                                                                                                                                                                                                                                       |
-| formatter       | [SelectorValueFormatter](./DatePicker.md#selectorvalueformatter) |                              | 否   | 和 `parser` 成对设置，对于 v-model 和 onChange 的值进行转化                                                                                                                                                                                                                                                      |
-| parser          | [SelectorValueParser](./DatePicker.md#selectorvalueparser)       |                              | 否   | 和 `formatter` 成对设置，对于 v-model 和 onChange 的值进行反转化                                                                                                                                                                                                                                                 |
+| 属性            | 类型                                                             | 默认值                       | 必填 | 说明                                                                                                                                                                                                                                                                                                                                 |
+| --------------- | ---------------------------------------------------------------- | ---------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| v-model         | [SelectorModelValue](./DatePicker.md#selectormodelvalue)         |                              | 否   | 选中值                                                                                                                                                                                                                                                                                                                               |
+| initial-mode    | [DatePickerMode](./DatePicker.md#datepickermode)                 |                              | 否   | 选择的模式，可选 'date', 'time', 'datetime' 等                                                                                                                                                                                                                                                                                       |
+| min-date        | Date                                                             | 当天对应 10 年前的 Date 实例 | 否   | 最小时间对应的 Date 实例（含）                                                                                                                                                                                                                                                                                                       |
+| max-date        | Date                                                             | 当天最后一秒的 Date 实例     | 否   | 最大时间对应的 Date 实例（含）                                                                                                                                                                                                                                                                                                       |
+| format-template | string                                                           |                              | 否   | 格式的模板，如 `YYYY-MM-DD`，模板规则参考 [Dayjs](https://dayjs.fenxianglu.cn/category/parse.html#%E5%AD%97%E7%AC%A6%E4%B8%B2)。设置后 v-model 的绑定变为格式化后的 string 类型，不再是 number[] 。推荐根据 `initialMode` 选型来确定，如 `initialMode='minute-second'`，则可设置 `formatTemplate='mm分ss秒'`。优先级低于 `formatter` |
+| filter          | [DatePickerOptionFilter](./DatePicker.md#datepickeroptionfilter) |                              | 否   | 选项过滤器                                                                                                                                                                                                                                                                                                                           |
+| formatter       | [SelectorValueFormatter](./DatePicker.md#selectorvalueformatter) |                              | 否   | 和 `parser` 成对设置，对于 v-model 和 onChange 的值进行转化                                                                                                                                                                                                                                                                          |
+| parser          | [SelectorValueParser](./DatePicker.md#selectorvalueparser)       |                              | 否   | 和 `formatter` 成对设置，对于 v-model 和 onChange 的值进行反转化                                                                                                                                                                                                                                                                     |
 
 注：v-model 对未设置的前段值采用当前时间补上，后段则采用初始时间，如：initialMode='month-day-hour'下， 选取 5 月 7 日 12 点，则 v-model 对应的时间为：`Fri May 07 2021 12:00:00 GMT+0800`，设置 `minDate`，`maxDate` 的时候需要考虑到。
 
@@ -186,7 +186,10 @@ interface DatePickerDetail {
 }
 ```
 
-注：`label` 如果没有设置 `formatTemplate`，则采用内置模板。
+| 字段  | 说明                                                                               |
+| ----- | ---------------------------------------------------------------------------------- |
+| label | 选中值对应的描述文本，如果设置了 `formatTemplate` 或 `formatter`，则返回格式后文本 |
+| value | 选择的值，如 [2021, 5, 1]，不受 `formatTemplate` 或 `formatter` 影响               |
 
 ### SelectorValueFormatter
 

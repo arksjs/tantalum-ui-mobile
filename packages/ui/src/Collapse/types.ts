@@ -29,3 +29,9 @@ export interface CollapseItemProps {
 export interface CollapseItemEmits {
   onToggle?: ItemOnToggle
 }
+
+export type {
+  ActiveName as CollapseActiveName,
+  OnChange as CollapseOnChange,
+  ItemOnToggle as CollapseItemOnToggle
+}

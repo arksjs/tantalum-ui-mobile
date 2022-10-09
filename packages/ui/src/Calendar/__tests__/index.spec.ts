@@ -2,11 +2,15 @@ import { describe, test, expect } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
 import { Calendar, CalendarPopup, CalendarView } from '@/Calendar'
 
+const minDate = new Date(1640966400000)
+const maxDate = new Date(1672502399999)
+
 describe('Calendar', () => {
   test('snapshot', () => {
     const wrapper = shallowMount(Calendar, {
       props: {
-        options: []
+        minDate,
+        maxDate
       }
     })
 
@@ -18,7 +22,8 @@ describe('CalendarPopup', () => {
   test('snapshot', () => {
     const wrapper = shallowMount(CalendarPopup, {
       props: {
-        options: []
+        minDate,
+        maxDate
       },
       global: {
         stubs: { teleport: true }
@@ -33,7 +38,8 @@ describe('CalendarView', () => {
   test('snapshot', () => {
     const wrapper = shallowMount(CalendarView, {
       props: {
-        options: []
+        minDate,
+        maxDate
       }
     })
 

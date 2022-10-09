@@ -64,3 +64,11 @@ export interface CascaderProps
 export interface CascaderEmits
   extends FocusWithoutEventEmits,
     PickerCommonEmits {}
+
+export type {
+  OnSelect as CascaderOnSelect,
+  OnConfirm as CascaderOnConfirm,
+  UserFieldNames as CascaderFieldNames
+}
+
+export type { SelectorOnChange as CascaderOnChange } from '../SelectorField/types'

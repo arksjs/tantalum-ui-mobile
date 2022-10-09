@@ -16,3 +16,5 @@ export type ScrollTabItemProps = StickyViewItemProps
 export interface ScrollTabRef {
   switchToIndex?: (index: number) => void
 }
+
+export type { OnChange as ScrollTabOnChange }

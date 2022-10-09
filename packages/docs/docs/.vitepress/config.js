@@ -54,12 +54,12 @@ module.exports = {
       '/components/': getComponentsSideBar(),
       '/': getGuideSideBar()
     },
-    logo: '/logo.svg',
-    algolia: {
-      appId: 'UX7FWQ5P9G',
-      apiKey: '318e0b67d262ed1870dc20120fce2d77',
-      indexName: 'arkui-mobile-vue'
-    }
+    logo: '/logo.svg'
+    // algolia: {
+    //   appId: 'UX7FWQ5P9G',
+    //   apiKey: '318e0b67d262ed1870dc20120fce2d77',
+    //   indexName: 'arkui-mobile-vue'
+    // }
   },
   markdown: {
     /**

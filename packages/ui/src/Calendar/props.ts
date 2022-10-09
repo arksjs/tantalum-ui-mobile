@@ -5,7 +5,7 @@ import type {
   Mode,
   ValueFormatter,
   ValueParser,
-  CalendarDetail
+  CalendarSelectorDetail
 } from './types'
 import { createEnumsValidator } from '../helpers/validator'
 import { isPickerDetail } from '../Picker/props'
@@ -52,7 +52,7 @@ export const commonProps = {
   }
 }
 
-export const calendarDetailValidator = (payload: CalendarDetail) =>
+export const calendarDetailValidator = (payload: CalendarSelectorDetail) =>
   isPickerDetail(payload) &&
   typeof payload.rangeCount === 'number' &&
   Array.isArray(payload.valueArray)

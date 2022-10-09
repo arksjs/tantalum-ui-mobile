@@ -38,12 +38,17 @@ import { PickerView } from '../Picker'
 import { Drawer } from '../Drawer'
 import { NavBar } from '../NavBar'
 import { usePopupExtend } from '../popup/use-popup'
-import { pickerPopupProps, pickerPopupEmits } from '../Picker/props'
+import {
+  pickerPopupProps,
+  pickerPopupEmits,
+  isPickerDetail
+} from '../Picker/props'
 import { usePickerPopup } from '../Picker/use-picker'
 import { commonProps } from './props'
 import { useHandlers } from '../DatePicker/use-date-picker'
 import { useLocale } from '../ConfigProvider/context'
-import type { DatePickerDetail } from './types'
+import type { DatePickerDetail, DatePickerPopupEmits } from './types'
+import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
   name: 'ak-date-picker-popup',
@@ -57,8 +62,9 @@ export default defineComponent({
     }
   },
   emits: {
-    ...pickerPopupEmits
-  },
+    ...pickerPopupEmits,
+    confirm: payload => isPickerDetail(payload)
+  } as PropsToEmits<DatePickerPopupEmits>,
   setup(props, ctx) {
     const { handlers } = useHandlers(props)
     const { locale } = useLocale()

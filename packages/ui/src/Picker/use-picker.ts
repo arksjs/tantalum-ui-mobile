@@ -8,13 +8,12 @@ import type {
   PickerHandlers,
   Col,
   PickerProps,
-  PickerPopupEmits,
   PickerViewEmits,
   PickerPopupProps,
   PickerEmits,
   PickerViewRef,
-  PickerCommonProps,
-  PickerViewProps
+  PickerViewProps,
+  PickerCommonEmits
 } from './types'
 import type {
   SelectorValue,
@@ -31,7 +30,7 @@ import {
   getFormatOptions,
   isValidValue
 } from './util'
-import type { PopupCustomConfirm } from '../popup/types'
+import type { PopupCustomConfirm, PopupEmits } from '../popup/types'
 import type { PropsToEmits } from '../helpers/types'
 
 function getDefaultDetail(handlers: PickerHandlers) {
@@ -159,7 +158,7 @@ export function usePicker(
 
 export function usePickerPopup(
   props: Partial<PickerPopupProps>,
-  { emit }: SetupContext<PropsToEmits<PickerPopupEmits>>,
+  { emit }: SetupContext<PropsToEmits<PopupEmits & PickerCommonEmits>>,
   {
     customConfirm,
     onCancelClick

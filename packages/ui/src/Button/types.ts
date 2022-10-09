@@ -32,3 +32,5 @@ export interface ButtonProps extends ButtonGroupProps {
 export interface ButtonEmits {
   onClick?: OnClick
 }
+
+export type { ShapeType as ButtonShape, PatternType as ButtonPattern }

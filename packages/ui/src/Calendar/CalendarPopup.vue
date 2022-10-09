@@ -47,10 +47,10 @@ import { popupExtendProps } from '../popup/popup'
 import { pickerPopupEmits } from '../Picker/props'
 import { cloneDetail, isSameDetail, isValidValue } from '../Picker/util'
 import type {
-  CalendarDetail,
+  CalendarSelectorDetail,
   CalendarPopupEmits,
   CalendarViewRef,
-  CalendarSourceDetail
+  CalendarDetail
 } from './types'
 import { useLocale } from '../ConfigProvider/context'
 import { useHandlers } from './use-calendar'
@@ -88,9 +88,9 @@ export default defineComponent({
 
     const { getDefaultDetail } = useHandlers(props)
 
-    let detail: CalendarDetail = getDefaultDetail()
+    let detail: CalendarSelectorDetail = getDefaultDetail()
 
-    const popup = usePopupExtend<CalendarSourceDetail>(ctx)
+    const popup = usePopupExtend<CalendarDetail>(ctx)
 
     function onViewSelect() {
       const newDetail = getViewDetail()
@@ -128,7 +128,7 @@ export default defineComponent({
       return cloneDetail(detail)
     }
 
-    function updateDetail(newDetail: CalendarDetail) {
+    function updateDetail(newDetail: CalendarSelectorDetail) {
       detail = newDetail
       valueSize.value = newDetail.valueArray.length
     }

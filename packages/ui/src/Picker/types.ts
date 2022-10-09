@@ -1,12 +1,12 @@
 import type { PopupEmits, PopupProps, PopupRef } from '../popup/types'
-import type { SelectorOnChange } from '../SelectorField/types'
 import type { AnyObject, Noop } from '../helpers/types'
 import type {
   SelectorValue,
   SelectorModelValue,
   SelectorDetail,
   SelectorValueParser,
-  SelectorValueFormatter
+  SelectorValueFormatter,
+  SelectorOnChange
 } from '../SelectorField/types'
 import type { FocusWithoutEventEmits, FormItemCommonProps } from '../Form/types'
 
@@ -148,3 +148,9 @@ export type PickerViewAfterUpdate = (
   labelArray: readonly string[],
   cols: readonly Col[]
 ) => void
+
+export type {
+  OnConfirm as PickerOnConfirm,
+  UserFieldNames as PickerFieldNames,
+  SelectorOnChange as PickerOnChange
+}

@@ -1,9 +1,10 @@
 import type {
   SelectorModelValue,
   SelectorValueFormatter,
-  SelectorValueParser
+  SelectorValueParser,
+  SelectorOnChange
 } from '../SelectorField/types'
-import type { ColRow, PickerCommonEmits, PickerDetail } from '../Picker/types'
+import type { ColRow, PickerCommonEmits } from '../Picker/types'
 import type { PopupEmits, PopupProps } from '../popup/types'
 import type { FocusWithoutEventEmits, FormItemCommonProps } from '../Form/types'
 
@@ -89,3 +90,10 @@ export interface DatePickerProps
 export interface DatePickerEmits
   extends FocusWithoutEventEmits,
     PickerCommonEmits {}
+
+export type {
+  Mode as DatePickerMode,
+  OptionFilter as DatePickerOptionFilter,
+  OnConfirm as DatePickerOnConfirm,
+  SelectorOnChange as DatePickerOnChange
+}

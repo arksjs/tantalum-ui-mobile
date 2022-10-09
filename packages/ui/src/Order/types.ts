@@ -32,3 +32,5 @@ export interface Position {
   left: number
   deleted: boolean
 }
+
+export type { OnDelete as OrderOnDelete }

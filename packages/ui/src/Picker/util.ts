@@ -404,7 +404,7 @@ export function isSameDetail(a: SelectorDetail, b: SelectorDetail) {
   return isSameValue(a.value, b.value)
 }
 
-export function cloneValue(value: SelectorModelValue) {
+export function cloneValue<T extends SelectorModelValue>(value: T) {
   if (value instanceof Date) {
     return new Date(value)
   } else if (isDateArray(value)) {
@@ -420,7 +420,11 @@ export function cloneValue(value: SelectorModelValue) {
 
 export function cloneDetail<T extends SelectorDetail>(detail: T) {
   const newDetail = cloneData(detail)
+
   newDetail.value = cloneValue(detail.value)
+  if (detail.source) {
+    newDetail.source.value = cloneValue(detail.source.value)
+  }
 
   return newDetail
 }

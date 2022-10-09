@@ -13,23 +13,19 @@ export * from './components/api'
 export * from './components'
 export default ArkUI
 
-export type { FnArgs } from './helpers/types'
 export type {
+  FnArgs,
   StateType,
   PlacementType,
   SizeType,
   ViewPosition
 } from './helpers/types'
-
 export type {
-  VisibleState as PopupVisibleState,
-  OnVisibleStateChange as PopupOnVisibleStateChange,
-  OnCancel as PopupOnCancel
+  PopupVisibleState,
+  PopupOnVisibleStateChange,
+  PopupOnCancel
 } from './popup/types'
-export type {
-  ShapeType as ButtonShape,
-  PatternType as ButtonPattern
-} from './Button/types'
+export type { ButtonShape, ButtonPattern } from './Button/types'
 export type {
   SelectorValueParser,
   SelectorValueFormatter,
@@ -39,138 +35,120 @@ export type {
   SelectorOnConfirm
 } from './SelectorField/types'
 export type {
-  OnConfirm as PickerOnConfirm,
-  UserFieldNames as PickerFieldNames,
-  UserFieldNames as CascaderFieldNames
+  PickerDetail,
+  PickerOnChange,
+  PickerOnConfirm,
+  PickerFieldNames
 } from './Picker/types'
 export type {
-  OnSelect as CascaderOnSelect,
-  OnConfirm as CascaderOnConfirm
+  CascaderDetail,
+  CascaderFieldNames,
+  CascaderOnSelect,
+  CascaderOnChange,
+  CascaderOnConfirm
 } from './Cascader/types'
 export type {
-  Mode as DatePickerMode,
-  OptionFilter as DatePickerOptionFilter,
-  OnConfirm as DatePickerOnConfirm
+  DatePickerDetail,
+  DatePickerMode,
+  DatePickerOptionFilter,
+  DatePickerOnChange,
+  DatePickerOnConfirm
 } from './DatePicker/types'
 export type {
-  ValueFormatter as CalendarValueFormatter,
-  ValueParser as CalendarValueParser,
-  OnSelect as CalendarOnSelect,
-  OnConfirm as CalendarOnConfirm,
-  DayHandler as CalendarDayHandler,
-  Mode as CalendarMode,
+  CalendarValueFormatter,
+  CalendarValueParser,
+  CalendarOnChange,
+  CalendarOnSelect,
+  CalendarOnConfirm,
+  CalendarDayHandler,
+  CalendarMode,
   CalendarDetail
 } from './Calendar/types'
 export type {
-  Option as ActionSheetOption,
-  OnConfirm as ActionSheetOnConfirm
+  ActionSheetOption,
+  ActionSheetOnConfirm
 } from './ActionSheet/types'
+export type { PopMenuOption, PopMenuOnConfirm } from './PopMenu/types'
+export type { ImagePreviewOnChange } from './ImagePreview/types'
 export type {
-  Option as PopMenuOption,
-  OnConfirm as PopMenuOnConfirm
-} from './PopMenu/types'
-export type { OnChange as ImagePreviewOnChange } from './ImagePreview/types'
-export type {
-  SetSuggestList as SearchBarSetSuggestList,
-  OnInput as SearchBarOnFocus,
-  OnInput as SearchBarOnBlur,
-  OnInput as SearchBarOnInput,
-  OnSearch as SearchBarOnSearch,
-  OnFieldClick as SearchBarOnFieldClick
+  SearchBarSetSuggestList,
+  SearchBarOnFocus,
+  SearchBarOnBlur,
+  SearchBarOnInput,
+  SearchBarOnSearch,
+  SearchBarOnFieldClick
 } from './SearchBar/types'
 export type {
-  PullDirection as ScrollViewPullDirection,
-  OnScrollToUpper as ScrollViewOnScrollToUpper,
-  OnScrollToLower as ScrollViewOnScrollToLower,
-  OnRefreshing as ScrollViewOnRefreshing,
-  OnScroll as ScrollViewOnScroll,
-  OnRefreshing as FlatListOnRefreshing,
-  OnScroll as FlatListOnScroll
+  ScrollViewPullDirection,
+  ScrollViewOnScrollToUpper,
+  ScrollViewOnScrollToLower,
+  ScrollViewOnRefreshing,
+  ScrollViewOnScroll
 } from './ScrollView/types'
+export type { TabOnChange, TabOptions, TabOption } from './Tab/types'
+export type { TabBarOnChange } from './TabBar/types'
+export type { SideTabOnChange } from './SideTab/types'
+export type { SwiperOnChange, SwiperOnAnimated } from './Swiper/types'
+export type { TabViewOnChange, TabViewOnAnimated } from './TabView/types'
+export type { ToastType } from './Toast/types'
 export type {
-  OnChange as TabOnChange,
-  OnChange as TabBarOnChange,
-  OnChange as SideTabOnChange,
-  OptionList as TabOptions,
-  OptionItem as TabOption
-} from './Tab/types'
-export type {
-  OnChange as SwiperOnChange,
-  OnAnimated as SwiperOnAnimated,
-  OnChange as TabViewOnChange,
-  OnAnimated as TabViewOnAnimated
-} from './Swiper/types'
-export type { StateType as ToastType } from './Toast/types'
-export type {
-  ButtonOption as SwipeCellButtonOption,
-  OnButtonClick as SwipeCellOnButtonClick
+  SwipeCellButtonOption,
+  SwipeCellOnButtonClick
 } from './SwipeCell/types'
+export type { StickyViewOnChange } from './StickyView/types'
+export type { ScrollTabOnChange } from './ScrollTab/types'
+export type { IndexViewOnChange } from './IndexView/types'
 export type {
-  OnChange as StickyViewOnChange,
-  OnChange as IndexViewOnChange,
-  OnChange as ScrollTabOnChange
-} from './StickyView/types'
-export type {
-  ButtonOption as NavBarButtonOption,
-  OnButtonClick as NavBarOnButtonClick,
-  OnTitleDbClick as NavBarOnTitleDbClick
+  NavBarButtonOption,
+  NavBarOnButtonClick,
+  NavBarOnTitleDbClick
 } from './NavBar/types'
+export type { SkeletonAvatarShape, SkeletonButtonShape } from './Skeleton/types'
 export type {
-  AvatarShape as SkeletonAvatarShape,
-  ButtonShape as SkeletonButtonShape
-} from './Skeleton/types'
-export type {
-  ActiveName as CollapseActiveName,
-  OnChange as CollapseOnChange,
-  ItemOnToggle as CollapseItemOnToggle
+  CollapseActiveName,
+  CollapseOnChange,
+  CollapseItemOnToggle
 } from './Collapse/types'
 export type {
   CountTime,
-  OnEnd as CountDownOnEnd,
-  OnPauseOrResume as CountDownOnPause,
-  OnPauseOrResume as CountDownOnResume,
+  CountDownOnEnd,
+  CountDownOnPause,
+  CountDownOnResume,
   CountDownRef
 } from './CountDown/types'
 export type {
-  Speed as CountUpSpeed,
-  OnCancel as CountUpOnCancel,
-  OnAnimated as CountUpOnAnimated,
+  CountUpSpeed,
+  CountUpOnCancel,
+  CountUpOnAnimated,
   CountUpRef
 } from './CountUp/types'
-export type { OnStop as StopwatchOnStop, StopwatchRef } from './Stopwatch/types'
+export type { StopwatchOnStop, StopwatchRef } from './Stopwatch/types'
+export type { VirtualListOnVisibleItemsChange } from './VirtualList/types'
 export type {
-  OnVisibleItemsChange as VirtualListOnVisibleItemsChange,
-  OnVisibleItemsChange as FlatListOnVisibleItemsChange
-} from './VirtualList/types'
-export type { OnEndReached as FlatListOnEndReached } from './FlatList/types'
+  FlatListOnEndReached,
+  FlatListOnVisibleItemsChange,
+  FlatListOnRefreshing,
+  FlatListOnScroll
+} from './FlatList/types'
 export type {
-  OnDelete as NumberKeyboardOnDelete,
-  OnClose as NumberKeyboardOnClose,
-  KeyboardType as NumberKeyboardType
+  NumberKeyboardOnDelete,
+  NumberKeyboardOnClose,
+  NumberKeyboardType
 } from './NumberKeyboard/types'
-export type { OnDelete as OrderOnDelete } from './Order/types'
+export type { OrderOnDelete } from './Order/types'
 export type {
-  Accept as ImageUploaderAccept,
-  BeforeUpload as ImageUploaderBeforeUpload,
-  UploadReady as ImageUploaderUploadReady,
-  OnDelete as ImageUploaderOnDelete
+  ImageUploaderAccept,
+  ImageUploaderBeforeUpload,
+  ImageUploaderUploadReady,
+  ImageUploaderOnDelete
 } from './ImageUploader/types'
 export type { BadgeOption } from './Badge/types'
-export type { Mode as ImageMode, OnLoad as ImageOnLoad } from './Image/types'
-export type { ArrowDirection as CellArrowDirection } from './Cell/types'
-export type { Mode as NoticeBarMode } from './NoticeBar/types'
-export type { PatternType as TagPattern } from './Tag/types'
-export type {
-  UserOptionItem as CheckboxOptionItem,
-  UserOptionItem as RadioOptionItem
-} from './Checkbox/types'
-export type {
-  ShapeType as AvatarShape,
-  UserSizeType as AvatarSize
-} from './Avatar/types'
+export type { ImageMode, ImageOnLoad } from './Image/types'
+export type { CellArrowDirection } from './Cell/types'
+export type { NoticeBarMode } from './NoticeBar/types'
+export type { TagPattern } from './Tag/types'
+export type { CheckboxOptionItem, RadioOptionItem } from './Checkbox/types'
+export type { AvatarShape, AvatarSize } from './Avatar/types'
 export type { EmptyType } from './Empty/types'
-export type {
-  JustifyType as RowJustify,
-  AlignType as RowAlign
-} from './Row/types'
+export type { RowJustify, RowAlign } from './Row/types'
 export type { ResultType } from './Result/types'

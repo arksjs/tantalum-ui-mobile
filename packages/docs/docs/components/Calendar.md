@@ -35,104 +35,17 @@ import type {
 
 ## 公共 Props
 
-| 属性           | 类型                                                           | 默认值             | 必填 | 说明                                                 |
-| -------------- | -------------------------------------------------------------- | ------------------ | ---- | ---------------------------------------------------- |
-| v-model        | [SelectorModelValue](./Calendar.md#selectormodelvalue)         | []                 | 否   | 选中值                                               |
-| min-date       | Date                                                           | 当前日期           | 否   | 可选最小值                                           |
-| max-date       | Date                                                           | 当前日期的六个月后 | 否   | 可选最大值                                           |
-| initial-mode   | [CalendarMode](./Calendar.md#calendarmode)                     | 'single'           | 否   | 模式                                                 |
-| allow-same-day | boolean                                                        | false              | 否   | `range` 模式生效，设置开始结束时间是否可以同一天     |
-| max-range      | number                                                         | Infinity           | 否   | `range` 模式生效，选择区间的最长天数                 |
-| day-handler    | [CalendarDayHandler](./Calendar.md#calendardayhandler)         |                    | 否   | 日历每个日期处理函数                                 |
-| formatter      | [CalendarValueFormatter](./Calendar.md#calendarvalueformatter) |                    | 否   | 和 `parser` 成对设置，对于 v-model 的值进行转化      |
-| parser         | [CalendarValueParser](./Calendar.md#calendarvalueparser)       |                    | 否   | 和 `formatter` 成对设置，对于 v-model 的值进行反转化 |
-
-### SelectorValue 的类型
-
-允许的类型为：`string | number | Date`
-
-在不自定义 `formatter/parser` 的情况下，v-model 只有 `Date[]` 这种情况。
-
-### SelectorModelValue 的类型
-
-SelectorModelValue 的类型为： `SelectorValue | SelectorValue[]`
-
-### CalendarDetail 的结构
-
-| 值         | 类型                                                   | 说明                                                                                      |
-| ---------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
-| value      | [SelectorModelValue](./Calendar.md#selectormodelvalue) | 选择的值，`range` 模式下有开始 Date 和结束 Date 两个实例；`formatter/parser` 的优先级更高 |
-| label      | string                                                 | 选中值对应的描述文本                                                                      |
-| valueArray | number[][]                                             | 如：[[2021, 5, 1], [2021, 5, 30]]                                                         |
-| rangeCount | number                                                 | 选择区间持续的天数（含首尾）                                                              |
-
-### CalendarMode
-
-```ts
-type CalendarMode = 'single' | 'range'
-```
-
-`single` 表示选择一天，`range` 选择一个日期区间。
-
-### CalendarDayHandler
-
-```ts
-type CalendarDayHandler = dayHandler(dayInfo: DayInfo) => DayInfo
-
-interface DayInfo {
-  topHighlight?: boolean
-  topText?: string
-  state: string
-  bottomHighlight?: boolean
-  bottomText?: string
-  text: string
-  dateString: string
-  date?: Date
-  timestamp: number
-}
-```
-
-日历中的每个日期都对应一个 DayInfo 对象，通过 `day-handler` 属性可以修改 DayInfo 对象的内容后返回。
-
-| 值              | 类型    | 说明                                                                                                                                                                                                                                         |
-| --------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| date            | Date    | 日期对应的 Date 对象，该字段修改无效                                                                                                                                                                                                         |
-| state           | string  | 日期当前的状态，有：`selected` 选中，`startSelected` 开始（initialMode="range"下），`endSelected` 结束（initialMode="range"下），`disabled` 禁用。在空字符串的情况下，可以设置为 `disabled` 强制设置该日期为禁用（一般在票卖完的情况下设置） |
-| text            | string  | 日期文本，不建议修改                                                                                                                                                                                                                         |
-| topText         | string  | 日期上方展示文本，一般可修改为“节日名称”、“今天”、“明天”、“开始”、“结束”等                                                                                                                                                                   |
-| topHighlight    | boolean | 日期上方展示文本是否高亮                                                                                                                                                                                                                     |
-| bottomText      | string  | 日期下方展示文本，一般可修改为“机票价格”、“酒店价格”、“特价”、“热门”等                                                                                                                                                                       |
-| bottomHighlight | boolean | 日期下方展示文本是否高亮                                                                                                                                                                                                                     |
-| dateString      | string  | 日期对应的格式化时间（`YYYY-MM-DD`），如：2020-11-11，该字段不影响展示                                                                                                                                                                       |
-
-### formatter/parser
-
-高阶配置，`formatter` 和 `parser` 需要一同设置，对 v-model 的值转为自定义值。
-
-#### CalendarValueFormatter
-
-```ts
-interface CalendarValueFormatter {
-  (valueArray: Date[], mode: CalendarMode):
-    | {
-        value: SelectorValue | SelectorValue[]
-        label: string
-      }
-    | (SelectorValue | SelectorValue[])
-}
-```
-
-将 v-model 的原始值转为需要的自定义值，值需要满足 `SelectorValue | SelectorValue[]` 的类型约束，可以返回 { value, label } 对两个数据进行修改，或者单独返回 value。
-
-#### CalendarValueParser
-
-```ts
-interface CalendarValueParser {
-  (value: unknown, mode: CalendarMode): Date[]
-}
-```
-
-跟 `CalendarValueFormatter` 相反，将自定义 v-model 的值转为组件认识的原始数组。
+| 属性           | 类型                                                           | 默认值             | 必填 | 说明                                                             |
+| -------------- | -------------------------------------------------------------- | ------------------ | ---- | ---------------------------------------------------------------- |
+| v-model        | [SelectorModelValue](./Calendar.md#selectormodelvalue)         | []                 | 否   | 选中值                                                           |
+| min-date       | Date                                                           | 当前日期           | 否   | 可选最小值                                                       |
+| max-date       | Date                                                           | 当前日期的六个月后 | 否   | 可选最大值                                                       |
+| initial-mode   | [CalendarMode](./Calendar.md#calendarmode)                     | 'single'           | 否   | 模式                                                             |
+| allow-same-day | boolean                                                        | false              | 否   | `range` 模式生效，设置开始结束时间是否可以同一天                 |
+| max-range      | number                                                         | Infinity           | 否   | `range` 模式生效，选择区间的最长天数                             |
+| day-handler    | [CalendarDayHandler](./Calendar.md#calendardayhandler)         |                    | 否   | 日历每个日期处理函数                                             |
+| formatter      | [CalendarValueFormatter](./Calendar.md#calendarvalueformatter) |                    | 否   | 和 `parser` 成对设置，对于 v-model 和 onChange 的值进行转化      |
+| parser         | [CalendarValueParser](./Calendar.md#calendarvalueparser)       |                    | 否   | 和 `formatter` 成对设置，对于 v-model 和 onChange 的值进行反转化 |
 
 ## Calendar 日历选择器
 
@@ -183,7 +96,7 @@ interface CalendarValueParser {
 
 | 事件                 | 描述                                              | 回调函数参数                                                          | 函数 TypeScript           |
 | -------------------- | ------------------------------------------------- | --------------------------------------------------------------------- | ------------------------- |
-| confirm              | 选择完毕后触发 / `showConfirm` 点击确定按钮后触发 | payload: [CalendarDetail](./Calendar.md#calendardetail-的结构)        | CalendarOnConfirm         |
+| confirm              | 选择完毕后触发 / `showConfirm` 点击确定按钮后触发 | payload: [CalendarDetail](./Calendar.md#calendardetail)               | CalendarOnConfirm         |
 | cancel               | 点击蒙层关闭后触发                                |                                                                       | PopupOnCancel             |
 | change               | 选择后值发生改变时触发                            | payload: [SelectorModelValue](./Calendar.md#selectormodelvalue)       | SelectorOnChange          |
 | visible-state-change | 展示隐藏时触发                                    | payload: { state: [VisibleState](./Calendar.md#visiblestate-值说明) } | PopupOnVisibleStateChange |
@@ -209,7 +122,7 @@ interface CalendarValueParser {
 
 | 事件   | 描述                   | 回调函数参数                                                    | 函数 TypeScript  |
 | ------ | ---------------------- | --------------------------------------------------------------- | ---------------- |
-| select | 选择后触发             | payload: [CalendarDetail](./Calendar.md#calendardetail-的结构)  | CalendarOnSelect |
+| select | 选择后触发             | payload: [CalendarDetail](./Calendar.md#calendardetail)         | CalendarOnSelect |
 | change | 选择后值发生改变时触发 | payload: [SelectorModelValue](./Calendar.md#selectormodelvalue) | SelectorOnChange |
 
 ## showCalendar(object) 显示日历选择弹窗
@@ -232,14 +145,11 @@ interface CalendarValueParser {
 
 #### SuccessPayload
 
-| 属性               | 类型       | 说明                                             |
-| ------------------ | ---------- | ------------------------------------------------ |
-| cancel?            | boolean    | 为 true 时，表示取消                             |
-| confirm?           | boolean    | 为 true 时，表示点击了确定，此时返回 `detail`    |
-| detail?.value      | Date[]     | 开始 1 个 Date 实例 或 开始和结束 2 个 Date 实例 |
-| detail?.valueArray | number[][] | 如：[[2021, 5, 1], [2021, 5, 30]]                |
-| detail?.label      | string     | 2021-05-21 或 05-21 ~ 05-22                      |
-| detail?.rangeCount | number     | 选择区间持续的天数（含首尾）                     |
+| 属性     | 类型                                           | 说明                                          |
+| -------- | ---------------------------------------------- | --------------------------------------------- |
+| cancel?  | boolean                                        | 为 true 时，表示取消                          |
+| confirm? | boolean                                        | 为 true 时，表示点击了确定，此时返回 `detail` |
+| detail?  | [CalendarDetail](./Calendar.md#calendardetail) |                                               |
 
 ### Usage
 
@@ -254,3 +164,101 @@ showCalendar({
   }
 })
 ```
+
+## 类型释义
+
+### SelectorValue
+
+```ts
+type SelectorValue = string | number | Date
+```
+
+### SelectorModelValue
+
+```ts
+type SelectorModelValue = SelectorValue | SelectorValue[]
+```
+
+注：在不自定义 `formatter/parser` 的情况下，v-model 只有 `Date[]` 这种情况。
+
+### CalendarDetail
+
+```ts
+interface CalendarDetail {
+  label: string
+  value: Date[]
+  valueArray: number[][]
+  rangeCount: number
+}
+```
+
+| 字段       | 说明                                                                            |
+| ---------- | ------------------------------------------------------------------------------- |
+| label      | 选中值对应的描述文本，如果设置了 `formatter`，则返回格式后文本                  |
+| value      | 选择的值，`range` 模式下有开始 Date 和结束 Date 两个实例，不受 `formatter` 影响 |
+| valueArray | 如：[[2021, 5, 1]] 或 [[2021, 5, 1], [2021, 5, 30]]                             |
+| rangeCount | 选择区间持续的天数（含首尾）                                                    |
+
+### CalendarMode
+
+```ts
+type CalendarMode = 'single' | 'range'
+```
+
+| 值     | 说明             |
+| ------ | ---------------- |
+| single | 选择一天         |
+| range  | 选择一个日期区间 |
+
+### CalendarValueFormatter
+
+```ts
+interface CalendarValueFormatter {
+  (valueArray: Date[], mode: CalendarMode):
+    | { value: SelectorModelValue; label: string }
+    | SelectorModelValue
+}
+```
+
+将 v-model 的原始值转为需要的自定义值，值需要满足 `SelectorModelValue` 的类型约束，可以返回 { value, label } 对两个数据进行修改，或者单独返回 value。
+
+### CalendarValueParser
+
+```ts
+interface CalendarValueParser {
+  (value: unknown, mode: CalendarMode): Date[]
+}
+```
+
+跟 `CalendarValueFormatter` 相反，将自定义 v-model 的值转为组件认识的原始数组。
+
+### CalendarDayHandler
+
+```ts
+type CalendarDayHandler = dayHandler(dayInfo: DayInfo) => DayInfo
+
+interface DayInfo {
+  topHighlight?: boolean
+  topText?: string
+  state: string
+  bottomHighlight?: boolean
+  bottomText?: string
+  text: string
+  dateString: string
+  date?: Date
+  timestamp: number
+}
+```
+
+日历中的每个日期都对应一个 DayInfo 对象，通过 `day-handler` 属性可以修改 DayInfo 对象的内容后返回。
+
+| 值              | 类型    | 说明                                                                                                                                                                                                                                         |
+| --------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| date            | Date    | 日期对应的 Date 对象，该字段修改无效                                                                                                                                                                                                         |
+| state           | string  | 日期当前的状态，有：`selected` 选中，`startSelected` 开始（initialMode="range"下），`endSelected` 结束（initialMode="range"下），`disabled` 禁用。在空字符串的情况下，可以设置为 `disabled` 强制设置该日期为禁用（一般在票卖完的情况下设置） |
+| text            | string  | 日期文本，不建议修改                                                                                                                                                                                                                         |
+| topText         | string  | 日期上方展示文本，一般可修改为“节日名称”、“今天”、“明天”、“开始”、“结束”等                                                                                                                                                                   |
+| topHighlight    | boolean | 日期上方展示文本是否高亮                                                                                                                                                                                                                     |
+| bottomText      | string  | 日期下方展示文本，一般可修改为“机票价格”、“酒店价格”、“特价”、“热门”等                                                                                                                                                                       |
+| bottomHighlight | boolean | 日期下方展示文本是否高亮                                                                                                                                                                                                                     |
+| dateString      | string  | 日期对应的格式化时间（`YYYY-MM-DD`），如：2020-11-11，该字段不影响展示                                                                                                                                                                       |

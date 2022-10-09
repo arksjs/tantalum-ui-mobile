@@ -29,8 +29,10 @@
 import { ref, defineComponent, watch, nextTick } from 'vue'
 import { isNumeric } from '../helpers/util'
 import { formNumberValueEmits, formItemProps } from '../Form/form'
-import { slideProps } from '../Slider/props'
-import { useSlide } from '../Slider/use-slide'
+import { slideProps } from './props'
+import { useSlide } from './use-slide'
+import type { PropsToEmits } from '../helpers/types'
+import type { SliderEmits } from './types'
 
 export default defineComponent({
   name: 'ak-slider',
@@ -44,7 +46,7 @@ export default defineComponent({
   },
   emits: {
     ...formNumberValueEmits
-  },
+  } as PropsToEmits<SliderEmits>,
   setup(props, ctx) {
     const progress = ref(0)
     const inputValue = ref(0)

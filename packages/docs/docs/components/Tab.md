@@ -19,7 +19,12 @@ import { AkTab } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { TabOnChange, TabOptions, BadgeOption } from 'arkui-mobile-vue'
+import type {
+  TabOnChange,
+  TabOptions,
+  TabOption,
+  BadgeOption
+} from 'arkui-mobile-vue'
 ```
 
 ## Props
@@ -35,18 +40,16 @@ import type { TabOnChange, TabOptions, BadgeOption } from 'arkui-mobile-vue'
 ### TabOptions
 
 ```ts
-type TabOptions = (
-  | number
-  | string
-  | {
-      label: string
-      value: number | string
-      icon?: IconData
-      activeIcon?: IconData
-      badge?: BadgeOption
-      subLabel?: string
-    }
-)[]
+type TabOption = {
+  label: string
+  value: number | string
+  icon?: IconData
+  activeIcon?: IconData
+  badge?: BadgeOption
+  subLabel?: string
+}
+
+type TabOptions = (number | string | TabOption)[]
 ```
 
 | key        | 类型                | 默认值 | 必填 | 说明                                               |

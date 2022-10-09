@@ -43,3 +43,5 @@ export interface LoadedResource {
   src: string
   event: Event
 }
+
+export type { Mode as ImageMode, OnLoad as ImageOnLoad }

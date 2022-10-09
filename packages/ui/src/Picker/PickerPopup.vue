@@ -41,8 +41,9 @@ import { usePopupExtend } from '../popup/use-popup'
 import { pickerPopupProps, pickerPopupEmits, commonProps } from './props'
 import { usePickerPopup } from '../Picker/use-picker'
 import { useLocale } from '../ConfigProvider/context'
-import type { PickerDetail, PickerHandlers } from './types'
+import type { PickerDetail, PickerHandlers, PickerPopupEmits } from './types'
 import { mergeHandlers } from './util'
+import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
   name: 'ak-picker-popup',
@@ -57,7 +58,7 @@ export default defineComponent({
   },
   emits: {
     ...pickerPopupEmits
-  },
+  } as PropsToEmits<PickerPopupEmits>,
   setup(props, ctx) {
     const { locale } = useLocale()
     const handlers = inject<Partial<PickerHandlers>>('akPickerHandlers', {})

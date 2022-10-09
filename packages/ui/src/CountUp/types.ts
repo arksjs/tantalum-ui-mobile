@@ -21,3 +21,9 @@ export interface CountUpEmits {
 export interface CountUpRef {
   cancel: Noop
 }
+
+export type {
+  Speed as CountUpSpeed,
+  OnCancel as CountUpOnCancel,
+  OnAnimated as CountUpOnAnimated
+}

@@ -27,9 +27,11 @@
 import { computed, defineComponent } from 'vue'
 import { Icon } from '../Icon'
 import { Badge } from '../Badge'
-import { tabEmits, tabProps } from '../Tab/tab'
-import { useTab } from '../Tab/use-tab'
+import { tabEmits, tabProps } from './tab'
+import { useTab } from './use-tab'
 import { getClasses, getItemClasses } from './util'
+import type { PropsToEmits } from '../helpers/types'
+import type { TabEmits } from './types'
 
 export default defineComponent({
   name: 'ak-tab',
@@ -41,7 +43,7 @@ export default defineComponent({
       default: 4
     }
   },
-  emits: { ...tabEmits },
+  emits: { ...tabEmits } as PropsToEmits<TabEmits>,
   setup(props, ctx) {
     const tab = useTab(props, ctx, { tabName: 'Tab' })
 

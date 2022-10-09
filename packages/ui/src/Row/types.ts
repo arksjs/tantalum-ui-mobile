@@ -14,3 +14,5 @@ export interface RowProps {
   justify?: JustifyType
   align?: AlignType
 }
+
+export type { JustifyType as RowJustify, AlignType as RowAlign }

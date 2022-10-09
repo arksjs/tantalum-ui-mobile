@@ -62,7 +62,8 @@ import {
 } from '../Form/form'
 import { useInput } from '../Form/use-form'
 import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
-import type { OnFocus } from '../helpers/types'
+import type { OnFocus, PropsToEmits } from '../helpers/types'
+import type { InputEmits } from './types'
 
 export default defineComponent({
   name: 'ak-input',
@@ -107,7 +108,7 @@ export default defineComponent({
   emits: {
     ...formStringValueEmits,
     ...formFocusEmits
-  },
+  } as PropsToEmits<InputEmits>,
   setup(props, { emit, slots }) {
     const active = ref(false)
     const isShowClear = ref(false)

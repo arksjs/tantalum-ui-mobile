@@ -38,7 +38,8 @@ import { Button as AkButton, ButtonGroup } from '../Button'
 import { useLocale } from '../ConfigProvider/context'
 import { Popover } from '../Popover'
 import { usePopupExtend } from '../popup/use-popup'
-import type { EmptyObject } from '../helpers/types'
+import type { EmptyObject, PropsToEmits } from '../helpers/types'
+import type { PopDialogEmits } from './types'
 
 export default defineComponent({
   name: 'ak-pop-dialog',
@@ -64,7 +65,7 @@ export default defineComponent({
       type: String
     }
   },
-  emits: { ...popoverEmits },
+  emits: { ...popoverEmits } as PropsToEmits<PopDialogEmits>,
   setup(props, ctx) {
     const { locale } = useLocale()
     const popup = usePopupExtend<EmptyObject>(ctx)

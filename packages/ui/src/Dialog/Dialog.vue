@@ -48,7 +48,8 @@ import { Modal } from '../Modal'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupExtendProps } from '../popup/popup'
 import { useLocale } from '../ConfigProvider/context'
-import type { EmptyObject } from '../helpers/types'
+import type { EmptyObject, PropsToEmits } from '../helpers/types'
+import type { DialogEmits } from './types'
 
 export default defineComponent({
   name: 'ak-dialog',
@@ -78,7 +79,7 @@ export default defineComponent({
       default: null
     }
   },
-  emits: { ...popupEmits },
+  emits: { ...popupEmits } as PropsToEmits<DialogEmits>,
   setup(props, ctx) {
     const { locale } = useLocale()
     const popup = usePopupExtend<EmptyObject>(ctx)

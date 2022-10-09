@@ -20,3 +20,5 @@ export interface StopwatchRef {
   reset: Noop
   lap: () => CountTime[]
 }
+
+export type { OnStop as StopwatchOnStop }

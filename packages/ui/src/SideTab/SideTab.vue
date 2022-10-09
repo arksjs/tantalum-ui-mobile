@@ -26,6 +26,8 @@ import { Badge } from '../Badge'
 import { tabEmits, tabProps } from '../Tab/tab'
 import { useTab } from '../Tab/use-tab'
 import { getItemClasses } from './util'
+import type { PropsToEmits } from '../helpers/types'
+import type { SideTabEmits } from './types'
 
 export default defineComponent({
   name: 'ak-side-tab',
@@ -37,7 +39,7 @@ export default defineComponent({
       default: 4
     }
   },
-  emits: { ...tabEmits },
+  emits: { ...tabEmits } as PropsToEmits<SideTabEmits>,
   setup(props, ctx) {
     return {
       getItemClasses,
