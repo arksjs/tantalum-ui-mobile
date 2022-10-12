@@ -1,5 +1,5 @@
-import type { Ref } from 'vue'
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { type Ref, shallowRef } from 'vue'
+import { onBeforeUnmount, onMounted, watch } from 'vue'
 import { addEvent, touchEvent, addLongPressEvent } from '../helpers/events'
 import type { LongPressEventCallback, Noop } from '../helpers/types'
 
@@ -113,7 +113,7 @@ export function useDbclick(
 }
 
 export function useBlur(callback: Noop) {
-  const elRef = ref(document.documentElement)
+  const elRef = shallowRef(document.documentElement)
 
   const { off } = useEvent(elRef, 'click', callback)
 

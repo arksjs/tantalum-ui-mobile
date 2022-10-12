@@ -1,6 +1,6 @@
 {
   "name": "arkui-mobile-vue",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Vue components include form, toast, modal, etc.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -106,7 +106,7 @@
     "vitest": "^0.23.2",
     "vue": "^3.2.31",
     "vue-router": "^4.0.14",
-    "vue-tsc": "^0.30.6"
+    "vue-tsc": "^1.0.3"
   },
   "config": {
     "commitizen": {

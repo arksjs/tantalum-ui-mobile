@@ -15,7 +15,15 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, onMounted, ref, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  nextTick,
+  onMounted,
+  ref,
+  shallowRef,
+  watch
+} from 'vue'
 import { popoverProps, popoverEmits } from '../Popover/props'
 import { cloneData } from '../helpers/util'
 import { querySelector } from '../helpers/dom'
@@ -97,7 +105,9 @@ export default defineComponent({
 
       useResizeObserver(container, () => updatePos('container resize'))
 
-      useResizeObserver(ref(document.documentElement), () => {
+      const docEl = shallowRef(document.documentElement)
+
+      useResizeObserver(docEl, () => {
         updatePos('window resize')
       })
     })
