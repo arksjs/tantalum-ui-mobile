@@ -5,6 +5,10 @@
   position: relative;
   box-sizing: border-box;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   &_indicators {
     position: absolute;
     left: 50%;
