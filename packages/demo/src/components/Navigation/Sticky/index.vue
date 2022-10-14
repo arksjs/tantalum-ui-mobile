@@ -2,20 +2,11 @@
   <ak-group title="Sticky View">
     <ak-sticky-view
       class="exp-sticky-box"
-      v-model:activeIndex="activeIndex"
+      v-model="activeName"
       @change="onChange"
     >
-      <ak-sticky-view-item name="Sticky 1">
-        <div class="exp-sticky-box-1"></div>
-      </ak-sticky-view-item>
-      <ak-sticky-view-item name="Sticky 2">
-        <div class="exp-sticky-box-2"></div>
-      </ak-sticky-view-item>
-      <ak-sticky-view-item name="Sticky 3">
-        <div class="exp-sticky-box-3"></div>
-      </ak-sticky-view-item>
-      <ak-sticky-view-item name="Sticky 4">
-        <div class="exp-sticky-box-4"></div>
+      <ak-sticky-view-item v-for="i in 4" :key="i" :name="`Sticky ${i}`">
+        <div :class="`exp-sticky-box-${i}`"></div>
       </ak-sticky-view-item>
     </ak-sticky-view>
     <!-- <div class="exp-sticky-box" id="stickyContainer">
@@ -36,14 +27,14 @@ import type { StickyViewOnChange } from '@/index'
 export default defineComponent({
   name: 'ExpSticky',
   setup() {
-    const activeIndex = ref(0)
+    const activeName = ref('')
 
-    const onChange: StickyViewOnChange = res => {
-      console.log('change', res)
+    const onChange: StickyViewOnChange = (name, index) => {
+      console.log('change', name, index)
     }
 
     return {
-      activeIndex,
+      activeName,
 
       onChange
     }

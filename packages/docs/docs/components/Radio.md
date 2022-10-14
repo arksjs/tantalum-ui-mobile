@@ -33,9 +33,9 @@ import type { RadioOptionItem } from 'arkui-mobile-vue'
 
 ## Radio Events
 
-| 事件名称 | 描述               | 回调函数参数     |
-| -------- | ------------------ | ---------------- |
-| change   | 勾选发生改变时触发 | checked: boolean |
+| 事件名称       | 描述               | 回调函数参数     |
+| -------------- | ------------------ | ---------------- |
+| checked-change | 勾选发生改变时触发 | checked: boolean |
 
 ## Radio Slots
 

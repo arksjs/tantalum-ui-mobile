@@ -19,7 +19,10 @@ import { AkSwiper, AkSwiperItem } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-vue'
+import type {
+  SwiperOnActiveIndexChange,
+  SwiperOnAnimated
+} from 'arkui-mobile-vue'
 ```
 
 ## Swiper Props
@@ -39,11 +42,11 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-vue'
 
 ## Swiper Events
 
-| 事件     | 描述                         | 回调函数参数                               | TypeScript 函数  |
-| -------- | ---------------------------- | ------------------------------------------ | ---------------- |
-| change   | 切换时触发                   | ( activeIndex: number, fromIndex: number ) | SwiperOnChange   |
-| animated | 动画结束时触发               | ( activeIndex: number, fromIndex: number ) | SwiperOnAnimated |
-| click    | 点击时触发，为了区分滑动情况 |                                            |                  |
+| 事件                | 描述                         | 回调函数参数                               | TypeScript 函数           |
+| ------------------- | ---------------------------- | ------------------------------------------ | ------------------------- |
+| active-index-change | 切换时触发                   | ( activeIndex: number, fromIndex: number ) | SwiperOnActiveIndexChange |
+| animated            | 动画结束时触发               | ( activeIndex: number, fromIndex: number ) | SwiperOnAnimated          |
+| click               | 点击时触发，为了区分滑动情况 |                                            |                           |
 
 ## Swiper Slots
 

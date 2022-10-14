@@ -1,4 +1,6 @@
-import type { SwiperOnChange, SwiperOnAnimated } from '../Swiper/types'
+import type { SwiperOnAnimated } from '../Swiper/types'
+
+type OnChange = (name: string, index: number) => void
 
 export interface TabViewProps {
   initialVertical?: boolean
@@ -6,7 +8,7 @@ export interface TabViewProps {
 }
 
 export interface TabViewEmits {
-  onChange?: SwiperOnChange
+  onChange?: OnChange
   onAnimated?: SwiperOnAnimated
 }
 
@@ -22,6 +24,6 @@ export interface TabViewRef {
 }
 
 export type {
-  SwiperOnChange as TabViewOnChange,
+  OnChange as TabViewOnChange,
   SwiperOnAnimated as TabViewOnAnimated
 }

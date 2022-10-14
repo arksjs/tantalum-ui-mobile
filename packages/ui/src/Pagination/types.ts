@@ -6,6 +6,5 @@ export interface PaginationProps {
 }
 
 export interface PaginationEmits {
-  onUpdateCurrent?: OnChange
   onChange?: OnChange
 }

@@ -34,7 +34,6 @@ import { useScroll } from '../hooks/use-scroll'
 import { useList } from '../hooks/use-list'
 import { emitChangeValidator } from './props'
 import type {
-  StickyViewItem,
   ScrollToOptions,
   ScrollToIndexOptions,
   StickyViewEmits
@@ -48,10 +47,8 @@ export default defineComponent({
   name: 'ak-sticky-view',
   components: { Sticky },
   props: {
-    // 纵向
-    activeIndex: {
-      type: Number,
-      default: 0
+    modelValue: {
+      type: String
     },
     containSelector: {
       type: [String, HTMLElement] as PropType<Selector>,
@@ -68,13 +65,18 @@ export default defineComponent({
     }
   },
   emits: {
-    'update:activeIndex': activeIndex => isNumber(activeIndex),
+    'update:modelValue': name => isString(name),
     change: emitChangeValidator,
-    resetItems: (items: StickyViewItem[]) => {
+    resetItems: items => {
       if (Array.isArray(items)) {
         return (
           items.filter(item => {
-            return !(item && isNumber(item.index) && isString(item.name))
+            return !(
+              item &&
+              isNumber(item.index) &&
+              isString(item.name) &&
+              isString(item.title)
+            )
           }).length === 0
         )
       }
@@ -94,6 +96,22 @@ export default defineComponent({
 
     function getItemName(index: number) {
       return $items[index]?.dataset.name || ''
+    }
+
+    function getItemTitle(index: number) {
+      return $items[index]?.dataset.title || getItemName(index)
+    }
+
+    function getActiveIndexByName(name?: string) {
+      if (name) {
+        for (let i = 0; i < $items.length; i++) {
+          if (getItemName(i) === name) {
+            return i
+          }
+        }
+      }
+
+      return -1
     }
 
     useScroll(container, () => updateFixed(null))
@@ -153,9 +171,9 @@ export default defineComponent({
             updateFixed(scrollTop)
           } else {
             if (!isScrollTo) {
-              emit('update:activeIndex', activeIndex.value)
+              emit('update:modelValue', getItemName(activeIndex.value))
             }
-            emit('change', activeIndex.value)
+            emit('change', getItemName(activeIndex.value), activeIndex.value)
           }
         } else if (next - scrollTop < FIXED_HEIGHT) {
           updateTitle(getItemName(_index), next - scrollTop - FIXED_HEIGHT)
@@ -176,10 +194,10 @@ export default defineComponent({
             updateFixed(scrollTop)
           } else {
             if (!isScrollTo) {
-              emit('update:activeIndex', activeIndex.value)
+              emit('update:modelValue', getItemName(activeIndex.value))
             }
 
-            emit('change', activeIndex.value)
+            emit('change', getItemName(activeIndex.value), activeIndex.value)
           }
         }
       }
@@ -246,7 +264,8 @@ export default defineComponent({
         $items.map((v, k) => {
           return {
             name: getItemName(k),
-            index: k
+            index: k,
+            title: getItemTitle(k)
           }
         })
       )
@@ -255,8 +274,8 @@ export default defineComponent({
     const { listEl } = useList('stickyView', resetItems)
 
     watch(
-      () => props.activeIndex,
-      val => scrollToIndex({ index: val })
+      () => props.modelValue,
+      val => scrollToIndex({ index: getActiveIndexByName(val) })
     )
 
     onMounted(() => resetContainer(props.containSelector))

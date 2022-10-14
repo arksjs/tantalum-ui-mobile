@@ -23,7 +23,6 @@ export interface CheckboxGroupProps extends CheckGroupCommonProps {
 export type OnChange = (value: ModelValue[]) => void
 
 export interface CheckboxGroupEmits {
-  onUpdateModelValue?: OnChange
   onChange?: OnChange
 }
 
@@ -39,7 +38,7 @@ export interface CheckboxProps extends CheckCommonProps {
 
 export interface CheckCommonEmits {
   onUpdateChecked?: (checked: boolean) => void
-  onChange?: (checked: boolean) => void
+  onCheckedChange?: (checked: boolean) => void
 }
 
 export type CheckboxEmits = CheckCommonEmits

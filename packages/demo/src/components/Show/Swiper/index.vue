@@ -1,6 +1,6 @@
 <template>
   <ak-group title="基础用法">
-    <ak-swiper class="exp-swiper-box" v-model:activeIndex="activeIndex">
+    <ak-swiper class="exp-swiper-box">
       <ak-swiper-item v-for="(item, index) in swiperList" :key="item">
         <div class="exp-swiper-box-item" :class="{ even: index % 2 == 1 }">
           {{ item }}
@@ -77,7 +77,8 @@
     <ak-swiper
       class="exp-swiper-box"
       indicator-dots
-      @change="onChange"
+      v-model:activeIndex="activeIndex"
+      @activeIndexChange="onChange"
       @animated="onAnimated"
       @click="showToast(`click 触发`)"
     >
@@ -92,21 +93,25 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { showToast, type SwiperOnAnimated, type SwiperOnChange } from '@/index'
+import {
+  showToast,
+  type SwiperOnAnimated,
+  type SwiperOnActiveIndexChange
+} from '@/index'
 
 export default defineComponent({
   name: 'ExpSwiper',
   setup() {
     const activeIndex = ref(0)
 
-    const onChange: SwiperOnChange = activeIndex => {
-      showToast(`change 到第 ${activeIndex + 1} 张`)
-      console.log('change', activeIndex)
+    const onChange: SwiperOnActiveIndexChange = index => {
+      showToast(`change 到第 ${index + 1} 张`)
+      console.log('change', index)
     }
 
-    const onAnimated: SwiperOnAnimated = activeIndex => {
-      showToast(`第 ${activeIndex + 1} 张 animated`)
-      console.log('animated', activeIndex)
+    const onAnimated: SwiperOnAnimated = index => {
+      showToast(`第 ${index + 1} 张 animated`)
+      console.log('animated', index)
     }
 
     return {

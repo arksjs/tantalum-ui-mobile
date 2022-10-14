@@ -55,7 +55,6 @@ export interface ImageUploaderProps extends FormItemCommonProps {
 }
 
 export interface ImageUploaderEmits {
-  onUpdateModelValue?: OnChange
   onChange?: OnChange
   onDelete?: OnDelete
 }

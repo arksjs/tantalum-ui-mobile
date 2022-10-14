@@ -4,7 +4,7 @@
       class="ak-cascader-view_header"
       :options="tabs"
       :scrollThreshold="0"
-      v-model:activeValue="tabIndex"
+      v-model="tabIndex"
     />
     <div class="ak-cascader-view_body">
       <div

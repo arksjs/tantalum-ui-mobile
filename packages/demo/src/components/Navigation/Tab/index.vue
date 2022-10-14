@@ -24,7 +24,11 @@
   </ak-group>
   <ak-group title="change 事件">
     <div class="exp-tab-box">
-      <ak-tab :options="shortTabList" @change="onChange"></ak-tab>
+      <ak-tab
+        :options="shortTabList"
+        v-model="value"
+        @change="onChange"
+      ></ak-tab>
     </div>
   </ak-group>
 </template>
@@ -42,6 +46,8 @@ export default defineComponent({
       showToast(`切换到第${index + 1}个`)
     }
 
+    const value = ref(0)
+
     return {
       shortActiveValue: ref(1),
       activeValue: ref(1),
@@ -50,6 +56,7 @@ export default defineComponent({
       mixTabList,
       subTabList,
 
+      value,
       onChange
     }
   }

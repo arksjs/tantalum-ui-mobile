@@ -1,6 +1,6 @@
 <template>
   <ak-group title="基础用法">
-    <ak-tab-view class="exp-tabView">
+    <ak-tab-view class="exp-tabView" v-model="value" @change="onChange">
       <ak-tab-view-item name="Tab 1">
         <ak-scroll-view
           class="exp-tabView-scroll-view"
@@ -47,20 +47,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import type { ScrollViewOnRefreshing } from '@/index'
+import { defineComponent, ref } from 'vue'
+import type { ScrollViewOnRefreshing, TabViewOnChange } from '@/index'
 
 export default defineComponent({
   name: 'ExpTabView',
   setup() {
+    const value = ref('')
+
     const onRefreshing: ScrollViewOnRefreshing = (res, done) => {
       setTimeout(() => {
         done()
       }, 2000)
     }
 
+    const onChange: TabViewOnChange = (name, index) => {
+      console.log('change', name, index)
+    }
+
     return {
-      onRefreshing
+      value,
+      onRefreshing,
+      onChange
     }
   }
 })

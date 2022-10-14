@@ -16,7 +16,7 @@ import type { PropsToEmits } from '../helpers/types'
 export default defineComponent({
   name: 'ak-collapse',
   props: {
-    activeNames: {
+    modelValue: {
       type: [Number, String, Array] as PropType<ActiveName | ActiveName[]>,
       validator: stringNumberArrayMixValidator,
       default: () => [] as ActiveName[]
@@ -27,11 +27,11 @@ export default defineComponent({
     }
   },
   emits: {
-    'update:activeNames': payload => isStringNumberMixArray(payload),
+    'update:modelValue': payload => isStringNumberMixArray(payload),
     change: payload => isStringNumberMixArray(payload)
   } as PropsToEmits<CollapseEmits>,
   setup(props, { emit }) {
-    let activeNames2: ActiveName[] = []
+    let activeNames: ActiveName[] = []
 
     const { children } = useGroup('collapse')
 
@@ -49,17 +49,17 @@ export default defineComponent({
         values = values.slice(0, 1)
       }
 
-      if (Array.isArray(values) && isSameArray(values, activeNames2)) {
+      if (Array.isArray(values) && isSameArray(values, activeNames)) {
         return
       }
 
-      activeNames2 = []
+      activeNames = []
 
       children.forEach(child => {
         const childName = child.getName() as ActiveName
 
         if (childName && values.includes(childName)) {
-          activeNames2.push(childName)
+          activeNames.push(childName)
           child.show()
         } else {
           child.hide()
@@ -68,14 +68,14 @@ export default defineComponent({
     }
 
     function onChange(uid: number) {
-      activeNames2 = []
+      activeNames = []
 
       if (props.accordion) {
         children.forEach(child => {
           if (child.uid === uid) {
             child.getActive() &&
               child.getName() &&
-              activeNames2.push(child.getName())
+              activeNames.push(child.getName())
           } else {
             child.hide()
           }
@@ -84,18 +84,18 @@ export default defineComponent({
         children.forEach(child => {
           child.getActive() &&
             child.getName() &&
-            activeNames2.push(child.getName())
+            activeNames.push(child.getName())
         })
       }
 
-      emit('update:activeNames', cloneData(activeNames2))
-      emit('change', cloneData(activeNames2))
+      emit('update:modelValue', cloneData(activeNames))
+      emit('change', cloneData(activeNames))
     }
 
-    onMounted(() => updateValue(props.activeNames))
+    onMounted(() => updateValue(props.modelValue))
 
     watch(
-      () => props.activeNames,
+      () => props.modelValue,
       val => updateValue(val)
     )
 

@@ -10,7 +10,6 @@ export interface RadioGroupProps extends CheckGroupCommonProps {
 }
 
 export interface RadioGroupEmits {
-  onUpdateModelValue?: (value: ModelValue) => void
   onChange?: (value: ModelValue) => void
 }
 

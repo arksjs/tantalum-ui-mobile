@@ -15,7 +15,6 @@ export interface StepperProps extends FormItemCommonProps {
 }
 
 export interface StepperEmits extends FocusEmits {
-  onUpdateModelValue?: OnChange
   onInput?: OnChange
   onChange?: OnChange
   onMinusClick?: OnClick

@@ -88,7 +88,10 @@ export type {
 export type { TabOnChange, TabOptions, TabOption } from './Tab/types'
 export type { TabBarOnChange } from './TabBar/types'
 export type { SideTabOnChange } from './SideTab/types'
-export type { SwiperOnChange, SwiperOnAnimated } from './Swiper/types'
+export type {
+  SwiperOnActiveIndexChange,
+  SwiperOnAnimated
+} from './Swiper/types'
 export type { TabViewOnChange, TabViewOnAnimated } from './TabView/types'
 export type { ToastType } from './Toast/types'
 export type {

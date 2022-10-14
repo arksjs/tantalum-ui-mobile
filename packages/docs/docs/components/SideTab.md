@@ -29,12 +29,12 @@ import type {
 
 ## Props
 
-| 属性                 | 类型             | 默认值 | 必填 | 说明                         |
-| -------------------- | ---------------- | ------ | ---- | ---------------------------- |
-| options              | TabOptions       | []     | 是   | tab 数据集                   |
-| v-model:active-value | string \| number |        | 否   | 当前激活项的 value 值        |
-| color                | string           |        | 否   | 自定义默认态字体和图标颜色   |
-| active-color         | string           |        | 否   | 自定义激活态的字体和图标颜色 |
+| 属性         | 类型             | 默认值 | 必填 | 说明                         |
+| ------------ | ---------------- | ------ | ---- | ---------------------------- |
+| options      | TabOptions       | []     | 是   | tab 数据集                   |
+| v-model      | string \| number |        | 否   | 当前激活项的 value 值        |
+| color        | string           |        | 否   | 自定义默认态字体和图标颜色   |
+| active-color | string           |        | 否   | 自定义激活态的字体和图标颜色 |
 
 ### TabOptions
 

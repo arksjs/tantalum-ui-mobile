@@ -26,7 +26,7 @@ export function useTab(
 
   const { frameStart } = useFrameTask()
 
-  let value2 = props.activeValue
+  let value2 = props.modelValue || ''
 
   function updateOptions() {
     const options: HandleOptionItem[] = []
@@ -104,8 +104,11 @@ export function useTab(
   }
 
   function switchTo(value: ActiveValue, isProp = false) {
+    if (value === value2) {
+      return
+    }
+
     if (!updateActive(value)) {
-      // emit('update:activeValue', value2)
       console.error(
         new Exception(
           'The value is not in "options".',
@@ -113,12 +116,15 @@ export function useTab(
           tabName
         )
       )
+    } else if (!isProp) {
+      // 设置modelValue不调用onChange
+      emitChange()
     }
   }
 
   function switchToIndex(index: number) {
     if (options2.value[index]) {
-      updateActive(options2.value[index].value)
+      onChange(options2.value[index].value)
     } else {
       console.error(
         new Exception(
@@ -172,9 +178,13 @@ export function useTab(
     }
 
     updateActive(value)
-    emit('update:activeValue', value)
 
-    emit('change', value, activeIndex.value)
+    emitChange()
+  }
+
+  function emitChange() {
+    emit('update:modelValue', value2)
+    emit('change', value2, activeIndex.value)
   }
 
   function updatePos() {
@@ -242,7 +252,7 @@ export function useTab(
   }
 
   watch(
-    () => props.activeValue,
+    () => props.modelValue,
     val => val != null && switchTo(val, true)
   )
 

@@ -10,7 +10,7 @@
       </slot>
     </button>
     <div class="ak-pagination_content">
-      <slot :current="current" :total="totalNum"
+      <slot :current="pageNum" :total="totalNum"
         >{{ pageNum }} / {{ totalNum }}</slot
       >
     </div>
@@ -40,18 +40,18 @@ export default defineComponent({
   name: 'ak-pagination',
   components: { Icon },
   props: {
-    // 栅格占据的列数
-    current: {
+    // 当前页码
+    modelValue: {
       type: [Number, String]
     },
-    // 栅格左侧的间隔格数
+    // 总页码
     total: {
       type: [Number, String],
       default: 1
     }
   },
   emits: {
-    'update:current': current => isNumber(current),
+    'update:modelValue': current => isNumber(current),
     change: current => isNumber(current)
   } as PropsToEmits<PaginationEmits>,
   setup(props, { emit }) {
@@ -60,7 +60,7 @@ export default defineComponent({
 
     function change(newPageNum: number) {
       pageNum.value = newPageNum
-      emit('update:current', newPageNum)
+      emit('update:modelValue', newPageNum)
       emit('change', newPageNum)
     }
 
@@ -75,10 +75,10 @@ export default defineComponent({
     }
 
     watch(
-      () => props.current,
-      () => {
-        if (isNumeric(props.current)) {
-          pageNum.value = rangeInteger(props.current, 1, totalNum.value)
+      () => props.modelValue,
+      val => {
+        if (isNumeric(val)) {
+          pageNum.value = rangeInteger(val, 1, totalNum.value)
         } else if (pageNum.value === -1) {
           change(1)
         }

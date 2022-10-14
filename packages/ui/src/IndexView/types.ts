@@ -1,13 +1,14 @@
-import type { StickyViewItemProps } from '../StickyView/types'
-
-export type OnChange = (index: number, fromIndex: number) => void
+import type {
+  StickyViewItemProps,
+  StickyViewOnChange
+} from '../StickyView/types'
 
 export interface IndexViewProps {
   stickyOffsetTop?: number | string
 }
 
 export interface IndexViewEmits {
-  onChange?: OnChange
+  onChange?: StickyViewOnChange
 }
 
 export type IndexViewItemProps = StickyViewItemProps
@@ -16,4 +17,4 @@ export interface IndexViewRef {
   switchToIndex?: (index: number) => void
 }
 
-export type { OnChange as IndexViewOnChange }
+export type { StickyViewOnChange as IndexViewOnChange }

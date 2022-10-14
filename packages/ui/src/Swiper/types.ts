@@ -1,8 +1,8 @@
 import type { Noop, OnClick } from '../helpers/types'
 
-export type OnChange = (index: number, fromIndex: number) => void
+export type OnActiveIndexChange = (index: number, fromIndex: number) => void
 
-export type OnAnimated = OnChange
+export type OnAnimated = OnActiveIndexChange
 
 export type OnResetItems = (
   items: {
@@ -24,11 +24,12 @@ export interface SwiperProps {
   initialActiveIndex?: number
   initialVertical?: boolean
   bounces?: boolean // 边界弹性控制
+  activeIndex?: number
 }
 
 export interface SwiperEmits {
   onUpdateActiveIndex?: (index: number) => void
-  onChange?: OnChange
+  onActiveIndexChange?: OnActiveIndexChange
   onAnimated?: OnAnimated
   onClick?: OnClick
 }
@@ -47,4 +48,7 @@ export type SwiperRef = {
   next: Noop
 }
 
-export type { OnChange as SwiperOnChange, OnAnimated as SwiperOnAnimated }
+export type {
+  OnActiveIndexChange as SwiperOnActiveIndexChange,
+  OnAnimated as SwiperOnAnimated
+}

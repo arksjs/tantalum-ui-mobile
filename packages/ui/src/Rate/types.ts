@@ -16,7 +16,6 @@ export interface RateProps extends FormItemCommonProps {
 }
 
 export interface RateEmits {
-  onUpdateModelValue?: OnChange
   onInput?: OnChange
   onChange?: OnChange
 }

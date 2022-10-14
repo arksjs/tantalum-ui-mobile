@@ -2,7 +2,8 @@
   <div
     class="ak-swiper-item ak-tab-view-item"
     :data-name="name"
-    :data-sub-name="subName"
+    :data-title="title"
+    :data-sub-title="subTitle"
     ref="root"
   >
     <slot></slot>
@@ -30,9 +31,11 @@ export default defineComponent({
       type: String,
       required: true
     },
-    subName: {
-      type: String,
-      default: null
+    title: {
+      type: String
+    },
+    subTitle: {
+      type: String
     }
   },
   setup() {

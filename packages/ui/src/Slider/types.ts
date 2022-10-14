@@ -15,7 +15,6 @@ export interface SliderProps extends SlideCommonProps {
 }
 
 export interface SliderEmits {
-  onUpdateModelValue?: OnChange
   onInput?: OnChange
   onChange?: OnChange
 }

@@ -8,6 +8,5 @@ export interface SwitchProps extends FormItemCommonProps {
 }
 
 export interface SwitchEmits {
-  onUpdateModelValue?: (checked: boolean) => void
   onChange?: (checked: boolean) => void
 }

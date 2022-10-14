@@ -120,7 +120,7 @@ export default defineComponent({
   },
   emits: {
     'update:activeIndex': activeIndex => isNumber(activeIndex),
-    change: emitChangeValidator,
+    activeIndexChange: emitChangeValidator,
     animated: emitChangeValidator,
     click: emitEventValidator
   } as PropsToEmits<SwiperEmits>,
@@ -256,10 +256,10 @@ export default defineComponent({
     }
 
     function onBeforeSlide(toIndex: number, fromIndex: number) {
-      if (toIndex !== fromIndex) {
+      if (toIndex !== fromIndex && isEmitChange) {
         // 排重
         emit('update:activeIndex', toIndex)
-        emit('change', toIndex, fromIndex)
+        emit('activeIndexChange', toIndex, fromIndex)
       }
 
       index.value = toIndex
@@ -622,9 +622,16 @@ export default defineComponent({
       }
     })
 
+    let isEmitChange = true
+
     watch(
       () => props.activeIndex,
-      val => swipeTo(val)
+      val => {
+        // 通过外部设置的不调用 onChange
+        isEmitChange = false
+        swipeTo(val)
+        isEmitChange = true
+      }
     )
 
     watch([() => props.autoplay, () => props.interval], () => {

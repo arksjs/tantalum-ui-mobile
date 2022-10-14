@@ -15,7 +15,6 @@ export interface CollapseProps {
 }
 
 export interface CollapseEmits {
-  onUpdateActiveNames?: OnChange
   onChange?: OnChange
 }
 

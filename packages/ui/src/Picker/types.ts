@@ -84,7 +84,6 @@ export interface PickerOptionsProps {
 
 export interface PickerCommonEmits {
   onChange?: SelectorOnChange
-  onUpdateModelValue?: (payload: SelectorModelValue) => void
 }
 
 export interface ShowPickerOptions extends PickerOptionsProps {

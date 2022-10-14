@@ -28,7 +28,6 @@ export interface ImagePreviewProps extends PopupProps {
 }
 
 export interface ImagePreviewEmits extends PopupEmits {
-  onUpdateCurrent?: (current: string) => void
   onChange?: OnChange
 }
 

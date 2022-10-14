@@ -16,7 +16,6 @@ export interface InputProps extends FormItemCommonProps {
 }
 
 export interface InputEmits extends FocusEmits {
-  onUpdateModelValue?: OnChange
   onInput?: OnChange
   onChange?: OnChange
 }

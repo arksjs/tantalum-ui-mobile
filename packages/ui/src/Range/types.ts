@@ -8,7 +8,6 @@ export interface RangeProps extends SlideCommonProps {
 type OnChange = (value: number[]) => void
 
 export interface RangeEmits {
-  onUpdateModelValue?: OnChange
   onInput?: OnChange
   onChange?: OnChange
 }

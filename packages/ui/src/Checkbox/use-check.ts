@@ -66,7 +66,7 @@ export function useCheck(
     } else {
       const checked = !!(e.target as HTMLInputElement).checked
       emit('update:checked', checked)
-      emit('change', checked)
+      emit('checkedChange', checked)
     }
   }
 

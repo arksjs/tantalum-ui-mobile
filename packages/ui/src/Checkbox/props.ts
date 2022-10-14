@@ -22,7 +22,7 @@ export const checkGroupProps = {
 
 export const checkEmits: PropsToEmits<CheckCommonEmits> = {
   'update:checked': checked => isBoolean(checked),
-  change: checked => isBoolean(checked)
+  checkedChange: checked => isBoolean(checked)
 }
 
 export const checkProps = {

@@ -3,16 +3,12 @@ import type { ResetContainer } from '../Sticky/types'
 export interface StickyViewItem {
   name: string
   index: number
+  title: string
 }
 
-export type OnResetItems = (
-  items: {
-    name: string
-    index: number
-  }[]
-) => void
+export type OnResetItems = (items: StickyViewItem[]) => void
 
-export type OnChange = (activeIndex: number) => void
+export type OnChange = (name: string, activeIndex: number) => void
 
 export interface ScrollToOptions {
   offset: number
@@ -39,7 +35,7 @@ export interface StickyViewRef {
 }
 
 export interface StickyViewProps {
-  activeIndex?: number
+  modelValue?: string
   containSelector?: HTMLElement
   offsetTop?: number | string
   disabled?: false
@@ -47,12 +43,12 @@ export interface StickyViewProps {
 
 export interface StickyViewEmits {
   onChange?: OnChange
-  onUpdateActiveIndex?: OnChange
   onResetItems?: OnResetItems
 }
 
 export interface StickyViewItemProps {
-  name?: string | number
+  name: string
+  title?: string
 }
 
 export type { OnChange as StickyViewOnChange }

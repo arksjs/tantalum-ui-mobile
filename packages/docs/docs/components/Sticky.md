@@ -48,17 +48,17 @@ import type { StickyViewOnChange } from 'arkui-mobile-vue'
 
 ## StickyView Props
 
-| 属性                 | 类型                              | 默认值   | 必填 | 说明                                                                            |
-| -------------------- | --------------------------------- | -------- | ---- | ------------------------------------------------------------------------------- |
-| v-model:active-index | number                            | 0        | 否   | 当前布局中展现的子项 index                                                      |
-| contain-selector     | string \| HTMLElement \| Document | document | 否   | 基于哪个容器，如果是 string，则为可以被 document.querySelector(selector) 获取到 |
-| offset-top           | string \| number                  | 0        | 否   | 数值默认是 px，也支持 vw/vh                                                     |
+| 属性             | 类型                              | 默认值   | 必填 | 说明                                                                            |
+| ---------------- | --------------------------------- | -------- | ---- | ------------------------------------------------------------------------------- |
+| v-model          | string                            | 0        | 否   | 当前布局中展现的子项 name 值                                                    |
+| contain-selector | string \| HTMLElement \| Document | document | 否   | 基于哪个容器，如果是 string，则为可以被 document.querySelector(selector) 获取到 |
+| offset-top       | string \| number                  | 0        | 否   | 数值默认是 px，也支持 vw/vh                                                     |
 
 ## StickyView Events
 
-| 事件   | 描述       | 回调函数参数                     | TypeScript 函数    |
-| ------ | ---------- | -------------------------------- | ------------------ |
-| change | 切换时触发 | (activeIndex: number) 当前项索引 | StickyViewOnChange |
+| 事件   | 描述       | 回调函数参数                        | TypeScript 函数    |
+| ------ | ---------- | ----------------------------------- | ------------------ |
+| change | 切换时触发 | (name: string, activeIndex: number) | StickyViewOnChange |
 
 ## StickyView Slots
 
@@ -88,9 +88,10 @@ import type { StickyViewOnChange } from 'arkui-mobile-vue'
 
 ## StickyViewItem Props
 
-| 属性 | 类型   | 默认值 | 必填 | 说明                 |
-| ---- | ------ | ------ | ---- | -------------------- |
-| name | string |        | 是   | 分组名，也应用于吸附 |
+| 属性  | 类型   | 默认值 | 必填 | 说明                                                               |
+| ----- | ------ | ------ | ---- | ------------------------------------------------------------------ |
+| name  | string |        | 是   | 唯一标识，设置后配合 ScrollTab 组件的 `v-model` 和 `onChange` 使用 |
+| title | string |        | 否   | 分组名，也应用于吸附，如果没有设置则获取 `name` 的值               |
 
 ## StickyViewItem Slots
 

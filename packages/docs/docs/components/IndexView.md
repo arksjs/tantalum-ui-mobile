@@ -30,9 +30,9 @@ import type { IndexViewOnChange } from 'arkui-mobile-vue'
 
 ## IndexView Events
 
-| 事件   | 描述       | 回调函数参数                       | TypeScript 函数   |
-| ------ | ---------- | ---------------------------------- | ----------------- |
-| change | 切换时触发 | ( activeIndex: number ) 当前项索引 | IndexViewOnChange |
+| 事件   | 描述       | 回调函数参数                        | TypeScript 函数   |
+| ------ | ---------- | ----------------------------------- | ----------------- |
+| change | 切换时触发 | (name: string, activeIndex: number) | IndexViewOnChange |
 
 ## Methods
 
@@ -60,9 +60,10 @@ import type { IndexViewOnChange } from 'arkui-mobile-vue'
 
 ## IndexViewItem Props
 
-| 属性 | 类型   | 默认值 | 必填 | 说明                       |
-| ---- | ------ | ------ | ---- | -------------------------- |
-| name | string |        | 是   | 分组名，也应用于吸附和菜单 |
+| 属性  | 类型   | 默认值 | 必填 | 说明                                                               |
+| ----- | ------ | ------ | ---- | ------------------------------------------------------------------ |
+| name  | string |        | 是   | 唯一标识，设置后配合 ScrollTab 组件的 `v-model` 和 `onChange` 使用 |
+| title | string |        | 否   | 分组名，也应用于吸附侧边栏，如果没有设置则获取 `name` 的值         |
 
 ## IndexViewItem Slots
 

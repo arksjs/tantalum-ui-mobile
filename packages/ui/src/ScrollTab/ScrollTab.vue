@@ -6,14 +6,14 @@
         :offsetTop="stickyOffsetTop"
         :offsetBottom="stickyOffsetBottom"
       >
-        <SideTab :options="tabList" v-model:activeValue="activeIndex" />
+        <SideTab :options="tabList" v-model="activeName" />
       </Sticky>
     </div>
     <div class="ak-scroll-tab_body">
       <StickyView
         :offsetTop="stickyOffsetTop"
         ref="bodyRef"
-        v-model:activeIndex="activeIndex"
+        v-model="activeName"
         @resetItems="onResetItems"
         @change="onChange"
       >
@@ -30,16 +30,19 @@ import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
 import { sizeValidator } from '../helpers/validator'
 import type { OnResetItems, StickyViewRef } from '../StickyView/types'
-import type { OnChange as StickyViewOnChange } from '../StickyView/types'
 import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import type { PropsToEmits } from '../helpers/types'
-import type { ScrollTabEmits } from './types'
+import type { ScrollTabEmits, ScrollTabOnChange } from './types'
+import { isString } from '../helpers/util'
 
 export default defineComponent({
   name: 'ak-scroll-tab',
   components: { SideTab, Sticky, StickyView },
   props: {
+    modelValue: {
+      type: String
+    },
     stickyOffsetTop: {
       validator: sizeValidator,
       default: 0
@@ -50,6 +53,7 @@ export default defineComponent({
     }
   },
   emits: {
+    'update:modelValue': name => isString(name),
     change: emitChangeValidator
   } as PropsToEmits<ScrollTabEmits>,
   setup(props, { emit }) {
@@ -57,11 +61,11 @@ export default defineComponent({
     const bodyRef = ref<StickyViewRef>()
     const tabList = ref<
       {
-        value: number
+        value: string
         label: string
       }[]
     >([])
-    const activeIndex = ref(0)
+    const activeName = ref('')
 
     const resetContainer: ResetContainer = containSelector => {
       sideRef.value?.resetContainer(containSelector)
@@ -71,17 +75,14 @@ export default defineComponent({
     const onResetItems: OnResetItems = items => {
       tabList.value = items.map(item => {
         return {
-          value: item.index,
-          label: item.name
+          value: item.name,
+          label: item.title
         }
       })
     }
 
-    let oldIndex = 0
-
-    const onChange: StickyViewOnChange = index => {
-      emit('change', index, oldIndex)
-      oldIndex = index
+    const onChange: ScrollTabOnChange = (name, index) => {
+      emit('change', name, index)
     }
 
     /**
@@ -97,7 +98,7 @@ export default defineComponent({
     return {
       sideRef,
       bodyRef,
-      activeIndex,
+      activeName,
       tabList,
       onChange,
       scrollToIndex,

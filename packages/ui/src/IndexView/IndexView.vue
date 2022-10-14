@@ -3,9 +3,10 @@
     <div class="ak-index-view_sidebar">
       <ul class="ak-index-view_list" ref="navEl">
         <li
-          :class="{ active: item.value === activeIndex }"
-          v-for="item in indexList"
+          :class="{ active: item.value === activeName }"
+          v-for="(item, index) in indexList"
           :data-value="item.value"
+          :data-index="index"
           :key="item.value"
         >
           {{ item.label }}
@@ -16,7 +17,7 @@
       <StickyView
         :offsetTop="stickyOffsetTop"
         ref="bodyRef"
-        v-model:activeIndex="activeIndex"
+        v-model="activeName"
         @resetItems="onResetItems"
         @change="onChange"
       >
@@ -46,6 +47,9 @@ export default defineComponent({
   name: 'ak-index-view',
   components: { StickyView },
   props: {
+    modelValue: {
+      type: String
+    },
     stickyOffsetTop: {
       validator: sizeValidator,
       default: 0
@@ -59,11 +63,11 @@ export default defineComponent({
     const bodyRef = ref<StickyViewRef>()
     const indexList = ref<
       {
-        value: number
+        value: string
         label: string
       }[]
     >([])
-    const activeIndex = ref(0)
+    const activeName = ref('')
 
     const resetContainer: ResetContainer = containSelector => {
       bodyRef.value?.resetContainer(containSelector)
@@ -72,16 +76,14 @@ export default defineComponent({
     const onResetItems: OnResetItems = items => {
       indexList.value = items.map(item => {
         return {
-          value: item.index,
-          label: item.name
+          value: item.name,
+          label: item.title
         }
       })
     }
 
-    let oldIndex = 0
-    const onChange: StickyViewOnChange = index => {
-      emit('change', index, oldIndex)
-      oldIndex = index
+    const onChange: StickyViewOnChange = (name, index) => {
+      emit('change', name, index)
     }
 
     /**
@@ -101,19 +103,20 @@ export default defineComponent({
         const { clientY } = e.touchObject
 
         const $target = e.target as HTMLElement
-        const value = parseInt($target.dataset.value as string)
+        const index = parseInt($target.dataset.value as string)
+        const value = $target.dataset.value || ''
         const rects = $target.getClientRects()[0]
 
         coords = {
           size: rects.height,
           offsetY: clientY - rects.top,
           startY: clientY,
-          current: value
+          current: index
         }
 
         clearTimeout(changeTimer)
         changeTimer = window.setTimeout(() => {
-          activeIndex.value = value
+          activeName.value = value
         }, 500)
 
         e.preventDefault()
@@ -143,11 +146,14 @@ export default defineComponent({
           coords.isChange = true
 
           changeTimer = window.setTimeout(() => {
-            activeIndex.value = rangeInteger(
-              current + offsetCount,
-              0,
-              indexList.value.length - 1
-            )
+            activeName.value =
+              indexList.value[
+                rangeInteger(
+                  current + offsetCount,
+                  0,
+                  indexList.value.length - 1
+                )
+              ].value
           }, 100)
         }
 
@@ -158,7 +164,7 @@ export default defineComponent({
         if (coords) {
           if (!coords.isChange) {
             clearTimeout(changeTimer)
-            activeIndex.value = coords.current
+            activeName.value = coords.current
           }
 
           coords = null
@@ -172,7 +178,7 @@ export default defineComponent({
     return {
       navEl,
       bodyRef,
-      activeIndex,
+      activeName,
       indexList,
       onChange,
       scrollToIndex,

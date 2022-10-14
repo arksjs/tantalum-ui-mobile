@@ -35,7 +35,6 @@ export interface TabCommonProps {
 }
 
 export interface TabCommonEmits {
-  onUpdateActiveValue?: (value: ActiveValue) => void
   onChange?: OnChange
 }
 
