@@ -1,6 +1,6 @@
 <template>
   <ak-group title="基础用法">
-    <ak-tab-bar :options="baseList" v-model:activeValue="activeValue" />
+    <ak-tab-bar :options="baseList" v-model="activeValue" ref="tabBarRef" />
   </ak-group>
   <ak-group title="徽标">
     <ak-tab-bar :options="badgeList" />
@@ -23,16 +23,18 @@
     <ak-fixed>
       <ak-tab-bar
         :options="baseList"
-        v-model:activeValue="activeValue"
+        v-model="activeValue"
         class="exp-tabBar-w"
+        @change="onChange"
       />
     </ak-fixed>
   </ak-group>
 </template>
 
 <script lang="ts">
+import { defineComponent, markRaw, ref } from 'vue'
 import { baseList, badgeList, imageList } from './data'
-import { defineComponent, markRaw } from 'vue'
+import { showToast, type TabBarOnChange } from '@/index'
 import TaobaoSvg from '../../../assets/icons/taobao.svg?vueComponent'
 import QqSvg from '../../../assets/icons/qq.svg?vueComponent'
 import WechatSvg from '../../../assets/icons/wechat.svg?vueComponent'
@@ -63,13 +65,23 @@ const customIconList = [
 
 export default defineComponent({
   name: 'ExpTabBar',
-  data() {
+  setup() {
+    const onChange: TabBarOnChange = (value, index) => {
+      console.log('change', value, index)
+      showToast(`切换到第${index + 1}个`)
+    }
+
+    const activeValue = ref(0)
+    const tabBarRef = ref()
+
     return {
-      activeValue: 1,
+      tabBarRef,
+      activeValue,
       customIconList,
       baseList,
       badgeList,
-      imageList
+      imageList,
+      onChange
     }
   }
 })

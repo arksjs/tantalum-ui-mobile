@@ -4,10 +4,6 @@ export interface StepsProps {
   horizontal?: boolean
 }
 
-export interface StepsEmits {
-  onUpdateActiveIndex: (index: number) => void
-}
-
 export interface StepProps {
   title?: string
   index?: number

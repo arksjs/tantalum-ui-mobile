@@ -6,11 +6,9 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, toRef } from 'vue'
-import type { PropsToEmits } from '../helpers/types'
-import { isNumber } from '../helpers/util'
+import { noop } from '../helpers/util'
 import { useList } from '../hooks/use-list'
 import { getStepsClasses } from './util'
-import type { StepsEmits } from './types'
 
 export default defineComponent({
   name: 'ak-steps',
@@ -28,15 +26,8 @@ export default defineComponent({
       default: false
     }
   },
-  emits: {
-    'update:activeIndex': activeIndex => isNumber(activeIndex)
-  } as PropsToEmits<StepsEmits>,
-  setup(props, { emit }) {
-    const { listEl } = useList('steps', $items => {
-      if (props.activeIndex >= $items.length) {
-        emit('update:activeIndex', $items.length - 1)
-      }
-    })
+  setup(props) {
+    const { listEl } = useList('steps', noop)
 
     provide(`akStepsActiveIndex`, toRef(props, 'activeIndex'))
 

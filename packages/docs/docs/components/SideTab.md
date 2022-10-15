@@ -21,9 +21,10 @@ import { AkSideTab } from 'arkui-mobile-vue'
 ```ts
 import type {
   SideTabOnChange,
-  TabOptions,
-  TabOption,
-  BadgeOption
+  SideTabOptions,
+  SideTabOption,
+  BadgeOption,
+  SideBarRef
 } from 'arkui-mobile-vue'
 ```
 
@@ -31,15 +32,15 @@ import type {
 
 | 属性         | 类型             | 默认值 | 必填 | 说明                         |
 | ------------ | ---------------- | ------ | ---- | ---------------------------- |
-| options      | TabOptions       | []     | 是   | tab 数据集                   |
+| options      | SideTabOptions   | []     | 是   | tab 数据集                   |
 | v-model      | string \| number |        | 否   | 当前激活项的 value 值        |
 | color        | string           |        | 否   | 自定义默认态字体和图标颜色   |
 | active-color | string           |        | 否   | 自定义激活态的字体和图标颜色 |
 
-### TabOptions
+### SideTabOptions
 
 ```ts
-type TabOption = {
+type SideTabOption = {
   label: string
   value: number | string
   icon?: IconData
@@ -48,7 +49,7 @@ type TabOption = {
   subLabel?: string
 }
 
-type TabOptions = (number | string | TabOption)[]
+type SideTabOptions = (number | string | SideTabOption)[]
 ```
 
 | key        | 类型                | 默认值 | 必填 | 说明                                                       |
@@ -140,7 +141,14 @@ type BadgeOption =
 
 ## Methods
 
-| 方法名        | 说明                 | 参数                              |
-| ------------- | -------------------- | --------------------------------- |
-| switchTo      | 切换到指定 Tab       | (value: string \| number) => void |
-| switchToIndex | 切换到指定索引的 Tab | (index: number) => void           |
+```ts
+interface SideBarRef {
+  switchTo: (value: string | number) => void
+  switchToIndex: (index: number) => void
+}
+```
+
+| 方法名        | 说明                    |
+| ------------- | ----------------------- |
+| switchTo      | 切换到指定 value 的 Tab |
+| switchToIndex | 切换到指定索引的 Tab    |
