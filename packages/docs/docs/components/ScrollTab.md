@@ -19,7 +19,7 @@ import { AkScrollTab, AkScrollTabItem } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { ScrollTabOnChange } from 'arkui-mobile-vue'
+import type { ScrollTabOnChange, ScrollTabRef } from 'arkui-mobile-vue'
 ```
 
 ## ScrollTab Props
@@ -55,6 +55,20 @@ import type { ScrollTabOnChange } from 'arkui-mobile-vue'
   ...
 </ak-scroll-tab>
 ```
+
+## Methods
+
+```ts
+interface ScrollTabRef {
+  scrollTo: (name: string) => void
+  scrollToIndex: (index: number) => void
+}
+```
+
+| 方法名        | 说明                     |
+| ------------- | ------------------------ |
+| scrollTo      | 切换到指定 name 的 Item  |
+| scrollToIndex | 切换到指定 index 的 Item |
 
 ## ScrollTabItem Props
 

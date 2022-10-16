@@ -19,7 +19,11 @@ import { AkTabView, AkTabViewItem } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { TabViewOnChange, TabViewOnAnimated } from 'arkui-mobile-vue'
+import type {
+  TabViewOnChange,
+  TabViewOnAnimated,
+  TabViewRef
+} from 'arkui-mobile-vue'
 ```
 
 ## TabView Props
@@ -32,10 +36,10 @@ import type { TabViewOnChange, TabViewOnAnimated } from 'arkui-mobile-vue'
 
 ## TabView Events
 
-| 事件     | 描述           | 回调函数参数            | TypeScript 函数   |
-| -------- | -------------- | ----------------------- | ----------------- |
-| change   | 切换时触发     | ( activeIndex: number ) | TabViewOnChange   |
-| animated | 动画结束时触发 | ( activeIndex: number ) | TabViewOnAnimated |
+| 事件     | 描述           | 回调函数参数                        | TypeScript 函数   |
+| -------- | -------------- | ----------------------------------- | ----------------- |
+| change   | 切换时触发     | (name: string, activeIndex: number) | TabViewOnChange   |
+| animated | 动画结束时触发 | (activeIndex: number )              | TabViewOnAnimated |
 
 ## TabView Slots
 
@@ -53,6 +57,20 @@ import type { TabViewOnChange, TabViewOnAnimated } from 'arkui-mobile-vue'
   </ak-tab-view-item>
 </ak-tab-view>
 ```
+
+## Methods
+
+```ts
+interface TabViewRef {
+  switchTo: (name: string) => void
+  switchToIndex: (index: number) => void
+}
+```
+
+| 方法名        | 说明                   |
+| ------------- | ---------------------- |
+| switchTo      | 切换到指定 name 的 Tab |
+| switchToIndex | 切换到指定索引的 Tab   |
 
 ## TabViewItem Props
 

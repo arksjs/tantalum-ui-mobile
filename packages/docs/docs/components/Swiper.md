@@ -21,7 +21,8 @@ import { AkSwiper, AkSwiperItem } from 'arkui-mobile-vue'
 ```ts
 import type {
   SwiperOnActiveIndexChange,
-  SwiperOnAnimated
+  SwiperOnAnimated,
+  SwiperRef
 } from 'arkui-mobile-vue'
 ```
 
@@ -75,3 +76,19 @@ import type {
   <ak-image src="b.jpg" />
 </ak-swiper-item>
 ```
+
+## Methods
+
+```ts
+interface SwiperRef {
+  swipeTo: (newIndex: number) => void
+  prev: () => void
+  next: () => void
+}
+```
+
+| 方法名  | 说明                                                   |
+| ------- | ------------------------------------------------------ |
+| swipeTo | 切换到指定 index 的 Item                               |
+| prev    | 切换到上一个 Item，如果当前在第一个 ，则循环到最后一个 |
+| next    | 切换到下一个 Item，如果当前在最后一个，则循环到第一个  |

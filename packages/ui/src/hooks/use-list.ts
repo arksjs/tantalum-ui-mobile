@@ -9,7 +9,7 @@ import {
 } from 'vue'
 import type { Ref } from 'vue'
 import Exception from '../helpers/exception'
-import { camelCase2KebabCase, capitalize } from '../helpers/util'
+import { camelCase2KebabCase, capitalize, isSameArray } from '../helpers/util'
 
 type ListUpdateCallback = ($items: HTMLElement[]) => void
 
@@ -20,7 +20,7 @@ type ListUpdateCallback = ($items: HTMLElement[]) => void
 export function createUpdateInItem(name: string) {
   name = capitalize(name)
 
-  return function (lazy = 17) {
+  return function () {
     new Exception(`${name}Item is not in ${name}`, Exception.TYPE.DEFAULT, name)
   }
 }
@@ -35,9 +35,17 @@ export function useList(name: string, updateCallback: ListUpdateCallback) {
   const instance = getCurrentInstance()
   const listEl = ref<HTMLElement>()
   let updateTimer: number
+  let _$items: ListItemElement[] = []
 
   function doUpdate() {
     const $items = getItems()
+
+    if (isSameArray(_$items, $items)) {
+      // 如果发现是同样的，不在重复调用
+      return
+    }
+
+    _$items = $items
 
     $items.forEach(($item, index) => {
       $item._akSetIndex && $item._akSetIndex(index)
@@ -46,22 +54,9 @@ export function useList(name: string, updateCallback: ListUpdateCallback) {
     updateCallback($items)
   }
 
-  function update(lazy = 17) {
-    if (!instance?.isMounted) {
-      return
-    }
-
-    if (lazy === 0) {
-      if (!instance?.isUnmounted) {
-        doUpdate()
-      }
-    } else {
-      clearTimeout(updateTimer)
-      updateTimer = window.setTimeout(() => {
-        if (!instance?.isUnmounted) {
-          doUpdate()
-        }
-      }, lazy)
+  function update() {
+    if (instance?.isMounted && !instance?.isUnmounted) {
+      doUpdate()
     }
   }
 

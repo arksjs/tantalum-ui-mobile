@@ -5,7 +5,7 @@
     :data-title="title"
     ref="root"
   >
-    <div class="ak-sticky-view-item_header">{{ name }}</div>
+    <div class="ak-sticky-view-item_header">{{ title || name }}</div>
     <div class="ak-sticky-view-item_body"><slot></slot></div>
   </div>
 </template>

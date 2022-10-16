@@ -19,10 +19,10 @@
       ></span>
     </div>
     <template v-if="navigationButtons && pagination.length > 1">
-      <button class="ak-swiper_prev" @click="prev(true)">
+      <button class="ak-swiper_prev" @click="prev">
         <Icon :icon="LeftOutlined" />
       </button>
-      <button class="ak-swiper_next" @click="next(true)">
+      <button class="ak-swiper_next" @click="next">
         <Icon :icon="RightOutlined" /></button
     ></template>
   </div>
@@ -49,6 +49,7 @@ import { colorValidator, emitEventValidator } from '../helpers/validator'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import RightOutlined from '../Icon/icons/RightOutlined'
 import { useResizeObserver } from '../hooks/use-resize-observer'
+import { useOnce } from '../hooks/use-once'
 import {
   getClasses,
   getIndicatorsClasses,
@@ -124,9 +125,8 @@ export default defineComponent({
     animated: emitChangeValidator,
     click: emitEventValidator
   } as PropsToEmits<SwiperEmits>,
-  setup(props, ctx) {
+  setup(props, { emit, expose }) {
     const root = ref<HTMLElement>()
-    const { emit } = ctx
     const index = ref(0)
     const pagination = ref<number[]>([])
 
@@ -142,42 +142,50 @@ export default defineComponent({
     let $items: HTMLElement[] = []
     let itemSize = 0
     let horizontal: boolean | null = null
+    let isEmitChange = true
+
+    const once = useOnce()
 
     /**
      * 切换到
      * @param activeIndex 索引
      */
-    function swipeTo(activeIndex: number) {
-      if (
-        isNumber(activeIndex) &&
-        activeIndex >= 0 &&
-        activeIndex < $items.length
-      ) {
-        if (activeIndex !== index.value) {
-          to(activeIndex, false)
-        }
-      } else {
-        console.error(
-          new Exception(
-            'This value of "activeIndex" is out of range.',
-            Exception.TYPE.PROP_ERROR,
-            'Swiper'
+    function swipeTo(activeIndex: number, isProp = false) {
+      once(() => {
+        if (
+          isNumber(activeIndex) &&
+          activeIndex >= 0 &&
+          activeIndex < $items.length
+        ) {
+          if (activeIndex !== index.value) {
+            // 通过props设置的activeIndex不emit change
+            isEmitChange = !isProp
+            goTo(activeIndex, false)
+            isEmitChange = true
+          }
+        } else {
+          console.error(
+            new Exception(
+              'This value of "activeIndex" is out of range.',
+              Exception.TYPE.PROP_ERROR,
+              'Swiper'
+            )
           )
-        )
-      }
+        }
+      })
     }
 
     /**
      * 跳转到上一项
      */
-    function prev(useCircular = false) {
-      to(useCircular ? getCircleIndex(-1) : index.value - 1)
+    function prev() {
+      once(() => goTo(getCircleIndex(-1)))
     }
     /**
      * 跳转到下一项
      */
-    function next(useCircular = false) {
-      to(useCircular ? getCircleIndex(1) : index.value + 1)
+    function next() {
+      once(() => goTo(getCircleIndex(1)))
     }
 
     /**
@@ -278,7 +286,7 @@ export default defineComponent({
     /**
      *  到指定项
      */
-    function to(toIndex: number, animated = true) {
+    function goTo(toIndex: number, animated = true) {
       const lastIndex = getLastIndex()
       let slideIndex = toIndex
 
@@ -389,23 +397,17 @@ export default defineComponent({
       })
     }
 
-    let isFirst = true
-
     function resetItems(res: HTMLElement[]) {
       $items = res
       setSlideStyle()
 
       const last = getLastIndex()
 
-      if (isFirst) {
-        isFirst = false
-
-        if (props.activeIndex !== 0) {
-          swipeTo(props.activeIndex)
-        }
-      } else if (index.value > last) {
-        to(last)
+      if (index.value > last) {
+        swipeTo(last)
       }
+
+      start()
     }
 
     /**
@@ -461,9 +463,8 @@ export default defineComponent({
     function start() {
       stop()
       props.autoplay &&
-        (autoplayTimer = window.setInterval(() => {
-          to(getCircleIndex(1))
-        }, props.interval))
+        $items.length > 1 &&
+        (autoplayTimer = window.setInterval(() => next(), props.interval))
     }
 
     /**
@@ -479,7 +480,7 @@ export default defineComponent({
 
     const { listEl, update } = useList('swiper', resetItems)
 
-    useResizeObserver(root, () => update(50))
+    useResizeObserver(root, update)
 
     let coords: SwiperCoords | null
     let inMove = false
@@ -613,7 +614,7 @@ export default defineComponent({
               transIndex = active
             }
 
-            to(transIndex)
+            goTo(transIndex)
             coords = null
           }
         }
@@ -622,24 +623,21 @@ export default defineComponent({
       }
     })
 
-    let isEmitChange = true
-
-    watch(
-      () => props.activeIndex,
-      val => {
-        // 通过外部设置的不调用 onChange
-        isEmitChange = false
-        swipeTo(val)
-        isEmitChange = true
-      }
-    )
-
     watch([() => props.autoplay, () => props.interval], () => {
       start()
     })
 
+    watch(
+      () => props.activeIndex,
+      val => swipeTo(val, true)
+    )
+
     onMounted(() => {
       start()
+
+      if (props.activeIndex !== 0) {
+        swipeTo(props.activeIndex, true)
+      }
     })
 
     onBeforeUnmount(() => {
@@ -650,10 +648,15 @@ export default defineComponent({
 
     provide('disableFixed', true)
 
+    expose({
+      swipeTo: (newIndex: number) => swipeTo(newIndex, false),
+      prev,
+      next
+    })
+
     return {
       root,
       listEl,
-      swipeTo,
       prev,
       next,
       onClick,

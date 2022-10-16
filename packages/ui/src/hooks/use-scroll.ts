@@ -10,7 +10,7 @@ import { useEvent } from './use-event'
  * @returns off fn
  */
 export function useScroll(
-  elRef: Ref<HTMLElement | undefined>,
+  elRef: Ref<HTMLElement | undefined | null>,
   callback: EventListener
 ) {
   return useEvent(elRef, 'scroll', callback)

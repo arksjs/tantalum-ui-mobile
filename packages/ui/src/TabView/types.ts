@@ -20,7 +20,8 @@ export interface TabViewItemProps {
 }
 
 export interface TabViewRef {
-  switchToIndex?: (index: number) => void
+  switchTo: (name: string) => void
+  switchToIndex: (index: number) => void
 }
 
 export type {

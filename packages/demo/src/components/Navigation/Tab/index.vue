@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import { shortTabList, tabList, mixTabList, subTabList } from './data'
 import { type TabOnChange, showToast, type TabRef } from '@/index'
 
@@ -51,7 +51,7 @@ export default defineComponent({
     return {
       tabRef,
       shortActiveValue,
-      shortTabList,
+      shortTabList: reactive(shortTabList),
       tabList,
       mixTabList,
       subTabList,

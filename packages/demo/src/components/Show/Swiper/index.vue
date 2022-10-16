@@ -75,6 +75,7 @@
   </ak-group>
   <ak-group title="事件监听（change/animated/click）">
     <ak-swiper
+      ref="swiperRef"
       class="exp-swiper-box"
       indicator-dots
       v-model:activeIndex="activeIndex"
@@ -92,17 +93,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import {
   showToast,
   type SwiperOnAnimated,
-  type SwiperOnActiveIndexChange
+  type SwiperOnActiveIndexChange,
+  type SwiperRef
 } from '@/index'
 
 export default defineComponent({
   name: 'ExpSwiper',
   setup() {
     const activeIndex = ref(0)
+    const swiperRef = ref<SwiperRef | null>(null)
 
     const onChange: SwiperOnActiveIndexChange = index => {
       showToast(`change 到第 ${index + 1} 张`)
@@ -114,7 +117,12 @@ export default defineComponent({
       console.log('animated', index)
     }
 
+    onMounted(() => {
+      // swiperRef.value?.next()
+    })
+
     return {
+      swiperRef,
       swiperList: [1, 2, 3, 4],
       imageUrls: [
         'https://cdn.fox2.cn/vfox/swiper/regular-1.jpg',

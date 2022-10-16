@@ -10,27 +10,10 @@ export type OnResetItems = (items: StickyViewItem[]) => void
 
 export type OnChange = (name: string, activeIndex: number) => void
 
-export interface ScrollToOptions {
-  offset: number
-}
-
-export interface ScrollToIndexOptions {
-  index: number
-}
-
-export interface ScrollTo {
-  (offset: number): void
-  (options: ScrollToOptions): void
-}
-
-export interface ScrollToIndex {
-  (index: number): void
-  (options: ScrollToIndexOptions): void
-}
-
 export interface StickyViewRef {
-  scrollTo: ScrollTo
-  scrollToIndex: ScrollToIndex
+  scrollTo: (name: string) => void
+  scrollToIndex: (index: number) => void
+  scrollToOffset: (offset: number) => void
   resetContainer: ResetContainer
 }
 

@@ -3,7 +3,7 @@ import { onBeforeUnmount, onMounted, watch } from 'vue'
 import { addEvent, touchEvent, addLongPressEvent } from '../helpers/events'
 import type { LongPressEventCallback, Noop } from '../helpers/types'
 
-type ElRef = Ref<HTMLElement | undefined>
+type ElRef = Ref<HTMLElement | undefined | null>
 
 function useFn(elRef: ElRef, fn: (el: HTMLElement) => Noop) {
   let stopHandle: Noop | null = null

@@ -40,10 +40,8 @@ export type SwiperItemProps = {
   vertical?: boolean
 }
 
-export type SwipeTo = (newIndex: number) => void
-
-export type SwiperRef = {
-  swipeTo: SwipeTo
+export interface SwiperRef {
+  swipeTo: (newIndex: number) => void
   prev: Noop
   next: Noop
 }

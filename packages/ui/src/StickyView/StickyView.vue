@@ -18,7 +18,15 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  ref,
+  watch,
+  nextTick,
+  shallowRef
+} from 'vue'
 import type { PropType } from 'vue'
 import { Sticky } from '../Sticky'
 import {
@@ -27,21 +35,19 @@ import {
   getScrollTop,
   getSizeValue,
   querySelector,
-  scrollTo
+  scrollTo as _scrollTo
 } from '../helpers/dom'
 import { selectorValidator, sizeValidator } from '../helpers/validator'
 import { useScroll } from '../hooks/use-scroll'
 import { useList } from '../hooks/use-list'
 import { emitChangeValidator } from './props'
-import type {
-  ScrollToOptions,
-  ScrollToIndexOptions,
-  StickyViewEmits
-} from './types'
+import type { StickyViewEmits } from './types'
 import type { PropsToEmits, Selector } from '../helpers/types'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import { getClasses, getFixedStyles, FIXED_HEIGHT } from './util'
 import { isNumber, isString } from '../helpers/util'
+import Exception from '../helpers/exception'
+import { useOnce } from '../hooks/use-once'
 
 export default defineComponent({
   name: 'ak-sticky-view',
@@ -83,16 +89,18 @@ export default defineComponent({
       return false
     }
   } as PropsToEmits<StickyViewEmits>,
-  setup(props, { emit }) {
-    const root = ref<HTMLElement>()
-    const container = ref<HTMLElement>()
-    const fixedEl = ref<HTMLElement>()
+  setup(props, { emit, expose }) {
+    const root = ref<HTMLElement | null>(null)
+    const container = shallowRef<HTMLElement | null>(null)
+    const fixedEl = ref<HTMLElement | null>(null)
     const stickyRef = ref<StickyRef>()
     const activeIndex = ref(0)
     const isSelfContainer = ref(false)
 
     let $items: HTMLElement[] = []
-    let isScrollTo = false
+    let isSpecifyScrolling = false // 是否指定滚动
+
+    const once = useOnce()
 
     function getItemName(index: number) {
       return $items[index]?.dataset.name || ''
@@ -135,6 +143,17 @@ export default defineComponent({
       fixedEl.value.style.cssText = CSSProperties2CssText(getFixedStyles(tY))
     }
 
+    function onChange() {
+      if (oldIndex !== activeIndex.value) {
+        const name = getItemName(activeIndex.value)
+        emit('update:modelValue', name)
+        emit('change', name, activeIndex.value)
+      }
+      oldIndex = -1
+    }
+
+    let oldIndex = -1
+
     function updateFixed(ss: number | null) {
       if (!fixedEl.value || !container.value) {
         return
@@ -143,6 +162,10 @@ export default defineComponent({
       if ($items.length === 0) {
         updateTitle('', null)
         return
+      }
+
+      if (oldIndex === -1) {
+        oldIndex = activeIndex.value
       }
 
       const scrollTop = ss == null ? getScrollTop(container.value) : ss
@@ -169,11 +192,8 @@ export default defineComponent({
           ) {
             // 超过了
             updateFixed(scrollTop)
-          } else {
-            if (!isScrollTo) {
-              emit('update:modelValue', getItemName(activeIndex.value))
-            }
-            emit('change', getItemName(activeIndex.value), activeIndex.value)
+          } else if (!isSpecifyScrolling) {
+            onChange()
           }
         } else if (next - scrollTop < FIXED_HEIGHT) {
           updateTitle(getItemName(_index), next - scrollTop - FIXED_HEIGHT)
@@ -192,17 +212,18 @@ export default defineComponent({
 
           if (offsetTops[_index - 1] && offsetTops[_index - 1] > scrollTop) {
             updateFixed(scrollTop)
-          } else {
-            if (!isScrollTo) {
-              emit('update:modelValue', getItemName(activeIndex.value))
-            }
-
-            emit('change', getItemName(activeIndex.value), activeIndex.value)
+          } else if (!isSpecifyScrolling) {
+            onChange()
           }
         }
       }
 
-      isScrollTo = false
+      isSpecifyScrolling &&
+        once(() => {
+          // 有一些指定滑动到相应位置，移动中间不需要不断上报onChange，只要上报最后一个
+          isSpecifyScrolling = false
+          onChange()
+        })
     }
 
     function getOffsetTops() {
@@ -218,40 +239,12 @@ export default defineComponent({
     }
 
     /**
-     * 滚动到第index个
-     * @param options
-     */
-    function scrollToIndex(options: number | ScrollToIndexOptions) {
-      let _index = 0
-
-      if (typeof options === 'number') {
-        _index = options
-      } else if (options && typeof options.index === 'number') {
-        _index = options.index
-      }
-
-      if ($items[_index] && _index != activeIndex.value) {
-        scrollToOffset({
-          offset: getRelativeOffset($items[_index], container.value).offsetTop
-        })
-      }
-    }
-
-    /**
      * 滚到到指定位置
-     * @param options
      */
-    function scrollToOffset(options: number | ScrollToOptions) {
-      let offset = 0
-
-      if (typeof options === 'number') {
-        offset = options
-      } else if (options && typeof options.offset === 'number') {
-        offset = options.offset
-      }
-
-      isScrollTo = true
-      scrollTo(container.value as HTMLElement, offset, false)
+    function scrollToOffset(offset: number) {
+      isSpecifyScrolling = true
+      // 在onMounted后还需要nextTick才能有效调用滚动
+      nextTick(() => _scrollTo(container.value as HTMLElement, offset, false))
     }
 
     function resetItems(res: HTMLElement[]) {
@@ -271,26 +264,91 @@ export default defineComponent({
       )
     }
 
+    /**
+     * 滚动到第index个
+     */
+    function scrollToIndex(newIndex: number) {
+      if ($items[newIndex]) {
+        if (newIndex != activeIndex.value && container.value) {
+          scrollToOffset(
+            getRelativeOffset($items[newIndex], container.value).offsetTop
+          )
+        }
+      } else {
+        console.error(
+          new Exception(
+            'The "StickyViewItem[index]" not found.',
+            Exception.TYPE.PARAM_ERROR,
+            'StickyView'
+          )
+        )
+      }
+    }
+
+    /**
+     * 滚动到指定name
+     */
+    function scrollTo(name: string) {
+      const newIndex = getActiveIndexByName(name)
+
+      if (newIndex !== -1) {
+        scrollToIndex(newIndex)
+      } else {
+        console.error(
+          new Exception(
+            'The "StickyViewItem[name]" not found.',
+            Exception.TYPE.PARAM_ERROR,
+            'StickyView'
+          )
+        )
+      }
+    }
+
     const { listEl } = useList('stickyView', resetItems)
 
-    watch(
-      () => props.modelValue,
-      val => scrollToIndex({ index: getActiveIndexByName(val) })
-    )
+    function updateValue(val?: string) {
+      const newIndex = getActiveIndexByName(val)
 
-    onMounted(() => resetContainer(props.containSelector))
+      if (newIndex !== -1) {
+        if (newIndex != activeIndex.value) {
+          // 把oldIndex设置为最新，阻止onChange被调用
+          oldIndex = newIndex
+          scrollToIndex(newIndex)
+        }
+      } else {
+        console.error(
+          new Exception(
+            'The "StickyViewItem[modelValue]" not found.',
+            Exception.TYPE.PROP_ERROR,
+            'StickyView'
+          )
+        )
+      }
+    }
+
+    watch(() => props.modelValue, updateValue)
+
+    onMounted(() => {
+      resetContainer(props.containSelector)
+      // 首次设置 modelValue 非string类型认为是没配置，不做更新
+      props.modelValue != null && updateValue(props.modelValue)
+    })
 
     const classes = computed(() => getClasses(isSelfContainer.value))
+
+    expose({
+      scrollTo,
+      scrollToIndex,
+      scrollToOffset,
+      resetContainer
+    })
 
     return {
       root,
       listEl,
       fixedEl,
       stickyRef,
-      classes,
-      resetContainer,
-      scrollToIndex,
-      scrollTo: scrollToOffset
+      classes
     }
   }
 })

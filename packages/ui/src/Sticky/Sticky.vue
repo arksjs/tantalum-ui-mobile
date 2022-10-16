@@ -45,7 +45,7 @@ export default defineComponent({
       default: false
     }
   },
-  setup(props) {
+  setup(props, { expose }) {
     const root = ref<HTMLElement>()
     const container = ref<HTMLElement>()
     const contentEl = ref<HTMLElement>()
@@ -129,12 +129,15 @@ export default defineComponent({
 
     onMounted(() => resetContainer(props.containSelector))
 
+    expose({
+      resetContainer
+    })
+
     return {
       root,
       fixed,
       contentEl,
-      styles,
-      resetContainer
+      styles
     }
   }
 })

@@ -26,7 +26,7 @@ export function useTab(
 
   const { frameStart } = useFrameTask()
 
-  let activeValue = props.modelValue || ''
+  let activeValue = props.modelValue ?? ''
 
   function updateOptions() {
     const options: HandleOptionItem[] = []
@@ -94,6 +94,8 @@ export function useTab(
       })
     }
 
+    options2.value = options
+
     if (!hasActive) {
       if (options[0]) {
         // 设置为第一个
@@ -103,9 +105,9 @@ export function useTab(
         activeIndex.value = -1
         activeValue = ''
       }
+      // 首次属于prop传进来的，不emit回去
+      instance?.isMounted && emitChange()
     }
-
-    options2.value = options
 
     updatePos()
   }

@@ -16,8 +16,8 @@
     <div class="ak-index-view_body">
       <StickyView
         :offsetTop="stickyOffsetTop"
+        :modelValue="modelValue"
         ref="bodyRef"
-        v-model="activeName"
         @resetItems="onResetItems"
         @change="onChange"
       >
@@ -28,10 +28,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
+import { defineComponent, onMounted, ref, watch } from 'vue'
 import { StickyView } from '../StickyView'
 import { sizeValidator } from '../helpers/validator'
-import { rangeInteger } from '../helpers/util'
+import { isString, rangeInteger } from '../helpers/util'
 import type {
   OnResetItems,
   StickyViewRef,
@@ -56,9 +56,10 @@ export default defineComponent({
     }
   },
   emits: {
+    'update:modelValue': name => isString(name),
     change: emitChangeValidator
   } as PropsToEmits<IndexViewEmits>,
-  setup(props, { emit }) {
+  setup(props, { emit, expose }) {
     const navEl = ref<HTMLElement>()
     const bodyRef = ref<StickyViewRef>()
     const indexList = ref<
@@ -67,7 +68,24 @@ export default defineComponent({
         label: string
       }[]
     >([])
-    const activeName = ref('')
+    const activeName = ref<string>()
+
+    // 单独更新以下tab的activeName
+    function updateActiveName(name?: string) {
+      if (name != null && isInTab(name) && name !== activeName.value) {
+        activeName.value = name
+      }
+    }
+
+    function isInTab(name: string) {
+      for (let i = 0; i < indexList.value.length; i++) {
+        if (indexList.value[i].value === name) {
+          return true
+        }
+      }
+
+      return false
+    }
 
     const resetContainer: ResetContainer = containSelector => {
       bodyRef.value?.resetContainer(containSelector)
@@ -83,18 +101,32 @@ export default defineComponent({
     }
 
     const onChange: StickyViewOnChange = (name, index) => {
+      updateActiveName(name)
+      emit('update:modelValue', name)
       emit('change', name, index)
     }
 
     /**
      * 滚动到第index个
-     * @param index 索引
      */
     function scrollToIndex(index: number) {
       bodyRef.value?.scrollToIndex(index)
     }
 
-    let coords: any
+    /**
+     * 滚动到指定name
+     */
+    function scrollTo(name: string) {
+      bodyRef.value?.scrollTo(name)
+    }
+
+    let coords: {
+      size: number
+      offsetY: number
+      startY: number
+      current: number
+      isChange: boolean
+    } | null = null
     let changeTimer: number
 
     useTouch({
@@ -103,20 +135,20 @@ export default defineComponent({
         const { clientY } = e.touchObject
 
         const $target = e.target as HTMLElement
-        const index = parseInt($target.dataset.value as string)
-        const value = $target.dataset.value || ''
+        const index = parseInt($target.dataset.index as string)
         const rects = $target.getClientRects()[0]
 
         coords = {
           size: rects.height,
           offsetY: clientY - rects.top,
           startY: clientY,
-          current: index
+          current: index,
+          isChange: false
         }
 
         clearTimeout(changeTimer)
         changeTimer = window.setTimeout(() => {
-          activeName.value = value
+          scrollToIndex(index)
         }, 500)
 
         e.preventDefault()
@@ -146,14 +178,9 @@ export default defineComponent({
           coords.isChange = true
 
           changeTimer = window.setTimeout(() => {
-            activeName.value =
-              indexList.value[
-                rangeInteger(
-                  current + offsetCount,
-                  0,
-                  indexList.value.length - 1
-                )
-              ].value
+            scrollToIndex(
+              rangeInteger(current + offsetCount, 0, indexList.value.length - 1)
+            )
           }, 100)
         }
 
@@ -164,7 +191,7 @@ export default defineComponent({
         if (coords) {
           if (!coords.isChange) {
             clearTimeout(changeTimer)
-            activeName.value = coords.current
+            scrollToIndex(coords.current)
           }
 
           coords = null
@@ -173,7 +200,25 @@ export default defineComponent({
       }
     })
 
-    onMounted(() => resetContainer(document.documentElement))
+    watch(
+      () => props.modelValue,
+      val => updateActiveName(val)
+    )
+
+    onMounted(() => {
+      resetContainer(document.documentElement)
+      updateActiveName(props.modelValue)
+      if (activeName.value == null && indexList.value.length > 0) {
+        // 首次要写入一个
+        activeName.value = indexList.value[0].value
+      }
+    })
+
+    expose({
+      scrollTo,
+      scrollToIndex,
+      resetContainer
+    })
 
     return {
       navEl,
@@ -181,8 +226,6 @@ export default defineComponent({
       activeName,
       indexList,
       onChange,
-      scrollToIndex,
-      resetContainer,
       onResetItems
     }
   }

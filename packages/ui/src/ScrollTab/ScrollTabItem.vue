@@ -4,7 +4,7 @@
     :data-name="name"
     :data-title="title"
   >
-    <div class="ak-sticky-view-item_header">{{ name }}</div>
+    <div class="ak-sticky-view-item_header">{{ title || name }}</div>
     <div class="ak-sticky-view-item_body"><slot></slot></div>
   </div>
 </template>
@@ -17,8 +17,7 @@ export default defineComponent({
   name: 'ak-scroll-tab-item',
   props: {
     title: {
-      type: String,
-      default: ''
+      type: String
     },
     name: {
       type: String,

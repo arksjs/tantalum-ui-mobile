@@ -19,7 +19,7 @@ import { AkSticky, AkStickyView, AkStickyViewItem } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { StickyViewOnChange } from 'arkui-mobile-vue'
+import type { StickyViewOnChange, StickyViewRef } from 'arkui-mobile-vue'
 ```
 
 ## Sticky
@@ -85,6 +85,22 @@ import type { StickyViewOnChange } from 'arkui-mobile-vue'
   </ak-sticky-view-item>
 </ak-sticky-view>
 ```
+
+## Methods
+
+```ts
+interface StickyViewRef {
+  scrollTo: (name: string) => void
+  scrollToIndex: (index: number) => void
+  scrollToOffset: (offset: number) => void
+}
+```
+
+| 方法名         | 说明                      |
+| -------------- | ------------------------- |
+| scrollTo       | 切换到指定 name 的 Item   |
+| scrollToIndex  | 切换到指定 index 的 Item  |
+| scrollToOffset | 切换到指定位置（单位 px） |
 
 ## StickyViewItem Props
 

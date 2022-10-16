@@ -2,7 +2,9 @@
   <ak-group title="基础用法">
     <!-- <div class="exp-scrollTab-header">占位头部</div> -->
     <ak-scroll-tab
+      ref="scrollTabRef"
       class="exp-scrollTab-boxs"
+      v-model="value"
       :stickyOffsetTop="offsetTop"
       :stickyOffsetBottom="offsetBottom"
       @change="onChange"
@@ -48,17 +50,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import type { ScrollTabOnChange } from '@/index'
+import { defineComponent, onMounted, ref } from 'vue'
+import type { ScrollTabOnChange, ScrollTabRef } from '@/index'
 
 export default defineComponent({
   name: 'ExpScrollTab',
   setup() {
+    const scrollTabRef = ref<ScrollTabRef | null>(null)
+    const value = ref('Dust Red')
+
     const onChange: ScrollTabOnChange = res => {
       console.log('change', res)
     }
 
+    onMounted(() => {
+      // scrollTabRef.value?.scrollToIndex(2)
+    })
+
     return {
+      value,
+      scrollTabRef,
+
       offsetTop: 52,
       offsetBottom: 12,
 

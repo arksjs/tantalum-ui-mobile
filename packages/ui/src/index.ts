@@ -100,17 +100,22 @@ export type {
 } from './SideTab/types'
 export type {
   SwiperOnActiveIndexChange,
-  SwiperOnAnimated
+  SwiperOnAnimated,
+  SwiperRef
 } from './Swiper/types'
-export type { TabViewOnChange, TabViewOnAnimated } from './TabView/types'
+export type {
+  TabViewOnChange,
+  TabViewOnAnimated,
+  TabViewRef
+} from './TabView/types'
 export type { ToastType } from './Toast/types'
 export type {
   SwipeCellButtonOption,
   SwipeCellOnButtonClick
 } from './SwipeCell/types'
-export type { StickyViewOnChange } from './StickyView/types'
-export type { ScrollTabOnChange } from './ScrollTab/types'
-export type { IndexViewOnChange } from './IndexView/types'
+export type { StickyViewOnChange, StickyViewRef } from './StickyView/types'
+export type { ScrollTabOnChange, ScrollTabRef } from './ScrollTab/types'
+export type { IndexViewOnChange, IndexViewRef } from './IndexView/types'
 export type {
   NavBarButtonOption,
   NavBarOnButtonClick,

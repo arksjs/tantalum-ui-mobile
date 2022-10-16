@@ -14,7 +14,8 @@ export interface IndexViewEmits {
 export type IndexViewItemProps = StickyViewItemProps
 
 export interface IndexViewRef {
-  switchToIndex?: (index: number) => void
+  scrollTo: (name: string) => void
+  scrollToIndex: (index: number) => void
 }
 
 export type { StickyViewOnChange as IndexViewOnChange }

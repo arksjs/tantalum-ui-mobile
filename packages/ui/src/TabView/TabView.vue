@@ -1,19 +1,25 @@
 <template>
   <div :class="classes">
     <div class="ak-tab-view_header ak-horizontal-hairline">
-      <SideTab v-if="vertical" :options="tabList" v-model="activeIndex" />
-      <Tab
-        v-else
+      <SideTab
+        v-if="vertical && tabList.length > 0"
         :options="tabList"
-        v-model="activeIndex"
-        :scroll-threshold="scrollThreshold"
+        :modelValue="activeIndex"
+        @change="onTabChange"
+      />
+      <Tab
+        v-else-if="tabList.length > 0"
+        :options="tabList"
+        :modelValue="activeIndex"
+        :scrollThreshold="scrollThreshold"
+        @change="onTabChange"
       />
     </div>
     <div class="ak-tab-view_body" ref="listEl">
       <Swiper
         :activeIndex="activeIndex"
-        @activeIndexChange="onChange"
-        @animated="onAnimated"
+        @activeIndexChange="onSwiperChange"
+        @animated="onSwiperAnimated"
         ref="swiper"
         :initialVertical="vertical"
         :bounces="false"
@@ -40,6 +46,8 @@ import { getClasses } from './util'
 import type { PropsToEmits } from '../helpers/types'
 import type { TabViewEmits } from './types'
 import { isNumber, isString } from '../helpers/util'
+import type { TabOnChange } from '../Tab/types'
+import Exception from '../helpers/exception'
 
 export default defineComponent({
   name: 'ak-tab-view',
@@ -63,7 +71,7 @@ export default defineComponent({
     change: (name, index) => isString(name) && isNumber(index),
     animated: emitChangeValidator
   } as PropsToEmits<TabViewEmits>,
-  setup(props, { emit }) {
+  setup(props, { emit, expose }) {
     const vertical = ref<boolean>(!!props.initialVertical)
     const swiper = ref<SwiperRef>()
     const tabList = ref<
@@ -107,7 +115,11 @@ export default defineComponent({
 
     const { listEl } = useList('tabView', resetItems)
 
-    const onChange: SwiperOnActiveIndexChange = index => {
+    const onTabChange: TabOnChange = index => {
+      switchToIndex(index as number)
+    }
+
+    const onSwiperChange: SwiperOnActiveIndexChange = index => {
       activeIndex.value = index
 
       const activeName = nameArr[index] || ''
@@ -116,37 +128,67 @@ export default defineComponent({
       emit('change', activeName, index)
     }
 
-    const onAnimated: SwiperOnAnimated = (index, fromIndex) => {
+    const onSwiperAnimated: SwiperOnAnimated = (index, fromIndex) => {
       emit('animated', index, fromIndex)
     }
 
-    function swipeTo(index: number) {
-      swiper.value?.swipeTo(index)
+    function switchTo(name: string, isProp: boolean) {
+      const newIndex = getActiveIndexByName(name)
+
+      if (newIndex === -1) {
+        console.error(
+          new Exception(
+            'The "TabItem[name]" not found.',
+            isProp ? Exception.TYPE.PROP_ERROR : Exception.TYPE.PARAM_ERROR,
+            'TabView'
+          )
+        )
+      } else if (newIndex !== activeIndex.value) {
+        if (isProp) {
+          activeIndex.value = newIndex
+        } else {
+          switchToIndex(newIndex)
+        }
+      }
+    }
+
+    function switchToIndex(index: number) {
+      if (index >= 0 && index < tabList.value.length) {
+        swiper.value?.swipeTo(index)
+      } else {
+        console.error(
+          new Exception(
+            'The "TabItem[index]" not found.',
+            Exception.TYPE.PARAM_ERROR,
+            'TabView'
+          )
+        )
+      }
     }
 
     provide('akTabViewVertical', vertical.value)
 
     watch(
       () => props.modelValue,
-      val => {
-        const newIndex = getActiveIndexByName(val)
-        if (newIndex !== -1 && newIndex !== activeIndex.value) {
-          activeIndex.value = newIndex
-        }
-      }
+      val => val != null && switchTo(val, true)
     )
 
     const classes = getClasses(vertical.value)
+
+    expose({
+      switchTo: (name: string) => switchTo(name, false),
+      switchToIndex
+    })
 
     return {
       activeIndex,
       tabList,
       vertical,
       listEl,
+      onTabChange,
       swiper,
-      onChange,
-      onAnimated,
-      swipeTo,
+      onSwiperChange,
+      onSwiperAnimated,
       classes
     }
   }
