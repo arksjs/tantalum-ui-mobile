@@ -19471,5 +19471,21 @@ export {
   TimelineItem_default as AkTimelineItem,
   Toast_default as AkToast,
   VirtualList_default as AkVirtualList,
-  src_default as default
+  src_default as default,
+  hideLoading,
+  hideNotify,
+  hideToast,
+  showActionSheet,
+  showCalendar,
+  showCascader,
+  showDatePicker,
+  showDialog,
+  showImagePreview,
+  showLoading,
+  showNotify,
+  showPicker,
+  showPopDialog,
+  showPopMenu,
+  showPopover,
+  showToast
 };
