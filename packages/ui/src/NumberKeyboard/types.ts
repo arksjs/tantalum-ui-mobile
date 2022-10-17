@@ -17,7 +17,7 @@ export interface NumberKeyboardItem {
 export type KeyboardType = 'default' | 'rightColumn'
 
 export interface NumberKeyboardProps extends FormItemCommonProps, PopupProps {
-  value?: string
+  modelValue?: string
   title?: string
   type?: KeyboardType
   customKey?: string | string[]

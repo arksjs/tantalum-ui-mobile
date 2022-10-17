@@ -8,7 +8,7 @@ export interface InputProps extends FormItemCommonProps {
   maxlength?: number | string
   placeholder?: string
   type?: string
-  value?: string
+  modelValue?: string
   focus?: boolean
   readonly?: boolean
   showClear?: boolean

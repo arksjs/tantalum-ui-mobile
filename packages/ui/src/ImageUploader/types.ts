@@ -42,7 +42,7 @@ export interface FileItem {
 type OnChange = (value: string[]) => void
 
 export interface ImageUploaderProps extends FormItemCommonProps {
-  value?: string[]
+  modelValue?: string[]
   accept?: Accept | Accept[] // 允许上传的图片类型
   columnNumber?: number | string // 多少列展示
   maxCount?: number | string // 最大展示个数

@@ -45,7 +45,7 @@ export function useCheck(
   })
 
   function getValue() {
-    return props.value ?? ''
+    return props.checkedValue ?? ''
   }
 
   function getInputEl() {
@@ -102,10 +102,12 @@ export function useCheck(
         name === 'checkbox'
           ? !!(
               Array.isArray(groupOptions.props.modelValue) &&
-              props.value &&
-              groupOptions.props.modelValue.includes(props.value)
+              props.checkedValue &&
+              groupOptions.props.modelValue.includes(props.checkedValue)
             )
-          : props.value === groupOptions.props.modelValue
+          : props.checkedValue === groupOptions.props.modelValue
+
+      console.log(checked, groupOptions.props.modelValue, props.checkedValue)
     } else {
       checked = !!props.checked
     }

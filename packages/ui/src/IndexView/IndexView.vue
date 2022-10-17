@@ -28,14 +28,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from 'vue'
+import { defineComponent, onMounted, ref, shallowRef, watch } from 'vue'
 import { StickyView } from '../StickyView'
 import { sizeValidator } from '../helpers/validator'
 import { isString, rangeInteger } from '../helpers/util'
 import type {
-  OnResetItems,
+  StickyViewOnResetItems,
   StickyViewRef,
-  OnChange as StickyViewOnChange
+  StickyViewOnChange
 } from '../StickyView/types'
 import { useTouch } from '../hooks/use-touch'
 import { emitChangeValidator } from '../StickyView/props'
@@ -60,8 +60,8 @@ export default defineComponent({
     change: emitChangeValidator
   } as PropsToEmits<IndexViewEmits>,
   setup(props, { emit, expose }) {
-    const navEl = ref<HTMLElement>()
-    const bodyRef = ref<StickyViewRef>()
+    const navEl = shallowRef<HTMLElement | null>(null)
+    const bodyRef = shallowRef<StickyViewRef | null>(null)
     const indexList = ref<
       {
         value: string
@@ -91,7 +91,7 @@ export default defineComponent({
       bodyRef.value?.resetContainer(containSelector)
     }
 
-    const onResetItems: OnResetItems = items => {
+    const onResetItems: StickyViewOnResetItems = items => {
       indexList.value = items.map(item => {
         return {
           value: item.name,

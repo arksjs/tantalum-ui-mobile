@@ -34,4 +34,7 @@ export interface StickyViewItemProps {
   title?: string
 }
 
-export type { OnChange as StickyViewOnChange }
+export type {
+  OnChange as StickyViewOnChange,
+  OnResetItems as StickyViewOnResetItems
+}

@@ -1,9 +1,12 @@
 <template>
   <div class="ak-radio-group" :class="classes" ref="root">
     <slot>
-      <Radio v-for="item in options2" :key="item.value" :value="item.value">{{
-        item.label
-      }}</Radio>
+      <Radio
+        v-for="item in options2"
+        :key="item.value"
+        :checkedValue="item.value"
+        >{{ item.label }}</Radio
+      >
     </slot>
   </div>
 </template>

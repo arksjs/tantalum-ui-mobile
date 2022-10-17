@@ -52,7 +52,7 @@ import { VirtualList } from '../VirtualList'
 import { isSameArray } from '../helpers/util'
 import type { ColRow } from '../Picker/types'
 import type { SelectorValue } from '../SelectorField/types'
-import type { OptionItem as TabOptionItem } from '../Tab/types'
+import type { TabOption } from '../Tab/types'
 import { pickerViewEmits, commonProps, isPickerDetail } from '../Picker/props'
 import { mergeHandlers } from '../Picker/util'
 import { usePickerView } from '../Picker/use-picker'
@@ -80,7 +80,7 @@ export default defineComponent({
     const { emit } = ctx
     const { locale } = useLocale()
     const selectedTabs = ref<SelectedTabs[]>([])
-    const tabs = ref<TabOptionItem[]>([])
+    const tabs = ref<TabOption[]>([])
     const tabIndex = ref(0)
     let tempTabIndex = -1
 

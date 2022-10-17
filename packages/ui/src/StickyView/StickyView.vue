@@ -90,10 +90,10 @@ export default defineComponent({
     }
   } as PropsToEmits<StickyViewEmits>,
   setup(props, { emit, expose }) {
-    const root = ref<HTMLElement | null>(null)
+    const root = shallowRef<HTMLElement | null>(null)
     const container = shallowRef<HTMLElement | null>(null)
-    const fixedEl = ref<HTMLElement | null>(null)
-    const stickyRef = ref<StickyRef>()
+    const fixedEl = shallowRef<HTMLElement | null>(null)
+    const stickyRef = shallowRef<StickyRef | null>(null)
     const activeIndex = ref(0)
     const isSelfContainer = ref(false)
 

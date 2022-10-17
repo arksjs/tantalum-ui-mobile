@@ -26,7 +26,7 @@ export const checkEmits: PropsToEmits<CheckCommonEmits> = {
 }
 
 export const checkProps = {
-  value: {
+  checkedValue: {
     type: [Number, String],
     default: ''
   },

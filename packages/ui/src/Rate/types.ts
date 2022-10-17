@@ -4,7 +4,7 @@ import type { IconData } from '../Icon/types'
 type OnChange = (value: number) => void
 
 export interface RateProps extends FormItemCommonProps {
-  value?: number | string
+  modelValue?: number | string
   count?: number | string
   allowHalf?: boolean
   readonly?: boolean

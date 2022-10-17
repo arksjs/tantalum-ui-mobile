@@ -4,7 +4,7 @@
       class="ak-checkbox_input ak-form-input"
       type="checkbox"
       :name="name2"
-      :value="value"
+      :value="checkedValue"
       :disabled="disabled2"
       @change="onChange"
       ref="input"

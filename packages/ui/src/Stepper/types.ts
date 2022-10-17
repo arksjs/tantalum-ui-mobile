@@ -4,7 +4,7 @@ import type { OnClick } from '../helpers/types'
 type OnChange = (value: string) => void
 
 export interface StepperProps extends FormItemCommonProps {
-  value?: number | string
+  modelValue?: number | string
   disabledMinus?: boolean
   disabledPlus?: boolean
   disabledInput?: boolean

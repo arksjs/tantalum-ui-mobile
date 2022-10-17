@@ -19,21 +19,21 @@
   <ak-group title="CheckboxGroup">
     <ak-cell label="默认">
       <ak-checkbox-group v-model="groupValue">
-        <ak-checkbox v-for="item in groups" :key="item" :value="item">{{
+        <ak-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
           item
         }}</ak-checkbox>
       </ak-checkbox-group>
     </ak-cell>
     <ak-cell label="内联">
       <ak-checkbox-group inline activeColor="#8b1721">
-        <ak-checkbox v-for="item in groups" :key="item" :value="item">{{
+        <ak-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
           item
         }}</ak-checkbox>
       </ak-checkbox-group>
     </ak-cell>
     <ak-cell label="禁用">
       <ak-checkbox-group :modelValue="['A']" disabled>
-        <ak-checkbox v-for="item in groups" :key="item" :value="item">{{
+        <ak-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
           item
         }}</ak-checkbox>
       </ak-checkbox-group>
@@ -46,7 +46,7 @@
     <ak-checkbox-group v-model="groupValue">
       <ak-cell v-for="item in groups" :key="item" :label="'单元格 ' + item">
         <template #icon>
-          <ak-checkbox circle :value="item" />
+          <ak-checkbox circle :checkedValue="item" />
         </template>
       </ak-cell>
     </ak-checkbox-group>
@@ -54,9 +54,9 @@
   <ak-group title="事件监听">
     <ak-cell label="change">
       <ak-checkbox-group @change="onChange">
-        <ak-checkbox value="A">A</ak-checkbox>
-        <ak-checkbox value="B">B</ak-checkbox>
-        <ak-checkbox value="C">C</ak-checkbox>
+        <ak-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
+          item
+        }}</ak-checkbox>
       </ak-checkbox-group>
     </ak-cell>
   </ak-group>

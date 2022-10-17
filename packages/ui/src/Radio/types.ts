@@ -6,7 +6,7 @@ import type {
 } from '../Checkbox/types'
 
 export interface RadioGroupProps extends CheckGroupCommonProps {
-  value?: ModelValue
+  modelValue?: ModelValue
 }
 
 export interface RadioGroupEmits {

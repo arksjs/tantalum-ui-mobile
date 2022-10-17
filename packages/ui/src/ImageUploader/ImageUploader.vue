@@ -73,10 +73,7 @@ import { formatFileSize } from '../helpers/digital-conversion'
 import { formItemProps } from '../Form/form'
 import type { Mode } from '../Image/types'
 import { useLocale } from '../ConfigProvider/context'
-import type {
-  OnDelete as OrderOnDelete,
-  Item as OrderItem
-} from '../Order/types'
+import type { OrderOnDelete, OrderItem } from '../Order/types'
 import type {
   BeforeUpload,
   UploadReady,
