@@ -56,8 +56,8 @@ module.exports = {
     },
     logo: '/logo.svg',
     algolia: {
-      appId: '429AWZHXZB',
-      apiKey: 'a212ae01d54eee5a15d384a2952e0624',
+      appId: '3QN7BVCVD6',
+      apiKey: '59e6f0e7edc17769c57fec593899939a',
       indexName: 'arkui-mobile-vue'
     }
   },
