@@ -10,7 +10,7 @@
       <Swiper
         v-if="swiperInit"
         v-model:activeIndex="activeIndex"
-        :navigation-buttons="navigationButtons"
+        :navigationButtons="navigationButtons"
         @click="onPreviewClick"
         @activeIndexChange="onSwiperChange"
         @animated="onSwiperAnimated"

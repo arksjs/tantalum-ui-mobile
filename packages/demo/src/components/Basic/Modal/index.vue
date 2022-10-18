@@ -44,6 +44,7 @@
       @click="
         () => {
           visibleEvent = true
+          visible = true
         }
       "
     ></ak-cell>

@@ -7,7 +7,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRef, ref, onMounted } from 'vue'
+import {
+  defineComponent,
+  computed,
+  toRef,
+  ref,
+  onMounted,
+  shallowRef
+} from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import { getScrollTop, scrollTo } from '../helpers/dom'
@@ -46,7 +53,7 @@ export default defineComponent({
   } as PropsToEmits<BackTopEmits>,
   setup(props, { emit }) {
     const isShow = ref(false)
-    const docEl = ref<HTMLElement>()
+    const docEl = shallowRef<HTMLElement | null>(null)
 
     function toTop() {
       scrollTo(document, 0, props.animated)

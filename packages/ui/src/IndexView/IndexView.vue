@@ -226,7 +226,11 @@ export default defineComponent({
       activeName,
       indexList,
       onChange,
-      onResetItems
+      onResetItems,
+
+      scrollTo,
+      scrollToIndex,
+      resetContainer
     }
   }
 })

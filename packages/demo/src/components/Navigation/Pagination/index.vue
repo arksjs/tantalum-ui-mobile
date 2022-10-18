@@ -1,14 +1,14 @@
 <template>
   <ak-group title="基础用法">
-    <ak-pagination v-model:current="current" :total="total"></ak-pagination>
+    <ak-pagination v-model="current" :total="total"></ak-pagination>
   </ak-group>
   <ak-group title="Slot default">
-    <ak-pagination v-model:current="current2" :total="total">
+    <ak-pagination v-model="current2" :total="total">
       <template #default="{ current }"> 第 {{ current }} 页 </template>
     </ak-pagination>
   </ak-group>
   <ak-group title="Slot prev & next">
-    <ak-pagination v-model:current="current3" :total="total">
+    <ak-pagination v-model="current3" :total="total">
       <template #prev> 上一页 </template>
       <template #next> 下一页 </template>
     </ak-pagination>
@@ -16,12 +16,16 @@
   <ak-group title="CSS height=32px">
     <ak-pagination
       style="height: 32px"
-      v-model:current="current4"
+      v-model="current4"
       :total="total"
     ></ak-pagination>
   </ak-group>
   <ak-group title="事件监听 change">
-    <ak-pagination :total="total" @change="onChange"></ak-pagination>
+    <ak-pagination
+      v-model="current6"
+      :total="total"
+      @change="onChange"
+    ></ak-pagination>
   </ak-group>
 </template>
 
@@ -37,6 +41,7 @@ export default defineComponent({
     const current3 = ref(1)
     const current4 = ref(1)
     const current5 = ref(1)
+    const current6 = ref(1)
     const total = 5
 
     const onChange = (current: number) => {
@@ -50,6 +55,7 @@ export default defineComponent({
       current3,
       current4,
       current5,
+      current6,
       total,
       onChange
     }

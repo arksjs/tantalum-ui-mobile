@@ -7,7 +7,7 @@
       :value="checkedValue"
       :disabled="disabled2"
       @change="onChange"
-      ref="input"
+      ref="inputEl"
     />
     <div class="ak-checkbox_box">
       <Icon

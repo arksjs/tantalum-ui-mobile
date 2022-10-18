@@ -27,7 +27,8 @@ import {
   ref,
   watch,
   onBeforeUnmount,
-  computed
+  computed,
+  shallowRef
 } from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
@@ -106,7 +107,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const loading = ref(true)
     const error = ref(false)
-    const root = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
     const currentSrc = ref<string | null>(null)
     const uid = Symbol()
 

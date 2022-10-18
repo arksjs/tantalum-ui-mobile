@@ -1,6 +1,6 @@
 <template>
   <ak-group title="基础用法">
-    <ak-collapse v-model:activeNames="activeNames">
+    <ak-collapse v-model="activeNames">
       <ak-collapse-item title="标题1" name="row1">
         <div class="exp-collapse-pad">
           代码是写出来给人看的，附带能在机器上运行
@@ -19,7 +19,7 @@
     </ak-collapse>
   </ak-group>
   <ak-group title="手风琴">
-    <ak-collapse v-model:activeNames="activeNames2" accordion>
+    <ak-collapse v-model="activeNames2" accordion>
       <ak-collapse-item title="标题1" name="row1">
         <div class="exp-collapse-pad">
           代码是写出来给人看的，附带能在机器上运行
@@ -38,7 +38,7 @@
     </ak-collapse>
   </ak-group>
   <ak-group title="其他">
-    <ak-collapse v-model:activeNames="activeNames3">
+    <ak-collapse v-model="activeNames3">
       <ak-collapse-item title="默认展开" name="row1">
         <div class="exp-collapse-pad">
           代码是写出来给人看的，附带能在机器上运行
@@ -61,7 +61,7 @@
     </ak-collapse>
   </ak-group>
   <ak-group title="Collapse 的事件 change">
-    <ak-collapse v-model:activeNames="activeNames4" @change="onChange">
+    <ak-collapse v-model="activeNames4" @change="onChange">
       <ak-collapse-item title="标题1" name="第1项">
         <div class="exp-collapse-pad">
           代码是写出来给人看的，附带能在机器上运行
@@ -91,7 +91,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, reactive } from 'vue'
 import {
   showToast,
   type CollapseOnChange,
@@ -105,7 +105,7 @@ export default defineComponent({
       activeNames: [],
       activeNames2: [],
       activeNames3: ['row1'],
-      activeNames4: []
+      activeNames4: reactive([])
     }
   },
   setup() {

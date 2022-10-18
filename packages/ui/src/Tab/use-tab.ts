@@ -1,4 +1,11 @@
-import { getCurrentInstance, ref, watch, computed, nextTick } from 'vue'
+import {
+  getCurrentInstance,
+  ref,
+  watch,
+  computed,
+  nextTick,
+  shallowRef
+} from 'vue'
 import type { SetupContext, ExtractPropTypes } from 'vue'
 import { isNumber, isObject, isStringNumberMix, isURL } from '../helpers/util'
 import Exception from '../helpers/exception'
@@ -18,8 +25,8 @@ export function useTab(
   { tabName }: UseOptions
 ) {
   const instance = getCurrentInstance()
-  const listEl = ref<HTMLElement>()
-  const underlineEl = ref<HTMLElement>()
+  const listEl = shallowRef<HTMLElement | null>(null)
+  const underlineEl = shallowRef<HTMLElement | null>(null)
   const options2 = ref<HandleOptionItem[]>([])
   const activeIndex = ref(-1)
   const hasSub = ref(false)
@@ -112,7 +119,7 @@ export function useTab(
     updatePos()
   }
 
-  function switchTo(value: string | number, isProp = false) {
+  function _switchTo(value: string | number, isProp = false) {
     if (value === activeValue) {
       return
     }
@@ -257,7 +264,7 @@ export function useTab(
 
   watch(
     () => props.modelValue,
-    val => val != null && switchTo(val, true)
+    val => val != null && _switchTo(val, true)
   )
 
   watch(() => props.options, updateOptions, {
@@ -267,8 +274,10 @@ export function useTab(
 
   const styles = computed(() => getStyles(props.color, props.activeColor))
 
+  const switchTo = (value: string | number) => _switchTo(value, false)
+
   expose({
-    switchTo: (value: string | number) => switchTo(value, false),
+    switchTo,
     switchToIndex
   })
 
@@ -279,6 +288,9 @@ export function useTab(
     hasSub,
     options2,
     onChange,
-    styles
+    styles,
+
+    switchTo,
+    switchToIndex
   }
 }

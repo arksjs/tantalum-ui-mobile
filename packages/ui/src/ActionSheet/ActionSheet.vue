@@ -8,7 +8,7 @@
     @confirm="onConfirm"
     @cancel="onCancel"
     @update:visible="onUpdateVisible"
-    ref="popup"
+    ref="popupRef"
   >
     <ul class="ak-action-sheet_list">
       <li

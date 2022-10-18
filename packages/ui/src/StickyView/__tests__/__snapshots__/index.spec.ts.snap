@@ -14,7 +14,7 @@ exports[`StickyView > snapshot 1`] = `
 `;
 
 exports[`StickyViewItem > snapshot 1`] = `
-"<div class=\\"ak-sticky-view-item\\" data-name=\\"name\\">
+"<div class=\\"ak-sticky-view-item\\" data-name=\\"name\\" data-title=\\"\\">
   <div class=\\"ak-sticky-view-item_header\\">name</div>
   <div class=\\"ak-sticky-view-item_body\\"></div>
 </div>"

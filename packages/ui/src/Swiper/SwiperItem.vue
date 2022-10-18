@@ -5,13 +5,13 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { defineComponent, shallowRef } from 'vue'
 import { useListItem } from '../hooks/use-list'
 
 export default defineComponent({
   name: 'ak-swiper-item',
   setup() {
-    const root = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
 
     useListItem('swiper')
 

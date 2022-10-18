@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, inject } from 'vue'
+import { defineComponent, inject, shallowRef } from 'vue'
 import { useListItem } from '../hooks/use-list'
 import { useTouch } from '../hooks/use-touch'
 
@@ -39,7 +39,7 @@ export default defineComponent({
     }
   },
   setup() {
-    const root = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
     const vertical = inject('akTabViewVertical', false)
 
     useListItem('swiper')

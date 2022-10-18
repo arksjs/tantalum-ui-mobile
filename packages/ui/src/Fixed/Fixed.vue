@@ -17,6 +17,7 @@ import {
   inject,
   onMounted,
   ref,
+  shallowRef,
   toRef,
   watch
 } from 'vue'
@@ -65,9 +66,9 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const root = ref<HTMLElement>()
-    const innerEl = ref<HTMLElement>()
-    const contentEl = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
+    const innerEl = shallowRef<HTMLElement | null>(null)
+    const contentEl = shallowRef<HTMLElement | null>(null)
     const disableFixed = inject('disableFixed', false)
     const rootStyle = ref<{
       width: number | null

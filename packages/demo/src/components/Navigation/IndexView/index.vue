@@ -33,7 +33,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      indexViewRef.value?.scrollToIndex(2)
+      // indexViewRef.value?.scrollToIndex(2)
     })
 
     return {

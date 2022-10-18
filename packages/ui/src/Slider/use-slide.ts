@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue'
+import { computed, shallowRef } from 'vue'
 import { getNumber, rangeNumber } from '../helpers/util'
 import { useTouch } from '../hooks/use-touch'
 import {
@@ -41,7 +41,7 @@ export function useSlide(
   props: SlideCommonProps,
   { move, end, getValue }: UseOptions
 ) {
-  const sliderEl = ref<HTMLElement>()
+  const sliderEl = shallowRef<HTMLElement | null>(null)
 
   let coords: Coords | null
   let tempValue = 0
@@ -108,7 +108,8 @@ export function useSlide(
         thumb,
         thumbW,
         clientStartX: clientX,
-        thumbXInTrack: getRelativeOffset($target, sliderEl.value).offsetLeft,
+        thumbXInTrack: getRelativeOffset($target, sliderEl.value as HTMLElement)
+          .offsetLeft,
         trackX: trackRects.left,
         trackW: trackRects.width - thumbW,
         moved: false,

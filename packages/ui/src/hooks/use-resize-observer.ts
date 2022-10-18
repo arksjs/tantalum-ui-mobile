@@ -4,7 +4,7 @@ import { useMounted } from './use-life'
 import { noop } from '../helpers/util'
 
 export function useResizeObserver(
-  container: Ref<HTMLElement | undefined>,
+  container: Ref<HTMLElement | null>,
   callback: (rect: DOMRect) => void
 ) {
   if (typeof ResizeObserver === 'undefined') {

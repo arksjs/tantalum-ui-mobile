@@ -20,7 +20,7 @@
         :activeIndex="activeIndex"
         @activeIndexChange="onSwiperChange"
         @animated="onSwiperAnimated"
-        ref="swiper"
+        ref="swiperRef"
         :initialVertical="vertical"
         :bounces="false"
       >
@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, provide, watch } from 'vue'
+import { ref, defineComponent, provide, watch, shallowRef } from 'vue'
 import { Tab } from '../Tab'
 import { SideTab } from '../SideTab'
 import { Swiper } from '../Swiper'
@@ -73,7 +73,7 @@ export default defineComponent({
   } as PropsToEmits<TabViewEmits>,
   setup(props, { emit, expose }) {
     const vertical = ref<boolean>(!!props.initialVertical)
-    const swiper = ref<SwiperRef>()
+    const swiperRef = shallowRef<SwiperRef | null>(null)
     const tabList = ref<
       {
         value: number
@@ -132,7 +132,7 @@ export default defineComponent({
       emit('animated', index, fromIndex)
     }
 
-    function switchTo(name: string, isProp: boolean) {
+    function _switchTo(name: string, isProp: boolean) {
       const newIndex = getActiveIndexByName(name)
 
       if (newIndex === -1) {
@@ -154,7 +154,7 @@ export default defineComponent({
 
     function switchToIndex(index: number) {
       if (index >= 0 && index < tabList.value.length) {
-        swiper.value?.swipeTo(index)
+        swiperRef.value?.swipeTo(index)
       } else {
         console.error(
           new Exception(
@@ -170,13 +170,15 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      val => val != null && switchTo(val, true)
+      val => val != null && _switchTo(val, true)
     )
 
     const classes = getClasses(vertical.value)
 
+    const switchTo = (name: string) => _switchTo(name, false)
+
     expose({
-      switchTo: (name: string) => switchTo(name, false),
+      switchTo,
       switchToIndex
     })
 
@@ -186,10 +188,13 @@ export default defineComponent({
       vertical,
       listEl,
       onTabChange,
-      swiper,
+      swiperRef,
       onSwiperChange,
       onSwiperAnimated,
-      classes
+      classes,
+
+      switchTo,
+      switchToIndex
     }
   }
 })

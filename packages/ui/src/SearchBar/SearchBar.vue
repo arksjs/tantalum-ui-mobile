@@ -71,9 +71,10 @@ import {
   onBeforeMount,
   onBeforeUnmount,
   ref,
-  watch
+  shallowRef,
+  watch,
+  type PropType
 } from 'vue'
-import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import { Input as AkInput } from '../Input'
 import { Button as AkButton } from '../Button'
@@ -152,7 +153,7 @@ export default defineComponent({
     const initDropdown = ref(false)
     const suggestVisible = ref(false)
     const suggestList = ref<SuggestItem[]>([])
-    const innerEl = ref<HTMLFormElement>()
+    const innerEl = shallowRef<HTMLFormElement | null>(null)
 
     function proxyEvent(e: Event) {
       emitHook(e.type, searchText.value)

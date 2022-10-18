@@ -19,7 +19,6 @@
         :name="name"
         :disabled="disabled"
         :value="inputValue"
-        ref="input"
       />
     </div>
   </div>

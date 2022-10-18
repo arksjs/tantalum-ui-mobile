@@ -31,13 +31,13 @@
         />
       </template>
     </Order>
-    <input type="hidden" :name="name" :value="formValue" ref="input" />
+    <input type="hidden" :name="name" :value="formValue" />
   </div>
   <ImagePreview
     class="ak-image-uploader_preview"
     :urls="formValue"
     v-model:visible="previewVisible"
-    v-model:current="previewCurrent"
+    v-model="previewCurrent"
     showClose
   >
     <template #close="{ activeIndex }">
@@ -440,7 +440,7 @@ export default defineComponent({
       const current = formValue.value[activeIndex]
 
       for (let i = 0, j = 0; i < orderItems.length; i++) {
-        const optionItem = orderItems[i] as FileItem
+        const optionItem = getFileItemById(orderItems[i].id)
 
         if (optionItem.status === 'uploaded') {
           if (j === activeIndex && optionItem.url === current) {

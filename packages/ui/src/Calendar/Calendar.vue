@@ -25,13 +25,13 @@
       v-model:visible="popupVisible"
       v-if="isInitPopup"
       @confirm="onConfirm"
-      ref="popup"
+      ref="popupRef"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, ref, shallowRef, watch } from 'vue'
 import { SelectorField } from '../SelectorField'
 import CalendarPopup from './CalendarPopup.vue'
 import { commonProps } from './props'
@@ -67,15 +67,15 @@ export default defineComponent({
     const popupVisible = ref(true)
     const fieldLabel = ref('')
     const fieldValue = ref('')
-    const popup = ref<CalendarPopupRef>()
-    const root = ref<HTMLElement>()
+    const popupRef = shallowRef<CalendarPopupRef | null>(null)
+    const root = shallowRef<HTMLElement | null>(null)
 
     const { formatter, parser, getDefaultDetail } = useHandlers(props)
 
     let detail: CalendarSelectorDetail = getDefaultDetail()
 
     function getPopupDetail() {
-      return popup.value?.getDetail() || getDefaultDetail()
+      return popupRef.value?.getDetail() || getDefaultDetail()
     }
 
     function updateValue(val: unknown) {
@@ -147,7 +147,7 @@ export default defineComponent({
       popupVisible,
       fieldLabel,
       fieldValue,
-      popup,
+      popupRef,
       onFieldClick,
       onConfirm
     }

@@ -9,7 +9,7 @@
     @confirm="onConfirm"
     @cancel="onCancel"
     @update:visible="onUpdateVisible"
-    ref="popup"
+    ref="popupRef"
   >
     <CalendarView
       :modelValue="modelValue"
@@ -37,7 +37,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, onMounted, ref, watch } from 'vue'
+import {
+  defineComponent,
+  nextTick,
+  onMounted,
+  ref,
+  shallowRef,
+  watch
+} from 'vue'
 import CalendarView from './CalendarView.vue'
 import { Drawer } from '../Drawer'
 import { Button as AkButton } from '../Button'
@@ -83,7 +90,7 @@ export default defineComponent({
   setup(props, ctx) {
     const { emit } = ctx
     const { locale } = useLocale()
-    const viewRef = ref<CalendarViewRef>()
+    const viewRef = shallowRef<CalendarViewRef | null>(null)
     const valueSize = ref(0)
 
     const { getDefaultDetail } = useHandlers(props)

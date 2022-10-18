@@ -1,4 +1,4 @@
-import { computed, onMounted, ref, watch, inject, provide } from 'vue'
+import { computed, onMounted, watch, inject, provide, shallowRef } from 'vue'
 import type { SetupContext } from 'vue'
 import { capitalize, isStringNumberMix } from '../helpers/util'
 import { useGroup, useGroupItem } from '../hooks/use-group'
@@ -35,7 +35,7 @@ export function useCheck(
     `ak${capitalize(name)}Options`,
     null
   )
-  const input = ref<HTMLInputElement>()
+  const inputEl = shallowRef<HTMLInputElement | null>(null)
 
   const name2 = computed(() => {
     return groupOptions?.props.name || props.name || ''
@@ -49,7 +49,7 @@ export function useCheck(
   }
 
   function getInputEl() {
-    return input.value as HTMLInputElement
+    return inputEl.value as HTMLInputElement
   }
 
   function getInputChecked() {
@@ -106,8 +106,6 @@ export function useCheck(
               groupOptions.props.modelValue.includes(props.checkedValue)
             )
           : props.checkedValue === groupOptions.props.modelValue
-
-      console.log(checked, groupOptions.props.modelValue, props.checkedValue)
     } else {
       checked = !!props.checked
     }
@@ -126,7 +124,7 @@ export function useCheck(
   })
 
   return {
-    input,
+    inputEl,
     name2,
     disabled2,
     onChange,
@@ -153,7 +151,7 @@ export function useCheckGroup<T>(
     watchValue: (options: { children: GroupItem[]; value: T }) => void
   }
 ) {
-  const root = ref<HTMLElement>()
+  const root = shallowRef<HTMLElement | null>(null)
   const { children } = useGroup<GroupItem>(name)
 
   function _updateValue(isChange: boolean, uid?: symbol) {

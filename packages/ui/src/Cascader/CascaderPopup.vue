@@ -7,7 +7,7 @@
     @confirm="onConfirm"
     @cancel="onCancel"
     @update:visible="onUpdateVisible"
-    ref="popup"
+    ref="popupRef"
   >
     <CascaderView
       ref="viewRef"

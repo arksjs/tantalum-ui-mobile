@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, ref } from 'vue'
+import { computed, defineComponent, inject, ref, shallowRef } from 'vue'
 import { useListItem } from '../hooks/use-list'
 import { getStepClasses } from './util'
 
@@ -32,7 +32,7 @@ export default defineComponent({
   },
   setup() {
     const activeIndex = inject(`akStepsActiveIndex`, ref(0))
-    const root = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
 
     const { index } = useListItem('steps', root)
 

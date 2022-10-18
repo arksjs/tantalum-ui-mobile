@@ -9,7 +9,7 @@
     @confirm="onConfirm"
     @cancel="onCancel"
     @update:visible="onUpdateVisible"
-    ref="popup"
+    ref="popupRef"
   >
     <ul
       class="ak-pop-menu_list ak-pop-menu_list"

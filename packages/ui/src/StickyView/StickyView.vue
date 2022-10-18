@@ -348,7 +348,12 @@ export default defineComponent({
       listEl,
       fixedEl,
       stickyRef,
-      classes
+      classes,
+
+      scrollTo,
+      scrollToIndex,
+      scrollToOffset,
+      resetContainer
     }
   }
 })

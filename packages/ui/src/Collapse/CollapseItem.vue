@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, inject, computed } from 'vue'
+import { defineComponent, ref, inject, computed, shallowRef } from 'vue'
 import type { PropType } from 'vue'
 import { Cell } from '../Cell'
 import { iconValidator } from '../helpers/validator'
@@ -47,8 +47,7 @@ export default defineComponent({
       default: ''
     },
     name: {
-      type: [Number, String],
-      default: '',
+      type: String,
       required: true
     },
     disabled: {
@@ -61,7 +60,7 @@ export default defineComponent({
   } as PropsToEmits<CollapseItemEmits>,
   setup(props, { emit }) {
     const active = ref(false)
-    const bodyEl = ref<HTMLElement>()
+    const bodyEl = shallowRef<HTMLElement | null>(null)
     const onChange = inject('akCollapseChange', collapseItemChange)
     const uid = Symbol()
 

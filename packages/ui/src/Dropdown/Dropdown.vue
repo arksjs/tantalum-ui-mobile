@@ -16,8 +16,14 @@
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue'
-import { defineComponent, computed, ref, nextTick } from 'vue'
+import {
+  defineComponent,
+  computed,
+  ref,
+  nextTick,
+  shallowRef,
+  type PropType
+} from 'vue'
 import { usePopup } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/popup'
 import { selectorValidator } from '../helpers/validator'
@@ -39,7 +45,7 @@ export default defineComponent({
   setup(props, ctx) {
     const top = ref(-1)
     const height = ref(0)
-    const popupEl = ref<HTMLElement>()
+    const popupEl = shallowRef<HTMLElement | null>(null)
 
     function updatePos() {
       const $target = querySelector(props.selector)

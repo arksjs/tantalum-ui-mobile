@@ -10,13 +10,13 @@ import { useEvent } from './use-event'
  * @returns off fn
  */
 export function useScroll(
-  elRef: Ref<HTMLElement | undefined | null>,
+  elRef: Ref<HTMLElement | null>,
   callback: EventListener
 ) {
   return useEvent(elRef, 'scroll', callback)
 }
 
-export function useScrollTo(container: Ref<HTMLElement | undefined>) {
+export function useScrollTo(container: Ref<HTMLElement | null>) {
   /**
    * 滚动列表到指定的偏移（以像素为单位）
    * @param args 配置

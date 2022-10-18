@@ -35,7 +35,8 @@ import {
   onMounted,
   watch,
   onBeforeUnmount,
-  provide
+  provide,
+  shallowRef
 } from 'vue'
 import { Icon } from '../Icon'
 import Exception from '../helpers/exception'
@@ -49,7 +50,6 @@ import { colorValidator, emitEventValidator } from '../helpers/validator'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import RightOutlined from '../Icon/icons/RightOutlined'
 import { useResizeObserver } from '../hooks/use-resize-observer'
-import { useOnce } from '../hooks/use-once'
 import {
   getClasses,
   getIndicatorsClasses,
@@ -126,7 +126,7 @@ export default defineComponent({
     click: emitEventValidator
   } as PropsToEmits<SwiperEmits>,
   setup(props, { emit, expose }) {
-    const root = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
     const index = ref(0)
     const pagination = ref<number[]>([])
 
@@ -144,48 +144,46 @@ export default defineComponent({
     let horizontal: boolean | null = null
     let isEmitChange = true
 
-    const once = useOnce()
-
     /**
      * 切换到
      * @param activeIndex 索引
      */
-    function swipeTo(activeIndex: number, isProp = false) {
-      once(() => {
-        if (
-          isNumber(activeIndex) &&
-          activeIndex >= 0 &&
-          activeIndex < $items.length
-        ) {
-          if (activeIndex !== index.value) {
-            // 通过props设置的activeIndex不emit change
-            isEmitChange = !isProp
-            goTo(activeIndex, false)
-            isEmitChange = true
-          }
-        } else {
-          console.error(
-            new Exception(
-              'This value of "activeIndex" is out of range.',
-              Exception.TYPE.PROP_ERROR,
-              'Swiper'
-            )
-          )
+    function _swipeTo(activeIndex: number, isProp = false) {
+      if ($items.length === 0) {
+        goTo(0)
+      } else if (
+        isNumber(activeIndex) &&
+        activeIndex >= 0 &&
+        activeIndex < $items.length
+      ) {
+        if (activeIndex !== index.value) {
+          // 通过props设置的activeIndex不emit change
+          isEmitChange = !isProp
+          goTo(activeIndex, false)
+          isEmitChange = true
         }
-      })
+      } else {
+        console.error(
+          new Exception(
+            'This value of "activeIndex" is out of range.',
+            Exception.TYPE.PROP_ERROR,
+            'Swiper'
+          )
+        )
+      }
     }
 
     /**
      * 跳转到上一项
      */
     function prev() {
-      once(() => goTo(getCircleIndex(-1)))
+      goTo(getCircleIndex(-1))
     }
     /**
      * 跳转到下一项
      */
     function next() {
-      once(() => goTo(getCircleIndex(1)))
+      goTo(getCircleIndex(1))
     }
 
     /**
@@ -193,7 +191,9 @@ export default defineComponent({
      */
     function getCircleIndex(step: number) {
       const length = $items.length
-      return (index.value + length + (step % length)) % length
+      return length === 0
+        ? 0
+        : (index.value + length + (step % length)) % length
     }
 
     function updateSwipeLoop(offset?: number) {
@@ -404,7 +404,7 @@ export default defineComponent({
       const last = getLastIndex()
 
       if (index.value > last) {
-        swipeTo(last)
+        _swipeTo(last)
       }
 
       start()
@@ -629,14 +629,14 @@ export default defineComponent({
 
     watch(
       () => props.activeIndex,
-      val => swipeTo(val, true)
+      val => _swipeTo(val, true)
     )
 
     onMounted(() => {
       start()
 
       if (props.activeIndex !== 0) {
-        swipeTo(props.activeIndex, true)
+        _swipeTo(props.activeIndex, true)
       }
     })
 
@@ -648,8 +648,10 @@ export default defineComponent({
 
     provide('disableFixed', true)
 
+    const swipeTo = (newIndex: number) => _swipeTo(newIndex, false)
+
     expose({
-      swipeTo: (newIndex: number) => swipeTo(newIndex, false),
+      swipeTo,
       prev,
       next
     })
@@ -657,8 +659,6 @@ export default defineComponent({
     return {
       root,
       listEl,
-      prev,
-      next,
       onClick,
       index,
       pagination,
@@ -669,7 +669,11 @@ export default defineComponent({
       classes,
       indicatorsClasses,
       getPaginationItemClasses,
-      getPaginationItemStyles
+      getPaginationItemStyles,
+
+      swipeTo,
+      prev,
+      next
     }
   }
 })

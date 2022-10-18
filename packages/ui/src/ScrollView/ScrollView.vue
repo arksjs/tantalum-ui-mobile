@@ -36,7 +36,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, onMounted, watch, provide } from 'vue'
+import {
+  defineComponent,
+  computed,
+  ref,
+  onMounted,
+  watch,
+  provide,
+  shallowRef
+} from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
@@ -147,7 +155,7 @@ export default defineComponent({
     let coords: ScrollCoords | null
 
     const pullRefreshState = ref(PullRefreshState.Pulling)
-    const root = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
     const pullDistance = ref(0)
     const translateDuration = ref(0)
     const pullDirection = ref<PullDirectionOrDefault>('')

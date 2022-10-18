@@ -10,8 +10,8 @@ import type { Ref } from 'vue'
 interface UseOptions {
   fixed: Ref<boolean>
   disableFixed: boolean
-  root: Ref<HTMLElement | undefined>
-  inner: Ref<HTMLElement | undefined>
+  root: Ref<HTMLElement | null>
+  inner: Ref<HTMLElement | null>
 }
 
 export function useFixed({ fixed, root, inner, disableFixed }: UseOptions) {

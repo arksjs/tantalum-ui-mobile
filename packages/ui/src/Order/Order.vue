@@ -44,7 +44,8 @@ import {
   watch,
   onBeforeUnmount,
   onBeforeMount,
-  computed
+  computed,
+  shallowRef
 } from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
@@ -127,8 +128,8 @@ export default defineComponent({
   } as PropsToEmits<OrderEmits>,
   setup(props, { emit }) {
     const { locale } = useLocale()
-    const root = ref<HTMLElement>()
-    const deleteButtonEl = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
+    const deleteButtonEl = shallowRef<HTMLElement | null>(null)
     const positions = reactive<Position[]>([])
     const dragOn = ref(false)
     const dragCurrent = ref(-1)

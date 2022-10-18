@@ -15,7 +15,7 @@
       v-model:visible="popupVisible"
       v-if="isInitPopup"
       @confirm="onConfirm"
-      ref="popup"
+      ref="popupRef"
     />
   </div>
 </template>

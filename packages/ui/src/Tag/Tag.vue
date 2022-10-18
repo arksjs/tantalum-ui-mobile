@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
+import { computed, defineComponent, shallowRef } from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import { colorValidator, createEnumsValidator } from '../helpers/validator'
@@ -63,7 +63,7 @@ export default defineComponent({
     longPress: returnTrue
   } as PropsToEmits<TagEmits>,
   setup(props, { emit }) {
-    const root = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
 
     function onClose() {
       if (!props.disabled) {

@@ -3,7 +3,9 @@ import {
   isStringNumberMixArray,
   isNumber,
   isURL,
-  isNumeric
+  isNumeric,
+  isStringArray,
+  isString
 } from './util'
 import { getSizeValue } from './dom'
 import type { AnyObject, EmptyObject, TypeException, Validator } from './types'
@@ -16,6 +18,10 @@ export const selectorValidator: Validator = value => {
     value instanceof HTMLElement ||
     value instanceof Document
   )
+}
+
+export const stringOrStringArrayValidator: Validator = value => {
+  return !!(isStringArray(value) || isString(value))
 }
 
 export const stringNumberArrayMixValidator: Validator = value => {

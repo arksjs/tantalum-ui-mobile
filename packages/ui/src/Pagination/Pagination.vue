@@ -80,7 +80,7 @@ export default defineComponent({
         if (isNumeric(val)) {
           pageNum.value = rangeInteger(val, 1, totalNum.value)
         } else if (pageNum.value === -1) {
-          change(1)
+          pageNum.value = 1
         }
       },
       {

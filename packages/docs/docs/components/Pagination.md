@@ -16,10 +16,10 @@ import { AkPagination } from 'arkui-mobile-vue'
 
 ## Props
 
-| 属性            | 类型   | 默认值 | 必填 | 说明     |
-| --------------- | ------ | ------ | ---- | -------- |
-| v-model:current | number | 1      | 否   | 当前页码 |
-| total           | number | 1      | 否   | 总页数   |
+| 属性    | 类型          | 默认值 | 必填 | 说明     |
+| ------- | ------------- | ------ | ---- | -------- |
+| v-model | number/string | 1      | 否   | 当前页码 |
+| total   | number/string | 1      | 否   | 总页数   |
 
 ## Events
 

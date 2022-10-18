@@ -122,11 +122,7 @@ export type {
   NavBarOnTitleDbClick
 } from './NavBar/types'
 export type { SkeletonAvatarShape, SkeletonButtonShape } from './Skeleton/types'
-export type {
-  CollapseActiveName,
-  CollapseOnChange,
-  CollapseItemOnToggle
-} from './Collapse/types'
+export type { CollapseOnChange, CollapseItemOnToggle } from './Collapse/types'
 export type {
   CountTime,
   CountDownOnEnd,

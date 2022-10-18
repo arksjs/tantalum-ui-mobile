@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from 'vue'
+import { defineComponent, onMounted, ref, shallowRef, watch } from 'vue'
 import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
@@ -63,8 +63,8 @@ export default defineComponent({
     change: emitChangeValidator
   } as PropsToEmits<ScrollTabEmits>,
   setup(props, { emit, expose }) {
-    const sideRef = ref<StickyRef | null>(null)
-    const bodyRef = ref<StickyViewRef | null>(null)
+    const sideRef = shallowRef<StickyRef | null>(null)
+    const bodyRef = shallowRef<StickyViewRef | null>(null)
     const tabList = ref<
       {
         value: string
@@ -155,7 +155,11 @@ export default defineComponent({
       tabList,
       onTabChange,
       onChange,
-      onResetItems
+      onResetItems,
+
+      scrollTo,
+      scrollToIndex,
+      resetContainer
     }
   }
 })

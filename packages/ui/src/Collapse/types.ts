@@ -1,16 +1,11 @@
 import type { IconData } from '../Icon/types'
 
-export type ActiveName = string | number
+export type OnChange = (activeNames: string[]) => void
 
-export type OnChange = (activeNames: ActiveName[]) => void
-
-export type ItemOnToggle = (payload: {
-  name: ActiveName
-  spread: boolean
-}) => void
+export type ItemOnToggle = (payload: { name: string; spread: boolean }) => void
 
 export interface CollapseProps {
-  activeNames?: ActiveName | ActiveName[]
+  modelValue?: string | string[]
   accordion?: boolean
 }
 
@@ -30,7 +25,6 @@ export interface CollapseItemEmits {
 }
 
 export type {
-  ActiveName as CollapseActiveName,
   OnChange as CollapseOnChange,
   ItemOnToggle as CollapseItemOnToggle
 }

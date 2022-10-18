@@ -5,7 +5,8 @@ import {
   provide,
   onMounted,
   onUnmounted,
-  inject
+  inject,
+  shallowRef
 } from 'vue'
 import type { Ref } from 'vue'
 import Exception from '../helpers/exception'
@@ -33,12 +34,16 @@ export function createUpdateInItem(name: string) {
  */
 export function useList(name: string, updateCallback: ListUpdateCallback) {
   const instance = getCurrentInstance()
-  const listEl = ref<HTMLElement>()
+  const listEl = shallowRef<HTMLElement | null>(null)
   let updateTimer: number
   let _$items: ListItemElement[] = []
 
   function doUpdate() {
     const $items = getItems()
+
+    $items.forEach(($item, index) => {
+      $item._akSetIndex && $item._akSetIndex(index)
+    })
 
     if (isSameArray(_$items, $items)) {
       // 如果发现是同样的，不在重复调用
@@ -46,11 +51,6 @@ export function useList(name: string, updateCallback: ListUpdateCallback) {
     }
 
     _$items = $items
-
-    $items.forEach(($item, index) => {
-      $item._akSetIndex && $item._akSetIndex(index)
-    })
-
     updateCallback($items)
   }
 
@@ -86,10 +86,7 @@ interface ListItemElement extends HTMLElement {
   _akSetIndex?(_index: number): void
 }
 
-export function useListItem(
-  name: string,
-  root?: Ref<ListItemElement | undefined>
-) {
+export function useListItem(name: string, root?: Ref<ListItemElement | null>) {
   const index = ref(-1)
   const update = inject(`ak${capitalize(name)}Update`, createUpdateInItem(name))
 

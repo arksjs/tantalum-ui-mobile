@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
+import { computed, defineComponent, ref, shallowRef, watch } from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import { isInteger, rangeInteger } from '../helpers/util'
@@ -103,7 +103,7 @@ export default defineComponent({
   emits: { ...formNumberValueEmits } as PropsToEmits<RateEmits>,
   setup(props, ctx) {
     const { emit } = ctx
-    const root = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
     const inputValue = ref(0)
 
     function change(value: number, isHalf = false) {
