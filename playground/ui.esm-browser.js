@@ -690,7 +690,7 @@ import { computed as computed7, defineComponent as defineComponent7 } from "vue"
 import { defineComponent as defineComponent6, computed as computed6, toRef, watch as watch3 } from "vue";
 
 // vue:./NavBar.vue
-import { defineComponent as defineComponent5, ref as ref2 } from "vue";
+import { defineComponent as defineComponent5, shallowRef as shallowRef2 } from "vue";
 
 // vue:./Button.vue
 import { defineComponent as defineComponent3, computed as computed2 } from "vue";
@@ -2018,8 +2018,8 @@ var exception_default = Exception;
 var selectorValidator = (value) => {
   return typeof value === "string" || value instanceof HTMLElement || value instanceof Document;
 };
-var stringNumberArrayMixValidator = (value) => {
-  return isStringNumberMixArray(value) || typeof value === "string" || isNumber(value);
+var stringOrStringArrayValidator = (value) => {
+  return !!(isStringArray(value) || isString(value));
 };
 var sizeValidator = (value) => {
   return getSizeValue(value, Infinity) !== Infinity;
@@ -2732,7 +2732,7 @@ var _sfc_script8 = defineComponent5({
   },
   setup(props, { emit }) {
     const { locale } = useLocale();
-    const titleEl = ref2();
+    const titleEl = shallowRef2(null);
     function emitClick(type, item, $el) {
       emit(type, item, $el);
     }
@@ -2891,7 +2891,7 @@ _sfc_script8.__file = "packages/ui/src/NavBar/NavBar.vue";
 var NavBar_default = _sfc_script8;
 
 // packages/ui/src/popup/use-popup.ts
-import { computed as computed5, onMounted as onMounted3, ref as ref3, watch as watch2, inject as inject4 } from "vue";
+import { computed as computed5, onMounted as onMounted3, ref as ref2, watch as watch2, inject as inject4, shallowRef as shallowRef3 } from "vue";
 
 // packages/ui/src/helpers/layer.ts
 var popupZIndex = 2e3;
@@ -2938,11 +2938,11 @@ function useApiHook(emit) {
 }
 function usePopup(props, ctx, useOptions) {
   const { emitHook, cancelHook } = useApiHook(ctx.emit);
-  const isShow = ref3(false);
-  const zIndex2 = ref3(popupZIndex);
-  const visible2 = ref3(false);
-  const absTop = ref3(null);
-  const position = ref3(null);
+  const isShow = ref2(false);
+  const zIndex2 = ref2(popupZIndex);
+  const visible2 = ref2(false);
+  const absTop = ref2(null);
+  const position = ref2(null);
   let isShowing = false;
   let isHiding = false;
   let visibleTimer;
@@ -3088,13 +3088,15 @@ function usePopup(props, ctx, useOptions) {
   };
 }
 function usePopupExtend(ctx) {
-  const popup = ref3();
+  const popupRef = shallowRef3(null);
   const { emitHook, cancelHook } = useApiHook(ctx.emit);
   const customCancel = (key, focus = false) => {
-    popup.value && popup.value.customCancel(key, focus);
+    var _a;
+    (_a = popupRef.value) == null ? void 0 : _a.customCancel(key, focus);
   };
   const customConfirm = (detail) => {
-    popup.value && popup.value.customConfirm(detail);
+    var _a;
+    (_a = popupRef.value) == null ? void 0 : _a.customConfirm(detail);
   };
   const onVisibleStateChange = (e) => {
     emitHook("visibleStateChange", e);
@@ -3113,7 +3115,7 @@ function usePopupExtend(ctx) {
   }
   cancelHook(customCancel);
   return {
-    popup,
+    popupRef,
     customCancel,
     customConfirm,
     onUpdateVisible,
@@ -3421,7 +3423,7 @@ function render11(_ctx, _cache) {
     onConfirm: _ctx.onConfirm,
     onCancel: _ctx.onCancel,
     "onUpdate:visible": _ctx.onUpdateVisible,
-    ref: "popup"
+    ref: "popupRef"
   }, {
     default: _withCtx2(() => [
       _createElementVNode9("ul", _hoisted_19, [
@@ -3759,7 +3761,7 @@ var ActivityIndicator_default = _sfc_script13;
 import { defineComponent as defineComponent12, computed as computed12 } from "vue";
 
 // vue:./Badge.vue
-import { computed as computed10, defineComponent as defineComponent10, ref as ref4, watch as watch4 } from "vue";
+import { computed as computed10, defineComponent as defineComponent10, ref as ref3, watch as watch4 } from "vue";
 
 // packages/ui/src/Badge/util.ts
 function handleBadge(badge) {
@@ -3831,12 +3833,12 @@ var Easing = {
 };
 var uid = 0;
 var FrameTask = class {
-  constructor(ref55, id) {
+  constructor(ref46, id) {
     this.stop = function() {
-      if (ref55.idle) {
-        cancelAnimationFrame(ref55.idle);
-        ref55.idle = null;
-        ref55.done();
+      if (ref46.idle) {
+        cancelAnimationFrame(ref46.idle);
+        ref46.idle = null;
+        ref46.done();
         return true;
       }
       return false;
@@ -3852,11 +3854,11 @@ function frameTo(options) {
   function done() {
     complete && complete({ current, id });
   }
-  const ref55 = { idle: null, id, done };
+  const ref46 = { idle: null, id, done };
   let frameIndex = 0;
   let current = from;
   function step2() {
-    ref55.idle = requestAnimationFrame(function() {
+    ref46.idle = requestAnimationFrame(function() {
       const t = Date.now();
       if (t >= end) {
         current = to;
@@ -3884,7 +3886,7 @@ function frameTo(options) {
     id
   });
   step2();
-  return new FrameTask(ref55, id);
+  return new FrameTask(ref46, id);
 }
 function getStretchOffset2(offset) {
   return Math.ceil(offset / Math.log(Math.abs(offset)));
@@ -3946,7 +3948,7 @@ var _sfc_script14 = defineComponent10({
     }
   },
   setup(props) {
-    const content2 = ref4(getDefaultContent(props));
+    const content2 = ref3(getDefaultContent(props));
     const { frameStart, frameStop } = useFrameTask();
     const classes = computed10(() => getClasses2(props));
     const badgeClasses = computed10(() => getBadgeClasses(props));
@@ -4026,10 +4028,11 @@ var Badge_default = _sfc_script14;
 import {
   defineComponent as defineComponent11,
   onMounted as onMounted5,
-  ref as ref5,
+  ref as ref4,
   watch as watch5,
   onBeforeUnmount as onBeforeUnmount5,
-  computed as computed11
+  computed as computed11,
+  shallowRef as shallowRef4
 } from "vue";
 
 // packages/ui/src/Image/load-image.ts
@@ -4257,10 +4260,10 @@ var _sfc_script17 = defineComponent11({
     error: emitErrorValidator
   },
   setup(props, { emit }) {
-    const loading = ref5(true);
-    const error = ref5(false);
-    const root = ref5();
-    const currentSrc = ref5(null);
+    const loading = ref4(true);
+    const error = ref4(false);
+    const root = shallowRef4(null);
+    const currentSrc = ref4(null);
     const uid3 = Symbol();
     function load(src) {
       ;
@@ -4662,7 +4665,14 @@ var Avatar_default = _sfc_script21;
 var AvatarGroup_default = _sfc_script22;
 
 // vue:./BackTop.vue
-import { defineComponent as defineComponent14, computed as computed14, toRef as toRef2, ref as ref6, onMounted as onMounted6 } from "vue";
+import {
+  defineComponent as defineComponent14,
+  computed as computed14,
+  toRef as toRef2,
+  ref as ref5,
+  onMounted as onMounted6,
+  shallowRef as shallowRef5
+} from "vue";
 
 // packages/ui/src/hooks/use-scroll.ts
 function useScroll(elRef, callback) {
@@ -4767,8 +4777,8 @@ var _sfc_script24 = defineComponent14({
     click: emitEventValidator
   },
   setup(props, { emit }) {
-    const isShow = ref6(false);
-    const docEl = ref6();
+    const isShow = ref5(false);
+    const docEl = shallowRef5(null);
     function toTop() {
       scrollTo(document, 0, props.animated);
     }
@@ -4817,7 +4827,7 @@ var BackTop_default = _sfc_script24;
 var ButtonGroup_default = _sfc_script5;
 
 // vue:./Calendar.vue
-import { defineComponent as defineComponent21, ref as ref10, watch as watch10 } from "vue";
+import { defineComponent as defineComponent21, ref as ref9, shallowRef as shallowRef9, watch as watch10 } from "vue";
 
 // vue:./SelectorField.vue
 import { computed as computed15, defineComponent as defineComponent15 } from "vue";
@@ -4907,10 +4917,24 @@ _sfc_script26.__file = "packages/ui/src/SelectorField/SelectorField.vue";
 var SelectorField_default = _sfc_script26;
 
 // vue:./CalendarPopup.vue
-import { defineComponent as defineComponent20, nextTick as nextTick2, onMounted as onMounted10, ref as ref9, watch as watch9 } from "vue";
+import {
+  defineComponent as defineComponent20,
+  nextTick as nextTick2,
+  onMounted as onMounted10,
+  ref as ref8,
+  shallowRef as shallowRef8,
+  watch as watch9
+} from "vue";
 
 // vue:./CalendarView.vue
-import { defineComponent as defineComponent19, onMounted as onMounted9, reactive as reactive2, ref as ref8, watch as watch8 } from "vue";
+import {
+  defineComponent as defineComponent19,
+  onMounted as onMounted9,
+  reactive as reactive2,
+  ref as ref7,
+  shallowRef as shallowRef7,
+  watch as watch8
+} from "vue";
 
 // packages/ui/src/helpers/day.ts
 var import_dayjs = __toESM(require_dayjs_min());
@@ -5678,7 +5702,15 @@ _sfc_script29.render = render29;
 _sfc_script29.__file = "packages/ui/src/Calendar/CalendarViewMonth.vue";
 
 // vue:./VirtualList.vue
-import { computed as computed17, defineComponent as defineComponent18, onMounted as onMounted8, ref as ref7, nextTick, watch as watch7 } from "vue";
+import {
+  computed as computed17,
+  defineComponent as defineComponent18,
+  onMounted as onMounted8,
+  ref as ref6,
+  nextTick,
+  watch as watch7,
+  shallowRef as shallowRef6
+} from "vue";
 
 // packages/ui/src/VirtualList/props.ts
 var virtualListProps = {
@@ -5800,14 +5832,14 @@ var _sfc_script30 = defineComponent18({
     resize: (size) => isNumber(size)
   },
   setup(props, { emit }) {
-    const cols = ref7([]);
-    const list = ref7([]);
-    const renderList = ref7([]);
-    const root = ref7();
-    const listEl = ref7();
-    const poolEl = ref7();
-    const scrollEl = ref7();
-    const wrapperSize = ref7(0);
+    const cols = ref6([]);
+    const list = ref6([]);
+    const renderList = ref6([]);
+    const root = shallowRef6(null);
+    const listEl = shallowRef6(null);
+    const poolEl = shallowRef6(null);
+    const scrollEl = shallowRef6(null);
+    const wrapperSize = ref6(0);
     let horizontal = false;
     if (props.initialWaterfallCount > 1) {
       for (let i = 0, len = rangeInteger(props.initialWaterfallCount, 2, 5); i < len; i++) {
@@ -6248,9 +6280,9 @@ var _sfc_script31 = defineComponent19({
   setup(props, { emit }) {
     const { locale } = useLocale();
     const { formatter: formatter2, parser: parser2, mode } = useHandlers(props);
-    const bodyEl = ref8();
-    const bodyTitleEl = ref8();
-    const weekDays = ref8([]);
+    const bodyEl = shallowRef7(null);
+    const bodyTitleEl = shallowRef7(null);
+    const weekDays = ref7([]);
     const months = reactive2([]);
     let start = getDefaultSelectDay();
     let end = getDefaultSelectDay();
@@ -6715,8 +6747,8 @@ var _sfc_script32 = defineComponent20({
   setup(props, ctx) {
     const { emit } = ctx;
     const { locale } = useLocale();
-    const viewRef = ref9();
-    const valueSize = ref9(0);
+    const viewRef = shallowRef8(null);
+    const valueSize = ref8(0);
     const { getDefaultDetail: getDefaultDetail2 } = useHandlers(props);
     let detail = getDefaultDetail2();
     const popup = usePopupExtend(ctx);
@@ -6796,7 +6828,7 @@ function render32(_ctx, _cache) {
     onConfirm: _ctx.onConfirm,
     onCancel: _ctx.onCancel,
     "onUpdate:visible": _ctx.onUpdateVisible,
-    ref: "popup"
+    ref: "popupRef"
   }, {
     default: _withCtx6(() => [
       _createVNode6(_component_CalendarView, {
@@ -6852,17 +6884,17 @@ var _sfc_script33 = defineComponent21({
   emits: { ...pickerEmits },
   setup(props, ctx) {
     const { emit } = ctx;
-    const isInitPopup = ref10(false);
-    const popupVisible = ref10(true);
-    const fieldLabel = ref10("");
-    const fieldValue = ref10("");
-    const popup = ref10();
-    const root = ref10();
+    const isInitPopup = ref9(false);
+    const popupVisible = ref9(true);
+    const fieldLabel = ref9("");
+    const fieldValue = ref9("");
+    const popupRef = shallowRef9(null);
+    const root = shallowRef9(null);
     const { formatter: formatter2, parser: parser2, getDefaultDetail: getDefaultDetail2 } = useHandlers(props);
     let detail = getDefaultDetail2();
     function getPopupDetail() {
       var _a;
-      return ((_a = popup.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail2();
+      return ((_a = popupRef.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail2();
     }
     function updateValue(val) {
       if (val == null) {
@@ -6913,7 +6945,7 @@ var _sfc_script33 = defineComponent21({
       popupVisible,
       fieldLabel,
       fieldValue,
-      popup,
+      popupRef,
       onFieldClick,
       onConfirm
     };
@@ -6952,7 +6984,7 @@ function render33(_ctx, _cache) {
       visible: _ctx.popupVisible,
       "onUpdate:visible": _cache[0] || (_cache[0] = ($event) => _ctx.popupVisible = $event),
       onConfirm: _ctx.onConfirm,
-      ref: "popup"
+      ref: "popupRef"
     }, null, 8, ["modelValue", "minDate", "maxDate", "initialMode", "allowSameDay", "maxRange", "dayHandler", "firstDayOfWeek", "title", "formatter", "parser", "showConfirm", "showClose", "visible", "onConfirm"])) : _createCommentVNode12("v-if", true)
   ], 2);
 }
@@ -6980,14 +7012,14 @@ import { defineComponent as defineComponent26 } from "vue";
 import { defineComponent as defineComponent25 } from "vue";
 
 // vue:./CascaderView.vue
-import { defineComponent as defineComponent24, ref as ref13, watch as watch13, nextTick as nextTick5 } from "vue";
+import { defineComponent as defineComponent24, ref as ref12, watch as watch13, nextTick as nextTick5 } from "vue";
 
 // vue:./Tab.vue
 import { computed as computed19, defineComponent as defineComponent22 } from "vue";
 
 // packages/ui/src/Tab/tab.ts
 var tabEmits = {
-  "update:activeValue": (value) => isStringNumberMix(value),
+  "update:modelValue": (value) => isStringNumberMix(value),
   change: (value, index) => isStringNumberMix(value) && isNumber(index)
 };
 var tabProps = {
@@ -7011,7 +7043,7 @@ var tabProps = {
     required: true,
     default: () => []
   },
-  activeValue: {
+  modelValue: {
     type: [Number, String]
   },
   color: {
@@ -7025,7 +7057,14 @@ var tabProps = {
 };
 
 // packages/ui/src/Tab/use-tab.ts
-import { getCurrentInstance as getCurrentInstance2, ref as ref11, watch as watch11, computed as computed18, nextTick as nextTick3 } from "vue";
+import {
+  getCurrentInstance as getCurrentInstance2,
+  ref as ref10,
+  watch as watch11,
+  computed as computed18,
+  nextTick as nextTick3,
+  shallowRef as shallowRef10
+} from "vue";
 
 // packages/ui/src/Tab/util.ts
 var getStyles2 = (color, activeColor) => {
@@ -7056,22 +7095,23 @@ var getItemClasses2 = (index, activeIndex) => {
 };
 
 // packages/ui/src/Tab/use-tab.ts
-function useTab(props, { emit }, { tabName }) {
+function useTab(props, { emit, expose }, { tabName }) {
+  var _a;
   const instance = getCurrentInstance2();
-  const listEl = ref11();
-  const underlineEl = ref11();
-  const options2 = ref11([]);
-  const activeIndex = ref11(-1);
-  const hasSub = ref11(false);
+  const listEl = shallowRef10(null);
+  const underlineEl = shallowRef10(null);
+  const options2 = ref10([]);
+  const activeIndex = ref10(-1);
+  const hasSub = ref10(false);
   const { frameStart } = useFrameTask();
-  let value2 = props.activeValue;
+  let activeValue = (_a = props.modelValue) != null ? _a : "";
   function updateOptions() {
     const options = [];
     let hasActive = false;
     hasSub.value = false;
     if (Array.isArray(props.options)) {
       props.options.forEach((item, index) => {
-        var _a;
+        var _a2;
         let option = null;
         if (isNumber(item)) {
           option = {
@@ -7098,7 +7138,7 @@ function useTab(props, { emit }, { tabName }) {
                 option.activeIconLink = isURL(item.activeIcon) ? item.activeIcon : option.iconLink;
               } else {
                 option.icon = item.icon;
-                option.activeIcon = (_a = item.activeIcon) != null ? _a : option.icon;
+                option.activeIcon = (_a2 = item.activeIcon) != null ? _a2 : option.icon;
               }
             }
             if (option.subLabel) {
@@ -7108,7 +7148,7 @@ function useTab(props, { emit }, { tabName }) {
           }
         }
         if (option) {
-          if (option.value === value2) {
+          if (!hasActive && option.value === activeValue) {
             activeIndex.value = index;
             hasActive = true;
           }
@@ -7117,56 +7157,63 @@ function useTab(props, { emit }, { tabName }) {
       });
     }
     options2.value = options;
-    if (!hasActive && options[0]) {
-      updateActive(options[0].value);
+    if (!hasActive) {
+      if (options[0]) {
+        activeIndex.value = 0;
+        activeValue = options[0].value;
+      } else {
+        activeIndex.value = -1;
+        activeValue = "";
+      }
+      (instance == null ? void 0 : instance.isMounted) && emitChange();
     }
     updatePos();
   }
-  function switchTo(value, isProp = false) {
+  function _switchTo(value, isProp = false) {
+    if (value === activeValue) {
+      return;
+    }
     if (!updateActive(value)) {
       console.error(new exception_default('The value is not in "options".', isProp ? exception_default.TYPE.PROP_ERROR : exception_default.TYPE.PARAM_ERROR, tabName));
+    } else if (!isProp) {
+      emitChange();
     }
   }
   function switchToIndex(index) {
+    if (index === activeIndex.value) {
+      return;
+    }
     if (options2.value[index]) {
-      updateActive(options2.value[index].value);
+      onChange(options2.value[index].value);
     } else {
       console.error(new exception_default('The "options[index]" not found.', exception_default.TYPE.PARAM_ERROR, tabName));
     }
   }
   function updateActive(value) {
-    if (value === value2) {
+    if (value === activeValue) {
       return true;
     }
     let hasValue = false;
     options2.value.forEach((option, index) => {
       if (option.value === value) {
-        value2 = option.value;
+        activeValue = option.value;
         activeIndex.value = index;
         hasValue = true;
       }
     });
-    if (!hasValue) {
-      activeIndex.value = -1;
-    }
-    afterUpdate({
-      hasValue,
-      activeIndex: activeIndex.value
-    });
+    hasValue && (instance == null ? void 0 : instance.isMounted) && updatePos();
     return hasValue;
   }
-  function afterUpdate({
-    hasValue
-  }) {
-    hasValue && (instance == null ? void 0 : instance.isMounted) && updatePos();
-  }
   function onChange(value) {
-    if (value === value2) {
+    if (value === activeValue) {
       return;
     }
     updateActive(value);
-    emit("update:activeValue", value);
-    emit("change", value, activeIndex.value);
+    emitChange();
+  }
+  function emitChange() {
+    emit("update:modelValue", activeValue);
+    emit("change", activeValue, activeIndex.value);
   }
   function updatePos() {
     nextTick3(() => {
@@ -7179,6 +7226,9 @@ function useTab(props, { emit }, { tabName }) {
       const $list = listEl.value;
       const $activeItem = $list.children[activeIndex.value];
       if (!$activeItem) {
+        if (tabName === "Tab") {
+          setUnderline(0, 0);
+        }
         return;
       }
       const vertical = tabName === "SideTab";
@@ -7203,29 +7253,39 @@ function useTab(props, { emit }, { tabName }) {
           $list[scrollDirectionKey] = current;
         }
       });
-      if (tabName === "Tab" && underlineEl.value) {
-        const $inner = $activeItem.querySelector(".ak-tab_item-inner");
-        underlineEl.value.style.width = $inner.offsetWidth + "px";
-        underlineEl.value.style.transform = `translate3d(${ofs - to + ($activeItem.offsetWidth - $inner.offsetWidth) / 2}px, 0, 0)`;
+      if (tabName === "Tab") {
+        const $inner = $activeItem.firstElementChild;
+        setUnderline(ofs - to + ($activeItem.offsetWidth - $inner.offsetWidth) / 2, $inner.offsetWidth);
       }
     });
   }
-  watch11(() => props.activeValue, (val) => val != null && switchTo(val, true));
+  function setUnderline(x, w) {
+    if (underlineEl.value) {
+      underlineEl.value.style.width = w + "px";
+      underlineEl.value.style.transform = `translate3d(${x}px, 0, 0)`;
+    }
+  }
+  watch11(() => props.modelValue, (val) => val != null && _switchTo(val, true));
   watch11(() => props.options, updateOptions, {
     deep: true,
     immediate: true
   });
   const styles = computed18(() => getStyles2(props.color, props.activeColor));
+  const switchTo = (value) => _switchTo(value, false);
+  expose({
+    switchTo,
+    switchToIndex
+  });
   return {
     listEl,
     underlineEl,
     activeIndex,
     hasSub,
     options2,
-    switchTo: (value) => switchTo(value, false),
-    switchToIndex,
     onChange,
-    styles
+    styles,
+    switchTo,
+    switchToIndex
   };
 }
 
@@ -7363,7 +7423,7 @@ _sfc_script35.__file = "packages/ui/src/Empty/Empty.vue";
 var Empty_default = _sfc_script35;
 
 // packages/ui/src/Picker/use-picker.ts
-import { nextTick as nextTick4, onMounted as onMounted11, ref as ref12, watch as watch12 } from "vue";
+import { nextTick as nextTick4, onMounted as onMounted11, ref as ref11, shallowRef as shallowRef11, watch as watch12 } from "vue";
 function getDefaultDetail(handlers) {
   return formatter([], [], handlers);
 }
@@ -7371,17 +7431,17 @@ function usePicker(props, ctx, {
   name,
   handlers
 }) {
-  const root = ref12();
+  const root = shallowRef11(null);
   const { emit } = ctx;
-  const isInitPopup = ref12(false);
-  const popupVisible = ref12(true);
-  const fieldValue = ref12("");
-  const fieldLabel = ref12("");
-  const popup = ref12();
+  const isInitPopup = ref11(false);
+  const popupVisible = ref11(true);
+  const fieldValue = ref11("");
+  const fieldLabel = ref11("");
+  const popupRef = shallowRef11(null);
   let detail = getDefaultDetail(handlers);
   function getPopupDetail() {
     var _a;
-    return ((_a = popup.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail(handlers);
+    return ((_a = popupRef.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail(handlers);
   }
   function updateValue(val) {
     if (val == null) {
@@ -7437,7 +7497,7 @@ function usePicker(props, ctx, {
   });
   return {
     root,
-    popup,
+    popupRef,
     isInitPopup,
     popupVisible,
     fieldValue,
@@ -7450,7 +7510,7 @@ function usePickerPopup(props, { emit }, {
   customConfirm,
   onCancelClick
 }, { handlers }) {
-  const viewRef = ref12();
+  const viewRef = shallowRef11(null);
   let detail = getDefaultDetail(handlers);
   function beforeConfirm() {
     const newDetail = getViewDetail();
@@ -7506,13 +7566,13 @@ function usePickerPopup(props, { emit }, {
   };
 }
 function usePickerView(props, { emit }, { name, afterUpdate, handlers }) {
-  const cols = ref12([]);
-  const options2 = ref12([]);
-  const isCascade = ref12(false);
+  const cols = ref11([]);
+  const options2 = ref11([]);
+  const isCascade = ref11(false);
   let selectedLabels = [];
   let selectedValues = [];
-  const currentLabels = ref12([]);
-  const currentValues = ref12([]);
+  const currentLabels = ref11([]);
+  const currentValues = ref11([]);
   const isPicker = name === "picker";
   const optionsHandler = handlers.optionsHandler || null;
   function updateOptions() {
@@ -7856,9 +7916,9 @@ var _sfc_script36 = defineComponent24({
   setup(props, ctx) {
     const { emit } = ctx;
     const { locale } = useLocale();
-    const selectedTabs = ref13([]);
-    const tabs = ref13([]);
-    const tabIndex = ref13(0);
+    const selectedTabs = ref12([]);
+    const tabs = ref12([]);
+    const tabIndex = ref12(0);
     let tempTabIndex = -1;
     function onItemClick(e, item) {
       if (item.disabled) {
@@ -7952,9 +8012,9 @@ function render36(_ctx, _cache) {
       class: "ak-cascader-view_header",
       options: _ctx.tabs,
       scrollThreshold: 0,
-      activeValue: _ctx.tabIndex,
-      "onUpdate:activeValue": _cache[0] || (_cache[0] = ($event) => _ctx.tabIndex = $event)
-    }, null, 8, ["options", "activeValue"]),
+      modelValue: _ctx.tabIndex,
+      "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => _ctx.tabIndex = $event)
+    }, null, 8, ["options", "modelValue"]),
     _createElementVNode26("div", _hoisted_223, [
       (_openBlock36(true), _createElementBlock31(_Fragment7, null, _renderList7(_ctx.cols, (colItem, colIndex) => {
         return _openBlock36(), _createElementBlock31("div", {
@@ -8036,7 +8096,7 @@ function render37(_ctx, _cache) {
     onConfirm: _ctx.onConfirm,
     onCancel: _ctx.onCancel,
     "onUpdate:visible": _ctx.onUpdateVisible,
-    ref: "popup"
+    ref: "popupRef"
   }, {
     default: _withCtx9(() => [
       _createVNode10(_component_CascaderView, {
@@ -8099,7 +8159,7 @@ function render38(_ctx, _cache) {
       visible: _ctx.popupVisible,
       "onUpdate:visible": _cache[0] || (_cache[0] = ($event) => _ctx.popupVisible = $event),
       onConfirm: _ctx.onConfirm,
-      ref: "popup"
+      ref: "popupRef"
     }, null, 8, ["options", "fieldNames", "modelValue", "formatter", "parser", "visible", "onConfirm"])) : _createCommentVNode16("v-if", true)
   ], 2);
 }
@@ -8283,10 +8343,10 @@ var checkGroupProps = {
 };
 var checkEmits = {
   "update:checked": (checked) => isBoolean(checked),
-  change: (checked) => isBoolean(checked)
+  checkedChange: (checked) => isBoolean(checked)
 };
 var checkProps = {
-  value: {
+  checkedValue: {
     type: [Number, String],
     default: ""
   },
@@ -8309,7 +8369,7 @@ var checkProps = {
 };
 
 // packages/ui/src/Checkbox/use-check.ts
-import { computed as computed22, onMounted as onMounted12, ref as ref14, watch as watch14, inject as inject7, provide as provide6 } from "vue";
+import { computed as computed22, onMounted as onMounted12, watch as watch14, inject as inject7, provide as provide6, shallowRef as shallowRef12 } from "vue";
 
 // packages/ui/src/hooks/use-group.ts
 import { inject as inject6, onBeforeUnmount as onBeforeUnmount8, provide as provide5, reactive as reactive3 } from "vue";
@@ -8361,7 +8421,7 @@ var getCheckGroupClasses = ({
 function useCheck(props, { emit }, name) {
   const uid3 = Symbol();
   const groupOptions = inject7(`ak${capitalize(name)}Options`, null);
-  const input = ref14();
+  const inputEl = shallowRef12(null);
   const name2 = computed22(() => {
     return (groupOptions == null ? void 0 : groupOptions.props.name) || props.name || "";
   });
@@ -8371,10 +8431,10 @@ function useCheck(props, { emit }, name) {
   });
   function getValue3() {
     var _a;
-    return (_a = props.value) != null ? _a : "";
+    return (_a = props.checkedValue) != null ? _a : "";
   }
   function getInputEl() {
-    return input.value;
+    return inputEl.value;
   }
   function getInputChecked() {
     return !!getInputEl().checked;
@@ -8388,7 +8448,7 @@ function useCheck(props, { emit }, name) {
     } else {
       const checked = !!e.target.checked;
       emit("update:checked", checked);
-      emit("change", checked);
+      emit("checkedChange", checked);
     }
   }
   watch14(() => props.checked, (val) => {
@@ -8411,7 +8471,7 @@ function useCheck(props, { emit }, name) {
     const $input = getInputEl();
     let checked;
     if (groupOptions) {
-      checked = name === "checkbox" ? !!(Array.isArray(groupOptions.props.modelValue) && props.value && groupOptions.props.modelValue.includes(props.value)) : props.value === groupOptions.props.modelValue;
+      checked = name === "checkbox" ? !!(Array.isArray(groupOptions.props.modelValue) && props.checkedValue && groupOptions.props.modelValue.includes(props.checkedValue)) : props.checkedValue === groupOptions.props.modelValue;
     } else {
       checked = !!props.checked;
     }
@@ -8425,7 +8485,7 @@ function useCheck(props, { emit }, name) {
     return getCheckStyles(activeColor);
   });
   return {
-    input,
+    inputEl,
     name2,
     disabled2,
     onChange,
@@ -8438,7 +8498,7 @@ function useCheckGroup(props, {
   updateValue,
   watchValue
 }) {
-  const root = ref14();
+  const root = shallowRef12(null);
   const { children } = useGroup(name);
   function _updateValue(isChange, uid3) {
     return updateValue({ isChange, children, uid: uid3 });
@@ -8594,10 +8654,10 @@ function render44(_ctx, _cache) {
       class: "ak-checkbox_input ak-form-input",
       type: "checkbox",
       name: _ctx.name2,
-      value: _ctx.value,
+      value: _ctx.checkedValue,
       disabled: _ctx.disabled2,
       onChange: _cache[0] || (_cache[0] = (...args) => _ctx.onChange && _ctx.onChange(...args)),
-      ref: "input"
+      ref: "inputEl"
     }, null, 40, _hoisted_134),
     _createElementVNode32("div", _hoisted_229, [
       _createVNode13(_component_Icon, {
@@ -8618,7 +8678,7 @@ _sfc_script44.render = render44;
 _sfc_script44.__file = "packages/ui/src/Checkbox/Checkbox.vue";
 
 // vue:./CheckboxGroup.vue
-import { defineComponent as defineComponent29, ref as ref15 } from "vue";
+import { defineComponent as defineComponent29, ref as ref13 } from "vue";
 import { renderSlot as _renderSlot13, renderList as _renderList8, Fragment as _Fragment8, openBlock as _openBlock45, createElementBlock as _createElementBlock39, toDisplayString as _toDisplayString14, createTextVNode as _createTextVNode7, resolveComponent as _resolveComponent21, withCtx as _withCtx10, createBlock as _createBlock17, normalizeClass as _normalizeClass21 } from "vue";
 var isValue2 = (value) => isStringNumberMixArray(value);
 var _sfc_script45 = defineComponent29({
@@ -8637,7 +8697,7 @@ var _sfc_script45 = defineComponent29({
     change: isValue2
   },
   setup(props, ctx) {
-    const inputValue = ref15([]);
+    const inputValue = ref13([]);
     const { emit } = ctx;
     const group = useCheckGroup(props, {
       name: "checkbox",
@@ -8684,13 +8744,13 @@ function render45(_ctx, _cache) {
       (_openBlock45(true), _createElementBlock39(_Fragment8, null, _renderList8(_ctx.options2, (item) => {
         return _openBlock45(), _createBlock17(_component_Checkbox, {
           key: item.value,
-          value: item.value
+          checkedValue: item.value
         }, {
           default: _withCtx10(() => [
             _createTextVNode7(_toDisplayString14(item.label), 1)
           ]),
           _: 2
-        }, 1032, ["value"]);
+        }, 1032, ["checkedValue"]);
       }), 128))
     ])
   ], 2);
@@ -8780,7 +8840,7 @@ _sfc_script46.__file = "packages/ui/src/CircleProgress/CircleProgress.vue";
 var CircleProgress_default = _sfc_script46;
 
 // vue:./Col.vue
-import { defineComponent as defineComponent31, inject as inject8, computed as computed24, ref as ref16 } from "vue";
+import { defineComponent as defineComponent31, inject as inject8, computed as computed24, ref as ref14 } from "vue";
 
 // packages/ui/src/Col/util.ts
 function rangeCol(number = 0) {
@@ -8834,7 +8894,7 @@ var _sfc_script47 = defineComponent31({
     }
   },
   setup(props) {
-    const defaultRowGutter = ref16([0, 0]);
+    const defaultRowGutter = ref14([0, 0]);
     const rowGutter = inject8("akRowGutter", defaultRowGutter);
     const styles = computed24(() => getColStyles(rowGutter.value));
     const classes = computed24(() => getColClasses(props));
@@ -8864,9 +8924,9 @@ import { renderSlot as _renderSlot16, openBlock as _openBlock48, createElementBl
 var _sfc_script48 = defineComponent32({
   name: "ak-collapse",
   props: {
-    activeNames: {
-      type: [Number, String, Array],
-      validator: stringNumberArrayMixValidator,
+    modelValue: {
+      type: [String, Array],
+      validator: stringOrStringArrayValidator,
       default: () => []
     },
     accordion: {
@@ -8875,25 +8935,25 @@ var _sfc_script48 = defineComponent32({
     }
   },
   emits: {
-    "update:activeNames": (payload) => isStringNumberMixArray(payload),
-    change: (payload) => isStringNumberMixArray(payload)
+    "update:modelValue": (payload) => isStringArray(payload),
+    change: (payload) => isStringArray(payload)
   },
   setup(props, { emit }) {
-    let activeNames2 = [];
+    let activeNames = [];
     const { children } = useGroup("collapse");
     function updateValue(val) {
-      let values = cloneData(stringNumberArrayMixValidator(val) ? Array.isArray(val) ? val : [val] : []);
+      let values = cloneData(isStringArray(val) ? val : isString(val) ? [val] : []);
       if (props.accordion) {
         values = values.slice(0, 1);
       }
-      if (Array.isArray(values) && isSameArray(values, activeNames2)) {
+      if (isSameArray(values, activeNames)) {
         return;
       }
-      activeNames2 = [];
+      activeNames = [];
       children.forEach((child) => {
         const childName = child.getName();
         if (childName && values.includes(childName)) {
-          activeNames2.push(childName);
+          activeNames.push(childName);
           child.show();
         } else {
           child.hide();
@@ -8901,25 +8961,27 @@ var _sfc_script48 = defineComponent32({
       });
     }
     function onChange(uid3) {
-      activeNames2 = [];
+      activeNames = [];
       if (props.accordion) {
         children.forEach((child) => {
           if (child.uid === uid3) {
-            child.getActive() && child.getName() && activeNames2.push(child.getName());
+            child.getActive() && child.getName() && activeNames.push(child.getName());
           } else {
             child.hide();
           }
         });
       } else {
         children.forEach((child) => {
-          child.getActive() && child.getName() && activeNames2.push(child.getName());
+          child.getActive() && child.getName() && activeNames.push(child.getName());
         });
       }
-      emit("update:activeNames", cloneData(activeNames2));
-      emit("change", cloneData(activeNames2));
+      emit("update:modelValue", cloneData(activeNames));
+      emit("change", cloneData(activeNames));
     }
-    onMounted13(() => updateValue(props.activeNames));
-    watch15(() => props.activeNames, (val) => updateValue(val));
+    onMounted13(() => updateValue(props.modelValue));
+    watch15(() => props.modelValue, updateValue, {
+      deep: true
+    });
     provide7("akCollapseChange", onChange);
     return {};
   }
@@ -8934,7 +8996,7 @@ _sfc_script48.render = render48;
 _sfc_script48.__file = "packages/ui/src/Collapse/Collapse.vue";
 
 // vue:./CollapseItem.vue
-import { defineComponent as defineComponent33, ref as ref17, inject as inject9, computed as computed25 } from "vue";
+import { defineComponent as defineComponent33, ref as ref15, inject as inject9, computed as computed25, shallowRef as shallowRef13 } from "vue";
 
 // packages/ui/src/Collapse/util.ts
 var getItemClasses3 = (active) => [
@@ -8958,8 +9020,7 @@ var _sfc_script49 = defineComponent33({
       default: ""
     },
     name: {
-      type: [Number, String],
-      default: "",
+      type: String,
       required: true
     },
     disabled: {
@@ -8971,8 +9032,8 @@ var _sfc_script49 = defineComponent33({
     toggle: (payload) => payload && isBoolean(payload.spread)
   },
   setup(props, { emit }) {
-    const active = ref17(false);
-    const bodyEl = ref17();
+    const active = ref15(false);
+    const bodyEl = shallowRef13(null);
     const onChange = inject9("akCollapseChange", collapseItemChange);
     const uid3 = Symbol();
     function collapseItemChange(uid4) {
@@ -9100,7 +9161,7 @@ _sfc_script50.__file = "packages/ui/src/ConfigProvider/ConfigProvider.vue";
 var ConfigProvider_default = _sfc_script50;
 
 // vue:./Copy.vue
-import { defineComponent as defineComponent35, ref as ref18 } from "vue";
+import { defineComponent as defineComponent35, shallowRef as shallowRef14 } from "vue";
 
 // packages/ui/src/Copy/util.ts
 function copy($el) {
@@ -9125,7 +9186,7 @@ var _sfc_script51 = defineComponent35({
   },
   setup(props, { emit }) {
     const { locale } = useLocale();
-    const inputEl = ref18();
+    const inputEl = shallowRef14(null);
     function onCopy() {
       var _a;
       try {
@@ -9173,7 +9234,7 @@ var Copy_default = _sfc_script51;
 import { defineComponent as defineComponent36, onMounted as onMounted14 } from "vue";
 
 // packages/ui/src/CountDown/use-count-time.ts
-import { onBeforeUnmount as onBeforeUnmount9, ref as ref19 } from "vue";
+import { onBeforeUnmount as onBeforeUnmount9, ref as ref16 } from "vue";
 
 // packages/ui/src/CountDown/util.ts
 function formatNumber(num) {
@@ -9212,7 +9273,7 @@ function getCountTime(time) {
 
 // packages/ui/src/CountDown/use-count-time.ts
 function useCountTime(onStep) {
-  const times = ref19(getDefaultCountTime());
+  const times = ref16(getDefaultCountTime());
   function update(time) {
     times.value = getCountTime(time);
   }
@@ -9348,7 +9409,7 @@ _sfc_script52.__file = "packages/ui/src/CountDown/CountDown.vue";
 var CountDown_default = _sfc_script52;
 
 // vue:./CountUp.vue
-import { defineComponent as defineComponent37, ref as ref20, watch as watch16 } from "vue";
+import { defineComponent as defineComponent37, ref as ref17, watch as watch16 } from "vue";
 
 // packages/ui/src/CountUp/util.ts
 var SpeedMap = /* @__PURE__ */ new Map([
@@ -9396,7 +9457,7 @@ var _sfc_script53 = defineComponent37({
     cancel: emitValidator
   },
   setup(props, { emit }) {
-    const content = ref20("");
+    const content = ref17("");
     let numberCache = getNumber(props.initialNumber, 0);
     const { getRunFrameTaskId, frameStart, frameStop } = useFrameTask();
     function cancel2() {
@@ -9455,7 +9516,7 @@ import { defineComponent as defineComponent41 } from "vue";
 import { defineComponent as defineComponent40, inject as inject11 } from "vue";
 
 // vue:./PickerView.vue
-import { defineComponent as defineComponent39, nextTick as nextTick6, ref as ref21, inject as inject10 } from "vue";
+import { defineComponent as defineComponent39, nextTick as nextTick6, inject as inject10, shallowRef as shallowRef15 } from "vue";
 
 // vue:./PickerViewCol.vue
 import { defineComponent as defineComponent38 } from "vue";
@@ -9531,7 +9592,7 @@ var _sfc_script55 = defineComponent39({
   emits: { ...pickerViewEmits },
   setup(props, ctx) {
     const { locale } = useLocale();
-    const root = ref21();
+    const root = shallowRef15(null);
     const handlers = inject10("akPickerHandlers", {});
     const {
       getDetail,
@@ -9711,7 +9772,7 @@ function render56(_ctx, _cache) {
     onCancel: _ctx.onCancel,
     onConfirm: _ctx.onConfirm,
     "onUpdate:visible": _ctx.onUpdateVisible,
-    ref: "popup"
+    ref: "popupRef"
   }, {
     header: _withCtx12(() => [
       _createVNode17(_component_NavBar, {
@@ -9785,7 +9846,7 @@ function render57(_ctx, _cache) {
       visible: _ctx.popupVisible,
       "onUpdate:visible": _cache[0] || (_cache[0] = ($event) => _ctx.popupVisible = $event),
       onConfirm: _ctx.onConfirm,
-      ref: "popup"
+      ref: "popupRef"
     }, null, 8, ["options", "fieldNames", "modelValue", "title", "formatter", "parser", "visible", "onConfirm"])) : _createCommentVNode20("v-if", true)
   ], 2);
 }
@@ -10209,7 +10270,7 @@ function render58(_ctx, _cache) {
       visible: _ctx.popupVisible,
       "onUpdate:visible": _cache[0] || (_cache[0] = ($event) => _ctx.popupVisible = $event),
       onConfirm: _ctx.onConfirm,
-      ref: "popup"
+      ref: "popupRef"
     }, null, 8, ["title", "formatter", "parser", "visible", "onConfirm"])) : _createCommentVNode21("v-if", true)
   ], 2);
 }
@@ -10258,7 +10319,7 @@ function render59(_ctx, _cache) {
     onCancel: _ctx.onCancel,
     onConfirm: _ctx.onConfirm,
     "onUpdate:visible": _ctx.onUpdateVisible,
-    ref: "popup"
+    ref: "popupRef"
   }, {
     header: _withCtx13(() => [
       _createVNode20(_component_NavBar, {
@@ -10497,7 +10558,7 @@ function render63(_ctx, _cache) {
     onConfirm: _ctx.onConfirm,
     onCancel: _ctx.onCancel,
     "onUpdate:visible": _ctx.onUpdateVisible,
-    ref: "popup"
+    ref: "popupRef"
   }, {
     default: _withCtx14(() => [
       _ctx.title ? (_openBlock62(), _createElementBlock53("div", _hoisted_144, _toDisplayString20(_ctx.title), 1)) : _createCommentVNode23("v-if", true),
@@ -10600,7 +10661,13 @@ _sfc_script64.__file = "packages/ui/src/Divider/Divider.vue";
 var Divider_default = _sfc_script64;
 
 // vue:./Dropdown.vue
-import { defineComponent as defineComponent48, computed as computed28, ref as ref22, nextTick as nextTick7 } from "vue";
+import {
+  defineComponent as defineComponent48,
+  computed as computed28,
+  ref as ref18,
+  nextTick as nextTick7,
+  shallowRef as shallowRef16
+} from "vue";
 import { createElementVNode as _createElementVNode41, renderSlot as _renderSlot23, mergeProps as _mergeProps6, Teleport as _Teleport4, openBlock as _openBlock64, createBlock as _createBlock26 } from "vue";
 var _sfc_script65 = defineComponent48({
   name: "ak-dropdown",
@@ -10613,9 +10680,9 @@ var _sfc_script65 = defineComponent48({
   },
   emits: { ...popupEmits },
   setup(props, ctx) {
-    const top = ref22(-1);
-    const height = ref22(0);
-    const popupEl = ref22();
+    const top = ref18(-1);
+    const height = ref18(0);
+    const popupEl = shallowRef16(null);
     function updatePos() {
       const $target = querySelector(props.selector);
       if (!$target) {
@@ -10679,7 +10746,8 @@ import {
   defineComponent as defineComponent49,
   inject as inject12,
   onMounted as onMounted16,
-  ref as ref23,
+  ref as ref19,
+  shallowRef as shallowRef17,
   toRef as toRef4,
   watch as watch18
 } from "vue";
@@ -10778,15 +10846,15 @@ var _sfc_script66 = defineComponent49({
     }
   },
   setup(props) {
-    const root = ref23();
-    const innerEl = ref23();
-    const contentEl = ref23();
+    const root = shallowRef17(null);
+    const innerEl = shallowRef17(null);
+    const contentEl = shallowRef17(null);
     const disableFixed = inject12("disableFixed", false);
-    const rootStyle = ref23({
+    const rootStyle = ref19({
       width: null,
       height: null
     });
-    const fixed2 = ref23(true);
+    const fixed2 = ref19(true);
     const { safeAreaInsets: safeAreaInsets2 } = useSafeAreaInsets(toRef4(props, "enableSafeAreaInsets"));
     function updateSize() {
       if (!(root.value && innerEl.value && contentEl.value)) {
@@ -10862,7 +10930,7 @@ _sfc_script66.__file = "packages/ui/src/Fixed/Fixed.vue";
 var Fixed_default = _sfc_script66;
 
 // vue:./FlatList.vue
-import { computed as computed32, defineComponent as defineComponent52, onMounted as onMounted19, ref as ref25 } from "vue";
+import { computed as computed32, defineComponent as defineComponent52, onMounted as onMounted19, ref as ref21, shallowRef as shallowRef19 } from "vue";
 
 // vue:./LoadMore.vue
 import { computed as computed30, defineComponent as defineComponent50 } from "vue";
@@ -10928,7 +10996,15 @@ _sfc_script67.__file = "packages/ui/src/LoadMore/LoadMore.vue";
 var LoadMore_default = _sfc_script67;
 
 // vue:./ScrollView.vue
-import { defineComponent as defineComponent51, computed as computed31, ref as ref24, onMounted as onMounted18, watch as watch19, provide as provide9 } from "vue";
+import {
+  defineComponent as defineComponent51,
+  computed as computed31,
+  ref as ref20,
+  onMounted as onMounted18,
+  watch as watch19,
+  provide as provide9,
+  shallowRef as shallowRef18
+} from "vue";
 
 // packages/ui/src/hooks/use-touch.ts
 import { onBeforeUnmount as onBeforeUnmount11, onMounted as onMounted17 } from "vue";
@@ -11085,12 +11161,12 @@ var _sfc_script68 = defineComponent51({
     let _prevY = 0;
     let _prevX = 0;
     let coords;
-    const pullRefreshState = ref24(PullRefreshState.Pulling);
-    const root = ref24();
-    const pullDistance = ref24(0);
-    const translateDuration = ref24(0);
-    const pullDirection = ref24("");
-    const pullIndicatorSafeArea = ref24({
+    const pullRefreshState = ref20(PullRefreshState.Pulling);
+    const root = shallowRef18(null);
+    const pullDistance = ref20(0);
+    const translateDuration = ref20(0);
+    const pullDirection = ref20("");
+    const pullIndicatorSafeArea = ref20({
       top: 0,
       right: 0,
       bottom: 0,
@@ -11453,9 +11529,9 @@ var _sfc_script69 = defineComponent52({
   },
   setup(props, { emit }) {
     const { locale } = useLocale();
-    const scrollViewRef = ref25();
-    const virtualListRef = ref25();
-    const wrapperSize = ref25(0);
+    const scrollViewRef = shallowRef19(null);
+    const virtualListRef = shallowRef19(null);
+    const wrapperSize = ref21(0);
     let horizontal = false;
     if (props.initialWaterfallCount <= 1 && props.initialHorizontal) {
       horizontal = true;
@@ -11791,60 +11867,55 @@ _sfc_script73.__file = "packages/ui/src/Group/Group.vue";
 var Group_default = _sfc_script73;
 
 // vue:./ImagePreview.vue
-import { defineComponent as defineComponent59, reactive as reactive4, ref as ref29, watch as watch21 } from "vue";
+import { defineComponent as defineComponent59, reactive as reactive4, ref as ref24, watch as watch21 } from "vue";
 
 // vue:./Swiper.vue
 import {
-  ref as ref27,
+  ref as ref23,
   defineComponent as defineComponent57,
   onMounted as onMounted21,
   watch as watch20,
   onBeforeUnmount as onBeforeUnmount13,
-  provide as provide11
+  provide as provide11,
+  shallowRef as shallowRef21
 } from "vue";
 
 // packages/ui/src/hooks/use-list.ts
 import {
   getCurrentInstance as getCurrentInstance3,
-  ref as ref26,
+  ref as ref22,
   onBeforeUnmount as onBeforeUnmount12,
   provide as provide10,
   onMounted as onMounted20,
   onUnmounted,
-  inject as inject13
+  inject as inject13,
+  shallowRef as shallowRef20
 } from "vue";
 function createUpdateInItem(name) {
   name = capitalize(name);
-  return function(lazy = 17) {
+  return function() {
     new exception_default(`${name}Item is not in ${name}`, exception_default.TYPE.DEFAULT, name);
   };
 }
 function useList(name, updateCallback) {
   const instance = getCurrentInstance3();
-  const listEl = ref26();
+  const listEl = shallowRef20(null);
   let updateTimer;
+  let _$items = [];
   function doUpdate() {
     const $items = getItems();
     $items.forEach(($item, index) => {
       $item._akSetIndex && $item._akSetIndex(index);
     });
-    updateCallback($items);
-  }
-  function update(lazy = 17) {
-    if (!(instance == null ? void 0 : instance.isMounted)) {
+    if (isSameArray(_$items, $items)) {
       return;
     }
-    if (lazy === 0) {
-      if (!(instance == null ? void 0 : instance.isUnmounted)) {
-        doUpdate();
-      }
-    } else {
-      clearTimeout(updateTimer);
-      updateTimer = window.setTimeout(() => {
-        if (!(instance == null ? void 0 : instance.isUnmounted)) {
-          doUpdate();
-        }
-      }, lazy);
+    _$items = $items;
+    updateCallback($items);
+  }
+  function update() {
+    if ((instance == null ? void 0 : instance.isMounted) && !(instance == null ? void 0 : instance.isUnmounted)) {
+      doUpdate();
     }
   }
   provide10(`ak${capitalize(name)}Update`, update);
@@ -11859,7 +11930,7 @@ function useList(name, updateCallback) {
   };
 }
 function useListItem(name, root) {
-  const index = ref26(-1);
+  const index = ref22(-1);
   const update = inject13(`ak${capitalize(name)}Update`, createUpdateInItem(name));
   onMounted20(() => {
     if (root == null ? void 0 : root.value) {
@@ -11964,15 +12035,14 @@ var _sfc_script74 = defineComponent57({
   },
   emits: {
     "update:activeIndex": (activeIndex) => isNumber(activeIndex),
-    change: emitChangeValidator,
+    activeIndexChange: emitChangeValidator,
     animated: emitChangeValidator,
     click: emitEventValidator
   },
-  setup(props, ctx) {
-    const root = ref27();
-    const { emit } = ctx;
-    const index = ref27(0);
-    const pagination = ref27([]);
+  setup(props, { emit, expose }) {
+    const root = shallowRef21(null);
+    const index = ref23(0);
+    const pagination = ref23([]);
     const direction = props.initialVertical ? "y" : "x";
     const directionGroup = props.initialVertical ? ["Y", "X", "Height", "Width"] : ["X", "Y", "Width", "Height"];
     const circular = !!props.initialCircular;
@@ -11982,24 +12052,29 @@ var _sfc_script74 = defineComponent57({
     let $items = [];
     let itemSize = 0;
     let horizontal = null;
-    function swipeTo(activeIndex) {
-      if (isNumber(activeIndex) && activeIndex >= 0 && activeIndex < $items.length) {
+    let isEmitChange = true;
+    function _swipeTo(activeIndex, isProp = false) {
+      if ($items.length === 0) {
+        goTo(0);
+      } else if (isNumber(activeIndex) && activeIndex >= 0 && activeIndex < $items.length) {
         if (activeIndex !== index.value) {
-          to(activeIndex, false);
+          isEmitChange = !isProp;
+          goTo(activeIndex, false);
+          isEmitChange = true;
         }
       } else {
         console.error(new exception_default('This value of "activeIndex" is out of range.', exception_default.TYPE.PROP_ERROR, "Swiper"));
       }
     }
-    function prev(useCircular = false) {
-      to(useCircular ? getCircleIndex(-1) : index.value - 1);
+    function prev() {
+      goTo(getCircleIndex(-1));
     }
-    function next(useCircular = false) {
-      to(useCircular ? getCircleIndex(1) : index.value + 1);
+    function next() {
+      goTo(getCircleIndex(1));
     }
     function getCircleIndex(step2) {
       const length = $items.length;
-      return (index.value + length + step2 % length) % length;
+      return length === 0 ? 0 : (index.value + length + step2 % length) % length;
     }
     function updateSwipeLoop(offset) {
       if (!circular) {
@@ -12048,9 +12123,9 @@ var _sfc_script74 = defineComponent57({
       prevTranSize = transSize;
     }
     function onBeforeSlide(toIndex, fromIndex) {
-      if (toIndex !== fromIndex) {
+      if (toIndex !== fromIndex && isEmitChange) {
         emit("update:activeIndex", toIndex);
-        emit("change", toIndex, fromIndex);
+        emit("activeIndexChange", toIndex, fromIndex);
       }
       index.value = toIndex;
     }
@@ -12062,7 +12137,7 @@ var _sfc_script74 = defineComponent57({
         emit("click", e);
       }
     }
-    function to(toIndex, animated = true) {
+    function goTo(toIndex, animated = true) {
       const lastIndex = getLastIndex();
       let slideIndex = toIndex;
       if (lastIndex < 0) {
@@ -12130,19 +12205,14 @@ var _sfc_script74 = defineComponent57({
         }
       });
     }
-    let isFirst = true;
     function resetItems(res) {
       $items = res;
       setSlideStyle();
       const last = getLastIndex();
-      if (isFirst) {
-        isFirst = false;
-        if (props.activeIndex !== 0) {
-          swipeTo(props.activeIndex);
-        }
-      } else if (index.value > last) {
-        to(last);
+      if (index.value > last) {
+        _swipeTo(last);
       }
+      start();
     }
     function setSlideStyle() {
       if (!root.value || !listEl.value) {
@@ -12176,9 +12246,7 @@ var _sfc_script74 = defineComponent57({
     let autoplayTimer;
     function start() {
       stop();
-      props.autoplay && (autoplayTimer = window.setInterval(() => {
-        to(getCircleIndex(1));
-      }, props.interval));
+      props.autoplay && $items.length > 1 && (autoplayTimer = window.setInterval(() => next(), props.interval));
     }
     function stop() {
       clearTimeout(autoplayTimer);
@@ -12187,7 +12255,7 @@ var _sfc_script74 = defineComponent57({
       return $items[index2] || null;
     }
     const { listEl, update } = useList("swiper", resetItems);
-    useResizeObserver(root, () => update(50));
+    useResizeObserver(root, update);
     let coords;
     let inMove = false;
     useTouch({
@@ -12280,19 +12348,22 @@ var _sfc_script74 = defineComponent57({
             } else {
               transIndex = active;
             }
-            to(transIndex);
+            goTo(transIndex);
             coords = null;
           }
         }
         start();
       }
     });
-    watch20(() => props.activeIndex, (val) => swipeTo(val));
     watch20([() => props.autoplay, () => props.interval], () => {
       start();
     });
+    watch20(() => props.activeIndex, (val) => _swipeTo(val, true));
     onMounted21(() => {
       start();
+      if (props.activeIndex !== 0) {
+        _swipeTo(props.activeIndex, true);
+      }
     });
     onBeforeUnmount13(() => {
       clearTimeout(durationTimer);
@@ -12300,12 +12371,15 @@ var _sfc_script74 = defineComponent57({
       $items = [];
     });
     provide11("disableFixed", true);
+    const swipeTo = (newIndex) => _swipeTo(newIndex, false);
+    expose({
+      swipeTo,
+      prev,
+      next
+    });
     return {
       root,
       listEl,
-      swipeTo,
-      prev,
-      next,
       onClick,
       index,
       pagination,
@@ -12316,7 +12390,10 @@ var _sfc_script74 = defineComponent57({
       classes,
       indicatorsClasses,
       getPaginationItemClasses,
-      getPaginationItemStyles
+      getPaginationItemStyles,
+      swipeTo,
+      prev,
+      next
     };
   }
 });
@@ -12349,13 +12426,13 @@ function render73(_ctx, _cache) {
     _ctx.navigationButtons && _ctx.pagination.length > 1 ? (_openBlock72(), _createElementBlock62(_Fragment11, { key: 1 }, [
       _createElementVNode47("button", {
         class: "ak-swiper_prev",
-        onClick: _cache[0] || (_cache[0] = ($event) => _ctx.prev(true))
+        onClick: _cache[0] || (_cache[0] = (...args) => _ctx.prev && _ctx.prev(...args))
       }, [
         _createVNode24(_component_Icon, { icon: _ctx.LeftOutlined }, null, 8, ["icon"])
       ]),
       _createElementVNode47("button", {
         class: "ak-swiper_next",
-        onClick: _cache[1] || (_cache[1] = ($event) => _ctx.next(true))
+        onClick: _cache[1] || (_cache[1] = (...args) => _ctx.next && _ctx.next(...args))
       }, [
         _createVNode24(_component_Icon, { icon: _ctx.RightOutlined }, null, 8, ["icon"])
       ])
@@ -12366,12 +12443,12 @@ _sfc_script74.render = render73;
 _sfc_script74.__file = "packages/ui/src/Swiper/Swiper.vue";
 
 // vue:./SwiperItem.vue
-import { ref as ref28, defineComponent as defineComponent58 } from "vue";
+import { defineComponent as defineComponent58, shallowRef as shallowRef22 } from "vue";
 import { renderSlot as _renderSlot32, openBlock as _openBlock73, createElementBlock as _createElementBlock63 } from "vue";
 var _sfc_script75 = defineComponent58({
   name: "ak-swiper-item",
   setup() {
-    const root = ref28();
+    const root = shallowRef22(null);
     useListItem("swiper");
     return {
       root
@@ -12440,7 +12517,7 @@ var _sfc_script76 = defineComponent59({
       validator: (val) => isStringArray(val),
       required: true
     },
-    current: {
+    modelValue: {
       type: String,
       default: ""
     },
@@ -12459,15 +12536,15 @@ var _sfc_script76 = defineComponent59({
   },
   emits: {
     ...popupEmits,
-    "update:current": (current) => isString(current),
+    "update:modelValue": (current) => isString(current),
     change: (current, index, fromIndex) => isString(current) && isNumber(index) && isNumber(fromIndex)
   },
   setup(props, ctx) {
     const { emit } = ctx;
-    const activeIndex = ref29(0);
+    const activeIndex = ref24(0);
     const images2 = reactive4([]);
-    const zoomAnimated = ref29(false);
-    const swiperInit = ref29(false);
+    const zoomAnimated = ref24(false);
+    const swiperInit = ref24(false);
     const popup = usePopup(props, ctx, {});
     let coords;
     function onImageTouchStart(e, item) {
@@ -12619,7 +12696,7 @@ var _sfc_script76 = defineComponent59({
       }
       if (!hasUrl && images2[0]) {
         activeIndex.value = 0;
-        emit("update:current", images2[0].src);
+        emit("update:modelValue", images2[0].src);
       }
     }
     function onSwiperAnimated() {
@@ -12634,7 +12711,7 @@ var _sfc_script76 = defineComponent59({
     }
     const onSwiperChange = (index, fromIndex) => {
       const current = props.urls[index];
-      emit("update:current", current);
+      emit("update:modelValue", current);
       emit("change", current, index, fromIndex);
     };
     function onPreviewClick() {
@@ -12681,7 +12758,7 @@ var _sfc_script76 = defineComponent59({
       immediate: true,
       deep: true
     });
-    watch21(() => props.current, (val) => updateCurrent(val), {
+    watch21(() => props.modelValue, (val) => updateCurrent(val), {
       immediate: true
     });
     watch21(popup.isShow, () => {
@@ -12725,9 +12802,9 @@ function render75(_ctx, _cache) {
         key: 0,
         activeIndex: _ctx.activeIndex,
         "onUpdate:activeIndex": _cache[0] || (_cache[0] = ($event) => _ctx.activeIndex = $event),
-        "navigation-buttons": _ctx.navigationButtons,
+        navigationButtons: _ctx.navigationButtons,
         onClick: _ctx.onPreviewClick,
-        onChange: _ctx.onSwiperChange,
+        onActiveIndexChange: _ctx.onSwiperChange,
         onAnimated: _ctx.onSwiperAnimated
       }, {
         default: _withCtx16(() => [
@@ -12752,7 +12829,7 @@ function render75(_ctx, _cache) {
           }), 128))
         ]),
         _: 1
-      }, 8, ["activeIndex", "navigation-buttons", "onClick", "onChange", "onAnimated"])) : _createCommentVNode31("v-if", true),
+      }, 8, ["activeIndex", "navigationButtons", "onClick", "onActiveIndexChange", "onAnimated"])) : _createCommentVNode31("v-if", true),
       _createElementVNode48("div", _hoisted_334, _toDisplayString26(_ctx.activeIndex + 1) + " / " + _toDisplayString26(_ctx.urls.length), 1),
       _createElementVNode48("div", _hoisted_413, [
         _renderSlot33(_ctx.$slots, "close", { activeIndex: _ctx.activeIndex }, () => [
@@ -12782,19 +12859,20 @@ var showImagePreview = createShowPopup({
 var ImagePreview_default = _sfc_script76;
 
 // vue:./ImageUploader.vue
-import { defineComponent as defineComponent62, reactive as reactive6, computed as computed36, watch as watch23, ref as ref31 } from "vue";
+import { defineComponent as defineComponent62, reactive as reactive6, computed as computed36, watch as watch23, ref as ref26 } from "vue";
 
 // vue:./Order.vue
 import {
   defineComponent as defineComponent60,
-  ref as ref30,
+  ref as ref25,
   reactive as reactive5,
   onMounted as onMounted22,
   nextTick as nextTick8,
   watch as watch22,
   onBeforeUnmount as onBeforeUnmount14,
   onBeforeMount,
-  computed as computed35
+  computed as computed35,
+  shallowRef as shallowRef23
 } from "vue";
 
 // vue:./DeleteOutlined.vue
@@ -12872,15 +12950,15 @@ var _sfc_script78 = defineComponent60({
   },
   setup(props, { emit }) {
     const { locale } = useLocale();
-    const root = ref30();
-    const deleteButtonEl = ref30();
+    const root = shallowRef23(null);
+    const deleteButtonEl = shallowRef23(null);
     const positions = reactive5([]);
-    const dragOn = ref30(false);
-    const dragCurrent = ref30(-1);
-    const dragDelete = ref30(false);
-    const dragFixed = ref30(-1);
-    const deleting = ref30(false);
-    const orderHeight = ref30(0);
+    const dragOn = ref25(false);
+    const dragCurrent = ref25(-1);
+    const dragDelete = ref25(false);
+    const dragFixed = ref25(-1);
+    const deleting = ref25(false);
+    const orderHeight = ref25(0);
     const drag = {
       on: false,
       current: -1,
@@ -13414,10 +13492,10 @@ var _sfc_script81 = defineComponent62({
   setup(props, { emit }) {
     const { locale } = useLocale();
     const orderItems = reactive6([]);
-    const fileItems = ref31({});
-    const formValue = ref31([]);
-    const previewVisible = ref31(false);
-    const previewCurrent = ref31("");
+    const fileItems = ref26({});
+    const formValue = ref26([]);
+    const previewVisible = ref26(false);
+    const previewCurrent = ref26("");
     function onAddFiles(e) {
       const files = e.target.files || [];
       for (let i = 0; i < files.length; i++) {
@@ -13626,7 +13704,7 @@ var _sfc_script81 = defineComponent62({
     function onPreviewDelete(activeIndex) {
       const current = formValue.value[activeIndex];
       for (let i = 0, j = 0; i < orderItems.length; i++) {
-        const optionItem = orderItems[i];
+        const optionItem = getFileItemById(orderItems[i].id);
         if (optionItem.status === "uploaded") {
           if (j === activeIndex && optionItem.url === current) {
             showDialog({
@@ -13720,8 +13798,7 @@ function render80(_ctx, _cache) {
       _createElementVNode53("input", {
         type: "hidden",
         name: _ctx.name,
-        value: _ctx.formValue,
-        ref: "input"
+        value: _ctx.formValue
       }, null, 8, _hoisted_245)
     ], 16),
     _createVNode28(_component_ImagePreview, {
@@ -13729,8 +13806,8 @@ function render80(_ctx, _cache) {
       urls: _ctx.formValue,
       visible: _ctx.previewVisible,
       "onUpdate:visible": _cache[2] || (_cache[2] = ($event) => _ctx.previewVisible = $event),
-      current: _ctx.previewCurrent,
-      "onUpdate:current": _cache[3] || (_cache[3] = ($event) => _ctx.previewCurrent = $event),
+      modelValue: _ctx.previewCurrent,
+      "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => _ctx.previewCurrent = $event),
       showClose: ""
     }, {
       close: _withCtx18(({ activeIndex }) => [
@@ -13744,7 +13821,7 @@ function render80(_ctx, _cache) {
         }, null, 8, ["onClick", "icon"])
       ]),
       _: 1
-    }, 8, ["urls", "visible", "current"])
+    }, 8, ["urls", "visible", "modelValue"])
   ], 64);
 }
 _sfc_script81.render = render80;
@@ -13754,13 +13831,29 @@ _sfc_script81.__file = "packages/ui/src/ImageUploader/ImageUploader.vue";
 var ImageUploader_default = _sfc_script81;
 
 // vue:./IndexView.vue
-import { defineComponent as defineComponent66, onMounted as onMounted25, ref as ref34 } from "vue";
+import { defineComponent as defineComponent66, onMounted as onMounted25, ref as ref29, shallowRef as shallowRef26, watch as watch26 } from "vue";
 
 // vue:./StickyView.vue
-import { computed as computed38, defineComponent as defineComponent64, onMounted as onMounted24, ref as ref33, watch as watch25 } from "vue";
+import {
+  computed as computed38,
+  defineComponent as defineComponent64,
+  onMounted as onMounted24,
+  ref as ref28,
+  watch as watch25,
+  nextTick as nextTick9,
+  shallowRef as shallowRef25
+} from "vue";
 
 // vue:./Sticky.vue
-import { defineComponent as defineComponent63, computed as computed37, ref as ref32, onMounted as onMounted23, inject as inject14, watch as watch24 } from "vue";
+import {
+  defineComponent as defineComponent63,
+  computed as computed37,
+  ref as ref27,
+  onMounted as onMounted23,
+  inject as inject14,
+  watch as watch24,
+  shallowRef as shallowRef24
+} from "vue";
 
 // packages/ui/src/Sticky/util.ts
 var getStyles5 = (height) => {
@@ -13795,14 +13888,14 @@ var _sfc_script82 = defineComponent63({
       default: false
     }
   },
-  setup(props) {
-    const root = ref32();
-    const container = ref32();
-    const contentEl = ref32();
-    const width = ref32(null);
-    const height = ref32(null);
+  setup(props, { expose }) {
+    const root = shallowRef24(null);
+    const container = shallowRef24(null);
+    const contentEl = shallowRef24(null);
+    const width = ref27(null);
+    const height = ref27(null);
     const disableFixed = inject14("disableFixed", false);
-    const fixed = ref32(false);
+    const fixed = ref27(false);
     useFixed({
       disableFixed,
       root,
@@ -13862,6 +13955,9 @@ var _sfc_script82 = defineComponent63({
     });
     watch24(() => props.disabled, () => updateFixed());
     onMounted23(() => resetContainer(props.containSelector));
+    expose({
+      resetContainer
+    });
     return {
       root,
       fixed,
@@ -13893,7 +13989,7 @@ _sfc_script82.__file = "packages/ui/src/Sticky/Sticky.vue";
 var Sticky_default = _sfc_script82;
 
 // packages/ui/src/StickyView/props.ts
-var emitChangeValidator2 = (activeIndex) => isNumber(activeIndex);
+var emitChangeValidator2 = (name, activeIndex) => isString(name) && isNumber(activeIndex);
 
 // packages/ui/src/StickyView/util.ts
 var getClasses13 = (isSelfContainer) => [
@@ -13907,15 +14003,35 @@ var getFixedStyles = (titleY) => ({
 });
 var FIXED_HEIGHT = 28;
 
+// packages/ui/src/hooks/use-once.ts
+import { onBeforeUnmount as onBeforeUnmount15 } from "vue";
+function useOnce() {
+  let handle = null;
+  function cancel2() {
+    if (handle !== null) {
+      cancelAnimationFrame(handle);
+      handle = null;
+    }
+  }
+  function call(fn) {
+    cancel2();
+    handle = requestAnimationFrame(() => {
+      handle = null;
+      fn();
+    });
+  }
+  onBeforeUnmount15(cancel2);
+  return call;
+}
+
 // vue:./StickyView.vue
 import { renderSlot as _renderSlot36, createElementVNode as _createElementVNode55, resolveComponent as _resolveComponent41, withCtx as _withCtx19, createVNode as _createVNode29, normalizeClass as _normalizeClass38, openBlock as _openBlock81, createElementBlock as _createElementBlock71 } from "vue";
 var _sfc_script83 = defineComponent64({
   name: "ak-sticky-view",
   components: { Sticky: _sfc_script82 },
   props: {
-    activeIndex: {
-      type: Number,
-      default: 0
+    modelValue: {
+      type: String
     },
     containSelector: {
       type: [String, HTMLElement],
@@ -13932,29 +14048,44 @@ var _sfc_script83 = defineComponent64({
     }
   },
   emits: {
-    "update:activeIndex": (activeIndex) => isNumber(activeIndex),
+    "update:modelValue": (name) => isString(name),
     change: emitChangeValidator2,
     resetItems: (items) => {
       if (Array.isArray(items)) {
         return items.filter((item) => {
-          return !(item && isNumber(item.index) && isString(item.name));
+          return !(item && isNumber(item.index) && isString(item.name) && isString(item.title));
         }).length === 0;
       }
       return false;
     }
   },
-  setup(props, { emit }) {
-    const root = ref33();
-    const container = ref33();
-    const fixedEl = ref33();
-    const stickyRef = ref33();
-    const activeIndex = ref33(0);
-    const isSelfContainer = ref33(false);
+  setup(props, { emit, expose }) {
+    const root = shallowRef25(null);
+    const container = shallowRef25(null);
+    const fixedEl = shallowRef25(null);
+    const stickyRef = shallowRef25(null);
+    const activeIndex = ref28(0);
+    const isSelfContainer = ref28(false);
     let $items = [];
-    let isScrollTo = false;
+    let isSpecifyScrolling = false;
+    const once = useOnce();
     function getItemName(index) {
       var _a;
       return ((_a = $items[index]) == null ? void 0 : _a.dataset.name) || "";
+    }
+    function getItemTitle(index) {
+      var _a;
+      return ((_a = $items[index]) == null ? void 0 : _a.dataset.title) || getItemName(index);
+    }
+    function getActiveIndexByName(name) {
+      if (name) {
+        for (let i = 0; i < $items.length; i++) {
+          if (getItemName(i) === name) {
+            return i;
+          }
+        }
+      }
+      return -1;
     }
     useScroll(container, () => updateFixed(null));
     const resetContainer = (containSelector) => {
@@ -13971,6 +14102,15 @@ var _sfc_script83 = defineComponent64({
       fixedEl.value.textContent = t;
       fixedEl.value.style.cssText = CSSProperties2CssText(getFixedStyles(tY));
     }
+    function onChange() {
+      if (oldIndex !== activeIndex.value) {
+        const name = getItemName(activeIndex.value);
+        emit("update:modelValue", name);
+        emit("change", name, activeIndex.value);
+      }
+      oldIndex = -1;
+    }
+    let oldIndex = -1;
     function updateFixed(ss) {
       if (!fixedEl.value || !container.value) {
         return;
@@ -13978,6 +14118,9 @@ var _sfc_script83 = defineComponent64({
       if ($items.length === 0) {
         updateTitle("", null);
         return;
+      }
+      if (oldIndex === -1) {
+        oldIndex = activeIndex.value;
       }
       const scrollTop = ss == null ? getScrollTop(container.value) : ss;
       const _index = activeIndex.value;
@@ -13994,11 +14137,8 @@ var _sfc_script83 = defineComponent64({
           updateTitle(getItemName(nextIndex), 0);
           if (offsetTops[nextIndex + 1] && scrollTop >= offsetTops[nextIndex + 1]) {
             updateFixed(scrollTop);
-          } else {
-            if (!isScrollTo) {
-              emit("update:activeIndex", activeIndex.value);
-            }
-            emit("change", activeIndex.value);
+          } else if (!isSpecifyScrolling) {
+            onChange();
           }
         } else if (next - scrollTop < FIXED_HEIGHT) {
           updateTitle(getItemName(_index), next - scrollTop - FIXED_HEIGHT);
@@ -14013,15 +14153,15 @@ var _sfc_script83 = defineComponent64({
           updateTitle(getItemName(_index - 1), 0);
           if (offsetTops[_index - 1] && offsetTops[_index - 1] > scrollTop) {
             updateFixed(scrollTop);
-          } else {
-            if (!isScrollTo) {
-              emit("update:activeIndex", activeIndex.value);
-            }
-            emit("change", activeIndex.value);
+          } else if (!isSpecifyScrolling) {
+            onChange();
           }
         }
       }
-      isScrollTo = false;
+      isSpecifyScrolling && once(() => {
+        isSpecifyScrolling = false;
+        onChange();
+      });
     }
     function getOffsetTops() {
       const offset = getRelativeOffset(listEl.value, container.value).offsetTop - getSizeValue(props.offsetTop);
@@ -14029,28 +14169,9 @@ var _sfc_script83 = defineComponent64({
         return $el.offsetTop + offset;
       });
     }
-    function scrollToIndex(options) {
-      let _index = 0;
-      if (typeof options === "number") {
-        _index = options;
-      } else if (options && typeof options.index === "number") {
-        _index = options.index;
-      }
-      if ($items[_index] && _index != activeIndex.value) {
-        scrollToOffset({
-          offset: getRelativeOffset($items[_index], container.value).offsetTop
-        });
-      }
-    }
-    function scrollToOffset(options) {
-      let offset = 0;
-      if (typeof options === "number") {
-        offset = options;
-      } else if (options && typeof options.offset === "number") {
-        offset = options.offset;
-      }
-      isScrollTo = true;
-      scrollTo(container.value, offset, false);
+    function scrollToOffset(offset) {
+      isSpecifyScrolling = true;
+      nextTick9(() => scrollTo(container.value, offset, false));
     }
     function resetItems(res) {
       $items = res;
@@ -14058,23 +14179,62 @@ var _sfc_script83 = defineComponent64({
       emit("resetItems", $items.map((v, k) => {
         return {
           name: getItemName(k),
-          index: k
+          index: k,
+          title: getItemTitle(k)
         };
       }));
     }
+    function scrollToIndex(newIndex) {
+      if ($items[newIndex]) {
+        if (newIndex != activeIndex.value && container.value) {
+          scrollToOffset(getRelativeOffset($items[newIndex], container.value).offsetTop);
+        }
+      } else {
+        console.error(new exception_default('The "StickyViewItem[index]" not found.', exception_default.TYPE.PARAM_ERROR, "StickyView"));
+      }
+    }
+    function scrollTo2(name) {
+      const newIndex = getActiveIndexByName(name);
+      if (newIndex !== -1) {
+        scrollToIndex(newIndex);
+      } else {
+        console.error(new exception_default('The "StickyViewItem[name]" not found.', exception_default.TYPE.PARAM_ERROR, "StickyView"));
+      }
+    }
     const { listEl } = useList("stickyView", resetItems);
-    watch25(() => props.activeIndex, (val) => scrollToIndex({ index: val }));
-    onMounted24(() => resetContainer(props.containSelector));
+    function updateValue(val) {
+      const newIndex = getActiveIndexByName(val);
+      if (newIndex !== -1) {
+        if (newIndex != activeIndex.value) {
+          oldIndex = newIndex;
+          scrollToIndex(newIndex);
+        }
+      } else {
+        console.error(new exception_default('The "StickyViewItem[modelValue]" not found.', exception_default.TYPE.PROP_ERROR, "StickyView"));
+      }
+    }
+    watch25(() => props.modelValue, updateValue);
+    onMounted24(() => {
+      resetContainer(props.containSelector);
+      props.modelValue != null && updateValue(props.modelValue);
+    });
     const classes = computed38(() => getClasses13(isSelfContainer.value));
+    expose({
+      scrollTo: scrollTo2,
+      scrollToIndex,
+      scrollToOffset,
+      resetContainer
+    });
     return {
       root,
       listEl,
       fixedEl,
       stickyRef,
       classes,
-      resetContainer,
+      scrollTo: scrollTo2,
       scrollToIndex,
-      scrollTo: scrollToOffset
+      scrollToOffset,
+      resetContainer
     };
   }
 });
@@ -14121,6 +14281,10 @@ import { toDisplayString as _toDisplayString29, createElementVNode as _createEle
 var _sfc_script84 = defineComponent65({
   name: "ak-sticky-view-item",
   props: {
+    title: {
+      type: String,
+      default: ""
+    },
     name: {
       type: String,
       required: true
@@ -14131,16 +14295,17 @@ var _sfc_script84 = defineComponent65({
     return {};
   }
 });
-var _hoisted_164 = ["data-name"];
+var _hoisted_164 = ["data-name", "data-title"];
 var _hoisted_247 = { class: "ak-sticky-view-item_header" };
 var _hoisted_339 = { class: "ak-sticky-view-item_body" };
 function render83(_ctx, _cache) {
   return _openBlock82(), _createElementBlock72("div", {
     class: "ak-sticky-view-item",
     "data-name": _ctx.name,
+    "data-title": _ctx.title,
     ref: "root"
   }, [
-    _createElementVNode56("div", _hoisted_247, _toDisplayString29(_ctx.name), 1),
+    _createElementVNode56("div", _hoisted_247, _toDisplayString29(_ctx.title || _ctx.name), 1),
     _createElementVNode56("div", _hoisted_339, [
       _renderSlot37(_ctx.$slots, "default")
     ])
@@ -14158,19 +14323,36 @@ var _sfc_script85 = defineComponent66({
   name: "ak-index-view",
   components: { StickyView: _sfc_script83 },
   props: {
+    modelValue: {
+      type: String
+    },
     stickyOffsetTop: {
       validator: sizeValidator,
       default: 0
     }
   },
   emits: {
+    "update:modelValue": (name) => isString(name),
     change: emitChangeValidator2
   },
-  setup(props, { emit }) {
-    const navEl = ref34();
-    const bodyRef = ref34();
-    const indexList = ref34([]);
-    const activeIndex = ref34(0);
+  setup(props, { emit, expose }) {
+    const navEl = shallowRef26(null);
+    const bodyRef = shallowRef26(null);
+    const indexList = ref29([]);
+    const activeName = ref29();
+    function updateActiveName(name) {
+      if (name != null && isInTab(name) && name !== activeName.value) {
+        activeName.value = name;
+      }
+    }
+    function isInTab(name) {
+      for (let i = 0; i < indexList.value.length; i++) {
+        if (indexList.value[i].value === name) {
+          return true;
+        }
+      }
+      return false;
+    }
     const resetContainer = (containSelector) => {
       var _a;
       (_a = bodyRef.value) == null ? void 0 : _a.resetContainer(containSelector);
@@ -14178,38 +14360,43 @@ var _sfc_script85 = defineComponent66({
     const onResetItems = (items) => {
       indexList.value = items.map((item) => {
         return {
-          value: item.index,
-          label: item.name
+          value: item.name,
+          label: item.title
         };
       });
     };
-    let oldIndex = 0;
-    const onChange = (index) => {
-      emit("change", index, oldIndex);
-      oldIndex = index;
+    const onChange = (name, index) => {
+      updateActiveName(name);
+      emit("update:modelValue", name);
+      emit("change", name, index);
     };
     function scrollToIndex(index) {
       var _a;
       (_a = bodyRef.value) == null ? void 0 : _a.scrollToIndex(index);
     }
-    let coords;
+    function scrollTo2(name) {
+      var _a;
+      (_a = bodyRef.value) == null ? void 0 : _a.scrollTo(name);
+    }
+    let coords = null;
     let changeTimer;
     useTouch({
       el: navEl,
       onTouchStart(e) {
         const { clientY } = e.touchObject;
         const $target = e.target;
-        const value = parseInt($target.dataset.value);
+        const index = parseInt($target.dataset.index);
         const rects = $target.getClientRects()[0];
         coords = {
           size: rects.height,
           offsetY: clientY - rects.top,
           startY: clientY,
-          current: value
+          current: index,
+          isChange: false
         };
         clearTimeout(changeTimer);
         changeTimer = window.setTimeout(() => {
-          activeIndex.value = value;
+          scrollToIndex(index);
         }, 500);
         e.preventDefault();
       },
@@ -14230,7 +14417,7 @@ var _sfc_script85 = defineComponent66({
           clearTimeout(changeTimer);
           coords.isChange = true;
           changeTimer = window.setTimeout(() => {
-            activeIndex.value = rangeInteger(current + offsetCount, 0, indexList.value.length - 1);
+            scrollToIndex(rangeInteger(current + offsetCount, 0, indexList.value.length - 1));
           }, 100);
         }
         e.stopPropagation();
@@ -14239,23 +14426,36 @@ var _sfc_script85 = defineComponent66({
         if (coords) {
           if (!coords.isChange) {
             clearTimeout(changeTimer);
-            activeIndex.value = coords.current;
+            scrollToIndex(coords.current);
           }
           coords = null;
           e.stopPropagation();
         }
       }
     });
-    onMounted25(() => resetContainer(document.documentElement));
+    watch26(() => props.modelValue, (val) => updateActiveName(val));
+    onMounted25(() => {
+      resetContainer(document.documentElement);
+      updateActiveName(props.modelValue);
+      if (activeName.value == null && indexList.value.length > 0) {
+        activeName.value = indexList.value[0].value;
+      }
+    });
+    expose({
+      scrollTo: scrollTo2,
+      scrollToIndex,
+      resetContainer
+    });
     return {
       navEl,
       bodyRef,
-      activeIndex,
+      activeName,
       indexList,
       onChange,
+      onResetItems,
+      scrollTo: scrollTo2,
       scrollToIndex,
-      resetContainer,
-      onResetItems
+      resetContainer
     };
   }
 });
@@ -14265,17 +14465,18 @@ var _hoisted_340 = {
   class: "ak-index-view_list",
   ref: "navEl"
 };
-var _hoisted_415 = ["data-value"];
+var _hoisted_415 = ["data-value", "data-index"];
 var _hoisted_57 = { class: "ak-index-view_body" };
 function render84(_ctx, _cache) {
   const _component_StickyView = _resolveComponent42("StickyView");
   return _openBlock83(), _createElementBlock73("div", _hoisted_165, [
     _createElementVNode57("div", _hoisted_248, [
       _createElementVNode57("ul", _hoisted_340, [
-        (_openBlock83(true), _createElementBlock73(_Fragment15, null, _renderList14(_ctx.indexList, (item) => {
+        (_openBlock83(true), _createElementBlock73(_Fragment15, null, _renderList14(_ctx.indexList, (item, index) => {
           return _openBlock83(), _createElementBlock73("li", {
-            class: _normalizeClass39({ active: item.value === _ctx.activeIndex }),
+            class: _normalizeClass39({ active: item.value === _ctx.activeName }),
             "data-value": item.value,
+            "data-index": index,
             key: item.value
           }, _toDisplayString30(item.label), 11, _hoisted_415);
         }), 128))
@@ -14284,9 +14485,8 @@ function render84(_ctx, _cache) {
     _createElementVNode57("div", _hoisted_57, [
       _createVNode30(_component_StickyView, {
         offsetTop: _ctx.stickyOffsetTop,
+        modelValue: _ctx.modelValue,
         ref: "bodyRef",
-        activeIndex: _ctx.activeIndex,
-        "onUpdate:activeIndex": _cache[0] || (_cache[0] = ($event) => _ctx.activeIndex = $event),
         onResetItems: _ctx.onResetItems,
         onChange: _ctx.onChange
       }, {
@@ -14294,7 +14494,7 @@ function render84(_ctx, _cache) {
           _renderSlot38(_ctx.$slots, "default")
         ]),
         _: 3
-      }, 8, ["offsetTop", "activeIndex", "onResetItems", "onChange"])
+      }, 8, ["offsetTop", "modelValue", "onResetItems", "onChange"])
     ])
   ]);
 }
@@ -14308,6 +14508,10 @@ var _sfc_script86 = defineComponent67({
   name: "ak-index-view-item",
   components: { Group: _sfc_script73 },
   props: {
+    title: {
+      type: String,
+      default: ""
+    },
     name: {
       type: String,
       required: true
@@ -14324,14 +14528,15 @@ function render85(_ctx, _cache) {
   const _component_Group = _resolveComponent43("Group");
   return _openBlock84(), _createBlock33(_component_Group, {
     class: "ak-sticky-view-item ak-index-view-item",
-    title: _ctx.name,
-    "data-name": _ctx.name
+    title: _ctx.title || _ctx.name,
+    "data-name": _ctx.name,
+    "data-title": _ctx.title
   }, {
     default: _withCtx21(() => [
       _renderSlot39(_ctx.$slots, "default")
     ]),
     _: 3
-  }, 8, ["title", "data-name"]);
+  }, 8, ["title", "data-name", "data-title"]);
 }
 _sfc_script86.render = render85;
 _sfc_script86.__file = "packages/ui/src/IndexView/IndexViewItem.vue";
@@ -14343,7 +14548,7 @@ var IndexView_default = _sfc_script85;
 var IndexViewItem_default = _sfc_script86;
 
 // vue:./Input.vue
-import { computed as computed39, defineComponent as defineComponent68, onMounted as onMounted27, ref as ref36, watch as watch26 } from "vue";
+import { computed as computed39, defineComponent as defineComponent68, onMounted as onMounted27, ref as ref30, watch as watch27 } from "vue";
 
 // packages/ui/src/helpers/input.ts
 function formatInputNumber(value, decimalLength = -1) {
@@ -14456,9 +14661,9 @@ var getValue2 = (val, type) => {
 };
 
 // packages/ui/src/Form/use-form.ts
-import { ref as ref35 } from "vue";
+import { shallowRef as shallowRef27 } from "vue";
 function useInput() {
-  const inputEl = ref35();
+  const inputEl = shallowRef27(null);
   function setInputChecked(val) {
     inputEl.value && (inputEl.value.checked = val);
   }
@@ -14542,9 +14747,9 @@ var _sfc_script87 = defineComponent68({
     ...formFocusEmits
   },
   setup(props, { emit, slots }) {
-    const active = ref36(false);
-    const isShowClear = ref36(false);
-    const inputValue = ref36("");
+    const active = ref30(false);
+    const isShowClear = ref30(false);
+    const inputValue = ref30("");
     const { inputEl, setFocus, setBlur, getInputValue, setInputValue } = useInput();
     function updateValue(val) {
       const newVal = getValue2(val, props.type);
@@ -14602,15 +14807,15 @@ var _sfc_script87 = defineComponent68({
       disabled: props.disabled,
       readonly: props.readonly
     }));
-    watch26(() => props.modelValue, (val) => {
+    watch27(() => props.modelValue, (val) => {
       val != inputValue.value && updateValue(val != null ? val : "");
     });
-    watch26(() => props.focus, (val) => {
+    watch27(() => props.focus, (val) => {
       val ? setFocus() : setBlur();
     });
     const maxLength = computed39(() => getMaxLength(props.maxlength));
     let timer;
-    watch26([inputValue, active], ([ipVal, isActive]) => {
+    watch27([inputValue, active], ([ipVal, isActive]) => {
       clearTimeout(timer);
       if (ipVal && isActive) {
         timer = window.setTimeout(() => isShowClear.value = true, 200);
@@ -14718,9 +14923,10 @@ import {
   defineComponent as defineComponent69,
   computed as computed40,
   onMounted as onMounted28,
-  onBeforeUnmount as onBeforeUnmount15,
-  ref as ref37,
-  watch as watch27
+  onBeforeUnmount as onBeforeUnmount16,
+  ref as ref31,
+  watch as watch28,
+  shallowRef as shallowRef28
 } from "vue";
 
 // packages/ui/src/NoticeBar/util.ts
@@ -14800,9 +15006,9 @@ var _sfc_script88 = defineComponent69({
     closeClick: emitClickValidator
   },
   setup(props, { emit }) {
-    const marqueeX = ref37(0);
-    const marqueeDuration = ref37(0);
-    const contentEl = ref37();
+    const marqueeX = ref31(0);
+    const marqueeDuration = ref31(0);
+    const contentEl = shallowRef28(null);
     let marqueeTimer;
     function marqueeStep(x, pW) {
       marqueeX.value = pW;
@@ -14843,8 +15049,8 @@ var _sfc_script88 = defineComponent69({
       }
     };
     onMounted28(() => props.marquee && startMarquee());
-    onBeforeUnmount15(() => stopMarquee());
-    watch27([() => props.marquee, () => props.title], () => {
+    onBeforeUnmount16(() => stopMarquee());
+    watch28([() => props.marquee, () => props.title], () => {
       resetMarquee();
     });
     const rightIcon2 = computed40(() => {
@@ -15221,7 +15427,7 @@ function render91(_ctx, _cache) {
     onCancel: _ctx.onCancel,
     onConfirm: _ctx.onConfirm,
     "onUpdate:visible": _ctx.onUpdateVisible,
-    ref: "popup"
+    ref: "popupRef"
   }, {
     default: _withCtx22(() => [
       _createElementVNode62("div", {
@@ -15279,7 +15485,7 @@ _sfc_script92.__file = "packages/ui/src/NumberKeyboard/NumberKeyboard.vue";
 var NumberKeyboard_default = _sfc_script92;
 
 // vue:./Pagination.vue
-import { computed as computed42, defineComponent as defineComponent72, ref as ref38, watch as watch28 } from "vue";
+import { computed as computed42, defineComponent as defineComponent72, ref as ref32, watch as watch29 } from "vue";
 
 // packages/ui/src/Pagination/util.ts
 var getTotal = (total) => Math.max(getNumber(total, 1), 1);
@@ -15290,7 +15496,7 @@ var _sfc_script93 = defineComponent72({
   name: "ak-pagination",
   components: { Icon: _sfc_script2 },
   props: {
-    current: {
+    modelValue: {
       type: [Number, String]
     },
     total: {
@@ -15299,26 +15505,26 @@ var _sfc_script93 = defineComponent72({
     }
   },
   emits: {
-    "update:current": (current) => isNumber(current),
+    "update:modelValue": (current) => isNumber(current),
     change: (current) => isNumber(current)
   },
   setup(props, { emit }) {
-    const pageNum = ref38(-1);
+    const pageNum = ref32(-1);
     const totalNum = computed42(() => getTotal(props.total));
     function change(newPageNum) {
       pageNum.value = newPageNum;
-      emit("update:current", newPageNum);
+      emit("update:modelValue", newPageNum);
       emit("change", newPageNum);
     }
     function onClick(type) {
       const newPageNum = rangeInteger(type === "next" ? pageNum.value + 1 : pageNum.value - 1, 1, totalNum.value);
       change(newPageNum);
     }
-    watch28(() => props.current, () => {
-      if (isNumeric(props.current)) {
-        pageNum.value = rangeInteger(props.current, 1, totalNum.value);
+    watch29(() => props.modelValue, (val) => {
+      if (isNumeric(val)) {
+        pageNum.value = rangeInteger(val, 1, totalNum.value);
       } else if (pageNum.value === -1) {
-        change(1);
+        pageNum.value = 1;
       }
     }, {
       immediate: true
@@ -15344,7 +15550,7 @@ function render92(_ctx, _cache) {
     ], 8, _hoisted_254),
     _createElementVNode63("div", _hoisted_344, [
       _renderSlot42(_ctx.$slots, "default", {
-        current: _ctx.current,
+        current: _ctx.pageNum,
         total: _ctx.totalNum
       }, () => [
         _createTextVNode16(_toDisplayString34(_ctx.pageNum) + " / " + _toDisplayString34(_ctx.totalNum), 1)
@@ -15400,11 +15606,11 @@ var popoverEmits = { ...popupEmits };
 import {
   computed as computed43,
   defineComponent as defineComponent73,
-  nextTick as nextTick9,
+  nextTick as nextTick10,
   onMounted as onMounted29,
-  ref as ref39,
-  shallowRef as shallowRef2,
-  watch as watch29
+  ref as ref33,
+  shallowRef as shallowRef29,
+  watch as watch30
 } from "vue";
 
 // packages/ui/src/Popover/util.ts
@@ -15506,13 +15712,13 @@ var _sfc_script94 = defineComponent73({
   },
   emits: { ...popoverEmits },
   setup(props, ctx) {
-    const container = ref39();
-    const innerEl = ref39();
-    const isShow = ref39(false);
-    const showPos = ref39(DEFAULT_POS);
+    const container = shallowRef29(null);
+    const innerEl = shallowRef29(null);
+    const isShow = ref33(false);
+    const showPos = ref33(DEFAULT_POS);
     const popup = usePopup(props, ctx, {
       afterShow() {
-        nextTick9(() => {
+        nextTick10(() => {
           isShow.value = true;
           updatePos("afterShow");
         });
@@ -15532,17 +15738,17 @@ var _sfc_script94 = defineComponent73({
     }
     const arrowStyles = computed43(() => getArrowStyles(isShow.value, showPos.value));
     const innerStyles = computed43(() => getInnerStyles3(isShow.value, showPos.value));
-    watch29(() => props.showMask, (val) => {
+    watch30(() => props.showMask, (val) => {
       popup.setForbidScroll(!!val);
       popup.setEnableBlurCancel(!val);
     }, {
       immediate: true
     });
-    watch29(() => props.selector, (val) => container.value = querySelector(val) || void 0);
+    watch30(() => props.selector, (val) => container.value = querySelector(val));
     onMounted29(() => {
-      container.value = querySelector(props.selector) || void 0;
+      container.value = querySelector(props.selector);
       useResizeObserver(container, () => updatePos("container resize"));
-      const docEl = shallowRef2(document.documentElement);
+      const docEl = shallowRef29(document.documentElement);
       useResizeObserver(docEl, () => {
         updatePos("window resize");
       });
@@ -15656,7 +15862,7 @@ function render94(_ctx, _cache) {
     onConfirm: _ctx.onConfirm,
     onCancel: _ctx.onCancel,
     "onUpdate:visible": _ctx.onUpdateVisible,
-    ref: "popup"
+    ref: "popupRef"
   }, {
     default: _withCtx23(() => [
       _createElementVNode65("div", _hoisted_173, [
@@ -15794,7 +16000,7 @@ function render95(_ctx, _cache) {
     onConfirm: _ctx.onConfirm,
     onCancel: _ctx.onCancel,
     "onUpdate:visible": _ctx.onUpdateVisible,
-    ref: "popup"
+    ref: "popupRef"
   }, {
     default: _withCtx24(() => [
       _ctx.options2 && _ctx.options2.length > 0 ? (_openBlock94(), _createElementBlock80("ul", _hoisted_174, [
@@ -16030,10 +16236,10 @@ function render98(_ctx, _cache) {
       class: "ak-radio_input ak-form-input",
       type: "radio",
       name: _ctx.name2,
-      value: _ctx.value,
+      value: _ctx.checkedValue,
       disabled: _ctx.disabled2,
       onChange: _cache[0] || (_cache[0] = (...args) => _ctx.onChange && _ctx.onChange(...args)),
-      ref: "input"
+      ref: "inputEl"
     }, null, 40, _hoisted_177),
     _createElementVNode69("div", _hoisted_260, [
       _createVNode36(_component_Icon, {
@@ -16054,7 +16260,7 @@ _sfc_script99.render = render98;
 _sfc_script99.__file = "packages/ui/src/Radio/Radio.vue";
 
 // vue:./RadioGroup.vue
-import { defineComponent as defineComponent79, ref as ref40 } from "vue";
+import { defineComponent as defineComponent79, ref as ref34 } from "vue";
 import { renderSlot as _renderSlot47, renderList as _renderList17, Fragment as _Fragment18, openBlock as _openBlock98, createElementBlock as _createElementBlock84, toDisplayString as _toDisplayString40, createTextVNode as _createTextVNode19, resolveComponent as _resolveComponent52, withCtx as _withCtx25, createBlock as _createBlock40, normalizeClass as _normalizeClass46 } from "vue";
 var isValue4 = (value) => isStringNumberMix(value);
 var _sfc_script100 = defineComponent79({
@@ -16073,7 +16279,7 @@ var _sfc_script100 = defineComponent79({
     change: isValue4
   },
   setup(props, ctx) {
-    const inputValue = ref40("");
+    const inputValue = ref34("");
     const { emit } = ctx;
     const group = useCheckGroup(props, {
       name: "radio",
@@ -16127,13 +16333,13 @@ function render99(_ctx, _cache) {
       (_openBlock98(true), _createElementBlock84(_Fragment18, null, _renderList17(_ctx.options2, (item) => {
         return _openBlock98(), _createBlock40(_component_Radio, {
           key: item.value,
-          value: item.value
+          checkedValue: item.value
         }, {
           default: _withCtx25(() => [
             _createTextVNode19(_toDisplayString40(item.label), 1)
           ]),
           _: 2
-        }, 1032, ["value"]);
+        }, 1032, ["checkedValue"]);
       }), 128))
     ])
   ], 2);
@@ -16148,7 +16354,7 @@ var Radio_default = _sfc_script99;
 var RadioGroup_default = _sfc_script100;
 
 // vue:./Range.vue
-import { defineComponent as defineComponent80, watch as watch30, nextTick as nextTick10, reactive as reactive7, computed as computed48 } from "vue";
+import { defineComponent as defineComponent80, watch as watch31, nextTick as nextTick11, reactive as reactive7, computed as computed48 } from "vue";
 
 // packages/ui/src/Slider/props.ts
 var slideProps = {
@@ -16178,7 +16384,7 @@ var slideProps = {
 };
 
 // packages/ui/src/Slider/use-slide.ts
-import { computed as computed47, ref as ref41 } from "vue";
+import { computed as computed47, shallowRef as shallowRef30 } from "vue";
 
 // packages/ui/src/Slider/util.ts
 var getSlideClasses = (disabled) => [
@@ -16196,7 +16402,7 @@ var getSlideStyles = (color) => {
 // packages/ui/src/Slider/use-slide.ts
 var thumbW = 24;
 function useSlide(props, { move, end, getValue: getValue3 }) {
-  const sliderEl = ref41();
+  const sliderEl = shallowRef30(null);
   let coords;
   let tempValue = 0;
   function toInteger(number) {
@@ -16364,7 +16570,7 @@ var _sfc_script101 = defineComponent80({
       let newVal = [];
       if (isNumberArray(val) && val.length > 1) {
         newVal = cloneData(val);
-      } else if (typeof val === "string") {
+      } else if (isString(val)) {
         newVal = val.split(",").map((v) => {
           return toInteger(v);
         });
@@ -16405,9 +16611,9 @@ var _sfc_script101 = defineComponent80({
         progress[1] = value2Progress(newVal[1]);
       }
     }
-    watch30(() => props.modelValue, (val) => updateValue(val));
-    watch30([() => props.min, () => props.max], () => {
-      nextTick10(() => {
+    watch31(() => props.modelValue, (val) => updateValue(val));
+    watch31([() => props.min, () => props.max], () => {
+      nextTick11(() => {
         updateValue(progressValue);
         if (emitModel()) {
           emit("change", getValue3());
@@ -16469,8 +16675,7 @@ function render100(_ctx, _cache) {
         type: "hidden",
         name: _ctx.name,
         disabled: _ctx.disabled,
-        value: _ctx.inputValue,
-        ref: "input"
+        value: _ctx.inputValue
       }, null, 8, _hoisted_349)
     ], 512)
   ], 6);
@@ -16482,7 +16687,7 @@ _sfc_script101.__file = "packages/ui/src/Range/Range.vue";
 var Range_default = _sfc_script101;
 
 // vue:./Rate.vue
-import { computed as computed49, defineComponent as defineComponent81, ref as ref42, watch as watch31 } from "vue";
+import { computed as computed49, defineComponent as defineComponent81, ref as ref35, shallowRef as shallowRef31, watch as watch32 } from "vue";
 
 // vue:./StarOutlined.vue
 import { createElementVNode as _createElementVNode71, openBlock as _openBlock100, createElementBlock as _createElementBlock86 } from "vue";
@@ -16597,8 +16802,8 @@ var _sfc_script104 = defineComponent81({
   emits: { ...formNumberValueEmits },
   setup(props, ctx) {
     const { emit } = ctx;
-    const root = ref42();
-    const inputValue = ref42(0);
+    const root = shallowRef31(null);
+    const inputValue = ref35(0);
     function change(value, isHalf = false) {
       if (props.allowHalf && isHalf) {
         value -= 0.5;
@@ -16681,7 +16886,7 @@ var _sfc_script104 = defineComponent81({
       inputValue.value = value;
     }
     updateValue();
-    watch31(() => props.modelValue, updateValue);
+    watch32(() => props.modelValue, updateValue);
     return {
       root,
       inputValue,
@@ -16888,7 +17093,7 @@ _sfc_script107.__file = "packages/ui/src/Result/Result.vue";
 var Result_default = _sfc_script107;
 
 // vue:./Row.vue
-import { computed as computed51, defineComponent as defineComponent83, provide as provide12, ref as ref43, watch as watch32 } from "vue";
+import { computed as computed51, defineComponent as defineComponent83, provide as provide12, ref as ref36, watch as watch33 } from "vue";
 
 // packages/ui/src/Row/util.ts
 var JUSTIFY_TYPES = [
@@ -16943,10 +17148,10 @@ var _sfc_script108 = defineComponent83({
     }
   },
   setup(props) {
-    const gutter = ref43([0, 0]);
+    const gutter = ref36([0, 0]);
     const styles = computed51(() => getRowStyles(gutter.value));
     const classes = computed51(() => getRowClasses(props));
-    watch32(() => props.gutter, (val) => {
+    watch33(() => props.gutter, (val) => {
       gutter.value = parseGutter(val);
     }, {
       immediate: true
@@ -16973,7 +17178,7 @@ _sfc_script108.__file = "packages/ui/src/Row/Row.vue";
 var Row_default = _sfc_script108;
 
 // vue:./ScrollTab.vue
-import { defineComponent as defineComponent85, onMounted as onMounted30, ref as ref44 } from "vue";
+import { defineComponent as defineComponent85, onMounted as onMounted30, ref as ref37, shallowRef as shallowRef32, watch as watch34 } from "vue";
 
 // vue:./SideTab.vue
 import { defineComponent as defineComponent84 } from "vue";
@@ -17050,11 +17255,14 @@ _sfc_script109.__file = "packages/ui/src/SideTab/SideTab.vue";
 var SideTab_default = _sfc_script109;
 
 // vue:./ScrollTab.vue
-import { resolveComponent as _resolveComponent56, createVNode as _createVNode40, withCtx as _withCtx28, createElementVNode as _createElementVNode78, renderSlot as _renderSlot50, openBlock as _openBlock108, createElementBlock as _createElementBlock94 } from "vue";
+import { resolveComponent as _resolveComponent56, openBlock as _openBlock108, createBlock as _createBlock43, createCommentVNode as _createCommentVNode44, withCtx as _withCtx28, createVNode as _createVNode40, createElementVNode as _createElementVNode78, renderSlot as _renderSlot50, createElementBlock as _createElementBlock94 } from "vue";
 var _sfc_script110 = defineComponent85({
   name: "ak-scroll-tab",
   components: { SideTab: _sfc_script109, Sticky: _sfc_script82, StickyView: _sfc_script83 },
   props: {
+    modelValue: {
+      type: String
+    },
     stickyOffsetTop: {
       validator: sizeValidator,
       default: 0
@@ -17065,13 +17273,27 @@ var _sfc_script110 = defineComponent85({
     }
   },
   emits: {
+    "update:modelValue": (name) => isString(name),
     change: emitChangeValidator2
   },
-  setup(props, { emit }) {
-    const sideRef = ref44();
-    const bodyRef = ref44();
-    const tabList = ref44([]);
-    const activeIndex = ref44(0);
+  setup(props, { emit, expose }) {
+    const sideRef = shallowRef32(null);
+    const bodyRef = shallowRef32(null);
+    const tabList = ref37([]);
+    const activeName = ref37();
+    function updateActiveName(name) {
+      if (name != null && isInTab(name) && name !== activeName.value) {
+        activeName.value = name;
+      }
+    }
+    function isInTab(name) {
+      for (let i = 0; i < tabList.value.length; i++) {
+        if (tabList.value[i].value === name) {
+          return true;
+        }
+      }
+      return false;
+    }
     const resetContainer = (containSelector) => {
       var _a, _b;
       (_a = sideRef.value) == null ? void 0 : _a.resetContainer(containSelector);
@@ -17080,29 +17302,51 @@ var _sfc_script110 = defineComponent85({
     const onResetItems = (items) => {
       tabList.value = items.map((item) => {
         return {
-          value: item.index,
-          label: item.name
+          value: item.name,
+          label: item.title || item.name
         };
       });
     };
-    let oldIndex = 0;
-    const onChange = (index) => {
-      emit("change", index, oldIndex);
-      oldIndex = index;
+    const onTabChange = (name, index) => {
+      scrollToIndex(index);
+    };
+    const onChange = (name, index) => {
+      updateActiveName(name);
+      emit("update:modelValue", name);
+      emit("change", name, index);
     };
     function scrollToIndex(index) {
-      bodyRef.value && bodyRef.value.scrollToIndex(index);
+      var _a;
+      (_a = bodyRef.value) == null ? void 0 : _a.scrollToIndex(index);
     }
-    onMounted30(() => resetContainer(document.documentElement));
+    function scrollTo2(name) {
+      var _a;
+      (_a = bodyRef.value) == null ? void 0 : _a.scrollTo(name);
+    }
+    watch34(() => props.modelValue, (val) => updateActiveName(val));
+    onMounted30(() => {
+      resetContainer(document.documentElement);
+      updateActiveName(props.modelValue);
+      if (activeName.value == null && tabList.value.length > 0) {
+        activeName.value = tabList.value[0].value;
+      }
+    });
+    expose({
+      scrollTo: scrollTo2,
+      scrollToIndex,
+      resetContainer
+    });
     return {
       sideRef,
       bodyRef,
-      activeIndex,
+      activeName,
       tabList,
+      onTabChange,
       onChange,
+      onResetItems,
+      scrollTo: scrollTo2,
       scrollToIndex,
-      resetContainer,
-      onResetItems
+      resetContainer
     };
   }
 });
@@ -17121,11 +17365,12 @@ function render109(_ctx, _cache) {
         offsetBottom: _ctx.stickyOffsetBottom
       }, {
         default: _withCtx28(() => [
-          _createVNode40(_component_SideTab, {
+          _ctx.tabList.length > 0 ? (_openBlock108(), _createBlock43(_component_SideTab, {
+            key: 0,
             options: _ctx.tabList,
-            activeValue: _ctx.activeIndex,
-            "onUpdate:activeValue": _cache[0] || (_cache[0] = ($event) => _ctx.activeIndex = $event)
-          }, null, 8, ["options", "activeValue"])
+            modelValue: _ctx.activeName,
+            onChange: _ctx.onTabChange
+          }, null, 8, ["options", "modelValue", "onChange"])) : _createCommentVNode44("v-if", true)
         ]),
         _: 1
       }, 8, ["offsetTop", "offsetBottom"])
@@ -17133,9 +17378,8 @@ function render109(_ctx, _cache) {
     _createElementVNode78("div", _hoisted_357, [
       _createVNode40(_component_StickyView, {
         offsetTop: _ctx.stickyOffsetTop,
+        modelValue: _ctx.modelValue,
         ref: "bodyRef",
-        activeIndex: _ctx.activeIndex,
-        "onUpdate:activeIndex": _cache[1] || (_cache[1] = ($event) => _ctx.activeIndex = $event),
         onResetItems: _ctx.onResetItems,
         onChange: _ctx.onChange
       }, {
@@ -17143,7 +17387,7 @@ function render109(_ctx, _cache) {
           _renderSlot50(_ctx.$slots, "default")
         ]),
         _: 3
-      }, 8, ["offsetTop", "activeIndex", "onResetItems", "onChange"])
+      }, 8, ["offsetTop", "modelValue", "onResetItems", "onChange"])
     ])
   ]);
 }
@@ -17156,6 +17400,9 @@ import { toDisplayString as _toDisplayString44, createElementVNode as _createEle
 var _sfc_script111 = defineComponent86({
   name: "ak-scroll-tab-item",
   props: {
+    title: {
+      type: String
+    },
     name: {
       type: String,
       required: true
@@ -17168,15 +17415,16 @@ var _sfc_script111 = defineComponent86({
     return {};
   }
 });
-var _hoisted_188 = ["data-name"];
+var _hoisted_188 = ["data-name", "data-title"];
 var _hoisted_270 = { class: "ak-sticky-view-item_header" };
 var _hoisted_358 = { class: "ak-sticky-view-item_body" };
 function render110(_ctx, _cache) {
   return _openBlock109(), _createElementBlock95("div", {
     class: "ak-sticky-view-item ak-scroll-tab-item",
-    "data-name": _ctx.name
+    "data-name": _ctx.name,
+    "data-title": _ctx.title
   }, [
-    _createElementVNode79("div", _hoisted_270, _toDisplayString44(_ctx.name), 1),
+    _createElementVNode79("div", _hoisted_270, _toDisplayString44(_ctx.title || _ctx.name), 1),
     _createElementVNode79("div", _hoisted_358, [
       _renderSlot51(_ctx.$slots, "default")
     ])
@@ -17196,13 +17444,14 @@ import {
   computed as computed53,
   defineComponent as defineComponent88,
   onBeforeMount as onBeforeMount2,
-  onBeforeUnmount as onBeforeUnmount16,
-  ref as ref46,
-  watch as watch33
+  onBeforeUnmount as onBeforeUnmount17,
+  ref as ref38,
+  shallowRef as shallowRef34,
+  watch as watch35
 } from "vue";
 
 // vue:./Tag.vue
-import { computed as computed52, defineComponent as defineComponent87, ref as ref45 } from "vue";
+import { computed as computed52, defineComponent as defineComponent87, shallowRef as shallowRef33 } from "vue";
 
 // packages/ui/src/Tag/util.ts
 var TAG_PATTERN_TYPES = ["light", "dark", "plain"];
@@ -17227,7 +17476,7 @@ var getStyles9 = (color) => {
 };
 
 // vue:./Tag.vue
-import { renderSlot as _renderSlot52, resolveComponent as _resolveComponent57, withModifiers as _withModifiers7, createVNode as _createVNode41, openBlock as _openBlock110, createElementBlock as _createElementBlock96, createCommentVNode as _createCommentVNode44, normalizeClass as _normalizeClass52, normalizeStyle as _normalizeStyle27 } from "vue";
+import { renderSlot as _renderSlot52, resolveComponent as _resolveComponent57, withModifiers as _withModifiers7, createVNode as _createVNode41, openBlock as _openBlock110, createElementBlock as _createElementBlock96, createCommentVNode as _createCommentVNode45, normalizeClass as _normalizeClass52, normalizeStyle as _normalizeStyle27 } from "vue";
 var _sfc_script112 = defineComponent87({
   name: "ak-tag",
   components: { Icon: _sfc_script2 },
@@ -17263,7 +17512,7 @@ var _sfc_script112 = defineComponent87({
     longPress: returnTrue
   },
   setup(props, { emit }) {
-    const root = ref45();
+    const root = shallowRef33(null);
     function onClose() {
       if (!props.disabled) {
         emit("close");
@@ -17305,7 +17554,7 @@ function render111(_ctx, _cache) {
         onTouchstart: _withModifiers7(_ctx.noop, ["stop"]),
         onClick: _ctx.onClose
       }, null, 8, ["icon", "onMousedown", "onTouchstart", "onClick"])
-    ])) : _createCommentVNode44("v-if", true)
+    ])) : _createCommentVNode45("v-if", true)
   ], 6);
 }
 _sfc_script112.render = render111;
@@ -17344,7 +17593,7 @@ var getFieldClasses = (ghost) => [
 var getSuggestStyles = (height) => ({ height: height + "px" });
 
 // vue:./SearchBar.vue
-import { resolveComponent as _resolveComponent58, createVNode as _createVNode42, normalizeClass as _normalizeClass53, withCtx as _withCtx29, createElementVNode as _createElementVNode81, toDisplayString as _toDisplayString45, createTextVNode as _createTextVNode21, openBlock as _openBlock112, createBlock as _createBlock43, createCommentVNode as _createCommentVNode45, withModifiers as _withModifiers8, normalizeStyle as _normalizeStyle28, renderList as _renderList20, Fragment as _Fragment21, createElementBlock as _createElementBlock98 } from "vue";
+import { resolveComponent as _resolveComponent58, createVNode as _createVNode42, normalizeClass as _normalizeClass53, withCtx as _withCtx29, createElementVNode as _createElementVNode81, toDisplayString as _toDisplayString45, createTextVNode as _createTextVNode21, openBlock as _openBlock112, createBlock as _createBlock44, createCommentVNode as _createCommentVNode46, withModifiers as _withModifiers8, normalizeStyle as _normalizeStyle28, renderList as _renderList20, Fragment as _Fragment21, createElementBlock as _createElementBlock98 } from "vue";
 var emitValidator2 = (payload, setSuggestList) => isString(payload) && typeof setSuggestList === "function";
 var _sfc_script114 = defineComponent88({
   name: "ak-search-bar",
@@ -17393,12 +17642,12 @@ var _sfc_script114 = defineComponent88({
   },
   setup(props, { emit }) {
     const { locale } = useLocale();
-    const placeholder = ref46("");
-    const searchText = ref46("");
-    const initDropdown = ref46(false);
-    const suggestVisible = ref46(false);
-    const suggestList = ref46([]);
-    const innerEl = ref46();
+    const placeholder = ref38("");
+    const searchText = ref38("");
+    const initDropdown = ref38(false);
+    const suggestVisible = ref38(false);
+    const suggestList = ref38([]);
+    const innerEl = shallowRef34(null);
     function proxyEvent(e) {
       emitHook(e.type, searchText.value);
     }
@@ -17476,7 +17725,7 @@ var _sfc_script114 = defineComponent88({
       }
     };
     const phsStop = () => clearTimeout(phTimer);
-    watch33(() => props.placeholders, (val) => {
+    watch35(() => props.placeholders, (val) => {
       phsStop();
       if (typeof val === "string") {
         placeholder.value = val;
@@ -17498,7 +17747,7 @@ var _sfc_script114 = defineComponent88({
       isTimerReady = true;
       phsStart();
     });
-    onBeforeUnmount16(() => phsStop());
+    onBeforeUnmount17(() => phsStop());
     const innerClasses = computed53(() => getInnerClasses3(props.showCancel));
     const innerStyles = computed53(() => getInnerStyles4(props.background));
     const fieldClasses = computed53(() => getFieldClasses(props.ghost));
@@ -17564,7 +17813,7 @@ function render113(_ctx, _cache) {
         _: 1
       }, 8, ["class", "placeholder", "readonly", "modelValue", "focus", "maxlength", "onInput", "onFocus", "onBlur", "onClick"]),
       _hoisted_272,
-      _ctx.showCancel ? (_openBlock112(), _createBlock43(_component_AkButton, {
+      _ctx.showCancel ? (_openBlock112(), _createBlock44(_component_AkButton, {
         key: 0,
         class: "ak-search_cancel-button",
         size: "large",
@@ -17579,9 +17828,9 @@ function render113(_ctx, _cache) {
           _createTextVNode21(_toDisplayString45(_ctx.locale.searchBarCancelText), 1)
         ]),
         _: 1
-      }, 8, ["ghost", "transparent", "onClick"])) : _createCommentVNode45("v-if", true)
+      }, 8, ["ghost", "transparent", "onClick"])) : _createCommentVNode46("v-if", true)
     ], 38),
-    _ctx.initDropdown ? (_openBlock112(), _createBlock43(_component_Dropdown, {
+    _ctx.initDropdown ? (_openBlock112(), _createBlock44(_component_Dropdown, {
       key: 0,
       selector: (_a = _ctx.innerEl) != null ? _a : void 0,
       visible: _ctx.suggestVisible,
@@ -17593,7 +17842,7 @@ function render113(_ctx, _cache) {
         }, [
           _createElementVNode81("div", _hoisted_360, [
             (_openBlock112(true), _createElementBlock98(_Fragment21, null, _renderList20(_ctx.suggestList, (item) => {
-              return _openBlock112(), _createBlock43(_component_Cell, {
+              return _openBlock112(), _createBlock44(_component_Cell, {
                 key: item.text,
                 label: item.text.toString(),
                 class: "ak-search_suggest-item",
@@ -17602,7 +17851,7 @@ function render113(_ctx, _cache) {
               }, {
                 default: _withCtx29(() => [
                   (_openBlock112(true), _createElementBlock98(_Fragment21, null, _renderList20(item.tags, (tag) => {
-                    return _openBlock112(), _createBlock43(_component_Tag, { key: tag }, {
+                    return _openBlock112(), _createBlock44(_component_Tag, { key: tag }, {
                       default: _withCtx29(() => [
                         _createTextVNode21(_toDisplayString45(tag), 1)
                       ]),
@@ -17617,7 +17866,7 @@ function render113(_ctx, _cache) {
         ], 4)
       ]),
       _: 1
-    }, 8, ["selector", "visible"])) : _createCommentVNode45("v-if", true)
+    }, 8, ["selector", "visible"])) : _createCommentVNode46("v-if", true)
   ]);
 }
 _sfc_script114.render = render113;
@@ -17807,7 +18056,7 @@ _sfc_script117.render = render116;
 _sfc_script117.__file = "packages/ui/src/Skeleton/SkeletonParagraph.vue";
 
 // vue:./SkeletonLayout.vue
-import { renderSlot as _renderSlot53, resolveComponent as _resolveComponent59, createVNode as _createVNode43, openBlock as _openBlock116, createElementBlock as _createElementBlock102, createCommentVNode as _createCommentVNode46, createElementVNode as _createElementVNode82, normalizeClass as _normalizeClass57 } from "vue";
+import { renderSlot as _renderSlot53, resolveComponent as _resolveComponent59, createVNode as _createVNode43, openBlock as _openBlock116, createElementBlock as _createElementBlock102, createCommentVNode as _createCommentVNode47, createElementVNode as _createElementVNode82, normalizeClass as _normalizeClass57 } from "vue";
 var _sfc_script118 = defineComponent92({
   name: "ak-skeleton-layout",
   props: { animated: Boolean, avatar: Boolean },
@@ -17840,7 +18089,7 @@ function render117(_ctx, _cache) {
       _createElementVNode82("div", _hoisted_192, [
         _ctx.avatar ? (_openBlock116(), _createElementBlock102("div", _hoisted_273, [
           _createVNode43(_component_SkeletonAvatar)
-        ])) : _createCommentVNode46("v-if", true),
+        ])) : _createCommentVNode47("v-if", true),
         _createElementVNode82("div", _hoisted_361, [
           _createVNode43(_component_SkeletonTitle),
           _createVNode43(_component_SkeletonParagraph)
@@ -17948,7 +18197,7 @@ var SkeletonParagraph_default = _sfc_script117;
 var SkeletonTitle_default = _sfc_script116;
 
 // vue:./Slider.vue
-import { ref as ref47, defineComponent as defineComponent96, watch as watch34, nextTick as nextTick11 } from "vue";
+import { ref as ref39, defineComponent as defineComponent96, watch as watch36, nextTick as nextTick12 } from "vue";
 import { normalizeStyle as _normalizeStyle29, createElementVNode as _createElementVNode83, toDisplayString as _toDisplayString46, normalizeClass as _normalizeClass60, openBlock as _openBlock119, createElementBlock as _createElementBlock105 } from "vue";
 var _sfc_script122 = defineComponent96({
   name: "ak-slider",
@@ -17964,8 +18213,8 @@ var _sfc_script122 = defineComponent96({
     ...formNumberValueEmits
   },
   setup(props, ctx) {
-    const progress = ref47(0);
-    const inputValue = ref47(0);
+    const progress = ref39(0);
+    const inputValue = ref39(0);
     const { emit } = ctx;
     const {
       sliderEl,
@@ -18009,9 +18258,9 @@ var _sfc_script122 = defineComponent96({
         progress.value = value2Progress(newVal);
       }
     }
-    watch34(() => props.modelValue, (val) => updateValue(val));
-    watch34([() => props.min, () => props.max], () => {
-      nextTick11(() => {
+    watch36(() => props.modelValue, (val) => updateValue(val));
+    watch36([() => props.min, () => props.max], () => {
+      nextTick12(() => {
         updateValue(inputValue.value);
         if (emitModel()) {
           emit("change", inputValue.value);
@@ -18058,8 +18307,7 @@ function render120(_ctx, _cache) {
         type: "hidden",
         name: _ctx.name,
         disabled: _ctx.disabled,
-        value: _ctx.inputValue,
-        ref: "input"
+        value: _ctx.inputValue
       }, null, 8, _hoisted_362)
     ], 512)
   ], 6);
@@ -18101,15 +18349,8 @@ var _sfc_script123 = defineComponent97({
       default: false
     }
   },
-  emits: {
-    "update:activeIndex": (activeIndex) => isNumber(activeIndex)
-  },
-  setup(props, { emit }) {
-    const { listEl } = useList("steps", ($items) => {
-      if (props.activeIndex >= $items.length) {
-        emit("update:activeIndex", $items.length - 1);
-      }
-    });
+  setup(props) {
+    const { listEl } = useList("steps", noop);
     provide14(`akStepsActiveIndex`, toRef6(props, "activeIndex"));
     const classes = computed60(() => getStepsClasses(props));
     return { listEl, classes };
@@ -18127,8 +18368,8 @@ _sfc_script123.render = render121;
 _sfc_script123.__file = "packages/ui/src/Steps/Steps.vue";
 
 // vue:./Step.vue
-import { computed as computed61, defineComponent as defineComponent98, inject as inject18, ref as ref48 } from "vue";
-import { createElementVNode as _createElementVNode84, renderSlot as _renderSlot55, toDisplayString as _toDisplayString47, createTextVNode as _createTextVNode22, openBlock as _openBlock121, createElementBlock as _createElementBlock107, createCommentVNode as _createCommentVNode47, normalizeClass as _normalizeClass62 } from "vue";
+import { computed as computed61, defineComponent as defineComponent98, inject as inject18, ref as ref40, shallowRef as shallowRef35 } from "vue";
+import { createElementVNode as _createElementVNode84, renderSlot as _renderSlot55, toDisplayString as _toDisplayString47, createTextVNode as _createTextVNode22, openBlock as _openBlock121, createElementBlock as _createElementBlock107, createCommentVNode as _createCommentVNode48, normalizeClass as _normalizeClass62 } from "vue";
 var _sfc_script124 = defineComponent98({
   name: "ak-step",
   props: {
@@ -18138,8 +18379,8 @@ var _sfc_script124 = defineComponent98({
     }
   },
   setup() {
-    const activeIndex = inject18(`akStepsActiveIndex`, ref48(0));
-    const root = ref48();
+    const activeIndex = inject18(`akStepsActiveIndex`, ref40(0));
+    const root = shallowRef35(null);
     const { index } = useListItem("steps", root);
     const active = computed61(() => {
       return activeIndex.value === index.value;
@@ -18188,7 +18429,7 @@ function render122(_ctx, _cache) {
         _renderSlot55(_ctx.$slots, "title", {}, () => [
           _createTextVNode22(_toDisplayString47(_ctx.title), 1)
         ])
-      ])) : _createCommentVNode47("v-if", true),
+      ])) : _createCommentVNode48("v-if", true),
       _createElementVNode84("div", _hoisted_510, [
         _renderSlot55(_ctx.$slots, "default")
       ])
@@ -18205,7 +18446,7 @@ var Steps_default = _sfc_script123;
 var Step_default = _sfc_script124;
 
 // vue:./Stepper.vue
-import { onMounted as onMounted32, ref as ref49, defineComponent as defineComponent99, watch as watch35, computed as computed62 } from "vue";
+import { onMounted as onMounted32, ref as ref41, defineComponent as defineComponent99, watch as watch37, computed as computed62 } from "vue";
 
 // packages/ui/src/Stepper/util.ts
 var getClasses20 = (disabled) => {
@@ -18289,7 +18530,7 @@ var _sfc_script126 = defineComponent99({
     minusClick: emitClickValidator
   },
   setup(props, { emit }) {
-    const formValue = ref49("");
+    const formValue = ref41("");
     const nMin = computed62(() => getNumber(props.min, 1));
     const nMax = computed62(() => getNumber(props.max, Infinity));
     const nStep = computed62(() => getNumber(props.step, 1));
@@ -18332,7 +18573,7 @@ var _sfc_script126 = defineComponent99({
     onMounted32(() => {
       setInputValue(formValue.value);
     });
-    watch35(() => props.modelValue, (val) => {
+    watch37(() => props.modelValue, (val) => {
       if (val != null && parseFloat(val.toString()) !== parseFloat(formValue.value)) {
         updateValue(val);
       } else if (formValue.value === "") {
@@ -18509,7 +18750,7 @@ _sfc_script127.__file = "packages/ui/src/Stopwatch/Stopwatch.vue";
 var Stopwatch_default = _sfc_script127;
 
 // vue:./SwipeCell.vue
-import { ref as ref50, defineComponent as defineComponent101, computed as computed63, reactive as reactive8 } from "vue";
+import { ref as ref42, defineComponent as defineComponent101, computed as computed63, reactive as reactive8, shallowRef as shallowRef36 } from "vue";
 
 // packages/ui/src/SwipeCell/util.ts
 var getButtons = (buttons) => {
@@ -18561,10 +18802,10 @@ var _sfc_script128 = defineComponent101({
     buttonClick: (payload) => payload && typeof payload.index === "number"
   },
   setup(props, ctx) {
-    const root = ref50();
-    const buttonsEl = ref50();
-    const translateX = ref50(0);
-    const duration = ref50(0);
+    const root = shallowRef36(null);
+    const buttonsEl = shallowRef36(null);
+    const translateX = ref42(0);
+    const duration = ref42(0);
     const buttonTranslateXs = reactive8([]);
     let coords;
     let isShow = false;
@@ -18709,7 +18950,7 @@ var SwipeCell_default = _sfc_script128;
 var SwiperItem_default = _sfc_script75;
 
 // vue:./Switch.vue
-import { onMounted as onMounted33, ref as ref51, watch as watch36, defineComponent as defineComponent102, computed as computed64 } from "vue";
+import { onMounted as onMounted33, ref as ref43, watch as watch38, defineComponent as defineComponent102, computed as computed64 } from "vue";
 
 // packages/ui/src/Switch/util.ts
 var getClasses21 = (disabled) => {
@@ -18751,7 +18992,7 @@ var _sfc_script129 = defineComponent102({
   },
   setup(props, { emit }) {
     let isValueNull = props.modelValue == null;
-    const checked = ref51(false);
+    const checked = ref43(false);
     const { inputEl, setInputChecked, getInputChecked } = useInput();
     const classes = computed64(() => getClasses21(props.disabled));
     const styles = computed64(() => getStyles10(props));
@@ -18766,7 +19007,7 @@ var _sfc_script129 = defineComponent102({
     onMounted33(() => {
       setInputChecked(checked.value);
     });
-    watch36(() => props.modelValue, (val) => {
+    watch38(() => props.modelValue, (val) => {
       if (isBoolean(val) && val !== checked.value) {
         checked.value = val;
         setInputChecked(val);
@@ -18822,7 +19063,7 @@ var getItemClasses7 = (index, activeIndex) => {
 };
 
 // vue:./TabBar.vue
-import { renderList as _renderList23, Fragment as _Fragment24, openBlock as _openBlock127, createElementBlock as _createElementBlock113, resolveComponent as _resolveComponent61, createBlock as _createBlock44, createCommentVNode as _createCommentVNode48, mergeProps as _mergeProps13, withCtx as _withCtx30, createVNode as _createVNode45, toDisplayString as _toDisplayString50, createElementVNode as _createElementVNode89, normalizeClass as _normalizeClass66, normalizeStyle as _normalizeStyle32 } from "vue";
+import { renderList as _renderList23, Fragment as _Fragment24, openBlock as _openBlock127, createElementBlock as _createElementBlock113, resolveComponent as _resolveComponent61, createBlock as _createBlock45, createCommentVNode as _createCommentVNode49, mergeProps as _mergeProps13, withCtx as _withCtx30, createVNode as _createVNode45, toDisplayString as _toDisplayString50, createElementVNode as _createElementVNode89, normalizeClass as _normalizeClass66, normalizeStyle as _normalizeStyle32 } from "vue";
 var _sfc_script130 = defineComponent103({
   name: "ak-tab-bar",
   components: { AkImage: _sfc_script17, Icon: _sfc_script2, Badge: _sfc_script14 },
@@ -18864,13 +19105,13 @@ function render128(_ctx, _cache) {
         }, [
           _createVNode45(_component_Badge, _mergeProps13({ class: "ak-tab-bar_item-icon" }, item.badge), {
             default: _withCtx30(() => [
-              item.iconLink ? (_openBlock127(), _createBlock44(_component_AkImage, {
+              item.iconLink ? (_openBlock127(), _createBlock45(_component_AkImage, {
                 key: 0,
                 src: index === _ctx.activeIndex ? item.activeIconLink : item.iconLink
-              }, null, 8, ["src"])) : item.icon ? (_openBlock127(), _createBlock44(_component_Icon, {
+              }, null, 8, ["src"])) : item.icon ? (_openBlock127(), _createBlock45(_component_Icon, {
                 key: 1,
                 icon: index === _ctx.activeIndex ? item.activeIcon : item.icon
-              }, null, 8, ["icon"])) : _createCommentVNode48("v-if", true)
+              }, null, 8, ["icon"])) : _createCommentVNode49("v-if", true)
             ]),
             _: 2
           }, 1040),
@@ -18887,17 +19128,20 @@ _sfc_script130.__file = "packages/ui/src/TabBar/TabBar.vue";
 var TabBar_default = _sfc_script130;
 
 // vue:./TabView.vue
-import { ref as ref52, defineComponent as defineComponent104, provide as provide15 } from "vue";
+import { ref as ref44, defineComponent as defineComponent104, provide as provide15, watch as watch39, shallowRef as shallowRef37 } from "vue";
 
 // packages/ui/src/TabView/util.ts
 var getClasses22 = (vertical) => ["ak-tab-view", { vertical }];
 
 // vue:./TabView.vue
-import { resolveComponent as _resolveComponent62, openBlock as _openBlock128, createBlock as _createBlock45, createElementVNode as _createElementVNode90, renderSlot as _renderSlot58, withCtx as _withCtx31, createVNode as _createVNode46, normalizeClass as _normalizeClass67, createElementBlock as _createElementBlock114 } from "vue";
+import { resolveComponent as _resolveComponent62, openBlock as _openBlock128, createBlock as _createBlock46, createCommentVNode as _createCommentVNode50, createElementVNode as _createElementVNode90, renderSlot as _renderSlot58, withCtx as _withCtx31, createVNode as _createVNode46, normalizeClass as _normalizeClass67, createElementBlock as _createElementBlock114 } from "vue";
 var _sfc_script131 = defineComponent104({
   name: "ak-tab-view",
   components: { Tab: _sfc_script34, SideTab: _sfc_script109, Swiper: _sfc_script74 },
   props: {
+    modelValue: {
+      type: String
+    },
     initialVertical: {
       type: Boolean,
       default: false
@@ -18908,47 +19152,91 @@ var _sfc_script131 = defineComponent104({
     }
   },
   emits: {
-    change: emitChangeValidator,
+    "update:modelValue": (name) => isString(name),
+    change: (name, index) => isString(name) && isNumber(index),
     animated: emitChangeValidator
   },
-  setup(props, { emit }) {
-    const vertical = ref52(!!props.initialVertical);
-    const swiper = ref52();
-    const tabList = ref52([]);
-    const activeIndex = ref52(0);
+  setup(props, { emit, expose }) {
+    const vertical = ref44(!!props.initialVertical);
+    const swiperRef = shallowRef37(null);
+    const tabList = ref44([]);
+    const activeIndex = ref44(0);
+    let nameArr = [];
+    function getActiveIndexByName(name) {
+      if (name) {
+        for (let i = 0; i < nameArr.length; i++) {
+          if (nameArr[i] === name) {
+            return i;
+          }
+        }
+      }
+      return -1;
+    }
     function resetItems($items) {
+      nameArr = [];
       tabList.value = $items.map(($item, index) => {
-        const { name, subName } = $item.dataset;
+        const { name, subTitle, title } = $item.dataset;
+        nameArr.push(name);
         return {
           value: index,
-          label: name || "",
-          subLabel: subName || ""
+          label: title || name || "",
+          subLabel: subTitle || ""
         };
       });
     }
     const { listEl } = useList("tabView", resetItems);
-    const onChange = (activeIndex2, fromIndex) => {
-      emit("change", activeIndex2, fromIndex);
+    const onTabChange = (index) => {
+      switchToIndex(index);
     };
-    const onAnimated = (activeIndex2, fromIndex) => {
-      emit("animated", activeIndex2, fromIndex);
+    const onSwiperChange = (index) => {
+      activeIndex.value = index;
+      const activeName = nameArr[index] || "";
+      emit("update:modelValue", activeName);
+      emit("change", activeName, index);
     };
-    function swipeTo(activeIndex2) {
+    const onSwiperAnimated = (index, fromIndex) => {
+      emit("animated", index, fromIndex);
+    };
+    function _switchTo(name, isProp) {
+      const newIndex = getActiveIndexByName(name);
+      if (newIndex === -1) {
+        console.error(new exception_default('The "TabItem[name]" not found.', isProp ? exception_default.TYPE.PROP_ERROR : exception_default.TYPE.PARAM_ERROR, "TabView"));
+      } else if (newIndex !== activeIndex.value) {
+        if (isProp) {
+          activeIndex.value = newIndex;
+        } else {
+          switchToIndex(newIndex);
+        }
+      }
+    }
+    function switchToIndex(index) {
       var _a;
-      (_a = swiper.value) == null ? void 0 : _a.swipeTo(activeIndex2);
+      if (index >= 0 && index < tabList.value.length) {
+        (_a = swiperRef.value) == null ? void 0 : _a.swipeTo(index);
+      } else {
+        console.error(new exception_default('The "TabItem[index]" not found.', exception_default.TYPE.PARAM_ERROR, "TabView"));
+      }
     }
     provide15("akTabViewVertical", vertical.value);
+    watch39(() => props.modelValue, (val) => val != null && _switchTo(val, true));
     const classes = getClasses22(vertical.value);
+    const switchTo = (name) => _switchTo(name, false);
+    expose({
+      switchTo,
+      switchToIndex
+    });
     return {
       activeIndex,
       tabList,
       vertical,
       listEl,
-      swiper,
-      onChange,
-      onAnimated,
-      swipeTo,
-      classes
+      onTabChange,
+      swiperRef,
+      onSwiperChange,
+      onSwiperAnimated,
+      classes,
+      switchTo,
+      switchToIndex
     };
   }
 });
@@ -18965,26 +19253,25 @@ function render129(_ctx, _cache) {
     class: _normalizeClass67(_ctx.classes)
   }, [
     _createElementVNode90("div", _hoisted_1101, [
-      _ctx.vertical ? (_openBlock128(), _createBlock45(_component_SideTab, {
+      _ctx.vertical && _ctx.tabList.length > 0 ? (_openBlock128(), _createBlock46(_component_SideTab, {
         key: 0,
         options: _ctx.tabList,
-        activeValue: _ctx.activeIndex,
-        "onUpdate:activeValue": _cache[0] || (_cache[0] = ($event) => _ctx.activeIndex = $event)
-      }, null, 8, ["options", "activeValue"])) : (_openBlock128(), _createBlock45(_component_Tab, {
+        modelValue: _ctx.activeIndex,
+        onChange: _ctx.onTabChange
+      }, null, 8, ["options", "modelValue", "onChange"])) : _ctx.tabList.length > 0 ? (_openBlock128(), _createBlock46(_component_Tab, {
         key: 1,
         options: _ctx.tabList,
-        activeValue: _ctx.activeIndex,
-        "onUpdate:activeValue": _cache[1] || (_cache[1] = ($event) => _ctx.activeIndex = $event),
-        "scroll-threshold": _ctx.scrollThreshold
-      }, null, 8, ["options", "activeValue", "scroll-threshold"]))
+        modelValue: _ctx.activeIndex,
+        scrollThreshold: _ctx.scrollThreshold,
+        onChange: _ctx.onTabChange
+      }, null, 8, ["options", "modelValue", "scrollThreshold", "onChange"])) : _createCommentVNode50("v-if", true)
     ]),
     _createElementVNode90("div", _hoisted_279, [
       _createVNode46(_component_Swiper, {
         activeIndex: _ctx.activeIndex,
-        "onUpdate:activeIndex": _cache[2] || (_cache[2] = ($event) => _ctx.activeIndex = $event),
-        onChange: _ctx.onChange,
-        onAnimated: _ctx.onAnimated,
-        ref: "swiper",
+        onActiveIndexChange: _ctx.onSwiperChange,
+        onAnimated: _ctx.onSwiperAnimated,
+        ref: "swiperRef",
         initialVertical: _ctx.vertical,
         bounces: false
       }, {
@@ -18992,7 +19279,7 @@ function render129(_ctx, _cache) {
           _renderSlot58(_ctx.$slots, "default")
         ]),
         _: 3
-      }, 8, ["activeIndex", "onChange", "onAnimated", "initialVertical"])
+      }, 8, ["activeIndex", "onActiveIndexChange", "onAnimated", "initialVertical"])
     ], 512)
   ], 2);
 }
@@ -19000,7 +19287,7 @@ _sfc_script131.render = render129;
 _sfc_script131.__file = "packages/ui/src/TabView/TabView.vue";
 
 // vue:./TabViewItem.vue
-import { ref as ref53, defineComponent as defineComponent105, inject as inject19 } from "vue";
+import { defineComponent as defineComponent105, inject as inject19, shallowRef as shallowRef38 } from "vue";
 import { renderSlot as _renderSlot59, openBlock as _openBlock129, createElementBlock as _createElementBlock115 } from "vue";
 var _sfc_script132 = defineComponent105({
   name: "ak-tab-view-item",
@@ -19009,13 +19296,15 @@ var _sfc_script132 = defineComponent105({
       type: String,
       required: true
     },
-    subName: {
-      type: String,
-      default: null
+    title: {
+      type: String
+    },
+    subTitle: {
+      type: String
     }
   },
   setup() {
-    const root = ref53();
+    const root = shallowRef38(null);
     const vertical = inject19("akTabViewVertical", false);
     useListItem("swiper");
     useListItem("tabView");
@@ -19078,12 +19367,13 @@ var _sfc_script132 = defineComponent105({
     };
   }
 });
-var _hoisted_1102 = ["data-name", "data-sub-name"];
+var _hoisted_1102 = ["data-name", "data-title", "data-sub-title"];
 function render130(_ctx, _cache) {
   return _openBlock129(), _createElementBlock115("div", {
     class: "ak-swiper-item ak-tab-view-item",
     "data-name": _ctx.name,
-    "data-sub-name": _ctx.subName,
+    "data-title": _ctx.title,
+    "data-sub-title": _ctx.subTitle,
     ref: "root"
   }, [
     _renderSlot59(_ctx.$slots, "default")
@@ -19099,7 +19389,7 @@ var TabView_default = _sfc_script131;
 var TabViewItem_default = _sfc_script132;
 
 // vue:./TimeAgo.vue
-import { defineComponent as defineComponent106, ref as ref54, toRef as toRef7, watch as watch37 } from "vue";
+import { defineComponent as defineComponent106, ref as ref45, toRef as toRef7, watch as watch40 } from "vue";
 
 // node_modules/.pnpm/timeago.js@4.0.2/node_modules/timeago.js/esm/lang/en_US.js
 var EN_US = ["second", "minute", "hour", "day", "week", "month", "year"];
@@ -19258,16 +19548,16 @@ var _sfc_script133 = defineComponent106({
     }
   },
   setup(props) {
-    const timeAgo = ref54("");
+    const timeAgo = ref45("");
     const { locale } = useLocale();
     function update() {
       const d = getDate(props);
       timeAgo.value = d == null ? "" : format(d, locale.value.lang.replace("-", "_"));
     }
-    watch37([() => props.time, () => props.formatTemplate], update, {
+    watch40([() => props.time, () => props.formatTemplate], update, {
       immediate: true
     });
-    watch37(locale, () => update());
+    watch40(locale, () => update());
     useTimer(update, toRef7(props, "interval"));
     return {
       timeAgo
@@ -19301,7 +19591,7 @@ _sfc_script134.__file = "packages/ui/src/Timeline/Timeline.vue";
 
 // vue:./TimelineItem.vue
 import { defineComponent as defineComponent108 } from "vue";
-import { createElementVNode as _createElementVNode91, renderSlot as _renderSlot61, normalizeStyle as _normalizeStyle33, toDisplayString as _toDisplayString52, createTextVNode as _createTextVNode24, openBlock as _openBlock132, createElementBlock as _createElementBlock118, createCommentVNode as _createCommentVNode50 } from "vue";
+import { createElementVNode as _createElementVNode91, renderSlot as _renderSlot61, normalizeStyle as _normalizeStyle33, toDisplayString as _toDisplayString52, createTextVNode as _createTextVNode24, openBlock as _openBlock132, createElementBlock as _createElementBlock118, createCommentVNode as _createCommentVNode51 } from "vue";
 var _sfc_script135 = defineComponent108({
   name: "ak-timeline-item",
   props: {
@@ -19342,7 +19632,7 @@ function render134(_ctx, _cache) {
         _renderSlot61(_ctx.$slots, "title", {}, () => [
           _createTextVNode24(_toDisplayString52(_ctx.title), 1)
         ])
-      ])) : _createCommentVNode50("v-if", true),
+      ])) : _createCommentVNode51("v-if", true),
       _createElementVNode91("div", _hoisted_63, [
         _renderSlot61(_ctx.$slots, "default")
       ])
