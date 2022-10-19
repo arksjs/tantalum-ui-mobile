@@ -39,3 +39,9 @@ yarn add arkui-mobile-vue
 # pnpm
 pnpm add arkui-mobile-vue
 ```
+
+## 移动端 Demo
+
+扫描以下二维码查看：
+
+![qr.png](./guide/assets/qr.png)
