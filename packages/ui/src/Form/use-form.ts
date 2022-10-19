@@ -1,7 +1,7 @@
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
 export function useInput() {
-  const inputEl = ref<HTMLInputElement>()
+  const inputEl = shallowRef<HTMLInputElement | null>(null)
 
   function setInputChecked(val: boolean) {
     inputEl.value && (inputEl.value.checked = val)

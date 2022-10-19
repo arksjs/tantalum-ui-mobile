@@ -31,7 +31,6 @@
         :name="name"
         :disabled="disabled"
         :value="inputValue"
-        ref="input"
       />
     </div>
   </div>
@@ -40,7 +39,12 @@
 <script lang="ts">
 import { defineComponent, watch, nextTick, reactive, computed } from 'vue'
 import type { PropType } from 'vue'
-import { cloneData, isNumberArray, isSameArray } from '../helpers/util'
+import {
+  cloneData,
+  isNumberArray,
+  isSameArray,
+  isString
+} from '../helpers/util'
 import { formItemProps } from '../Form/form'
 import { slideProps } from '../Slider/props'
 import { useSlide } from '../Slider/use-slide'
@@ -119,9 +123,9 @@ export default defineComponent({
     function valueHandler(val: unknown) {
       let newVal: number[] = []
 
-      if (isNumberArray(val) && (val as number[]).length > 1) {
-        newVal = cloneData(val as number[])
-      } else if (typeof val === 'string') {
+      if (isNumberArray(val) && val.length > 1) {
+        newVal = cloneData(val)
+      } else if (isString(val)) {
         newVal = val.split(',').map(v => {
           return toInteger(v)
         })

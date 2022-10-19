@@ -24,18 +24,18 @@ import type { RadioOptionItem } from 'arkui-mobile-vue'
 
 ## Radio Props
 
-| 属性            | 类型             | 默认值 | 必填 | 说明                                                                                         |
-| --------------- | ---------------- | ------ | ---- | -------------------------------------------------------------------------------------------- |
-| value           | string \| number | ''     | 否   | 该项值，[RadioGroup](./Radio.md#radiogroup-单项选择器) 的 change 事件会携带 `radio` 的 value |
-| disabled        | boolean          | false  | 否   | 是否禁用                                                                                     |
-| v-model:checked | boolean          | false  | 否   | 当前是否选中，可用来设置默认选中                                                             |
-| active-color    | string           |        | 否   | 自定义激活态的图标颜色                                                                       |
+| 属性            | 类型             | 默认值 | 必填 | 说明                                                                                                |
+| --------------- | ---------------- | ------ | ---- | --------------------------------------------------------------------------------------------------- |
+| checked-value   | string \| number | ''     | 否   | 该项值，[RadioGroup](./Radio.md#radiogroup-单项选择器) 的 change 事件会携带 `radio` 的 checkedValue |
+| disabled        | boolean          | false  | 否   | 是否禁用                                                                                            |
+| v-model:checked | boolean          | false  | 否   | 当前是否选中，可用来设置默认选中                                                                    |
+| active-color    | string           |        | 否   | 自定义激活态的图标颜色                                                                              |
 
 ## Radio Events
 
-| 事件名称 | 描述               | 回调函数参数     |
-| -------- | ------------------ | ---------------- |
-| change   | 勾选发生改变时触发 | checked: boolean |
+| 事件名称       | 描述               | 回调函数参数     |
+| -------------- | ------------------ | ---------------- |
+| checked-change | 勾选发生改变时触发 | checked: boolean |
 
 ## Radio Slots
 

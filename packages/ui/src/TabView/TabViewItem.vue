@@ -2,7 +2,8 @@
   <div
     class="ak-swiper-item ak-tab-view-item"
     :data-name="name"
-    :data-sub-name="subName"
+    :data-title="title"
+    :data-sub-title="subTitle"
     ref="root"
   >
     <slot></slot>
@@ -10,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, inject } from 'vue'
+import { defineComponent, inject, shallowRef } from 'vue'
 import { useListItem } from '../hooks/use-list'
 import { useTouch } from '../hooks/use-touch'
 
@@ -30,13 +31,15 @@ export default defineComponent({
       type: String,
       required: true
     },
-    subName: {
-      type: String,
-      default: null
+    title: {
+      type: String
+    },
+    subTitle: {
+      type: String
     }
   },
   setup() {
-    const root = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
     const vertical = inject('akTabViewVertical', false)
 
     useListItem('swiper')

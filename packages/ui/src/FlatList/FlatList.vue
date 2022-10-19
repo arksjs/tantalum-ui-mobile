@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref } from 'vue'
+import { computed, defineComponent, onMounted, ref, shallowRef } from 'vue'
 import { LoadMore } from '../LoadMore'
 import { ScrollView } from '../ScrollView'
 import { VirtualList } from '../VirtualList'
@@ -102,8 +102,10 @@ export default defineComponent({
   } as PropsToEmits<FlatListEmits>,
   setup(props, { emit }) {
     const { locale } = useLocale()
-    const scrollViewRef = ref<InstanceType<typeof ScrollView>>()
-    const virtualListRef = ref<VirtualListRef>()
+    const scrollViewRef = shallowRef<InstanceType<typeof ScrollView> | null>(
+      null
+    )
+    const virtualListRef = shallowRef<VirtualListRef | null>(null)
 
     const wrapperSize = ref(0)
     let horizontal = false

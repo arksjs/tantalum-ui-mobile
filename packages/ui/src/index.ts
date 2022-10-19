@@ -85,30 +85,44 @@ export type {
   ScrollViewOnRefreshing,
   ScrollViewOnScroll
 } from './ScrollView/types'
-export type { TabOnChange, TabOptions, TabOption } from './Tab/types'
-export type { TabBarOnChange } from './TabBar/types'
-export type { SideTabOnChange } from './SideTab/types'
-export type { SwiperOnChange, SwiperOnAnimated } from './Swiper/types'
-export type { TabViewOnChange, TabViewOnAnimated } from './TabView/types'
+export type { TabOnChange, TabOptions, TabOption, TabRef } from './Tab/types'
+export type {
+  TabBarOnChange,
+  TabBarOptions,
+  TabBarOption,
+  TabBarRef
+} from './TabBar/types'
+export type {
+  SideTabOnChange,
+  SideTabOptions,
+  SideBarOption,
+  SideBarRef
+} from './SideTab/types'
+export type {
+  SwiperOnActiveIndexChange,
+  SwiperOnAnimated,
+  SwiperRef
+} from './Swiper/types'
+export type {
+  TabViewOnChange,
+  TabViewOnAnimated,
+  TabViewRef
+} from './TabView/types'
 export type { ToastType } from './Toast/types'
 export type {
   SwipeCellButtonOption,
   SwipeCellOnButtonClick
 } from './SwipeCell/types'
-export type { StickyViewOnChange } from './StickyView/types'
-export type { ScrollTabOnChange } from './ScrollTab/types'
-export type { IndexViewOnChange } from './IndexView/types'
+export type { StickyViewOnChange, StickyViewRef } from './StickyView/types'
+export type { ScrollTabOnChange, ScrollTabRef } from './ScrollTab/types'
+export type { IndexViewOnChange, IndexViewRef } from './IndexView/types'
 export type {
   NavBarButtonOption,
   NavBarOnButtonClick,
   NavBarOnTitleDbClick
 } from './NavBar/types'
 export type { SkeletonAvatarShape, SkeletonButtonShape } from './Skeleton/types'
-export type {
-  CollapseActiveName,
-  CollapseOnChange,
-  CollapseItemOnToggle
-} from './Collapse/types'
+export type { CollapseOnChange, CollapseItemOnToggle } from './Collapse/types'
 export type {
   CountTime,
   CountDownOnEnd,

@@ -27,7 +27,8 @@ import {
   onMounted,
   onBeforeUnmount,
   ref,
-  watch
+  watch,
+  shallowRef
 } from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
@@ -101,7 +102,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const marqueeX = ref(0)
     const marqueeDuration = ref(0)
-    const contentEl = ref<HTMLElement>()
+    const contentEl = shallowRef<HTMLElement | null>(null)
     let marqueeTimer: number
 
     function marqueeStep(x: number, pW: number) {

@@ -5,7 +5,7 @@ import { colorValidator } from '../helpers/validator'
 import type { PropsToEmits } from '../helpers/types'
 
 export const tabEmits: PropsToEmits<TabCommonEmits> = {
-  'update:activeValue': value => isStringNumberMix(value),
+  'update:modelValue': value => isStringNumberMix(value),
   change: (value, index) => isStringNumberMix(value) && isNumber(index)
 }
 
@@ -38,7 +38,7 @@ export const tabProps = {
     required: true,
     default: () => [] as OptionItem[]
   },
-  activeValue: {
+  modelValue: {
     type: [Number, String] as PropType<number | string>
   },
   color: {

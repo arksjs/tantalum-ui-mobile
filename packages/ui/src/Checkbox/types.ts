@@ -13,22 +13,21 @@ export interface CheckGroupCommonProps extends FormItemCommonProps {
   options?: UserOptionItem[]
   inline?: boolean
   activeColor?: string
-  value?: ModelValue | ModelValue[]
+  modelValue?: ModelValue | ModelValue[]
 }
 
 export interface CheckboxGroupProps extends CheckGroupCommonProps {
-  value?: ModelValue[]
+  modelValue?: ModelValue[]
 }
 
 export type OnChange = (value: ModelValue[]) => void
 
 export interface CheckboxGroupEmits {
-  onUpdateModelValue?: OnChange
   onChange?: OnChange
 }
 
 export interface CheckCommonProps extends FormItemCommonProps {
-  value?: ModelValue
+  checkedValue?: ModelValue
   checked?: boolean
   activeColor?: string
 }
@@ -39,7 +38,7 @@ export interface CheckboxProps extends CheckCommonProps {
 
 export interface CheckCommonEmits {
   onUpdateChecked?: (checked: boolean) => void
-  onChange?: (checked: boolean) => void
+  onCheckedChange?: (checked: boolean) => void
 }
 
 export type CheckboxEmits = CheckCommonEmits

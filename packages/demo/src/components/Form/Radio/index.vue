@@ -19,21 +19,33 @@
   <ak-group title="RadioGroup">
     <ak-cell label="默认">
       <ak-radio-group v-model="groupValue">
-        <ak-radio v-for="item in options" :key="item.value" :value="item.value">
+        <ak-radio
+          v-for="item in options"
+          :key="item.value"
+          :checkedValue="item.value"
+        >
           {{ item.label }}
         </ak-radio>
       </ak-radio-group>
     </ak-cell>
     <ak-cell label="内联">
       <ak-radio-group inline v-model="groupValue" activeColor="#8b1721">
-        <ak-radio v-for="item in options" :key="item.value" :value="item.value">
+        <ak-radio
+          v-for="item in options"
+          :key="item.value"
+          :checkedValue="item.value"
+        >
           {{ item.label }}
         </ak-radio>
       </ak-radio-group>
     </ak-cell>
     <ak-cell label="禁用">
       <ak-radio-group modelValue="man" disabled>
-        <ak-radio v-for="item in options" :key="item.value" :value="item.value">
+        <ak-radio
+          v-for="item in options"
+          :key="item.value"
+          :checkedValue="item.value"
+        >
           {{ item.label }}
         </ak-radio>
       </ak-radio-group>
@@ -45,7 +57,11 @@
   <ak-group title="事件监听">
     <ak-cell label="change">
       <ak-radio-group @change="onChange" name="gender">
-        <ak-radio v-for="item in options" :key="item.value" :value="item.value">
+        <ak-radio
+          v-for="item in options"
+          :key="item.value"
+          :checkedValue="item.value"
+        >
           {{ item.label }}
         </ak-radio>
       </ak-radio-group>

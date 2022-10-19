@@ -19,10 +19,10 @@
       ></span>
     </div>
     <template v-if="navigationButtons && pagination.length > 1">
-      <button class="ak-swiper_prev" @click="prev(true)">
+      <button class="ak-swiper_prev" @click="prev">
         <Icon :icon="LeftOutlined" />
       </button>
-      <button class="ak-swiper_next" @click="next(true)">
+      <button class="ak-swiper_next" @click="next">
         <Icon :icon="RightOutlined" /></button
     ></template>
   </div>
@@ -35,7 +35,8 @@ import {
   onMounted,
   watch,
   onBeforeUnmount,
-  provide
+  provide,
+  shallowRef
 } from 'vue'
 import { Icon } from '../Icon'
 import Exception from '../helpers/exception'
@@ -120,13 +121,12 @@ export default defineComponent({
   },
   emits: {
     'update:activeIndex': activeIndex => isNumber(activeIndex),
-    change: emitChangeValidator,
+    activeIndexChange: emitChangeValidator,
     animated: emitChangeValidator,
     click: emitEventValidator
   } as PropsToEmits<SwiperEmits>,
-  setup(props, ctx) {
-    const root = ref<HTMLElement>()
-    const { emit } = ctx
+  setup(props, { emit, expose }) {
+    const root = shallowRef<HTMLElement | null>(null)
     const index = ref(0)
     const pagination = ref<number[]>([])
 
@@ -142,19 +142,25 @@ export default defineComponent({
     let $items: HTMLElement[] = []
     let itemSize = 0
     let horizontal: boolean | null = null
+    let isEmitChange = true
 
     /**
      * 切换到
      * @param activeIndex 索引
      */
-    function swipeTo(activeIndex: number) {
-      if (
+    function _swipeTo(activeIndex: number, isProp = false) {
+      if ($items.length === 0) {
+        goTo(0)
+      } else if (
         isNumber(activeIndex) &&
         activeIndex >= 0 &&
         activeIndex < $items.length
       ) {
         if (activeIndex !== index.value) {
-          to(activeIndex, false)
+          // 通过props设置的activeIndex不emit change
+          isEmitChange = !isProp
+          goTo(activeIndex, false)
+          isEmitChange = true
         }
       } else {
         console.error(
@@ -170,14 +176,14 @@ export default defineComponent({
     /**
      * 跳转到上一项
      */
-    function prev(useCircular = false) {
-      to(useCircular ? getCircleIndex(-1) : index.value - 1)
+    function prev() {
+      goTo(getCircleIndex(-1))
     }
     /**
      * 跳转到下一项
      */
-    function next(useCircular = false) {
-      to(useCircular ? getCircleIndex(1) : index.value + 1)
+    function next() {
+      goTo(getCircleIndex(1))
     }
 
     /**
@@ -185,7 +191,9 @@ export default defineComponent({
      */
     function getCircleIndex(step: number) {
       const length = $items.length
-      return (index.value + length + (step % length)) % length
+      return length === 0
+        ? 0
+        : (index.value + length + (step % length)) % length
     }
 
     function updateSwipeLoop(offset?: number) {
@@ -256,10 +264,10 @@ export default defineComponent({
     }
 
     function onBeforeSlide(toIndex: number, fromIndex: number) {
-      if (toIndex !== fromIndex) {
+      if (toIndex !== fromIndex && isEmitChange) {
         // 排重
         emit('update:activeIndex', toIndex)
-        emit('change', toIndex, fromIndex)
+        emit('activeIndexChange', toIndex, fromIndex)
       }
 
       index.value = toIndex
@@ -278,7 +286,7 @@ export default defineComponent({
     /**
      *  到指定项
      */
-    function to(toIndex: number, animated = true) {
+    function goTo(toIndex: number, animated = true) {
       const lastIndex = getLastIndex()
       let slideIndex = toIndex
 
@@ -389,23 +397,17 @@ export default defineComponent({
       })
     }
 
-    let isFirst = true
-
     function resetItems(res: HTMLElement[]) {
       $items = res
       setSlideStyle()
 
       const last = getLastIndex()
 
-      if (isFirst) {
-        isFirst = false
-
-        if (props.activeIndex !== 0) {
-          swipeTo(props.activeIndex)
-        }
-      } else if (index.value > last) {
-        to(last)
+      if (index.value > last) {
+        _swipeTo(last)
       }
+
+      start()
     }
 
     /**
@@ -461,9 +463,8 @@ export default defineComponent({
     function start() {
       stop()
       props.autoplay &&
-        (autoplayTimer = window.setInterval(() => {
-          to(getCircleIndex(1))
-        }, props.interval))
+        $items.length > 1 &&
+        (autoplayTimer = window.setInterval(() => next(), props.interval))
     }
 
     /**
@@ -479,7 +480,7 @@ export default defineComponent({
 
     const { listEl, update } = useList('swiper', resetItems)
 
-    useResizeObserver(root, () => update(50))
+    useResizeObserver(root, update)
 
     let coords: SwiperCoords | null
     let inMove = false
@@ -613,7 +614,7 @@ export default defineComponent({
               transIndex = active
             }
 
-            to(transIndex)
+            goTo(transIndex)
             coords = null
           }
         }
@@ -622,17 +623,21 @@ export default defineComponent({
       }
     })
 
-    watch(
-      () => props.activeIndex,
-      val => swipeTo(val)
-    )
-
     watch([() => props.autoplay, () => props.interval], () => {
       start()
     })
 
+    watch(
+      () => props.activeIndex,
+      val => _swipeTo(val, true)
+    )
+
     onMounted(() => {
       start()
+
+      if (props.activeIndex !== 0) {
+        _swipeTo(props.activeIndex, true)
+      }
     })
 
     onBeforeUnmount(() => {
@@ -643,12 +648,17 @@ export default defineComponent({
 
     provide('disableFixed', true)
 
+    const swipeTo = (newIndex: number) => _swipeTo(newIndex, false)
+
+    expose({
+      swipeTo,
+      prev,
+      next
+    })
+
     return {
       root,
       listEl,
-      swipeTo,
-      prev,
-      next,
       onClick,
       index,
       pagination,
@@ -659,7 +669,11 @@ export default defineComponent({
       classes,
       indicatorsClasses,
       getPaginationItemClasses,
-      getPaginationItemStyles
+      getPaginationItemStyles,
+
+      swipeTo,
+      prev,
+      next
     }
   }
 })

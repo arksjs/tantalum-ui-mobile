@@ -44,8 +44,8 @@ export default defineComponent({
   },
   emits: { ...popoverEmits } as PropsToEmits<PopoverEmits>,
   setup(props, ctx) {
-    const container = ref<HTMLElement>()
-    const innerEl = ref<HTMLDivElement>()
+    const container = shallowRef<HTMLElement | null>(null)
+    const innerEl = shallowRef<HTMLElement | null>(null)
     const isShow = ref(false)
     const showPos = ref(DEFAULT_POS)
 
@@ -97,11 +97,11 @@ export default defineComponent({
 
     watch(
       () => props.selector,
-      val => (container.value = querySelector(val) || undefined)
+      val => (container.value = querySelector(val))
     )
 
     onMounted(() => {
-      container.value = querySelector(props.selector) || undefined
+      container.value = querySelector(props.selector)
 
       useResizeObserver(container, () => updatePos('container resize'))
 

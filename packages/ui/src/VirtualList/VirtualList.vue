@@ -25,7 +25,15 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref, nextTick, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  ref,
+  nextTick,
+  watch,
+  shallowRef
+} from 'vue'
 import { cloneData, isNumber, rangeInteger, rangeNumber } from '../helpers/util'
 import Exception from '../helpers/exception'
 import { getViewPosition } from '../helpers/dom'
@@ -58,10 +66,10 @@ export default defineComponent({
     const cols = ref<number[]>([])
     const list = ref<ListItem[]>([])
     const renderList = ref<RenderItem[]>([])
-    const root = ref<HTMLElement>()
-    const listEl = ref<HTMLElement>()
-    const poolEl = ref<HTMLElement>()
-    const scrollEl = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
+    const listEl = shallowRef<HTMLElement | null>(null)
+    const poolEl = shallowRef<HTMLElement | null>(null)
+    const scrollEl = shallowRef<HTMLElement | null>(null)
 
     const wrapperSize = ref(0)
     let horizontal = false
@@ -141,7 +149,7 @@ export default defineComponent({
       }
     }
 
-    function getElSize($el?: HTMLElement) {
+    function getElSize($el: HTMLElement | null) {
       return $el ? $el[horizontal ? 'offsetWidth' : 'offsetHeight'] : 0
     }
 

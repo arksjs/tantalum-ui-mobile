@@ -1,8 +1,9 @@
 <template>
   <Group
     class="ak-sticky-view-item ak-index-view-item"
-    :title="name"
+    :title="title || name"
     :data-name="name"
+    :data-title="title"
   >
     <slot></slot>
   </Group>
@@ -17,6 +18,10 @@ export default defineComponent({
   name: 'ak-index-view-item',
   components: { Group },
   props: {
+    title: {
+      type: String,
+      default: ''
+    },
     name: {
       type: String,
       required: true

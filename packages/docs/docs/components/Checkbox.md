@@ -24,19 +24,19 @@ import type { CheckboxOptionItem } from 'arkui-mobile-vue'
 
 ## Checkbox Props
 
-| 属性            | 类型             | 默认值 | 必填 | 说明                                                                                                     |
-| --------------- | ---------------- | ------ | ---- | -------------------------------------------------------------------------------------------------------- |
-| value           | string \| number | ''     | 否   | 该项值，[CheckboxGroup](./Checkbox.md#checkboxgroup-多项选择器) 的 change 事件会携带 `checkbox` 的 value |
-| disabled        | boolean          | false  | 否   | 是否禁用                                                                                                 |
-| circle          | boolean          | false  | 否   | 是否显示圆形的图标                                                                                       |
-| v-model:checked | boolean          | false  | 否   | 当前是否选中，可用来设置默认选中                                                                         |
-| active-color    | string           |        | 否   | 自定义激活态的图标颜色                                                                                   |
+| 属性            | 类型             | 默认值 | 必填 | 说明                                                                                                            |
+| --------------- | ---------------- | ------ | ---- | --------------------------------------------------------------------------------------------------------------- |
+| checked-value   | string \| number | ''     | 否   | 该项值，[CheckboxGroup](./Checkbox.md#checkboxgroup-多项选择器) 的 change 事件会携带 `checkbox` 的 checkedValue |
+| disabled        | boolean          | false  | 否   | 是否禁用                                                                                                        |
+| circle          | boolean          | false  | 否   | 是否显示圆形的图标                                                                                              |
+| v-model:checked | boolean          | false  | 否   | 当前是否选中，可用来设置默认选中                                                                                |
+| active-color    | string           |        | 否   | 自定义激活态的图标颜色                                                                                          |
 
 ## Checkbox Events
 
-| 事件名称 | 描述               | 回调函数参数     |
-| -------- | ------------------ | ---------------- |
-| change   | 勾选发生改变时触发 | checked: boolean |
+| 事件名称       | 描述               | 回调函数参数     |
+| -------------- | ------------------ | ---------------- |
+| checked-change | 勾选发生改变时触发 | checked: boolean |
 
 ## Checkbox Slots
 

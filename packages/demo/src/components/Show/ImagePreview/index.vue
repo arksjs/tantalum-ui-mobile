@@ -28,7 +28,7 @@
   <ak-image-preview
     v-model:visible="visible"
     :urls="imageUrls"
-    v-model:current="current"
+    v-model="current"
     :showClose="showClose"
     :imageHighRendering="false"
     @visibleStateChange="onVisibleStateChange"
@@ -72,6 +72,7 @@ export default defineComponent({
 
     function onCallApi() {
       showImagePreview({
+        value: imageUrls[1],
         urls: imageUrls,
         showClose: true,
         imageHighRendering: false,

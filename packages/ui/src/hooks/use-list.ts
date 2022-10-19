@@ -5,11 +5,12 @@ import {
   provide,
   onMounted,
   onUnmounted,
-  inject
+  inject,
+  shallowRef
 } from 'vue'
 import type { Ref } from 'vue'
 import Exception from '../helpers/exception'
-import { camelCase2KebabCase, capitalize } from '../helpers/util'
+import { camelCase2KebabCase, capitalize, isSameArray } from '../helpers/util'
 
 type ListUpdateCallback = ($items: HTMLElement[]) => void
 
@@ -20,7 +21,7 @@ type ListUpdateCallback = ($items: HTMLElement[]) => void
 export function createUpdateInItem(name: string) {
   name = capitalize(name)
 
-  return function (lazy = 17) {
+  return function () {
     new Exception(`${name}Item is not in ${name}`, Exception.TYPE.DEFAULT, name)
   }
 }
@@ -33,8 +34,9 @@ export function createUpdateInItem(name: string) {
  */
 export function useList(name: string, updateCallback: ListUpdateCallback) {
   const instance = getCurrentInstance()
-  const listEl = ref<HTMLElement>()
+  const listEl = shallowRef<HTMLElement | null>(null)
   let updateTimer: number
+  let _$items: ListItemElement[] = []
 
   function doUpdate() {
     const $items = getItems()
@@ -43,25 +45,18 @@ export function useList(name: string, updateCallback: ListUpdateCallback) {
       $item._akSetIndex && $item._akSetIndex(index)
     })
 
-    updateCallback($items)
-  }
-
-  function update(lazy = 17) {
-    if (!instance?.isMounted) {
+    if (isSameArray(_$items, $items)) {
+      // 如果发现是同样的，不在重复调用
       return
     }
 
-    if (lazy === 0) {
-      if (!instance?.isUnmounted) {
-        doUpdate()
-      }
-    } else {
-      clearTimeout(updateTimer)
-      updateTimer = window.setTimeout(() => {
-        if (!instance?.isUnmounted) {
-          doUpdate()
-        }
-      }, lazy)
+    _$items = $items
+    updateCallback($items)
+  }
+
+  function update() {
+    if (instance?.isMounted && !instance?.isUnmounted) {
+      doUpdate()
     }
   }
 
@@ -91,10 +86,7 @@ interface ListItemElement extends HTMLElement {
   _akSetIndex?(_index: number): void
 }
 
-export function useListItem(
-  name: string,
-  root?: Ref<ListItemElement | undefined>
-) {
+export function useListItem(name: string, root?: Ref<ListItemElement | null>) {
   const index = ref(-1)
   const update = inject(`ak${capitalize(name)}Update`, createUpdateInItem(name))
 

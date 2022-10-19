@@ -33,4 +33,4 @@ export interface Position {
   deleted: boolean
 }
 
-export type { OnDelete as OrderOnDelete }
+export type { OnDelete as OrderOnDelete, Item as OrderItem }

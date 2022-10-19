@@ -13,7 +13,7 @@ interface UseTouchEvent extends Event {
 }
 
 interface UseOptions {
-  el: Ref<HTMLElement | undefined>
+  el: Ref<HTMLElement | undefined | null>
   onTouchStart: (e: UseTouchEvent) => void
   onTouchMove: (e: UseTouchEvent) => void
   onTouchEnd: (e: UseTouchEvent) => void

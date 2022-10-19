@@ -1,4 +1,4 @@
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import type { SetupContext } from 'vue'
 import { cloneData, isSameArray } from '../helpers/util'
 import type {
@@ -13,7 +13,8 @@ import type {
   PickerEmits,
   PickerViewRef,
   PickerViewProps,
-  PickerCommonEmits
+  PickerCommonEmits,
+  PickerPopupRef
 } from './types'
 import type {
   SelectorValue,
@@ -48,18 +49,18 @@ export function usePicker(
     handlers: PickerHandlers
   }
 ) {
-  const root = ref<HTMLElement>()
+  const root = shallowRef<HTMLElement | null>(null)
   const { emit } = ctx
   const isInitPopup = ref(false)
   const popupVisible = ref(true)
   const fieldValue = ref('')
   const fieldLabel = ref('')
-  const popup = ref()
+  const popupRef = shallowRef<PickerPopupRef | null>(null)
 
   let detail = getDefaultDetail(handlers)
 
   function getPopupDetail(): SelectorDetail {
-    return popup.value?.getDetail() || getDefaultDetail(handlers)
+    return popupRef.value?.getDetail() || getDefaultDetail(handlers)
   }
 
   function updateValue(val: unknown) {
@@ -146,7 +147,7 @@ export function usePicker(
 
   return {
     root,
-    popup,
+    popupRef,
     isInitPopup,
     popupVisible,
     fieldValue,
@@ -168,7 +169,7 @@ export function usePickerPopup(
   },
   { handlers }: { handlers: PickerHandlers }
 ) {
-  const viewRef = ref<PickerViewRef>()
+  const viewRef = shallowRef<PickerViewRef | null>(null)
 
   let detail = getDefaultDetail(handlers)
 

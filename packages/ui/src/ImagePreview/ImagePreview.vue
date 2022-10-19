@@ -10,9 +10,9 @@
       <Swiper
         v-if="swiperInit"
         v-model:activeIndex="activeIndex"
-        :navigation-buttons="navigationButtons"
+        :navigationButtons="navigationButtons"
         @click="onPreviewClick"
-        @change="onSwiperChange"
+        @activeIndexChange="onSwiperChange"
         @animated="onSwiperAnimated"
       >
         <SwiperItem v-for="(item, index) in images" :key="index">
@@ -59,8 +59,8 @@ import { Swiper, SwiperItem } from '../Swiper'
 import { isStringArray, rangeNumber, isString, isNumber } from '../helpers/util'
 import { usePopup } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/popup'
-import type { OnLoad as ImageOnLoad } from '../Image/types'
-import type { OnChange as SwiperOnChange } from '../Swiper/types'
+import type { ImageOnLoad } from '../Image/types'
+import type { SwiperOnActiveIndexChange } from '../Swiper/types'
 import type { ImageObject, DistanceOptions, ImagePreviewEmits } from './types'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { getDistance, mergeLoadedData, getImageStyles } from './util'
@@ -105,7 +105,7 @@ export default defineComponent({
       validator: (val: string) => isStringArray(val),
       required: true
     },
-    current: {
+    modelValue: {
       type: String,
       default: ''
     },
@@ -124,8 +124,8 @@ export default defineComponent({
   },
   emits: {
     ...popupEmits,
-    'update:current': (current: string) => isString(current),
-    change: (current: string, index: number, fromIndex: number) =>
+    'update:modelValue': current => isString(current),
+    change: (current, index, fromIndex) =>
       isString(current) && isNumber(index) && isNumber(fromIndex)
   } as PropsToEmits<ImagePreviewEmits>,
   setup(props, ctx) {
@@ -341,7 +341,7 @@ export default defineComponent({
 
       if (!hasUrl && images[0]) {
         activeIndex.value = 0
-        emit('update:current', images[0].src)
+        emit('update:modelValue', images[0].src)
       }
     }
 
@@ -357,10 +357,10 @@ export default defineComponent({
       })
     }
 
-    const onSwiperChange: SwiperOnChange = (index, fromIndex) => {
+    const onSwiperChange: SwiperOnActiveIndexChange = (index, fromIndex) => {
       const current = props.urls[index]
 
-      emit('update:current', current)
+      emit('update:modelValue', current)
 
       emit('change', current, index, fromIndex)
     }
@@ -424,7 +424,7 @@ export default defineComponent({
     )
 
     watch(
-      () => props.current,
+      () => props.modelValue,
       val => updateCurrent(val),
       {
         immediate: true

@@ -32,7 +32,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive, ref, watch } from 'vue'
+import {
+  defineComponent,
+  onMounted,
+  reactive,
+  ref,
+  shallowRef,
+  watch
+} from 'vue'
 import dayjs from '../helpers/day'
 import type { Dayjs, PropsToEmits } from '../helpers/types'
 import { isSameArray } from '../helpers/util'
@@ -87,8 +94,8 @@ export default defineComponent({
   setup(props, { emit }) {
     const { locale } = useLocale()
     const { formatter, parser, mode } = useHandlers(props)
-    const bodyEl = ref<HTMLDivElement>()
-    const bodyTitleEl = ref<HTMLDivElement>()
+    const bodyEl = shallowRef<HTMLElement | null>(null)
+    const bodyTitleEl = shallowRef<HTMLElement | null>(null)
 
     const weekDays = ref<WeekDay[]>([])
     const months = reactive<Month[]>([])
@@ -527,7 +534,7 @@ export default defineComponent({
     let bodyScrollTop = 0
 
     function onScroll(e: Event) {
-      bodyScrollTop = getScrollTop(e.currentTarget as HTMLDivElement)
+      bodyScrollTop = getScrollTop(e.currentTarget as HTMLElement)
 
       updateBodyFixed(bodyScrollTop)
     }
@@ -545,7 +552,7 @@ export default defineComponent({
 
     function updateBodyFixed(scrollTop: number) {
       const h = 28
-      const $items: HTMLDivElement[] = bodyEl.value
+      const $items: HTMLElement[] = bodyEl.value
         ? [].slice.call(
             bodyEl.value.querySelectorAll('.ak-virtual-list_item'),
             0

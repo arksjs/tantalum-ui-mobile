@@ -19,16 +19,22 @@ export interface ImageObject {
   loaded: boolean
 }
 
-export interface ImagePreviewProps extends PopupProps {
+interface CommonOptions {
   urls: string[]
-  current?: string
   showClose?: boolean
   navigationButtons?: boolean
   imageHighRendering?: boolean
 }
 
+export interface ShowImagePreviewOptions extends CommonOptions {
+  value?: string
+}
+
+export interface ImagePreviewProps extends PopupProps, CommonOptions {
+  modelValue?: string
+}
+
 export interface ImagePreviewEmits extends PopupEmits {
-  onUpdateCurrent?: (current: string) => void
   onChange?: OnChange
 }
 

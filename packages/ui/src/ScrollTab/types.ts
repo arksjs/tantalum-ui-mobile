@@ -1,6 +1,7 @@
-import type { StickyViewItemProps } from '../StickyView/types'
-
-export type OnChange = (index: number, fromIndex: number) => void
+import type {
+  StickyViewItemProps,
+  StickyViewOnChange
+} from '../StickyView/types'
 
 export interface ScrollTabProps {
   stickyOffsetTop?: number | string
@@ -8,13 +9,14 @@ export interface ScrollTabProps {
 }
 
 export interface ScrollTabEmits {
-  onChange?: OnChange
+  onChange?: StickyViewOnChange
 }
 
 export type ScrollTabItemProps = StickyViewItemProps
 
 export interface ScrollTabRef {
-  switchToIndex?: (index: number) => void
+  scrollTo: (name: string) => void
+  scrollToIndex: (index: number) => void
 }
 
-export type { OnChange as ScrollTabOnChange }
+export type { StickyViewOnChange as ScrollTabOnChange }

@@ -10,7 +10,7 @@
     @cancel="onCancel"
     @confirm="onConfirm"
     @update:visible="onUpdateVisible"
-    ref="popup"
+    ref="popupRef"
   >
     <div @click.stop="noop">
       <div :class="bodyClasses">

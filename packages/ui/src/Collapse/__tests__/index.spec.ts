@@ -7,7 +7,7 @@ import { markRaw } from 'vue'
 
 const CollapseTmpl = {
   template: `
-  <ak-collapse v-model:activeNames="activeNames" :accordion="accordion">
+  <ak-collapse v-model="modelValue" :accordion="accordion">
     <ak-collapse-item v-for="(item, index) in list" :key="item.title" :name="item.title" :title="item.title">
       {{ item.content }}
     </ak-collapse-item>
@@ -19,7 +19,7 @@ const CollapseTmpl = {
   },
   data() {
     return {
-      activeNames: [],
+      modelValue: [],
       list: baseList
     }
   }
@@ -32,22 +32,22 @@ describe('Collapse', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  test('activeNames', async () => {
+  test('modelValue', async () => {
     const wrapper = mount(CollapseTmpl)
 
-    expect(wrapper.vm.activeNames).toEqual([])
+    expect(wrapper.vm.modelValue).toEqual([])
 
     // click item 1
     await wrapper.find('.ak-collapse-item_header').trigger('click')
-    expect(wrapper.vm.activeNames).toEqual(['title 1'])
+    expect(wrapper.vm.modelValue).toEqual(['title 1'])
 
     // click item 2
     await wrapper.findAll('.ak-collapse-item_header')[1].trigger('click')
-    expect(wrapper.vm.activeNames).toEqual(['title 1', 'title 2'])
+    expect(wrapper.vm.modelValue).toEqual(['title 1', 'title 2'])
 
     // click item 1
     await wrapper.find('.ak-collapse-item_header').trigger('click')
-    expect(wrapper.vm.activeNames).toEqual(['title 2'])
+    expect(wrapper.vm.modelValue).toEqual(['title 2'])
   })
 
   test('accordion', async () => {
@@ -56,19 +56,19 @@ describe('Collapse', () => {
       accordion: true
     })
 
-    expect(wrapper.vm.activeNames).toEqual([])
+    expect(wrapper.vm.modelValue).toEqual([])
 
     // click item 1
     await wrapper.find('.ak-collapse-item_header').trigger('click')
-    expect(wrapper.vm.activeNames).toEqual(['title 1'])
+    expect(wrapper.vm.modelValue).toEqual(['title 1'])
 
     // click item 2
     await wrapper.findAll('.ak-collapse-item_header')[1].trigger('click')
-    expect(wrapper.vm.activeNames).toEqual(['title 2'])
+    expect(wrapper.vm.modelValue).toEqual(['title 2'])
 
     // click item 1
     await wrapper.find('.ak-collapse-item_header').trigger('click')
-    expect(wrapper.vm.activeNames).toEqual(['title 1'])
+    expect(wrapper.vm.modelValue).toEqual(['title 1'])
   })
 })
 

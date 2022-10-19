@@ -9,7 +9,7 @@
     @confirm="onConfirm"
     @cancel="onCancel"
     @update:visible="onUpdateVisible"
-    ref="popup"
+    ref="popupRef"
   >
     <div class="ak-pop-dialog_body">
       <div class="ak-popover_text">{{ content }}</div>

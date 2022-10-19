@@ -23,19 +23,20 @@ import type {
   TabOnChange,
   TabOptions,
   TabOption,
-  BadgeOption
+  BadgeOption,
+  TabRef
 } from 'arkui-mobile-vue'
 ```
 
 ## Props
 
-| 属性                 | 类型             | 默认值 | 必填 | 说明                                       |
-| -------------------- | ---------------- | ------ | ---- | ------------------------------------------ |
-| options              | TabOptions       | []     | 是   | tab 数据集                                 |
-| v-model:active-value | string \| number |        | 否   | 当前激活项的 value 值                      |
-| scroll-threshold     | number           | 4      | 否   | 超过 `scrollThreshold` 个 Tab 使用滚动形式 |
-| color                | string           |        | 否   | 自定义默认态字体和图标颜色                 |
-| active-color         | string           |        | 否   | 自定义激活态的字体和图标颜色               |
+| 属性             | 类型             | 默认值 | 必填 | 说明                                       |
+| ---------------- | ---------------- | ------ | ---- | ------------------------------------------ |
+| options          | TabOptions       | []     | 是   | tab 数据集                                 |
+| v-model          | string \| number |        | 否   | 当前激活项的 value 值                      |
+| scroll-threshold | number           | 4      | 否   | 超过 `scrollThreshold` 个 Tab 使用滚动形式 |
+| color            | string           |        | 否   | 自定义默认态字体和图标颜色                 |
+| active-color     | string           |        | 否   | 自定义激活态的字体和图标颜色               |
 
 ### TabOptions
 
@@ -142,7 +143,14 @@ type BadgeOption =
 
 ## Methods
 
-| 方法名        | 说明                 | 参数                              |
-| ------------- | -------------------- | --------------------------------- |
-| switchTo      | 切换到指定 Tab       | (value: string \| number) => void |
-| switchToIndex | 切换到指定索引的 Tab | (index: number) => void           |
+```ts
+interface TabRef {
+  switchTo: (value: string | number) => void
+  switchToIndex: (index: number) => void
+}
+```
+
+| 方法名        | 说明                    |
+| ------------- | ----------------------- |
+| switchTo      | 切换到指定 value 的 Tab |
+| switchToIndex | 切换到指定索引的 Tab    |

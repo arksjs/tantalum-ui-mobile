@@ -4,7 +4,7 @@
       <Checkbox
         v-for="item in options2"
         :key="item.value"
-        :value="item.value"
+        :checkedValue="item.value"
         >{{ item.label }}</Checkbox
       >
     </slot>

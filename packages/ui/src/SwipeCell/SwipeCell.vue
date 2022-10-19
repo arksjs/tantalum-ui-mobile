@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, computed, reactive } from 'vue'
+import { ref, defineComponent, computed, reactive, shallowRef } from 'vue'
 import type { PropType } from 'vue'
 import { cloneData, rangeNumber, noop } from '../helpers/util'
 import type { ButtonOption, SwipeCellEmits } from './types'
@@ -62,8 +62,8 @@ export default defineComponent({
     buttonClick: payload => payload && typeof payload.index === 'number'
   } as PropsToEmits<SwipeCellEmits>,
   setup(props, ctx) {
-    const root = ref<HTMLElement>()
-    const buttonsEl = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
+    const buttonsEl = shallowRef<HTMLElement | null>(null)
     const translateX = ref(0)
     const duration = ref(0)
     const buttonTranslateXs = reactive<number[]>([])

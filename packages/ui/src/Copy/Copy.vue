@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import Exception from '../helpers/exception'
-import { defineComponent, ref } from 'vue'
+import { defineComponent, shallowRef } from 'vue'
 import { useLocale } from '../ConfigProvider/context'
 import { copy } from './util'
 import type { PropsToEmits } from '../helpers/types'
@@ -32,7 +32,7 @@ export default defineComponent({
   } as PropsToEmits<CopyEmits>,
   setup(props, { emit }) {
     const { locale } = useLocale()
-    const inputEl = ref<HTMLInputElement>()
+    const inputEl = shallowRef<HTMLInputElement | null>(null)
 
     function onCopy() {
       try {

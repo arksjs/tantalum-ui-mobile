@@ -1,4 +1,4 @@
-import { computed, onMounted, ref, watch, inject } from 'vue'
+import { computed, onMounted, ref, watch, inject, shallowRef } from 'vue'
 import type { SetupContext } from 'vue'
 import { noop } from '../helpers/util'
 import { addClassName, getScrollTop, removeClassName } from '../helpers/dom'
@@ -12,7 +12,8 @@ import type {
   OnVisibleStateChange,
   OnCancel,
   PopupProps,
-  PopupEmits
+  PopupEmits,
+  PopupRef
 } from './types'
 import type { Noop, PropsToEmits } from '../helpers/types'
 import { useBlur } from '../hooks/use-event'
@@ -250,15 +251,15 @@ export function usePopup(
 }
 
 export function usePopupExtend<T>(ctx: SetupContext<any>) {
-  const popup = ref()
+  const popupRef = shallowRef<PopupRef | null>(null)
   const { emitHook, cancelHook } = useApiHook(ctx.emit)
 
   const customCancel: PopupCustomCancel = (key, focus = false) => {
-    popup.value && popup.value.customCancel(key, focus)
+    popupRef.value?.customCancel(key, focus)
   }
 
   const customConfirm: PopupCustomConfirm<T> = detail => {
-    popup.value && popup.value.customConfirm(detail)
+    popupRef.value?.customConfirm(detail)
   }
 
   const onVisibleStateChange: OnVisibleStateChange = e => {
@@ -285,7 +286,7 @@ export function usePopupExtend<T>(ctx: SetupContext<any>) {
   cancelHook(customCancel)
 
   return {
-    popup,
+    popupRef,
     customCancel,
     customConfirm,
     onUpdateVisible,

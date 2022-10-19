@@ -19,7 +19,7 @@ import { AkScrollTab, AkScrollTabItem } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { ScrollTabOnChange } from 'arkui-mobile-vue'
+import type { ScrollTabOnChange, ScrollTabRef } from 'arkui-mobile-vue'
 ```
 
 ## ScrollTab Props
@@ -31,9 +31,9 @@ import type { ScrollTabOnChange } from 'arkui-mobile-vue'
 
 ## ScrollTab Events
 
-| 事件   | 描述       | 回调函数参数                       | TypeScript 函数   |
-| ------ | ---------- | ---------------------------------- | ----------------- |
-| change | 切换时触发 | ( activeIndex: number ) 当前项索引 | ScrollTabOnChange |
+| 事件   | 描述       | 回调函数参数                        | TypeScript 函数   |
+| ------ | ---------- | ----------------------------------- | ----------------- |
+| change | 切换时触发 | (name: string, activeIndex: number) | ScrollTabOnChange |
 
 ## ScrollTab Slots
 
@@ -56,11 +56,26 @@ import type { ScrollTabOnChange } from 'arkui-mobile-vue'
 </ak-scroll-tab>
 ```
 
+## Methods
+
+```ts
+interface ScrollTabRef {
+  scrollTo: (name: string) => void
+  scrollToIndex: (index: number) => void
+}
+```
+
+| 方法名        | 说明                     |
+| ------------- | ------------------------ |
+| scrollTo      | 切换到指定 name 的 Item  |
+| scrollToIndex | 切换到指定 index 的 Item |
+
 ## ScrollTabItem Props
 
-| 属性 | 类型   | 默认值 | 必填 | 说明                       |
-| ---- | ------ | ------ | ---- | -------------------------- |
-| name | string |        | 是   | 分组名，也应用于吸附和菜单 |
+| 属性  | 类型   | 默认值 | 必填 | 说明                                                               |
+| ----- | ------ | ------ | ---- | ------------------------------------------------------------------ |
+| name  | string |        | 是   | 唯一标识，设置后配合 ScrollTab 组件的 `v-model` 和 `onChange` 使用 |
+| title | string |        | 否   | 分组名，也应用于吸附，如果没有设置则获取 `name` 的值               |
 
 ## ScrollTabItem Slots
 

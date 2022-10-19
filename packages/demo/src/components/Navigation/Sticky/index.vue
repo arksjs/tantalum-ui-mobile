@@ -1,21 +1,13 @@
 <template>
   <ak-group title="Sticky View">
     <ak-sticky-view
+      ref="viewRef"
       class="exp-sticky-box"
-      v-model:activeIndex="activeIndex"
+      v-model="activeName"
       @change="onChange"
     >
-      <ak-sticky-view-item name="Sticky 1">
-        <div class="exp-sticky-box-1"></div>
-      </ak-sticky-view-item>
-      <ak-sticky-view-item name="Sticky 2">
-        <div class="exp-sticky-box-2"></div>
-      </ak-sticky-view-item>
-      <ak-sticky-view-item name="Sticky 3">
-        <div class="exp-sticky-box-3"></div>
-      </ak-sticky-view-item>
-      <ak-sticky-view-item name="Sticky 4">
-        <div class="exp-sticky-box-4"></div>
+      <ak-sticky-view-item v-for="i in 4" :key="i" :name="`Sticky ${i}`">
+        <div :class="`exp-sticky-box-${i}`"></div>
       </ak-sticky-view-item>
     </ak-sticky-view>
     <!-- <div class="exp-sticky-box" id="stickyContainer">
@@ -30,20 +22,26 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import type { StickyViewOnChange } from '@/index'
+import { defineComponent, onMounted, ref } from 'vue'
+import type { StickyViewOnChange, StickyViewRef } from '@/index'
 
 export default defineComponent({
   name: 'ExpSticky',
   setup() {
-    const activeIndex = ref(0)
+    const activeName = ref('Sticky 1')
+    const viewRef = ref<StickyViewRef | null>(null)
 
-    const onChange: StickyViewOnChange = res => {
-      console.log('change', res)
+    const onChange: StickyViewOnChange = (name, index) => {
+      console.log('change', name, index)
     }
 
+    onMounted(() => {
+      // viewRef.value?.scrollTo("Sticky 2")
+    })
+
     return {
-      activeIndex,
+      viewRef,
+      activeName,
 
       onChange
     }

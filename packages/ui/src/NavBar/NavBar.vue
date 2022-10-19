@@ -73,8 +73,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, shallowRef, type PropType } from 'vue'
 import { Button as AkButton, ButtonGroup } from '../Button'
 import type {
   ButtonOption,
@@ -157,7 +156,7 @@ export default defineComponent({
   } as PropsToEmits<NavBarEmits>,
   setup(props, { emit }) {
     const { locale } = useLocale()
-    const titleEl = ref<HTMLDivElement>()
+    const titleEl = shallowRef<HTMLElement | null>(null)
 
     function emitClick(
       type: string,

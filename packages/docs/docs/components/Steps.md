@@ -16,10 +16,10 @@ import { AkSteps, AkStep } from 'arkui-mobile-vue'
 
 ## Steps Props
 
-| 属性                 | 类型    | 默认值 | 必填 | 说明                 |
-| -------------------- | ------- | ------ | ---- | -------------------- |
-| v-model:active-index | number  | 0      | 否   | 当前步骤对应的索引值 |
-| dot                  | boolean | false  | 否   | 是否开启小点样式     |
+| 属性         | 类型    | 默认值 | 必填 | 说明                 |
+| ------------ | ------- | ------ | ---- | -------------------- |
+| active-index | number  | 0      | 否   | 当前步骤对应的索引值 |
+| dot          | boolean | false  | 否   | 是否开启小点样式     |
 
 ## Steps Slots
 

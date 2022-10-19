@@ -17,7 +17,7 @@ export interface NumberKeyboardItem {
 export type KeyboardType = 'default' | 'rightColumn'
 
 export interface NumberKeyboardProps extends FormItemCommonProps, PopupProps {
-  value?: string
+  modelValue?: string
   title?: string
   type?: KeyboardType
   customKey?: string | string[]
@@ -29,7 +29,6 @@ export interface NumberKeyboardEmits extends PopupEmits {
   onDelete?: OnDelete
   onClose?: OnClose
   onConfirm?: OnConfirm
-  onUpdateModelValue?: (text: string) => void
 }
 
 export type {

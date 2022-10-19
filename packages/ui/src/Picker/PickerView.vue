@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, ref, inject } from 'vue'
+import { defineComponent, nextTick, inject, shallowRef } from 'vue'
 import { Empty } from '../Empty'
 import { frameTo } from '../helpers/animation'
 import { pickerViewEmits, pickerViewProps } from './props'
@@ -39,7 +39,7 @@ export default defineComponent({
   emits: { ...pickerViewEmits } as PropsToEmits<PickerViewEmits>,
   setup(props, ctx) {
     const { locale } = useLocale()
-    const root = ref<HTMLElement>()
+    const root = shallowRef<HTMLElement | null>(null)
     const handlers = inject<Partial<PickerHandlers>>('akPickerHandlers', {})
 
     const {

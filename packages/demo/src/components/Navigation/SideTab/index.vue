@@ -2,8 +2,9 @@
   <ak-group title="基础用法">
     <div class="exp-sideTab-box">
       <ak-side-tab
+        ref="sideTabRef"
         :options="tabList"
-        v-model:activeValue="activeValue"
+        v-model="activeValue"
       ></ak-side-tab>
     </div>
   </ak-group>
@@ -21,7 +22,10 @@ import { mixTabList, tabList } from '../Tab/data'
 export default defineComponent({
   name: 'ExpSideTab',
   setup() {
+    const sideTabRef = ref()
+
     return {
+      sideTabRef,
       activeValue: ref(1),
       mixTabList,
       tabList

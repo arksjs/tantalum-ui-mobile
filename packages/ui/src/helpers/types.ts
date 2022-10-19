@@ -125,7 +125,21 @@ export type PropsToEmits<P> = Required<P> extends infer T
           >]: T[EventToOnEvent<K>] extends null
           ? never
           : VoidFnToBooleanFn<T[EventToOnEvent<K>]>
-      }
+      } extends infer E
+      ? E extends {
+          change: (...args: any[]) => any
+          [x: string]: (...args: any[]) => any
+        }
+        ? E & {
+            'update:modelValue': E['change'] extends (
+              arg: infer Arg0,
+              ...rest: any[]
+            ) => boolean
+              ? (value: Arg0) => boolean
+              : never
+          }
+        : E
+      : Record<string, never>
     : Record<string, never>
   : Record<string, never>
 

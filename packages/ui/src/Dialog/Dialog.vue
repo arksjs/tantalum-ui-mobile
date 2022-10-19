@@ -8,7 +8,7 @@
     @confirm="onConfirm"
     @cancel="onCancel"
     @update:visible="onUpdateVisible"
-    ref="popup"
+    ref="popupRef"
   >
     <div class="ak-dialog_header" v-if="title">
       {{ title }}

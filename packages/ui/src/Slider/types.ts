@@ -11,11 +11,10 @@ export interface SlideCommonProps extends FormItemCommonProps {
 }
 
 export interface SliderProps extends SlideCommonProps {
-  value?: number
+  modelValue?: number | string
 }
 
 export interface SliderEmits {
-  onUpdateModelValue?: OnChange
   onInput?: OnChange
   onChange?: OnChange
 }

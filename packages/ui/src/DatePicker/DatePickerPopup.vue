@@ -7,7 +7,7 @@
     @cancel="onCancel"
     @confirm="onConfirm"
     @update:visible="onUpdateVisible"
-    ref="popup"
+    ref="popupRef"
   >
     <template #header>
       <NavBar

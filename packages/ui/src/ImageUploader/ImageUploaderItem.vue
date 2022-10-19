@@ -27,7 +27,7 @@ import { Image as AkImage } from '../Image'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
 import { noop } from '../helpers/util'
-import type { Mode as ImageMode } from '../Image/types'
+import type { ImageMode } from '../Image/types'
 import type { FileItem } from './types'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'
 

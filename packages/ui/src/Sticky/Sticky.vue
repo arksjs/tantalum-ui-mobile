@@ -7,7 +7,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, onMounted, inject, watch } from 'vue'
+import {
+  defineComponent,
+  computed,
+  ref,
+  onMounted,
+  inject,
+  watch,
+  shallowRef
+} from 'vue'
 import type { PropType } from 'vue'
 import { widgetZIndex } from '../helpers/layer'
 import { selectorValidator, sizeValidator } from '../helpers/validator'
@@ -45,10 +53,10 @@ export default defineComponent({
       default: false
     }
   },
-  setup(props) {
-    const root = ref<HTMLElement>()
-    const container = ref<HTMLElement>()
-    const contentEl = ref<HTMLElement>()
+  setup(props, { expose }) {
+    const root = shallowRef<HTMLElement | null>(null)
+    const container = shallowRef<HTMLElement | null>(null)
+    const contentEl = shallowRef<HTMLElement | null>(null)
     const width = ref<number | null>(null)
     const height = ref<number | null>(null)
     const disableFixed = inject('disableFixed', false)
@@ -128,6 +136,10 @@ export default defineComponent({
     )
 
     onMounted(() => resetContainer(props.containSelector))
+
+    expose({
+      resetContainer
+    })
 
     return {
       root,

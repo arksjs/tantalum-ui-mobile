@@ -19,7 +19,11 @@ import { AkSwiper, AkSwiperItem } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-vue'
+import type {
+  SwiperOnActiveIndexChange,
+  SwiperOnAnimated,
+  SwiperRef
+} from 'arkui-mobile-vue'
 ```
 
 ## Swiper Props
@@ -39,11 +43,11 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-vue'
 
 ## Swiper Events
 
-| 事件     | 描述                         | 回调函数参数                               | TypeScript 函数  |
-| -------- | ---------------------------- | ------------------------------------------ | ---------------- |
-| change   | 切换时触发                   | ( activeIndex: number, fromIndex: number ) | SwiperOnChange   |
-| animated | 动画结束时触发               | ( activeIndex: number, fromIndex: number ) | SwiperOnAnimated |
-| click    | 点击时触发，为了区分滑动情况 |                                            |                  |
+| 事件                | 描述                         | 回调函数参数                               | TypeScript 函数           |
+| ------------------- | ---------------------------- | ------------------------------------------ | ------------------------- |
+| active-index-change | 切换时触发                   | ( activeIndex: number, fromIndex: number ) | SwiperOnActiveIndexChange |
+| animated            | 动画结束时触发               | ( activeIndex: number, fromIndex: number ) | SwiperOnAnimated          |
+| click               | 点击时触发，为了区分滑动情况 |                                            |                           |
 
 ## Swiper Slots
 
@@ -72,3 +76,19 @@ import type { SwiperOnChange, SwiperOnAnimated } from 'arkui-mobile-vue'
   <ak-image src="b.jpg" />
 </ak-swiper-item>
 ```
+
+## Methods
+
+```ts
+interface SwiperRef {
+  swipeTo: (newIndex: number) => void
+  prev: () => void
+  next: () => void
+}
+```
+
+| 方法名  | 说明                                                   |
+| ------- | ------------------------------------------------------ |
+| swipeTo | 切换到指定 index 的 Item                               |
+| prev    | 切换到上一个 Item，如果当前在第一个 ，则循环到最后一个 |
+| next    | 切换到下一个 Item，如果当前在最后一个，则循环到第一个  |

@@ -21,7 +21,7 @@ exports[`IndexView > snapshot 1`] = `
 `;
 
 exports[`IndexViewItem > snapshot 1`] = `
-"<div class=\\"ak-group ak-horizontal-hairline ak-sticky-view-item ak-index-view-item\\" data-name=\\"name\\">
+"<div class=\\"ak-group ak-horizontal-hairline ak-sticky-view-item ak-index-view-item\\" data-name=\\"name\\" data-title=\\"\\">
   <div class=\\"ak-group_header\\">
     <div class=\\"ak-group_title\\">name</div>
     <div class=\\"ak-group_more\\"></div>

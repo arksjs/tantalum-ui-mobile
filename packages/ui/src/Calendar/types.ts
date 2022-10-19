@@ -74,9 +74,8 @@ export interface ValueParser {
 /**
  * CalendarCommon
  */
-
 export interface CalendarCommonProps {
-  value?: SelectorModelValue
+  modelValue?: SelectorModelValue
   minDate?: Date
   maxDate?: Date
   initialMode?: Mode

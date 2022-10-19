@@ -1,9 +1,16 @@
-import { getCurrentInstance, ref, watch, computed, nextTick } from 'vue'
+import {
+  getCurrentInstance,
+  ref,
+  watch,
+  computed,
+  nextTick,
+  shallowRef
+} from 'vue'
 import type { SetupContext, ExtractPropTypes } from 'vue'
 import { isNumber, isObject, isStringNumberMix, isURL } from '../helpers/util'
 import Exception from '../helpers/exception'
 import { handleBadge } from '../Badge/util'
-import type { OptionItem, HandleOptionItem, ActiveValue } from './types'
+import type { OptionItem, HandleOptionItem } from './types'
 import type { tabEmits, tabProps } from './tab'
 import { getStyles } from './util'
 import { useFrameTask } from '../hooks/use-frame-task'
@@ -14,19 +21,19 @@ interface UseOptions {
 
 export function useTab(
   props: ExtractPropTypes<typeof tabProps>,
-  { emit }: SetupContext<typeof tabEmits>,
+  { emit, expose }: SetupContext<typeof tabEmits>,
   { tabName }: UseOptions
 ) {
   const instance = getCurrentInstance()
-  const listEl = ref<HTMLElement>()
-  const underlineEl = ref<HTMLElement>()
+  const listEl = shallowRef<HTMLElement | null>(null)
+  const underlineEl = shallowRef<HTMLElement | null>(null)
   const options2 = ref<HandleOptionItem[]>([])
   const activeIndex = ref(-1)
   const hasSub = ref(false)
 
   const { frameStart } = useFrameTask()
 
-  let value2 = props.activeValue
+  let activeValue = props.modelValue ?? ''
 
   function updateOptions() {
     const options: HandleOptionItem[] = []
@@ -83,7 +90,8 @@ export function useTab(
         }
 
         if (option) {
-          if (option.value === value2) {
+          if (!hasActive && option.value === activeValue) {
+            // 找到原来的value， activeValue 和 activeIndex 都正确
             activeIndex.value = index
             hasActive = true
           }
@@ -95,17 +103,28 @@ export function useTab(
 
     options2.value = options
 
-    if (!hasActive && options[0]) {
-      // this.onChange(options[0].value)
-      updateActive(options[0].value)
+    if (!hasActive) {
+      if (options[0]) {
+        // 设置为第一个
+        activeIndex.value = 0
+        activeValue = options[0].value
+      } else {
+        activeIndex.value = -1
+        activeValue = ''
+      }
+      // 首次属于prop传进来的，不emit回去
+      instance?.isMounted && emitChange()
     }
 
     updatePos()
   }
 
-  function switchTo(value: ActiveValue, isProp = false) {
+  function _switchTo(value: string | number, isProp = false) {
+    if (value === activeValue) {
+      return
+    }
+
     if (!updateActive(value)) {
-      // emit('update:activeValue', value2)
       console.error(
         new Exception(
           'The value is not in "options".',
@@ -113,12 +132,19 @@ export function useTab(
           tabName
         )
       )
+    } else if (!isProp) {
+      // 设置modelValue不调用onChange
+      emitChange()
     }
   }
 
   function switchToIndex(index: number) {
+    if (index === activeIndex.value) {
+      return
+    }
+
     if (options2.value[index]) {
-      updateActive(options2.value[index].value)
+      onChange(options2.value[index].value)
     } else {
       console.error(
         new Exception(
@@ -130,8 +156,8 @@ export function useTab(
     }
   }
 
-  function updateActive(value: ActiveValue) {
-    if (value === value2) {
+  function updateActive(value: string | number) {
+    if (value === activeValue) {
       return true
     }
 
@@ -139,42 +165,29 @@ export function useTab(
 
     options2.value.forEach((option, index) => {
       if (option.value === value) {
-        value2 = option.value
+        activeValue = option.value
         activeIndex.value = index
         hasValue = true
       }
     })
 
-    if (!hasValue) {
-      activeIndex.value = -1
-    }
-
-    afterUpdate({
-      hasValue,
-      activeIndex: activeIndex.value
-    })
+    hasValue && instance?.isMounted && updatePos()
 
     return hasValue
   }
 
-  function afterUpdate({
-    hasValue
-  }: {
-    hasValue: boolean
-    activeIndex: number
-  }) {
-    hasValue && instance?.isMounted && updatePos()
-  }
-
-  function onChange(value: ActiveValue) {
-    if (value === value2) {
+  function onChange(value: string | number) {
+    if (value === activeValue) {
       return
     }
 
     updateActive(value)
-    emit('update:activeValue', value)
+    emitChange()
+  }
 
-    emit('change', value, activeIndex.value)
+  function emitChange() {
+    emit('update:modelValue', activeValue)
+    emit('change', activeValue, activeIndex.value)
   }
 
   function updatePos() {
@@ -189,6 +202,9 @@ export function useTab(
       const $list = listEl.value
       const $activeItem = $list.children[activeIndex.value] as HTMLElement
       if (!$activeItem) {
+        if (tabName === 'Tab') {
+          setUnderline(0, 0)
+        }
         return
       }
 
@@ -228,22 +244,27 @@ export function useTab(
         }
       })
 
-      if (tabName === 'Tab' && underlineEl.value) {
-        const $inner = $activeItem.querySelector(
-          '.ak-tab_item-inner'
-        ) as HTMLElement
+      if (tabName === 'Tab') {
+        const $inner = $activeItem.firstElementChild as HTMLElement
 
-        underlineEl.value.style.width = $inner.offsetWidth + 'px'
-        underlineEl.value.style.transform = `translate3d(${
-          ofs - to + ($activeItem.offsetWidth - $inner.offsetWidth) / 2
-        }px, 0, 0)`
+        setUnderline(
+          ofs - to + ($activeItem.offsetWidth - $inner.offsetWidth) / 2,
+          $inner.offsetWidth
+        )
       }
     })
   }
 
+  function setUnderline(x: number, w: number) {
+    if (underlineEl.value) {
+      underlineEl.value.style.width = w + 'px'
+      underlineEl.value.style.transform = `translate3d(${x}px, 0, 0)`
+    }
+  }
+
   watch(
-    () => props.activeValue,
-    val => val != null && switchTo(val, true)
+    () => props.modelValue,
+    val => val != null && _switchTo(val, true)
   )
 
   watch(() => props.options, updateOptions, {
@@ -253,15 +274,23 @@ export function useTab(
 
   const styles = computed(() => getStyles(props.color, props.activeColor))
 
+  const switchTo = (value: string | number) => _switchTo(value, false)
+
+  expose({
+    switchTo,
+    switchToIndex
+  })
+
   return {
     listEl,
     underlineEl,
     activeIndex,
     hasSub,
     options2,
-    switchTo: (value: ActiveValue) => switchTo(value, false),
-    switchToIndex,
     onChange,
-    styles
+    styles,
+
+    switchTo,
+    switchToIndex
   }
 }

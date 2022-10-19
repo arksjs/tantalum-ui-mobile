@@ -1,6 +1,6 @@
 <template>
   <ak-group title="基础用法">
-    <ak-swiper class="exp-swiper-box" v-model:activeIndex="activeIndex">
+    <ak-swiper class="exp-swiper-box">
       <ak-swiper-item v-for="(item, index) in swiperList" :key="item">
         <div class="exp-swiper-box-item" :class="{ even: index % 2 == 1 }">
           {{ item }}
@@ -75,9 +75,11 @@
   </ak-group>
   <ak-group title="事件监听（change/animated/click）">
     <ak-swiper
+      ref="swiperRef"
       class="exp-swiper-box"
       indicator-dots
-      @change="onChange"
+      v-model:activeIndex="activeIndex"
+      @activeIndexChange="onChange"
       @animated="onAnimated"
       @click="showToast(`click 触发`)"
     >
@@ -91,25 +93,36 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { showToast, type SwiperOnAnimated, type SwiperOnChange } from '@/index'
+import { defineComponent, onMounted, ref } from 'vue'
+import {
+  showToast,
+  type SwiperOnAnimated,
+  type SwiperOnActiveIndexChange,
+  type SwiperRef
+} from '@/index'
 
 export default defineComponent({
   name: 'ExpSwiper',
   setup() {
     const activeIndex = ref(0)
+    const swiperRef = ref<SwiperRef | null>(null)
 
-    const onChange: SwiperOnChange = activeIndex => {
-      showToast(`change 到第 ${activeIndex + 1} 张`)
-      console.log('change', activeIndex)
+    const onChange: SwiperOnActiveIndexChange = index => {
+      showToast(`change 到第 ${index + 1} 张`)
+      console.log('change', index)
     }
 
-    const onAnimated: SwiperOnAnimated = activeIndex => {
-      showToast(`第 ${activeIndex + 1} 张 animated`)
-      console.log('animated', activeIndex)
+    const onAnimated: SwiperOnAnimated = index => {
+      showToast(`第 ${index + 1} 张 animated`)
+      console.log('animated', index)
     }
+
+    onMounted(() => {
+      // swiperRef.value?.next()
+    })
 
     return {
+      swiperRef,
       swiperList: [1, 2, 3, 4],
       imageUrls: [
         'https://cdn.fox2.cn/vfox/swiper/regular-1.jpg',

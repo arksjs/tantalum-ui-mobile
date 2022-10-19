@@ -66,7 +66,7 @@ export const getArrowStyles = (isShow: boolean, showPos: PopoverPos) => {
 
 export const getShowPos = (
   container: HTMLElement,
-  innerEl: HTMLDivElement,
+  innerEl: HTMLElement,
   _placement?: PlacementType
 ) => {
   const placement = getEnumsValue(PLACEMENT_TYPES, _placement)

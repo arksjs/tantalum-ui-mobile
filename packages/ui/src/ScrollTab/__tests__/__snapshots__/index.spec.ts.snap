@@ -4,11 +4,7 @@ exports[`ScrollTab > snapshot 1`] = `
 "<div class=\\"ak-scroll-tab\\">
   <div class=\\"ak-scroll-tab_sidebar\\">
     <div class=\\"ak-sticky\\">
-      <div class=\\"ak-sticky_content\\">
-        <div class=\\"ak-side-tab\\">
-          <ul class=\\"ak-side-tab_list\\"></ul>
-        </div>
-      </div>
+      <div class=\\"ak-sticky_content\\"></div>
     </div>
   </div>
   <div class=\\"ak-scroll-tab_body\\">

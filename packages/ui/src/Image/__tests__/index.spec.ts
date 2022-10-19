@@ -82,7 +82,7 @@ describe('Image', () => {
         aspectRatio: 1
       }
     })
-    const $el = wrapper.find('.ak-image_ratio').element as HTMLDivElement
+    const $el = wrapper.find('.ak-image_ratio').element as HTMLElement
     expect($el.style.paddingTop).toContain('100%')
   })
 })
