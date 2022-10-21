@@ -27,7 +27,7 @@ import {
 import { usePopup } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/popup'
 import { selectorValidator } from '../helpers/validator'
-import Exception from '../helpers/exception'
+import { useException } from '../hooks/use-exception'
 import { querySelector } from '../helpers/dom'
 import type { PropsToEmits, Selector } from '../helpers/types'
 import type { DropdownEmits } from './types'
@@ -43,6 +43,7 @@ export default defineComponent({
   },
   emits: { ...popupEmits } as PropsToEmits<DropdownEmits>,
   setup(props, ctx) {
+    const { printPropError } = useException()
     const top = ref(-1)
     const height = ref(0)
     const popupEl = shallowRef<HTMLElement | null>(null)
@@ -51,13 +52,7 @@ export default defineComponent({
       const $target = querySelector(props.selector)
 
       if (!$target) {
-        console.error(
-          new Exception(
-            'Cannot find element through "selector"',
-            Exception.TYPE.PROP_ERROR,
-            'Dropdown'
-          )
-        )
+        printPropError(`Cannot find element through "selector"`)
         return
       }
 

@@ -23,39 +23,27 @@ class Exception extends Error {
   constructor(error: unknown, type = TYPE.DEFAULT, source = 'Exception') {
     let msg = 'unknown'
 
-    if (error instanceof Exception || error instanceof Error) {
+    if (error instanceof Exception) {
+      // 继承之前的
+      msg = error.message
+      type = error.type
+      source = error.source
+    } else if (error instanceof Error) {
       msg = error.message
     } else if (error != null) {
       msg = (error as string).toString()
     }
 
-    super(msg)
+    super(`[${source}] ${type}: ${msg}`)
 
-    if (error instanceof Exception) {
-      this.source = error.source
-      this.type = error.type
-    } else {
-      this.source = source
-      this.type = type
-    }
-  }
-
-  getMessage() {
-    return this.message
-  }
-
-  toString() {
-    return `[${this.source}] ${this.type}: ${this.getMessage()}`
+    this.source = source
+    this.type = type
   }
 
   getFailError() {
     return {
-      errMsg: `${this.type}: ${this.getMessage()}`
+      errMsg: `${this.type}: ${this.message}`
     }
-  }
-
-  toLocaleString() {
-    return this.toString()
   }
 }
 

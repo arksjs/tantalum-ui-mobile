@@ -50,6 +50,7 @@ import ImageBreakOutlined from '../Icon/icons/ImageBreakOutlined'
 import type { IconData } from '../Icon/types'
 import { getImgClasses, getRatioStyles, MODE_NAMES } from './util'
 import { isString } from '../helpers/util'
+import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
   name: 'ak-image',
@@ -105,6 +106,7 @@ export default defineComponent({
     error: emitErrorValidator
   } as PropsToEmits<ImageEmits>,
   setup(props, { emit }) {
+    const { createException } = useException()
     const loading = ref(true)
     const error = ref(false)
     const root = shallowRef<HTMLElement | null>(null)
@@ -140,7 +142,7 @@ export default defineComponent({
       loading.value = false
       error.value = true
 
-      emit('error', e)
+      emit('error', createException(e))
     }
 
     function onDrag(e: Event) {

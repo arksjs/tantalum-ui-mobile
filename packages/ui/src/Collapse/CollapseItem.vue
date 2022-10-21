@@ -27,12 +27,11 @@ import type { PropType } from 'vue'
 import { Cell } from '../Cell'
 import { iconValidator } from '../helpers/validator'
 import { useGroupItem } from '../hooks/use-group'
-import Exception from '../helpers/exception'
 import type { CollapseItemEmits } from './types'
 import type { PropsToEmits } from '../helpers/types'
 import type { IconData } from '../Icon/types'
 import { getItemClasses } from './util'
-import { isBoolean } from '../helpers/util'
+import { isBoolean, noop } from '../helpers/util'
 
 export default defineComponent({
   name: 'ak-collapse-item',
@@ -61,16 +60,8 @@ export default defineComponent({
   setup(props, { emit }) {
     const active = ref(false)
     const bodyEl = shallowRef<HTMLElement | null>(null)
-    const onChange = inject('akCollapseChange', collapseItemChange)
+    const onChange = inject<(uid: symbol) => void>('akCollapseChange', noop)
     const uid = Symbol()
-
-    function collapseItemChange(uid: symbol) {
-      new Exception(
-        `CollapseItem is not in Collapse`,
-        Exception.TYPE.DEFAULT,
-        'CollapseItem'
-      )
-    }
 
     let visibleTimer: number
 

@@ -8,12 +8,12 @@ import {
 } from 'vue'
 import type { SetupContext, ExtractPropTypes } from 'vue'
 import { isNumber, isObject, isStringNumberMix, isURL } from '../helpers/util'
-import Exception from '../helpers/exception'
 import { handleBadge } from '../Badge/util'
 import type { OptionItem, HandleOptionItem } from './types'
 import type { tabEmits, tabProps } from './tab'
 import { getStyles } from './util'
 import { useFrameTask } from '../hooks/use-frame-task'
+import { useException } from '../hooks/use-exception'
 
 interface UseOptions {
   tabName: string
@@ -24,6 +24,7 @@ export function useTab(
   { emit, expose }: SetupContext<typeof tabEmits>,
   { tabName }: UseOptions
 ) {
+  const { printNotInOptionsError } = useException()
   const instance = getCurrentInstance()
   const listEl = shallowRef<HTMLElement | null>(null)
   const underlineEl = shallowRef<HTMLElement | null>(null)
@@ -125,13 +126,7 @@ export function useTab(
     }
 
     if (!updateActive(value)) {
-      console.error(
-        new Exception(
-          'The value is not in "options".',
-          isProp ? Exception.TYPE.PROP_ERROR : Exception.TYPE.PARAM_ERROR,
-          tabName
-        )
-      )
+      printNotInOptionsError('index', isProp)
     } else if (!isProp) {
       // 设置modelValue不调用onChange
       emitChange()
@@ -146,13 +141,7 @@ export function useTab(
     if (options2.value[index]) {
       onChange(options2.value[index].value)
     } else {
-      console.error(
-        new Exception(
-          'The "options[index]" not found.',
-          Exception.TYPE.PARAM_ERROR,
-          tabName
-        )
-      )
+      printNotInOptionsError('index')
     }
   }
 

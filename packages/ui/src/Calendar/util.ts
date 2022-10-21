@@ -1,5 +1,4 @@
 import type { CalendarDetail, CalendarSelectorDetail, Mode } from './types'
-import Exception from '../helpers/exception'
 import { getNumber, isInNumberRange } from '../helpers/util'
 import dayjs from '../helpers/day'
 
@@ -22,10 +21,6 @@ export function getSourceDetail(
     valueArray: newDetail.valueArray,
     rangeCount: newDetail.rangeCount
   })
-}
-
-export function printError(message: string) {
-  console.error(new Exception(message, Exception.TYPE.PROP_ERROR, 'Calendar'))
 }
 
 export function getFirstDayOfWeek(firstDayOfWeek?: number | string) {

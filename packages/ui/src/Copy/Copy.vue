@@ -8,13 +8,14 @@
 </template>
 
 <script lang="ts">
-import Exception from '../helpers/exception'
 import { defineComponent, shallowRef } from 'vue'
 import { useLocale } from '../ConfigProvider/context'
 import { copy } from './util'
 import type { PropsToEmits } from '../helpers/types'
 import type { CopyEmits } from './types'
 import { isString } from '../helpers/util'
+import { useException } from '../hooks/use-exception'
+import { emitErrorValidator } from '../helpers/validator'
 
 export default defineComponent({
   name: 'ak-copy',
@@ -27,10 +28,11 @@ export default defineComponent({
     }
   },
   emits: {
-    success: payload => isString(payload),
-    error: e => e instanceof Error
+    success: isString,
+    error: emitErrorValidator
   } as PropsToEmits<CopyEmits>,
   setup(props, { emit }) {
+    const { createException } = useException()
     const { locale } = useLocale()
     const inputEl = shallowRef<HTMLInputElement | null>(null)
 
@@ -41,8 +43,8 @@ export default defineComponent({
         copy($el)
 
         emit('success', $el.value ?? '')
-      } catch (error) {
-        emit('error', new Exception(error))
+      } catch (e) {
+        emit('error', createException(e))
       }
     }
 

@@ -1,4 +1,4 @@
-arkui-mobile-vue 贡献指南
+# arkui-mobile-vue 贡献指南
 
 首先感谢你使用 arkui-mobile-vue。在贡献代码前，请务必花点时间阅读以下指南：
 

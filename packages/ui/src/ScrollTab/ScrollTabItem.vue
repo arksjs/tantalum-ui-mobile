@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted } from 'vue'
-import { createUpdateInItem } from '../hooks/use-list'
+import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
   name: 'ak-scroll-tab-item',
@@ -25,10 +25,8 @@ export default defineComponent({
     }
   },
   setup() {
-    const update = inject(
-      'akStickyViewUpdate',
-      createUpdateInItem('scroll-tab')
-    )
+    const { printItemIsolationWarn } = useException()
+    const update = inject('akStickyViewUpdate', printItemIsolationWarn)
 
     onMounted(update)
     onUnmounted(update)

@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import { isInNumberRange, isInteger } from '../helpers/util'
+import { getNumber, isInNumberRange, isInteger } from '../helpers/util'
 import type {
   DayHandler,
   Mode,
@@ -39,8 +39,10 @@ export const commonProps = {
     type: Function as PropType<DayHandler>
   },
   firstDayOfWeek: {
-    validator: (val: number) => {
-      return isInteger(val) && isInNumberRange(val, 0, 6)
+    type: [Number, String],
+    validator: (val: number | string) => {
+      const num = getNumber(val, -1)
+      return isInteger(num) && isInNumberRange(num, 0, 6)
     },
     default: 0
   },

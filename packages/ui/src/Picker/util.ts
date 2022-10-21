@@ -27,7 +27,6 @@ import {
   isObject,
   isStringNumberMix
 } from '../helpers/util'
-import Exception from '../helpers/exception'
 
 export const getDefaultFieldNames: () => FieldNames = () => {
   return { label: 'label', value: 'value', children: 'children' }
@@ -286,36 +285,23 @@ function validateCascadeCols(
       }
 }
 
-function printError(message: string) {
-  console.error(
-    new Exception(
-      message,
-      Exception.TYPE.PROP_ERROR,
-      'Picker/DatePicker/Cascader/Calendar'
-    )
-  )
-}
-
 /**
  * 校验值
  * @param values 值
  * @param options
- * @param separator
  * @param isCascade
  * @param virtualHandler
  * @returns { valid, detail }
  */
 export function validateValues(
-  values: SelectorValue[] | Error,
+  values: SelectorValue[],
   options: OptionItem[] | OptionItem[][],
   isCascade: boolean,
   virtualHandler?: PickerOptionsHandler | null
 ): ValidateReturn {
   let valid = false
 
-  if (values instanceof Error) {
-    printError(values.message)
-  } else if (values.length === 0) {
+  if (values.length === 0) {
     // 空数组也算符合
     valid = true
   } else {

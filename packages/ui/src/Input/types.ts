@@ -5,10 +5,10 @@ export type Mode = 'search' | 'numeric' | 'decimal' | 'tel' | 'text' | 'none'
 type OnChange = (value: string) => void
 
 export interface InputProps extends FormItemCommonProps {
+  modelValue?: string
   maxlength?: number | string
   placeholder?: string
   type?: string
-  modelValue?: string
   focus?: boolean
   readonly?: boolean
   showClear?: boolean
