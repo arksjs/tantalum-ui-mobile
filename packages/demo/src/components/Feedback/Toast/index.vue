@@ -79,7 +79,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, onBeforeUnmount, ref } from 'vue'
 import {
   showToast,
   showLoading,
@@ -114,6 +114,8 @@ export default defineComponent({
       duration.value = args.duration ?? 1500
       visible.value = true
     }
+
+    onBeforeUnmount(() => hideLoading())
 
     return {
       visible,

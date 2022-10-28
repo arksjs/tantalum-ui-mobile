@@ -30,6 +30,7 @@ type LifeName =
 type UseOptions = Partial<
   Record<LifeName, Noop> & {
     initialForbidScroll: boolean // 初始是否禁用滚动条
+    initialFocusFixed: boolean // 初始话固定不跟随，（在不禁用滚动条的场景下使用）
     initialEnableBlurCancel: boolean
   }
 >
@@ -71,6 +72,7 @@ export function usePopup(
 
   let forbidScroll = !(useOptions.initialForbidScroll === false)
   let enableBlurCancel = !!useOptions.initialEnableBlurCancel
+  const focusFixed = !!useOptions.initialFocusFixed
 
   function setForbidScroll(isForbid: boolean) {
     forbidScroll = isForbid
@@ -92,7 +94,7 @@ export function usePopup(
     // 如果禁止滚动
     if (forbidScroll) {
       addClassName(document.body, 'ak-overflow-hidden')
-    } else {
+    } else if (!focusFixed) {
       position.value = 'absolute'
       absTop.value = getScrollTop()
     }

@@ -23,7 +23,7 @@
 import { defineComponent, onMounted } from 'vue'
 import { useCountTime } from '../CountDown/use-count-time'
 import { useLocale } from '../ConfigProvider/context'
-import type { CountDownEmits, OnPauseOrResume } from './types'
+import type { CountDownEmits, OnPauseOrResume, Reset } from './types'
 import type { VoidFnToBooleanFn, PropsToEmits } from '../helpers/types'
 import { isNumber } from '../helpers/util'
 
@@ -55,7 +55,7 @@ export default defineComponent({
     pause: pauseOrResumeValidator,
     resume: pauseOrResumeValidator
   } as PropsToEmits<CountDownEmits>,
-  setup(props, { emit }) {
+  setup(props, { emit, expose }) {
     const { locale } = useLocale()
 
     let startTime = 0
@@ -109,10 +109,10 @@ export default defineComponent({
 
       expiredTime = remainTime + Date.now()
 
-      timeStop()
+      timeStart()
     }
 
-    function reset(_timing: number, autoStart = true) {
+    const reset: Reset = (_timing, autoStart = true) => {
       timeStop()
 
       paused = !autoStart
@@ -129,6 +129,12 @@ export default defineComponent({
       if (props.initialTiming > 0) {
         reset(props.initialTiming, !paused)
       }
+    })
+
+    expose({
+      pause,
+      resume,
+      reset
     })
 
     return {

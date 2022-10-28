@@ -70,6 +70,7 @@ export default defineComponent({
 
     const popup = usePopup(props, ctx, {
       initialForbidScroll: false,
+      initialFocusFixed: true,
       afterCancel: removeDelayTask,
       afterShow: addDelayTask
     })
