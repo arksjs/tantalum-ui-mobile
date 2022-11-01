@@ -58,6 +58,7 @@ import {
 import type { PropsToEmits } from '../helpers/types'
 import type { SwiperEmits } from './types'
 import { useException } from '../hooks/use-exception'
+import { useOnce } from '../hooks/use-once'
 
 interface SwiperCoords {
   offset: boolean | null
@@ -394,6 +395,14 @@ export default defineComponent({
 
     function resetItems(res: HTMLElement[]) {
       $items = res
+
+      // 处理索引和页码
+      pagination.value = []
+      $items.forEach(($item, i) => {
+        $item.dataset.index = i.toString()
+        pagination.value.push(i)
+      })
+
       setSlideStyle()
 
       const last = getLastIndex()
@@ -405,48 +414,43 @@ export default defineComponent({
       start()
     }
 
+    const styleOnce = useOnce(50)
+
     /**
      * 设置滑动样式属性
      */
     function setSlideStyle() {
-      if (!root.value || !listEl.value) {
-        return
-      }
-
-      const sizeName = directionGroup[2]
-      const _itemSize = root.value[('client' + sizeName) as 'clientWidth']
-      if (_itemSize === 0) {
-        return
-      }
-      itemSize = _itemSize
-
-      root.value.style[('overflow' + directionGroup[0]) as 'overflowY'] =
-        'hidden'
-
-      listEl.value.style.cssText = CSSProperties2CssText({
-        WebkitBackfaceVisibility: 'hidden',
-        WebkitPerspective: 1000,
-        [sizeName.toLowerCase()]: itemSize * $items.length + 'px',
-        transition: 'transform 0ms ease-out'
-      })
-
-      updateListStyle(-itemSize * index.value)
-
-      pagination.value = []
-
-      $items.forEach(($item, i) => {
-        $item.dataset.index = i.toString()
-
-        let cssText = `${sizeName.toLowerCase()}: ${itemSize}px;`
-
-        if (direction === 'x') {
-          // 左右滑动
-          cssText += 'float: left;'
+      styleOnce(() => {
+        if (!root.value || !listEl.value) {
+          return
         }
 
-        $item.style.cssText = cssText
+        const sizeName = directionGroup[2]
+        const _itemSize = root.value[('client' + sizeName) as 'clientWidth']
+        if (_itemSize === 0) {
+          return
+        }
+        itemSize = _itemSize
 
-        pagination.value.push(i)
+        root.value.style[('overflow' + directionGroup[0]) as 'overflowY'] =
+          'hidden'
+
+        listEl.value.style.cssText = CSSProperties2CssText({
+          WebkitBackfaceVisibility: 'hidden',
+          WebkitPerspective: 1000,
+          [sizeName.toLowerCase()]: itemSize * $items.length + 'px',
+          transition: 'transform 0ms ease-out'
+        })
+
+        updateListStyle(-itemSize * index.value)
+
+        const itemCssText = `${
+          direction === 'x' ? 'float: left; ' : ''
+        }${sizeName.toLowerCase()}: ${itemSize}px;`
+
+        $items.forEach($item => {
+          $item.style.cssText = itemCssText
+        })
       })
     }
 
@@ -475,7 +479,7 @@ export default defineComponent({
 
     const { listEl, update } = useList('swiper', resetItems)
 
-    useResizeObserver(root, update)
+    useResizeObserver(root, setSlideStyle)
 
     let coords: SwiperCoords | null
     let inMove = false

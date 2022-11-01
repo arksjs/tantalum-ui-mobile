@@ -25,7 +25,7 @@
       </ak-checkbox-group>
     </ak-cell>
     <ak-cell label="内联">
-      <ak-checkbox-group inline activeColor="#8b1721">
+      <ak-checkbox-group v-model="groupValue" inline activeColor="#8b1721">
         <ak-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
           item
         }}</ak-checkbox>

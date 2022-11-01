@@ -42,6 +42,7 @@
   >
     <template #close="{ activeIndex }">
       <AkButton
+        v-if="deletable"
         @click.stop="onPreviewDelete(activeIndex)"
         :icon="DeleteOutlined"
         size="large"

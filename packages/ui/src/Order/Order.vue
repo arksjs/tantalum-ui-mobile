@@ -70,6 +70,8 @@ import {
   getItemStyles,
   getStyles
 } from './util'
+import { useResizeObserver } from '../hooks/use-resize-observer'
+import { useOnce } from '../hooks/use-once'
 
 interface TargetObject {
   id: string | number
@@ -242,8 +244,8 @@ export default defineComponent({
 
           for (let i = 0; i < sort.length; i++) {
             if (sort[i] === index) {
-              positions[sort[i]].deleted = true
-              currentPosition = positions[sort[i]]
+              positions[index].deleted = true
+              currentPosition = positions[index]
               sort.splice(i, 1)
               break
             }
@@ -269,7 +271,7 @@ export default defineComponent({
 
           exitDragDone(() => {
             dragFixed.value = -1
-            updateOrderHeight()
+            updateRender()
             updateOptions()
           })
         } else if (imgsMode.moveShift !== -1 && imgsMode.moveSort != null) {
@@ -305,13 +307,11 @@ export default defineComponent({
     }
 
     function updateOptions() {
-      setTimeout(() => {
-        const newOptions = imgsMode.sort.map(v => {
-          return props.items[v]
-        })
+      const newOptions = imgsMode.sort.map(v => {
+        return props.items[v]
+      })
 
-        emit('update:items', newOptions)
-      }, 250)
+      emit('update:items', newOptions)
     }
 
     function getItemPos(index: number) {
@@ -354,13 +354,25 @@ export default defineComponent({
       })
 
       nextTick(() => {
-        updateOrderHeight()
+        updateRender()
       })
     }
 
-    function updateOrderHeight() {
+    function updateRender() {
       if (!root.value || drag.on) {
         return
+      }
+
+      const newItemSize = root.value.offsetWidth / props.columnNumber
+
+      if (newItemSize !== imgsMode.itemSize) {
+        imgsMode.itemSize = newItemSize
+
+        positions.forEach((position, index) => {
+          const { top, left } = getItemPos(index)
+          position.left = left
+          position.top = top
+        })
       }
 
       orderHeight.value =
@@ -511,6 +523,10 @@ export default defineComponent({
 
     const classes = computed(() => getClasses(dragOn.value))
     const styles = computed(() => getStyles(orderHeight.value))
+
+    const resizeOnce = useOnce(50)
+
+    useResizeObserver(root, () => resizeOnce(() => updateRender()))
 
     return {
       root,

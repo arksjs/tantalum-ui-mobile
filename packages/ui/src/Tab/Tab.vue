@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <ul class="ak-tab_list" ref="listEl">
+    <ul class="ak-tab_list" ref="listEl" @scroll="updateUnderline">
       <li
         :class="getItemClasses(index, activeIndex)"
         v-for="(item, index) in options2"

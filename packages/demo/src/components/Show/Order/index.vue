@@ -21,7 +21,9 @@
     <div class="exp-order-box">
       <ak-order v-model:items="items3" :deletable="true">
         <template #default="{ id }">
-          <div class="exp-order-item" :class="[maps.get(id as number)]"></div>
+          <div class="exp-order-item" :class="[maps.get(id as number)]">
+            {{maps.get(id as number)}}
+          </div>
         </template>
       </ak-order>
     </div>
