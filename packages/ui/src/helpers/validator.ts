@@ -8,9 +8,8 @@ import {
   isString
 } from './util'
 import { getSizeValue } from './dom'
-import type { AnyObject, EmptyObject, TypeException, Validator } from './types'
+import type { AnyObject, EmptyObject, Validator } from './types'
 import { isColorValue } from './color'
-import Exception from './exception'
 
 export const selectorValidator: Validator = value => {
   return (
@@ -82,7 +81,7 @@ export const colorValidator: Validator = value => {
 export const emitEventValidator = (e: Event) => e instanceof Event
 export const emitClickValidator = (e: MouseEvent) => e instanceof MouseEvent
 
-export const emitErrorValidator = (e: TypeException) => e instanceof Exception
+export const emitErrorValidator = (e: Error) => e instanceof Error
 
 export const emitTypeValidator = (payload: { type: string }) =>
   payload && typeof payload.type === 'string'

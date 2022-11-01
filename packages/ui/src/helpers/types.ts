@@ -58,9 +58,6 @@ interface AkCSS {
   '--ak-size'?: string
 }
 
-export type { default as TypeException } from './exception'
-import type { default as TypeException } from './exception'
-
 export type { Dayjs } from 'dayjs'
 
 export type AnyObject = Record<string, any>
@@ -150,6 +147,6 @@ import type * as Vue from 'vue'
 
 export interface CSSProperties extends Vue.CSSProperties, AkCSS {}
 
-export type OnError = (e: TypeException) => void
+export type OnError = (e: Error) => void
 export type OnClick = (e: MouseEvent) => void
 export type OnFocus = (e: FocusEvent) => void

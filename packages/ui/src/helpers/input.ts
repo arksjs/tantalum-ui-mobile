@@ -28,6 +28,12 @@ export function formatInputNumber(
       value = parseInt(value).toString()
     }
 
+    // 只能保留一个小数点
+    const arr = value.split('.')
+    if (arr.length > 2) {
+      value = [arr[0], arr[1]].join('.')
+    }
+
     return (isNegative ? '-' : '') + value
   }
 

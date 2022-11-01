@@ -46,7 +46,6 @@ import { isSameArray } from '../helpers/util'
 import { showToast } from '../Toast'
 import { commonProps, calendarDetailValidator } from './props'
 import {
-  printError,
   getMinTime,
   getMaxTime,
   getTimeByDate,
@@ -61,6 +60,7 @@ import { useLocale } from '../ConfigProvider/context'
 import ViewMonth from './CalendarViewMonth.vue'
 import { VirtualList } from '../VirtualList'
 import { CSSProperties2CssText, getScrollTop } from '../helpers/dom'
+import { useException } from '../hooks/use-exception'
 
 type WeekDay = '0' | '1' | '2' | '3' | '4' | '5' | '6'
 
@@ -83,6 +83,8 @@ function getDefaultSelectDay() {
   }
 }
 
+const VALUE_KEY = 'modelValue'
+
 export default defineComponent({
   name: 'ak-calendar-view',
   components: { ViewMonth, VirtualList },
@@ -92,6 +94,7 @@ export default defineComponent({
     select: calendarDetailValidator
   } as PropsToEmits<CalendarViewEmits>,
   setup(props, { emit }) {
+    const { printPropError } = useException()
     const { locale } = useLocale()
     const { formatter, parser, mode } = useHandlers(props)
     const bodyEl = shallowRef<HTMLElement | null>(null)
@@ -146,10 +149,12 @@ export default defineComponent({
             const { rangeCount, hasDisabled } = getRangeInfo(_start, _end)
 
             if (hasDisabled) {
-              printError('The range of "modelValue" contains disabled days.')
+              printPropError(
+                `The range of "${VALUE_KEY}" contains disabled days.`
+              )
             } else if (rangeCount > props.maxRange) {
-              printError(
-                `The range of "modelValue" contains ${rangeCount} days, no more than ${props.maxRange} days.`
+              printPropError(
+                `The range of "${VALUE_KEY}" contains ${rangeCount} days, no more than ${props.maxRange} days.`
               )
             } else {
               setSelected('start', _start)
@@ -157,8 +162,8 @@ export default defineComponent({
               updateStates()
             }
           } else {
-            printError(
-              'The range of "modelValue" is not in the optional range.'
+            printPropError(
+              `The range of "${VALUE_KEY}" is not in the optional range.`
             )
           }
         } else {
@@ -169,8 +174,8 @@ export default defineComponent({
             setSelected('end', null)
             updateStates()
           } else {
-            printError(
-              'The range of "modelValue" is not in the optional range.'
+            printPropError(
+              `The range of "${VALUE_KEY}" is not in the optional range.`
             )
           }
         }
@@ -306,7 +311,7 @@ export default defineComponent({
 
       if (props.maxDate instanceof Date) {
         if (props.maxDate.getTime() < minTimestamp) {
-          printError(
+          printPropError(
             'The value of "maxDate" cannot be less than the value of "minDate".'
           )
           maxTimestamp = getMaxTime(minTimestamp)

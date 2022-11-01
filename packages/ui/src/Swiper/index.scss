@@ -32,11 +32,11 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: rgba($color: #000, $alpha: 40%);
+    background-color: rgb(0 0 0 / 40%);
     box-sizing: border-box;
 
     &.active {
-      background-color: rgba($color: #fff, $alpha: 80%);
+      background-color: rgb(255 255 255 / 80%);
     }
   }
 
@@ -52,7 +52,7 @@
     justify-content: center;
     align-items: center;
     padding: 0;
-    background-color: rgba($color: #000, $alpha: 40%);
+    background-color: rgb(0 0 0 / 40%);
     border: none;
     outline: none;
     border-radius: 50%;
@@ -71,7 +71,7 @@
 
   &_prev:active,
   &_next:active {
-    background-color: rgba($color: #000, $alpha: 60%);
+    background-color: rgb(0 0 0 / 60%);
   }
 
   &_list {

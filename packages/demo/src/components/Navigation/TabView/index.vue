@@ -1,6 +1,11 @@
 <template>
   <ak-group title="基础用法">
-    <ak-tab-view class="exp-tabView" v-model="value" @change="onChange">
+    <ak-tab-view
+      class="exp-tabView"
+      v-model="value"
+      @change="onChange"
+      ref="tabViewRef"
+    >
       <ak-tab-view-item name="Tab 1">
         <ak-scroll-view
           class="exp-tabView-scroll-view"
@@ -47,12 +52,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import type { ScrollViewOnRefreshing, TabViewOnChange } from '@/index'
+import { defineComponent, onMounted, ref, shallowRef } from 'vue'
+import type {
+  ScrollViewOnRefreshing,
+  TabViewOnChange,
+  TabViewRef
+} from '@/index'
 
 export default defineComponent({
   name: 'ExpTabView',
   setup() {
+    const tabViewRef = shallowRef<TabViewRef | null>(null)
     const value = ref('')
 
     const onRefreshing: ScrollViewOnRefreshing = (res, done) => {
@@ -65,7 +75,12 @@ export default defineComponent({
       console.log('change', name, index)
     }
 
+    onMounted(() => {
+      // tabViewRef.value?.switchTo(0)
+    })
+
     return {
+      tabViewRef,
       value,
       onRefreshing,
       onChange

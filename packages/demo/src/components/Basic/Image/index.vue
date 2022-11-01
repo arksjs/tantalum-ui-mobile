@@ -7,6 +7,7 @@
             class="exp-image-image"
             :src="imageUrl"
             :aspect-ratio="1"
+            @error="onError"
           ></ak-image>
         </ak-col>
       </ak-row>
@@ -193,8 +194,15 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'ExpImage',
-  data() {
-    return { imageUrl: 'https://cdn.fox2.cn/vfox/swiper/center-2.jpg' }
+  setup() {
+    function onError(e: Error) {
+      console.error(e)
+    }
+
+    return {
+      onError,
+      imageUrl: 'https://cdn.fox2.cn/vfox/swiper/center-2.jpg'
+    }
   }
 })
 </script>

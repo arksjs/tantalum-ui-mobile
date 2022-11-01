@@ -98,6 +98,7 @@ export default defineComponent({
 
     function onReset() {
       countDownRef.value?.reset(100 * 1000)
+      paused.value = false
     }
 
     return {

@@ -46,7 +46,7 @@ import type { PropsToEmits, Selector } from '../helpers/types'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import { getClasses, getFixedStyles, FIXED_HEIGHT } from './util'
 import { isNumber, isString } from '../helpers/util'
-import Exception from '../helpers/exception'
+import { useException } from '../hooks/use-exception'
 import { useOnce } from '../hooks/use-once'
 
 export default defineComponent({
@@ -90,6 +90,7 @@ export default defineComponent({
     }
   } as PropsToEmits<StickyViewEmits>,
   setup(props, { emit, expose }) {
+    const { printListItemNotFoundError } = useException()
     const root = shallowRef<HTMLElement | null>(null)
     const container = shallowRef<HTMLElement | null>(null)
     const fixedEl = shallowRef<HTMLElement | null>(null)
@@ -275,13 +276,7 @@ export default defineComponent({
           )
         }
       } else {
-        console.error(
-          new Exception(
-            'The "StickyViewItem[index]" not found.',
-            Exception.TYPE.PARAM_ERROR,
-            'StickyView'
-          )
-        )
+        printListItemNotFoundError('index')
       }
     }
 
@@ -294,13 +289,7 @@ export default defineComponent({
       if (newIndex !== -1) {
         scrollToIndex(newIndex)
       } else {
-        console.error(
-          new Exception(
-            'The "StickyViewItem[name]" not found.',
-            Exception.TYPE.PARAM_ERROR,
-            'StickyView'
-          )
-        )
+        printListItemNotFoundError('name')
       }
     }
 
@@ -316,13 +305,7 @@ export default defineComponent({
           scrollToIndex(newIndex)
         }
       } else {
-        console.error(
-          new Exception(
-            'The "StickyViewItem[modelValue]" not found.',
-            Exception.TYPE.PROP_ERROR,
-            'StickyView'
-          )
-        )
+        printListItemNotFoundError('modelValue', true)
       }
     }
 

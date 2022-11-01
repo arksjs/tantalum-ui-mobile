@@ -1,5 +1,3 @@
-import Exception from '../helpers/exception'
-import type { TypeException } from '../helpers/types'
 import type { LoadedResource } from './types'
 
 type LoadObject = {
@@ -7,7 +5,7 @@ type LoadObject = {
   src: string
   checkInView: () => boolean
   onLoad: (res: LoadedResource) => void
-  onError: (e: TypeException) => void
+  onError: (e: Error) => void
   done?: boolean
 }
 
@@ -57,15 +55,11 @@ export function loadNow(vm: LoadObject) {
 function loadImageAsync(
   item: LoadObject,
   resolve: (res: LoadedResource) => void,
-  reject: (e: TypeException) => void
+  reject: (e: Error) => void
 ) {
   const image = new Image()
   if (!item || !item.src) {
-    const err = new Exception(
-      'src is required',
-      Exception.TYPE.DEFAULT,
-      'Image'
-    )
+    const err = new Error('The "src" is required.')
     return reject(err)
   }
 
@@ -81,13 +75,7 @@ function loadImageAsync(
   }
 
   image.onerror = function () {
-    reject(
-      new Exception(
-        `src "${item.src}" not found`,
-        Exception.TYPE.DEFAULT,
-        'Image'
-      )
-    )
+    reject(new Error(`Get src "${item.src}" error.`))
   }
 }
 

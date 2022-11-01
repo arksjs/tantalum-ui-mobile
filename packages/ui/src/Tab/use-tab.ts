@@ -8,12 +8,13 @@ import {
 } from 'vue'
 import type { SetupContext, ExtractPropTypes } from 'vue'
 import { isNumber, isObject, isStringNumberMix, isURL } from '../helpers/util'
-import Exception from '../helpers/exception'
 import { handleBadge } from '../Badge/util'
 import type { OptionItem, HandleOptionItem } from './types'
 import type { tabEmits, tabProps } from './tab'
 import { getStyles } from './util'
 import { useFrameTask } from '../hooks/use-frame-task'
+import { useException } from '../hooks/use-exception'
+import { useOnce } from '@/hooks/use-once'
 
 interface UseOptions {
   tabName: string
@@ -24,6 +25,7 @@ export function useTab(
   { emit, expose }: SetupContext<typeof tabEmits>,
   { tabName }: UseOptions
 ) {
+  const { printNotInOptionsError } = useException()
   const instance = getCurrentInstance()
   const listEl = shallowRef<HTMLElement | null>(null)
   const underlineEl = shallowRef<HTMLElement | null>(null)
@@ -125,13 +127,7 @@ export function useTab(
     }
 
     if (!updateActive(value)) {
-      console.error(
-        new Exception(
-          'The value is not in "options".',
-          isProp ? Exception.TYPE.PROP_ERROR : Exception.TYPE.PARAM_ERROR,
-          tabName
-        )
-      )
+      printNotInOptionsError('index', isProp)
     } else if (!isProp) {
       // 设置modelValue不调用onChange
       emitChange()
@@ -146,13 +142,7 @@ export function useTab(
     if (options2.value[index]) {
       onChange(options2.value[index].value)
     } else {
-      console.error(
-        new Exception(
-          'The "options[index]" not found.',
-          Exception.TYPE.PARAM_ERROR,
-          tabName
-        )
-      )
+      printNotInOptionsError('index')
     }
   }
 
@@ -203,7 +193,7 @@ export function useTab(
       const $activeItem = $list.children[activeIndex.value] as HTMLElement
       if (!$activeItem) {
         if (tabName === 'Tab') {
-          setUnderline(0, 0)
+          updateUnderline()
         }
         return
       }
@@ -245,21 +235,35 @@ export function useTab(
       })
 
       if (tabName === 'Tab') {
-        const $inner = $activeItem.firstElementChild as HTMLElement
-
-        setUnderline(
-          ofs - to + ($activeItem.offsetWidth - $inner.offsetWidth) / 2,
-          $inner.offsetWidth
-        )
+        updateUnderline()
       }
     })
   }
 
-  function setUnderline(x: number, w: number) {
-    if (underlineEl.value) {
-      underlineEl.value.style.width = w + 'px'
-      underlineEl.value.style.transform = `translate3d(${x}px, 0, 0)`
-    }
+  const updateUnderlineOnce = useOnce(50)
+
+  function updateUnderline() {
+    updateUnderlineOnce(() => {
+      const $activeItem = listEl.value?.querySelector('.active') as HTMLElement
+
+      let x = 0
+      let w = 0
+
+      if ($activeItem) {
+        const $inner = $activeItem.firstElementChild as HTMLElement
+
+        x =
+          $activeItem.offsetLeft -
+          (listEl.value?.scrollLeft || 0) +
+          ($activeItem.offsetWidth - $inner.offsetWidth) / 2
+        w = $inner.offsetWidth
+      }
+
+      if (underlineEl.value) {
+        underlineEl.value.style.width = w + 'px'
+        underlineEl.value.style.transform = `translate3d(${x}px, 0, 0)`
+      }
+    })
   }
 
   watch(
@@ -289,6 +293,7 @@ export function useTab(
     options2,
     onChange,
     styles,
+    updateUnderline,
 
     switchTo,
     switchToIndex

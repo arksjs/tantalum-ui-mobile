@@ -9,22 +9,10 @@ import {
   shallowRef
 } from 'vue'
 import type { Ref } from 'vue'
-import Exception from '../helpers/exception'
 import { camelCase2KebabCase, capitalize, isSameArray } from '../helpers/util'
+import { useException } from './use-exception'
 
 type ListUpdateCallback = ($items: HTMLElement[]) => void
-
-/**
- * 创建默认更新方法，带错误提示
- * @param name 横杆形式
- */
-export function createUpdateInItem(name: string) {
-  name = capitalize(name)
-
-  return function () {
-    new Exception(`${name}Item is not in ${name}`, Exception.TYPE.DEFAULT, name)
-  }
-}
 
 /**
  * useList
@@ -87,8 +75,9 @@ interface ListItemElement extends HTMLElement {
 }
 
 export function useListItem(name: string, root?: Ref<ListItemElement | null>) {
+  const { printItemIsolationWarn } = useException()
   const index = ref(-1)
-  const update = inject(`ak${capitalize(name)}Update`, createUpdateInItem(name))
+  const update = inject(`ak${capitalize(name)}Update`, printItemIsolationWarn)
 
   onMounted(() => {
     if (root?.value) {

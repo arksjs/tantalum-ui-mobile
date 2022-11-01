@@ -170,12 +170,21 @@ export default defineComponent({
 
         if (x > 0) {
           offsetCount =
-            Math.floor(x / size) + (x % size > size - offsetX ? 1 : 0)
+            Math.floor(x / size) + (x % size >= size - offsetX ? 1 : 0)
         } else if (x < 0) {
           offsetCount = -Math.floor(-x / size) + (-x % size > offsetX ? -1 : 0)
         }
 
-        const isHalf = (offsetX + x) % size < size / 2
+        const perOffsetX = (offsetX + x) % size
+        const isHalf =
+          current + offsetCount <= 0
+            ? true
+            : current + offsetCount > max.value
+            ? false
+            : perOffsetX === 0 ||
+              (perOffsetX > 0
+                ? perOffsetX < size / 2
+                : size + perOffsetX < size / 2)
 
         coords.isChange = true
 

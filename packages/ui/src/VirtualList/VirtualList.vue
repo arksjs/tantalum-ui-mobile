@@ -35,7 +35,6 @@ import {
   shallowRef
 } from 'vue'
 import { cloneData, isNumber, rangeInteger, rangeNumber } from '../helpers/util'
-import Exception from '../helpers/exception'
 import { getViewPosition } from '../helpers/dom'
 import type { ViewPosition, UniqueID, PropsToEmits } from '../helpers/types'
 import type {
@@ -52,6 +51,7 @@ import { emitVisibleItemsChangeValidator, virtualListProps } from './props'
 import { useResizeObserver } from '../hooks/use-resize-observer'
 import type { ScrollToOffsetOptions } from '../hooks/types'
 import { getClasses, getItemStyles, getListStyles } from './util'
+import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
   name: 'ak-virtual-list',
@@ -63,6 +63,7 @@ export default defineComponent({
     resize: size => isNumber(size)
   } as PropsToEmits<VirtualListEmits>,
   setup(props, { emit }) {
+    const { printPropError } = useException()
     const cols = ref<number[]>([])
     const list = ref<ListItem[]>([])
     const renderList = ref<RenderItem[]>([])
@@ -96,14 +97,12 @@ export default defineComponent({
 
           if (isNumber(size)) {
             return size
+          } else {
+            throw new Error()
           }
         } catch (error) {
-          console.error(
-            new Exception(
-              'The object.size value returned by getItemSize should be a Number type.',
-              Exception.TYPE.PROP_ERROR,
-              'FlatList'
-            )
+          printPropError(
+            `The "itemSize" function return value should be a Number type.`
           )
         }
       } else if (isNumber(props.itemSize)) {

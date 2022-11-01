@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted } from 'vue'
 import { Group } from '../Group'
-import { createUpdateInItem } from '../hooks/use-list'
+import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
   name: 'ak-index-view-item',
@@ -28,10 +28,8 @@ export default defineComponent({
     }
   },
   setup() {
-    const update = inject(
-      'akStickyViewUpdate',
-      createUpdateInItem('index-view')
-    )
+    const { printItemIsolationWarn } = useException()
+    const update = inject('akStickyViewUpdate', printItemIsolationWarn)
 
     onMounted(update)
     onUnmounted(update)

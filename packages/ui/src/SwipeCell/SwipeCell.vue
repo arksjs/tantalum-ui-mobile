@@ -81,8 +81,8 @@ export default defineComponent({
       isShow = true
     }
 
-    function hide() {
-      if (!isShow) {
+    function hide(focus = false) {
+      if (!isShow && !focus) {
         return
       }
 
@@ -167,7 +167,8 @@ export default defineComponent({
             // 展示
             show(buttonsW)
           } else {
-            hide()
+            // 画出来不够，要强制收回去
+            hide(true)
           }
 
           coords = null

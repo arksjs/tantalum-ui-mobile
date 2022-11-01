@@ -47,7 +47,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { TabViewEmits } from './types'
 import { isNumber, isString } from '../helpers/util'
 import type { TabOnChange } from '../Tab/types'
-import Exception from '../helpers/exception'
+import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
   name: 'ak-tab-view',
@@ -72,6 +72,7 @@ export default defineComponent({
     animated: emitChangeValidator
   } as PropsToEmits<TabViewEmits>,
   setup(props, { emit, expose }) {
+    const { printListItemNotFoundError } = useException()
     const vertical = ref<boolean>(!!props.initialVertical)
     const swiperRef = shallowRef<SwiperRef | null>(null)
     const tabList = ref<
@@ -136,13 +137,7 @@ export default defineComponent({
       const newIndex = getActiveIndexByName(name)
 
       if (newIndex === -1) {
-        console.error(
-          new Exception(
-            'The "TabItem[name]" not found.',
-            isProp ? Exception.TYPE.PROP_ERROR : Exception.TYPE.PARAM_ERROR,
-            'TabView'
-          )
-        )
+        printListItemNotFoundError('name', isProp)
       } else if (newIndex !== activeIndex.value) {
         if (isProp) {
           activeIndex.value = newIndex
@@ -156,13 +151,7 @@ export default defineComponent({
       if (index >= 0 && index < tabList.value.length) {
         swiperRef.value?.swipeTo(index)
       } else {
-        console.error(
-          new Exception(
-            'The "TabItem[index]" not found.',
-            Exception.TYPE.PARAM_ERROR,
-            'TabView'
-          )
-        )
+        printListItemNotFoundError('index')
       }
     }
 

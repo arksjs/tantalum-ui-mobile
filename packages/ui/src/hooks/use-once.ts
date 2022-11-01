@@ -1,12 +1,12 @@
 import type { Noop } from '../helpers/types'
 import { onBeforeUnmount } from 'vue'
 
-export function useOnce() {
+export function useOnce(interval = 0) {
   let handle: number | null = null
 
   function cancel() {
     if (handle !== null) {
-      cancelAnimationFrame(handle)
+      interval > 0 ? clearTimeout(handle) : cancelAnimationFrame(handle)
       handle = null
     }
   }
@@ -14,11 +14,19 @@ export function useOnce() {
   function call(fn: Noop) {
     cancel()
 
-    handle = requestAnimationFrame(() => {
-      handle = null
+    if (interval > 0) {
+      handle = window.setTimeout(() => {
+        handle = null
 
-      fn()
-    })
+        fn()
+      }, 50)
+    } else {
+      handle = requestAnimationFrame(() => {
+        handle = null
+
+        fn()
+      })
+    }
   }
 
   onBeforeUnmount(cancel)

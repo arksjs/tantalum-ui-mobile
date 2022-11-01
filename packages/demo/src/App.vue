@@ -104,7 +104,7 @@ const activeValue = computed(() => {
     >
       <ak-side-tab
         :options="menuList"
-        :activeValue="activeValue"
+        :modelValue="activeValue"
         @change="onMenuChange"
       ></ak-side-tab>
     </ak-drawer>
