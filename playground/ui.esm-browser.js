@@ -1971,49 +1971,6 @@ function getColorObject(color) {
   };
 }
 
-// packages/ui/src/helpers/exception.ts
-var TYPE = {
-  DEFAULT: "fail",
-  PARAM_ERROR: "Invalid param",
-  CONFIG_ERROR: "Invalid config",
-  PROP_ERROR: "Invalid Prop"
-};
-var _Exception = class extends Error {
-  constructor(error, type = TYPE.DEFAULT, source = "Exception") {
-    let msg = "unknown";
-    if (error instanceof _Exception || error instanceof Error) {
-      msg = error.message;
-    } else if (error != null) {
-      msg = error.toString();
-    }
-    super(msg);
-    if (error instanceof _Exception) {
-      this.source = error.source;
-      this.type = error.type;
-    } else {
-      this.source = source;
-      this.type = type;
-    }
-  }
-  getMessage() {
-    return this.message;
-  }
-  toString() {
-    return `[${this.source}] ${this.type}: ${this.getMessage()}`;
-  }
-  getFailError() {
-    return {
-      errMsg: `${this.type}: ${this.getMessage()}`
-    };
-  }
-  toLocaleString() {
-    return this.toString();
-  }
-};
-var Exception = _Exception;
-Exception.TYPE = TYPE;
-var exception_default = Exception;
-
 // packages/ui/src/helpers/validator.ts
 var selectorValidator = (value) => {
   return typeof value === "string" || value instanceof HTMLElement || value instanceof Document;
@@ -2053,7 +2010,7 @@ var colorValidator = (value) => {
 };
 var emitEventValidator = (e) => e instanceof Event;
 var emitClickValidator = (e) => e instanceof MouseEvent;
-var emitErrorValidator = (e) => e instanceof exception_default;
+var emitErrorValidator = (e) => e instanceof Error;
 
 // packages/ui/src/Icon/util.ts
 var getIconStyles = (props) => {
@@ -2948,6 +2905,7 @@ function usePopup(props, ctx, useOptions) {
   let visibleTimer;
   let forbidScroll = !(useOptions.initialForbidScroll === false);
   let enableBlurCancel = !!useOptions.initialEnableBlurCancel;
+  const focusFixed = !!useOptions.initialFocusFixed;
   function setForbidScroll(isForbid) {
     forbidScroll = isForbid;
   }
@@ -2963,7 +2921,7 @@ function usePopup(props, ctx, useOptions) {
     clearTimeout(visibleTimer);
     if (forbidScroll) {
       addClassName(document.body, "ak-overflow-hidden");
-    } else {
+    } else if (!focusFixed) {
       position.value = "absolute";
       absTop.value = getScrollTop();
     }
@@ -3459,6 +3417,39 @@ _sfc_script11.__file = "packages/ui/src/ActionSheet/ActionSheet.vue";
 
 // packages/ui/src/popup/api.ts
 import { createApp } from "vue";
+
+// packages/ui/src/helpers/exception.ts
+var TYPE = {
+  DEFAULT: "fail",
+  PARAM_ERROR: "Invalid param",
+  CONFIG_ERROR: "Invalid config",
+  PROP_ERROR: "Invalid Prop"
+};
+var _Exception = class extends Error {
+  constructor(error, type = TYPE.DEFAULT, source = "Exception") {
+    let msg = "unknown";
+    if (error instanceof _Exception) {
+      msg = error.message;
+      type = error.type;
+      source = error.source;
+    } else if (error instanceof Error) {
+      msg = error.message;
+    } else if (error != null) {
+      msg = error.toString();
+    }
+    super(`[${source}] ${type}: ${msg}`);
+    this.source = source;
+    this.type = type;
+  }
+  getFailError() {
+    return {
+      errMsg: `${this.type}: ${this.message}`
+    };
+  }
+};
+var Exception = _Exception;
+Exception.TYPE = TYPE;
+var exception_default = Exception;
 
 // packages/ui/src/apis/callback.ts
 function getCallbackFns(options) {
@@ -4027,7 +4018,7 @@ var Badge_default = _sfc_script14;
 // vue:./Image.vue
 import {
   defineComponent as defineComponent11,
-  onMounted as onMounted5,
+  onMounted as onMounted6,
   ref as ref4,
   watch as watch5,
   onBeforeUnmount as onBeforeUnmount5,
@@ -4068,7 +4059,7 @@ function loadNow(vm) {
 function loadImageAsync(item, resolve, reject) {
   const image = new Image();
   if (!item || !item.src) {
-    const err = new exception_default("src is required", exception_default.TYPE.DEFAULT, "Image");
+    const err = new Error('The "src" is required.');
     return reject(err);
   }
   image.src = item.src;
@@ -4081,7 +4072,7 @@ function loadImageAsync(item, resolve, reject) {
     });
   };
   image.onerror = function() {
-    reject(new exception_default(`src "${item.src}" not found`, exception_default.TYPE.DEFAULT, "Image"));
+    reject(new Error(`Get src "${item.src}" error.`));
   };
 }
 var ListenerQueue = [];
@@ -4214,6 +4205,67 @@ var getRatioStyles = (aspectRatio) => {
   };
 };
 
+// packages/ui/src/hooks/use-exception.ts
+import { getCurrentInstance, onMounted as onMounted5 } from "vue";
+function getComponentName(name) {
+  return capitalize(kebabCase2CamelCase(name).replace(/^ak/i, ""));
+}
+function getListAndItemName(name) {
+  const listName = name === "Step" ? "Steps" : name.replace("Item", "");
+  const itemName = listName === "Steps" ? "Step" : listName + "Item";
+  return {
+    listName,
+    itemName
+  };
+}
+function useException() {
+  const instance = getCurrentInstance();
+  let source = "";
+  function updateSource() {
+    var _a;
+    source = getComponentName((_a = instance == null ? void 0 : instance.type.name) != null ? _a : "");
+  }
+  updateSource();
+  onMounted5(() => updateSource());
+  function printError(message) {
+    console.error(new exception_default(message, exception_default.TYPE.DEFAULT, source));
+  }
+  function printWarn(message) {
+    console.warn(new exception_default(message, exception_default.TYPE.DEFAULT, source).message);
+  }
+  function printPropError(message) {
+    console.error(new exception_default(message, exception_default.TYPE.PROP_ERROR, source));
+  }
+  function printParamError(message) {
+    console.error(new exception_default(message, exception_default.TYPE.PARAM_ERROR, source));
+  }
+  function printListItemNotFoundError(key, isProp = false) {
+    const msg = `The "${source}Item[${key}]" not found.`;
+    isProp ? printPropError(msg) : printParamError(msg);
+  }
+  function printNotInOptionsError(key, isProp = false) {
+    const msg = `The "options[${key}]" not found.`;
+    isProp ? printPropError(msg) : printParamError(msg);
+  }
+  function printItemIsolationWarn() {
+    const { listName, itemName } = getListAndItemName(source);
+    printWarn(`${itemName} is not in ${listName}.`);
+  }
+  function createException(error) {
+    return new exception_default(error, exception_default.TYPE.DEFAULT, source);
+  }
+  return {
+    printWarn,
+    printError,
+    printPropError,
+    printParamError,
+    printListItemNotFoundError,
+    printNotInOptionsError,
+    printItemIsolationWarn,
+    createException
+  };
+}
+
 // vue:./Image.vue
 import { normalizeStyle as _normalizeStyle6, openBlock as _openBlock17, createElementBlock as _createElementBlock14, createCommentVNode as _createCommentVNode6, resolveComponent as _resolveComponent6, createVNode as _createVNode, normalizeClass as _normalizeClass8 } from "vue";
 var _sfc_script17 = defineComponent11({
@@ -4260,6 +4312,7 @@ var _sfc_script17 = defineComponent11({
     error: emitErrorValidator
   },
   setup(props, { emit }) {
+    const { createException } = useException();
     const loading = ref4(true);
     const error = ref4(false);
     const root = shallowRef4(null);
@@ -4290,14 +4343,14 @@ var _sfc_script17 = defineComponent11({
     const onError = (e) => {
       loading.value = false;
       error.value = true;
-      emit("error", e);
+      emit("error", createException(e));
     };
     function onDrag(e) {
       if (!props.draggable) {
         e.preventDefault();
       }
     }
-    onMounted5(() => props.src && load(props.src));
+    onMounted6(() => props.src && load(props.src));
     onBeforeUnmount5(() => removeComponentFromLazy(uid3));
     watch5(() => props.src, (val) => load(val));
     const imgClasses = computed11(() => getImgClasses(props.mode));
@@ -4670,7 +4723,7 @@ import {
   computed as computed14,
   toRef as toRef2,
   ref as ref5,
-  onMounted as onMounted6,
+  onMounted as onMounted7,
   shallowRef as shallowRef5
 } from "vue";
 
@@ -4792,7 +4845,7 @@ var _sfc_script24 = defineComponent14({
       isShow.value = getScrollTop() >= getNumber(props.visibleHeight, DEFAULT_VISIBLE_HEIGHT);
     }
     useScroll(docEl, updateShow);
-    onMounted6(() => {
+    onMounted7(() => {
       updateShow();
       docEl.value = document.documentElement;
     });
@@ -4920,7 +4973,7 @@ var SelectorField_default = _sfc_script26;
 import {
   defineComponent as defineComponent20,
   nextTick as nextTick2,
-  onMounted as onMounted10,
+  onMounted as onMounted11,
   ref as ref8,
   shallowRef as shallowRef8,
   watch as watch9
@@ -4929,7 +4982,7 @@ import {
 // vue:./CalendarView.vue
 import {
   defineComponent as defineComponent19,
-  onMounted as onMounted9,
+  onMounted as onMounted10,
   reactive as reactive2,
   ref as ref7,
   shallowRef as shallowRef7,
@@ -5288,14 +5341,9 @@ function validateCascadeCols(values, options, virtualHandler) {
     label: []
   };
 }
-function printError(message) {
-  console.error(new exception_default(message, exception_default.TYPE.PROP_ERROR, "Picker/DatePicker/Cascader/Calendar"));
-}
 function validateValues(values, options, isCascade, virtualHandler) {
   let valid = false;
-  if (values instanceof Error) {
-    printError(values.message);
-  } else if (values.length === 0) {
+  if (values.length === 0) {
     valid = true;
   } else {
     const ret = isCascade ? validateCascadeCols(values, options, virtualHandler) : validateCols(values, options);
@@ -5487,9 +5535,6 @@ function getSourceDetail(newDetail) {
     rangeCount: newDetail.rangeCount
   });
 }
-function printError2(message) {
-  console.error(new exception_default(message, exception_default.TYPE.PROP_ERROR, "Calendar"));
-}
 function getFirstDayOfWeek(firstDayOfWeek) {
   const num = getNumber(firstDayOfWeek, 0);
   return isInNumberRange(num, 0, 6) ? Math.round(num) : 0;
@@ -5529,8 +5574,10 @@ var commonProps2 = {
     type: Function
   },
   firstDayOfWeek: {
+    type: [Number, String],
     validator: (val) => {
-      return isInteger(val) && isInNumberRange(val, 0, 6);
+      const num = getNumber(val, -1);
+      return isInteger(num) && isInNumberRange(num, 0, 6);
     },
     default: 0
   },
@@ -5705,7 +5752,7 @@ _sfc_script29.__file = "packages/ui/src/Calendar/CalendarViewMonth.vue";
 import {
   computed as computed17,
   defineComponent as defineComponent18,
-  onMounted as onMounted8,
+  onMounted as onMounted9,
   ref as ref6,
   nextTick,
   watch as watch7,
@@ -5748,14 +5795,14 @@ var emitVisibleItemsChangeValidator = (payload) => payload && Array.isArray(payl
 import { onBeforeUnmount as onBeforeUnmount7, watch as watch6 } from "vue";
 
 // packages/ui/src/hooks/use-life.ts
-import { getCurrentInstance, onMounted as onMounted7 } from "vue";
+import { getCurrentInstance as getCurrentInstance2, onMounted as onMounted8 } from "vue";
 function useMounted(callback) {
-  const instance = getCurrentInstance();
+  const instance = getCurrentInstance2();
   if (instance) {
     if (instance.isMounted) {
       callback();
     } else {
-      onMounted7(() => callback());
+      onMounted8(() => callback());
     }
   }
 }
@@ -5832,6 +5879,7 @@ var _sfc_script30 = defineComponent18({
     resize: (size) => isNumber(size)
   },
   setup(props, { emit }) {
+    const { printPropError } = useException();
     const cols = ref6([]);
     const list = ref6([]);
     const renderList = ref6([]);
@@ -5857,9 +5905,11 @@ var _sfc_script30 = defineComponent18({
           const size = props.itemSize(index);
           if (isNumber(size)) {
             return size;
+          } else {
+            throw new Error();
           }
         } catch (error) {
-          console.error(new exception_default("The object.size value returned by getItemSize should be a Number type.", exception_default.TYPE.PROP_ERROR, "FlatList"));
+          printPropError(`The "itemSize" function return value should be a Number type.`);
         }
       } else if (isNumber(props.itemSize)) {
         return props.itemSize;
@@ -6182,7 +6232,7 @@ var _sfc_script30 = defineComponent18({
     }
     useScroll(scrollEl, handleScroll);
     useResizeObserver(scrollEl, handleResize);
-    onMounted8(() => {
+    onMounted9(() => {
       resetScrollContainer(root.value);
       dataToList(props.ids);
     });
@@ -6269,6 +6319,7 @@ function getDefaultSelectDay() {
     dayIndex: 0
   };
 }
+var VALUE_KEY = "modelValue";
 var _sfc_script31 = defineComponent19({
   name: "ak-calendar-view",
   components: { ViewMonth: _sfc_script29, VirtualList: _sfc_script30 },
@@ -6278,6 +6329,7 @@ var _sfc_script31 = defineComponent19({
     select: calendarDetailValidator
   },
   setup(props, { emit }) {
+    const { printPropError } = useException();
     const { locale } = useLocale();
     const { formatter: formatter2, parser: parser2, mode } = useHandlers(props);
     const bodyEl = shallowRef7(null);
@@ -6322,16 +6374,16 @@ var _sfc_script31 = defineComponent19({
           if (_start && _end) {
             const { rangeCount, hasDisabled } = getRangeInfo(_start, _end);
             if (hasDisabled) {
-              printError2('The range of "modelValue" contains disabled days.');
+              printPropError(`The range of "${VALUE_KEY}" contains disabled days.`);
             } else if (rangeCount > props.maxRange) {
-              printError2(`The range of "modelValue" contains ${rangeCount} days, no more than ${props.maxRange} days.`);
+              printPropError(`The range of "${VALUE_KEY}" contains ${rangeCount} days, no more than ${props.maxRange} days.`);
             } else {
               setSelected("start", _start);
               setSelected("end", _end);
               updateStates();
             }
           } else {
-            printError2('The range of "modelValue" is not in the optional range.');
+            printPropError(`The range of "${VALUE_KEY}" is not in the optional range.`);
           }
         } else {
           const select = getSelectedInfo(timeArr[0]);
@@ -6340,7 +6392,7 @@ var _sfc_script31 = defineComponent19({
             setSelected("end", null);
             updateStates();
           } else {
-            printError2('The range of "modelValue" is not in the optional range.');
+            printPropError(`The range of "${VALUE_KEY}" is not in the optional range.`);
           }
         }
       }
@@ -6437,7 +6489,7 @@ var _sfc_script31 = defineComponent19({
       }
       if (props.maxDate instanceof Date) {
         if (props.maxDate.getTime() < minTimestamp) {
-          printError2('The value of "maxDate" cannot be less than the value of "minDate".');
+          printPropError('The value of "maxDate" cannot be less than the value of "minDate".');
           maxTimestamp = getMaxTime(minTimestamp);
         } else {
           maxTimestamp = getTimeByDate(props.maxDate);
@@ -6655,7 +6707,7 @@ var _sfc_script31 = defineComponent19({
       deep: true,
       immediate: true
     });
-    onMounted9(() => {
+    onMounted10(() => {
       updateBodyFixed(bodyScrollTop);
     });
     return {
@@ -6796,7 +6848,7 @@ var _sfc_script32 = defineComponent20({
     }, {
       deep: true
     });
-    onMounted10(() => {
+    onMounted11(() => {
       detail = getViewDetail();
     });
     return {
@@ -7058,7 +7110,7 @@ var tabProps = {
 
 // packages/ui/src/Tab/use-tab.ts
 import {
-  getCurrentInstance as getCurrentInstance2,
+  getCurrentInstance as getCurrentInstance3,
   ref as ref10,
   watch as watch11,
   computed as computed18,
@@ -7094,10 +7146,39 @@ var getItemClasses2 = (index, activeIndex) => {
   ];
 };
 
+// packages/ui/src/hooks/use-once.ts
+import { onBeforeUnmount as onBeforeUnmount8 } from "vue";
+function useOnce(interval = 0) {
+  let handle = null;
+  function cancel2() {
+    if (handle !== null) {
+      interval > 0 ? clearTimeout(handle) : cancelAnimationFrame(handle);
+      handle = null;
+    }
+  }
+  function call(fn) {
+    cancel2();
+    if (interval > 0) {
+      handle = window.setTimeout(() => {
+        handle = null;
+        fn();
+      }, 50);
+    } else {
+      handle = requestAnimationFrame(() => {
+        handle = null;
+        fn();
+      });
+    }
+  }
+  onBeforeUnmount8(cancel2);
+  return call;
+}
+
 // packages/ui/src/Tab/use-tab.ts
 function useTab(props, { emit, expose }, { tabName }) {
   var _a;
-  const instance = getCurrentInstance2();
+  const { printNotInOptionsError } = useException();
+  const instance = getCurrentInstance3();
   const listEl = shallowRef10(null);
   const underlineEl = shallowRef10(null);
   const options2 = ref10([]);
@@ -7174,7 +7255,7 @@ function useTab(props, { emit, expose }, { tabName }) {
       return;
     }
     if (!updateActive(value)) {
-      console.error(new exception_default('The value is not in "options".', isProp ? exception_default.TYPE.PROP_ERROR : exception_default.TYPE.PARAM_ERROR, tabName));
+      printNotInOptionsError("index", isProp);
     } else if (!isProp) {
       emitChange();
     }
@@ -7186,7 +7267,7 @@ function useTab(props, { emit, expose }, { tabName }) {
     if (options2.value[index]) {
       onChange(options2.value[index].value);
     } else {
-      console.error(new exception_default('The "options[index]" not found.', exception_default.TYPE.PARAM_ERROR, tabName));
+      printNotInOptionsError("index");
     }
   }
   function updateActive(value) {
@@ -7227,7 +7308,7 @@ function useTab(props, { emit, expose }, { tabName }) {
       const $activeItem = $list.children[activeIndex.value];
       if (!$activeItem) {
         if (tabName === "Tab") {
-          setUnderline(0, 0);
+          updateUnderline();
         }
         return;
       }
@@ -7254,16 +7335,27 @@ function useTab(props, { emit, expose }, { tabName }) {
         }
       });
       if (tabName === "Tab") {
-        const $inner = $activeItem.firstElementChild;
-        setUnderline(ofs - to + ($activeItem.offsetWidth - $inner.offsetWidth) / 2, $inner.offsetWidth);
+        updateUnderline();
       }
     });
   }
-  function setUnderline(x, w) {
-    if (underlineEl.value) {
-      underlineEl.value.style.width = w + "px";
-      underlineEl.value.style.transform = `translate3d(${x}px, 0, 0)`;
-    }
+  const updateUnderlineOnce = useOnce(50);
+  function updateUnderline() {
+    updateUnderlineOnce(() => {
+      var _a2, _b;
+      const $activeItem = (_a2 = listEl.value) == null ? void 0 : _a2.querySelector(".active");
+      let x = 0;
+      let w = 0;
+      if ($activeItem) {
+        const $inner = $activeItem.firstElementChild;
+        x = $activeItem.offsetLeft - (((_b = listEl.value) == null ? void 0 : _b.scrollLeft) || 0) + ($activeItem.offsetWidth - $inner.offsetWidth) / 2;
+        w = $inner.offsetWidth;
+      }
+      if (underlineEl.value) {
+        underlineEl.value.style.width = w + "px";
+        underlineEl.value.style.transform = `translate3d(${x}px, 0, 0)`;
+      }
+    });
   }
   watch11(() => props.modelValue, (val) => val != null && _switchTo(val, true));
   watch11(() => props.options, updateOptions, {
@@ -7284,6 +7376,7 @@ function useTab(props, { emit, expose }, { tabName }) {
     options2,
     onChange,
     styles,
+    updateUnderline,
     switchTo,
     switchToIndex
   };
@@ -7312,17 +7405,13 @@ var _sfc_script34 = defineComponent22({
     };
   }
 });
-var _hoisted_126 = {
-  class: "ak-tab_list",
-  ref: "listEl"
-};
-var _hoisted_221 = ["onClick"];
-var _hoisted_320 = { class: "ak-tab_item-text" };
-var _hoisted_47 = {
+var _hoisted_126 = ["onClick"];
+var _hoisted_221 = { class: "ak-tab_item-text" };
+var _hoisted_320 = {
   key: 0,
   class: "ak-tab_item-sub-text"
 };
-var _hoisted_53 = {
+var _hoisted_47 = {
   class: "ak-tab_underline",
   ref: "underlineEl"
 };
@@ -7332,7 +7421,11 @@ function render34(_ctx, _cache) {
   return _openBlock34(), _createElementBlock29("div", {
     class: _normalizeClass16(_ctx.classes)
   }, [
-    _createElementVNode25("ul", _hoisted_126, [
+    _createElementVNode25("ul", {
+      class: "ak-tab_list",
+      ref: "listEl",
+      onScroll: _cache[0] || (_cache[0] = (...args) => _ctx.updateUnderline && _ctx.updateUnderline(...args))
+    }, [
       (_openBlock34(true), _createElementBlock29(_Fragment6, null, _renderList6(_ctx.options2, (item, index) => {
         return _openBlock34(), _createElementBlock29("li", {
           class: _normalizeClass16(_ctx.getItemClasses(index, _ctx.activeIndex)),
@@ -7345,15 +7438,15 @@ function render34(_ctx, _cache) {
                 key: 0,
                 icon: index === _ctx.activeIndex ? item.activeIcon : item.icon
               }, null, 8, ["icon"])) : _createCommentVNode13("v-if", true),
-              _createElementVNode25("span", _hoisted_320, _toDisplayString10(item.label), 1)
+              _createElementVNode25("span", _hoisted_221, _toDisplayString10(item.label), 1)
             ]),
             _: 2
           }, 1040),
-          _ctx.hasSub ? (_openBlock34(), _createElementBlock29("span", _hoisted_47, _toDisplayString10(item.subLabel), 1)) : _createCommentVNode13("v-if", true)
-        ], 10, _hoisted_221);
+          _ctx.hasSub ? (_openBlock34(), _createElementBlock29("span", _hoisted_320, _toDisplayString10(item.subLabel), 1)) : _createCommentVNode13("v-if", true)
+        ], 10, _hoisted_126);
       }), 128))
-    ], 512),
-    _createElementVNode25("span", _hoisted_53, null, 512)
+    ], 544),
+    _createElementVNode25("span", _hoisted_47, null, 512)
   ], 2);
 }
 _sfc_script34.render = render34;
@@ -7423,7 +7516,7 @@ _sfc_script35.__file = "packages/ui/src/Empty/Empty.vue";
 var Empty_default = _sfc_script35;
 
 // packages/ui/src/Picker/use-picker.ts
-import { nextTick as nextTick4, onMounted as onMounted11, ref as ref11, shallowRef as shallowRef11, watch as watch12 } from "vue";
+import { nextTick as nextTick4, onMounted as onMounted12, ref as ref11, shallowRef as shallowRef11, watch as watch12 } from "vue";
 function getDefaultDetail(handlers) {
   return formatter([], [], handlers);
 }
@@ -7553,7 +7646,7 @@ function usePickerPopup(props, { emit }, {
   }, {
     deep: true
   });
-  onMounted11(() => {
+  onMounted12(() => {
     if (isValidValue(props.modelValue)) {
       detail = getViewDetail();
     }
@@ -8278,7 +8371,7 @@ var _hoisted_49 = {
   key: 2,
   class: "ak-cell_label"
 };
-var _hoisted_54 = {
+var _hoisted_53 = {
   key: 0,
   class: "ak-cell_required"
 };
@@ -8301,7 +8394,7 @@ function render39(_ctx, _cache) {
       ])) : _createCommentVNode17("v-if", true),
       _ctx.label ? (_openBlock39(), _createElementBlock33("div", _hoisted_49, [
         _createTextVNode6(_toDisplayString13(_ctx.label) + " ", 1),
-        _ctx.required ? (_openBlock39(), _createElementBlock33("span", _hoisted_54, "*")) : _createCommentVNode17("v-if", true)
+        _ctx.required ? (_openBlock39(), _createElementBlock33("span", _hoisted_53, "*")) : _createCommentVNode17("v-if", true)
       ])) : _createCommentVNode17("v-if", true),
       _createElementVNode27("div", _hoisted_62, [
         _renderSlot11(_ctx.$slots, "default", {}, () => [
@@ -8369,10 +8462,10 @@ var checkProps = {
 };
 
 // packages/ui/src/Checkbox/use-check.ts
-import { computed as computed22, onMounted as onMounted12, watch as watch14, inject as inject7, provide as provide6, shallowRef as shallowRef12 } from "vue";
+import { computed as computed22, onMounted as onMounted13, watch as watch14, inject as inject7, provide as provide6, shallowRef as shallowRef12 } from "vue";
 
 // packages/ui/src/hooks/use-group.ts
-import { inject as inject6, onBeforeUnmount as onBeforeUnmount8, provide as provide5, reactive as reactive3 } from "vue";
+import { inject as inject6, onBeforeUnmount as onBeforeUnmount9, provide as provide5, reactive as reactive3 } from "vue";
 function getKey(name) {
   return `ak${capitalize(name)}Group`;
 }
@@ -8393,7 +8486,7 @@ function useGroup(name) {
 function useGroupItem(name, object) {
   const group = inject6(getKey(name), null);
   group && group.addChild(object);
-  onBeforeUnmount8(() => {
+  onBeforeUnmount9(() => {
     group && group.removeChild(object);
   });
   return {};
@@ -8467,7 +8560,7 @@ function useCheck(props, { emit }, name) {
     getValue: getValue3,
     setChecked
   });
-  onMounted12(() => {
+  onMounted13(() => {
     const $input = getInputEl();
     let checked;
     if (groupOptions) {
@@ -8530,7 +8623,7 @@ function useCheckGroup(props, {
     }
     return ret;
   });
-  onMounted12(() => _updateValue(false));
+  onMounted13(() => _updateValue(false));
   provide6(`ak${capitalize(name)}Options`, {
     props,
     onChange
@@ -8919,7 +9012,7 @@ _sfc_script47.__file = "packages/ui/src/Col/Col.vue";
 var Col_default = _sfc_script47;
 
 // vue:./Collapse.vue
-import { defineComponent as defineComponent32, onMounted as onMounted13, watch as watch15, provide as provide7 } from "vue";
+import { defineComponent as defineComponent32, onMounted as onMounted14, watch as watch15, provide as provide7 } from "vue";
 import { renderSlot as _renderSlot16, openBlock as _openBlock48, createElementBlock as _createElementBlock42 } from "vue";
 var _sfc_script48 = defineComponent32({
   name: "ak-collapse",
@@ -8978,7 +9071,7 @@ var _sfc_script48 = defineComponent32({
       emit("update:modelValue", cloneData(activeNames));
       emit("change", cloneData(activeNames));
     }
-    onMounted13(() => updateValue(props.modelValue));
+    onMounted14(() => updateValue(props.modelValue));
     watch15(() => props.modelValue, updateValue, {
       deep: true
     });
@@ -9034,11 +9127,8 @@ var _sfc_script49 = defineComponent33({
   setup(props, { emit }) {
     const active = ref15(false);
     const bodyEl = shallowRef13(null);
-    const onChange = inject9("akCollapseChange", collapseItemChange);
+    const onChange = inject9("akCollapseChange", noop);
     const uid3 = Symbol();
-    function collapseItemChange(uid4) {
-      new exception_default(`CollapseItem is not in Collapse`, exception_default.TYPE.DEFAULT, "CollapseItem");
-    }
     let visibleTimer;
     function show(isClick = false) {
       if (active.value) {
@@ -9181,10 +9271,11 @@ var _sfc_script51 = defineComponent35({
     }
   },
   emits: {
-    success: (payload) => isString(payload),
-    error: (e) => e instanceof Error
+    success: isString,
+    error: emitErrorValidator
   },
   setup(props, { emit }) {
+    const { createException } = useException();
     const { locale } = useLocale();
     const inputEl = shallowRef14(null);
     function onCopy() {
@@ -9193,8 +9284,8 @@ var _sfc_script51 = defineComponent35({
         const $el = inputEl.value;
         copy($el);
         emit("success", (_a = $el.value) != null ? _a : "");
-      } catch (error) {
-        emit("error", new exception_default(error));
+      } catch (e) {
+        emit("error", createException(e));
       }
     }
     return {
@@ -9231,10 +9322,10 @@ _sfc_script51.__file = "packages/ui/src/Copy/Copy.vue";
 var Copy_default = _sfc_script51;
 
 // vue:./CountDown.vue
-import { defineComponent as defineComponent36, onMounted as onMounted14 } from "vue";
+import { defineComponent as defineComponent36, onMounted as onMounted15 } from "vue";
 
 // packages/ui/src/CountDown/use-count-time.ts
-import { onBeforeUnmount as onBeforeUnmount9, ref as ref16 } from "vue";
+import { onBeforeUnmount as onBeforeUnmount10, ref as ref16 } from "vue";
 
 // packages/ui/src/CountDown/util.ts
 function formatNumber(num) {
@@ -9288,7 +9379,7 @@ function useCountTime(onStep) {
   function stop() {
     cancelAnimationFrame(timer);
   }
-  onBeforeUnmount9(stop);
+  onBeforeUnmount10(stop);
   return {
     times,
     timeStart: start,
@@ -9321,7 +9412,7 @@ var _sfc_script52 = defineComponent36({
     pause: pauseOrResumeValidator,
     resume: pauseOrResumeValidator
   },
-  setup(props, { emit }) {
+  setup(props, { emit, expose }) {
     const { locale } = useLocale();
     let startTime = 0;
     let expiredTime = 0;
@@ -9360,9 +9451,9 @@ var _sfc_script52 = defineComponent36({
         remainTime
       });
       expiredTime = remainTime + Date.now();
-      timeStop();
+      timeStart();
     }
-    function reset(_timing, autoStart = true) {
+    const reset = (_timing, autoStart = true) => {
       timeStop();
       paused = !autoStart;
       startTime = Date.now();
@@ -9370,11 +9461,16 @@ var _sfc_script52 = defineComponent36({
       remainTime = _timing;
       timeUpdate(remainTime);
       !paused && timeStart();
-    }
-    onMounted14(() => {
+    };
+    onMounted15(() => {
       if (props.initialTiming > 0) {
         reset(props.initialTiming, !paused);
       }
+    });
+    expose({
+      pause,
+      resume,
+      reset
     });
     return {
       countTime: times,
@@ -10680,13 +10776,14 @@ var _sfc_script65 = defineComponent48({
   },
   emits: { ...popupEmits },
   setup(props, ctx) {
+    const { printPropError } = useException();
     const top = ref18(-1);
     const height = ref18(0);
     const popupEl = shallowRef16(null);
     function updatePos() {
       const $target = querySelector(props.selector);
       if (!$target) {
-        console.error(new exception_default('Cannot find element through "selector"', exception_default.TYPE.PROP_ERROR, "Dropdown"));
+        printPropError(`Cannot find element through "selector"`);
         return;
       }
       const { bottom } = $target.getBoundingClientRect();
@@ -10745,7 +10842,7 @@ import {
   computed as computed29,
   defineComponent as defineComponent49,
   inject as inject12,
-  onMounted as onMounted16,
+  onMounted as onMounted17,
   ref as ref19,
   shallowRef as shallowRef17,
   toRef as toRef4,
@@ -10755,16 +10852,16 @@ import {
 // packages/ui/src/hooks/use-fixed.ts
 import {
   onActivated,
-  onBeforeUnmount as onBeforeUnmount10,
+  onBeforeUnmount as onBeforeUnmount11,
   onDeactivated,
-  onMounted as onMounted15,
+  onMounted as onMounted16,
   watch as watch17
 } from "vue";
 function useFixed({ fixed, root, inner, disableFixed }) {
   onActivated(() => fixed.value && toBody());
   onDeactivated(recover);
-  onMounted15(() => fixed.value && toBody());
-  onBeforeUnmount10(recover);
+  onMounted16(() => fixed.value && toBody());
+  onBeforeUnmount11(recover);
   function toBody() {
     disableFixed && inner.value && document.body.append(inner.value);
   }
@@ -10886,7 +10983,7 @@ var _sfc_script66 = defineComponent49({
       fixed: fixed2
     });
     watch18([() => props.fixed, () => props.spaceHold], updateSize);
-    onMounted16(() => {
+    onMounted17(() => {
       updateSize();
     });
     return {
@@ -10930,7 +11027,7 @@ _sfc_script66.__file = "packages/ui/src/Fixed/Fixed.vue";
 var Fixed_default = _sfc_script66;
 
 // vue:./FlatList.vue
-import { computed as computed32, defineComponent as defineComponent52, onMounted as onMounted19, ref as ref21, shallowRef as shallowRef19 } from "vue";
+import { computed as computed32, defineComponent as defineComponent52, onMounted as onMounted20, ref as ref21, shallowRef as shallowRef19 } from "vue";
 
 // vue:./LoadMore.vue
 import { computed as computed30, defineComponent as defineComponent50 } from "vue";
@@ -11000,14 +11097,14 @@ import {
   defineComponent as defineComponent51,
   computed as computed31,
   ref as ref20,
-  onMounted as onMounted18,
+  onMounted as onMounted19,
   watch as watch19,
   provide as provide9,
   shallowRef as shallowRef18
 } from "vue";
 
 // packages/ui/src/hooks/use-touch.ts
-import { onBeforeUnmount as onBeforeUnmount11, onMounted as onMounted17 } from "vue";
+import { onBeforeUnmount as onBeforeUnmount12, onMounted as onMounted18 } from "vue";
 var {
   touchstart: touchstart2,
   touchmove: touchmove2,
@@ -11043,8 +11140,8 @@ function useTouch({
       }
     }
   };
-  onMounted17(() => addListeners(el.value, object));
-  onBeforeUnmount11(() => removeListeners(el.value, object));
+  onMounted18(() => addListeners(el.value, object));
+  onBeforeUnmount12(() => removeListeners(el.value, object));
   return {};
 }
 
@@ -11267,7 +11364,7 @@ var _sfc_script68 = defineComponent51({
         });
       }
     }
-    onMounted18(() => updateScroll);
+    onMounted19(() => updateScroll);
     watch19([() => props.scrollLeft, () => props.scrollTop], updateScroll);
     const classes = computed31(() => getClasses8({
       scrollX: props.scrollX,
@@ -11584,7 +11681,7 @@ var _sfc_script69 = defineComponent52({
       }
       return [];
     });
-    onMounted19(() => {
+    onMounted20(() => {
       var _a;
       if (scrollViewRef.value) {
         (_a = virtualListRef.value) == null ? void 0 : _a.resetScrollContainer(getScrollContainer());
@@ -11770,7 +11867,7 @@ var _hoisted_332 = {
   class: "ak-form-item_required"
 };
 var _hoisted_411 = { class: "ak-cell_content" };
-var _hoisted_55 = {
+var _hoisted_54 = {
   key: 0,
   class: "ak-cell_body"
 };
@@ -11787,7 +11884,7 @@ function render71(_ctx, _cache) {
         _renderSlot29(_ctx.$slots, "default")
       ])
     ]),
-    _ctx.errors.length > 0 ? (_openBlock70(), _createElementBlock60("ol", _hoisted_55, [
+    _ctx.errors.length > 0 ? (_openBlock70(), _createElementBlock60("ol", _hoisted_54, [
       (_openBlock70(true), _createElementBlock60(_Fragment10, null, _renderList10(_ctx.errors, (error, k) => {
         return _openBlock70(), _createElementBlock60("li", { key: error }, _toDisplayString24(_ctx.errors.length > 1 ? k + 1 + ". " : "") + _toDisplayString24(error), 1);
       }), 128))
@@ -11842,7 +11939,7 @@ var _hoisted_153 = { class: "ak-group_header" };
 var _hoisted_240 = { class: "ak-group_title" };
 var _hoisted_333 = { class: "ak-group_more" };
 var _hoisted_412 = { class: "ak-group_body ak-horizontal-hairline hairline-reverse" };
-var _hoisted_56 = { class: "ak-group_body-inner" };
+var _hoisted_55 = { class: "ak-group_body-inner" };
 function render72(_ctx, _cache) {
   return _openBlock71(), _createElementBlock61("div", {
     class: _normalizeClass33(_ctx.classes)
@@ -11854,7 +11951,7 @@ function render72(_ctx, _cache) {
       ])
     ]),
     _createElementVNode46("div", _hoisted_412, [
-      _createElementVNode46("div", _hoisted_56, [
+      _createElementVNode46("div", _hoisted_55, [
         _renderSlot30(_ctx.$slots, "default")
       ])
     ])
@@ -11873,32 +11970,26 @@ import { defineComponent as defineComponent59, reactive as reactive4, ref as ref
 import {
   ref as ref23,
   defineComponent as defineComponent57,
-  onMounted as onMounted21,
+  onMounted as onMounted22,
   watch as watch20,
-  onBeforeUnmount as onBeforeUnmount13,
+  onBeforeUnmount as onBeforeUnmount14,
   provide as provide11,
   shallowRef as shallowRef21
 } from "vue";
 
 // packages/ui/src/hooks/use-list.ts
 import {
-  getCurrentInstance as getCurrentInstance3,
+  getCurrentInstance as getCurrentInstance4,
   ref as ref22,
-  onBeforeUnmount as onBeforeUnmount12,
+  onBeforeUnmount as onBeforeUnmount13,
   provide as provide10,
-  onMounted as onMounted20,
+  onMounted as onMounted21,
   onUnmounted,
   inject as inject13,
   shallowRef as shallowRef20
 } from "vue";
-function createUpdateInItem(name) {
-  name = capitalize(name);
-  return function() {
-    new exception_default(`${name}Item is not in ${name}`, exception_default.TYPE.DEFAULT, name);
-  };
-}
 function useList(name, updateCallback) {
-  const instance = getCurrentInstance3();
+  const instance = getCurrentInstance4();
   const listEl = shallowRef20(null);
   let updateTimer;
   let _$items = [];
@@ -11922,7 +12013,7 @@ function useList(name, updateCallback) {
   function getItems() {
     return listEl.value ? [].slice.call(listEl.value.querySelectorAll(`.ak-${camelCase2KebabCase(name)}-item`), 0) : [];
   }
-  onBeforeUnmount12(() => clearTimeout(updateTimer));
+  onBeforeUnmount13(() => clearTimeout(updateTimer));
   return {
     listEl,
     getItems,
@@ -11930,9 +12021,10 @@ function useList(name, updateCallback) {
   };
 }
 function useListItem(name, root) {
+  const { printItemIsolationWarn } = useException();
   const index = ref22(-1);
-  const update = inject13(`ak${capitalize(name)}Update`, createUpdateInItem(name));
-  onMounted20(() => {
+  const update = inject13(`ak${capitalize(name)}Update`, printItemIsolationWarn);
+  onMounted21(() => {
     if (root == null ? void 0 : root.value) {
       root.value._akSetIndex = (_index) => index.value = _index;
     }
@@ -12040,6 +12132,7 @@ var _sfc_script74 = defineComponent57({
     click: emitEventValidator
   },
   setup(props, { emit, expose }) {
+    const { printListItemNotFoundError } = useException();
     const root = shallowRef21(null);
     const index = ref23(0);
     const pagination = ref23([]);
@@ -12063,7 +12156,7 @@ var _sfc_script74 = defineComponent57({
           isEmitChange = true;
         }
       } else {
-        console.error(new exception_default('This value of "activeIndex" is out of range.', exception_default.TYPE.PROP_ERROR, "Swiper"));
+        printListItemNotFoundError("activeIndex", isProp);
       }
     }
     function prev() {
@@ -12207,6 +12300,11 @@ var _sfc_script74 = defineComponent57({
     }
     function resetItems(res) {
       $items = res;
+      pagination.value = [];
+      $items.forEach(($item, i) => {
+        $item.dataset.index = i.toString();
+        pagination.value.push(i);
+      });
       setSlideStyle();
       const last = getLastIndex();
       if (index.value > last) {
@@ -12214,33 +12312,30 @@ var _sfc_script74 = defineComponent57({
       }
       start();
     }
+    const styleOnce = useOnce(50);
     function setSlideStyle() {
-      if (!root.value || !listEl.value) {
-        return;
-      }
-      const sizeName = directionGroup[2];
-      const _itemSize = root.value["client" + sizeName];
-      if (_itemSize === 0) {
-        return;
-      }
-      itemSize = _itemSize;
-      root.value.style["overflow" + directionGroup[0]] = "hidden";
-      listEl.value.style.cssText = CSSProperties2CssText({
-        WebkitBackfaceVisibility: "hidden",
-        WebkitPerspective: 1e3,
-        [sizeName.toLowerCase()]: itemSize * $items.length + "px",
-        transition: "transform 0ms ease-out"
-      });
-      updateListStyle(-itemSize * index.value);
-      pagination.value = [];
-      $items.forEach(($item, i) => {
-        $item.dataset.index = i.toString();
-        let cssText = `${sizeName.toLowerCase()}: ${itemSize}px;`;
-        if (direction === "x") {
-          cssText += "float: left;";
+      styleOnce(() => {
+        if (!root.value || !listEl.value) {
+          return;
         }
-        $item.style.cssText = cssText;
-        pagination.value.push(i);
+        const sizeName = directionGroup[2];
+        const _itemSize = root.value["client" + sizeName];
+        if (_itemSize === 0) {
+          return;
+        }
+        itemSize = _itemSize;
+        root.value.style["overflow" + directionGroup[0]] = "hidden";
+        listEl.value.style.cssText = CSSProperties2CssText({
+          WebkitBackfaceVisibility: "hidden",
+          WebkitPerspective: 1e3,
+          [sizeName.toLowerCase()]: itemSize * $items.length + "px",
+          transition: "transform 0ms ease-out"
+        });
+        updateListStyle(-itemSize * index.value);
+        const itemCssText = `${direction === "x" ? "float: left; " : ""}${sizeName.toLowerCase()}: ${itemSize}px;`;
+        $items.forEach(($item) => {
+          $item.style.cssText = itemCssText;
+        });
       });
     }
     let autoplayTimer;
@@ -12255,7 +12350,7 @@ var _sfc_script74 = defineComponent57({
       return $items[index2] || null;
     }
     const { listEl, update } = useList("swiper", resetItems);
-    useResizeObserver(root, update);
+    useResizeObserver(root, setSlideStyle);
     let coords;
     let inMove = false;
     useTouch({
@@ -12359,13 +12454,13 @@ var _sfc_script74 = defineComponent57({
       start();
     });
     watch20(() => props.activeIndex, (val) => _swipeTo(val, true));
-    onMounted21(() => {
+    onMounted22(() => {
       start();
       if (props.activeIndex !== 0) {
         _swipeTo(props.activeIndex, true);
       }
     });
-    onBeforeUnmount13(() => {
+    onBeforeUnmount14(() => {
       clearTimeout(durationTimer);
       stop();
       $items = [];
@@ -12866,10 +12961,10 @@ import {
   defineComponent as defineComponent60,
   ref as ref25,
   reactive as reactive5,
-  onMounted as onMounted22,
+  onMounted as onMounted23,
   nextTick as nextTick8,
   watch as watch22,
-  onBeforeUnmount as onBeforeUnmount14,
+  onBeforeUnmount as onBeforeUnmount15,
   onBeforeMount,
   computed as computed35,
   shallowRef as shallowRef23
@@ -13031,8 +13126,8 @@ var _sfc_script78 = defineComponent60({
           let currentPosition = null;
           for (let i = 0; i < sort.length; i++) {
             if (sort[i] === index) {
-              positions[sort[i]].deleted = true;
-              currentPosition = positions[sort[i]];
+              positions[index].deleted = true;
+              currentPosition = positions[index];
               sort.splice(i, 1);
               break;
             }
@@ -13054,7 +13149,7 @@ var _sfc_script78 = defineComponent60({
           }
           exitDragDone(() => {
             dragFixed.value = -1;
-            updateOrderHeight();
+            updateRender();
             updateOptions();
           });
         } else if (imgsMode.moveShift !== -1 && imgsMode.moveSort != null) {
@@ -13083,12 +13178,10 @@ var _sfc_script78 = defineComponent60({
       }
     }
     function updateOptions() {
-      setTimeout(() => {
-        const newOptions = imgsMode.sort.map((v) => {
-          return props.items[v];
-        });
-        emit("update:items", newOptions);
-      }, 250);
+      const newOptions = imgsMode.sort.map((v) => {
+        return props.items[v];
+      });
+      emit("update:items", newOptions);
     }
     function getItemPos(index) {
       return {
@@ -13118,12 +13211,21 @@ var _sfc_script78 = defineComponent60({
         }
       });
       nextTick8(() => {
-        updateOrderHeight();
+        updateRender();
       });
     }
-    function updateOrderHeight() {
+    function updateRender() {
       if (!root.value || drag.on) {
         return;
+      }
+      const newItemSize = root.value.offsetWidth / props.columnNumber;
+      if (newItemSize !== imgsMode.itemSize) {
+        imgsMode.itemSize = newItemSize;
+        positions.forEach((position, index) => {
+          const { top, left } = getItemPos(index);
+          position.left = left;
+          position.top = top;
+        });
       }
       orderHeight.value = Math.max(...[].slice.call(root.value.children, 0).map((child) => child.offsetHeight)) * Math.ceil(imgsMode.sort.length / props.columnNumber);
     }
@@ -13218,15 +13320,17 @@ var _sfc_script78 = defineComponent60({
     onBeforeMount(() => {
       deleteAreaY = document.documentElement.clientHeight;
     });
-    onMounted22(() => {
+    onMounted23(() => {
       updateItemsData();
     });
-    onBeforeUnmount14(() => {
+    onBeforeUnmount15(() => {
       clearTimeout(onTimer);
       clearTimeout(lazyTimer);
     });
     const classes = computed35(() => getClasses12(dragOn.value));
     const styles = computed35(() => getStyles4(orderHeight.value));
+    const resizeOnce = useOnce(50);
+    useResizeObserver(root, () => resizeOnce(() => updateRender()));
     return {
       root,
       deleteButtonEl,
@@ -13427,7 +13531,7 @@ _sfc_script80.render = render79;
 _sfc_script80.__file = "packages/ui/src/ImageUploader/ImageUploaderItem.vue";
 
 // vue:./ImageUploader.vue
-import { resolveComponent as _resolveComponent40, createVNode as _createVNode28, createElementVNode as _createElementVNode53, withModifiers as _withModifiers4, normalizeClass as _normalizeClass37, openBlock as _openBlock79, createElementBlock as _createElementBlock69, createBlock as _createBlock32, withCtx as _withCtx18, mergeProps as _mergeProps9, Fragment as _Fragment14 } from "vue";
+import { resolveComponent as _resolveComponent40, createVNode as _createVNode28, createElementVNode as _createElementVNode53, withModifiers as _withModifiers4, normalizeClass as _normalizeClass37, openBlock as _openBlock79, createElementBlock as _createElementBlock69, createCommentVNode as _createCommentVNode33, createBlock as _createBlock32, withCtx as _withCtx18, mergeProps as _mergeProps9, Fragment as _Fragment14 } from "vue";
 var isValue3 = (val) => isStringArray(val);
 var addButtonID = -1;
 var _sfc_script81 = defineComponent62({
@@ -13811,14 +13915,15 @@ function render80(_ctx, _cache) {
       showClose: ""
     }, {
       close: _withCtx18(({ activeIndex }) => [
-        _createVNode28(_component_AkButton, {
+        _ctx.deletable ? (_openBlock79(), _createBlock32(_component_AkButton, {
+          key: 0,
           onClick: _withModifiers4(($event) => _ctx.onPreviewDelete(activeIndex), ["stop"]),
           icon: _ctx.DeleteOutlined,
           size: "large",
           pattern: "borderless",
           shape: "square",
           ghost: true
-        }, null, 8, ["onClick", "icon"])
+        }, null, 8, ["onClick", "icon"])) : _createCommentVNode33("v-if", true)
       ]),
       _: 1
     }, 8, ["urls", "visible", "modelValue"])
@@ -13831,13 +13936,13 @@ _sfc_script81.__file = "packages/ui/src/ImageUploader/ImageUploader.vue";
 var ImageUploader_default = _sfc_script81;
 
 // vue:./IndexView.vue
-import { defineComponent as defineComponent66, onMounted as onMounted25, ref as ref29, shallowRef as shallowRef26, watch as watch26 } from "vue";
+import { defineComponent as defineComponent66, onMounted as onMounted26, ref as ref29, shallowRef as shallowRef26, watch as watch26 } from "vue";
 
 // vue:./StickyView.vue
 import {
   computed as computed38,
   defineComponent as defineComponent64,
-  onMounted as onMounted24,
+  onMounted as onMounted25,
   ref as ref28,
   watch as watch25,
   nextTick as nextTick9,
@@ -13849,7 +13954,7 @@ import {
   defineComponent as defineComponent63,
   computed as computed37,
   ref as ref27,
-  onMounted as onMounted23,
+  onMounted as onMounted24,
   inject as inject14,
   watch as watch24,
   shallowRef as shallowRef24
@@ -13954,7 +14059,7 @@ var _sfc_script82 = defineComponent63({
       return getStyles5((_a = height.value) != null ? _a : void 0);
     });
     watch24(() => props.disabled, () => updateFixed());
-    onMounted23(() => resetContainer(props.containSelector));
+    onMounted24(() => resetContainer(props.containSelector));
     expose({
       resetContainer
     });
@@ -14003,27 +14108,6 @@ var getFixedStyles = (titleY) => ({
 });
 var FIXED_HEIGHT = 28;
 
-// packages/ui/src/hooks/use-once.ts
-import { onBeforeUnmount as onBeforeUnmount15 } from "vue";
-function useOnce() {
-  let handle = null;
-  function cancel2() {
-    if (handle !== null) {
-      cancelAnimationFrame(handle);
-      handle = null;
-    }
-  }
-  function call(fn) {
-    cancel2();
-    handle = requestAnimationFrame(() => {
-      handle = null;
-      fn();
-    });
-  }
-  onBeforeUnmount15(cancel2);
-  return call;
-}
-
 // vue:./StickyView.vue
 import { renderSlot as _renderSlot36, createElementVNode as _createElementVNode55, resolveComponent as _resolveComponent41, withCtx as _withCtx19, createVNode as _createVNode29, normalizeClass as _normalizeClass38, openBlock as _openBlock81, createElementBlock as _createElementBlock71 } from "vue";
 var _sfc_script83 = defineComponent64({
@@ -14060,6 +14144,7 @@ var _sfc_script83 = defineComponent64({
     }
   },
   setup(props, { emit, expose }) {
+    const { printListItemNotFoundError } = useException();
     const root = shallowRef25(null);
     const container = shallowRef25(null);
     const fixedEl = shallowRef25(null);
@@ -14190,7 +14275,7 @@ var _sfc_script83 = defineComponent64({
           scrollToOffset(getRelativeOffset($items[newIndex], container.value).offsetTop);
         }
       } else {
-        console.error(new exception_default('The "StickyViewItem[index]" not found.', exception_default.TYPE.PARAM_ERROR, "StickyView"));
+        printListItemNotFoundError("index");
       }
     }
     function scrollTo2(name) {
@@ -14198,7 +14283,7 @@ var _sfc_script83 = defineComponent64({
       if (newIndex !== -1) {
         scrollToIndex(newIndex);
       } else {
-        console.error(new exception_default('The "StickyViewItem[name]" not found.', exception_default.TYPE.PARAM_ERROR, "StickyView"));
+        printListItemNotFoundError("name");
       }
     }
     const { listEl } = useList("stickyView", resetItems);
@@ -14210,11 +14295,11 @@ var _sfc_script83 = defineComponent64({
           scrollToIndex(newIndex);
         }
       } else {
-        console.error(new exception_default('The "StickyViewItem[modelValue]" not found.', exception_default.TYPE.PROP_ERROR, "StickyView"));
+        printListItemNotFoundError("modelValue", true);
       }
     }
     watch25(() => props.modelValue, updateValue);
-    onMounted24(() => {
+    onMounted25(() => {
       resetContainer(props.containSelector);
       props.modelValue != null && updateValue(props.modelValue);
     });
@@ -14434,7 +14519,7 @@ var _sfc_script85 = defineComponent66({
       }
     });
     watch26(() => props.modelValue, (val) => updateActiveName(val));
-    onMounted25(() => {
+    onMounted26(() => {
       resetContainer(document.documentElement);
       updateActiveName(props.modelValue);
       if (activeName.value == null && indexList.value.length > 0) {
@@ -14466,7 +14551,7 @@ var _hoisted_340 = {
   ref: "navEl"
 };
 var _hoisted_415 = ["data-value", "data-index"];
-var _hoisted_57 = { class: "ak-index-view_body" };
+var _hoisted_56 = { class: "ak-index-view_body" };
 function render84(_ctx, _cache) {
   const _component_StickyView = _resolveComponent42("StickyView");
   return _openBlock83(), _createElementBlock73("div", _hoisted_165, [
@@ -14482,7 +14567,7 @@ function render84(_ctx, _cache) {
         }), 128))
       ], 512)
     ]),
-    _createElementVNode57("div", _hoisted_57, [
+    _createElementVNode57("div", _hoisted_56, [
       _createVNode30(_component_StickyView, {
         offsetTop: _ctx.stickyOffsetTop,
         modelValue: _ctx.modelValue,
@@ -14502,7 +14587,7 @@ _sfc_script85.render = render84;
 _sfc_script85.__file = "packages/ui/src/IndexView/IndexView.vue";
 
 // vue:./IndexViewItem.vue
-import { defineComponent as defineComponent67, inject as inject15, onMounted as onMounted26, onUnmounted as onUnmounted2 } from "vue";
+import { defineComponent as defineComponent67, inject as inject15, onMounted as onMounted27, onUnmounted as onUnmounted2 } from "vue";
 import { renderSlot as _renderSlot39, resolveComponent as _resolveComponent43, withCtx as _withCtx21, openBlock as _openBlock84, createBlock as _createBlock33 } from "vue";
 var _sfc_script86 = defineComponent67({
   name: "ak-index-view-item",
@@ -14518,8 +14603,9 @@ var _sfc_script86 = defineComponent67({
     }
   },
   setup() {
-    const update = inject15("akStickyViewUpdate", createUpdateInItem("index-view"));
-    onMounted26(update);
+    const { printItemIsolationWarn } = useException();
+    const update = inject15("akStickyViewUpdate", printItemIsolationWarn);
+    onMounted27(update);
     onUnmounted2(update);
     return {};
   }
@@ -14548,7 +14634,7 @@ var IndexView_default = _sfc_script85;
 var IndexViewItem_default = _sfc_script86;
 
 // vue:./Input.vue
-import { computed as computed39, defineComponent as defineComponent68, onMounted as onMounted27, ref as ref30, watch as watch27 } from "vue";
+import { computed as computed39, defineComponent as defineComponent68, onMounted as onMounted28, ref as ref30, watch as watch27 } from "vue";
 
 // packages/ui/src/helpers/input.ts
 function formatInputNumber(value, decimalLength = -1) {
@@ -14560,13 +14646,17 @@ function formatInputNumber(value, decimalLength = -1) {
   if (match && match[0]) {
     value = match[0].replace(/\.+/g, ".").replace(/-+/g, "");
     if (decimalLength > 0) {
-      const arr = value.split(".");
-      if (arr[1] && arr[1].length > decimalLength) {
-        arr[1] = arr[1].substring(0, decimalLength);
-        value = arr.join(".");
+      const arr2 = value.split(".");
+      if (arr2[1] && arr2[1].length > decimalLength) {
+        arr2[1] = arr2[1].substring(0, decimalLength);
+        value = arr2.join(".");
       }
     } else if (decimalLength === 0) {
       value = parseInt(value).toString();
+    }
+    const arr = value.split(".");
+    if (arr.length > 2) {
+      value = [arr[0], arr[1]].join(".");
     }
     return (isNegative ? "-" : "") + value;
   }
@@ -14823,7 +14913,7 @@ var _sfc_script87 = defineComponent68({
         isShowClear.value = false;
       }
     });
-    onMounted27(() => {
+    onMounted28(() => {
       var _a;
       updateValue((_a = props.modelValue) != null ? _a : "");
       props.focus && setFocus();
@@ -14857,7 +14947,7 @@ var _hoisted_416 = {
   key: 3,
   class: "ak-input_limit"
 };
-var _hoisted_58 = {
+var _hoisted_57 = {
   key: 5,
   class: "ak-input_append"
 };
@@ -14907,7 +14997,7 @@ function render86(_ctx, _cache) {
       icon: _ctx.CloseCircleFilled,
       onMousedown: _withModifiers5(_ctx.onClear, ["prevent"])
     }, null, 8, ["icon", "onMousedown"])) : _createCommentVNode34("v-if", true),
-    _ctx.$slots.append ? (_openBlock85(), _createElementBlock74("div", _hoisted_58, [
+    _ctx.$slots.append ? (_openBlock85(), _createElementBlock74("div", _hoisted_57, [
       _renderSlot40(_ctx.$slots, "append")
     ])) : _createCommentVNode34("v-if", true)
   ], 2);
@@ -14922,7 +15012,7 @@ var Input_default = _sfc_script87;
 import {
   defineComponent as defineComponent69,
   computed as computed40,
-  onMounted as onMounted28,
+  onMounted as onMounted29,
   onBeforeUnmount as onBeforeUnmount16,
   ref as ref31,
   watch as watch28,
@@ -15048,7 +15138,7 @@ var _sfc_script88 = defineComponent69({
         emit("closeClick", e);
       }
     };
-    onMounted28(() => props.marquee && startMarquee());
+    onMounted29(() => props.marquee && startMarquee());
     onBeforeUnmount16(() => stopMarquee());
     watch28([() => props.marquee, () => props.title], () => {
       resetMarquee();
@@ -15155,6 +15245,7 @@ var _sfc_script89 = defineComponent70({
     }, toRef5(props, "duration"));
     const popup = usePopup(props, ctx, {
       initialForbidScroll: false,
+      initialFocusFixed: true,
       afterCancel: removeDelayTask,
       afterShow: addDelayTask
     });
@@ -15412,7 +15503,7 @@ var _hoisted_343 = {
   class: "ak-number-keyboard_right-column"
 };
 var _hoisted_418 = { class: "ak-number-keyboard_backspace" };
-var _hoisted_59 = { class: "ak-number-keyboard_confirm" };
+var _hoisted_58 = { class: "ak-number-keyboard_confirm" };
 function render91(_ctx, _cache) {
   const _component_Icon = _resolveComponent47("Icon");
   const _component_Drawer = _resolveComponent47("Drawer");
@@ -15465,7 +15556,7 @@ function render91(_ctx, _cache) {
                 _createVNode33(_component_Icon, { icon: _ctx.BackspaceOutlined }, null, 8, ["icon"])
               ])
             ]),
-            _createElementVNode62("div", _hoisted_59, [
+            _createElementVNode62("div", _hoisted_58, [
               _createElementVNode62("div", {
                 class: "ak-number-keyboard_confirm-button",
                 onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onConfirmClick && _ctx.onConfirmClick(...args))
@@ -15607,7 +15698,7 @@ import {
   computed as computed43,
   defineComponent as defineComponent73,
   nextTick as nextTick10,
-  onMounted as onMounted29,
+  onMounted as onMounted30,
   ref as ref33,
   shallowRef as shallowRef29,
   watch as watch30
@@ -15745,7 +15836,7 @@ var _sfc_script94 = defineComponent73({
       immediate: true
     });
     watch30(() => props.selector, (val) => container.value = querySelector(val));
-    onMounted29(() => {
+    onMounted30(() => {
       container.value = querySelector(props.selector);
       useResizeObserver(container, () => updatePos("container resize"));
       const docEl = shallowRef29(document.documentElement);
@@ -16853,11 +16944,12 @@ var _sfc_script104 = defineComponent81({
         const x = clientX - startX;
         let offsetCount = 0;
         if (x > 0) {
-          offsetCount = Math.floor(x / size) + (x % size > size - offsetX ? 1 : 0);
+          offsetCount = Math.floor(x / size) + (x % size >= size - offsetX ? 1 : 0);
         } else if (x < 0) {
           offsetCount = -Math.floor(-x / size) + (-x % size > offsetX ? -1 : 0);
         }
-        const isHalf = (offsetX + x) % size < size / 2;
+        const perOffsetX = (offsetX + x) % size;
+        const isHalf = current + offsetCount <= 0 ? true : current + offsetCount > max.value ? false : perOffsetX === 0 || (perOffsetX > 0 ? perOffsetX < size / 2 : size + perOffsetX < size / 2);
         coords.isChange = true;
         change(rangeInteger(current + offsetCount, 1, max.value), isHalf);
         e.stopPropagation();
@@ -17178,7 +17270,7 @@ _sfc_script108.__file = "packages/ui/src/Row/Row.vue";
 var Row_default = _sfc_script108;
 
 // vue:./ScrollTab.vue
-import { defineComponent as defineComponent85, onMounted as onMounted30, ref as ref37, shallowRef as shallowRef32, watch as watch34 } from "vue";
+import { defineComponent as defineComponent85, onMounted as onMounted31, ref as ref37, shallowRef as shallowRef32, watch as watch34 } from "vue";
 
 // vue:./SideTab.vue
 import { defineComponent as defineComponent84 } from "vue";
@@ -17324,7 +17416,7 @@ var _sfc_script110 = defineComponent85({
       (_a = bodyRef.value) == null ? void 0 : _a.scrollTo(name);
     }
     watch34(() => props.modelValue, (val) => updateActiveName(val));
-    onMounted30(() => {
+    onMounted31(() => {
       resetContainer(document.documentElement);
       updateActiveName(props.modelValue);
       if (activeName.value == null && tabList.value.length > 0) {
@@ -17395,7 +17487,7 @@ _sfc_script110.render = render109;
 _sfc_script110.__file = "packages/ui/src/ScrollTab/ScrollTab.vue";
 
 // vue:./ScrollTabItem.vue
-import { defineComponent as defineComponent86, inject as inject16, onMounted as onMounted31, onUnmounted as onUnmounted3 } from "vue";
+import { defineComponent as defineComponent86, inject as inject16, onMounted as onMounted32, onUnmounted as onUnmounted3 } from "vue";
 import { toDisplayString as _toDisplayString44, createElementVNode as _createElementVNode79, renderSlot as _renderSlot51, openBlock as _openBlock109, createElementBlock as _createElementBlock95 } from "vue";
 var _sfc_script111 = defineComponent86({
   name: "ak-scroll-tab-item",
@@ -17409,8 +17501,9 @@ var _sfc_script111 = defineComponent86({
     }
   },
   setup() {
-    const update = inject16("akStickyViewUpdate", createUpdateInItem("scroll-tab"));
-    onMounted31(update);
+    const { printItemIsolationWarn } = useException();
+    const update = inject16("akStickyViewUpdate", printItemIsolationWarn);
+    onMounted32(update);
     onUnmounted3(update);
     return {};
   }
@@ -18408,7 +18501,7 @@ var _hoisted_424 = {
   key: 0,
   class: "ak-step_title"
 };
-var _hoisted_510 = { class: "ak-step_content" };
+var _hoisted_59 = { class: "ak-step_content" };
 function render122(_ctx, _cache) {
   return _openBlock121(), _createElementBlock107("div", {
     class: _normalizeClass62(_ctx.classes),
@@ -18430,7 +18523,7 @@ function render122(_ctx, _cache) {
           _createTextVNode22(_toDisplayString47(_ctx.title), 1)
         ])
       ])) : _createCommentVNode48("v-if", true),
-      _createElementVNode84("div", _hoisted_510, [
+      _createElementVNode84("div", _hoisted_59, [
         _renderSlot55(_ctx.$slots, "default")
       ])
     ])
@@ -18446,7 +18539,7 @@ var Steps_default = _sfc_script123;
 var Step_default = _sfc_script124;
 
 // vue:./Stepper.vue
-import { onMounted as onMounted32, ref as ref41, defineComponent as defineComponent99, watch as watch37, computed as computed62 } from "vue";
+import { onMounted as onMounted33, ref as ref41, defineComponent as defineComponent99, watch as watch37, computed as computed62 } from "vue";
 
 // packages/ui/src/Stepper/util.ts
 var getClasses20 = (disabled) => {
@@ -18570,7 +18663,7 @@ var _sfc_script126 = defineComponent99({
       updateValue(parseFloat(formValue.value) + nStep.value);
       emit("plusClick", e);
     };
-    onMounted32(() => {
+    onMounted33(() => {
       setInputValue(formValue.value);
     });
     watch37(() => props.modelValue, (val) => {
@@ -18817,8 +18910,8 @@ var _sfc_script128 = defineComponent101({
       });
       isShow = true;
     }
-    function hide() {
-      if (!isShow) {
+    function hide(focus = false) {
+      if (!isShow && !focus) {
         return;
       }
       isShow = false;
@@ -18881,7 +18974,7 @@ var _sfc_script128 = defineComponent101({
           if (isSwipe && translateX.value > buttonsW / 2) {
             show(buttonsW);
           } else {
-            hide();
+            hide(true);
           }
           coords = null;
           e.stopPropagation();
@@ -18950,7 +19043,7 @@ var SwipeCell_default = _sfc_script128;
 var SwiperItem_default = _sfc_script75;
 
 // vue:./Switch.vue
-import { onMounted as onMounted33, ref as ref43, watch as watch38, defineComponent as defineComponent102, computed as computed64 } from "vue";
+import { onMounted as onMounted34, ref as ref43, watch as watch38, defineComponent as defineComponent102, computed as computed64 } from "vue";
 
 // packages/ui/src/Switch/util.ts
 var getClasses21 = (disabled) => {
@@ -19004,7 +19097,7 @@ var _sfc_script129 = defineComponent102({
       }
       emit("change", value);
     }
-    onMounted33(() => {
+    onMounted34(() => {
       setInputChecked(checked.value);
     });
     watch38(() => props.modelValue, (val) => {
@@ -19157,6 +19250,7 @@ var _sfc_script131 = defineComponent104({
     animated: emitChangeValidator
   },
   setup(props, { emit, expose }) {
+    const { printListItemNotFoundError } = useException();
     const vertical = ref44(!!props.initialVertical);
     const swiperRef = shallowRef37(null);
     const tabList = ref44([]);
@@ -19200,7 +19294,7 @@ var _sfc_script131 = defineComponent104({
     function _switchTo(name, isProp) {
       const newIndex = getActiveIndexByName(name);
       if (newIndex === -1) {
-        console.error(new exception_default('The "TabItem[name]" not found.', isProp ? exception_default.TYPE.PROP_ERROR : exception_default.TYPE.PARAM_ERROR, "TabView"));
+        printListItemNotFoundError("name", isProp);
       } else if (newIndex !== activeIndex.value) {
         if (isProp) {
           activeIndex.value = newIndex;
@@ -19214,7 +19308,7 @@ var _sfc_script131 = defineComponent104({
       if (index >= 0 && index < tabList.value.length) {
         (_a = swiperRef.value) == null ? void 0 : _a.swipeTo(index);
       } else {
-        console.error(new exception_default('The "TabItem[index]" not found.', exception_default.TYPE.PARAM_ERROR, "TabView"));
+        printListItemNotFoundError("index");
       }
     }
     provide15("akTabViewVertical", vertical.value);
@@ -19611,7 +19705,7 @@ var _hoisted_1105 = {
 var _hoisted_280 = /* @__PURE__ */ _createElementVNode91("div", { class: "ak-timeline-item_line" }, null, -1);
 var _hoisted_367 = { class: "ak-timeline-item_index" };
 var _hoisted_425 = { class: "ak-timeline-item_inner" };
-var _hoisted_511 = {
+var _hoisted_510 = {
   key: 0,
   class: "ak-timeline-item_title"
 };
@@ -19628,7 +19722,7 @@ function render134(_ctx, _cache) {
       ])
     ]),
     _createElementVNode91("div", _hoisted_425, [
-      _ctx.title || _ctx.$slots.title ? (_openBlock132(), _createElementBlock118("div", _hoisted_511, [
+      _ctx.title || _ctx.$slots.title ? (_openBlock132(), _createElementBlock118("div", _hoisted_510, [
         _renderSlot61(_ctx.$slots, "title", {}, () => [
           _createTextVNode24(_toDisplayString52(_ctx.title), 1)
         ])
@@ -19761,21 +19855,5 @@ export {
   TimelineItem_default as AkTimelineItem,
   Toast_default as AkToast,
   VirtualList_default as AkVirtualList,
-  src_default as default,
-  hideLoading,
-  hideNotify,
-  hideToast,
-  showActionSheet,
-  showCalendar,
-  showCascader,
-  showDatePicker,
-  showDialog,
-  showImagePreview,
-  showLoading,
-  showNotify,
-  showPicker,
-  showPopDialog,
-  showPopMenu,
-  showPopover,
-  showToast
+  src_default as default
 };
