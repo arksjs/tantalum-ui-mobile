@@ -112,10 +112,18 @@ export function useDbclick(
   })
 }
 
-export function useBlur(callback: Noop) {
-  const elRef = shallowRef(document.documentElement)
-
-  const { off } = useEvent(elRef, 'click', callback)
+export function useBlur(elRef: ElRef, callback: Noop) {
+  const { off } = useEvent(elRef, touchEvent.touchend, callback)
 
   return { off }
+}
+
+export function useDocumentBlur(callback: Noop) {
+  const elRef = shallowRef<HTMLElement | null>(null)
+
+  onMounted(() => {
+    elRef.value = document.documentElement
+  })
+
+  return useBlur(elRef, callback)
 }

@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" @click="onClick" ref="root">
+  <div :class="classes" ref="root">
     <div class="ak-swiper_list" ref="listEl">
       <slot></slot>
     </div>
@@ -39,13 +39,13 @@ import {
   shallowRef
 } from 'vue'
 import { Icon } from '../Icon'
-import { isNumber } from '../helpers/util'
+import { isNumber, returnTrue } from '../helpers/util'
 import { useList } from '../hooks/use-list'
 import { getStretchOffset } from '../helpers/animation'
 import { useTouch } from '../hooks/use-touch'
 import { CSSProperties2CssText } from '../helpers/dom'
 import { emitChangeValidator } from './props'
-import { colorValidator, emitEventValidator } from '../helpers/validator'
+import { colorValidator } from '../helpers/validator'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import RightOutlined from '../Icon/icons/RightOutlined'
 import { useResizeObserver } from '../hooks/use-resize-observer'
@@ -124,7 +124,7 @@ export default defineComponent({
     'update:activeIndex': activeIndex => isNumber(activeIndex),
     activeIndexChange: emitChangeValidator,
     animated: emitChangeValidator,
-    click: emitEventValidator
+    click: returnTrue
   } as PropsToEmits<SwiperEmits>,
   setup(props, { emit, expose }) {
     const { printListItemNotFoundError } = useException()
@@ -271,12 +271,6 @@ export default defineComponent({
 
     function onSlide(toIndex: number, fromIndex: number) {
       emit('animated', toIndex, fromIndex)
-    }
-
-    function onClick(e: MouseEvent) {
-      if (!horizontal) {
-        emit('click', e)
-      }
     }
 
     /**
@@ -482,19 +476,11 @@ export default defineComponent({
     useResizeObserver(root, setSlideStyle)
 
     let coords: SwiperCoords | null
-    let inMove = false
 
     useTouch({
       el: root,
       // 滑动开始事件-记录坐标
       onTouchStart(e) {
-        // 禁止图片拖拽
-        if (e.target.tagName === 'IMG') {
-          e.target.ondragstart = function () {
-            return false
-          }
-        }
-        // e.preventDefault()
         if (playing) {
           return
         }
@@ -502,7 +488,6 @@ export default defineComponent({
         // 清除幻灯片
         stop()
 
-        inMove = true
         horizontal = null
         // 记录坐标
 
@@ -519,7 +504,8 @@ export default defineComponent({
        * 滑动过程事件-判断横竖向，跟随滑动
        */
       onTouchMove(e) {
-        if (!inMove || !coords) {
+        if (!coords || horizontal === false) {
+          // 确定非水平移动，就不需要计算数据了
           return
         }
 
@@ -538,12 +524,6 @@ export default defineComponent({
         const absY = Math.abs(offsetY)
 
         if (horizontal === null) {
-          // 首次
-          if (offsetX !== 0) {
-            // bug hack
-            e.preventDefault()
-          }
-        } else {
           // 首次move确认是否水平移动
           if (absX > absY) {
             horizontal = true
@@ -551,7 +531,6 @@ export default defineComponent({
               e.preventDefault()
             }
           } else {
-            coords = null
             horizontal = false
             return
           }
@@ -583,13 +562,10 @@ export default defineComponent({
        * 滑动结束事件-滑到指定位置，重置状态
        */
       onTouchEnd(e) {
-        if (!inMove) {
-          return
-        }
-
-        inMove = false
-
-        if (coords) {
+        if (!horizontal) {
+          // 未确定或者非水平移动情况，返回click事件
+          emit('click')
+        } else if (coords) {
           const offsetX =
             direction === 'x'
               ? coords.startX - coords.stopX
@@ -614,8 +590,9 @@ export default defineComponent({
             }
 
             goTo(transIndex)
-            coords = null
           }
+
+          coords = null
         }
 
         start()
@@ -658,7 +635,6 @@ export default defineComponent({
     return {
       root,
       listEl,
-      onClick,
       index,
       pagination,
       update,

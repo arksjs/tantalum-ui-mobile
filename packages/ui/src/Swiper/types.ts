@@ -1,4 +1,4 @@
-import type { Noop, OnClick } from '../helpers/types'
+import type { Noop } from '../helpers/types'
 
 export type OnActiveIndexChange = (index: number, fromIndex: number) => void
 
@@ -31,7 +31,7 @@ export interface SwiperEmits {
   onUpdateActiveIndex?: (index: number) => void
   onActiveIndexChange?: OnActiveIndexChange
   onAnimated?: OnAnimated
-  onClick?: OnClick
+  onClick?: Noop
 }
 
 export type SwiperItemProps = {

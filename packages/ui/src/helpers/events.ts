@@ -58,6 +58,7 @@ export const touchEvent = {
     if (touchend === 'mouseup') {
       $el.addEventListener('mouseleave', object, touchOptions)
     }
+    $el.addEventListener('dragstart', object, touchOptions)
   },
   removeListeners($el: HTMLElement | Document, object: EventListenerObject) {
     $el.removeEventListener(touchstart, object, false)
@@ -67,6 +68,7 @@ export const touchEvent = {
     if (touchend === 'mouseup') {
       $el.removeEventListener('mouseleave', object, false)
     }
+    $el.removeEventListener('dragstart', object, false)
   },
   getTouch(e: Event) {
     const { pageX, pageY, clientX, clientY } =
