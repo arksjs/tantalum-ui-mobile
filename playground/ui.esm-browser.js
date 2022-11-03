@@ -2496,6 +2496,7 @@ var touchEvent = {
     if (touchend === "mouseup") {
       $el.addEventListener("mouseleave", object, touchOptions);
     }
+    $el.addEventListener("dragstart", object, touchOptions);
   },
   removeListeners($el, object) {
     $el.removeEventListener(touchstart, object, false);
@@ -2504,6 +2505,7 @@ var touchEvent = {
     if (touchend === "mouseup") {
       $el.removeEventListener("mouseleave", object, false);
     }
+    $el.removeEventListener("dragstart", object, false);
   },
   getTouch(e) {
     const { pageX, pageY, clientX, clientY } = touchstart === "touchstart" ? e.targetTouches[0] || {
@@ -2634,10 +2636,16 @@ function useDbclick(elRef, callback) {
     };
   });
 }
-function useBlur(callback) {
-  const elRef = shallowRef(document.documentElement);
-  const { off: off2 } = useEvent(elRef, "click", callback);
+function useBlur(elRef, callback) {
+  const { off: off2 } = useEvent(elRef, touchEvent.touchend, callback);
   return { off: off2 };
+}
+function useDocumentBlur(callback) {
+  const elRef = shallowRef(null);
+  onMounted2(() => {
+    elRef.value = document.documentElement;
+  });
+  return useBlur(elRef, callback);
 }
 
 // vue:./NavBar.vue
@@ -3013,7 +3021,7 @@ function usePopup(props, ctx, useOptions) {
     emitHook("confirm", detail);
     hide("afterConfirm");
   };
-  useBlur(() => {
+  useDocumentBlur(() => {
     if (enableBlurCancel && isShow.value) {
       customCancel("blur");
     }
@@ -7357,6 +7365,9 @@ function useTab(props, { emit, expose }, { tabName }) {
       }
     });
   }
+  if (tabName === "Tab") {
+    useResizeObserver(listEl, updateUnderline);
+  }
   watch11(() => props.modelValue, (val) => val != null && _switchTo(val, true));
   watch11(() => props.options, updateOptions, {
     deep: true,
@@ -11119,21 +11130,32 @@ function useTouch({
   onTouchMove,
   onTouchEnd
 }) {
+  let isTouching = false;
   const object = {
     handleEvent(e) {
       e.touchObject = getTouch(e);
       switch (e.type) {
         case touchstart2:
+          isTouching = true;
           onTouchStart(e);
           break;
         case touchmove2:
-          onTouchMove(e);
+          isTouching && onTouchMove(e);
           break;
         case touchend2:
-          onTouchEnd(e);
+          if (isTouching) {
+            isTouching = false;
+            onTouchEnd(e);
+          }
           break;
         case "mouseleave":
-          onTouchEnd(e);
+          if (isTouching) {
+            isTouching = false;
+            onTouchEnd(e);
+          }
+          break;
+        case "dragstart":
+          e.preventDefault();
           break;
         default:
           break;
@@ -12129,7 +12151,7 @@ var _sfc_script74 = defineComponent57({
     "update:activeIndex": (activeIndex) => isNumber(activeIndex),
     activeIndexChange: emitChangeValidator,
     animated: emitChangeValidator,
-    click: emitEventValidator
+    click: returnTrue
   },
   setup(props, { emit, expose }) {
     const { printListItemNotFoundError } = useException();
@@ -12224,11 +12246,6 @@ var _sfc_script74 = defineComponent57({
     }
     function onSlide(toIndex, fromIndex) {
       emit("animated", toIndex, fromIndex);
-    }
-    function onClick(e) {
-      if (!horizontal) {
-        emit("click", e);
-      }
     }
     function goTo(toIndex, animated = true) {
       const lastIndex = getLastIndex();
@@ -12352,20 +12369,13 @@ var _sfc_script74 = defineComponent57({
     const { listEl, update } = useList("swiper", resetItems);
     useResizeObserver(root, setSlideStyle);
     let coords;
-    let inMove = false;
     useTouch({
       el: root,
       onTouchStart(e) {
-        if (e.target.tagName === "IMG") {
-          e.target.ondragstart = function() {
-            return false;
-          };
-        }
         if (playing) {
           return;
         }
         stop();
-        inMove = true;
         horizontal = null;
         coords = {
           startX: e.touchObject.pageX,
@@ -12377,7 +12387,7 @@ var _sfc_script74 = defineComponent57({
         };
       },
       onTouchMove(e) {
-        if (!inMove || !coords) {
+        if (!coords || horizontal === false) {
           return;
         }
         coords.stopX = e.touchObject.pageX;
@@ -12390,17 +12400,12 @@ var _sfc_script74 = defineComponent57({
         const absX = Math.abs(offsetX);
         const absY = Math.abs(offsetY);
         if (horizontal === null) {
-          if (offsetX !== 0) {
-            e.preventDefault();
-          }
-        } else {
           if (absX > absY) {
             horizontal = true;
             if (offsetX !== 0) {
               e.preventDefault();
             }
           } else {
-            coords = null;
             horizontal = false;
             return;
           }
@@ -12421,11 +12426,9 @@ var _sfc_script74 = defineComponent57({
         }
       },
       onTouchEnd(e) {
-        if (!inMove) {
-          return;
-        }
-        inMove = false;
-        if (coords) {
+        if (!horizontal) {
+          emit("click");
+        } else if (coords) {
           const offsetX = direction === "x" ? coords.startX - coords.stopX : coords.startY - coords.stopY;
           let absX = Math.abs(offsetX);
           const active = index.value;
@@ -12444,8 +12447,8 @@ var _sfc_script74 = defineComponent57({
               transIndex = active;
             }
             goTo(transIndex);
-            coords = null;
           }
+          coords = null;
         }
         start();
       }
@@ -12475,7 +12478,6 @@ var _sfc_script74 = defineComponent57({
     return {
       root,
       listEl,
-      onClick,
       index,
       pagination,
       update,
@@ -12500,7 +12502,6 @@ function render73(_ctx, _cache) {
   const _component_Icon = _resolveComponent36("Icon");
   return _openBlock72(), _createElementBlock62("div", {
     class: _normalizeClass34(_ctx.classes),
-    onClick: _cache[2] || (_cache[2] = (...args) => _ctx.onClick && _ctx.onClick(...args)),
     ref: "root"
   }, [
     _createElementVNode47("div", _hoisted_154, [
@@ -18910,7 +18911,7 @@ var _sfc_script128 = defineComponent101({
       });
       isShow = true;
     }
-    function hide(focus = false) {
+    function hide(focus, source) {
       if (!isShow && !focus) {
         return;
       }
@@ -18926,7 +18927,7 @@ var _sfc_script128 = defineComponent101({
         item: cloneData(item),
         index
       });
-      hide();
+      hide(false, "buttonClick");
     }
     const buttons2 = computed63(() => getButtons(props.buttons));
     useTouch({
@@ -18974,7 +18975,7 @@ var _sfc_script128 = defineComponent101({
           if (isSwipe && translateX.value > buttonsW / 2) {
             show(buttonsW);
           } else {
-            hide(true);
+            hide(true, "touch");
           }
           coords = null;
           e.stopPropagation();
@@ -18985,7 +18986,7 @@ var _sfc_script128 = defineComponent101({
       translateX: translateX.value,
       duration: duration.value
     }));
-    useBlur(hide);
+    useDocumentBlur(() => hide(false, "blur"));
     useStop(buttonsEl, "click");
     return {
       root,
