@@ -5,6 +5,10 @@
   position: relative;
   box-sizing: border-box;
 
+  // fix firefox
+  scrollbar-width: none;
+
+  // fix other
   &::-webkit-scrollbar {
     display: none;
   }
