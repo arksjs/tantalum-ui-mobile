@@ -15,7 +15,7 @@ import { getStyles } from './util'
 import { useFrameTask } from '../hooks/use-frame-task'
 import { useException } from '../hooks/use-exception'
 import { useOnce } from '../hooks/use-once'
-import { useResizeObserver } from '@/hooks/use-resize-observer'
+import { useResizeObserver } from '../hooks/use-resize-observer'
 
 interface UseOptions {
   tabName: string
