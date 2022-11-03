@@ -14,7 +14,8 @@ import type { tabEmits, tabProps } from './tab'
 import { getStyles } from './util'
 import { useFrameTask } from '../hooks/use-frame-task'
 import { useException } from '../hooks/use-exception'
-import { useOnce } from '@/hooks/use-once'
+import { useOnce } from '../hooks/use-once'
+import { useResizeObserver } from '../hooks/use-resize-observer'
 
 interface UseOptions {
   tabName: string
@@ -264,6 +265,10 @@ export function useTab(
         underlineEl.value.style.transform = `translate3d(${x}px, 0, 0)`
       }
     })
+  }
+
+  if (tabName === 'Tab') {
+    useResizeObserver(listEl, updateUnderline)
   }
 
   watch(

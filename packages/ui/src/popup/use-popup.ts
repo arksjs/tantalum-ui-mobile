@@ -16,7 +16,7 @@ import type {
   PopupRef
 } from './types'
 import type { Noop, PropsToEmits } from '../helpers/types'
-import { useBlur } from '../hooks/use-event'
+import { useDocumentBlur } from '../hooks/use-event'
 import { getNewZIndex, getPopupStyles } from './util'
 
 type LifeName =
@@ -207,7 +207,7 @@ export function usePopup(
     hide('afterConfirm')
   }
 
-  useBlur(() => {
+  useDocumentBlur(() => {
     if (enableBlurCancel && isShow.value) {
       customCancel('blur')
     }

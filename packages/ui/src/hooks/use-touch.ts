@@ -35,22 +35,35 @@ export function useTouch({
   onTouchMove,
   onTouchEnd
 }: UseOptions) {
+  let isTouching = false
+
   const object = {
     handleEvent(e: UseTouchEvent) {
       e.touchObject = getTouch(e)
 
       switch (e.type) {
         case touchstart:
+          isTouching = true
           onTouchStart(e)
           break
         case touchmove:
-          onTouchMove(e)
+          isTouching && onTouchMove(e)
           break
         case touchend:
-          onTouchEnd(e)
+          if (isTouching) {
+            isTouching = false
+            onTouchEnd(e)
+          }
           break
         case 'mouseleave':
-          onTouchEnd(e)
+          if (isTouching) {
+            isTouching = false
+            onTouchEnd(e)
+          }
+          break
+        case 'dragstart':
+          // 禁用拖拽事件
+          e.preventDefault()
           break
         default:
           break

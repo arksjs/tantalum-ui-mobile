@@ -33,7 +33,7 @@ import { useTouch } from '../hooks/use-touch'
 import { getStretchOffset } from '../helpers/animation'
 import type { PropsToEmits } from '../helpers/types'
 import { getButtons, getInnerStyles, getButtonStyles } from './util'
-import { useStop, useBlur } from '../hooks/use-event'
+import { useStop, useDocumentBlur } from '../hooks/use-event'
 
 interface SwipeCellCoords {
   startX: number
@@ -81,7 +81,8 @@ export default defineComponent({
       isShow = true
     }
 
-    function hide(focus = false) {
+    function hide(focus: boolean, source: string) {
+      // console.log(isShow, focus, source)
       if (!isShow && !focus) {
         return
       }
@@ -101,7 +102,7 @@ export default defineComponent({
         item: cloneData(item),
         index
       })
-      hide()
+      hide(false, 'buttonClick')
     }
 
     const buttons2 = computed(() => getButtons(props.buttons))
@@ -168,7 +169,7 @@ export default defineComponent({
             show(buttonsW)
           } else {
             // 画出来不够，要强制收回去
-            hide(true)
+            hide(true, 'touch')
           }
 
           coords = null
@@ -184,7 +185,7 @@ export default defineComponent({
       })
     )
 
-    useBlur(hide)
+    useDocumentBlur(() => hide(false, 'blur'))
     useStop(buttonsEl, 'click')
 
     return {
