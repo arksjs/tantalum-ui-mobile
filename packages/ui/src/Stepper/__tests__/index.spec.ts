@@ -17,9 +17,9 @@ describe('Stepper', () => {
     })
 
     expect(wrapper.classes()).toContain('disabled')
-    expect(wrapper.find('.ak-stepper_input').attributes('disabled')).toBe('')
+    expect(wrapper.find('.ta-stepper_input').attributes('disabled')).toBe('')
 
-    const $buttons = wrapper.findAllComponents('.ak-button')
+    const $buttons = wrapper.findAllComponents('.ta-button')
 
     expect($buttons[0].attributes('disabled')).toBe('')
     expect($buttons[1].attributes('disabled')).toBe('')
@@ -33,7 +33,7 @@ describe('Stepper', () => {
       }
     })
 
-    const $buttons = wrapper.findAllComponents('.ak-button')
+    const $buttons = wrapper.findAllComponents('.ta-button')
 
     expect($buttons[0].attributes('disabled')).toBe('') // 当前处于最小值
     expect($buttons[1].attributes('disabled')).toBe('')
@@ -72,7 +72,7 @@ describe('Stepper', () => {
     expect(wrapper.vm.formValue).toBe('1')
 
     // 按钮操作
-    const $buttons = wrapper.findAllComponents('.ak-button')
+    const $buttons = wrapper.findAllComponents('.ta-button')
 
     await $buttons[0].trigger('click')
     expect(wrapper.vm.formValue).toBe('1')
@@ -108,7 +108,7 @@ describe('Stepper', () => {
     expect(wrapper.vm.formValue).toBe('1')
 
     // 按钮操作
-    const $buttons = wrapper.findAllComponents('.ak-button')
+    const $buttons = wrapper.findAllComponents('.ta-button')
 
     await $buttons[1].trigger('click')
     expect(wrapper.vm.formValue).toBe('1.1')

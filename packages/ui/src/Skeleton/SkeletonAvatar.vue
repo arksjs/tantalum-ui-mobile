@@ -9,7 +9,7 @@ import { useConsumer } from './context'
 import { getAvatarClasses } from './util'
 
 export default defineComponent({
-  name: 'ak-skeleton-avatar',
+  name: 'ta-skeleton-avatar',
   props: {
     // 是否显示动画
     animated: propAnimated,

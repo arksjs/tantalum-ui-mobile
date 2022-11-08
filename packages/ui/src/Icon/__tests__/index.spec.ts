@@ -45,7 +45,7 @@ describe('Icon', () => {
       }
     })
 
-    expect(wrapper.attributes('style')).toContain('--ak-icon-size: 40px;')
+    expect(wrapper.attributes('style')).toContain('--ta-icon-size: 40px;')
   })
 
   test('prop color', () => {
@@ -56,6 +56,6 @@ describe('Icon', () => {
       }
     })
 
-    expect(wrapper.attributes('style')).toContain('--ak-icon-color: #6667AB;')
+    expect(wrapper.attributes('style')).toContain('--ta-icon-color: #6667AB;')
   })
 })

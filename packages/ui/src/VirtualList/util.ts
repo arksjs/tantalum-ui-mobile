@@ -1,7 +1,7 @@
 import type { CSSProperties } from '../helpers/types'
 
 export const getClasses = (horizontal: boolean) => [
-  'ak-virtual-list',
+  'ta-virtual-list',
   { horizontal }
 ]
 

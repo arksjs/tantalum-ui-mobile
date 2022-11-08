@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-pop-menu {
+.ta-pop-menu {
   &_list {
     list-style: none;
     padding: 0;
@@ -33,9 +33,9 @@
       box-sizing: border-box;
       justify-content: center;
 
-      .ak-icon {
-        --ak-icon-size: 18px;
-        --ak-icon-color: #{$title-color};
+      .ta-icon {
+        --ta-icon-size: 18px;
+        --ta-icon-color: #{$title-color};
 
         vertical-align: middle;
         margin: 0 12px 0 0;
@@ -52,7 +52,7 @@
     }
 
     &.has--icon {
-      .ak-pop-menu_item-inner {
+      .ta-pop-menu_item-inner {
         justify-content: flex-start;
         padding: 0 20px;
       }

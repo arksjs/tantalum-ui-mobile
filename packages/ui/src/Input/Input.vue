@@ -1,11 +1,11 @@
 <template>
   <label :class="classes">
-    <div class="ak-input_prepend" v-if="$slots.prepend">
+    <div class="ta-input_prepend" v-if="$slots.prepend">
       <slot name="prepend"></slot>
     </div>
     <textarea
       v-if="type === 'textarea'"
-      class="ak-input_input ak-input_textarea"
+      class="ta-input_input ta-input_textarea"
       :name="name"
       :disabled="disabled"
       :placeholder="placeholder"
@@ -19,7 +19,7 @@
     ></textarea>
     <input
       v-else
-      class="ak-input_input"
+      class="ta-input_input"
       :name="name"
       :type="typeMode.inputType"
       :inputmode="typeMode.inputMode"
@@ -35,16 +35,16 @@
       @compositionend="onCompositionEnd"
       ref="inputEl"
     />
-    <span class="ak-input_limit" v-if="showLimit && maxLength > 0"
+    <span class="ta-input_limit" v-if="showLimit && maxLength > 0"
       >{{ inputValue.length }}/{{ maxLength }}</span
     >
     <Icon
       v-if="showClear && isShowClear"
-      class="ak-input_clear"
+      class="ta-input_clear"
       :icon="CloseCircleFilled"
       @mousedown.prevent="onClear"
     />
-    <div class="ak-input_append" v-if="$slots.append">
+    <div class="ta-input_append" v-if="$slots.append">
       <slot name="append"></slot>
     </div>
   </label>
@@ -66,7 +66,7 @@ import type { OnFocus, PropsToEmits } from '../helpers/types'
 import type { InputEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-input',
+  name: 'ta-input',
   components: { Icon },
   props: {
     ...formItemProps,

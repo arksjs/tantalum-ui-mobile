@@ -40,51 +40,51 @@ export default {
 </script>
 
 <template>
-  <ak-group title="initialMode=simple">
-    <ak-cell label="默认">
-      <ak-calendar v-model="simpleValue" />
-    </ak-cell>
-    <ak-cell label="showConfirm=true">
-      <ak-calendar showConfirm />
-    </ak-cell>
-    <ak-cell label="showClose=true">
-      <ak-calendar showClose />
-    </ak-cell>
-    <ak-cell label="firstDayOfWeek=1">
-      <ak-calendar :firstDayOfWeek="1" />
-    </ak-cell>
-    <ak-cell label="minDate/maxDate +-1month">
-      <ak-calendar :minDate="minDate" :maxDate="maxDate" />
-    </ak-cell>
-    <ak-cell label="formatter/parser">
-      <ak-calendar
+  <ta-group title="initialMode=simple">
+    <ta-cell label="默认">
+      <ta-calendar v-model="simpleValue" />
+    </ta-cell>
+    <ta-cell label="showConfirm=true">
+      <ta-calendar showConfirm />
+    </ta-cell>
+    <ta-cell label="showClose=true">
+      <ta-calendar showClose />
+    </ta-cell>
+    <ta-cell label="firstDayOfWeek=1">
+      <ta-calendar :firstDayOfWeek="1" />
+    </ta-cell>
+    <ta-cell label="minDate/maxDate +-1month">
+      <ta-calendar :minDate="minDate" :maxDate="maxDate" />
+    </ta-cell>
+    <ta-cell label="formatter/parser">
+      <ta-calendar
         :formatter="formatter"
         :parser="parser"
         v-model="formatValue"
         @change="onChange"
       />
-    </ak-cell>
-    <ak-cell label="禁用">
-      <ak-calendar v-model="simpleValue" disabled />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="initialMode=range">
-    <ak-cell label="默认">
-      <ak-calendar initialMode="range" v-model="rangeValue" />
-    </ak-cell>
-    <ak-cell label="allowSameDay">
-      <ak-calendar initialMode="range" allowSameDay />
-    </ak-cell>
-    <ak-cell label="maxRange=5">
-      <ak-calendar initialMode="range" :maxRange="5" />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell label="change">
-      <ak-calendar @change="onChange" />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="API">
-    <ak-cell label="showCalendar" isLink @click="onCallApi()" />
-  </ak-group>
+    </ta-cell>
+    <ta-cell label="禁用">
+      <ta-calendar v-model="simpleValue" disabled />
+    </ta-cell>
+  </ta-group>
+  <ta-group title="initialMode=range">
+    <ta-cell label="默认">
+      <ta-calendar initialMode="range" v-model="rangeValue" />
+    </ta-cell>
+    <ta-cell label="allowSameDay">
+      <ta-calendar initialMode="range" allowSameDay />
+    </ta-cell>
+    <ta-cell label="maxRange=5">
+      <ta-calendar initialMode="range" :maxRange="5" />
+    </ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell label="change">
+      <ta-calendar @change="onChange" />
+    </ta-cell>
+  </ta-group>
+  <ta-group title="API">
+    <ta-cell label="showCalendar" isLink @click="onCallApi()" />
+  </ta-group>
 </template>

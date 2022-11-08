@@ -23,7 +23,7 @@ export const getClasses = ({
   disabled?: boolean
   readonly?: boolean
 }) => {
-  return ['ak-rate', { disabled: !!disabled, readonly: !!readonly }]
+  return ['ta-rate', { disabled: !!disabled, readonly: !!readonly }]
 }
 
 export const getStyles = ({
@@ -37,11 +37,11 @@ export const getStyles = ({
 }) => {
   const obj: CSSProperties = {}
 
-  color && (obj['--ak-color'] = color)
-  activeColor && (obj['--ak-active-color'] = activeColor)
+  color && (obj['--ta-color'] = color)
+  activeColor && (obj['--ta-active-color'] = activeColor)
   size != null &&
     size > 0 &&
-    (obj['--ak-size'] = getNumber(size as string) + 'px')
+    (obj['--ta-size'] = getNumber(size as string) + 'px')
 
   return obj
 }

@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkCollapse, AkCollapseItem } from 'arkui-mobile-vue'
+import { TaCollapse, TaCollapseItem } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkCollapse, AkCollapseItem } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { CollapseOnChange, CollapseItemOnToggle } from 'arkui-mobile-vue'
+import type { CollapseOnChange, CollapseItemOnToggle } from 'tantalum-ui-mobile'
 ```
 
 ## Collapse Props
@@ -42,23 +42,23 @@ import type { CollapseOnChange, CollapseItemOnToggle } from 'arkui-mobile-vue'
 注：其中只可放置 [CollapseItem](./Collapse.md#collapseitem-折叠面板子项) 组件，否则会导致未定义的行为。
 
 ```vue
-<ak-collapse>
-  <ak-collapse-item title="标题1" name="row1">
+<ta-collapse>
+  <ta-collapse-item title="标题1" name="row1">
     <div class="pad">
     代码是写出来给人看的，附带能在机器上运行
     </div>
-  </ak-collapse-item>
-  <ak-collapse-item title="标题2" name="row2">
+  </ta-collapse-item>
+  <ta-collapse-item title="标题2" name="row2">
     <div class="pad">
     代码是写出来给人看的，附带能在机器上运行
     </div>
-  </ak-collapse-item>
-  <ak-collapse-item title="标题3" name="row3">
+  </ta-collapse-item>
+  <ta-collapse-item title="标题3" name="row3">
     <div class="pad">
     代码是写出来给人看的，附带能在机器上运行
     </div>
-  </ak-collapse-item>
-</ak-collapse>
+  </ta-collapse-item>
+</ta-collapse>
 ```
 
 ## CollapseItem Props

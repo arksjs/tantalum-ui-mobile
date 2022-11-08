@@ -6,7 +6,7 @@ import {
 } from '../hooks/use-child-count'
 
 const KEY = 'Button'
-const CONTEXT_KEY = `ak${KEY}GroupOptions`
+const CONTEXT_KEY = `ta${KEY}GroupOptions`
 
 export function useButtonProvider(props: ButtonGroupProps) {
   provide<ButtonGroupProps>(CONTEXT_KEY, props)

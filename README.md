@@ -1,4 +1,4 @@
-# ArkUI
+# Tantalum UI
 
 基于 Vue3 移动端组件库。
 
@@ -14,11 +14,11 @@
 
 ## 参考文档
 
-[Demo](https://arksjs.github.io/arkui-mobile-vue/demo/)
+[Demo](https://arksjs.github.io/tantalum-ui-mobile/demo/)
 
-[Docs](https://arksjs.github.io/arkui-mobile-vue/)
+[Docs](https://arksjs.github.io/tantalum-ui-mobile/)
 
-[Playground](https://arksjs.github.io/arkui-mobile-vue/playground/)
+[Playground](https://arksjs.github.io/tantalum-ui-mobile/playground/)
 
 ## 支持环境
 
@@ -30,4 +30,4 @@ Node.js 12.0+
 
 ## LICENSE
 
-[MIT](https://github.com/arksjs/arkui-mobile-vue/blob/main/LICENSE)
+[MIT](https://github.com/arksjs/tantalum-ui-mobile/blob/main/LICENSE)

@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-collapse">
+  <div class="ta-collapse">
     <slot></slot>
   </div>
 </template>
@@ -18,7 +18,7 @@ import type { PropsToEmits } from '../helpers/types'
 import { stringOrStringArrayValidator } from '../helpers/validator'
 
 export default defineComponent({
-  name: 'ak-collapse',
+  name: 'ta-collapse',
   props: {
     modelValue: {
       type: [String, Array] as PropType<string | string[]>,
@@ -98,7 +98,7 @@ export default defineComponent({
       deep: true
     })
 
-    provide('akCollapseChange', onChange)
+    provide('taCollapseChange', onChange)
 
     return {}
   }

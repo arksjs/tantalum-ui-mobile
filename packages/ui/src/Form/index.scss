@@ -1,12 +1,12 @@
 @import '../style/var.scss';
 
-.ak-form-footer {
+.ta-form-footer {
   padding: 8px 16px;
   display: flex;
 }
 
-.ak-form-item {
-  &.ak-cell .ak-cell_body {
+.ta-form-item {
+  &.ta-cell .ta-cell_body {
     color: $danger-color;
     list-style: none;
     padding: 0 0 12px;

@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkIcon } from 'arkui-mobile-vue'
+import { TaIcon } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -53,7 +53,7 @@ export default defineConfig({
 <template>
   <MyIcon />
   // or:
-  <ak-icon :icon="MyIcon">
+  <ta-icon :icon="MyIcon">
 </template>
 
 <script setup>
@@ -109,9 +109,9 @@ createApp(App).use(router).mount('#app')
 #### 4. Icon 组件通过展示
 
 ```vue
-<ak-icon icon="icon-homeTab" />
+<ta-icon icon="icon-homeTab" />
 ```
 
 ### 附录：示例图标库
 
-组件示例使用了一套图标库，涵盖了一些日常使用图标，具体效果和使用方式可以查看 [@arksjs/ui-icons](https://github.com/arksjs/arkui-mobile-vue/tree/main/packages/icons)。
+组件示例使用了一套图标库，涵盖了一些日常使用图标，具体效果和使用方式可以查看 [@arksjs/ui-icons](https://github.com/arksjs/tantalum-ui-mobile/tree/main/packages/icons)。

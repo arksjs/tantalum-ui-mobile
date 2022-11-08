@@ -1,7 +1,7 @@
 @import '../style/var.scss';
 @import '../style/mixin.scss';
 
-.ak-swiper {
+.ta-swiper {
   position: relative;
   box-sizing: border-box;
 
@@ -63,8 +63,8 @@
     user-select: none;
     color: #fff;
 
-    .ak-icon {
-      --ak-icon-color: #fff;
+    .ta-icon {
+      --ta-icon-color: #fff;
     }
   }
 
@@ -83,6 +83,6 @@
   }
 }
 
-.ak-swiper-item {
+.ta-swiper-item {
   height: 100%;
 }

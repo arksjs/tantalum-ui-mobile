@@ -1,20 +1,20 @@
 <template>
-  <div class="ak-result" :class="typeClass">
-    <div class="ak-result_header">
-      <Icon class="ak-result_icon" :class="typeClass" :icon="icon" />
-      <div class="ak-result_title" v-if="title">{{ title }}</div>
-      <div class="ak-result_description" v-if="description">
+  <div class="ta-result" :class="typeClass">
+    <div class="ta-result_header">
+      <Icon class="ta-result_icon" :class="typeClass" :icon="icon" />
+      <div class="ta-result_title" v-if="title">{{ title }}</div>
+      <div class="ta-result_description" v-if="description">
         {{ description }}
       </div>
     </div>
     <slot></slot>
-    <div class="ak-result_footer">
-      <AkButton type="primary" @click="onConfirmClick">
+    <div class="ta-result_footer">
+      <TaButton type="primary" @click="onConfirmClick">
         {{ confirmText || locale.resultConfirmText }}
-      </AkButton>
-      <AkButton v-if="showBack" type="default" @click="onCancelClick">
+      </TaButton>
+      <TaButton v-if="showBack" type="default" @click="onCancelClick">
         {{ backText || locale.resultBackText }}
-      </AkButton>
+      </TaButton>
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@
 import { computed, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
-import { Button as AkButton } from '../Button'
+import { Button as TaButton } from '../Button'
 import { createEnumsValidator, emitEventValidator } from '../helpers/validator'
 import { useLocale } from '../ConfigProvider/context'
 import type { ResultEmits, ResultType } from './types'
@@ -43,8 +43,8 @@ const iconMap = new Map<ResultType, IconData>([
 ])
 
 export default defineComponent({
-  name: 'ak-result',
-  components: { Icon, AkButton },
+  name: 'ta-result',
+  components: { Icon, TaButton },
   props: {
     // 类型
     type: {

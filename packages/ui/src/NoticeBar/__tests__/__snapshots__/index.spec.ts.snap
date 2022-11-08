@@ -1,10 +1,10 @@
 // Vitest Snapshot v1
 
 exports[`NoticeBar > snapshot 1`] = `
-"<div class=\\"ak-notice-bar type--default\\">
+"<div class=\\"ta-notice-bar type--default\\">
   <!--v-if-->
-  <div class=\\"ak-notice-bar_content\\">
-    <div class=\\"ak-notice-bar_content-inner\\"></div>
+  <div class=\\"ta-notice-bar_content\\">
+    <div class=\\"ta-notice-bar_content-inner\\"></div>
   </div>
   <!--v-if-->
 </div>"

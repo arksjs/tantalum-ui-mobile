@@ -1,11 +1,11 @@
 <template>
-  <ak-group title="基本用法">
-    <ak-fixed>
+  <ta-group title="基本用法">
+    <ta-fixed>
       <div class="exp-fixed-box">
-        <ak-button type="primary">固定布局</ak-button>
+        <ta-button type="primary">固定布局</ta-button>
       </div>
-    </ak-fixed>
-  </ak-group>
+    </ta-fixed>
+  </ta-group>
 </template>
 
 <script lang="ts">

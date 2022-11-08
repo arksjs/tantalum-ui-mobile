@@ -1,17 +1,17 @@
 <template>
   <div
-    class="ak-circle-progress"
+    class="ta-circle-progress"
     :style="{ fontSize: Math.max(9, nSize * 0.17 * 0.875) + 'px' }"
   >
     <LoadingIcon
-      class="ak-circle-progress_bar"
+      class="ta-circle-progress_bar"
       :size="nSize"
       :rate="rate"
       :strokeWidth="strokeWidth"
       :color="color"
     />
     <div
-      class="ak-circle-progress_text"
+      class="ta-circle-progress_text"
       :style="{ padding: (strokeWidth ?? DEFAULT_STROKE_WIDTH) + 'px' }"
     >
       <slot :progress="progress">
@@ -30,7 +30,7 @@ import { getFontSize } from './util'
 import { DEFAULT_SIZE, DEFAULT_STROKE_WIDTH } from '../LoadingIcon/util'
 
 export default defineComponent({
-  name: 'ak-circle-progress',
+  name: 'ta-circle-progress',
   components: { LoadingIcon },
   props: {
     percentage: {

@@ -3,13 +3,13 @@ import { defineComponent, h } from 'vue'
 import FormFooter from './FormFooter.vue'
 
 export default defineComponent({
-  name: 'ak-form',
+  name: 'ta-form',
   setup(props, { slots }) {
     return () =>
       h(
         'div',
         {
-          className: 'ak-form'
+          className: 'ta-form'
         },
         [
           slots.default && slots.default(),

@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-swiper-item" ref="root">
+  <div class="ta-swiper-item" ref="root">
     <slot></slot>
   </div>
 </template>
@@ -9,7 +9,7 @@ import { defineComponent, shallowRef } from 'vue'
 import { useListItem } from '../hooks/use-list'
 
 export default defineComponent({
-  name: 'ak-swiper-item',
+  name: 'ta-swiper-item',
   setup() {
     const root = shallowRef<HTMLElement | null>(null)
 

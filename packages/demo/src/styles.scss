@@ -1,19 +1,19 @@
 /* stylelint-disable selector-class-pattern */
 
-$primary-color: #{var(--ak-color-primary)};
-$success-color: #{var(--ak-color-success)};
-$warning-color: #{var(--ak-color-warning)};
-$danger-color: #{var(--ak-color-danger)};
-$white-color: #{rgb(var(--ak-grey-1))};
-$background2-color: #{rgb(var(--ak-grey-2))};
-$background-color: #{rgb(var(--ak-grey-3))};
-$divider-color: #{rgb(var(--ak-grey-4))};
-$border-color: #{rgb(var(--ak-grey-5))};
-$font3-color: #{rgb(var(--ak-grey-6))};
-$font2-color: #{rgb(var(--ak-grey-7))};
-$font-color: #{rgb(var(--ak-grey-8))};
-$title-color: #{rgb(var(--ak-grey-10))};
-$black-color: #{rgb(var(--ak-grey-13))};
+$primary-color: #{var(--ta-color-primary)};
+$success-color: #{var(--ta-color-success)};
+$warning-color: #{var(--ta-color-warning)};
+$danger-color: #{var(--ta-color-danger)};
+$white-color: #{rgb(var(--ta-grey-1))};
+$background2-color: #{rgb(var(--ta-grey-2))};
+$background-color: #{rgb(var(--ta-grey-3))};
+$divider-color: #{rgb(var(--ta-grey-4))};
+$border-color: #{rgb(var(--ta-grey-5))};
+$font3-color: #{rgb(var(--ta-grey-6))};
+$font2-color: #{rgb(var(--ta-grey-7))};
+$font-color: #{rgb(var(--ta-grey-8))};
+$title-color: #{rgb(var(--ta-grey-10))};
+$black-color: #{rgb(var(--ta-grey-13))};
 
 body {
   margin: 0;
@@ -80,19 +80,19 @@ body {
     margin: 0 auto;
 
     &.color-primary {
-      --ak-icon-color: #{$primary-color};
+      --ta-icon-color: #{$primary-color};
     }
 
     &.color-success {
-      --ak-icon-color: #{$success-color};
+      --ta-icon-color: #{$success-color};
     }
 
     &.color-warning {
-      --ak-icon-color: #{$warning-color};
+      --ta-icon-color: #{$warning-color};
     }
 
     &.color-danger {
-      --ak-icon-color: #{$danger-color};
+      --ta-icon-color: #{$danger-color};
     }
   }
 
@@ -222,7 +222,7 @@ body {
 
 .exp-range {
   &-box {
-    .ak-cell_content {
+    .ta-cell_content {
       width: 100%;
     }
   }
@@ -236,7 +236,7 @@ body {
 
 .exp-slider {
   &-box {
-    .ak-cell_content {
+    .ta-cell_content {
       width: 100%;
     }
   }
@@ -378,8 +378,8 @@ body {
     background: $primary-color;
     background-image: linear-gradient(
       to bottom,
-      var(--ak-color-primary-light) 0%,
-      var(--ak-color-primary-dark) 100%
+      var(--ta-color-primary-light) 0%,
+      var(--ta-color-primary-dark) 100%
     );
   }
 
@@ -388,8 +388,8 @@ body {
     background: $success-color;
     background-image: linear-gradient(
       to bottom,
-      var(--ak-color-success-light) 0%,
-      var(--ak-color-success-dark) 100%
+      var(--ta-color-success-light) 0%,
+      var(--ta-color-success-dark) 100%
     );
   }
 
@@ -398,8 +398,8 @@ body {
     background: $warning-color;
     background-image: linear-gradient(
       to bottom,
-      var(--ak-color-warning-light) 0%,
-      var(--ak-color-warning-dark) 100%
+      var(--ta-color-warning-light) 0%,
+      var(--ta-color-warning-dark) 100%
     );
   }
 
@@ -408,8 +408,8 @@ body {
     background: $danger-color;
     background-image: linear-gradient(
       to bottom,
-      var(--ak-color-danger-light) 0%,
-      var(--ak-color-danger-dark) 100%
+      var(--ta-color-danger-light) 0%,
+      var(--ta-color-danger-dark) 100%
     );
   }
 }
@@ -419,7 +419,7 @@ body {
 }
 
 .exp-tabBar-custom {
-  --ak-active-color: #{$title-color};
+  --ta-active-color: #{$title-color};
 }
 
 .exp-tabBar-w {
@@ -470,7 +470,7 @@ body {
     display: flex;
     align-items: center;
 
-    .ak-avatar {
+    .ta-avatar {
       margin-left: 12px;
     }
   }
@@ -482,7 +482,7 @@ body {
     padding: 8px 0 0 16px;
     overflow: hidden;
 
-    .ak-avatar {
+    .ta-avatar {
       margin: 0 12px 8px 0;
     }
   }
@@ -563,7 +563,7 @@ body {
       float: left;
       margin: 0 16px 12px 0;
 
-      .ak-circle-progress {
+      .ta-circle-progress {
         float: left;
       }
     }
@@ -580,7 +580,7 @@ body {
 
 .exp-countDown {
   &-box {
-    .ak-button {
+    .ta-button {
       flex-grow: 0;
     }
   }
@@ -602,7 +602,7 @@ body {
 
 .exp-countUp {
   &-box {
-    .ak-button {
+    .ta-button {
       flex-grow: 0;
     }
   }
@@ -614,7 +614,7 @@ body {
 
 .exp-divider-custom-color {
   color: $primary-color;
-  border-color: var(--ak-color-primary-light);
+  border-color: var(--ta-color-primary-light);
 }
 
 .exp-empty-custom-image {
@@ -622,7 +622,7 @@ body {
   height: 214px;
 }
 
-.ak-empty + .ak-empty {
+.ta-empty + .ta-empty {
   border-top: 12px solid $background-color;
 }
 
@@ -696,7 +696,7 @@ body {
     background-clip: content-box;
 
     &:nth-child(even) {
-      background-color: var(--ak-color-primary-light);
+      background-color: var(--ta-color-primary-light);
     }
   }
 }
@@ -777,7 +777,7 @@ body {
   &-sub-component {
     overflow: hidden;
 
-    .ak-icon {
+    .ta-icon {
       float: left;
     }
 
@@ -799,22 +799,22 @@ body {
   &-custom {
     overflow: hidden;
 
-    .ak-skeleton-image {
+    .ta-skeleton-image {
       float: left;
       width: 100px !important;
       height: 100px !important;
     }
 
-    .ak-skeleton-title {
+    .ta-skeleton-title {
       margin-left: 112px;
       margin-bottom: 20px;
     }
 
-    .ak-skeleton-paragraph {
+    .ta-skeleton-paragraph {
       margin-left: 112px;
     }
 
-    .ak-skeleton-button {
+    .ta-skeleton-button {
       margin: 20px 0 0 112px;
     }
   }
@@ -842,7 +842,7 @@ body {
       padding: 12px 0;
       text-align: center;
 
-      .ak-button {
+      .ta-button {
         width: 120px;
       }
     }
@@ -863,7 +863,7 @@ body {
       background-color: $primary-color;
 
       &.even {
-        background-color: var(--ak-color-primary-light);
+        background-color: var(--ta-color-primary-light);
       }
     }
   }
@@ -876,7 +876,7 @@ body {
 
 .exp-tag {
   &-compact-box {
-    .ak-tag + .ak-tag {
+    .ta-tag + .ta-tag {
       margin-left: 2px;
     }
   }
@@ -892,9 +892,9 @@ body {
     justify-content: center;
     align-items: center;
 
-    .ak-icon {
-      --ak-icon-size: 13px;
-      --ak-icon-color: #fff;
+    .ta-icon {
+      --ta-icon-size: 13px;
+      --ta-icon-color: #fff;
     }
   }
 }
@@ -918,7 +918,7 @@ body {
     background-color: $background-color;
     margin: 0;
 
-    .ak-copy {
+    .ta-copy {
       position: absolute;
       right: 0;
       top: 0;

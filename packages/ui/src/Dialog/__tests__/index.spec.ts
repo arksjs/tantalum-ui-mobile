@@ -24,7 +24,7 @@ describe('Dialog', () => {
         content
       }
     })
-    expect(wrapper.find('.ak-dialog_content').text()).toBe(content)
+    expect(wrapper.find('.ta-dialog_content').text()).toBe(content)
   })
 
   test.concurrent('showCancel=false', async () => {

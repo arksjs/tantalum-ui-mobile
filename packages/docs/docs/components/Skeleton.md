@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkSkeleton } from 'arkui-mobile-vue'
+import { TaSkeleton } from 'tantalum-ui-mobile'
 ```
 
 如果想要自定义布局，可以再引入子组件：
@@ -21,7 +21,7 @@ import {
   SkeletonTitle,
   SkeletonParagraph,
   SkeletonButton
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -31,7 +31,10 @@ import {
 组件导出的类型定义：
 
 ```ts
-import type { SkeletonAvatarShape, SkeletonButtonShape } from 'arkui-mobile-vue'
+import type {
+  SkeletonAvatarShape,
+  SkeletonButtonShape
+} from 'tantalum-ui-mobile'
 ```
 
 ## Skeleton Props
@@ -50,9 +53,9 @@ import type { SkeletonAvatarShape, SkeletonButtonShape } from 'arkui-mobile-vue'
 ### #default
 
 ```vue
-<ak-skeleton>
+<ta-skeleton>
   <div>详情...</div>
-</ak-skeleton>
+</ta-skeleton>
 ```
 
 ### 骨架屏重新布局（#layout）
@@ -60,14 +63,14 @@ import type { SkeletonAvatarShape, SkeletonButtonShape } from 'arkui-mobile-vue'
 还可以在 layout 插槽中重新组合骨架屏，目前提供 [SkeletonAvatar](./Skeleton.md#skeletonavatar-props)、[SkeletonImage](./Skeleton.md#skeletonimage-props)、[SkeletonTitle](./Skeleton.md#skeletontitle-props)、[SkeletonParagraph](./Skeleton.md#skeletonparagraph-props)、[SkeletonButton](./Skeleton.md#skeletonbutton-props) 5 款子组件。
 
 ```vue
-<ak-skeleton>
+<ta-skeleton>
   <template #layout>
-    <ak-skeleton-image></ak-skeleton-image>
-    <ak-skeleton-title></ak-skeleton-title>
-    <ak-skeleton-paragraph></ak-skeleton-paragraph>
+    <ta-skeleton-image></ta-skeleton-image>
+    <ta-skeleton-title></ta-skeleton-title>
+    <ta-skeleton-paragraph></ta-skeleton-paragraph>
   </template>
   <div>详情...</div>
-</ak-skeleton>
+</ta-skeleton>
 ```
 
 ## SkeletonAvatar Props

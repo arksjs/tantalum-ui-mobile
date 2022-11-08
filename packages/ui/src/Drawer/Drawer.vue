@@ -1,12 +1,12 @@
 <template>
   <teleport to="body">
     <div :class="[popupClasses, classes]" :style="popupStyles" v-bind="$attrs">
-      <div class="ak-mask" @click="onMaskClick"></div>
+      <div class="ta-mask" @click="onMaskClick"></div>
       <div :class="innerClasses" :style="innerStyles">
         <slot name="header">
           <NavBar
             v-if="hasHeader"
-            class="ak-drawer_header"
+            class="ta-drawer_header"
             :title="title"
             :rightButtons="
               showClose ? [{ icon: CloseOutlined, text: 'close' }] : []
@@ -16,7 +16,7 @@
           >
           </NavBar>
         </slot>
-        <div class="ak-drawer_body">
+        <div class="ta-drawer_body">
           <slot></slot>
         </div>
       </div>
@@ -39,7 +39,7 @@ import { getClasses, getInnerClasses, getInnerStyles } from './util'
 import type { DrawerEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-drawer',
+  name: 'ta-drawer',
   components: { NavBar },
   props: {
     ...popupProps,

@@ -1,60 +1,60 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="默认">
-      <ak-count-up :number="1000" />
-    </ak-cell>
-    <ak-cell label="千分位 thousands">
-      <ak-count-up :initialNumber="initialNumber" :number="number" thousands />
-    </ak-cell>
-    <ak-cell label="小数位 decimalDigits=2">
-      <ak-count-up
+  <ta-group title="基础用法">
+    <ta-cell label="默认">
+      <ta-count-up :number="1000" />
+    </ta-cell>
+    <ta-cell label="千分位 thousands">
+      <ta-count-up :initialNumber="initialNumber" :number="number" thousands />
+    </ta-cell>
+    <ta-cell label="小数位 decimalDigits=2">
+      <ta-count-up
         :initialNumber="initialNumber"
         :number="number"
         :decimalDigits="2"
       />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="速度">
-    <ak-cell label="speed=slow">
-      <ak-count-up
+    </ta-cell>
+  </ta-group>
+  <ta-group title="速度">
+    <ta-cell label="speed=slow">
+      <ta-count-up
         :initialNumber="initialNumber"
         :number="number"
         :decimalDigits="2"
         speed="slow"
       />
-    </ak-cell>
-    <ak-cell label="speed=normal">
-      <ak-count-up
+    </ta-cell>
+    <ta-cell label="speed=normal">
+      <ta-count-up
         :initialNumber="initialNumber"
         :number="number"
         :decimalDigits="2"
         speed="normal"
       />
-    </ak-cell>
-    <ak-cell label="speed=fast">
-      <ak-count-up
+    </ta-cell>
+    <ta-cell label="speed=fast">
+      <ta-count-up
         :initialNumber="initialNumber"
         :number="number"
         :decimalDigits="2"
         speed="fast"
       />
-    </ak-cell>
-    <ak-cell label="speed=10000（固定10秒动画）">
-      <ak-count-up
+    </ta-cell>
+    <ta-cell label="speed=10000（固定10秒动画）">
+      <ta-count-up
         :initialNumber="initialNumber"
         :number="number"
         :decimalDigits="2"
         :speed="10000"
       />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell label="animated">
-      <ak-count-up :number="500" @animated="onAnimated" />
-    </ak-cell>
-    <ak-cell label="cancel" class="exp-countUp-box">
+    </ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell label="animated">
+      <ta-count-up :number="500" @animated="onAnimated" />
+    </ta-cell>
+    <ta-cell label="cancel" class="exp-countUp-box">
       <div class="exp-countUp-r">
-        <ak-count-up
+        <ta-count-up
           :initialNumber="0"
           :number="number2"
           thousands
@@ -63,17 +63,17 @@
           @cancel="onCancel"
         />
       </div>
-      <ak-button @click="cancel" size="small">{{
+      <ta-button @click="cancel" size="small">{{
         isCancel ? '开始' : '取消'
-      }}</ak-button>
-    </ak-cell>
-  </ak-group>
+      }}</ta-button>
+    </ta-cell>
+  </ta-group>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import {
-  AkCountUp,
+  TaCountUp,
   type CountUpOnAnimated,
   type CountUpOnCancel,
   showToast
@@ -85,7 +85,7 @@ export default defineComponent({
     const number = ref(5000)
     const number2 = ref(1000)
     const isCancel = ref(false)
-    const countUp = ref<InstanceType<typeof AkCountUp>>()
+    const countUp = ref<InstanceType<typeof TaCountUp>>()
 
     const onAnimated: CountUpOnAnimated = e => {
       console.log(e)

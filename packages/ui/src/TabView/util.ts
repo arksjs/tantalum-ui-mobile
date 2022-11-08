@@ -1,1 +1,1 @@
-export const getClasses = (vertical: boolean) => ['ak-tab-view', { vertical }]
+export const getClasses = (vertical: boolean) => ['ta-tab-view', { vertical }]

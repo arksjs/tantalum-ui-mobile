@@ -36,7 +36,7 @@ import {
 import { useButtonConsumer } from './context'
 
 export default defineComponent({
-  name: 'ak-button',
+  name: 'ta-button',
   components: { Icon },
   props: {
     size: {

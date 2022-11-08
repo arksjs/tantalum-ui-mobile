@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-stopwatch">
+  <div class="ta-stopwatch">
     <slot
       :time="countTime.time"
       :days="countTime.days"
@@ -31,7 +31,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { StopwatchEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-stopwatch',
+  name: 'ta-stopwatch',
   props: {
     // 是否显示毫秒数
     showMilliseconds: {

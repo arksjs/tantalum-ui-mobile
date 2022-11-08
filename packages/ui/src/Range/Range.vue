@@ -1,16 +1,16 @@
 <template>
-  <div class="ak-range" :class="slideClasses" :style="slideStyles">
-    <div class="ak-slider_inner" ref="sliderEl">
-      <div class="ak-slider_box">
+  <div class="ta-range" :class="slideClasses" :style="slideStyles">
+    <div class="ta-slider_inner" ref="sliderEl">
+      <div class="ta-slider_box">
         <div
-          class="ak-slider_track"
+          class="ta-slider_track"
           :style="{
             left: Math.min(progress[0], progress[1]) * 100 + '%',
             width: Math.abs(progress[1] - progress[0]) * 100 + '%'
           }"
         ></div>
         <div
-          class="ak-slider_thumb"
+          class="ta-slider_thumb"
           data-thumb="true"
           data-index="0"
           :style="{ left: progress[0] * 100 + '%' }"
@@ -18,7 +18,7 @@
           {{ showValue ? progressValue[0] : '' }}
         </div>
         <div
-          class="ak-slider_thumb"
+          class="ta-slider_thumb"
           data-thumb="true"
           data-index="1"
           :style="{ left: progress[1] * 100 + '%' }"
@@ -54,7 +54,7 @@ import type { RangeEmits } from './types'
 const isValue = (value: number[]) => isNumberArray(value)
 
 export default defineComponent({
-  name: 'ak-range',
+  name: 'ta-range',
   props: {
     ...formItemProps,
     ...slideProps,

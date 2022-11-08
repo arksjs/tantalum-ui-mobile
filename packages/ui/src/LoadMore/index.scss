@@ -1,13 +1,13 @@
 @import '../style/var.scss';
 
-.ak-load-more {
-  --ak-color: #{$font3-color};
+.ta-load-more {
+  --ta-color: #{$font3-color};
 
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 64px;
-  color: var(--ak-color);
+  color: var(--ta-color);
   font-size: 15px;
   line-height: 20px;
   height: 48px;
@@ -28,10 +28,10 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background-color: var(--ak-color);
+    background-color: var(--ta-color);
   }
 
-  &.ak-horizontal-hairline:not(.loading):not(.horizontal) {
+  &.ta-horizontal-hairline:not(.loading):not(.horizontal) {
     &::before,
     &::after {
       content: '';
@@ -50,7 +50,7 @@
     padding: 0;
     vertical-align: top;
 
-    .ak-load-more {
+    .ta-load-more {
       &_icon {
         margin: 0 0 8px;
       }

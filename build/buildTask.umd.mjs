@@ -46,7 +46,7 @@ const buildUmdJs = async () => {
   }
 
   const outOptions = {
-    name: 'ArkUI',
+    name: 'TantalumUI',
     format: 'umd',
     file: resolve('./dist/index.js'),
     globals: {

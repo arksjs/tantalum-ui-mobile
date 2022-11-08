@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-cascader" :class="{ disabled }" ref="root">
+  <div class="ta-cascader" :class="{ disabled }" ref="root">
     <SelectorField
       :label="fieldLabel"
       :value="fieldValue"
@@ -33,7 +33,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { CascaderEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-cascader',
+  name: 'ta-cascader',
   components: { CascaderPopup, SelectorField },
   props: { ...commonProps, ...pickerProps },
   emits: { ...pickerEmits } as PropsToEmits<CascaderEmits>,

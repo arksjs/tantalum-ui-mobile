@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { AkVirtualList, type ViewPosition } from '@/index'
+import type { TaVirtualList, ViewPosition } from '@/index'
 
 interface ExpList {
   id: number
@@ -17,7 +17,7 @@ for (let i = 0; i < 100000; i++) {
 }
 
 // 方法调用
-const methodList = ref<InstanceType<typeof AkVirtualList>>()
+const methodList = ref<InstanceType<typeof TaVirtualList>>()
 function scrollToIndex(index: number, viewPosition: ViewPosition = 0) {
   methodList.value?.scrollToIndex({ index, viewPosition })
 }
@@ -36,8 +36,8 @@ export default {
 </script>
 
 <template>
-  <ak-group title="Method">
-    <ak-virtual-list
+  <ta-group title="Method">
+    <ta-virtual-list
       class="exp-flatList-box"
       :ids="largeList.map(v => v.id)"
       ref="methodList"
@@ -48,31 +48,31 @@ export default {
           {{ largeList[index].text }}
         </div>
       </template>
-    </ak-virtual-list>
-    <ak-cell
+    </ta-virtual-list>
+    <ta-cell
       label="scrollToIndex({ index: 49999 })"
       isLink
       @click="scrollToIndex(49999)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="同上加 viewPosition=0.5"
       isLink
       @click="scrollToIndex(49999, 0.5)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="同上加 viewPosition=1"
       isLink
       @click="scrollToIndex(49999, 1)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="scrollTo({ offset: 200 })"
       isLink
       @click="scrollTo(200)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="scrollToEnd(true)"
       isLink
       @click="scrollToEnd(true)"
-    ></ak-cell>
-  </ak-group>
+    ></ta-cell>
+  </ta-group>
 </template>

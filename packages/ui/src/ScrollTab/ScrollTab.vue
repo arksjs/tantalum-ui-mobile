@@ -1,6 +1,6 @@
 <template>
-  <div class="ak-scroll-tab">
-    <div class="ak-scroll-tab_sidebar">
+  <div class="ta-scroll-tab">
+    <div class="ta-scroll-tab_sidebar">
       <Sticky
         ref="sideRef"
         :offsetTop="stickyOffsetTop"
@@ -14,7 +14,7 @@
         />
       </Sticky>
     </div>
-    <div class="ak-scroll-tab_body">
+    <div class="ta-scroll-tab_body">
       <StickyView
         :offsetTop="stickyOffsetTop"
         :modelValue="modelValue"
@@ -43,7 +43,7 @@ import { isString } from '../helpers/util'
 import type { SideTabOnChange } from '../SideTab/types'
 
 export default defineComponent({
-  name: 'ak-scroll-tab',
+  name: 'ta-scroll-tab',
   components: { SideTab, Sticky, StickyView },
   props: {
     modelValue: {

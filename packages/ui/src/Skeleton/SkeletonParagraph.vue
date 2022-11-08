@@ -10,7 +10,7 @@ import { useConsumer } from './context'
 import { getParagraphClasses, getParagraphRowList } from './util'
 
 export default defineComponent({
-  name: 'ak-skeleton-paragraph',
+  name: 'ta-skeleton-paragraph',
   props: {
     // 是否显示动画
     animated: {

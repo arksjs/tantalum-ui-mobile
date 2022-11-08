@@ -9,20 +9,20 @@
 如果想要切换到黑暗模式：
 
 ```JavaScript
-document.body.setAttribute('ak-theme', 'dark')
+document.body.setAttribute('ta-theme', 'dark')
 ```
 
 如果想要恢复明亮模式：
 
 ```JavaScript
-document.body.removeAttribute('ak-theme')
+document.body.removeAttribute('ta-theme')
 ```
 
 如果要跟随系统切换：
 
 ```JavaScript
 function setDark(dark) {
-  dark ? document.body.setAttribute('ak-theme', 'dark') : document.body.removeAttribute('ak-theme')
+  dark ? document.body.setAttribute('ta-theme', 'dark') : document.body.removeAttribute('ta-theme')
 }
 
 const mm =

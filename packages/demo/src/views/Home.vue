@@ -31,23 +31,23 @@ function onItemClick({ name }: { name: string }) {
   <div class="exp-home">
     <div class="exp-home-header">
       <logo class="exp-home-logo" />
-      <h1 class="exp-home-title">ArkUI</h1>
+      <h1 class="exp-home-title">Tantalum UI</h1>
     </div>
     <div class="exp-home-body">
-      <ak-group
+      <ta-group
         :title="group.name + ' ' + group.zhName"
         v-for="group in navConfig"
         :key="group.name"
         card
       >
-        <ak-cell
+        <ta-cell
           :clickable="true"
           :label="item.name + ' ' + item.zhName"
           v-for="item in group.list"
           :key="item.name"
           @click="onItemClick(item)"
-        ></ak-cell>
-      </ak-group>
+        ></ta-cell>
+      </ta-group>
     </div>
   </div>
 </template>

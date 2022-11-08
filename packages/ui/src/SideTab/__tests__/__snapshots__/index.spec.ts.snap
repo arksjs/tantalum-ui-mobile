@@ -1,37 +1,37 @@
 // Vitest Snapshot v1
 
 exports[`SideTab > snapshot 1`] = `
-"<div class=\\"ak-side-tab\\">
-  <ul class=\\"ak-side-tab_list\\"></ul>
+"<div class=\\"ta-side-tab\\">
+  <ul class=\\"ta-side-tab_list\\"></ul>
 </div>"
 `;
 
 exports[`SideTab > snapshot mixTabList 1`] = `
-"<div class=\\"ak-side-tab\\">
-  <ul class=\\"ak-side-tab_list\\">
-    <li class=\\"ak-side-tab_item active\\">
-      <div class=\\"ak-badge ak-side-tab_item-inner\\"><svg class=\\"ak-icon\\">
+"<div class=\\"ta-side-tab\\">
+  <ul class=\\"ta-side-tab_list\\">
+    <li class=\\"ta-side-tab_item active\\">
+      <div class=\\"ta-badge ta-side-tab_item-inner\\"><svg class=\\"ta-icon\\">
           <use xlink:href=\\"#CheckSquareFilled\\"></use>
-        </svg><span class=\\"ak-side-tab_item-text\\">买过</span>
-        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+        </svg><span class=\\"ta-side-tab_item-text\\">买过</span>
+        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
       </div>
     </li>
-    <li class=\\"ak-side-tab_item active-next\\">
-      <div class=\\"ak-badge ak-side-tab_item-inner\\">
-        <!--v-if--><span class=\\"ak-side-tab_item-text\\">秒杀</span>
-        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">惠</div>
+    <li class=\\"ta-side-tab_item active-next\\">
+      <div class=\\"ta-badge ta-side-tab_item-inner\\">
+        <!--v-if--><span class=\\"ta-side-tab_item-text\\">秒杀</span>
+        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">惠</div>
       </div>
     </li>
-    <li class=\\"ak-side-tab_item\\">
-      <div class=\\"ak-badge ak-side-tab_item-inner\\">
-        <!--v-if--><span class=\\"ak-side-tab_item-text\\">天天半价工作餐</span>
-        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+    <li class=\\"ta-side-tab_item\\">
+      <div class=\\"ta-badge ta-side-tab_item-inner\\">
+        <!--v-if--><span class=\\"ta-side-tab_item-text\\">天天半价工作餐</span>
+        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
       </div>
     </li>
-    <li class=\\"ak-side-tab_item\\">
-      <div class=\\"ak-badge ak-side-tab_item-inner\\">
-        <!--v-if--><span class=\\"ak-side-tab_item-text\\">套餐</span>
-        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">1</div>
+    <li class=\\"ta-side-tab_item\\">
+      <div class=\\"ta-badge ta-side-tab_item-inner\\">
+        <!--v-if--><span class=\\"ta-side-tab_item-text\\">套餐</span>
+        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">1</div>
       </div>
     </li>
   </ul>
@@ -39,49 +39,49 @@ exports[`SideTab > snapshot mixTabList 1`] = `
 `;
 
 exports[`SideTab > snapshot mixTabList 2`] = `
-"<div class=\\"ak-side-tab\\">
-  <ul class=\\"ak-side-tab_list\\">
-    <li class=\\"ak-side-tab_item active\\">
-      <badge-stub content=\\"0\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ak-side-tab_item-inner\\"></badge-stub>
+"<div class=\\"ta-side-tab\\">
+  <ul class=\\"ta-side-tab_list\\">
+    <li class=\\"ta-side-tab_item active\\">
+      <badge-stub content=\\"0\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ta-side-tab_item-inner\\"></badge-stub>
     </li>
-    <li class=\\"ak-side-tab_item active-next\\">
-      <badge-stub content=\\"惠\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ak-side-tab_item-inner\\"></badge-stub>
+    <li class=\\"ta-side-tab_item active-next\\">
+      <badge-stub content=\\"惠\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ta-side-tab_item-inner\\"></badge-stub>
     </li>
-    <li class=\\"ak-side-tab_item\\">
-      <badge-stub content=\\"0\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ak-side-tab_item-inner\\"></badge-stub>
+    <li class=\\"ta-side-tab_item\\">
+      <badge-stub content=\\"0\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ta-side-tab_item-inner\\"></badge-stub>
     </li>
-    <li class=\\"ak-side-tab_item\\">
-      <badge-stub content=\\"1\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ak-side-tab_item-inner\\"></badge-stub>
+    <li class=\\"ta-side-tab_item\\">
+      <badge-stub content=\\"1\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ta-side-tab_item-inner\\"></badge-stub>
     </li>
   </ul>
 </div>"
 `;
 
 exports[`SideTab > snapshot subTabList 1`] = `
-"<div class=\\"ak-side-tab\\">
-  <ul class=\\"ak-side-tab_list\\">
-    <li class=\\"ak-side-tab_item active\\">
-      <div class=\\"ak-badge ak-side-tab_item-inner\\">
-        <!--v-if--><span class=\\"ak-side-tab_item-text\\">精选</span>
-        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+"<div class=\\"ta-side-tab\\">
+  <ul class=\\"ta-side-tab_list\\">
+    <li class=\\"ta-side-tab_item active\\">
+      <div class=\\"ta-badge ta-side-tab_item-inner\\">
+        <!--v-if--><span class=\\"ta-side-tab_item-text\\">精选</span>
+        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
       </div>
     </li>
-    <li class=\\"ak-side-tab_item active-next\\">
-      <div class=\\"ak-badge ak-side-tab_item-inner\\">
-        <!--v-if--><span class=\\"ak-side-tab_item-text\\">折扣</span>
-        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+    <li class=\\"ta-side-tab_item active-next\\">
+      <div class=\\"ta-badge ta-side-tab_item-inner\\">
+        <!--v-if--><span class=\\"ta-side-tab_item-text\\">折扣</span>
+        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
       </div>
     </li>
-    <li class=\\"ak-side-tab_item\\">
-      <div class=\\"ak-badge ak-side-tab_item-inner\\">
-        <!--v-if--><span class=\\"ak-side-tab_item-text\\">好物</span>
-        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+    <li class=\\"ta-side-tab_item\\">
+      <div class=\\"ta-badge ta-side-tab_item-inner\\">
+        <!--v-if--><span class=\\"ta-side-tab_item-text\\">好物</span>
+        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
       </div>
     </li>
-    <li class=\\"ak-side-tab_item\\">
-      <div class=\\"ak-badge ak-side-tab_item-inner\\">
-        <!--v-if--><span class=\\"ak-side-tab_item-text\\">新品</span>
-        <div class=\\"ak-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
+    <li class=\\"ta-side-tab_item\\">
+      <div class=\\"ta-badge ta-side-tab_item-inner\\">
+        <!--v-if--><span class=\\"ta-side-tab_item-text\\">新品</span>
+        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(0); right: 0px; top: 0px;\\">0</div>
       </div>
     </li>
   </ul>

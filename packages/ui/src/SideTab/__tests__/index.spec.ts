@@ -54,13 +54,13 @@ describe('SideTab', () => {
 
     wrapper.findComponent(SideTab).vm.switchToIndex(1)
     await nextTick()
-    expect(wrapper.findAll('.ak-side-tab_item')[1].classes()).toContain(
+    expect(wrapper.findAll('.ta-side-tab_item')[1].classes()).toContain(
       'active'
     )
 
     wrapper.findComponent(SideTab).vm.switchTo(4)
     await nextTick()
-    expect(wrapper.findAll('.ak-side-tab_item')[3].classes()).toContain(
+    expect(wrapper.findAll('.ta-side-tab_item')[3].classes()).toContain(
       'active'
     )
   })

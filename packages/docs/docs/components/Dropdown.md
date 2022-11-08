@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkDropdown } from 'arkui-mobile-vue'
+import { TaDropdown } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,10 @@ import { AkDropdown } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { VisibleState, PopupOnVisibleStateChange } from 'arkui-mobile-vue'
+import type {
+  VisibleState,
+  PopupOnVisibleStateChange
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -47,7 +50,7 @@ import type { VisibleState, PopupOnVisibleStateChange } from 'arkui-mobile-vue'
 ## Slots
 
 ```vue
-<ak-dropdown>
+<ta-dropdown>
   展开的内容
-</ak-dropdown>
+</ta-dropdown>
 ```

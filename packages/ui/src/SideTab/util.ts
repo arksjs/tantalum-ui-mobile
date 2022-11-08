@@ -1,6 +1,6 @@
 export const getItemClasses = (index: number, activeIndex: number) => {
   return [
-    'ak-side-tab_item',
+    'ta-side-tab_item',
     {
       active: index === activeIndex,
       'active-prev': index === activeIndex - 1,

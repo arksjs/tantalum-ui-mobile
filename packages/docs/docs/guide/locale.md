@@ -10,13 +10,13 @@
 
 ```vue
 <script setup>
-import enUS from 'arkui-mobile-vue/es/locale/lang/en-US'
+import enUS from 'tantalum-ui-mobile/es/locale/lang/en-US'
 </script>
 
 <template>
-  <ak-config-provider :locale="enUS">
+  <ta-config-provider :locale="enUS">
     <App />
-  </ak-config-provider>
+  </ta-config-provider>
 </template>
 ```
 

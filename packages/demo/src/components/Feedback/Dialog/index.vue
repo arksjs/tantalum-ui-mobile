@@ -1,6 +1,6 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell
+  <ta-group title="基础用法">
+    <ta-cell
       label="默认"
       isLink
       @click="
@@ -9,8 +9,8 @@
           content: '提示内容提示内容提示内容提示内容提示内容提示内容'
         })
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="不带标题"
       isLink
       @click="
@@ -18,8 +18,8 @@
           content: '提示内容提示内容提示内容提示内容提示内容提示内容'
         })
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="不显示取消按钮"
       isLink
       @click="
@@ -29,8 +29,8 @@
           showCancel: false
         })
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="自定义按钮文案"
       isLink
       @click="
@@ -41,10 +41,10 @@
           confirmText: '接受'
         })
       "
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell
       label="confirm/cancel"
       isLink
       @click="
@@ -56,8 +56,8 @@
           true
         )
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="visible-state-change"
       isLink
       @click="
@@ -70,19 +70,19 @@
           true
         )
       "
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="API">
-    <ak-cell label="showDialog" isLink @click="onCallApi()"></ak-cell>
-  </ak-group>
-  <ak-dialog
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="API">
+    <ta-cell label="showDialog" isLink @click="onCallApi()"></ta-cell>
+  </ta-group>
+  <ta-dialog
     v-model:visible="visible"
     v-bind="dialogArgs"
     @confirm="onConfirm"
     @cancel="onCancel"
     @visibleStateChange="onVisibleStateChange"
   >
-  </ak-dialog>
+  </ta-dialog>
 </template>
 
 <script lang="ts">

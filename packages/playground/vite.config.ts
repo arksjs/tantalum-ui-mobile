@@ -29,7 +29,7 @@ function copyVuePlugin(): Plugin {
 
 function copyUIPlugin(): Plugin {
   return {
-    name: 'copy-arkui',
+    name: 'copy-ui',
     generateBundle() {
       const jsPath = path.resolve(__dirname, '../../dist/index.esm-browser.js')
       if (!fs.existsSync(jsPath)) {

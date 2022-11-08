@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-drawer {
+.ta-drawer {
   &_inner {
     position: fixed;
     left: 0;
@@ -14,7 +14,7 @@
     min-height: 100px;
     box-sizing: border-box;
 
-    .ak-nav-bar {
+    .ta-nav-bar {
       height: 48px;
       background-color: transparent;
 
@@ -34,7 +34,7 @@
       top: 0;
       transform: translate3d(-100%, 0, 0);
 
-      .ak-nav-bar_title {
+      .ta-nav-bar_title {
         margin: 0 48px 0 12px;
         text-align: left;
       }
@@ -72,13 +72,13 @@
     flex-grow: 1;
     height: 100%;
 
-    .ak-drawer_inner.has--header & {
+    .ta-drawer_inner.has--header & {
       height: calc(100% - 48px);
     }
   }
 
   &.visible {
-    .ak-drawer {
+    .ta-drawer {
       &_inner {
         transform: translate3d(0, 0, 0);
       }

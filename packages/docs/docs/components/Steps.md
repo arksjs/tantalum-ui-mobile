@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkSteps, AkStep } from 'arkui-mobile-vue'
+import { TaSteps, TaStep } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -28,11 +28,11 @@ import { AkSteps, AkStep } from 'arkui-mobile-vue'
 注：其中只可放置 [Step](./Steps.md#step-props) 组件，否则会导致未定义的行为。
 
 ```vue
-<ak-steps>
-  <ak-step title="成功获得0.01元收益">搞半天就这点？</ak-step>
-  <ak-step title="十天后到账">0.01元还要十天到账？</ak-step>
-  <ak-step title="爱要不要">不要了，滚。</ak-step>
-</ak-steps>
+<ta-steps>
+  <ta-step title="成功获得0.01元收益">搞半天就这点？</ta-step>
+  <ta-step title="十天后到账">0.01元还要十天到账？</ta-step>
+  <ta-step title="爱要不要">不要了，滚。</ta-step>
+</ta-steps>
 ```
 
 ## Step Props
@@ -46,18 +46,18 @@ import { AkSteps, AkStep } from 'arkui-mobile-vue'
 ### 内容（#default）
 
 ```vue
-<ak-step title="标题">自定义内容</ak-step>
+<ta-step title="标题">自定义内容</ta-step>
 ```
 
 ### 标题（#title）
 
 ```vue
-<ak-step>
+<ta-step>
   <template #title>
   【珠海市】【珠海一部】快递小哥正在派件（<a href="tel:10000">10000</a>）
   </template>
   2021-04-13 11:22:16
-</ak-step>
+</ta-step>
 ```
 
 注：优先级高于 Props `title`。
@@ -65,11 +65,11 @@ import { AkSteps, AkStep } from 'arkui-mobile-vue'
 ### 步骤标（#step）
 
 ```vue
-<ak-step>
+<ta-step>
   <template #step="{ finish, index, active }">
-    <ak-icon v-if="finish" icon="CheckOutlined"></ak-icon>
+    <ta-icon v-if="finish" icon="CheckOutlined"></ta-icon>
   </template>
-</ak-step>
+</ta-step>
 ```
 
 注：只推荐写入 text 和 [Icon](./Icon.md) 组件，其他元素或组件可能会导致未定义的行为。

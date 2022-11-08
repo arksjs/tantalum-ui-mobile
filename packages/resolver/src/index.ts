@@ -1,4 +1,4 @@
-export interface ArkUIResolverOptions {
+export interface UIResolverOptions {
   /**
    * import style css or sass along with components
    *
@@ -13,7 +13,7 @@ export interface ArkUIResolverOptions {
   format?: 'esm' | 'cjs'
 }
 
-function getSideEffects(dirName: string, options: ArkUIResolverOptions) {
+function getSideEffects(dirName: string, options: UIResolverOptions) {
   const { importStyle = true } = options
   const path = getPath(options)
 
@@ -28,20 +28,20 @@ function getSideEffects(dirName: string, options: ArkUIResolverOptions) {
   return
 }
 
-function getPath(options: ArkUIResolverOptions) {
-  return `arkui-mobile-vue/${options.format === 'cjs' ? 'lib' : 'es'}`
+function getPath(options: UIResolverOptions) {
+  return `tantalum-ui-mobile/${options.format === 'cjs' ? 'lib' : 'es'}`
 }
 
 /**
- * Resolver for ArkUI
+ * Resolver for Tantalum UI
  *
- * @link https://github.com/arksjs/arkui-mobile-vue
+ * @link https://github.com/arksjs/tantalum-ui-mobile
  */
-export function ArkUIResolver(options: ArkUIResolverOptions = {}) {
+export function UIResolver(options: UIResolverOptions = {}) {
   return {
     type: 'component',
     resolve: (name: string) => {
-      if (name.startsWith('Ak')) {
+      if (name.startsWith('Ta')) {
         const partialName = name.slice(2)
         return {
           importName: partialName,

@@ -1,13 +1,13 @@
 <template>
   <div :class="classes">
-    <div class="ak-group_header">
-      <div class="ak-group_title">{{ title }}</div>
-      <div class="ak-group_more">
+    <div class="ta-group_header">
+      <div class="ta-group_title">{{ title }}</div>
+      <div class="ta-group_more">
         <slot name="header"></slot>
       </div>
     </div>
-    <div class="ak-group_body ak-horizontal-hairline hairline-reverse">
-      <div class="ak-group_body-inner">
+    <div class="ta-group_body ta-horizontal-hairline hairline-reverse">
+      <div class="ta-group_body-inner">
         <slot></slot>
       </div>
     </div>
@@ -19,7 +19,7 @@ import { computed, defineComponent } from 'vue'
 import { getClasses } from './util'
 
 export default defineComponent({
-  name: 'ak-group',
+  name: 'ta-group',
   props: {
     title: {
       type: String,

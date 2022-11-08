@@ -52,38 +52,38 @@ export default {
 </script>
 
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="单列">
-      <ak-picker :options="options" @change="onChange"></ak-picker>
-    </ak-cell>
-    <ak-cell label="多列">
-      <ak-picker :options="multiOptions" @change="onChange"></ak-picker>
-    </ak-cell>
-    <ak-cell label="级联">
-      <ak-picker :options="cascadeOptions" @change="onChange"></ak-picker>
-    </ak-cell>
-    <ak-cell label="地区">
-      <ak-picker
+  <ta-group title="基础用法">
+    <ta-cell label="单列">
+      <ta-picker :options="options" @change="onChange"></ta-picker>
+    </ta-cell>
+    <ta-cell label="多列">
+      <ta-picker :options="multiOptions" @change="onChange"></ta-picker>
+    </ta-cell>
+    <ta-cell label="级联">
+      <ta-picker :options="cascadeOptions" @change="onChange"></ta-picker>
+    </ta-cell>
+    <ta-cell label="地区">
+      <ta-picker
         :options="regionOptions"
         :fieldNames="{ value: 'label' }"
         v-model="regionValue"
         @change="onChange"
       />
-    </ak-cell>
-    <ak-cell label="formatter/parser">
-      <ak-picker
+    </ta-cell>
+    <ta-cell label="formatter/parser">
+      <ta-picker
         v-model="formatValue"
         :formatter="formatter"
         :parser="parser"
         :options="multiOptions"
         @change="onChange"
-      ></ak-picker>
-    </ak-cell>
-    <ak-cell label="禁用">
-      <ak-picker :modelValue="disableValue" :options="multiOptions" disabled />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="API">
-    <ak-cell label="showPicker" isLink @click="onCallApi" />
-  </ak-group>
+      ></ta-picker>
+    </ta-cell>
+    <ta-cell label="禁用">
+      <ta-picker :modelValue="disableValue" :options="multiOptions" disabled />
+    </ta-cell>
+  </ta-group>
+  <ta-group title="API">
+    <ta-cell label="showPicker" isLink @click="onCallApi" />
+  </ta-group>
 </template>

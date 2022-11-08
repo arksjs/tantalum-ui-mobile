@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkPagination } from 'arkui-mobile-vue'
+import { TaPagination } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -32,16 +32,16 @@ import { AkPagination } from 'arkui-mobile-vue'
 ### #default
 
 ```vue
-<ak-pagination>
+<ta-pagination>
   <template #default="{ current, total }"> 第 {{ current }} / {{ total }} 页 </template>
-</ak-pagination>
+</ta-pagination>
 ```
 
 ### 翻页按钮（#prev/#next）
 
 ```vue
-<ak-pagination>
+<ta-pagination>
   <template #prev> 上一页 </template>
   <template #next> 下一页 </template>
-</ak-pagination>
+</ta-pagination>
 ```

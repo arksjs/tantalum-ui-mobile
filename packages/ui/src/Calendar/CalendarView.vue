@@ -1,9 +1,9 @@
 <template>
-  <div class="ak-calendar-view">
-    <div class="ak-calendar-view_header">
-      <div class="ak-calendar-view_weekdays">
+  <div class="ta-calendar-view">
+    <div class="ta-calendar-view_header">
+      <div class="ta-calendar-view_weekdays">
         <span
-          class="ak-calendar-view_weekday"
+          class="ta-calendar-view_weekday"
           :class="{ highlight: weekDay === '0' || weekDay === '6' }"
           v-for="weekDay in weekDays"
           :key="weekDay"
@@ -11,7 +11,7 @@
         </span>
       </div>
     </div>
-    <div class="ak-calendar-view_body" ref="bodyEl">
+    <div class="ta-calendar-view_body" ref="bodyEl">
       <VirtualList
         :ids="months.map(v => v.caption)"
         :itemSize="getItemSize"
@@ -26,7 +26,7 @@
           />
         </template>
       </VirtualList>
-      <div class="ak-calendar-view_month-caption fixed" ref="bodyTitleEl"></div>
+      <div class="ta-calendar-view_month-caption fixed" ref="bodyTitleEl"></div>
     </div>
   </div>
 </template>
@@ -86,7 +86,7 @@ function getDefaultSelectDay() {
 const VALUE_KEY = 'modelValue'
 
 export default defineComponent({
-  name: 'ak-calendar-view',
+  name: 'ta-calendar-view',
   components: { ViewMonth, VirtualList },
   props: { ...commonProps },
   emits: {
@@ -559,7 +559,7 @@ export default defineComponent({
       const h = 28
       const $items: HTMLElement[] = bodyEl.value
         ? [].slice.call(
-            bodyEl.value.querySelectorAll('.ak-virtual-list_item'),
+            bodyEl.value.querySelectorAll('.ta-virtual-list_item'),
             0
           )
         : []

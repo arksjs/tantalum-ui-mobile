@@ -14,7 +14,7 @@
 ## Import
 
 ```js
-import { AkCopy } from 'arkui-mobile-vue'
+import { TaCopy } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -35,7 +35,7 @@ import { AkCopy } from 'arkui-mobile-vue'
 ## Slots
 
 ```vue
-<ak-copy text="复制的内容">
-  <ak-button>复制</ak-button>
-</ak-copy>
+<ta-copy text="复制的内容">
+  <ta-button>复制</ta-button>
+</ta-copy>
 ```

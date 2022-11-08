@@ -1,8 +1,8 @@
 // Vitest Snapshot v1
 
 exports[`Stepper > snapshot 1`] = `
-"<div class=\\"ak-stepper\\">
-  <ak-button-stub icon=\\"[object Object]\\" shape=\\"square\\" size=\\"small\\" loading=\\"false\\" disabled=\\"true\\" ghost=\\"false\\" transparent=\\"false\\"></ak-button-stub><input class=\\"ak-stepper_input\\" type=\\"text\\" inputmode=\\"decimal\\" name=\\"\\">
-  <ak-button-stub icon=\\"[object Object]\\" shape=\\"square\\" size=\\"small\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></ak-button-stub>
+"<div class=\\"ta-stepper\\">
+  <ta-button-stub icon=\\"[object Object]\\" shape=\\"square\\" size=\\"small\\" loading=\\"false\\" disabled=\\"true\\" ghost=\\"false\\" transparent=\\"false\\"></ta-button-stub><input class=\\"ta-stepper_input\\" type=\\"text\\" inputmode=\\"decimal\\" name=\\"\\">
+  <ta-button-stub icon=\\"[object Object]\\" shape=\\"square\\" size=\\"small\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></ta-button-stub>
 </div>"
 `;

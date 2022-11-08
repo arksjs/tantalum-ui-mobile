@@ -8,22 +8,22 @@
       :key="item.id"
     >
       <span
-        class="ak-order_item-ratio"
+        class="ta-order_item-ratio"
         :style="getItemRatioStyles(aspectRatio)"
       ></span>
-      <div class="ak-order_item-inner">
+      <div class="ta-order_item-inner">
         <slot :id="item.id" :index="index"> </slot>
       </div>
     </div>
   </div>
   <Drawer
-    class="ak-order_delete"
+    class="ta-order_delete"
     placement="bottom"
     :visible="dragDelete"
     :showMask="false"
     @visibleStateChange="onVisibleStateChange"
   >
-    <div class="ak-order_delete-button" ref="deleteButtonEl">
+    <div class="ta-order_delete-button" ref="deleteButtonEl">
       <Icon :icon="DeleteOutlined" />
       <span>{{
         deleting
@@ -96,7 +96,7 @@ const itemsValidator = (items: Item[]) => {
 }
 
 export default defineComponent({
-  name: 'ak-order',
+  name: 'ta-order',
   components: { Icon, Drawer },
   props: {
     items: {
@@ -394,7 +394,7 @@ export default defineComponent({
     useTouch({
       el: root,
       onTouchStart(e) {
-        const target = getParentTarget(e.target, 'ak-order_item')
+        const target = getParentTarget(e.target, 'ta-order_item')
 
         if (!target || drag.on) {
           return

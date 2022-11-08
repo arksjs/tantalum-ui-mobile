@@ -2,9 +2,9 @@
   "name": "@arksjs/docs",
   "private": true,
   "version": "0.0.0",
-  "description": "ArkUI docs",
+  "description": "UI docs",
   "keywords": [
-    "ArkUI",
+    "UI",
     "docs"
   ],
   "license": "MIT",

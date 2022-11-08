@@ -38,10 +38,10 @@ describe('CircleProgress', () => {
       props: { percentage: 0, strokeWidth: 2 }
     })
     expect(
-      wrapper.find('.ak-circle-progress_text').attributes('style')
+      wrapper.find('.ta-circle-progress_text').attributes('style')
     ).toContain('padding: 2px;')
     expect(
-      wrapper.get('.ak-circle-progress_bar').attributes('strokewidth')
+      wrapper.get('.ta-circle-progress_bar').attributes('strokewidth')
     ).toBe('2')
   })
 
@@ -55,7 +55,7 @@ describe('CircleProgress', () => {
       }
     })
 
-    expect(wrapper.find('.ak-circle-progress_text').find('span').html()).toBe(
+    expect(wrapper.find('.ta-circle-progress_text').find('span').html()).toBe(
       '<span>Sale 50%</span>'
     )
   })

@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkFixed } from 'arkui-mobile-vue'
+import { TaFixed } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -40,7 +40,7 @@ import { AkFixed } from 'arkui-mobile-vue'
 ### 底部（#default）
 
 ```vue
-<ak-fixed placement="bottom">
+<ta-fixed placement="bottom">
   固定内容
-</ak-fixed>
+</ta-fixed>
 ```

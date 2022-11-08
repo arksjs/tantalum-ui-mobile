@@ -1,6 +1,6 @@
 <template>
   <Modal
-    class="ak-dialog"
+    class="ta-dialog"
     :visible="visible"
     :showClose="false"
     :maskClosable="maskClosable"
@@ -10,32 +10,32 @@
     @update:visible="onUpdateVisible"
     ref="popupRef"
   >
-    <div class="ak-dialog_header" v-if="title">
+    <div class="ta-dialog_header" v-if="title">
       {{ title }}
     </div>
-    <div class="ak-dialog_content">
-      <div class="ak-dialog_content-text" v-if="content">
+    <div class="ta-dialog_content">
+      <div class="ta-dialog_content-text" v-if="content">
         {{ content }}
       </div>
       <slot v-else></slot>
     </div>
-    <div class="ak-dialog_footer ak-horizontal-hairline">
-      <ButtonGroup class="ak-dialog_footer-inner" pattern="borderless">
-        <AkButton
+    <div class="ta-dialog_footer ta-horizontal-hairline">
+      <ButtonGroup class="ta-dialog_footer-inner" pattern="borderless">
+        <TaButton
           v-if="showCancel"
-          class="ak-dialog_button"
+          class="ta-dialog_button"
           type="default"
           @click="onCancelClick"
         >
           {{ cancelText || locale.dialogCancelText }}
-        </AkButton>
-        <AkButton
-          class="ak-dialog_button"
+        </TaButton>
+        <TaButton
+          class="ta-dialog_button"
           type="primary"
           @click="onConfirmClick"
         >
           {{ confirmText || locale.dialogConfirmText }}
-        </AkButton>
+        </TaButton>
       </ButtonGroup>
     </div>
   </Modal>
@@ -43,7 +43,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Button as AkButton, ButtonGroup } from '../Button'
+import { Button as TaButton, ButtonGroup } from '../Button'
 import { Modal } from '../Modal'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupExtendProps } from '../popup/popup'
@@ -52,8 +52,8 @@ import type { EmptyObject, PropsToEmits } from '../helpers/types'
 import type { DialogEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-dialog',
-  components: { AkButton, ButtonGroup, Modal },
+  name: 'ta-dialog',
+  components: { TaButton, ButtonGroup, Modal },
   props: {
     ...popupExtendProps,
     title: {

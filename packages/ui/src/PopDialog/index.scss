@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-pop-dialog {
+.ta-pop-dialog {
   &_body {
     user-select: none;
   }
@@ -24,7 +24,7 @@
       justify-content: space-between;
       position: relative;
 
-      > .ak-button + .ak-button::before {
+      > .ta-button + .ta-button::before {
         height: 100%;
         background-color: $border-color;
       }

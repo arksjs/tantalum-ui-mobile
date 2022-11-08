@@ -16,7 +16,7 @@ describe('<Input />', () => {
 
     cy.get('input').focus()
     cy.wait(500)
-    cy.get('.ak-input_clear').click()
+    cy.get('.ta-input_clear').click()
     cy.get('input').should('have.value', '')
 
     cy.get('input').type('a1234')

@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkIndexView, AkIndexViewItem } from 'arkui-mobile-vue'
+import { TaIndexView, TaIndexViewItem } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkIndexView, AkIndexViewItem } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { IndexViewOnChange, IndexViewRef } from 'arkui-mobile-vue'
+import type { IndexViewOnChange, IndexViewRef } from 'tantalum-ui-mobile'
 ```
 
 ## IndexView Props
@@ -55,14 +55,14 @@ interface IndexViewRef {
 注：其中只可放置 [IndexViewItem](./IndexView.md#indexviewitem-索引子项) 组件，否则会导致未定义的行为。
 
 ```vue
-<ak-index-view>
-  <ak-index-view-item name="A">
-    <ak-cell label="单元格"></ak-cell>
-    <ak-cell label="单元格"></ak-cell>
-    <ak-cell label="单元格"></ak-cell>
-  </ak-index-view-item>
+<ta-index-view>
+  <ta-index-view-item name="A">
+    <ta-cell label="单元格"></ta-cell>
+    <ta-cell label="单元格"></ta-cell>
+    <ta-cell label="单元格"></ta-cell>
+  </ta-index-view-item>
   ...
-</ak-index-view>
+</ta-index-view>
 ```
 
 ## IndexViewItem Props
@@ -77,10 +77,10 @@ interface IndexViewRef {
 ### #default
 
 ```vue
-<ak-index-view-item name="A">
-  <ak-cell label="单元格"></ak-cell>
-  <ak-cell label="单元格"></ak-cell>
-  <ak-cell label="单元格"></ak-cell>
+<ta-index-view-item name="A">
+  <ta-cell label="单元格"></ta-cell>
+  <ta-cell label="单元格"></ta-cell>
+  <ta-cell label="单元格"></ta-cell>
   ...
-</ak-index-view-item>
+</ta-index-view-item>
 ```

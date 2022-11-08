@@ -1,57 +1,57 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell
+  <ta-group title="基础用法">
+    <ta-cell
       label="顶部弹出"
       isLink
       @click="show({ title: '顶部弹出', placement: 'top' })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="底部弹出"
       isLink
       @click="show({ title: '底部弹出', placement: 'bottom' })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="左侧弹出"
       isLink
       @click="show({ title: '左侧弹出', placement: 'left' })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="右侧弹出"
       isLink
       @click="show({ title: '右侧弹出', placement: 'right' })"
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="无标题">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="无标题">
+    <ta-cell
       label="底部弹出"
       isLink
       @click="show({ placement: 'bottom' })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="右侧弹出"
       isLink
       @click="show({ placement: 'right' })"
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="展示关闭按钮">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="展示关闭按钮">
+    <ta-cell
       label="有标题-底部"
       isLink
       @click="show({ title: '标题', placement: 'bottom', showClose: true })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="有标题-右侧"
       isLink
       @click="show({ title: '标题', placement: 'right', showClose: true })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="无标题"
       isLink
       @click="show({ placement: 'bottom', showClose: true })"
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell
       label="visible-state-change"
       isLink
       @click="
@@ -62,8 +62,8 @@
           visibleEvent: true
         })
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="cancel"
       isLink
       @click="
@@ -74,16 +74,16 @@
           cancelEvent: true
         })
       "
-    ></ak-cell>
-  </ak-group>
-  <ak-drawer
+    ></ta-cell>
+  </ta-group>
+  <ta-drawer
     v-model:visible="drawerVisible"
     :title="title"
     :placement="placement"
     :showClose="showClose"
     @visibleStateChange="onVisibleStateChange"
     @cancel="onCancel"
-  ></ak-drawer>
+  ></ta-drawer>
 </template>
 
 <script lang="ts">

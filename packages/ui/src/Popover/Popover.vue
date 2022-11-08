@@ -1,12 +1,12 @@
 <template>
   <teleport to="body">
     <div :class="popoverClasses" :style="popupStyles" v-bind="$attrs">
-      <div class="ak-mask" @click="onMaskClick"></div>
-      <div class="ak-popover_inner" ref="innerEl" :style="innerStyles">
-        <i class="ak-popover_arrow" :style="arrowStyles"></i>
-        <div class="ak-popover_content">
+      <div class="ta-mask" @click="onMaskClick"></div>
+      <div class="ta-popover_inner" ref="innerEl" :style="innerStyles">
+        <i class="ta-popover_arrow" :style="arrowStyles"></i>
+        <div class="ta-popover_content">
           <slot>
-            <div class="ak-popover_text">{{ content }}</div>
+            <div class="ta-popover_text">{{ content }}</div>
           </slot>
         </div>
       </div>
@@ -34,7 +34,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { PopoverEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-popover',
+  name: 'ta-popover',
   props: {
     ...popoverProps,
     content: {
@@ -115,7 +115,7 @@ export default defineComponent({
     const popoverClasses = computed(() => [
       popup.popupClasses.value,
       { 'no--mask': !props.showMask },
-      'ak-popover'
+      'ta-popover'
     ])
 
     return {

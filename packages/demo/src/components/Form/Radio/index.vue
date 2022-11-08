@@ -1,72 +1,72 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="默认">
-      <ak-radio />
-    </ak-cell>
-    <ak-cell label="带文案">
-      <ak-radio v-model:checked="value">勾选</ak-radio>
-    </ak-cell>
-    <ak-cell label="默认激活">
-      <ak-radio checked>勾选</ak-radio>
-    </ak-cell>
-    <ak-cell label="自定义颜色">
-      <ak-radio checked activeColor="#8b1721">勾选</ak-radio>
-    </ak-cell>
-    <ak-cell label="禁用">
-      <ak-radio disabled>勾选</ak-radio>
-    </ak-cell>
-  </ak-group>
-  <ak-group title="RadioGroup">
-    <ak-cell label="默认">
-      <ak-radio-group v-model="groupValue">
-        <ak-radio
+  <ta-group title="基础用法">
+    <ta-cell label="默认">
+      <ta-radio />
+    </ta-cell>
+    <ta-cell label="带文案">
+      <ta-radio v-model:checked="value">勾选</ta-radio>
+    </ta-cell>
+    <ta-cell label="默认激活">
+      <ta-radio checked>勾选</ta-radio>
+    </ta-cell>
+    <ta-cell label="自定义颜色">
+      <ta-radio checked activeColor="#8b1721">勾选</ta-radio>
+    </ta-cell>
+    <ta-cell label="禁用">
+      <ta-radio disabled>勾选</ta-radio>
+    </ta-cell>
+  </ta-group>
+  <ta-group title="RadioGroup">
+    <ta-cell label="默认">
+      <ta-radio-group v-model="groupValue">
+        <ta-radio
           v-for="item in options"
           :key="item.value"
           :checkedValue="item.value"
         >
           {{ item.label }}
-        </ak-radio>
-      </ak-radio-group>
-    </ak-cell>
-    <ak-cell label="内联">
-      <ak-radio-group inline v-model="groupValue" activeColor="#8b1721">
-        <ak-radio
+        </ta-radio>
+      </ta-radio-group>
+    </ta-cell>
+    <ta-cell label="内联">
+      <ta-radio-group inline v-model="groupValue" activeColor="#8b1721">
+        <ta-radio
           v-for="item in options"
           :key="item.value"
           :checkedValue="item.value"
         >
           {{ item.label }}
-        </ak-radio>
-      </ak-radio-group>
-    </ak-cell>
-    <ak-cell label="禁用">
-      <ak-radio-group modelValue="man" disabled>
-        <ak-radio
+        </ta-radio>
+      </ta-radio-group>
+    </ta-cell>
+    <ta-cell label="禁用">
+      <ta-radio-group modelValue="man" disabled>
+        <ta-radio
           v-for="item in options"
           :key="item.value"
           :checkedValue="item.value"
         >
           {{ item.label }}
-        </ak-radio>
-      </ak-radio-group>
-    </ak-cell>
-    <ak-cell label="通过options设置">
-      <ak-radio-group v-model="groupOptionValue" :options="options" />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell label="change">
-      <ak-radio-group @change="onChange" name="gender">
-        <ak-radio
+        </ta-radio>
+      </ta-radio-group>
+    </ta-cell>
+    <ta-cell label="通过options设置">
+      <ta-radio-group v-model="groupOptionValue" :options="options" />
+    </ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell label="change">
+      <ta-radio-group @change="onChange" name="gender">
+        <ta-radio
           v-for="item in options"
           :key="item.value"
           :checkedValue="item.value"
         >
           {{ item.label }}
-        </ak-radio>
-      </ak-radio-group>
-    </ak-cell>
-  </ak-group>
+        </ta-radio>
+      </ta-radio-group>
+    </ta-cell>
+  </ta-group>
 </template>
 
 <script lang="ts">

@@ -32,7 +32,7 @@ export function useCheck(
 ) {
   const uid = Symbol()
   const groupOptions = inject<GroupOptions | null>(
-    `ak${capitalize(name)}Options`,
+    `ta${capitalize(name)}Options`,
     null
   )
   const inputEl = shallowRef<HTMLInputElement | null>(null)
@@ -196,7 +196,7 @@ export function useCheckGroup<T>(
 
   onMounted(() => _updateValue(false))
 
-  provide(`ak${capitalize(name)}Options`, {
+  provide(`ta${capitalize(name)}Options`, {
     props,
     onChange
   })

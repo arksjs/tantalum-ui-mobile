@@ -11,7 +11,7 @@
 ## Import
 
 ```js
-import { AkCell } from 'arkui-mobile-vue'
+import { TaCell } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -21,7 +21,7 @@ import { AkCell } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { CellArrowDirection } from 'arkui-mobile-vue'
+import type { CellArrowDirection } from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -41,9 +41,9 @@ import type { CellArrowDirection } from 'arkui-mobile-vue'
 ### 内容区（#default）
 
 ```vue
-<ak-cell label="右侧图标">
-  <ak-icon icon="CloseOutlined"></ak-icon>
-</ak-cell>
+<ta-cell label="右侧图标">
+  <ta-icon icon="CloseOutlined"></ta-icon>
+</ta-cell>
 ```
 
 注：添加 slot 后 `content` prop 属性失效。

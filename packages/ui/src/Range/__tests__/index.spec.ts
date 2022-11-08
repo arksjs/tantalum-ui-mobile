@@ -47,7 +47,7 @@ describe('Range', () => {
       }
     })
 
-    const $thumbs = wrapper.findAll('.ak-slider_thumb')
+    const $thumbs = wrapper.findAll('.ta-slider_thumb')
     expect($thumbs[0].text()).toBe('0')
     expect($thumbs[1].text()).toBe('100')
 

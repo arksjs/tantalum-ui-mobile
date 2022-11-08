@@ -1,7 +1,7 @@
 {
-  "name": "arkui-mobile-vue",
-  "version": "0.1.2",
-  "description": "Vue components include form, toast, modal, etc.",
+  "name": "tantalum-ui-mobile",
+  "version": "0.2.0",
+  "description": "A Mobile UI Components built on Vue 3.x",
   "main": "lib/index.js",
   "module": "es/index.js",
   "style": "es/style/index.css",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arksjs/arkui-mobile-vue.git"
+    "url": "https://github.com/arksjs/tantalum-ui-mobile.git"
   },
   "keywords": [
     "vue",
@@ -35,7 +35,7 @@
   "author": "Arksjs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arksjs/arkui-mobile-vue/issues"
+    "url": "https://github.com/arksjs/tantalum-ui-mobile/issues"
   },
   "files": [
     "dist",
@@ -43,7 +43,7 @@
     "es",
     "global.d.ts"
   ],
-  "homepage": "https://github.com/arksjs/arkui-mobile-vue#readme",
+  "homepage": "https://github.com/arksjs/tantalum-ui-mobile#readme",
   "dependencies": {
     "colorfuls": "^1.0.2",
     "dayjs": "^1.10.8",

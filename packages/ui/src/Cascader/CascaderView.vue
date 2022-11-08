@@ -1,14 +1,14 @@
 <template>
-  <div class="ak-cascader-view">
+  <div class="ta-cascader-view">
     <Tab
-      class="ak-cascader-view_header"
+      class="ta-cascader-view_header"
       :options="tabs"
       :scrollThreshold="0"
       v-model="tabIndex"
     />
-    <div class="ak-cascader-view_body">
+    <div class="ta-cascader-view_body">
       <div
-        class="ak-cascader-view_group ak-vertical-hairline"
+        class="ta-cascader-view_group ta-vertical-hairline"
         v-for="(colItem, colIndex) in cols"
         :key="colItem.key"
         :style="{
@@ -16,21 +16,21 @@
         }"
       >
         <VirtualList
-          class="ak-cascader-view_list"
+          class="ta-cascader-view_list"
           :data-index="colIndex"
           :ids="colItem.rows.map(v => v.value)"
           :itemSize="44"
         >
           <template #default="{ index }">
             <div
-              class="ak-cascader-view_item ak-horizontal-hairline"
+              class="ta-cascader-view_item ta-horizontal-hairline"
               :class="{
                 selected: colItem.rows[index].selected,
                 disabled: colItem.rows[index].disabled
               }"
               @click="onItemClick($event, colItem.rows[index])"
             >
-              <span class="ak-cascader-view_item-text">
+              <span class="ta-cascader-view_item-text">
                 {{ colItem.rows[index].label }}
               </span>
               <Icon v-if="colItem.rows[index].selected" :icon="CheckOutlined" />
@@ -67,7 +67,7 @@ interface SelectedTabs {
 }
 
 export default defineComponent({
-  name: 'ak-cascader-view',
+  name: 'ta-cascader-view',
   components: { Tab, Icon, Empty, VirtualList },
   props: {
     ...commonProps

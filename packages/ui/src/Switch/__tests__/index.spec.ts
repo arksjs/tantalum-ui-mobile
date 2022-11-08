@@ -17,7 +17,7 @@ describe('Switch', () => {
     })
 
     expect(wrapper.classes()).toContain('disabled')
-    expect(wrapper.find('.ak-switch_checkbox').attributes('disabled')).toBe('')
+    expect(wrapper.find('.ta-switch_checkbox').attributes('disabled')).toBe('')
   })
 
   test('size=40', () => {
@@ -27,7 +27,7 @@ describe('Switch', () => {
       }
     })
 
-    expect(wrapper.attributes('style')).toContain('--ak-size: 40px;')
+    expect(wrapper.attributes('style')).toContain('--ta-size: 40px;')
   })
 
   test.concurrent('update modelValue', async () => {

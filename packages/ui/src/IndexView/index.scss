@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-index-view {
+.ta-index-view {
   overflow-y: auto;
   position: relative;
 
@@ -40,10 +40,10 @@
   }
 }
 
-.ak-index-view-item {
+.ta-index-view-item {
   margin-bottom: 0;
 
-  .ak-group_header {
+  .ta-group_header {
     height: 28px;
     background-color: $background-color;
   }

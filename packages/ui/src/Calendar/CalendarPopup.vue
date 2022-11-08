@@ -1,6 +1,6 @@
 <template>
   <Drawer
-    class="ak-calendar-popup"
+    class="ta-calendar-popup"
     placement="bottom"
     :visible="visible"
     :title="title"
@@ -25,13 +25,13 @@
       ref="viewRef"
       @select="onViewSelect"
     />
-    <div class="ak-calendar-popup_confirm" v-if="showConfirm">
-      <AkButton
+    <div class="ta-calendar-popup_confirm" v-if="showConfirm">
+      <TaButton
         type="primary"
         @click="onConfirmClick"
         :disabled="valueSize == 0"
         >{{ locale.calendarConfirmText }}
-      </AkButton>
+      </TaButton>
     </div>
   </Drawer>
 </template>
@@ -47,7 +47,7 @@ import {
 } from 'vue'
 import CalendarView from './CalendarView.vue'
 import { Drawer } from '../Drawer'
-import { Button as AkButton } from '../Button'
+import { Button as TaButton } from '../Button'
 import { commonProps, calendarDetailValidator } from './props'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupExtendProps } from '../popup/popup'
@@ -66,8 +66,8 @@ import type { PropsToEmits } from '../helpers/types'
 import { getSourceDetail } from './util'
 
 export default defineComponent({
-  name: 'ak-calendar-popup',
-  components: { CalendarView, Drawer, AkButton },
+  name: 'ta-calendar-popup',
+  components: { CalendarView, Drawer, TaButton },
   props: {
     ...commonProps,
     ...popupExtendProps,

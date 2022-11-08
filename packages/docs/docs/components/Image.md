@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkImage } from 'arkui-mobile-vue'
+import { TaImage } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkImage } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { ImageMode, ImageOnLoad } from 'arkui-mobile-vue'
+import type { ImageMode, ImageOnLoad } from 'tantalum-ui-mobile'
 ```
 
 ## Props

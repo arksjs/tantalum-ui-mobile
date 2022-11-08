@@ -3,7 +3,7 @@ import * as defaultCompiler from 'vue/compiler-sfc'
 import type { Store, SFCOptions, StoreState, OutputModes } from '@vue/repl'
 import { compileFile, File } from '@vue/repl'
 import { utoa, atou } from './utils/encode'
-import { showToast } from 'arkui-mobile-vue'
+import { showToast } from 'tantalum-ui-mobile'
 import { genUnpkgLink } from './utils/link'
 
 const defaultMainFile = 'App.vue'
@@ -12,9 +12,13 @@ const isDev = import.meta.env.DEV
 
 const coreImports = {
   vue: !isDev ? `./vue.runtime.esm-browser.js` : `./src/vue-dev-proxy`,
-  'arkui-mobile-vue': !isDev
+  'tantalum-ui-mobile': !isDev
     ? `./ui.esm-browser.js`
-    : genUnpkgLink('arkui-mobile-vue', undefined, '/dist/index.esm-browser.js')
+    : genUnpkgLink(
+        'tantalum-ui-mobile',
+        undefined,
+        '/dist/index.esm-browser.js'
+      )
 }
 
 const welcomeCode = `\
@@ -25,7 +29,7 @@ setupUI()
 /* required end */
 
 import { ref } from 'vue'
-import { showToast } from 'arkui-mobile-vue'
+import { showToast } from 'tantalum-ui-mobile'
 
 const msg = ref('Click!')
 const onClick = () => {
@@ -34,19 +38,19 @@ const onClick = () => {
 </script>
 
 <template>
-  <ak-button type="primary" @click="onClick">{{ msg }}</ak-button>
+  <ta-button type="primary" @click="onClick">{{ msg }}</ta-button>
 </template>
 `
 
 const uiReplPluginCode = `\
-import ArkUI from 'arkui-mobile-vue'
+import TantalumUI from 'tantalum-ui-mobile'
 import { getCurrentInstance } from 'vue'
 
 await appendStyle()
 
 export function setupUI() {
   const instance = getCurrentInstance()
-  instance.appContext.app.use(ArkUI)
+  instance.appContext.app.use(TantalumUI)
 }
 
 export function appendStyle() {
@@ -56,7 +60,7 @@ export function appendStyle() {
     link.href = '${
       !isDev
         ? `./ui.css`
-        : genUnpkgLink('arkui-mobile-vue', undefined, '/dist/index.css')
+        : genUnpkgLink('tantalum-ui-mobile', undefined, '/dist/index.css')
     }'
     link.onload = resolve
     link.onerror = reject
@@ -141,7 +145,7 @@ export class ReplStore implements Store {
 
   deleteFile(filename: string) {
     if (filename === uiSetupFile) {
-      showToast('This is ArkUI setup file.')
+      showToast('This is TantalumUI setup file.')
       return
     }
 

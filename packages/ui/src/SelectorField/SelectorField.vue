@@ -3,9 +3,9 @@
     <div :class="inputClasses">
       {{ label || placeholder }}
     </div>
-    <Icon class="ak-input_arrow" :icon="RightOutlined" />
+    <Icon class="ta-input_arrow" :icon="RightOutlined" />
     <input
-      class="ak-input_cover ak-form-input"
+      class="ta-input_cover ta-form-input"
       type="text"
       readonly
       :name="name"
@@ -25,7 +25,7 @@ import type { SelectorFieldEmits } from './types'
 import { returnTrue } from '../helpers/util'
 
 export default defineComponent({
-  name: 'ak-selector-field',
+  name: 'ta-selector-field',
   components: { Icon },
   props: {
     disabled: Boolean,

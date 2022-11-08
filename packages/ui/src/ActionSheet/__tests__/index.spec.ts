@@ -35,10 +35,10 @@ describe('ActionSheet', () => {
       }
     })
 
-    expect(wrapper.findAll('.ak-action-sheet_item').length).toBe(3)
-    expect(wrapper.findAll('.ak-action-sheet_item')[0].text()).toBe('Option 1')
-    expect(wrapper.findAll('.ak-action-sheet_item')[1].text()).toBe('Option 2')
-    expect(wrapper.findAll('.ak-action-sheet_item')[2].text()).toBe('Option 3')
+    expect(wrapper.findAll('.ta-action-sheet_item').length).toBe(3)
+    expect(wrapper.findAll('.ta-action-sheet_item')[0].text()).toBe('Option 1')
+    expect(wrapper.findAll('.ta-action-sheet_item')[1].text()).toBe('Option 2')
+    expect(wrapper.findAll('.ta-action-sheet_item')[2].text()).toBe('Option 3')
   })
 
   test.concurrent('showCancel', async () => {
@@ -47,12 +47,12 @@ describe('ActionSheet', () => {
         stubs: { teleport: true }
       }
     })
-    expect(wrapper.findAll('.ak-action-sheet_list').length).toBe(1)
+    expect(wrapper.findAll('.ta-action-sheet_list').length).toBe(1)
 
     await wrapper.setProps({
       showCancel: true
     })
-    expect(wrapper.findAll('.ak-action-sheet_list').length).toBe(2)
+    expect(wrapper.findAll('.ta-action-sheet_list').length).toBe(2)
   })
 
   test.concurrent('cancelText', async () => {
@@ -68,8 +68,8 @@ describe('ActionSheet', () => {
 
     expect(
       wrapper
-        .findAll('.ak-action-sheet_list')[1]
-        .find('.ak-action-sheet_item')
+        .findAll('.ta-action-sheet_list')[1]
+        .find('.ta-action-sheet_item')
         .text()
     ).toBe('cancelText')
   })

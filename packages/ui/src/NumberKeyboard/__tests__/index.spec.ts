@@ -23,7 +23,7 @@ describe('NumberKeyboard', () => {
       }
     })
 
-    const $items = wrapper.findAll('.ak-number-keyboard_item')
+    const $items = wrapper.findAll('.ta-number-keyboard_item')
 
     expect($items[9].text()).toBe('.')
   })
@@ -39,7 +39,7 @@ describe('NumberKeyboard', () => {
     })
 
     expect(
-      wrapper.find('.ak-number-keyboard_right-column').exists()
+      wrapper.find('.ta-number-keyboard_right-column').exists()
     ).toBeTruthy()
   })
 
@@ -54,7 +54,7 @@ describe('NumberKeyboard', () => {
       }
     })
 
-    const $items = wrapper.findAll('.ak-number-keyboard_item')
+    const $items = wrapper.findAll('.ta-number-keyboard_item')
 
     expect($items[9].text()).toBe('00')
     expect($items[11].text()).toBe('.')

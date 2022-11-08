@@ -1,8 +1,8 @@
 @import '../style/var.scss';
 
-.ak-loading-icon {
+.ta-loading-icon {
   &_track {
-    stroke: rgba(#{var(--ak-grey-13)}, 0.15);
+    stroke: rgba(#{var(--ta-grey-13)}, 0.15);
   }
 
   &_thumb {

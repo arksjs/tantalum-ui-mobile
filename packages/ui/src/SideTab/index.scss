@@ -1,9 +1,9 @@
 @import '../style/var.scss';
 
-.ak-side-tab {
-  --ak-color: #{$font-color};
-  --ak-active-color: #{$primary-color};
-  --ak-front-color: var(--ak-color);
+.ta-side-tab {
+  --ta-color: #{$font-color};
+  --ta-active-color: #{$primary-color};
+  --ta-front-color: var(--ta-color);
 
   height: 100%;
   background-color: $background-color;
@@ -33,22 +33,22 @@
     font-weight: 500;
     position: relative;
     box-sizing: border-box;
-    color: var(--ak-front-color);
+    color: var(--ta-front-color);
     min-height: 40px;
     cursor: pointer;
     background-color: $background-color;
     padding: 10px 12px;
     user-select: none;
 
-    .ak-icon {
-      --ak-icon-size: 17px;
-      --ak-icon-color: var(--ak-front-color);
+    .ta-icon {
+      --ta-icon-size: 17px;
+      --ta-icon-color: var(--ta-front-color);
 
       margin-right: 4px;
     }
 
     &.active {
-      --ak-front-color: var(--ak-active-color);
+      --ta-front-color: var(--ta-active-color);
 
       background-color: $white-color;
       font-weight: 700;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Header from './Header.vue'
+import Header from './AppHeader.vue'
 import { ReplStore } from './store'
 import { watchEffect } from 'vue'
 import { Repl } from '@vue/repl'

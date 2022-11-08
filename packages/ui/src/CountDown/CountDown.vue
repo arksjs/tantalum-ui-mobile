@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-count-down">
+  <div class="ta-count-down">
     <slot
       :time="countTime.time"
       :days="countTime.days"
@@ -31,7 +31,7 @@ const pauseOrResumeValidator: VoidFnToBooleanFn<OnPauseOrResume> = payload =>
   payload && typeof payload.remainTime === 'number'
 
 export default defineComponent({
-  name: 'ak-count-down',
+  name: 'ta-count-down',
   props: {
     // 初始倒计时时间
     initialTiming: {

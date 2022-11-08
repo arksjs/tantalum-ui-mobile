@@ -1,13 +1,13 @@
 <template>
   <div :class="slideClasses" :style="slideStyles">
-    <div class="ak-slider_inner" ref="sliderEl">
-      <div class="ak-slider_box">
+    <div class="ta-slider_inner" ref="sliderEl">
+      <div class="ta-slider_box">
         <div
-          class="ak-slider_track"
+          class="ta-slider_track"
           :style="{ width: progress * 100 + '%' }"
         ></div>
         <div
-          class="ak-slider_thumb"
+          class="ta-slider_thumb"
           data-thumb="true"
           :style="{ left: progress * 100 + '%' }"
         >
@@ -34,7 +34,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { SliderEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-slider',
+  name: 'ta-slider',
   props: {
     ...formItemProps,
     ...slideProps,

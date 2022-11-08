@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-tab-view {
+.ta-tab-view {
   background-color: $white-color;
 
   &_header {
@@ -17,7 +17,7 @@
   &_body {
     height: calc(100% - 37px);
 
-    .ak-swiper {
+    .ta-swiper {
       height: 100%;
     }
   }
@@ -25,7 +25,7 @@
   &.vertical {
     display: flex;
 
-    .ak-tab-view {
+    .ta-tab-view {
       &_header {
         width: 80px;
         height: 100%;
@@ -44,7 +44,7 @@
   }
 }
 
-.ak-tab-view-item {
+.ta-tab-view-item {
   height: 100%;
   width: 100%;
   max-width: 100%;

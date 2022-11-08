@@ -22,35 +22,35 @@ describe('Notify', () => {
       }
     })
 
-    expect(wrapper.findComponent('.ak-notice-bar').classes()).toContain(
+    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain(
       'type--default'
     )
 
     await wrapper.setProps({
       type: 'primary'
     })
-    expect(wrapper.findComponent('.ak-notice-bar').classes()).toContain(
+    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain(
       'type--primary'
     )
 
     await wrapper.setProps({
       type: 'success'
     })
-    expect(wrapper.findComponent('.ak-notice-bar').classes()).toContain(
+    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain(
       'type--success'
     )
 
     await wrapper.setProps({
       type: 'warning'
     })
-    expect(wrapper.findComponent('.ak-notice-bar').classes()).toContain(
+    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain(
       'type--warning'
     )
 
     await wrapper.setProps({
       type: 'danger'
     })
-    expect(wrapper.findComponent('.ak-notice-bar').classes()).toContain(
+    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain(
       'type--danger'
     )
   })
@@ -65,6 +65,6 @@ describe('Notify', () => {
       }
     })
 
-    expect(wrapper.find('.ak-notice-bar_content').text()).toBe(title)
+    expect(wrapper.find('.ta-notice-bar_content').text()).toBe(title)
   })
 })

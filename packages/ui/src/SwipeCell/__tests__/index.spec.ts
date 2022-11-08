@@ -25,7 +25,7 @@ describe('SwipeCell', () => {
       }
     })
 
-    const $buttons = wrapper.findAll('.ak-swipe-cell_button')
+    const $buttons = wrapper.findAll('.ta-swipe-cell_button')
 
     expect($buttons[0].text()).toBe('Add')
     expect($buttons[1].text()).toBe('Delete')

@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkProgress } from 'arkui-mobile-vue'
+import { TaProgress } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -27,9 +27,9 @@ import { AkProgress } from 'arkui-mobile-vue'
 ### 内容区（#default）
 
 ```vue
-<ak-progress :percentage="5">
+<ta-progress :percentage="5">
   <template #default="{ progress }"> 已抢{{ progress }} </template>
-</ak-progress>
+</ta-progress>
 ```
 
 注：添加 slot 后 `show-text` prop 属性失效。

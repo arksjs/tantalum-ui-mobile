@@ -1,7 +1,7 @@
 <template>
-  <div class="ak-copy" @click="onCopy">
-    <input type="text" :value="text" class="ak-copy_input" ref="inputEl" />
-    <div class="ak-copy_box">
+  <div class="ta-copy" @click="onCopy">
+    <input type="text" :value="text" class="ta-copy_input" ref="inputEl" />
+    <div class="ta-copy_box">
       <slot>{{ locale.copyText }}</slot>
     </div>
   </div>
@@ -18,7 +18,7 @@ import { useException } from '../hooks/use-exception'
 import { emitErrorValidator } from '../helpers/validator'
 
 export default defineComponent({
-  name: 'ak-copy',
+  name: 'ta-copy',
   props: {
     // 需要复制的文本
     text: {

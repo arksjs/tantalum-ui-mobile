@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkInput } from 'arkui-mobile-vue'
+import { TaInput } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -57,9 +57,9 @@ import { AkInput } from 'arkui-mobile-vue'
 ### 前置元素（#prepend）
 
 ```vue
-<ak-input>
+<ta-input>
   <template #prepend>https://</template>
-</ak-input>
+</ta-input>
 ```
 
 注：也可以传入 `Icon`，比如常见的搜索。
@@ -67,7 +67,7 @@ import { AkInput } from 'arkui-mobile-vue'
 ### 后置元素（#append）
 
 ```vue
-<ak-input>
+<ta-input>
   <template #append>.com</template>
-</ak-input>
+</ta-input>
 ```

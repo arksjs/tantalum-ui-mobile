@@ -1,81 +1,81 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell
+  <ta-group title="基础用法">
+    <ta-cell
       label="纯文字"
       isLink
       @click="onShowToast({ title: '提示文本' })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="长文字"
       isLink
       @click="
         onShowToast({ title: '提示文本提示文本提示文本提示文本提示文本' })
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="成功"
       isLink
       @click="onShowToast({ title: '成功文本', type: 'success' })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="失败"
       isLink
       @click="onShowToast({ title: '失败文本', type: 'fail' })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="加载中"
       isLink
       @click="onShowToast({ title: '加载文本', type: 'loading' })"
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="自定义图标">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="自定义图标">
+    <ta-cell
       label="收藏"
       isLink
       @click="onShowToast({ title: '已收藏', icon: 'StarFilled' })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="警告"
       isLink
       @click="
         onShowToast({ title: '警告文本', icon: 'ExclamationCircleOutlined' })
       "
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="其他">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="其他">
+    <ta-cell
       label="自定义时长"
       isLink
       @click="onShowToast({ title: '5秒后消失', duration: 5000 })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="展示透明蒙层"
       isLink
       @click="onShowToast({ title: '不可穿透', showMask: true })"
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="API">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="API">
+    <ta-cell
       label="showToast"
       isLink
       @click="showToast({ title: '提示文本', duration: 5000 })"
-    ></ak-cell>
-    <ak-cell label="hideToast" isLink @click="hideToast()"></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell label="hideToast" isLink @click="hideToast()"></ta-cell>
+    <ta-cell
       label="showLoading"
       isLink
       @click="showLoading({ title: '加载中' })"
-    ></ak-cell>
-    <ak-cell label="hideLoading" isLink @click="hideLoading()"></ak-cell>
-  </ak-group>
-  <ak-toast
+    ></ta-cell>
+    <ta-cell label="hideLoading" isLink @click="hideLoading()"></ta-cell>
+  </ta-group>
+  <ta-toast
     v-model:visible="visible"
     :title="title"
     :type="type"
     :showMask="showMask"
     :icon="icon"
     :duration="duration"
-  ></ak-toast>
+  ></ta-toast>
 </template>
 
 <script lang="ts">

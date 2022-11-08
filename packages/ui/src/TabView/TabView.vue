@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <div class="ak-tab-view_header ak-horizontal-hairline">
+    <div class="ta-tab-view_header ta-horizontal-hairline">
       <SideTab
         v-if="vertical && tabList.length > 0"
         :options="tabList"
@@ -15,7 +15,7 @@
         @change="onTabChange"
       />
     </div>
-    <div class="ak-tab-view_body" ref="listEl">
+    <div class="ta-tab-view_body" ref="listEl">
       <Swiper
         :activeIndex="activeIndex"
         @activeIndexChange="onSwiperChange"
@@ -50,7 +50,7 @@ import type { TabOnChange } from '../Tab/types'
 import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
-  name: 'ak-tab-view',
+  name: 'ta-tab-view',
   components: { Tab, SideTab, Swiper },
   props: {
     modelValue: {
@@ -155,7 +155,7 @@ export default defineComponent({
       }
     }
 
-    provide('akTabViewVertical', vertical.value)
+    provide('taTabViewVertical', vertical.value)
 
     watch(
       () => props.modelValue,

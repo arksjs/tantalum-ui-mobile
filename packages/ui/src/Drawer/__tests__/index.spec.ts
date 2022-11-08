@@ -24,8 +24,8 @@ describe('Drawer', () => {
         title
       }
     })
-    expect(wrapper.find('.ak-nav-bar_title').text()).toBe(title)
-    expect(wrapper.find('.ak-drawer_header').exists()).toBeTruthy()
+    expect(wrapper.find('.ta-nav-bar_title').text()).toBe(title)
+    expect(wrapper.find('.ta-drawer_header').exists()).toBeTruthy()
   })
 
   test('showClose', async () => {
@@ -35,13 +35,13 @@ describe('Drawer', () => {
       }
     })
     expect(wrapper.findComponent(CloseOutlined).exists()).toBeFalsy()
-    expect(wrapper.find('.ak-drawer_header').exists()).toBeFalsy()
+    expect(wrapper.find('.ta-drawer_header').exists()).toBeFalsy()
 
     await wrapper.setProps({
       showClose: true
     })
     expect(wrapper.findComponent(CloseOutlined).exists()).toBeTruthy()
-    expect(wrapper.find('.ak-drawer_header').exists()).toBeTruthy()
+    expect(wrapper.find('.ta-drawer_header').exists()).toBeTruthy()
   })
 
   test('placement', async () => {
@@ -50,28 +50,28 @@ describe('Drawer', () => {
         stubs: { teleport: true }
       }
     })
-    expect(wrapper.find('.ak-drawer_inner').classes()).toContain(
+    expect(wrapper.find('.ta-drawer_inner').classes()).toContain(
       'placement--bottom'
     )
 
     await wrapper.setProps({
       placement: 'top'
     })
-    expect(wrapper.find('.ak-drawer_inner').classes()).toContain(
+    expect(wrapper.find('.ta-drawer_inner').classes()).toContain(
       'placement--top'
     )
 
     await wrapper.setProps({
       placement: 'left'
     })
-    expect(wrapper.find('.ak-drawer_inner').classes()).toContain(
+    expect(wrapper.find('.ta-drawer_inner').classes()).toContain(
       'placement--left'
     )
 
     await wrapper.setProps({
       placement: 'right'
     })
-    expect(wrapper.find('.ak-drawer_inner').classes()).toContain(
+    expect(wrapper.find('.ta-drawer_inner').classes()).toContain(
       'placement--right'
     )
   })

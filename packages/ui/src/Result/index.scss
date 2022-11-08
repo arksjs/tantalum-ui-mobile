@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-result {
+.ta-result {
   padding: 60px 16px;
 
   &_header {
@@ -11,20 +11,20 @@
   }
 
   &_icon {
-    --ak-icon-size: 64px;
-    --ak-icon-color: #{$primary-color};
+    --ta-icon-size: 64px;
+    --ta-icon-color: #{$primary-color};
 
     &.type {
       &--success {
-        --ak-icon-color: #{$success-color};
+        --ta-icon-color: #{$success-color};
       }
 
       &--warning {
-        --ak-icon-color: #{$warning-color};
+        --ta-icon-color: #{$warning-color};
       }
 
       &--fail {
-        --ak-icon-color: #{$danger-color};
+        --ta-icon-color: #{$danger-color};
       }
     }
   }
@@ -56,7 +56,7 @@
     display: flex;
     flex-direction: column;
 
-    .ak-button + .ak-button {
+    .ta-button + .ta-button {
       margin: 12px 0 0;
     }
   }

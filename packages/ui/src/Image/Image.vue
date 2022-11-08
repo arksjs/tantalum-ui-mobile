@@ -1,14 +1,14 @@
 <template>
-  <div class="ak-image" ref="root">
+  <div class="ta-image" ref="root">
     <span
       v-if="aspectRatio != null && aspectRatio > 0"
-      class="ak-image_ratio"
+      class="ta-image_ratio"
       :style="ratioStyles"
     ></span>
-    <i class="ak-image_loading" v-if="loading">
+    <i class="ta-image_loading" v-if="loading">
       <Icon :icon="loadingIcon" :size="iconSize" />
     </i>
-    <i class="ak-image_error" v-if="error">
+    <i class="ta-image_error" v-if="error">
       <Icon :icon="errorIcon" :size="iconSize" />
     </i>
     <img
@@ -53,7 +53,7 @@ import { isString } from '../helpers/util'
 import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
-  name: 'ak-image',
+  name: 'ta-image',
   components: { Icon },
   props: {
     // 图片资源地址

@@ -1,14 +1,14 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell
+  <ta-group title="基础用法">
+    <ta-cell
       label="基础"
       isLink
       id="dropdownCell"
       @click=";(selector = '#dropdownCell'), (visible = true)"
     />
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell
       label="visible-state-change"
       id="dropdownCellEvent"
       @click="
@@ -17,13 +17,13 @@
           (visible = true)
       "
     />
-  </ak-group>
-  <ak-dropdown
+  </ta-group>
+  <ta-dropdown
     v-model:visible="visible"
     :selector="selector"
     @visibleStateChange="onVisibleStateChange"
   >
-  </ak-dropdown>
+  </ta-dropdown>
 </template>
 
 <script lang="ts">

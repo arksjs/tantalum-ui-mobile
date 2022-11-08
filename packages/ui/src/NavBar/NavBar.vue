@@ -1,69 +1,69 @@
 <template>
-  <div class="ak-nav-bar ak-horizontal-hairline">
-    <div class="ak-nav-bar_inner">
-      <div class="ak-nav-bar_left">
+  <div class="ta-nav-bar ta-horizontal-hairline">
+    <div class="ta-nav-bar_inner">
+      <div class="ta-nav-bar_left">
         <slot name="left" v-if="$slots.left"></slot>
         <ButtonGroup
           v-else-if="leftButtons.length > 0 || showBack || showHome"
-          class="ak-nav-bar_button-group"
+          class="ta-nav-bar_button-group"
           :shape="iconOnly ? 'square' : 'rectangle'"
           pattern="borderless"
         >
           <template v-if="leftButtons.length > 0">
-            <AkButton
-              class="ak-nav-bar_button"
+            <TaButton
+              class="ta-nav-bar_button"
               transparent
               :type="item.type || 'default'"
               :icon="item.icon"
               v-for="(item, index) in leftButtons"
               :key="index"
               @click="onLeftIconClick($event, item, index)"
-              >{{ item.text }}</AkButton
+              >{{ item.text }}</TaButton
             >
           </template>
           <template v-else>
-            <AkButton
-              class="ak-nav-bar_button"
+            <TaButton
+              class="ta-nav-bar_button"
               type="default"
               :icon="LeftOutlined"
               transparent
               v-if="showBack"
               @click="onBack"
-              >{{ locale.navBarBackButtonText }}</AkButton
+              >{{ locale.navBarBackButtonText }}</TaButton
             >
-            <AkButton
-              class="ak-nav-bar_button"
+            <TaButton
+              class="ta-nav-bar_button"
               type="default"
               :icon="HomeOutlined"
               transparent
               v-if="showHome"
               @click="onBackHome"
-              >{{ locale.navBarHomeButtonText }}</AkButton
+              >{{ locale.navBarHomeButtonText }}</TaButton
             >
           </template>
         </ButtonGroup>
       </div>
-      <div class="ak-nav-bar_title" ref="titleEl">
+      <div class="ta-nav-bar_title" ref="titleEl">
         {{ title }}
       </div>
-      <div class="ak-nav-bar_right">
+      <div class="ta-nav-bar_right">
         <slot name="right" v-if="$slots.right"></slot>
         <template v-else>
           <ButtonGroup
-            class="ak-nav-bar_button-group"
+            class="ta-nav-bar_button-group"
             :shape="iconOnly ? 'square' : 'rectangle'"
             pattern="borderless"
             v-if="rightButtons.length > 0"
           >
-            <AkButton
-              class="ak-nav-bar_button"
+            <TaButton
+              class="ta-nav-bar_button"
               :type="item.type || 'default'"
               :icon="item.icon"
               v-for="(item, index) in rightButtons"
               :key="index"
               transparent
               @click="onRightIconClick($event, item, index)"
-              >{{ item.text }}</AkButton
+              >{{ item.text }}</TaButton
             >
           </ButtonGroup>
         </template>
@@ -74,7 +74,7 @@
 
 <script lang="ts">
 import { defineComponent, shallowRef, type PropType } from 'vue'
-import { Button as AkButton, ButtonGroup } from '../Button'
+import { Button as TaButton, ButtonGroup } from '../Button'
 import type {
   ButtonOption,
   NavBarEmits,
@@ -114,8 +114,8 @@ const emitTitleDbClickValidator: VoidFnToBooleanFn<OnTitleDbClick> = titleEl =>
   titleEl instanceof HTMLElement
 
 export default defineComponent({
-  name: 'ak-nav-bar',
-  components: { AkButton, ButtonGroup },
+  name: 'ta-nav-bar',
+  components: { TaButton, ButtonGroup },
   props: {
     // 标题
     title: {

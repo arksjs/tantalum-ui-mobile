@@ -11,7 +11,7 @@ import { useList } from '../hooks/use-list'
 import { getStepsClasses } from './util'
 
 export default defineComponent({
-  name: 'ak-steps',
+  name: 'ta-steps',
   props: {
     activeIndex: {
       type: Number,
@@ -29,7 +29,7 @@ export default defineComponent({
   setup(props) {
     const { listEl } = useList('steps', noop)
 
-    provide(`akStepsActiveIndex`, toRef(props, 'activeIndex'))
+    provide(`taStepsActiveIndex`, toRef(props, 'activeIndex'))
 
     const classes = computed(() => getStepsClasses(props))
 

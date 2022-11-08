@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <AkButton
+    <TaButton
       :icon="MinusOutlined"
       shape="square"
       size="small"
@@ -8,7 +8,7 @@
       @click="onMinusClick"
     />
     <input
-      class="ak-stepper_input"
+      class="ta-stepper_input"
       :type="decimalLength != 0 ? 'text' : 'tel'"
       :inputmode="decimalLength != 0 ? 'decimal' : 'numeric'"
       :name="name"
@@ -20,7 +20,7 @@
       @change="onChange"
       ref="inputEl"
     />
-    <AkButton
+    <TaButton
       :icon="PlusOutlined"
       shape="square"
       size="small"
@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { onMounted, ref, defineComponent, watch, computed } from 'vue'
-import { Button as AkButton } from '../Button'
+import { Button as TaButton } from '../Button'
 import { getNumber } from '../helpers/util'
 import { formatNumber, getRangeNumber, getClasses } from './util'
 import {
@@ -48,8 +48,8 @@ import { emitClickValidator } from '../helpers/validator'
 import type { StepperEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-stepper',
-  components: { AkButton },
+  name: 'ta-stepper',
+  components: { TaButton },
   props: {
     ...formItemProps,
     modelValue: {

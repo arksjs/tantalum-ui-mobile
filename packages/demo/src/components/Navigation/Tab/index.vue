@@ -1,34 +1,34 @@
 <template>
-  <ak-group title="基础用法">
+  <ta-group title="基础用法">
     <div class="exp-tab-box">
-      <ak-tab :options="shortTabList"></ak-tab>
+      <ta-tab :options="shortTabList"></ta-tab>
     </div>
-  </ak-group>
-  <ak-group title="滚动（阈值 scrollThreshold = 4）">
+  </ta-group>
+  <ta-group title="滚动（阈值 scrollThreshold = 4）">
     <div class="exp-tab-box">
-      <ak-tab :options="tabList"></ak-tab>
+      <ta-tab :options="tabList"></ta-tab>
     </div>
-  </ak-group>
-  <ak-group title="Mix">
+  </ta-group>
+  <ta-group title="Mix">
     <div class="exp-tab-box">
-      <ak-tab :options="mixTabList"></ak-tab>
+      <ta-tab :options="mixTabList"></ta-tab>
     </div>
-  </ak-group>
-  <ak-group title="带副标签">
+  </ta-group>
+  <ta-group title="带副标签">
     <div class="exp-tab-box">
-      <ak-tab :options="subTabList"></ak-tab>
+      <ta-tab :options="subTabList"></ta-tab>
     </div>
-  </ak-group>
-  <ak-group title="change 事件">
+  </ta-group>
+  <ta-group title="change 事件">
     <div class="exp-tab-box">
-      <ak-tab
+      <ta-tab
         ref="tabRef"
         :options="shortTabList"
         v-model="shortActiveValue"
         @change="onChange"
-      ></ak-tab>
+      ></ta-tab>
     </div>
-  </ak-group>
+  </ta-group>
 </template>
 
 <script lang="ts">

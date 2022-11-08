@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-picker" :class="{ disabled }" ref="root">
+  <div class="ta-picker" :class="{ disabled }" ref="root">
     <SelectorField
       :label="fieldLabel"
       :value="fieldValue"
@@ -32,7 +32,7 @@ import type { DatePickerEmits } from './types'
 import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
-  name: 'ak-date-picker',
+  name: 'ta-date-picker',
   components: { SelectorField, PickerPopup },
   props: { ...commonProps, ...pickerProps },
   emits: { ...pickerEmits } as PropsToEmits<DatePickerEmits>,

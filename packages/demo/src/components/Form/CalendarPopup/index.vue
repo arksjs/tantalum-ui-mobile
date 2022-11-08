@@ -74,19 +74,19 @@ export default {
 </script>
 
 <template>
-  <ak-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Calendar" />
-  <ak-group title="基础用法">
-    <ak-cell
+  <ta-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Calendar" />
+  <ta-group title="基础用法">
+    <ta-cell
       label="默认"
       @click="
         () => {
           popupVisible = true
         }
       "
-      >{{ popupValue }}</ak-cell
+      >{{ popupValue }}</ta-cell
     >
-    <ak-cell label="+1day" isLink @click="addOneDay">click</ak-cell>
-    <ak-cell
+    <ta-cell label="+1day" isLink @click="addOneDay">click</ta-cell>
+    <ta-cell
       label="showConfirm=true"
       isLink
       @click="
@@ -96,14 +96,14 @@ export default {
         }
       "
     />
-    <ak-cell
+    <ta-cell
       label="initialMode=range"
       isLink
       @click="popupRangeVisible = true"
     />
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell
       label="confirm/cancel"
       isLink
       @click="
@@ -114,7 +114,7 @@ export default {
         }
       "
     />
-    <ak-cell
+    <ta-cell
       label="visible-state-change"
       isLink
       @click="
@@ -124,8 +124,8 @@ export default {
         }
       "
     />
-  </ak-group>
-  <ak-calendar-popup
+  </ta-group>
+  <ta-calendar-popup
     v-model:visible="popupVisible"
     :title="title"
     :showConfirm="popupShowConfirm"
@@ -138,7 +138,7 @@ export default {
     @change="onChange"
     @visibleStateChange="onVisibleStateChange"
   />
-  <ak-calendar-popup
+  <ta-calendar-popup
     v-model:visible="popupRangeVisible"
     :title="title"
     initialMode="range"

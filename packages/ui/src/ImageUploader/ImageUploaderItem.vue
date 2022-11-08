@@ -1,12 +1,12 @@
 <template>
   <div
-    class="ak-image-uploader_item"
+    class="ta-image-uploader_item"
     @contextmenu.prevent="noop"
     @click="onClick(item)"
   >
-    <AkImage :src="item.url" :draggable="false" :mode="imageMode" />
+    <TaImage :src="item.url" :draggable="false" :mode="imageMode" />
     <div
-      class="ak-image-uploader_item-status"
+      class="ta-image-uploader_item-status"
       v-if="item.status !== 'uploaded' && item.status !== 'reading'"
     >
       <ActivityIndicator
@@ -23,7 +23,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import { Image as AkImage } from '../Image'
+import { Image as TaImage } from '../Image'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
 import { noop } from '../helpers/util'
@@ -32,8 +32,8 @@ import type { FileItem } from './types'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'
 
 export default defineComponent({
-  name: 'ak-image-uploader-item',
-  components: { ActivityIndicator, AkImage, Icon },
+  name: 'ta-image-uploader-item',
+  components: { ActivityIndicator, TaImage, Icon },
   props: {
     item: {
       type: Object as PropType<FileItem>,

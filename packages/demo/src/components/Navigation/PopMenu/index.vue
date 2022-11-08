@@ -1,30 +1,30 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="基础">
-      <ak-button
+  <ta-group title="基础用法">
+    <ta-cell label="基础">
+      <ta-button
         size="small"
         id="popMenu"
         shape="circle"
         icon="MenuOutlined"
         @click=";(selector = '#popMenu'), (visible = true)"
       >
-      </ak-button>
-    </ak-cell>
-    <ak-cell label="不展示蒙层">
-      <ak-button
+      </ta-button>
+    </ta-cell>
+    <ta-cell label="不展示蒙层">
+      <ta-button
         size="small"
         id="popMenuNoMask"
         shape="circle"
         icon="MenuOutlined"
         @click="visible3 = true"
       >
-      </ak-button>
-    </ak-cell>
-  </ak-group>
-  <ak-group title="方向 placement=top/bottom/left/right">
+      </ta-button>
+    </ta-cell>
+  </ta-group>
+  <ta-group title="方向 placement=top/bottom/left/right">
     <div class="exp-popover-box2">
       <div>
-        <ak-button
+        <ta-button
           size="small"
           id="popMenuTop2"
           shape="circle"
@@ -36,10 +36,10 @@
           "
         >
           上
-        </ak-button>
+        </ta-button>
       </div>
       <div>
-        <ak-button
+        <ta-button
           size="small"
           id="popMenuLeft2"
           shape="circle"
@@ -51,8 +51,8 @@
           "
         >
           左
-        </ak-button>
-        <ak-button
+        </ta-button>
+        <ta-button
           class="exp-popover-box2-ml"
           size="small"
           id="popMenuRight2"
@@ -65,10 +65,10 @@
           "
         >
           右
-        </ak-button>
+        </ta-button>
       </div>
       <div>
-        <ak-button
+        <ta-button
           size="small"
           id="popMenuBottom2"
           shape="circle"
@@ -80,13 +80,13 @@
           "
         >
           下
-        </ak-button>
+        </ta-button>
       </div>
     </div>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell label="confirm/cancel">
-      <ak-button
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell label="confirm/cancel">
+      <ta-button
         size="small"
         id="popMenuEvent"
         shape="circle"
@@ -95,10 +95,10 @@
           ;(selector = '#popMenuEvent'), (showEvent = true), (visible = true)
         "
       >
-      </ak-button>
-    </ak-cell>
-    <ak-cell label="visible-state-change">
-      <ak-button
+      </ta-button>
+    </ta-cell>
+    <ta-cell label="visible-state-change">
+      <ta-button
         size="small"
         id="popMenuPopupEvent"
         shape="circle"
@@ -109,22 +109,22 @@
             (visible = true)
         "
       >
-      </ak-button>
-    </ak-cell>
-  </ak-group>
-  <ak-group title="API">
-    <ak-cell label="showPopMenu">
-      <ak-button
+      </ta-button>
+    </ta-cell>
+  </ta-group>
+  <ta-group title="API">
+    <ta-cell label="showPopMenu">
+      <ta-button
         size="small"
         id="popMenuApi"
         shape="circle"
         icon="MenuOutlined"
         @click="onCallApi('#popMenuApi')"
       >
-      </ak-button>
-    </ak-cell>
-  </ak-group>
-  <ak-pop-menu
+      </ta-button>
+    </ta-cell>
+  </ta-group>
+  <ta-pop-menu
     v-model:visible="visible"
     :selector="selector"
     :options="options"
@@ -132,8 +132,8 @@
     @cancel="onCancel"
     @visibleStateChange="onVisibleStateChange"
   >
-  </ak-pop-menu>
-  <ak-pop-menu
+  </ta-pop-menu>
+  <ta-pop-menu
     v-model:visible="visible2"
     :selector="selector2"
     :placement="placement2"
@@ -141,8 +141,8 @@
     @confirm="onConfirm"
     @cancel="onCancel"
   >
-  </ak-pop-menu>
-  <ak-pop-menu
+  </ta-pop-menu>
+  <ta-pop-menu
     v-model:visible="visible3"
     selector="#popMenuNoMask"
     :options="options"
@@ -150,7 +150,7 @@
     @confirm="onConfirm"
     @cancel="onCancel"
   >
-  </ak-pop-menu>
+  </ta-pop-menu>
 </template>
 
 <script lang="ts">

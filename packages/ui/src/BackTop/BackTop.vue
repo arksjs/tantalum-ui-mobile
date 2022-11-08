@@ -1,5 +1,5 @@
 <template>
-  <button class="ak-back-top" :style="styles" @click="onClick">
+  <button class="ta-back-top" :style="styles" @click="onClick">
     <slot>
       <Icon :icon="UpCircleOutlined" />
     </slot>
@@ -28,7 +28,7 @@ import { getNumber } from '../helpers/util'
 import type { BackTopEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-back-top',
+  name: 'ta-back-top',
   components: { Icon },
   props: {
     visibleHeight: {

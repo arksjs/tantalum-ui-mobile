@@ -19,7 +19,7 @@ import {
 import { useButtonProvider } from './context'
 
 export default defineComponent({
-  name: 'ak-button-group',
+  name: 'ta-button-group',
   props: {
     size: {
       type: String as PropType<SizeType>,

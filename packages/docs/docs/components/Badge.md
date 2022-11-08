@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkBadge } from 'arkui-mobile-vue'
+import { TaBadge } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -35,18 +35,18 @@ import { AkBadge } from 'arkui-mobile-vue'
 ### #default
 
 ```vue
-<ak-badge :count="1" show-zero>
-  <ak-button>badge</ak-button>
-</ak-badge>
+<ta-badge :count="1" show-zero>
+  <ta-button>badge</ta-button>
+</ta-badge>
 ```
 
 ### #badge
 
 ```vue
-<ak-badge :content="1">
+<ta-badge :content="1">
   <div class="exp-badge-slot"></div>
   <template #badge>
-    <ak-icon icon="CheckOutlined"></ak-icon>
+    <ta-icon icon="CheckOutlined"></ta-icon>
   </template>
-</ak-badge>
+</ta-badge>
 ```

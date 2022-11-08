@@ -2,11 +2,11 @@
 
 exports[`Popover > snapshot 1`] = `
 "<teleport-stub>
-  <div class=\\"ak-popup ak-popover\\" style=\\"z-index: 2000; display: none;\\">
-    <div class=\\"ak-mask\\"></div>
-    <div class=\\"ak-popover_inner\\" style=\\"max-width: -16px; max-height: -16px;\\"><i class=\\"ak-popover_arrow\\" style=\\"left: 200vw; top: 200vh;\\"></i>
-      <div class=\\"ak-popover_content\\">
-        <div class=\\"ak-popover_text\\"></div>
+  <div class=\\"ta-popup ta-popover\\" style=\\"z-index: 2000; display: none;\\">
+    <div class=\\"ta-mask\\"></div>
+    <div class=\\"ta-popover_inner\\" style=\\"max-width: -16px; max-height: -16px;\\"><i class=\\"ta-popover_arrow\\" style=\\"left: 200vw; top: 200vh;\\"></i>
+      <div class=\\"ta-popover_content\\">
+        <div class=\\"ta-popover_text\\"></div>
       </div>
     </div>
   </div>

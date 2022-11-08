@@ -1,27 +1,27 @@
 <template>
-  <ak-group title="基础">
-    <ak-form>
-      <ak-form-item label="昵称">
-        <ak-input v-model="baseForm.nickname" placeholder="请输入昵称" />
-      </ak-form-item>
-      <ak-form-item label="性别">
-        <ak-radio-group
+  <ta-group title="基础">
+    <ta-form>
+      <ta-form-item label="昵称">
+        <ta-input v-model="baseForm.nickname" placeholder="请输入昵称" />
+      </ta-form-item>
+      <ta-form-item label="性别">
+        <ta-radio-group
           v-model="baseForm.gender"
           :options="genderOptions"
-        ></ak-radio-group>
-      </ak-form-item>
+        ></ta-radio-group>
+      </ta-form-item>
       <template #footer>
-        <ak-button type="primary" @click="onBaseSubmit">提交</ak-button>
+        <ta-button type="primary" @click="onBaseSubmit">提交</ta-button>
       </template>
-    </ak-form>
-  </ak-group>
-  <ak-group title="Formily">
+    </ta-form>
+  </ta-group>
+  <ta-group title="Formily">
     <FormProvider :form="form">
       <Field
         name="nickname"
         title="昵称"
         required
-        :component="[AkInput, { placeholder: '请输入昵称', showClear: true }]"
+        :component="[TaInput, { placeholder: '请输入昵称', showClear: true }]"
         :decorator="[FormItem]"
       />
       <Field
@@ -29,7 +29,7 @@
         title="头像"
         required
         :component="[
-          AkImageUploader,
+          TaImageUploader,
           { uploadReady: hookUpload, columnNumber: 1, maxCount: 1 }
         ]"
         :decorator="[FormItem]"
@@ -39,7 +39,7 @@
         title="性别"
         required
         :component="[
-          AkRadioGroup,
+          TaRadioGroup,
           {
             options: genderOptions
           }
@@ -50,7 +50,7 @@
         name="weight"
         title="体重Kg"
         required
-        :component="[AkSlider, { showValue: true, min: 35, max: 120 }]"
+        :component="[TaSlider, { showValue: true, min: 35, max: 120 }]"
         :decorator="[FormItem]"
       />
       <Field
@@ -58,7 +58,7 @@
         title="季节"
         required
         :component="[
-          AkPicker,
+          TaPicker,
           { options: multiOptions, placeholder: '选择季节' }
         ]"
         :decorator="[FormItem]"
@@ -67,14 +67,14 @@
         name="birthday"
         title="生日"
         required
-        :component="[AkCalendar, { placeholder: '选择生日' }]"
+        :component="[TaCalendar, { placeholder: '选择生日' }]"
         :decorator="[FormItem]"
       />
       <Field
         name="character"
         title="性格"
         required
-        :component="[AkCheckboxGroup, { options: characters }]"
+        :component="[TaCheckboxGroup, { options: characters }]"
         :decorator="[FormItem]"
       />
       <Field
@@ -82,7 +82,7 @@
         title="地区"
         required
         :component="[
-          AkCascader,
+          TaCascader,
           {
             placeholder: '选择地区',
             fieldNames: { value: 'label' },
@@ -95,21 +95,21 @@
         name="happinessIndex"
         title="幸福指数"
         required
-        :component="[AkRate, { allowHalf: true }]"
+        :component="[TaRate, { allowHalf: true }]"
         :decorator="[FormItem]"
       />
       <Field
-        name="AkStepper"
+        name="TaStepper"
         title="步进器"
         required
-        :component="[AkStepper, { max: 10, step: 0.2, decimalLength: 1 }]"
+        :component="[TaStepper, { max: 10, step: 0.2, decimalLength: 1 }]"
         :decorator="[FormItem]"
       />
       <Field
         name="agree"
         title="认可"
         required
-        :component="[AkSwitch]"
+        :component="[TaSwitch]"
         :decorator="[FormItem]"
       />
       <FormConsumer>
@@ -117,39 +117,39 @@
           <pre class="exp-form-json">{{
             JSON.stringify(form.values, null, 2)
           }}</pre>
-          <ak-form-footer>
-            <ak-button
+          <ta-form-footer>
+            <ta-button
               type="primary"
               @click="
                 () => {
                   form.submit(onSubmit)
                 }
               "
-              >提交</ak-button
+              >提交</ta-button
             >
-          </ak-form-footer>
+          </ta-form-footer>
         </template>
       </FormConsumer>
     </FormProvider>
-  </ak-group>
+  </ta-group>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { multiOptions, regionOptions } from '../Picker/data'
 import {
-  AkInput,
-  AkPicker,
-  AkCalendar,
-  AkCascader,
-  AkSwitch,
-  AkRate,
-  AkSlider,
-  AkRange,
-  AkStepper,
-  AkRadioGroup,
-  AkCheckboxGroup,
-  AkImageUploader,
+  TaInput,
+  TaPicker,
+  TaCalendar,
+  TaCascader,
+  TaSwitch,
+  TaRate,
+  TaSlider,
+  TaRange,
+  TaStepper,
+  TaRadioGroup,
+  TaCheckboxGroup,
+  TaImageUploader,
   showToast,
   showDialog,
   type ImageUploaderUploadReady
@@ -192,18 +192,18 @@ export default defineComponent({
       },
 
       FormItem,
-      AkInput,
-      AkPicker,
-      AkCalendar,
-      AkCascader,
-      AkSwitch,
-      AkRate,
-      AkSlider,
-      AkRange,
-      AkStepper,
-      AkRadioGroup,
-      AkCheckboxGroup,
-      AkImageUploader,
+      TaInput,
+      TaPicker,
+      TaCalendar,
+      TaCascader,
+      TaSwitch,
+      TaRate,
+      TaSlider,
+      TaRange,
+      TaStepper,
+      TaRadioGroup,
+      TaCheckboxGroup,
+      TaImageUploader,
       form: createForm({ validateFirst: true }),
 
       genderOptions: [

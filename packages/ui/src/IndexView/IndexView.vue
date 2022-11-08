@@ -1,7 +1,7 @@
 <template>
-  <div class="ak-index-view">
-    <div class="ak-index-view_sidebar">
-      <ul class="ak-index-view_list" ref="navEl">
+  <div class="ta-index-view">
+    <div class="ta-index-view_sidebar">
+      <ul class="ta-index-view_list" ref="navEl">
         <li
           :class="{ active: item.value === activeName }"
           v-for="(item, index) in indexList"
@@ -13,7 +13,7 @@
         </li>
       </ul>
     </div>
-    <div class="ak-index-view_body">
+    <div class="ta-index-view_body">
       <StickyView
         :offsetTop="stickyOffsetTop"
         :modelValue="modelValue"
@@ -44,7 +44,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { IndexViewEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-index-view',
+  name: 'ta-index-view',
   components: { StickyView },
   props: {
     modelValue: {

@@ -1,7 +1,7 @@
 <template>
-  <div class="ak-pagination">
+  <div class="ta-pagination">
     <button
-      class="ak-pagination_prev"
+      class="ta-pagination_prev"
       :disabled="pageNum <= 1"
       @click="onClick('prev')"
     >
@@ -9,13 +9,13 @@
         <Icon :icon="LeftOutlined" />
       </slot>
     </button>
-    <div class="ak-pagination_content">
+    <div class="ta-pagination_content">
       <slot :current="pageNum" :total="totalNum"
         >{{ pageNum }} / {{ totalNum }}</slot
       >
     </div>
     <button
-      class="ak-pagination_next"
+      class="ta-pagination_next"
       :disabled="pageNum >= totalNum"
       @click="onClick('next')"
     >
@@ -37,7 +37,7 @@ import { isNumber, isNumeric, rangeInteger } from '../helpers/util'
 import { getTotal } from './util'
 
 export default defineComponent({
-  name: 'ak-pagination',
+  name: 'ta-pagination',
   components: { Icon },
   props: {
     // 当前页码

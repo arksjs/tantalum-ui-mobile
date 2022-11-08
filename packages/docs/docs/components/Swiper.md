@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkSwiper, AkSwiperItem } from 'arkui-mobile-vue'
+import { TaSwiper, TaSwiperItem } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,7 @@ import type {
   SwiperOnActiveIndexChange,
   SwiperOnAnimated,
   SwiperRef
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Swiper Props
@@ -56,15 +56,15 @@ import type {
 注：其中只可放置 [SwiperItem](./Swiper.md#swiperitem-slots) 组件，否则会导致未定义的行为。
 
 ```vue
-<ak-swiper>
-  <ak-swiper-item>
-    <ak-image src="a.jpg" />
-  </ak-swiper-item>
-  <ak-swiper-item>
-    <ak-image src="b.jpg" />
-  </ak-swiper-item>
+<ta-swiper>
+  <ta-swiper-item>
+    <ta-image src="a.jpg" />
+  </ta-swiper-item>
+  <ta-swiper-item>
+    <ta-image src="b.jpg" />
+  </ta-swiper-item>
   ...
-</ak-swiper>
+</ta-swiper>
 ```
 
 ## SwiperItem Slots
@@ -72,9 +72,9 @@ import type {
 ### 内容（#default）
 
 ```vue
-<ak-swiper-item>
-  <ak-image src="b.jpg" />
-</ak-swiper-item>
+<ta-swiper-item>
+  <ta-image src="b.jpg" />
+</ta-swiper-item>
 ```
 
 ## Methods

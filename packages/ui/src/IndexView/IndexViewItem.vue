@@ -1,6 +1,6 @@
 <template>
   <Group
-    class="ak-sticky-view-item ak-index-view-item"
+    class="ta-sticky-view-item ta-index-view-item"
     :title="title || name"
     :data-name="name"
     :data-title="title"
@@ -15,7 +15,7 @@ import { Group } from '../Group'
 import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
-  name: 'ak-index-view-item',
+  name: 'ta-index-view-item',
   components: { Group },
   props: {
     title: {
@@ -29,7 +29,7 @@ export default defineComponent({
   },
   setup() {
     const { printItemIsolationWarn } = useException()
-    const update = inject('akStickyViewUpdate', printItemIsolationWarn)
+    const update = inject('taStickyViewUpdate', printItemIsolationWarn)
 
     onMounted(update)
     onUnmounted(update)

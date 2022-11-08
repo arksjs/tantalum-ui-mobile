@@ -15,7 +15,7 @@ describe('Badge', () => {
         content: 1
       }
     })
-    expect(wrapper.find('.ak-badge_badge').text()).toBe('1')
+    expect(wrapper.find('.ta-badge_badge').text()).toBe('1')
   })
 
   test('content="HOT"', () => {
@@ -24,7 +24,7 @@ describe('Badge', () => {
         content: 'HOT'
       }
     })
-    expect(wrapper.find('.ak-badge_badge').text()).toBe('HOT')
+    expect(wrapper.find('.ta-badge_badge').text()).toBe('HOT')
   })
 
   test('dot', () => {
@@ -34,7 +34,7 @@ describe('Badge', () => {
         dot: true
       }
     })
-    expect(wrapper.find('.ak-badge_badge').classes()).toContain('dot')
+    expect(wrapper.find('.ta-badge_badge').classes()).toContain('dot')
   })
 
   test('showZero', () => {
@@ -44,7 +44,7 @@ describe('Badge', () => {
         showZero: true
       }
     })
-    expect(wrapper.find('.ak-badge_badge').text()).toBe('0')
+    expect(wrapper.find('.ta-badge_badge').text()).toBe('0')
   })
 
   test.concurrent('maxCount', async () => {
@@ -53,27 +53,27 @@ describe('Badge', () => {
         content: 1
       }
     })
-    expect(wrapper.find('.ak-badge_badge').text()).toBe('1')
+    expect(wrapper.find('.ta-badge_badge').text()).toBe('1')
 
     await wrapper.setProps({
       content: 99
     })
-    expect(wrapper.find('.ak-badge_badge').text()).toBe('99')
+    expect(wrapper.find('.ta-badge_badge').text()).toBe('99')
 
     await wrapper.setProps({
       content: 100
     })
-    expect(wrapper.find('.ak-badge_badge').text()).toBe('99+')
+    expect(wrapper.find('.ta-badge_badge').text()).toBe('99+')
 
     await wrapper.setProps({
       maxCount: 1000
     })
-    expect(wrapper.find('.ak-badge_badge').text()).toBe('100')
+    expect(wrapper.find('.ta-badge_badge').text()).toBe('100')
 
     await wrapper.setProps({
       content: 2000
     })
-    expect(wrapper.find('.ak-badge_badge').text()).toBe('1000+')
+    expect(wrapper.find('.ta-badge_badge').text()).toBe('1000+')
   })
 
   test.concurrent('color', async () => {
@@ -83,15 +83,15 @@ describe('Badge', () => {
       }
     })
 
-    const $badge = wrapper.find('.ak-badge_badge')
-    expect($badge.attributes('style')).toContain('--ak-color: #6667AB;')
-    expect($badge.attributes('style')).toContain('--ak-front-color: #ffffff;')
+    const $badge = wrapper.find('.ta-badge_badge')
+    expect($badge.attributes('style')).toContain('--ta-color: #6667AB;')
+    expect($badge.attributes('style')).toContain('--ta-front-color: #ffffff;')
 
     await wrapper.setProps({
       color: '#E2C0BF'
     })
-    expect($badge.attributes('style')).toContain('--ak-color: #E2C0BF;')
-    expect($badge.attributes('style')).toContain('--ak-front-color: #493234;')
+    expect($badge.attributes('style')).toContain('--ta-color: #E2C0BF;')
+    expect($badge.attributes('style')).toContain('--ta-front-color: #493234;')
   })
 
   test('slot bagde', () => {

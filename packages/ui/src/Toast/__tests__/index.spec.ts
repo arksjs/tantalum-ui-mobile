@@ -28,7 +28,7 @@ describe('Toast', () => {
       }
     })
 
-    expect(wrapper.find('.ak-toast_text').text()).toBe(title)
+    expect(wrapper.find('.ta-toast_text').text()).toBe(title)
   })
 
   test.concurrent('type="loading"', () => {
@@ -42,7 +42,7 @@ describe('Toast', () => {
     })
 
     expect(wrapper.findComponent(ActivityIndicator).exists()).toBeTruthy()
-    expect(wrapper.find('.ak-toast_box').classes()).toContain('has--icon')
+    expect(wrapper.find('.ta-toast_box').classes()).toContain('has--icon')
   })
 
   test.concurrent('type="success"', () => {
@@ -56,7 +56,7 @@ describe('Toast', () => {
     })
 
     expect(wrapper.findComponent(CheckOutlined).exists()).toBeTruthy()
-    expect(wrapper.find('.ak-toast_box').classes()).toContain('has--icon')
+    expect(wrapper.find('.ta-toast_box').classes()).toContain('has--icon')
   })
 
   test.concurrent('type="fail"', () => {
@@ -70,7 +70,7 @@ describe('Toast', () => {
     })
 
     expect(wrapper.findComponent(CloseOutlined).exists()).toBeTruthy()
-    expect(wrapper.find('.ak-toast_box').classes()).toContain('has--icon')
+    expect(wrapper.find('.ta-toast_box').classes()).toContain('has--icon')
   })
 
   test.concurrent('showMask', async () => {
@@ -79,11 +79,11 @@ describe('Toast', () => {
         stubs: { teleport: true }
       }
     })
-    expect(wrapper.find('.ak-toast').classes('no--mask')).toBeTruthy()
+    expect(wrapper.find('.ta-toast').classes('no--mask')).toBeTruthy()
 
     await wrapper.setProps({
       showMask: true
     })
-    expect(wrapper.find('.ak-toast').classes('no--mask')).toBeFalsy()
+    expect(wrapper.find('.ta-toast').classes('no--mask')).toBeFalsy()
   })
 })

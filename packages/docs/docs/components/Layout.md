@@ -11,7 +11,7 @@
 ## Import
 
 ```js
-import { AkRow, AkCol } from 'arkui-mobile-vue'
+import { TaRow, TaCol } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -27,9 +27,9 @@ import { AkRow, AkCol } from 'arkui-mobile-vue'
 ## Row Slots
 
 ```vue
-<ak-row :gutter="10">
-  <ak-col :span="24">Layout</ak-col>
-</ak-row>
+<ta-row :gutter="10">
+  <ta-col :span="24">Layout</ta-col>
+</ta-row>
 ```
 
 ## Col Props
@@ -44,7 +44,7 @@ import { AkRow, AkCol } from 'arkui-mobile-vue'
 ## Col Slots
 
 ```vue
-<ak-row :gutter="10">
-  <ak-col :span="24">Layout</ak-col>
-</ak-row>
+<ta-row :gutter="10">
+  <ta-col :span="24">Layout</ta-col>
+</ta-row>
 ```

@@ -30,7 +30,7 @@ export function useList(name: string, updateCallback: ListUpdateCallback) {
     const $items = getItems()
 
     $items.forEach(($item, index) => {
-      $item._akSetIndex && $item._akSetIndex(index)
+      $item._taSetIndex && $item._taSetIndex(index)
     })
 
     if (isSameArray(_$items, $items)) {
@@ -48,13 +48,13 @@ export function useList(name: string, updateCallback: ListUpdateCallback) {
     }
   }
 
-  provide(`ak${capitalize(name)}Update`, update)
+  provide(`ta${capitalize(name)}Update`, update)
 
   function getItems(): ListItemElement[] {
     return listEl.value
       ? [].slice.call(
           listEl.value.querySelectorAll(
-            `.ak-${camelCase2KebabCase(name)}-item`
+            `.ta-${camelCase2KebabCase(name)}-item`
           ),
           0
         )
@@ -71,17 +71,17 @@ export function useList(name: string, updateCallback: ListUpdateCallback) {
 }
 
 interface ListItemElement extends HTMLElement {
-  _akSetIndex?(_index: number): void
+  _taSetIndex?(_index: number): void
 }
 
 export function useListItem(name: string, root?: Ref<ListItemElement | null>) {
   const { printItemIsolationWarn } = useException()
   const index = ref(-1)
-  const update = inject(`ak${capitalize(name)}Update`, printItemIsolationWarn)
+  const update = inject(`ta${capitalize(name)}Update`, printItemIsolationWarn)
 
   onMounted(() => {
     if (root?.value) {
-      root.value._akSetIndex = _index => (index.value = _index)
+      root.value._taSetIndex = _index => (index.value = _index)
     }
 
     update()

@@ -1,24 +1,24 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="主要" isLink @click="show({ title: '通知文本' })"></ak-cell>
-    <ak-cell
+  <ta-group title="基础用法">
+    <ta-cell label="主要" isLink @click="show({ title: '通知文本' })"></ta-cell>
+    <ta-cell
       label="成功"
       isLink
       @click="show({ title: '成功文本', type: 'success' })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="警告"
       isLink
       @click="show({ title: '警告文本', type: 'warning' })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="危险"
       isLink
       @click="show({ title: '危险文本', type: 'danger' })"
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="自定义图标">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="自定义图标">
+    <ta-cell
       label="成功"
       isLink
       @click="
@@ -28,8 +28,8 @@
           icon: 'CheckCircleOutlined'
         })
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="警告"
       isLink
       @click="
@@ -39,8 +39,8 @@
           icon: 'ExclamationCircleOutlined'
         })
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="危险"
       isLink
       @click="
@@ -50,15 +50,15 @@
           icon: 'CloseCircleOutlined'
         })
       "
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="其他">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="其他">
+    <ta-cell
       label="自定义时长"
       isLink
       @click="show({ title: '5秒后消失', duration: 5000 })"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="自定义颜色"
       isLink
       @click="
@@ -69,18 +69,18 @@
           color: '#ffffff'
         })
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="手动关闭"
       isLink
       @click="show({ title: '常驻可手动关闭', duration: 0, closable: true })"
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="API">
-    <ak-cell label="showNotify" isLink @click="callShowApi"></ak-cell>
-    <ak-cell label="hideNotify" isLink @click="callHideApi"></ak-cell>
-  </ak-group>
-  <ak-notify
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="API">
+    <ta-cell label="showNotify" isLink @click="callShowApi"></ta-cell>
+    <ta-cell label="hideNotify" isLink @click="callHideApi"></ta-cell>
+  </ta-group>
+  <ta-notify
     v-model:visible="visible"
     :title="title"
     :type="type"
@@ -90,7 +90,7 @@
     :duration="duration"
     :closable="closable"
     @cancel="onCancel"
-  ></ak-notify>
+  ></ta-notify>
 </template>
 
 <script lang="ts">

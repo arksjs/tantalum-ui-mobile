@@ -17,7 +17,7 @@ describe('Empty', () => {
       }
     })
 
-    expect(wrapper.find('.ak-empty_description').text()).toBe('description')
+    expect(wrapper.find('.ta-empty_description').text()).toBe('description')
   })
 
   test('slot image', () => {

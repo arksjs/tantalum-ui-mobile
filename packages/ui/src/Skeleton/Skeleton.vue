@@ -5,7 +5,7 @@ import { rootProps } from './props'
 import { useProvider } from './context'
 
 export default defineComponent({
-  name: 'ak-skeleton',
+  name: 'ta-skeleton',
   props: {
     // 是否加载中
     loading: {

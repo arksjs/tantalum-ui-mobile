@@ -4,7 +4,7 @@ import type { CSSProperties, StateType } from '../helpers/types'
 import { getColorObject } from '../helpers/color'
 
 export const getClasses = (type?: StateType) => {
-  return ['ak-notice-bar', 'type--' + getEnumsValue(STATE_TYPES, type)]
+  return ['ta-notice-bar', 'type--' + getEnumsValue(STATE_TYPES, type)]
 }
 
 export const getStyles = (color?: string) => {
@@ -12,8 +12,8 @@ export const getStyles = (color?: string) => {
 
   const colorObj = getColorObject(color)
   if (colorObj.hasColor) {
-    styles[`--ak-color`] = colorObj.varBackgroundColor
-    styles[`--ak-front-color`] = colorObj.varFrontColor
+    styles[`--ta-color`] = colorObj.varBackgroundColor
+    styles[`--ta-front-color`] = colorObj.varFrontColor
   }
 
   return styles
@@ -21,7 +21,7 @@ export const getStyles = (color?: string) => {
 
 export const getContentClasses = (marquee?: boolean) => {
   return [
-    'ak-notice-bar_content-inner',
+    'ta-notice-bar_content-inner',
     {
       marquee: !!marquee
     }

@@ -14,7 +14,7 @@
 ## Import
 
 ```js
-import { AkImageUploader } from 'arkui-mobile-vue'
+import { TaImageUploader } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -29,7 +29,7 @@ import type {
   ImageUploaderBeforeUpload,
   ImageUploaderUploadReady,
   ImageUploaderOnDelete
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -66,7 +66,7 @@ type ImageUploaderBeforeUpload = (file: File, handlers: {
 
 ```vue
 <template>
-  <ak-image-uploader :beforeUpload="onBeforeUpload" />
+  <ta-image-uploader :beforeUpload="onBeforeUpload" />
 </template>
 
 <script>
@@ -115,7 +115,7 @@ type ImageUploaderUploadReady = (
 
 ```vue
 <template>
-  <ak-image-uploader :uploadReady="onUpload" />
+  <ta-image-uploader :uploadReady="onUpload" />
 </template>
 
 <script>

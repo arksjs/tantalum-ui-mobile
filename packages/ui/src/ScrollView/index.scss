@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-scroll-view {
+.ta-scroll-view {
   display: block;
   width: 100%;
   overflow: hidden;
@@ -24,12 +24,12 @@
     overflow: hidden;
     transform: translateZ(0);
 
-    .ak-scroll-view.scroll-x & {
+    .ta-scroll-view.scroll-x & {
       display: inline-block;
       vertical-align: top;
     }
 
-    .ak-scroll-view.scroll-x:not(.scroll-y) & {
+    .ta-scroll-view.scroll-x:not(.scroll-y) & {
       height: 100%;
     }
   }
@@ -39,7 +39,7 @@
     min-height: 100%;
     min-width: 100%;
 
-    .ak-scroll-view.scroll-x:not(.scroll-y) & {
+    .ta-scroll-view.scroll-x:not(.scroll-y) & {
       height: 100%;
     }
   }
@@ -54,10 +54,10 @@
     align-items: flex-end;
     transform: translate3d(0, -100%, 0);
 
-    .ak-icon,
-    .ak-loading-icon {
-      --ak-icon-size: 18px;
-      --ak-icon-color: #{$border-color};
+    .ta-icon,
+    .ta-loading-icon {
+      --ta-icon-size: 18px;
+      --ta-icon-color: #{$border-color};
 
       margin-right: 8px;
     }

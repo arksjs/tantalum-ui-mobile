@@ -7,7 +7,7 @@ import type { FixedProps } from './types'
 
 export const getInnerClasses = (props: FixedProps, fixed: boolean) => {
   return [
-    'ak-fixed_inner',
+    'ta-fixed_inner',
     'placement--' + getEnumsValue(PLACEMENT_TYPES, props.placement),
     { fixed }
   ]

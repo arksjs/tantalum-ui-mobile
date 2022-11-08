@@ -1,7 +1,7 @@
 {
   "name": "@arksjs/ui-resolver",
   "version": "0.0.1",
-  "description": "unplugin-vue-components resolver for arkui-mobile-vue",
+  "description": "unplugin-vue-components resolver for tantalum-ui-mobile",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arksjs/arkui-mobile-vue.git"
+    "url": "https://github.com/arksjs/tantalum-ui-mobile.git"
   },
   "keywords": [
     "vue",
@@ -21,9 +21,9 @@
   "author": "Arksjs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arksjs/arkui-mobile-vue/issues"
+    "url": "https://github.com/arksjs/tantalum-ui-mobile/issues"
   },
-  "homepage": "https://github.com/arksjs/arkui-mobile-vue#readme",
+  "homepage": "https://github.com/arksjs/tantalum-ui-mobile#readme",
   "files": [
     "lib/"
   ],

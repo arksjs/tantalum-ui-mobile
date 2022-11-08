@@ -5,7 +5,6 @@ import vuePlugin from './esbuild-plugin-vue.mjs'
 import { getCoreDeps, getJSON, getPath } from './utils.mjs'
 
 const { resolveCore, resolve } = getPath(import.meta.url)
-const config = await getJSON(resolveCore('./src/components/config.json'))
 
 const getDeps = async () => {
   const pkg = await getJSON(resolve('./package.json'))
@@ -94,10 +93,12 @@ export const buildComps = async () => {
 }
 
 export const buildSrcCompEntry = async () => {
+  const config = await getJSON(resolveCore('./src/components/config.json'))
+
   // index.ts
   const imports = []
   for (const name of config.components) {
-    imports.push(`export { default as Ak${name} } from '../${name}'\n`)
+    imports.push(`export { default as Ta${name} } from '../${name}'\n`)
   }
 
   await fs.promises.writeFile(
@@ -109,19 +110,7 @@ export const buildSrcCompEntry = async () => {
   // // install.ts
   // await fs.promises.writeFile(
   //   resolveCore('./src/components/install.ts'),
-  //   imports.join('').replace(/default as Ak/g, 'install as '),
-  //   'utf-8'
-  // )
-
-  // // fx.ts
-  // const fxImports = []
-  // for (const name of config.components) {
-  //   fxImports.push(`export { default as Fx${name} } from '../${name}'\n`)
-  // }
-
-  // await fs.promises.writeFile(
-  //   resolveCore('./src/components/fx.ts'),
-  //   fxImports.join(''),
+  //   imports.join('').replace(/default as Ta/g, 'install as '),
   //   'utf-8'
   // )
 

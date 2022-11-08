@@ -8,7 +8,7 @@ export const getBodyClasses = (
   { type, title }: { type?: KeyboardType; title?: string },
   showHeaderConfirm: boolean
 ) => [
-  'ak-number-keyboard_body',
+  'ta-number-keyboard_body',
   `type--${getEnumsValue(KEYBOARD_TYPES, type)}`,
   { 'has--header': showHeaderConfirm || title }
 ]

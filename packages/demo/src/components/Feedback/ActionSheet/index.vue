@@ -1,17 +1,17 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="默认" isLink @click="visible = true"></ak-cell>
-    <ak-cell
+  <ta-group title="基础用法">
+    <ta-cell label="默认" isLink @click="visible = true"></ta-cell>
+    <ta-cell
       label="展示标题"
       isLink
       @click=";(title = '标题'), (visible = true)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="展示取消按钮"
       isLink
       @click=";(showCancel = true), (visible = true)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="设置取消按钮文案"
       isLink
       @click="
@@ -19,10 +19,10 @@
           (cancelText = '自定义取消按钮文案'),
           (visible = true)
       "
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="options 扩展">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="options 扩展">
+    <ta-cell
       label="选项描述"
       isLink
       @click="
@@ -40,8 +40,8 @@
         ]),
           (visible = true)
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="选项高亮"
       isLink
       @click="
@@ -59,24 +59,24 @@
         ]),
           (visible = true)
       "
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell
       label="confirm/cancel"
       isLink
       @click=";(showCancel = true), (showEvent = true), (visible = true)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="visible-state-change"
       isLink
       @click=";(visibleEvent = true), (visible = true)"
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="API">
-    <ak-cell label="showActionSheet" isLink @click="onCallApi()"></ak-cell>
-  </ak-group>
-  <ak-action-sheet
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="API">
+    <ta-cell label="showActionSheet" isLink @click="onCallApi()"></ta-cell>
+  </ta-group>
+  <ta-action-sheet
     v-model:visible="visible"
     :title="title"
     :options="options"
@@ -85,7 +85,7 @@
     @confirm="onConfirm"
     @cancel="onCancel"
     @visibleStateChange="onVisibleStateChange"
-  ></ak-action-sheet>
+  ></ta-action-sheet>
 </template>
 
 <script lang="ts">

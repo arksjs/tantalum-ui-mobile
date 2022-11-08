@@ -10,7 +10,7 @@ import { numberValidator } from '../helpers/validator'
 import { getColClasses, getColStyles } from './util'
 
 export default defineComponent({
-  name: 'ak-col',
+  name: 'ta-col',
   props: {
     // 栅格占据的列数
     span: {
@@ -39,7 +39,7 @@ export default defineComponent({
   },
   setup(props) {
     const defaultRowGutter = ref([0, 0])
-    const rowGutter = inject('akRowGutter', defaultRowGutter)
+    const rowGutter = inject('taRowGutter', defaultRowGutter)
 
     const styles = computed(() => getColStyles(rowGutter.value))
     const classes = computed(() => getColClasses(props))

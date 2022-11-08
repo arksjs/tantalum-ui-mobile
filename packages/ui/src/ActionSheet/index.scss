@@ -1,7 +1,7 @@
 @import '../style/var.scss';
 
-.ak-action-sheet {
-  &.ak-drawer .ak-nav-bar {
+.ta-action-sheet {
+  &.ta-drawer .ta-nav-bar {
     height: 56px;
 
     &_title {
@@ -11,7 +11,7 @@
     }
   }
 
-  .ak-drawer {
+  .ta-drawer {
     &_body {
       background-color: $background-color;
     }
@@ -23,7 +23,7 @@
     margin: 0;
     background-color: $white-color;
 
-    + .ak-action-sheet_list {
+    + .ta-action-sheet_list {
       margin-top: 8px;
     }
   }
@@ -81,7 +81,7 @@
     }
 
     &.highlight {
-      .ak-action-sheet_item-inner span {
+      .ta-action-sheet_item-inner span {
         color: $primary-color;
       }
     }

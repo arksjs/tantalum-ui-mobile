@@ -1,6 +1,6 @@
 <template>
   <Drawer
-    class="ak-action-sheet"
+    class="ta-action-sheet"
     :title="title"
     placement="bottom"
     :visible="visible"
@@ -10,25 +10,25 @@
     @update:visible="onUpdateVisible"
     ref="popupRef"
   >
-    <ul class="ak-action-sheet_list">
+    <ul class="ta-action-sheet_list">
       <li
         :class="getItemClasses(item)"
         v-for="(item, index) in options2"
         :key="index"
         @click="onItemClick(index)"
       >
-        <div class="ak-action-sheet_item-inner">
+        <div class="ta-action-sheet_item-inner">
           <span>{{ item.name }}</span>
           <small v-if="item.description">{{ item.description }}</small>
         </div>
       </li>
     </ul>
-    <ul class="ak-action-sheet_list" v-if="showCancel">
+    <ul class="ta-action-sheet_list" v-if="showCancel">
       <li
-        class="ak-action-sheet_item ak-horizontal-hairline"
+        class="ta-action-sheet_item ta-horizontal-hairline"
         @click="onCancelClick"
       >
-        <div class="ak-action-sheet_item-inner align--center">
+        <div class="ta-action-sheet_item-inner align--center">
           <span>{{ cancelText || locale.actionSheetCancelText }}</span>
         </div>
       </li>
@@ -54,7 +54,7 @@ const confirmValidator: VoidFnToBooleanFn<OnConfirm> = payload =>
   typeof payload.item.name === 'string'
 
 export default defineComponent({
-  name: 'ak-action-sheet',
+  name: 'ta-action-sheet',
   components: { Drawer },
   props: {
     ...popupExtendProps,

@@ -1,9 +1,9 @@
 // Vitest Snapshot v1
 
 exports[`SwipeCell > snapshot 1`] = `
-"<div class=\\"ak-swipe-cell ak-horizontal-hairline\\">
-  <div class=\\"ak-swipe-cell_inner\\" style=\\"transform: translate3d(-0px, 0px, 0px); transition-duration: 0s;\\">
-    <div class=\\"ak-swipe-cell_buttons\\"></div>
+"<div class=\\"ta-swipe-cell ta-horizontal-hairline\\">
+  <div class=\\"ta-swipe-cell_inner\\" style=\\"transform: translate3d(-0px, 0px, 0px); transition-duration: 0s;\\">
+    <div class=\\"ta-swipe-cell_buttons\\"></div>
   </div>
 </div>"
 `;

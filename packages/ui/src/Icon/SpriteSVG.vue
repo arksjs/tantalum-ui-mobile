@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'ak-sprite-icon',
+  name: 'ta-sprite-icon',
   props: {
     iconName: {
       type: String

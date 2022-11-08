@@ -1,9 +1,9 @@
 @import '../style/var.scss';
 
-.ak-step {
+.ta-step {
   position: relative;
 
-  + .ak-step {
+  + .ta-step {
     &::before {
       content: '';
       margin-left: 40px;
@@ -21,18 +21,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--ak-dot-color);
+    border: 1px solid var(--ta-dot-color);
     box-sizing: border-box;
     border-radius: 50%;
-    color: var(--ak-dot-color);
+    color: var(--ta-dot-color);
     background-color: $white-color;
     font-size: 13px;
     font-weight: 500;
     overflow: hidden;
 
-    .ak-icon {
-      --ak-icon-size: 14px;
-      --ak-icon-color: var(--ak-dot-color);
+    .ta-icon {
+      --ta-icon-size: 14px;
+      --ta-icon-color: var(--ta-dot-color);
     }
   }
 
@@ -80,48 +80,48 @@
       color: $primary-color;
     }
 
-    .ak-step_title + & {
+    .ta-step_title + & {
       margin-top: 4px;
     }
   }
 
   &:last-child {
-    .ak-step_line {
+    .ta-step_line {
       display: none;
     }
   }
 
   &.finish {
-    --ak-dot-color: var(--ak-color);
+    --ta-dot-color: var(--ta-color);
 
-    .ak-step {
+    .ta-step {
       &_line {
-        background-color: var(--ak-color);
+        background-color: var(--ta-color);
       }
     }
   }
 
   &.active {
-    --ak-dot-color: var(--ak-color);
+    --ta-dot-color: var(--ta-color);
 
-    .ak-step {
+    .ta-step {
       &_index {
-        border-color: var(--ak-color);
-        background-color: var(--ak-color);
+        border-color: var(--ta-color);
+        background-color: var(--ta-color);
         color: #fff;
 
-        .ak-icon {
-          --ak-icon-color: #fff;
+        .ta-icon {
+          --ta-icon-color: #fff;
         }
       }
 
       &_inner {
-        color: var(--ak-color);
+        color: var(--ta-color);
       }
     }
   }
 
-  .ak-steps.horizontal & {
+  .ta-steps.horizontal & {
     flex: 1;
 
     &_index {
@@ -153,26 +153,26 @@
       color: $font-color;
     }
 
-    .ak-step_title + .ak-step_content {
+    .ta-step_title + .ta-step_content {
       margin-top: 4px;
     }
 
     &.active {
-      .ak-step {
+      .ta-step {
         &_title,
         &_content {
-          color: var(--ak-color);
+          color: var(--ta-color);
         }
       }
     }
   }
 }
 
-.ak-steps {
-  --ak-color: #{$primary-color};
-  --ak-dot-color: #{$border-color};
+.ta-steps {
+  --ta-color: #{$primary-color};
+  --ta-dot-color: #{$border-color};
 
-  &.dot .ak-step_index {
+  &.dot .ta-step_index {
     width: 10px;
     height: 10px;
     border-width: 2px;
@@ -189,7 +189,7 @@
     display: flex;
     margin: 0 -8px;
 
-    &.dot .ak-step_index {
+    &.dot .ta-step_index {
       left: 50%;
       top: 18px;
       margin-left: -5px;

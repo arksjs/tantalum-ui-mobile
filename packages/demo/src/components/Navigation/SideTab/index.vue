@@ -1,18 +1,18 @@
 <template>
-  <ak-group title="基础用法">
+  <ta-group title="基础用法">
     <div class="exp-sideTab-box">
-      <ak-side-tab
+      <ta-side-tab
         ref="sideTabRef"
         :options="tabList"
         v-model="activeValue"
-      ></ak-side-tab>
+      ></ta-side-tab>
     </div>
-  </ak-group>
-  <ak-group title="Mix">
+  </ta-group>
+  <ta-group title="Mix">
     <div class="exp-sideTab-box">
-      <ak-side-tab :options="mixTabList"></ak-side-tab>
+      <ta-side-tab :options="mixTabList"></ta-side-tab>
     </div>
-  </ak-group>
+  </ta-group>
 </template>
 
 <script lang="ts">

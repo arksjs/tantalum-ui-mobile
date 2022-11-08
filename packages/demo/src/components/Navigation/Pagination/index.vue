@@ -1,32 +1,32 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-pagination v-model="current" :total="total"></ak-pagination>
-  </ak-group>
-  <ak-group title="Slot default">
-    <ak-pagination v-model="current2" :total="total">
+  <ta-group title="基础用法">
+    <ta-pagination v-model="current" :total="total"></ta-pagination>
+  </ta-group>
+  <ta-group title="Slot default">
+    <ta-pagination v-model="current2" :total="total">
       <template #default="{ current }"> 第 {{ current }} 页 </template>
-    </ak-pagination>
-  </ak-group>
-  <ak-group title="Slot prev & next">
-    <ak-pagination v-model="current3" :total="total">
+    </ta-pagination>
+  </ta-group>
+  <ta-group title="Slot prev & next">
+    <ta-pagination v-model="current3" :total="total">
       <template #prev> 上一页 </template>
       <template #next> 下一页 </template>
-    </ak-pagination>
-  </ak-group>
-  <ak-group title="CSS height=32px">
-    <ak-pagination
+    </ta-pagination>
+  </ta-group>
+  <ta-group title="CSS height=32px">
+    <ta-pagination
       style="height: 32px"
       v-model="current4"
       :total="total"
-    ></ak-pagination>
-  </ak-group>
-  <ak-group title="事件监听 change">
-    <ak-pagination
+    ></ta-pagination>
+  </ta-group>
+  <ta-group title="事件监听 change">
+    <ta-pagination
       v-model="current6"
       :total="total"
       @change="onChange"
-    ></ak-pagination>
-  </ak-group>
+    ></ta-pagination>
+  </ta-group>
 </template>
 
 <script lang="ts">

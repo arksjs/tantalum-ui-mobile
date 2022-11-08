@@ -1,5 +1,5 @@
 export const getItemClasses = (active: boolean) => [
-  'ak-collapse-item',
-  'ak-horizontal-hairline',
+  'ta-collapse-item',
+  'ta-horizontal-hairline',
   { active }
 ]

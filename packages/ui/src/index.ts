@@ -1,7 +1,7 @@
 import type { Plugin } from 'vue'
 import * as Components from './components'
 
-const ArkUI: Plugin = {
+const UI: Plugin = {
   install(app) {
     Object.values(Components).forEach(Component => {
       app.component(Component.name, Component)
@@ -11,7 +11,7 @@ const ArkUI: Plugin = {
 
 export * from './components/api'
 export * from './components'
-export default ArkUI
+export default UI
 
 export type {
   FnArgs,

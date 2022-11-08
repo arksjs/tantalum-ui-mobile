@@ -1,7 +1,7 @@
 <template>
   <div :class="classes">
     <Cell
-      class="ak-collapse-item_header"
+      class="ta-collapse-item_header"
       :label="title"
       :icon="icon"
       :disabled="disabled"
@@ -10,11 +10,11 @@
       @click="onClick"
     />
     <div
-      class="ak-collapse-item_body ak-horizontal-hairline"
+      class="ta-collapse-item_body ta-horizontal-hairline"
       style="display: none"
       ref="bodyEl"
     >
-      <div class="ak-collapse-item_content">
+      <div class="ta-collapse-item_content">
         <slot></slot>
       </div>
     </div>
@@ -34,7 +34,7 @@ import { getItemClasses } from './util'
 import { isBoolean, noop } from '../helpers/util'
 
 export default defineComponent({
-  name: 'ak-collapse-item',
+  name: 'ta-collapse-item',
   components: { Cell },
   props: {
     icon: {
@@ -60,7 +60,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const active = ref(false)
     const bodyEl = shallowRef<HTMLElement | null>(null)
-    const onChange = inject<(uid: symbol) => void>('akCollapseChange', noop)
+    const onChange = inject<(uid: symbol) => void>('taCollapseChange', noop)
     const uid = Symbol()
 
     let visibleTimer: number

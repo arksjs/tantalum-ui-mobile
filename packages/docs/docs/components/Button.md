@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkButton, AkButtonGroup } from 'arkui-mobile-vue'
+import { TaButton, TaButtonGroup } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -24,7 +24,7 @@ import type {
   StateType,
   ButtonShape,
   ButtonPattern
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Button Props
@@ -83,7 +83,7 @@ import type {
 ### #default
 
 ```vue
-<ak-button form-type="submit">提交</ak-button>
+<ta-button form-type="submit">提交</ta-button>
 ```
 
 ## ButtonGroup Props
@@ -99,8 +99,8 @@ import type {
 ### #default
 
 ```vue
-<ak-button-group shape="square" size="small">
-  <ak-button type="default" icon="LeftOutlined"></ak-button>
-  <ak-button type="default" icon="HomeOutlined"></ak-button>
-</ak-button-group>
+<ta-button-group shape="square" size="small">
+  <ta-button type="default" icon="LeftOutlined"></ta-button>
+  <ta-button type="default" icon="HomeOutlined"></ta-button>
+</ta-button-group>
 ```

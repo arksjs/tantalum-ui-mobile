@@ -54,39 +54,39 @@ export default {
 </script>
 
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="家电">
-      <ak-cascader :options="cascadeOptions" />
-    </ak-cell>
-    <ak-cell label="地区">
-      <ak-cascader :options="regionOptions" :fieldNames="{ value: 'label' }" />
-    </ak-cell>
-    <ak-cell label="placeholder">
-      <ak-cascader :options="cascadeOptions" :placeholder="placeholder" />
-    </ak-cell>
-    <ak-cell label="formatter/parser">
-      <ak-cascader
+  <ta-group title="基础用法">
+    <ta-cell label="家电">
+      <ta-cascader :options="cascadeOptions" />
+    </ta-cell>
+    <ta-cell label="地区">
+      <ta-cascader :options="regionOptions" :fieldNames="{ value: 'label' }" />
+    </ta-cell>
+    <ta-cell label="placeholder">
+      <ta-cascader :options="cascadeOptions" :placeholder="placeholder" />
+    </ta-cell>
+    <ta-cell label="formatter/parser">
+      <ta-cascader
         :options="cascadeOptions"
         :placeholder="placeholder"
         v-model="formatValue"
         :formatter="formatter"
         :parser="parser"
       />
-    </ak-cell>
-    <ak-cell label="禁用">
-      <ak-cascader
+    </ta-cell>
+    <ta-cell label="禁用">
+      <ta-cascader
         :modelValue="disableValue"
         :options="cascadeOptions"
         disabled
       />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell label="change">
-      <ak-cascader :options="cascadeOptions" @change="onChange" />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="API">
-    <ak-cell label="showCascader" isLink @click="onCallApi()" />
-  </ak-group>
+    </ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell label="change">
+      <ta-cascader :options="cascadeOptions" @change="onChange" />
+    </ta-cell>
+  </ta-group>
+  <ta-group title="API">
+    <ta-cell label="showCascader" isLink @click="onCallApi()" />
+  </ta-group>
 </template>

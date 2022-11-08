@@ -11,7 +11,7 @@
 ## Import
 
 ```js
-import { AkDrawer } from 'arkui-mobile-vue'
+import { TaDrawer } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -25,7 +25,7 @@ import type {
   VisibleState,
   PopupOnVisibleStateChange,
   PopupOnCancel
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -56,7 +56,7 @@ import type {
 ## Slots
 
 ```vue
-<ak-drawer title="菜单" placement="right">
+<ta-drawer title="菜单" placement="right">
   内容
-</ak-drawer>
+</ta-drawer>
 ```

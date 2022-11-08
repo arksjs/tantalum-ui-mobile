@@ -74,11 +74,11 @@ export const getClasses = ({
   active: boolean
 }) => {
   return [
-    'ak-input',
+    'ta-input',
     {
       'has--prepend': prepend,
       'has--append': append,
-      'ak-textarea': type === 'textarea',
+      'ta-textarea': type === 'textarea',
       focus: active,
       readonly: !!readonly,
       disabled: !!disabled

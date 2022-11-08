@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkTag } from 'arkui-mobile-vue'
+import { TaTag } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkTag } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { StateType, SizeType, TagPattern } from 'arkui-mobile-vue'
+import type { StateType, SizeType, TagPattern } from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -70,5 +70,5 @@ import type { StateType, SizeType, TagPattern } from 'arkui-mobile-vue'
 ### #default
 
 ```vue
-<ak-tag>标签</ak-tag>
+<ta-tag>标签</ta-tag>
 ```

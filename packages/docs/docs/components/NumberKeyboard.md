@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkNumberKeyboard } from 'arkui-mobile-vue'
+import { TaNumberKeyboard } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -24,7 +24,7 @@ import type {
   NumberKeyboardOnClose,
   VisibleState,
   PopupOnVisibleStateChange
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props

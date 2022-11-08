@@ -1,70 +1,70 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-steps v-model:activeIndex="stepIndex">
-      <ak-step v-for="(item, index) in steps" :key="index" :title="item.title">
+  <ta-group title="基础用法">
+    <ta-steps v-model:activeIndex="stepIndex">
+      <ta-step v-for="(item, index) in steps" :key="index" :title="item.title">
         {{ item.content }}
-      </ak-step>
-    </ak-steps>
-  </ak-group>
-  <ak-group title="小点模式">
-    <ak-steps v-model:activeIndex="stepIndex" dot>
-      <ak-step v-for="(item, index) in steps" :key="index" :title="item.title">
+      </ta-step>
+    </ta-steps>
+  </ta-group>
+  <ta-group title="小点模式">
+    <ta-steps v-model:activeIndex="stepIndex" dot>
+      <ta-step v-for="(item, index) in steps" :key="index" :title="item.title">
         {{ item.content }}
-      </ak-step>
-    </ak-steps>
-  </ak-group>
-  <ak-group title="自定义图标">
-    <ak-steps v-model:activeIndex="stepIndex">
-      <ak-step v-for="(item, index) in steps" :key="index" :title="item.title">
+      </ta-step>
+    </ta-steps>
+  </ta-group>
+  <ta-group title="自定义图标">
+    <ta-steps v-model:activeIndex="stepIndex">
+      <ta-step v-for="(item, index) in steps" :key="index" :title="item.title">
         <template #step="{ finish, active }">
-          <ak-icon v-if="finish" icon="CheckOutlined"></ak-icon>
-          <ak-icon v-else-if="active" icon="LoadingOutlined" spin></ak-icon>
+          <ta-icon v-if="finish" icon="CheckOutlined"></ta-icon>
+          <ta-icon v-else-if="active" icon="LoadingOutlined" spin></ta-icon>
         </template>
         {{ item.content }}
-      </ak-step>
-    </ak-steps>
-  </ak-group>
-  <ak-group title="横向">
-    <ak-steps v-model:activeIndex="stepIndex" horizontal>
-      <ak-step v-for="(item, index) in steps" :key="index" :title="item.title">
+      </ta-step>
+    </ta-steps>
+  </ta-group>
+  <ta-group title="横向">
+    <ta-steps v-model:activeIndex="stepIndex" horizontal>
+      <ta-step v-for="(item, index) in steps" :key="index" :title="item.title">
         {{ item.content }}
-      </ak-step>
-    </ak-steps>
-  </ak-group>
-  <ak-group title="横向（不要标题 & 小点）">
-    <ak-steps :activeIndex="1" horizontal dot>
-      <ak-step v-for="(item, index) in orderSteps" :key="index">{{
+      </ta-step>
+    </ta-steps>
+  </ta-group>
+  <ta-group title="横向（不要标题 & 小点）">
+    <ta-steps :activeIndex="1" horizontal dot>
+      <ta-step v-for="(item, index) in orderSteps" :key="index">{{
         item.content
-      }}</ak-step>
-    </ak-steps>
-  </ak-group>
-  <ak-group title="Slot title">
-    <ak-steps>
-      <ak-step title="【珠海市】快件已送达【正方云创园】，感谢您使用中通快递">
+      }}</ta-step>
+    </ta-steps>
+  </ta-group>
+  <ta-group title="Slot title">
+    <ta-steps>
+      <ta-step title="【珠海市】快件已送达【正方云创园】，感谢您使用中通快递">
         2021-04-13 12:42:57
-      </ak-step>
-      <ak-step>
+      </ta-step>
+      <ta-step>
         <template #title>
           【珠海市】【珠海一部】快递小哥正在派件（<a href="tel:10000">10000</a
           >）
         </template>
         2021-04-13 11:22:16
-      </ak-step>
-      <ak-step title="【珠海市】快件离开【珠海中心】已发往【珠海一部】">
+      </ta-step>
+      <ta-step title="【珠海市】快件离开【珠海中心】已发往【珠海一部】">
         2021-04-13 09:04:03
-      </ak-step>
-    </ak-steps>
-  </ak-group>
-  <ak-fixed>
+      </ta-step>
+    </ta-steps>
+  </ta-group>
+  <ta-fixed>
     <div class="exp-steps-next">
-      <ak-button
+      <ta-button
         @click="stepIndex = (stepIndex + 1) % steps.length"
         type="primary"
       >
         下一步
-      </ak-button>
+      </ta-button>
     </div>
-  </ak-fixed>
+  </ta-fixed>
 </template>
 
 <script lang="ts">

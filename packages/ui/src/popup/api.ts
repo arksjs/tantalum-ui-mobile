@@ -94,7 +94,7 @@ export function createShowPopup<T, E = EmptyObject>({
             visible: true
           })
         )
-        app.provide('akApis', {
+        app.provide('taApis', {
           in(hookEvent, res) {
             if (hookEvent === 'visibleStateChange' && res.state === 'hidden') {
               app.unmount()

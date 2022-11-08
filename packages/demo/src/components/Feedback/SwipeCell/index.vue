@@ -1,14 +1,14 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-swipe-cell :buttons="buttons">
-      <ak-cell label="单元格" content="向左划"></ak-cell>
-    </ak-swipe-cell>
-  </ak-group>
-  <ak-group title=" 事件监听">
-    <ak-swipe-cell :buttons="buttons" @buttonClick="onButtonClick">
-      <ak-cell label="单元格" content="向左划"></ak-cell>
-    </ak-swipe-cell>
-  </ak-group>
+  <ta-group title="基础用法">
+    <ta-swipe-cell :buttons="buttons">
+      <ta-cell label="单元格" content="向左划"></ta-cell>
+    </ta-swipe-cell>
+  </ta-group>
+  <ta-group title=" 事件监听">
+    <ta-swipe-cell :buttons="buttons" @buttonClick="onButtonClick">
+      <ta-cell label="单元格" content="向左划"></ta-cell>
+    </ta-swipe-cell>
+  </ta-group>
 </template>
 
 <script lang="ts">

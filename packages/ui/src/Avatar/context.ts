@@ -6,7 +6,7 @@ import {
 } from '../hooks/use-child-count'
 
 const KEY = 'Avatar'
-const CONTEXT_KEY = `ak${KEY}GroupOptions`
+const CONTEXT_KEY = `ta${KEY}GroupOptions`
 
 export function useProvider(props: AvatarGroupProps) {
   provide<AvatarGroupProps>(CONTEXT_KEY, props)

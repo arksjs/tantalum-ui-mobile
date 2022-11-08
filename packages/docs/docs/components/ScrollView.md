@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkScrollView } from 'arkui-mobile-vue'
+import { TaScrollView } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -29,7 +29,7 @@ import type {
   ScrollViewOnScrollToLower,
   ScrollViewOnRefreshing,
   ScrollViewOnScroll
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -60,17 +60,17 @@ import type {
 ### #default
 
 ```vue
-<ak-scroll-view>自定义内容</ak-scroll-view>
+<ta-scroll-view>自定义内容</ta-scroll-view>
 ```
 
 ### 下拉指示器（#indicator）
 
 ```vue
-<ak-scroll-view>
+<ta-scroll-view>
   <template #indicator="slotProps">
     方向：{{ slotProps.pullDirection }} 状态：{{
       slotProps.pullRefreshState
     }}
   </template>
-</ak-scroll-view>
+</ta-scroll-view>
 ```

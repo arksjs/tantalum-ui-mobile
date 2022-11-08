@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkLoadMore } from 'arkui-mobile-vue'
+import { TaLoadMore } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -25,5 +25,5 @@ import { AkLoadMore } from 'arkui-mobile-vue'
 ### 附加内容（#default）
 
 ```vue
-<ak-load-more loading>加载中...</ak-load-more>
+<ta-load-more loading>加载中...</ta-load-more>
 ```

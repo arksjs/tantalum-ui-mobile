@@ -45,10 +45,10 @@ describe('PopMenu', () => {
       }
     })
 
-    expect(wrapper.findAll('.ak-pop-menu_item').length).toBe(3)
-    expect(wrapper.findAll('.ak-pop-menu_item')[0].text()).toBe('Heart')
-    expect(wrapper.findAll('.ak-pop-menu_item')[1].text()).toBe('Star')
-    expect(wrapper.findAll('.ak-pop-menu_item')[2].text()).toBe('Circle')
+    expect(wrapper.findAll('.ta-pop-menu_item').length).toBe(3)
+    expect(wrapper.findAll('.ta-pop-menu_item')[0].text()).toBe('Heart')
+    expect(wrapper.findAll('.ta-pop-menu_item')[1].text()).toBe('Star')
+    expect(wrapper.findAll('.ta-pop-menu_item')[2].text()).toBe('Circle')
   })
 
   test.concurrent('showMask', async () => {
@@ -60,11 +60,11 @@ describe('PopMenu', () => {
         selector
       }
     })
-    expect(wrapper.find('.ak-popover').classes('no--mask')).toBeFalsy()
+    expect(wrapper.find('.ta-popover').classes('no--mask')).toBeFalsy()
 
     await wrapper.setProps({
       showMask: false
     })
-    expect(wrapper.find('.ak-popover').classes('no--mask')).toBeTruthy()
+    expect(wrapper.find('.ta-popover').classes('no--mask')).toBeTruthy()
   })
 })

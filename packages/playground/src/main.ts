@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import '@vue/repl/style.css'
-import 'arkui-mobile-vue/es/style/api/style/index'
+import 'tantalum-ui-mobile/es/style/api/style/index'
 
 import App from './App.vue'
 

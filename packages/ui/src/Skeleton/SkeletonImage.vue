@@ -9,7 +9,7 @@ import { propAnimated } from './props'
 import { getImageClasses } from './util'
 
 export default defineComponent({
-  name: 'ak-skeleton-image',
+  name: 'ta-skeleton-image',
   props: {
     // 是否显示动画
     animated: propAnimated

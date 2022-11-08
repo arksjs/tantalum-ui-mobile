@@ -1,7 +1,7 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="默认" isLink @click="visible = true"></ak-cell>
-    <ak-cell
+  <ta-group title="基础用法">
+    <ta-cell label="默认" isLink @click="visible = true"></ta-cell>
+    <ta-cell
       label="蒙层可点击"
       isLink
       @click="
@@ -10,8 +10,8 @@
           visible = true
         }
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="隐藏关闭按钮"
       isLink
       @click="
@@ -21,13 +21,13 @@
           visible = true
         }
       "
-    ></ak-cell>
-  </ak-group>
-  <ak-group title="Slot default">
-    <ak-cell label="图片" isLink @click="visible2 = true"></ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell
+    ></ta-cell>
+  </ta-group>
+  <ta-group title="Slot default">
+    <ta-cell label="图片" isLink @click="visible2 = true"></ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell
       label="cancel"
       isLink
       @click="
@@ -37,8 +37,8 @@
           visible = true
         }
       "
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="visible-state-change"
       isLink
       @click="
@@ -47,23 +47,23 @@
           visible = true
         }
       "
-    ></ak-cell>
-  </ak-group>
-  <ak-modal
+    ></ta-cell>
+  </ta-group>
+  <ta-modal
     v-model:visible="visible"
     :maskClosable="maskClosable"
     :showClose="showClose"
     @cancel="onClose"
     @visibleStateChange="onVisibleStateChange"
   >
-  </ak-modal>
-  <ak-modal v-model:visible="visible2">
-    <ak-image
+  </ta-modal>
+  <ta-modal v-model:visible="visible2">
+    <ta-image
       class="exp-image-image"
       :src="imageUrl"
       :aspectRatio="1"
-    ></ak-image>
-  </ak-modal>
+    ></ta-image>
+  </ta-modal>
 </template>
 
 <script lang="ts">

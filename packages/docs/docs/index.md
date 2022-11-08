@@ -31,13 +31,13 @@ Node.js 12.0+
 
 ```Shell
 # npm
-npm i -S arkui-mobile-vue
+npm i -S tantalum-ui-mobile
 
 # yarn
-yarn add arkui-mobile-vue
+yarn add tantalum-ui-mobile
 
 # pnpm
-pnpm add arkui-mobile-vue
+pnpm add tantalum-ui-mobile
 ```
 
 ## 移动端 Demo

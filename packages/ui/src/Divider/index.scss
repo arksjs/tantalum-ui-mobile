@@ -1,16 +1,16 @@
 @import '../style/var.scss';
 
-.ak-divider {
-  --ak-font-color: #{$font3-color};
-  --ak-color: #{$divider-color};
+.ta-divider {
+  --ta-font-color: #{$font3-color};
+  --ta-color: #{$divider-color};
 
   display: flex;
   align-items: center;
   margin: 12px 0;
-  border: 0 solid var(--ak-color);
-  color: var(--ak-font-color);
+  border: 0 solid var(--ta-color);
+  color: var(--ta-font-color);
 
-  &.ak-horizontal-hairline {
+  &.ta-horizontal-hairline {
     &::before,
     &::after {
       flex: 1;

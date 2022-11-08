@@ -1,8 +1,8 @@
 <template>
-  <div class="ak-fixed" :style="styles" ref="root">
+  <div class="ta-fixed" :style="styles" ref="root">
     <!--fixed start-->
     <div :class="innerClasses" :style="innerStyles" ref="innerEl">
-      <div class="ak-fixed_content-wrapper" ref="contentEl">
+      <div class="ta-fixed_content-wrapper" ref="contentEl">
         <slot></slot>
       </div>
     </div>
@@ -31,7 +31,7 @@ import { useResizeObserver } from '../hooks/use-resize-observer'
 import { getStyles, getInnerClasses, getInnerStyles } from './util'
 
 export default defineComponent({
-  name: 'ak-fixed',
+  name: 'ta-fixed',
   inject: {
     disableFixed: {
       default: false

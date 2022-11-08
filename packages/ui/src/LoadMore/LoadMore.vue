@@ -1,9 +1,9 @@
 <template>
   <div :class="classes">
-    <ActivityIndicator class="ak-load-more_icon" v-if="loading" :size="18" />
-    <span class="ak-load-more_content">
+    <ActivityIndicator class="ta-load-more_icon" v-if="loading" :size="18" />
+    <span class="ta-load-more_content">
       <slot>
-        <i class="ak-load-more_dot"></i>
+        <i class="ta-load-more_dot"></i>
       </slot>
     </span>
   </div>
@@ -15,7 +15,7 @@ import { ActivityIndicator } from '../ActivityIndicator'
 import { getClasses } from './util'
 
 export default defineComponent({
-  name: 'ak-load-more',
+  name: 'ta-load-more',
   components: { ActivityIndicator },
   props: {
     // 是否显示加载中

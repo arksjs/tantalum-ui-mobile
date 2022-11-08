@@ -1,8 +1,8 @@
 @import '../style/var.scss';
 @import '../style/mixin.scss';
 
-.ak-popover {
-  .ak-mask {
+.ta-popover {
+  .ta-mask {
     @include mask-background-1;
   }
 
@@ -50,7 +50,7 @@
   }
 
   &.visible {
-    .ak-popover {
+    .ta-popover {
       &_inner {
         opacity: 1;
       }
