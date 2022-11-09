@@ -1,12 +1,12 @@
 // Vitest Snapshot v1
 
 exports[`StickyView > snapshot 1`] = `
-"<div class=\\"ak-sticky-view\\">
-  <div class=\\"ak-sticky-view_list\\"></div>
-  <div class=\\"ak-sticky ak-sticky-view_top\\">
-    <div class=\\"ak-sticky_content\\">
-      <div class=\\"ak-sticky-view_fixed\\">
-        <div class=\\"ak-sticky-view_fixed-inner\\" style=\\"transform: translate3d(0px, -100%, 0px);\\"></div>
+"<div class=\\"ta-sticky-view\\">
+  <div class=\\"ta-sticky-view_list\\"></div>
+  <div class=\\"ta-sticky ta-sticky-view_top\\">
+    <div class=\\"ta-sticky_content\\">
+      <div class=\\"ta-sticky-view_fixed\\">
+        <div class=\\"ta-sticky-view_fixed-inner\\" style=\\"transform: translate3d(0px, -100%, 0px);\\"></div>
       </div>
     </div>
   </div>
@@ -14,8 +14,8 @@ exports[`StickyView > snapshot 1`] = `
 `;
 
 exports[`StickyViewItem > snapshot 1`] = `
-"<div class=\\"ak-sticky-view-item\\" data-name=\\"name\\" data-title=\\"\\">
-  <div class=\\"ak-sticky-view-item_header\\">name</div>
-  <div class=\\"ak-sticky-view-item_body\\"></div>
+"<div class=\\"ta-sticky-view-item\\" data-name=\\"name\\" data-title=\\"\\">
+  <div class=\\"ta-sticky-view-item_header\\">name</div>
+  <div class=\\"ta-sticky-view-item_body\\"></div>
 </div>"
 `;

@@ -1,7 +1,7 @@
 @import '../style/var.scss';
 
-.ak-back-top {
-  --ak-color: #{$title-color};
+.ta-back-top {
+  --ta-color: #{$title-color};
 
   position: fixed;
   right: 20px;
@@ -14,7 +14,7 @@
   min-width: 40px;
   min-height: 40px;
   font-size: 17px;
-  color: var(--ak-color);
+  color: var(--ta-color);
   background: none;
   border: none;
   padding: 0;
@@ -22,9 +22,9 @@
   user-select: none;
   outline: 0;
 
-  .ak-icon {
-    --ak-icon-size: 40px;
-    --ak-icon-color: var(--ak-color);
+  .ta-icon {
+    --ta-icon-size: 40px;
+    --ta-icon-color: var(--ta-color);
 
     display: block;
   }

@@ -1,66 +1,66 @@
 @import '../style/var.scss';
 
-.ak-avatar {
-  --ak-size: 48px;
-  --ak-font-size: 24px;
-  --ak-color: #{$background-color};
-  --ak-front-color: #{$font-color};
+.ta-avatar {
+  --ta-size: 48px;
+  --ta-font-size: 24px;
+  --ta-color: #{$background-color};
+  --ta-front-color: #{$font-color};
 
-  background-color: var(--ak-color);
-  width: var(--ak-size);
-  height: var(--ak-size);
+  background-color: var(--ta-color);
+  width: var(--ta-size);
+  height: var(--ta-size);
   display: inline-flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  font-size: var(--ak-font-size);
-  color: var(--ak-front-color);
+  font-size: var(--ta-font-size);
+  color: var(--ta-front-color);
   box-sizing: border-box;
 
-  .ak-image {
+  .ta-image {
     width: 100%;
     height: 100%;
     border-radius: 50%;
 
-    .ak-icon {
-      --ak-icon-size: 1.333em;
-      --ak-icon-color: var(--ak-front-color);
+    .ta-icon {
+      --ta-icon-size: 1.333em;
+      --ta-icon-color: var(--ta-front-color);
     }
   }
 
   &.gender-man {
-    .ak-badge_badge {
-      --ak-color: #{$primary-color};
+    .ta-badge_badge {
+      --ta-color: #{$primary-color};
     }
   }
 
   &.gender-woman {
-    .ak-badge_badge {
-      --ak-color: #{$danger-color};
+    .ta-badge_badge {
+      --ta-color: #{$danger-color};
     }
   }
 
   &.shape--square {
     border-radius: 4px;
 
-    .ak-image {
+    .ta-image {
       border-radius: 4px;
     }
   }
 
   &.size--large {
-    --ak-size: 64px;
-    --ak-font-size: 32px;
+    --ta-size: 64px;
+    --ta-font-size: 32px;
   }
 
   &.size--small {
-    --ak-size: 36px;
-    --ak-font-size: 18px;
+    --ta-size: 36px;
+    --ta-font-size: 18px;
   }
 }
 
-.ak-avatar-group {
-  > .ak-avatar {
+.ta-avatar-group {
+  > .ta-avatar {
     border: 1px solid $white-color;
     margin-left: -0.5em;
 

@@ -1,11 +1,11 @@
 <template>
   <div
-    class="ak-sticky-view-item ak-scroll-tab-item"
+    class="ta-sticky-view-item ta-scroll-tab-item"
     :data-name="name"
     :data-title="title"
   >
-    <div class="ak-sticky-view-item_header">{{ title || name }}</div>
-    <div class="ak-sticky-view-item_body"><slot></slot></div>
+    <div class="ta-sticky-view-item_header">{{ title || name }}</div>
+    <div class="ta-sticky-view-item_body"><slot></slot></div>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import { defineComponent, inject, onMounted, onUnmounted } from 'vue'
 import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
-  name: 'ak-scroll-tab-item',
+  name: 'ta-scroll-tab-item',
   props: {
     title: {
       type: String
@@ -26,7 +26,7 @@ export default defineComponent({
   },
   setup() {
     const { printItemIsolationWarn } = useException()
-    const update = inject('akStickyViewUpdate', printItemIsolationWarn)
+    const update = inject('taStickyViewUpdate', printItemIsolationWarn)
 
     onMounted(update)
     onUnmounted(update)

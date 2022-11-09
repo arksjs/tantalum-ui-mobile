@@ -1,12 +1,12 @@
 @import '../style/var.scss';
 
-.ak-cascader {
+.ta-cascader {
   display: flex;
   width: 100%;
   position: relative;
 }
 
-.ak-cascader-view {
+.ta-cascader-view {
   &_header {
     border-bottom: 1px solid $border-color;
   }
@@ -73,9 +73,9 @@
     &.selected {
       color: $primary-color;
 
-      .ak-icon {
-        --ak-icon-color: #{$primary-color};
-        --ak-icon-size: 20px;
+      .ta-icon {
+        --ta-icon-color: #{$primary-color};
+        --ta-icon-size: 20px;
 
         margin-right: 16px;
       }

@@ -1,12 +1,12 @@
 // Vitest Snapshot v1
 
 exports[`Range > snapshot 1`] = `
-"<div class=\\"ak-range ak-slider\\">
-  <div class=\\"ak-slider_inner\\">
-    <div class=\\"ak-slider_box\\">
-      <div class=\\"ak-slider_track\\" style=\\"left: 0%; width: 100%;\\"></div>
-      <div class=\\"ak-slider_thumb\\" data-thumb=\\"true\\" data-index=\\"0\\" style=\\"left: 0%;\\"></div>
-      <div class=\\"ak-slider_thumb\\" data-thumb=\\"true\\" data-index=\\"1\\" style=\\"left: 100%;\\"></div>
+"<div class=\\"ta-range ta-slider\\">
+  <div class=\\"ta-slider_inner\\">
+    <div class=\\"ta-slider_box\\">
+      <div class=\\"ta-slider_track\\" style=\\"left: 0%; width: 100%;\\"></div>
+      <div class=\\"ta-slider_thumb\\" data-thumb=\\"true\\" data-index=\\"0\\" style=\\"left: 0%;\\"></div>
+      <div class=\\"ta-slider_thumb\\" data-thumb=\\"true\\" data-index=\\"1\\" style=\\"left: 100%;\\"></div>
     </div><input type=\\"hidden\\" name=\\"\\" value=\\"0,100\\">
   </div>
 </div>"

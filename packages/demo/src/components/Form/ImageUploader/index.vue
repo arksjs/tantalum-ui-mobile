@@ -1,6 +1,6 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-image-uploader
+  <ta-group title="基础用法">
+    <ta-image-uploader
       :uploadReady="hookUploadOrFail"
       @change="onChange"
       @delete="onDelete"
@@ -9,9 +9,9 @@
       v-model="imageList"
       multiple
     />
-  </ak-group>
-  <ak-group title="上传前置处理">
-    <ak-image-uploader
+  </ta-group>
+  <ta-group title="上传前置处理">
+    <ta-image-uploader
       :beforeUpload="hookBeforeUpload"
       :uploadReady="hookUpload"
       :accept="['png', 'jpg']"
@@ -19,17 +19,17 @@
       v-model="imageList3"
       multiple
     />
-  </ak-group>
-  <ak-group title="禁用删除">
-    <ak-image-uploader
+  </ta-group>
+  <ta-group title="禁用删除">
+    <ta-image-uploader
       v-model="imageList2"
       :deletable="false"
       :uploadReady="hookUpload"
     />
-  </ak-group>
-  <ak-group title="禁用上传">
-    <ak-image-uploader disabled />
-  </ak-group>
+  </ta-group>
+  <ta-group title="禁用上传">
+    <ta-image-uploader disabled />
+  </ta-group>
 </template>
 
 <script lang="ts">

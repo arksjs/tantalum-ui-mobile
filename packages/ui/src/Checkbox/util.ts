@@ -3,16 +3,16 @@ import type { CSSProperties } from '../helpers/types'
 export const getCheckStyles = (activeColor?: string) => {
   const obj: CSSProperties = {}
 
-  activeColor && (obj['--ak-active-color'] = activeColor)
+  activeColor && (obj['--ta-active-color'] = activeColor)
   // size != null &&
   //   size > 0 &&
-  //   (obj['--ak-size'] = parseFloat(size as string) + 'px')
+  //   (obj['--ta-size'] = parseFloat(size as string) + 'px')
 
   return obj
 }
 
 export const getCheckClasses = (disabled?: boolean) => [
-  'ak-horizontal-hairline',
+  'ta-horizontal-hairline',
   { disabled: !!disabled }
 ]
 

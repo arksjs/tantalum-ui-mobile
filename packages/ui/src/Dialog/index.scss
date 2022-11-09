@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-dialog {
+.ta-dialog {
   &_header {
     flex: 1;
     font-size: 17px;
@@ -37,7 +37,7 @@
       white-space: pre-line;
     }
 
-    .ak-dialog_header + & {
+    .ta-dialog_header + & {
       margin-top: 0;
     }
   }
@@ -62,7 +62,7 @@
       justify-content: space-between;
       position: relative;
 
-      > .ak-button + .ak-button::before {
+      > .ta-button + .ta-button::before {
         height: 100%;
         background-color: $border-color;
       }

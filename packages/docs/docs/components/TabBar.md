@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkTabBar } from 'arkui-mobile-vue'
+import { TaTabBar } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -25,7 +25,7 @@ import type {
   TabBarOption,
   BadgeOption,
   TabBarRef
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props

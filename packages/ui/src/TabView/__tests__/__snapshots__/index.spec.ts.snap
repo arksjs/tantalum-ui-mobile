@@ -1,14 +1,14 @@
 // Vitest Snapshot v1
 
 exports[`TabView > snapshot 1`] = `
-"<div class=\\"ak-tab-view\\">
-  <div class=\\"ak-tab-view_header ak-horizontal-hairline\\">
+"<div class=\\"ta-tab-view\\">
+  <div class=\\"ta-tab-view_header ta-horizontal-hairline\\">
     <!--v-if-->
   </div>
-  <div class=\\"ak-tab-view_body\\">
+  <div class=\\"ta-tab-view_body\\">
     <swiper-stub indicatordots=\\"false\\" navigationbuttons=\\"false\\" autoplay=\\"false\\" interval=\\"5000\\" initialcircular=\\"false\\" activeindex=\\"0\\" initialvertical=\\"false\\" bounces=\\"false\\"></swiper-stub>
   </div>
 </div>"
 `;
 
-exports[`TabViewItem > snapshot 1`] = `"<div class=\\"ak-swiper-item ak-tab-view-item\\" data-name=\\"name\\"></div>"`;
+exports[`TabViewItem > snapshot 1`] = `"<div class=\\"ta-swiper-item ta-tab-view-item\\" data-name=\\"name\\"></div>"`;

@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-order {
+.ta-order {
   position: relative;
 
   &_item {
@@ -43,13 +43,13 @@
       transform: scale(0);
     }
 
-    .ak-order.forbid-animation & {
+    .ta-order.forbid-animation & {
       transition: transform 0.2s;
     }
   }
 
   &_delete {
-    .ak-drawer_inner {
+    .ta-drawer_inner {
       background-color: $danger-color;
       opacity: 0.9;
       min-height: 48px;
@@ -64,9 +64,9 @@
       font-size: 17px;
       color: #fff;
 
-      .ak-icon {
-        --ak-icon-size: 20px;
-        --ak-icon-color: #fff;
+      .ta-icon {
+        --ta-icon-size: 20px;
+        --ta-icon-color: #fff;
 
         margin: 0 8px 0 -2px;
       }

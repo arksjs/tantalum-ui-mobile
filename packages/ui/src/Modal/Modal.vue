@@ -1,16 +1,16 @@
 <template>
   <teleport to="body">
     <div
-      :class="['ak-modal', popupClasses]"
+      :class="['ta-modal', popupClasses]"
       :style="popupStyles"
       v-bind="$attrs"
     >
-      <div class="ak-mask" @click="onMaskClick"></div>
-      <div class="ak-modal_box" :style="boxStyles">
-        <div class="ak-modal_box-inner">
+      <div class="ta-mask" @click="onMaskClick"></div>
+      <div class="ta-modal_box" :style="boxStyles">
+        <div class="ta-modal_box-inner">
           <slot></slot>
         </div>
-        <i v-if="showClose" class="ak-modal_close" @click="onCloseClick">
+        <i v-if="showClose" class="ta-modal_close" @click="onCloseClick">
           <Icon :icon="CloseCircleFilled" />
         </i>
       </div>
@@ -29,7 +29,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { ModalEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-modal',
+  name: 'ta-modal',
   components: { Icon },
   props: {
     ...popupProps,

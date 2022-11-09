@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-radio-group" :class="classes" ref="root">
+  <div class="ta-radio-group" :class="classes" ref="root">
     <slot>
       <Radio
         v-for="item in options2"
@@ -24,7 +24,7 @@ import type { RadioGroupEmits } from './types'
 const isValue = (value: ModelValue) => isStringNumberMix(value)
 
 export default defineComponent({
-  name: 'ak-radio-group',
+  name: 'ta-radio-group',
   components: { Radio },
   props: {
     ...checkGroupProps,

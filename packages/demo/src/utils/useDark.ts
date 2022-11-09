@@ -26,9 +26,9 @@ export default function useDark() {
 
   function switchTheme(isDark: boolean) {
     if (!isDark) {
-      document.body.removeAttribute('ak-theme')
+      document.body.removeAttribute('ta-theme')
     } else {
-      document.body.setAttribute('ak-theme', 'dark')
+      document.body.setAttribute('ta-theme', 'dark')
     }
     isDarkTheme.value = isDark
   }

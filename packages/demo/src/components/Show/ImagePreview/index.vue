@@ -1,31 +1,31 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="预览图片" isLink @click="show({})" />
-    <ak-cell
+  <ta-group title="基础用法">
+    <ta-cell label="预览图片" isLink @click="show({})" />
+    <ta-cell
       label="指定初始图片"
       isLink
       @click="
         show({ current: 'https://cdn.fox2.cn/vfox/swiper/different-2.jpg' })
       "
     />
-    <ak-cell label="展示关闭按钮" isLink @click="show({ showClose: true })" />
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell
+    <ta-cell label="展示关闭按钮" isLink @click="show({ showClose: true })" />
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell
       label="change/cancel"
       isLink
       @click="show({ changeEvent: true })"
     />
-    <ak-cell
+    <ta-cell
       label="visible-state-change"
       isLink
       @click="show({ visibleEvent: true })"
     />
-  </ak-group>
-  <ak-group title="API">
-    <ak-cell label="showImagePreview" isLink @click="onCallApi" />
-  </ak-group>
-  <ak-image-preview
+  </ta-group>
+  <ta-group title="API">
+    <ta-cell label="showImagePreview" isLink @click="onCallApi" />
+  </ta-group>
+  <ta-image-preview
     v-model:visible="visible"
     :urls="imageUrls"
     v-model="current"

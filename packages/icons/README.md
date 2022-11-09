@@ -7,19 +7,19 @@ SVG Sprite based Icons
 ### Install
 
 ```sh
-npm i -S @arksjs/ui-icons arkui-mobile-vue
+npm i -S @arksjs/ui-icons tantalum-ui-mobile
 ```
 
 ### In Vue
 
 ```vue
 <script setup>
-import { AkIcon } from 'arkui-mobile-vue'
+import { TaIcon } from 'tantalum-ui-mobile'
 import '@arksjs/ui-icons'
 </script>
 
 <template>
-  <AkIcon :icon="BackspaceOutlined">
+  <TaIcon :icon="BackspaceOutlined">
 </template>
 ```
 

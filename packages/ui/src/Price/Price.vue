@@ -1,9 +1,9 @@
 <template>
-  <div class="ak-price">
+  <div class="ta-price">
     <slot></slot>
-    <span class="ak-price_symbol" v-if="symbol">{{ symbol }}</span>
-    <span class="ak-price_integer">{{ priceStr.split('.')[0] }}</span>
-    <span class="ak-price_decimal" v-if="decimalDigits > 0"
+    <span class="ta-price_symbol" v-if="symbol">{{ symbol }}</span>
+    <span class="ta-price_integer">{{ priceStr.split('.')[0] }}</span>
+    <span class="ta-price_decimal" v-if="decimalDigits > 0"
       >.{{ priceStr.split('.')[1] }}</span
     >
   </div>
@@ -15,7 +15,7 @@ import { isNumeric } from '../helpers/util'
 import { getPrice } from './util'
 
 export default defineComponent({
-  name: 'ak-price',
+  name: 'ta-price',
   props: {
     // 金额
     price: {

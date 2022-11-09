@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkSwipeCell } from 'arkui-mobile-vue'
+import { TaSwipeCell } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -22,7 +22,7 @@ import { AkSwipeCell } from 'arkui-mobile-vue'
 import type {
   SwipeCellButtonOption,
   SwipeCellOnButtonClick
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -68,7 +68,7 @@ const buttons: SwipeCellButtonOption[] = [
 ### 被挂载元素（#default）
 
 ```vue
-<ak-swipe-cell :buttons="buttons">
-  <ak-cell label="单元格" content="向左划"></ak-cell>
-</ak-swipe-cell>
+<ta-swipe-cell :buttons="buttons">
+  <ta-cell label="单元格" content="向左划"></ta-cell>
+</ta-swipe-cell>
 ```

@@ -1,6 +1,6 @@
 @import '../style/animation.scss';
 
-.ak-activity-indicator {
+.ta-activity-indicator {
   &.animated {
     @include rotate-360-animation(800ms);
   }

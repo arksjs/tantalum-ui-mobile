@@ -41,7 +41,7 @@ describe('Skeleton', () => {
         default: content
       }
     })
-    expect(wrapper.classes()).toContain('ak-skeleton')
+    expect(wrapper.classes()).toContain('ta-skeleton')
 
     await wrapper.setProps({
       loading: false

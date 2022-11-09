@@ -18,7 +18,7 @@ describe('Input', () => {
     })
 
     expect(wrapper.classes()).toContain('disabled')
-    expect(wrapper.find('.ak-input_input').attributes('disabled')).toBe('')
+    expect(wrapper.find('.ta-input_input').attributes('disabled')).toBe('')
   })
 
   test('showClear=true ', async () => {
@@ -29,8 +29,8 @@ describe('Input', () => {
       }
     })
 
-    await wrapper.find('.ak-input_input').trigger('focus')
+    await wrapper.find('.ta-input_input').trigger('focus')
     await timeout(250)
-    expect(wrapper.find('.ak-input_clear').exists()).toBeTruthy()
+    expect(wrapper.find('.ta-input_clear').exists()).toBeTruthy()
   })
 })

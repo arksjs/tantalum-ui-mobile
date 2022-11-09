@@ -1,4 +1,4 @@
-export interface ArkUIResolverOptions {
+export interface UIResolverOptions {
     /**
      * import style css or sass along with components
      *
@@ -13,11 +13,11 @@ export interface ArkUIResolverOptions {
     format?: 'esm' | 'cjs';
 }
 /**
- * Resolver for ArkUI
+ * Resolver for Tantalum UI
  *
- * @link https://github.com/arksjs/arkui-mobile-vue
+ * @link https://github.com/arksjs/tantalum-ui-mobile
  */
-export declare function ArkUIResolver(options?: ArkUIResolverOptions): {
+export declare function UIResolver(options?: UIResolverOptions): {
     type: string;
     resolve: (name: string) => {
         importName: string;

@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkNavBar } from 'arkui-mobile-vue'
+import { TaNavBar } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,7 @@ import type {
   NavBarButtonOption,
   NavBarOnButtonClick,
   NavBarOnTitleDbClick
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -82,18 +82,18 @@ type Payload = {
 ### 左侧区域自定义（#left）
 
 ```vue
-<ak-nav-bar
+<ta-nav-bar
   title="标题"
   :right-buttons="[{ icon: 'MenuOutlined', text: '菜单' }]"
 >
   <template #left>Left Slot</template>
-</ak-nav-bar>
+</ta-nav-bar>
 ```
 
 ### 右侧区域自定义（#right）
 
 ```vue
-<ak-nav-bar title="标题" :show-back="true" :show-home="true">
+<ta-nav-bar title="标题" :show-back="true" :show-home="true">
   <template #right>Right Slot</template>
-</ak-nav-bar>
+</ta-nav-bar>
 ```

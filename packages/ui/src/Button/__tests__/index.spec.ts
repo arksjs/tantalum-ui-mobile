@@ -111,18 +111,18 @@ describe('Button', () => {
       }
     })
 
-    expect(wrapper.attributes('style')).toContain('--ak-color: #6667AB;')
-    expect(wrapper.attributes('style')).toContain('--ak-dark-color: #4A4985;')
-    expect(wrapper.attributes('style')).toContain('--ak-light-color: #8B8DB8;')
+    expect(wrapper.attributes('style')).toContain('--ta-color: #6667AB;')
+    expect(wrapper.attributes('style')).toContain('--ta-dark-color: #4A4985;')
+    expect(wrapper.attributes('style')).toContain('--ta-light-color: #8B8DB8;')
 
     await wrapper.setProps({
       color: '#E2C0BF'
     })
 
-    expect(wrapper.attributes('style')).toContain('--ak-color: #E2C0BF;')
-    expect(wrapper.attributes('style')).toContain('--ak-dark-color: #BC9595;')
-    expect(wrapper.attributes('style')).toContain('--ak-light-color: #EFE1E0;')
-    expect(wrapper.attributes('style')).toContain('--ak-front-color: #493234;')
+    expect(wrapper.attributes('style')).toContain('--ta-color: #E2C0BF;')
+    expect(wrapper.attributes('style')).toContain('--ta-dark-color: #BC9595;')
+    expect(wrapper.attributes('style')).toContain('--ta-light-color: #EFE1E0;')
+    expect(wrapper.attributes('style')).toContain('--ta-front-color: #493234;')
   })
 
   test('prop icon', () => {
@@ -144,7 +144,7 @@ describe('Button', () => {
       }
     })
 
-    expect(wrapper.find('.ak-icon').classes()).toContain('spin')
+    expect(wrapper.find('.ta-icon').classes()).toContain('spin')
     expect(wrapper.findComponent(CircleOutlined).exists()).toBeFalsy()
     expect(wrapper.findComponent(LoadingOutlined).exists()).toBeTruthy()
   })
@@ -171,22 +171,22 @@ describe('ButtonGroup', () => {
 
     expect(wrapper.classes()).toContain('size--large')
     expect(
-      wrapper.findAllComponents('.ak-button').map(v => {
-        return v.find('.ak-button').classes('size--large')
+      wrapper.findAllComponents('.ta-button').map(v => {
+        return v.find('.ta-button').classes('size--large')
       })
     ).toEqual([true, true])
 
     expect(wrapper.classes()).toContain('shape--round')
     expect(
-      wrapper.findAllComponents('.ak-button').map(v => {
-        return v.find('.ak-button').classes('shape--round')
+      wrapper.findAllComponents('.ta-button').map(v => {
+        return v.find('.ta-button').classes('shape--round')
       })
     ).toEqual([true, true])
 
     expect(wrapper.classes()).toContain('pattern--gradient')
     expect(
-      wrapper.findAllComponents('.ak-button').map(v => {
-        return v.find('.ak-button').classes('pattern--gradient')
+      wrapper.findAllComponents('.ta-button').map(v => {
+        return v.find('.ta-button').classes('pattern--gradient')
       })
     ).toEqual([true, true])
   })

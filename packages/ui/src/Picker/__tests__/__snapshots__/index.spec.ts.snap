@@ -1,17 +1,17 @@
 // Vitest Snapshot v1
 
 exports[`Picker > snapshot 1`] = `
-"<div class=\\"ak-picker\\">
+"<div class=\\"ta-picker\\">
   <selector-field-stub label=\\"\\" name=\\"\\" placeholder=\\"\\" disabled=\\"false\\" value=\\"\\"></selector-field-stub>
   <!--v-if-->
 </div>"
 `;
 
-exports[`PickerPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"ak-picker-popup\\"></drawer-stub>"`;
+exports[`PickerPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"ta-picker-popup\\"></drawer-stub>"`;
 
 exports[`PickerView > snapshot 1`] = `
-"<div class=\\"ak-picker-view\\">
-  <div class=\\"ak-picker-view_cols\\">
+"<div class=\\"ta-picker-view\\">
+  <div class=\\"ta-picker-view_cols\\">
     <empty-stub description=\\"暂无选择可选\\" type=\\"default\\"></empty-stub>
   </div>
 </div>"

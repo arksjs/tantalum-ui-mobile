@@ -1,6 +1,6 @@
 <template>
   <PickerView
-    class="ak-date-picker-view"
+    class="ta-date-picker-view"
     @update:modelValue="onUpdateValue"
     @change="onChange"
   >
@@ -18,7 +18,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { DatePickerViewEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-date-picker-view',
+  name: 'ta-date-picker-view',
   components: { PickerView },
   props: {
     ...commonProps

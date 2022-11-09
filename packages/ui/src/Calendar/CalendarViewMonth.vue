@@ -1,14 +1,14 @@
 <template>
-  <div class="ak-calendar-view_month-caption">
+  <div class="ta-calendar-view_month-caption">
     {{ month.caption }}
   </div>
   <div
-    class="ak-calendar-view_days"
+    class="ta-calendar-view_days"
     :data-index="monthIndex"
     @click="onDaysClick"
   >
     <div
-      class="ak-calendar-view_day"
+      class="ta-calendar-view_day"
       :class="{
         disabled: day.state === 'disabled',
         selected:
@@ -23,14 +23,14 @@
     >
       <span
         v-if="day.topText"
-        class="ak-calendar-view_day-top-text"
+        class="ta-calendar-view_day-top-text"
         :class="{ highlight: day.topHighlight }"
         >{{ day.topText }}</span
       >
       {{ day.text }}
       <span
         v-if="day.bottomText"
-        class="ak-calendar-view_day-bottom-text"
+        class="ta-calendar-view_day-bottom-text"
         :class="{ highlight: day.bottomHighlight }"
         >{{ day.bottomText }}</span
       >
@@ -45,7 +45,7 @@ import type { OnClick } from '../helpers/types'
 import type { Mode, Month } from './types'
 
 export default defineComponent({
-  name: 'ak-calendar-view-month',
+  name: 'ta-calendar-view-month',
   props: {
     month: {
       type: Object as PropType<Month>,

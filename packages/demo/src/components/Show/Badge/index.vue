@@ -1,161 +1,161 @@
 <template>
-  <ak-group title="基础用法">
+  <ta-group title="基础用法">
     <div class="exp-badge-flex">
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-badge :content="1"> <div class="exp-badge-slot"></div> </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-badge :content="99">
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-badge :content="1"> <div class="exp-badge-slot"></div> </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-badge :content="99">
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-      </ak-row>
+          </ta-badge>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="小红点">
+  </ta-group>
+  <ta-group title="小红点">
     <div class="exp-badge-flex">
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-badge :content="1" dot>
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-badge :content="1" dot>
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-      </ak-row>
+          </ta-badge>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="图标（Slot）">
+  </ta-group>
+  <ta-group title="图标（Slot）">
     <div class="exp-badge-flex">
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-badge :content="1">
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-badge :content="1">
             <div class="exp-badge-slot"></div>
             <template #badge>
-              <ak-icon icon="CheckOutlined"></ak-icon>
+              <ta-icon icon="CheckOutlined"></ta-icon>
             </template>
-          </ak-badge>
-        </ak-col>
-      </ak-row>
+          </ta-badge>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="文本">
+  </ta-group>
+  <ta-group title="文本">
     <div class="exp-badge-flex">
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-badge content="惠"> <div class="exp-badge-slot"></div> </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-badge content="热"> <div class="exp-badge-slot"></div> </ak-badge>
-        </ak-col>
-      </ak-row>
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-badge content="惠"> <div class="exp-badge-slot"></div> </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-badge content="热"> <div class="exp-badge-slot"></div> </ta-badge>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="自定义颜色">
+  </ta-group>
+  <ta-group title="自定义颜色">
     <div class="exp-badge-flex">
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-badge :content="99" color="#6667AB">
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-badge :content="99" color="#6667AB">
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-badge :content="1" dot color="#6667AB">
+          </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-badge :content="1" dot color="#6667AB">
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-badge :content="1" color="#E2C0BF">
+          </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-badge :content="1" color="#E2C0BF">
             <div class="exp-badge-slot"></div>
             <template #badge>
-              <ak-icon icon="CheckOutlined"></ak-icon>
+              <ta-icon icon="CheckOutlined"></ta-icon>
             </template>
-          </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-badge content="惠" color="#E2C0BF">
+          </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-badge content="惠" color="#E2C0BF">
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-      </ak-row>
+          </ta-badge>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="限制最大数">
+  </ta-group>
+  <ta-group title="限制最大数">
     <div class="exp-badge-flex">
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-badge :content="1000" :max-count="9">
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-badge :content="1000" :max-count="9">
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-badge :content="1000" :max-count="10">
+          </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-badge :content="1000" :max-count="10">
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-badge :content="1000" :max-count="99">
+          </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-badge :content="1000" :max-count="99">
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-      </ak-row>
+          </ta-badge>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="展示 0">
+  </ta-group>
+  <ta-group title="展示 0">
     <div class="exp-badge-flex">
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-badge :content="0" show-zero>
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-badge :content="0" show-zero>
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-badge :content="0" dot show-zero>
+          </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-badge :content="0" dot show-zero>
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-      </ak-row>
+          </ta-badge>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="偏移">
+  </ta-group>
+  <ta-group title="偏移">
     <div class="exp-badge-flex">
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-badge :content="1" :offset="[10, -10]">
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-badge :content="1" :offset="[10, -10]">
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-badge :content="1" dot :offset="[-20, 20]">
+          </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-badge :content="1" dot :offset="[-20, 20]">
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-      </ak-row>
+          </ta-badge>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="展示动画">
+  </ta-group>
+  <ta-group title="展示动画">
     <div class="exp-badge-flex">
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-badge :content="count" show-zero animated :maxCount="maxCount">
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-badge :content="count" show-zero animated :maxCount="maxCount">
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-switch @change="onSwitch"></ak-switch>
-        </ak-col>
-      </ak-row>
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-badge :content="count2" dot animated>
+          </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-switch @change="onSwitch"></ta-switch>
+        </ta-col>
+      </ta-row>
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-badge :content="count2" dot animated>
             <div class="exp-badge-slot"></div>
-          </ak-badge>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-switch @change="onSwitch2"></ak-switch>
-        </ak-col>
-      </ak-row>
+          </ta-badge>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-switch @change="onSwitch2"></ta-switch>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
+  </ta-group>
 </template>
 
 <script lang="ts">

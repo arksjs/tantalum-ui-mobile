@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkTabView, AkTabViewItem } from 'arkui-mobile-vue'
+import { TaTabView, TaTabViewItem } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,7 @@ import type {
   TabViewOnChange,
   TabViewOnAnimated,
   TabViewRef
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## TabView Props
@@ -48,14 +48,14 @@ import type {
 注：其中只可放置 [TabViewItem](./TabView.md#tabviewitem-props) 组件，否则会导致未定义的行为。
 
 ```vue
-<ak-tab-view>
-  <ak-tab-view-item name="Tab 1">
-    <ak-empty description="Tab 1"/>
-  </ak-tab-view-item>
-  <ak-tab-view-item name="Tab 2">
-    <ak-empty description="Tab 1" />
-  </ak-tab-view-item>
-</ak-tab-view>
+<ta-tab-view>
+  <ta-tab-view-item name="Tab 1">
+    <ta-empty description="Tab 1"/>
+  </ta-tab-view-item>
+  <ta-tab-view-item name="Tab 2">
+    <ta-empty description="Tab 1" />
+  </ta-tab-view-item>
+</ta-tab-view>
 ```
 
 ## Methods
@@ -83,7 +83,7 @@ interface TabViewRef {
 ### 内容（#default）
 
 ```vue
-<ak-tab-view-item name="Tab 1">
-  <ak-empty description="Tab 1"/>
-</ak-tab-view-item>
+<ta-tab-view-item name="Tab 1">
+  <ta-empty description="Tab 1"/>
+</ta-tab-view-item>
 ```

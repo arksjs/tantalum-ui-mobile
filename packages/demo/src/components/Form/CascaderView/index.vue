@@ -31,25 +31,25 @@ export default {
 </script>
 
 <template>
-  <ak-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Cascader" />
-  <ak-group title="家电">
-    <ak-cascader-view :options="cascadeOptions" v-model="baseValue" />
-  </ak-group>
-  <ak-group title="空数据">
-    <ak-cascader-view :options="[]" />
-  </ak-group>
-  <ak-group title="change 事件">
-    <ak-cascader-view
+  <ta-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Cascader" />
+  <ta-group title="家电">
+    <ta-cascader-view :options="cascadeOptions" v-model="baseValue" />
+  </ta-group>
+  <ta-group title="空数据">
+    <ta-cascader-view :options="[]" />
+  </ta-group>
+  <ta-group title="change 事件">
+    <ta-cascader-view
       :options="cascadeOptions"
       @change="onChange"
       v-model="changeValue"
     />
-  </ak-group>
-  <ak-group title="select 事件（跟 change 的区别是重复选一样的也触发）">
-    <ak-cascader-view
+  </ta-group>
+  <ta-group title="select 事件（跟 change 的区别是重复选一样的也触发）">
+    <ta-cascader-view
       :options="cascadeOptions"
       @select="onSelect"
       v-model="selectValue"
     />
-  </ak-group>
+  </ta-group>
 </template>

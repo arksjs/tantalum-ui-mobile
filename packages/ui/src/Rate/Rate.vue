@@ -7,7 +7,7 @@
       :disabled="disabled"
     />
     <div
-      class="ak-rate_item"
+      class="ta-rate_item"
       :class="{
         active: num - 0.5 <= inputValue,
         half: inputValue - num === -0.5
@@ -16,10 +16,10 @@
       :key="num"
       :data-value="num"
     >
-      <i class="ak-rate_icon">
+      <i class="ta-rate_icon">
         <Icon :icon="icon" />
       </i>
-      <i class="ak-rate_active-icon">
+      <i class="ta-rate_active-icon">
         <Icon :icon="activeIcon" />
       </i>
     </div>
@@ -57,7 +57,7 @@ interface RateCoords {
 }
 
 export default defineComponent({
-  name: 'ak-rate',
+  name: 'ta-rate',
   components: { Icon },
   props: {
     ...formItemProps,

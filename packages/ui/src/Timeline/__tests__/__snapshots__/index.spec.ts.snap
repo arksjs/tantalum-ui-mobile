@@ -1,14 +1,14 @@
 // Vitest Snapshot v1
 
-exports[`Timeline > snapshot 1`] = `"<div class=\\"ak-timeline\\"></div>"`;
+exports[`Timeline > snapshot 1`] = `"<div class=\\"ta-timeline\\"></div>"`;
 
 exports[`TimelineItem > snapshot 1`] = `
-"<div class=\\"ak-timeline-item ak-horizontal-hairline\\">
-  <div class=\\"ak-timeline-item_line\\"></div>
-  <div class=\\"ak-timeline-item_index\\"><i class=\\"ak-timeline-item_dot\\"></i></div>
-  <div class=\\"ak-timeline-item_inner\\">
+"<div class=\\"ta-timeline-item ta-horizontal-hairline\\">
+  <div class=\\"ta-timeline-item_line\\"></div>
+  <div class=\\"ta-timeline-item_index\\"><i class=\\"ta-timeline-item_dot\\"></i></div>
+  <div class=\\"ta-timeline-item_inner\\">
     <!--v-if-->
-    <div class=\\"ak-timeline-item_content\\"></div>
+    <div class=\\"ta-timeline-item_content\\"></div>
   </div>
 </div>"
 `;

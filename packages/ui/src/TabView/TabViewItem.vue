@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ak-swiper-item ak-tab-view-item"
+    class="ta-swiper-item ta-tab-view-item"
     :data-name="name"
     :data-title="title"
     :data-sub-title="subTitle"
@@ -25,7 +25,7 @@ interface TabViewItemCoords {
 }
 
 export default defineComponent({
-  name: 'ak-tab-view-item',
+  name: 'ta-tab-view-item',
   props: {
     name: {
       type: String,
@@ -40,7 +40,7 @@ export default defineComponent({
   },
   setup() {
     const root = shallowRef<HTMLElement | null>(null)
-    const vertical = inject('akTabViewVertical', false)
+    const vertical = inject('taTabViewVertical', false)
 
     useListItem('swiper')
     useListItem('tabView')

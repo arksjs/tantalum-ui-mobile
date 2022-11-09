@@ -49,31 +49,31 @@ function onCreateColor() {
 </script>
 
 <template>
-  <ak-group title="设置主题颜色">
-    <ak-form>
-      <ak-form-item name="primary" label="primary 色" required>
-        <ak-input v-model="primary" />
-      </ak-form-item>
-      <ak-form-item name="success" label="success 色" required>
-        <ak-input v-model="success" />
-      </ak-form-item>
-      <ak-form-item name="warning" label="warning 色" required>
-        <ak-input v-model="warning" />
-      </ak-form-item>
-      <ak-form-item name="danger" label="danger 色" required>
-        <ak-input v-model="danger" />
-      </ak-form-item>
+  <ta-group title="设置主题颜色">
+    <ta-form>
+      <ta-form-item name="primary" label="primary 色" required>
+        <ta-input v-model="primary" />
+      </ta-form-item>
+      <ta-form-item name="success" label="success 色" required>
+        <ta-input v-model="success" />
+      </ta-form-item>
+      <ta-form-item name="warning" label="warning 色" required>
+        <ta-input v-model="warning" />
+      </ta-form-item>
+      <ta-form-item name="danger" label="danger 色" required>
+        <ta-input v-model="danger" />
+      </ta-form-item>
       <template #footer>
-        <ak-button type="primary" @click="onCreateColor">生成主题</ak-button>
+        <ta-button type="primary" @click="onCreateColor">生成主题</ta-button>
       </template>
-    </ak-form>
+    </ta-form>
     <div class="exp-customTheme-code" v-if="themeCode">
       <pre>
       {{ themeCode }}
       </pre>
-      <ak-copy @success="showToast('复制成功')" :text="themeCode"
+      <ta-copy @success="showToast('复制成功')" :text="themeCode"
         >复制代码
-      </ak-copy>
+      </ta-copy>
     </div>
-  </ak-group>
+  </ta-group>
 </template>

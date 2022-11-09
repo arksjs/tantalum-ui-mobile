@@ -1,6 +1,6 @@
 # @arksjs/ui-resolver
 
-[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) Resolver for [ArkUI](https://github.com/arksjs/arkui-mobile-vue)。
+[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) Resolver for [Tantalum UI](https://github.com/arksjs/tantalum-ui-mobile)。
 
 ## 使用方式
 
@@ -24,13 +24,13 @@ npm i @arksjs/ui-resolver -D
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
-import { ArkUIResolver } from '@arksjs/ui-resolver'
+import { UIResolver } from '@arksjs/ui-resolver'
 
 export default defineConfig({
   plugins: [
     vue(),
     Components({
-      resolvers: [ArkUIResolver()]
+      resolvers: [UIResolver()]
     })
   ]
 })
@@ -40,13 +40,13 @@ Or `vue.config.js`
 
 ```JavaScript
 const Components = require('unplugin-vue-components/webpack')
-const { ArkUIResolver } = require('@arksjs/ui-resolver')
+const { UIResolver } = require('@arksjs/ui-resolver')
 
 module.exports = {
   configureWebpack: {
     plugins: [
       Components({
-        resolvers: [ArkUIResolver()]
+        resolvers: [UIResolver()]
       })
     ]
   }
@@ -57,7 +57,7 @@ module.exports = {
 
 ```HTML
 <template>
-  <ak-button>提交</ak-button>
+  <ta-button>提交</ta-button>
 </template>
 ```
 
@@ -73,10 +73,10 @@ type ImportStyle = boolean | 'css' | 'sass'
 
 ```JavaScript
 // set true or 'css' or no set
-import 'arkui-mobile-vue/es/Button/style/index'
+import 'tantalum-ui-mobile/es/Button/style/index'
 
 // set 'sass'
-import 'arkui-mobile-vue/es/Button/style/sass'
+import 'tantalum-ui-mobile/es/Button/style/sass'
 
 // set false
 ```
@@ -91,8 +91,8 @@ type Format = 'esm' | 'cjs'
 
 ```JavaScript
 // set 'esm' or no set
-import 'arkui-mobile-vue/es/Button'
+import 'tantalum-ui-mobile/es/Button'
 
 // set 'cjs'
-import 'arkui-mobile-vue/lib/Button'
+import 'tantalum-ui-mobile/lib/Button'
 ```

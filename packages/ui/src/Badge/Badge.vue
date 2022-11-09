@@ -25,7 +25,7 @@ import {
 import { useFrameTask } from '../hooks/use-frame-task'
 
 export default defineComponent({
-  name: 'ak-badge',
+  name: 'ta-badge',
   props: {
     content: {
       type: [Number, String],

@@ -1,43 +1,43 @@
 <template>
-  <ak-group title="基础用法">
+  <ta-group title="基础用法">
     <div class="exp-stopwatch-box">
       <div class="exp-stopwatch-box-header">
-        <ak-stopwatch
+        <ta-stopwatch
           @stop="onStop"
           @start="onStart"
           @reset="onReset"
           ref="stopWatch"
-        ></ak-stopwatch>
+        ></ta-stopwatch>
       </div>
       <div class="exp-stopwatch-box-body">
-        <ak-button @click="resetOrLap">
+        <ta-button @click="resetOrLap">
           {{ paused ? '重置' : '计次' }}
-        </ak-button>
-        <ak-button @click="startOrStop" :type="!paused ? 'danger' : 'success'">
+        </ta-button>
+        <ta-button @click="startOrStop" :type="!paused ? 'danger' : 'success'">
           {{ paused ? '启动' : '停止' }}
-        </ak-button>
+        </ta-button>
       </div>
     </div>
-    <ak-cell
+    <ta-cell
       :label="'计次 ' + (laps.length - index)"
       v-for="(item, index) in laps"
       :key="item"
     >
       {{ item }}
-    </ak-cell>
-  </ak-group>
+    </ta-cell>
+  </ta-group>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import type { CountTime, AkStopwatch, StopwatchOnStop } from '@/index'
+import type { CountTime, TaStopwatch, StopwatchOnStop } from '@/index'
 
 export default defineComponent({
   name: 'ExpStopwatch',
   setup() {
     const paused = ref(true)
     const laps = ref<string[]>([])
-    const stopWatch = ref<InstanceType<typeof AkStopwatch>>()
+    const stopWatch = ref<InstanceType<typeof TaStopwatch>>()
 
     const setLaps = (_laps: CountTime[] = []) => {
       laps.value = _laps.reverse().map(countTime => {

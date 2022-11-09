@@ -2,7 +2,7 @@
   "name": "@arksjs/ui-playground",
   "private": true,
   "version": "0.0.1",
-  "description": "arkui-mobile-vue playground",
+  "description": "tantalum-ui-mobile playground",
   "keywords": [
     "playground",
     "repl"
@@ -17,7 +17,7 @@
     "@vue/repl": "^1.0.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.6.0",
-    "arkui-mobile-vue": "^workspace: *",
+    "tantalum-ui-mobile": "^workspace: *",
     "vue": "^3.2.0"
   }
 }

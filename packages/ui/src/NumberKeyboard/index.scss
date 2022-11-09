@@ -1,16 +1,16 @@
 @import '../style/var.scss';
 @import '../style/mixin.scss';
 
-.ak-number-keyboard {
-  .ak-drawer_inner {
+.ta-number-keyboard {
+  .ta-drawer_inner {
     background: $background2-color;
 
-    .ak-nav-bar::after {
+    .ta-nav-bar::after {
       content: none;
     }
   }
 
-  .ak-nav-bar {
+  .ta-nav-bar {
     &_inner {
       &::after {
         content: none;
@@ -60,9 +60,9 @@
     user-select: none;
     @include box-shadow;
 
-    .ak-icon {
-      --ak-icon-size: 36px;
-      --ak-icon-color: #{$font-color};
+    .ta-icon {
+      --ta-icon-size: 36px;
+      --ta-icon-color: #{$font-color};
     }
   }
 
@@ -93,7 +93,7 @@
       font-weight: 500;
 
       &:active {
-        background-color: var(--ak-color-primary-dark);
+        background-color: var(--ta-color-primary-dark);
       }
     }
   }

@@ -1,24 +1,24 @@
 // Vitest Snapshot v1
 
 exports[`Calendar > snapshot 1`] = `
-"<div class=\\"ak-calendar\\">
+"<div class=\\"ta-calendar\\">
   <selector-field-stub label=\\"\\" name=\\"\\" placeholder=\\"\\" disabled=\\"false\\" value=\\"\\"></selector-field-stub>
   <!--v-if-->
 </div>"
 `;
 
-exports[`CalendarPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"ak-calendar-popup\\"></drawer-stub>"`;
+exports[`CalendarPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"ta-calendar-popup\\"></drawer-stub>"`;
 
 exports[`CalendarView > snapshot 1`] = `
-"<div class=\\"ak-calendar-view\\">
-  <div class=\\"ak-calendar-view_header\\">
-    <div class=\\"ak-calendar-view_weekdays\\"><span class=\\"ak-calendar-view_weekday highlight\\">日</span><span class=\\"ak-calendar-view_weekday\\">一</span><span class=\\"ak-calendar-view_weekday\\">二</span><span class=\\"ak-calendar-view_weekday\\">三</span><span class=\\"ak-calendar-view_weekday\\">四</span><span class=\\"ak-calendar-view_weekday\\">五</span><span class=\\"ak-calendar-view_weekday highlight\\">六</span></div>
+"<div class=\\"ta-calendar-view\\">
+  <div class=\\"ta-calendar-view_header\\">
+    <div class=\\"ta-calendar-view_weekdays\\"><span class=\\"ta-calendar-view_weekday highlight\\">日</span><span class=\\"ta-calendar-view_weekday\\">一</span><span class=\\"ta-calendar-view_weekday\\">二</span><span class=\\"ta-calendar-view_weekday\\">三</span><span class=\\"ta-calendar-view_weekday\\">四</span><span class=\\"ta-calendar-view_weekday\\">五</span><span class=\\"ta-calendar-view_weekday highlight\\">六</span></div>
   </div>
-  <div class=\\"ak-calendar-view_body\\">
+  <div class=\\"ta-calendar-view_body\\">
     <virtual-list-stub itemsize=\\"function getItemSize(index) {
       return Math.ceil((months[index]?.days.length ?? 0) / 7) * 64 + 28;
     }\\" ids=\\"2022年01月,2022年02月,2022年03月,2022年04月,2022年05月,2022年06月,2022年07月,2022年08月,2022年09月,2022年10月,2022年11月,2022年12月\\" initialhorizontal=\\"false\\" preload=\\"1.5\\" initialwaterfallcount=\\"1\\" approveditemvisiblescale=\\"0.5\\"></virtual-list-stub>
-    <div class=\\"ak-calendar-view_month-caption fixed\\" style=\\"transform: translate3d(0px, -100%, 0px);\\"></div>
+    <div class=\\"ta-calendar-view_month-caption fixed\\" style=\\"transform: translate3d(0px, -100%, 0px);\\"></div>
   </div>
 </div>"
 `;

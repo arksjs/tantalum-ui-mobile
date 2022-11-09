@@ -1,6 +1,6 @@
 <template>
-  <div class="ak-picker-view" ref="root">
-    <div class="ak-picker-view_cols">
+  <div class="ta-picker-view" ref="root">
+    <div class="ta-picker-view_cols">
       <ViewCol
         v-for="(colItem, listIndex) in cols"
         :key="colItem.key"
@@ -31,7 +31,7 @@ interface ScrollElement extends HTMLElement {
 }
 
 export default defineComponent({
-  name: 'ak-picker-view',
+  name: 'ta-picker-view',
   components: { Empty, ViewCol },
   props: {
     ...pickerViewProps
@@ -40,7 +40,7 @@ export default defineComponent({
   setup(props, ctx) {
     const { locale } = useLocale()
     const root = shallowRef<HTMLElement | null>(null)
-    const handlers = inject<Partial<PickerHandlers>>('akPickerHandlers', {})
+    const handlers = inject<Partial<PickerHandlers>>('taPickerHandlers', {})
 
     const {
       getDetail,
@@ -68,7 +68,7 @@ export default defineComponent({
         const $picker = root.value as HTMLElement
 
         if ($picker) {
-          const $lists = $picker.querySelectorAll(`.ak-picker-view_list`)
+          const $lists = $picker.querySelectorAll(`.ta-picker-view_list`)
 
           $lists.forEach(($el, index) => {
             const $list = $el as ScrollElement

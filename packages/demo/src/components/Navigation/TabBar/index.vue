@@ -1,34 +1,34 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-tab-bar :options="baseList" v-model="activeValue" ref="tabBarRef" />
-  </ak-group>
-  <ak-group title="徽标">
-    <ak-tab-bar :options="badgeList" />
-  </ak-group>
-  <ak-group title="自定义图标">
-    <ak-tab-bar :options="customIconList" />
-  </ak-group>
-  <ak-group title="自定义颜色">
-    <ak-tab-bar
+  <ta-group title="基础用法">
+    <ta-tab-bar :options="baseList" v-model="activeValue" ref="tabBarRef" />
+  </ta-group>
+  <ta-group title="徽标">
+    <ta-tab-bar :options="badgeList" />
+  </ta-group>
+  <ta-group title="自定义图标">
+    <ta-tab-bar :options="customIconList" />
+  </ta-group>
+  <ta-group title="自定义颜色">
+    <ta-tab-bar
       color="#8B8DB8"
       activeColor="#ffffff"
       style="background-color: #6667ab"
       :options="baseList"
     />
-  </ak-group>
-  <ak-group title="自定义图片（icon=URL）">
-    <ak-tab-bar class="exp-tabBar-custom" :options="imageList" />
-  </ak-group>
-  <ak-group title="配合 Fixed 实现置底">
-    <ak-fixed>
-      <ak-tab-bar
+  </ta-group>
+  <ta-group title="自定义图片（icon=URL）">
+    <ta-tab-bar class="exp-tabBar-custom" :options="imageList" />
+  </ta-group>
+  <ta-group title="配合 Fixed 实现置底">
+    <ta-fixed>
+      <ta-tab-bar
         :options="baseList"
         v-model="activeValue"
         class="exp-tabBar-w"
         @change="onChange"
       />
-    </ak-fixed>
-  </ak-group>
+    </ta-fixed>
+  </ta-group>
 </template>
 
 <script lang="ts">

@@ -1,9 +1,9 @@
 const path = require('path')
 
 module.exports = {
-  title: 'ArkUI',
+  title: 'Tantalum UI',
   description: '基于 Vue3 移动端组件库',
-  base: '/arkui-mobile-vue/',
+  base: '/tantalum-ui-mobile/',
   lang: 'zh-CN',
   head: [
     [
@@ -12,7 +12,7 @@ module.exports = {
         rel: 'icon',
         type: 'image/svg',
         sizes: '32x32',
-        href: '/arkui-mobile-vue/logo.svg'
+        href: '/tantalum-ui-mobile/logo.svg'
       }
     ],
     [
@@ -58,7 +58,7 @@ module.exports = {
     algolia: {
       appId: '3QN7BVCVD6',
       apiKey: '59e6f0e7edc17769c57fec593899939a',
-      indexName: 'arkui-mobile-vue'
+      indexName: 'tantalum-ui-mobile'
     }
   },
   markdown: {

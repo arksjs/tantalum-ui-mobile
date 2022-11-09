@@ -23,14 +23,14 @@ describe('<Picker />', () => {
     })
 
     // 按钮点击，弹窗
-    cy.get('.ak-button').click()
+    cy.get('.ta-button').click()
 
     // 默认值
     cy.wait(500)
     cy.get('.selected').should('have.text', '2000spring')
 
     // 滑动一下第一列
-    cy.get('.ak-picker-view_list').first().scrollTo(0, 30)
+    cy.get('.ta-picker-view_list').first().scrollTo(0, 30)
     cy.wait(500)
     cy.get('.selected').should('have.text', '2001spring')
   })

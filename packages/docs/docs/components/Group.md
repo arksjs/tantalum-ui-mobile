@@ -11,7 +11,7 @@
 ## Import
 
 ```js
-import { AkGroup } from 'arkui-mobile-vue'
+import { TaGroup } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -28,17 +28,17 @@ import { AkGroup } from 'arkui-mobile-vue'
 ### #default
 
 ```vue
-<ak-group title="基础用法">
-  <ak-cell label="单元格" content="内容"></ak-cell>
-  <ak-cell label="单元格" content="内容" description="描述信息"></ak-cell>
-</ak-group>
+<ta-group title="基础用法">
+  <ta-cell label="单元格" content="内容"></ta-cell>
+  <ta-cell label="单元格" content="内容" description="描述信息"></ta-cell>
+</ta-group>
 ```
 
 ### 右上角（#header）
 
 ```vue
-<ak-group title="基础风格">
+<ta-group title="基础风格">
   <template #header> 右侧文案 </template>
   ...
-</ak-group>
+</ta-group>
 ```

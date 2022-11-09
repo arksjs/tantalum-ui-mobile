@@ -1,40 +1,40 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-nav-bar title="标题" />
-  </ak-group>
-  <ak-group title="显示返回按钮">
-    <ak-nav-bar title="标题" showBack />
-  </ak-group>
-  <ak-group title="展示首页按钮">
-    <ak-nav-bar title="标题" showBack showHome />
-  </ak-group>
-  <ak-group title="展示右侧按钮">
-    <ak-nav-bar
+  <ta-group title="基础用法">
+    <ta-nav-bar title="标题" />
+  </ta-group>
+  <ta-group title="显示返回按钮">
+    <ta-nav-bar title="标题" showBack />
+  </ta-group>
+  <ta-group title="展示首页按钮">
+    <ta-nav-bar title="标题" showBack showHome />
+  </ta-group>
+  <ta-group title="展示右侧按钮">
+    <ta-nav-bar
       title="标题"
       showBack
       showHome
       :rightButtons="[{ icon: 'MenuOutlined', text: '菜单' }]"
     />
-  </ak-group>
-  <ak-group title="按钮带文本">
-    <ak-nav-bar
+  </ta-group>
+  <ta-group title="按钮带文本">
+    <ta-nav-bar
       title="标题"
       showBack
       showHome
       :rightButtons="[{ icon: 'MenuOutlined', text: '菜单' }]"
     />
-    <ak-nav-bar
+    <ta-nav-bar
       title="标题"
       showBack
       :iconOnly="false"
       :rightButtons="[{ icon: 'MenuOutlined', text: '菜单' }]"
     />
-  </ak-group>
-  <ak-group title="固定顶部(配合 fixed 组件)">
+  </ta-group>
+  <ta-group title="固定顶部(配合 fixed 组件)">
     <div class="exp-navBar-fixed">上下滑动观察最顶部的导航</div>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-nav-bar
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-nav-bar
       title="标题双击"
       showBack
       showHome
@@ -44,39 +44,39 @@
       @titleDbclick="showToast('标题双击')"
       @rightButtonClick="onRightButtonClick"
     >
-    </ak-nav-bar>
-  </ak-group>
-  <ak-group title="Slot left / right">
-    <ak-nav-bar
+    </ta-nav-bar>
+  </ta-group>
+  <ta-group title="Slot left / right">
+    <ta-nav-bar
       title="标题"
       :rightButtons="[{ icon: 'MenuOutlined', text: '菜单' }]"
     >
       <template #left>
         <div class="exp-navBar-left">Left Slot</div>
       </template>
-    </ak-nav-bar>
-    <ak-nav-bar title="标题" showBack showHome>
+    </ta-nav-bar>
+    <ta-nav-bar title="标题" showBack showHome>
       <template #right>
         <div class="exp-navBar-right">Right Slot</div>
       </template>
-    </ak-nav-bar>
-    <ak-nav-bar title="标题" showBack showHome>
+    </ta-nav-bar>
+    <ta-nav-bar title="标题" showBack showHome>
       <template #left>
         <div class="exp-navBar-left">
-          <ak-button type="primary" icon="LeftOutlined" size="small">
+          <ta-button type="primary" icon="LeftOutlined" size="small">
             返回
-          </ak-button>
+          </ta-button>
         </div>
       </template>
       <template #right>
         <div class="exp-navBar-right">
-          <ak-button type="primary" icon="MenuOutlined" size="small">
+          <ta-button type="primary" icon="MenuOutlined" size="small">
             菜单
-          </ak-button>
+          </ta-button>
         </div>
       </template>
-    </ak-nav-bar>
-  </ak-group>
+    </ta-nav-bar>
+  </ta-group>
 </template>
 
 <script lang="ts">

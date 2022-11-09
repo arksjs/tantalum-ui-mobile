@@ -9,7 +9,7 @@ import type { LangPack } from '../locale/types'
 import { useConfigProvider } from './context'
 
 export default defineComponent({
-  name: 'ak-config-provider',
+  name: 'ta-config-provider',
   props: {
     locale: {
       type: Object as PropType<LangPack>

@@ -14,7 +14,7 @@ describe('Swiper', () => {
       props: { indicatorDots: true }
     })
 
-    expect(wrapper.find('.ak-swiper_indicators').exists()).toBeTruthy()
+    expect(wrapper.find('.ta-swiper_indicators').exists()).toBeTruthy()
   })
 
   test('length', () => {
@@ -24,7 +24,7 @@ describe('Swiper', () => {
       }
     })
 
-    expect(wrapper.findAll('.ak-swiper-item').length).toBe(4)
+    expect(wrapper.findAll('.ta-swiper-item').length).toBe(4)
   })
 })
 

@@ -1,18 +1,18 @@
 <template>
-  <div class="ak-side-tab">
-    <ul class="ak-side-tab_list" ref="listEl">
+  <div class="ta-side-tab">
+    <ul class="ta-side-tab_list" ref="listEl">
       <li
         :class="getItemClasses(index, activeIndex)"
         v-for="(item, index) in options2"
         :key="item.value"
         @click="onChange(item.value)"
       >
-        <Badge class="ak-side-tab_item-inner" v-bind="item.badge">
+        <Badge class="ta-side-tab_item-inner" v-bind="item.badge">
           <Icon
             v-if="item.icon"
             :icon="index === activeIndex ? item.activeIcon : item.icon"
           />
-          <span class="ak-side-tab_item-text">{{ item.label }}</span>
+          <span class="ta-side-tab_item-text">{{ item.label }}</span>
         </Badge>
       </li>
     </ul>
@@ -30,7 +30,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { SideTabEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-side-tab',
+  name: 'ta-side-tab',
   components: { Icon, Badge },
   props: {
     ...tabProps,

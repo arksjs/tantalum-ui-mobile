@@ -1,9 +1,9 @@
 @import '../style/var.scss';
 
-.ak-tab-bar {
-  --ak-color: #{$font-color};
-  --ak-active-color: #{$primary-color};
-  --ak-front-color: var(--ak-color);
+.ta-tab-bar {
+  --ta-color: #{$font-color};
+  --ta-active-color: #{$primary-color};
+  --ta-front-color: var(--ta-color);
 
   height: 52px;
   display: flex;
@@ -39,7 +39,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--ak-front-color);
+    color: var(--ta-front-color);
     font-size: 10px;
     line-height: 14px;
     user-select: none;
@@ -51,18 +51,18 @@
       margin-bottom: 2px;
     }
 
-    .ak-image {
+    .ta-image {
       width: 28px;
       height: 28px;
     }
 
-    .ak-icon {
-      --ak-icon-size: 28px;
-      --ak-icon-color: var(--ak-front-color);
+    .ta-icon {
+      --ta-icon-size: 28px;
+      --ta-icon-color: var(--ta-front-color);
     }
 
     &.active {
-      --ak-front-color: var(--ak-active-color);
+      --ta-front-color: var(--ta-active-color);
     }
   }
 }

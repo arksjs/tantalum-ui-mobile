@@ -1,14 +1,14 @@
 <template>
   <teleport to="body">
     <div
-      class="ak-dropdown"
+      class="ta-dropdown"
       :class="popupClasses"
       :style="popupStyles"
       v-bind="$attrs"
       ref="popupEl"
     >
-      <div class="ak-mask" @click="onMaskClick"></div>
-      <div class="ak-dropdown_inner">
+      <div class="ta-mask" @click="onMaskClick"></div>
+      <div class="ta-dropdown_inner">
         <slot :height="height"></slot>
       </div>
     </div>
@@ -33,7 +33,7 @@ import type { PropsToEmits, Selector } from '../helpers/types'
 import type { DropdownEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-dropdown',
+  name: 'ta-dropdown',
   props: {
     ...popupProps,
     selector: {

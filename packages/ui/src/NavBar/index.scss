@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-nav-bar {
+.ta-nav-bar {
   position: relative;
   height: 52px;
   background-color: $white-color;
@@ -55,7 +55,7 @@
     max-height: 64px;
   }
 
-  &_button.ak-button {
+  &_button.ta-button {
     border-radius: 0;
     height: 100%;
   }

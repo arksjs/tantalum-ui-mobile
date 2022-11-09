@@ -1,12 +1,12 @@
 <template>
   <teleport to="body">
     <div
-      class="ak-preview-image"
+      class="ta-preview-image"
       :class="popupClasses"
       :style="popupStyles"
       v-bind="$attrs"
     >
-      <div class="ak-mask"></div>
+      <div class="ta-mask"></div>
       <Swiper
         v-if="swiperInit"
         v-model:activeIndex="activeIndex"
@@ -16,8 +16,8 @@
         @animated="onSwiperAnimated"
       >
         <SwiperItem v-for="(item, index) in images" :key="index">
-          <div class="ak-preview-image_image-container">
-            <AkImage
+          <div class="ta-preview-image_image-container">
+            <TaImage
               :src="item.src"
               :mode="'aspectFit'"
               @load="onImageLoad"
@@ -30,12 +30,12 @@
           </div>
         </SwiperItem>
       </Swiper>
-      <div class="ak-preview-image_pagination">
+      <div class="ta-preview-image_pagination">
         {{ activeIndex + 1 }} / {{ urls.length }}
       </div>
-      <div class="ak-preview-image_close">
+      <div class="ta-preview-image_close">
         <slot name="close" :activeIndex="activeIndex">
-          <AkButton
+          <TaButton
             v-if="showClose"
             @click.stop="onCloseClick"
             :icon="CloseOutlined"
@@ -43,7 +43,7 @@
             pattern="borderless"
             shape="square"
             :ghost="true"
-          ></AkButton>
+          ></TaButton>
         </slot>
       </div>
     </div>
@@ -53,8 +53,8 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, watch } from 'vue'
 import type { PropType } from 'vue'
-import { Button as AkButton } from '../Button'
-import { Image as AkImage } from '../Image'
+import { Button as TaButton } from '../Button'
+import { Image as TaImage } from '../Image'
 import { Swiper, SwiperItem } from '../Swiper'
 import { isStringArray, rangeNumber, isString, isNumber } from '../helpers/util'
 import { usePopup } from '../popup/use-popup'
@@ -96,8 +96,8 @@ interface ImageCoords {
 }
 
 export default defineComponent({
-  name: 'ak-image-preview',
-  components: { AkButton, Swiper, SwiperItem, AkImage },
+  name: 'ta-image-preview',
+  components: { TaButton, Swiper, SwiperItem, TaImage },
   props: {
     ...popupProps,
     urls: {

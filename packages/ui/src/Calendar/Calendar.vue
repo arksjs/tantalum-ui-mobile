@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-calendar" :class="{ disabled }" ref="root">
+  <div class="ta-calendar" :class="{ disabled }" ref="root">
     <SelectorField
       :label="fieldLabel"
       :value="fieldValue"
@@ -46,7 +46,7 @@ import { pickerEmits, pickerProps } from '../Picker/props'
 import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
-  name: 'ak-calendar',
+  name: 'ta-calendar',
   components: { SelectorField, CalendarPopup },
   props: {
     ...commonProps,

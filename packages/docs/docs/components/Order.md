@@ -11,7 +11,7 @@
 ## Import
 
 ```js
-import { AkOrder } from 'arkui-mobile-vue'
+import { TaOrder } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -21,7 +21,7 @@ import { AkOrder } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { OrderOnDelete } from 'arkui-mobile-vue'
+import type { OrderOnDelete } from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -57,9 +57,9 @@ interface Item {
 ### 列表项（#default）
 
 ```vue
-<ak-order>
+<ta-order>
  <template #default="{ id, index }">
   {{ index }} : {{ id }}
  </template>
-</ak-order>
+</ta-order>
 ```

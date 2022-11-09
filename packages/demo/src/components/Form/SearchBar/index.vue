@@ -1,24 +1,24 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-search-bar />
-  </ak-group>
-  <ak-group title="搜索建议">
-    <ak-search-bar @input="onInput" />
-  </ak-group>
-  <ak-group title="显示取消按钮">
-    <ak-search-bar show-cancel />
-  </ak-group>
-  <ak-group title="设置候选项">
-    <ak-search-bar :placeholders="placeholders" />
-  </ak-group>
-  <ak-group title="深色适配">
-    <ak-search-bar class="exp-searchBar-dark-style" show-cancel ghost />
-  </ak-group>
-  <ak-group title="只读（readonly=true）">
-    <ak-search-bar readonly :placeholders="placeholders" />
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-search-bar
+  <ta-group title="基础用法">
+    <ta-search-bar />
+  </ta-group>
+  <ta-group title="搜索建议">
+    <ta-search-bar @input="onInput" />
+  </ta-group>
+  <ta-group title="显示取消按钮">
+    <ta-search-bar show-cancel />
+  </ta-group>
+  <ta-group title="设置候选项">
+    <ta-search-bar :placeholders="placeholders" />
+  </ta-group>
+  <ta-group title="深色适配">
+    <ta-search-bar class="exp-searchBar-dark-style" show-cancel ghost />
+  </ta-group>
+  <ta-group title="只读（readonly=true）">
+    <ta-search-bar readonly :placeholders="placeholders" />
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-search-bar
       show-cancel
       :placeholders="placeholders"
       @input="onInput2"
@@ -27,15 +27,15 @@
       @cancel="onCancel"
       @search="onSearch"
     >
-    </ak-search-bar>
-  </ak-group>
-  <ak-group title="事件监听（readonly=true）">
-    <ak-search-bar
+    </ta-search-bar>
+  </ta-group>
+  <ta-group title="事件监听（readonly=true）">
+    <ta-search-bar
       readonly
       :placeholders="placeholders"
       @field-click="onClick"
     />
-  </ak-group>
+  </ta-group>
 </template>
 
 <script lang="ts">

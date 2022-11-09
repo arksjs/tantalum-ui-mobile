@@ -2,12 +2,12 @@ import type { CSSProperties } from '../helpers/types'
 import { rangeInteger } from '../helpers/util'
 
 export const getClasses = (fixedBar?: boolean) => [
-  'ak-progress',
+  'ta-progress',
   { 'fixed-bar': !!fixedBar }
 ]
 
 export const getTrackClasses = (animated?: boolean) => [
-  'ak-progress_track',
+  'ta-progress_track',
   { animated: !!animated }
 ]
 
@@ -18,7 +18,7 @@ export const getTrackStyles = (progress: string) => {
 export const getStyles = (color?: string) => {
   const styles: CSSProperties = {}
 
-  color && (styles['--ak-color'] = color)
+  color && (styles['--ta-color'] = color)
 
   return styles
 }

@@ -1,10 +1,10 @@
 // Vitest Snapshot v1
 
 exports[`Fixed > snapshot 1`] = `
-"<div class=\\"ak-fixed\\">
+"<div class=\\"ta-fixed\\">
   <!--fixed start-->
-  <div class=\\"ak-fixed_inner placement--bottom fixed\\" style=\\"z-index: 1;\\">
-    <div class=\\"ak-fixed_content-wrapper\\"></div>
+  <div class=\\"ta-fixed_inner placement--bottom fixed\\" style=\\"z-index: 1;\\">
+    <div class=\\"ta-fixed_content-wrapper\\"></div>
   </div>
   <!--fixed end-->
 </div>"

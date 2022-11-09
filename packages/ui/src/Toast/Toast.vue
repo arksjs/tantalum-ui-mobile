@@ -1,29 +1,29 @@
 <template>
   <teleport to="body">
     <div
-      :class="['ak-toast', popupClasses, { 'no--mask': !showMask }]"
+      :class="['ta-toast', popupClasses, { 'no--mask': !showMask }]"
       :style="popupStyles"
       v-bind="$attrs"
     >
       <div :class="boxClasses">
         <ActivityIndicator
-          class="ak-toast_icon"
+          class="ta-toast_icon"
           :size="21"
           color="#ffffff"
           v-if="type === 'loading'"
         />
         <Icon
           v-else-if="type === 'success'"
-          class="ak-toast_icon"
+          class="ta-toast_icon"
           :icon="CheckOutlined"
         />
         <Icon
           v-else-if="type === 'fail'"
-          class="ak-toast_icon"
+          class="ta-toast_icon"
           :icon="CloseOutlined"
         />
-        <Icon v-else-if="icon" class="ak-toast_icon" :icon="icon" />
-        <div class="ak-toast_text">
+        <Icon v-else-if="icon" class="ta-toast_icon" :icon="icon" />
+        <div class="ta-toast_text">
           {{ title }}
         </div>
       </div>
@@ -48,7 +48,7 @@ import { useDelay } from '../hooks/use-delay'
 import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
-  name: 'ak-toast',
+  name: 'ta-toast',
   components: { Icon, ActivityIndicator },
   props: {
     ...popupProps,

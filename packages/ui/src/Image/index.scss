@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-image {
+.ta-image {
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -16,8 +16,8 @@
     align-items: center;
     justify-content: center;
 
-    .ak-icon {
-      --ak-icon-color: #{$border-color};
+    .ta-icon {
+      --ta-icon-color: #{$border-color};
     }
   }
 

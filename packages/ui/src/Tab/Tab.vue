@@ -1,25 +1,25 @@
 <template>
   <div :class="classes">
-    <ul class="ak-tab_list" ref="listEl" @scroll="updateUnderline">
+    <ul class="ta-tab_list" ref="listEl" @scroll="updateUnderline">
       <li
         :class="getItemClasses(index, activeIndex)"
         v-for="(item, index) in options2"
         :key="item.value"
         @click="onChange(item.value)"
       >
-        <Badge class="ak-tab_item-inner" v-bind="item.badge">
+        <Badge class="ta-tab_item-inner" v-bind="item.badge">
           <Icon
             v-if="item.icon"
             :icon="index === activeIndex ? item.activeIcon : item.icon"
           />
-          <span class="ak-tab_item-text">{{ item.label }}</span>
+          <span class="ta-tab_item-text">{{ item.label }}</span>
         </Badge>
-        <span class="ak-tab_item-sub-text" v-if="hasSub">{{
+        <span class="ta-tab_item-sub-text" v-if="hasSub">{{
           item.subLabel
         }}</span>
       </li>
     </ul>
-    <span class="ak-tab_underline" ref="underlineEl"></span>
+    <span class="ta-tab_underline" ref="underlineEl"></span>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { TabEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-tab',
+  name: 'ta-tab',
   components: { Icon, Badge },
   props: {
     ...tabProps,

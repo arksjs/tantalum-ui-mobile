@@ -8,10 +8,10 @@
 
 ```js
 import {
-  AkDatePicker,
-  AkDatePickerPopup,
-  AkDatePickerView
-} from 'arkui-mobile-vue'
+  TaDatePicker,
+  TaDatePickerPopup,
+  TaDatePickerView
+} from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -33,7 +33,7 @@ import type {
   VisibleState,
   PopupOnVisibleStateChange,
   PopupOnCancel
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## 公共 Props

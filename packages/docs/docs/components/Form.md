@@ -16,7 +16,7 @@
 ## Import
 
 ```js
-import { AkForm, AkFormFooter, AkFormItem } from 'arkui-mobile-vue'
+import { TaForm, TaFormFooter, TaFormItem } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -26,19 +26,19 @@ import { AkForm, AkFormFooter, AkFormItem } from 'arkui-mobile-vue'
 ### #default
 
 ```vue
-<ak-form>
-  <ak-input type="text" />
-</ak-form>
+<ta-form>
+  <ta-input type="text" />
+</ta-form>
 ```
 
 ### footer
 
 ```vue
-<ak-form>
+<ta-form>
   <template #footer>
-    <ak-button form-type="submit">提交</ak-button>
+    <ta-button form-type="submit">提交</ta-button>
   </template>
-</ak-form>
+</ta-form>
 ```
 
 ## FormFooter Slots
@@ -46,9 +46,9 @@ import { AkForm, AkFormFooter, AkFormItem } from 'arkui-mobile-vue'
 ### #default
 
 ```vue
-<ak-form-footer>
-  <ak-button form-type="submit">提交</ak-button>
-</ak-form-footer>
+<ta-form-footer>
+  <ta-button form-type="submit">提交</ta-button>
+</ta-form-footer>
 ```
 
 ## FormItem Props
@@ -64,9 +64,9 @@ import { AkForm, AkFormFooter, AkFormItem } from 'arkui-mobile-vue'
 ### default
 
 ```vue
-<ak-form-item>
-  <ak-input type="text" />
-</ak-form-item>
+<ta-form-item>
+  <ta-input type="text" />
+</ta-form-item>
 ```
 
 ## 支持表单的组件
@@ -100,7 +100,7 @@ npm install --save @formily/core @formily/vue
 `FormilyFormItem.js`:
 
 ```js
-import { FormItem } from 'arkui-mobile-vue'
+import { FormItem } from 'tantalum-ui-mobile'
 import { connect, mapProps } from '@formily/vue'
 import { isVoidField } from '@formily/core'
 
@@ -157,17 +157,17 @@ export default connect(
         <pre class="exp-form-json">{{
           JSON.stringify(form.values, null, 2)
         }}</pre>
-        <ak-form-footer>
-          <ak-button
+        <ta-form-footer>
+          <ta-button
             type="primary"
             @click="
               () => {
                 form.submit(onSubmit)
               }
             "
-            >提交</ak-button
+            >提交</ta-button
           >
-        </ak-form-footer>
+        </ta-form-footer>
       </template>
     </FormConsumer>
   </FormProvider>
@@ -175,7 +175,7 @@ export default connect(
 
 <script>
 import { multiOptions, regionOptions } from '../Picker/data'
-import { Input, RadioGroup, Dialog } from 'arkui-mobile-vue'
+import { Input, RadioGroup, Dialog } from 'tantalum-ui-mobile'
 import { createForm, setValidateLanguage } from '@formily/core'
 import { FormProvider, Field, FormConsumer } from '@formily/vue'
 import FormilyFormItem from './FormilyFormItem'

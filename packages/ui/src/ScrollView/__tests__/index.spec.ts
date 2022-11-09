@@ -26,6 +26,6 @@ describe('ScrollView', () => {
       }
     })
 
-    expect(wrapper.find('.ak-scroll-view_pull-refresh').exists()).toBeTruthy()
+    expect(wrapper.find('.ta-scroll-view_pull-refresh').exists()).toBeTruthy()
   })
 })

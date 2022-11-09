@@ -1,9 +1,9 @@
 // Vitest Snapshot v1
 
 exports[`SearchBar > snapshot 1`] = `
-"<div class=\\"ak-search\\">
-  <form class=\\"ak-search_inner\\">
-    <ak-input-stub modelvalue=\\"\\" name=\\"\\" disabled=\\"false\\" maxlength=\\"100\\" placeholder=\\"\\" type=\\"search\\" showclear=\\"true\\" showlimit=\\"false\\" class=\\"ak-search_field\\"></ak-input-stub><button class=\\"ak-search_button\\">Search</button>
+"<div class=\\"ta-search\\">
+  <form class=\\"ta-search_inner\\">
+    <ta-input-stub modelvalue=\\"\\" name=\\"\\" disabled=\\"false\\" maxlength=\\"100\\" placeholder=\\"\\" type=\\"search\\" showclear=\\"true\\" showlimit=\\"false\\" class=\\"ta-search_field\\"></ta-input-stub><button class=\\"ta-search_button\\">Search</button>
     <!--v-if-->
   </form>
   <!--v-if-->

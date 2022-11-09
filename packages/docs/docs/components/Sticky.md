@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkSticky, AkStickyView, AkStickyViewItem } from 'arkui-mobile-vue'
+import { TaSticky, TaStickyView, TaStickyViewItem } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkSticky, AkStickyView, AkStickyViewItem } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { StickyViewOnChange, StickyViewRef } from 'arkui-mobile-vue'
+import type { StickyViewOnChange, StickyViewRef } from 'tantalum-ui-mobile'
 ```
 
 ## Sticky
@@ -39,7 +39,7 @@ import type { StickyViewOnChange, StickyViewRef } from 'arkui-mobile-vue'
 ### #default
 
 ```vue
-<ak-sticky>自定义内容</ak-sticky>
+<ta-sticky>自定义内容</ta-sticky>
 ```
 
 ## StickyView
@@ -67,23 +67,23 @@ import type { StickyViewOnChange, StickyViewRef } from 'arkui-mobile-vue'
 注：其中只可放置 [StickyViewItem](./Sticky.md#stickyviewitem-props) 组件，否则会导致未定义的行为。
 
 ```vue
-<ak-sticky-view>
-  <ak-sticky-view-item name="Sticky 1">
+<ta-sticky-view>
+  <ta-sticky-view-item name="Sticky 1">
     <div class="sticky-box-1"></div>
-  </ak-sticky-view-item>
-  <ak-sticky-view-item name="Sticky 1">
+  </ta-sticky-view-item>
+  <ta-sticky-view-item name="Sticky 1">
     <div class="sticky-box-1"></div>
-  </ak-sticky-view-item>
-  <ak-sticky-view-item name="Sticky 2">
+  </ta-sticky-view-item>
+  <ta-sticky-view-item name="Sticky 2">
     <div class="sticky-box-2"></div>
-  </ak-sticky-view-item>
-  <ak-sticky-view-item name="Sticky 3">
+  </ta-sticky-view-item>
+  <ta-sticky-view-item name="Sticky 3">
     <div class="sticky-box-3"></div>
-  </ak-sticky-view-item>
-  <ak-sticky-view-item name="Sticky 4">
+  </ta-sticky-view-item>
+  <ta-sticky-view-item name="Sticky 4">
     <div class="sticky-box-4"></div>
-  </ak-sticky-view-item>
-</ak-sticky-view>
+  </ta-sticky-view-item>
+</ta-sticky-view>
 ```
 
 ## Methods
@@ -114,7 +114,7 @@ interface StickyViewRef {
 ### #default
 
 ```vue
-<ak-sticky-view-item name="Sticky 1">
+<ta-sticky-view-item name="Sticky 1">
   <div class="sticky-box-1"></div>
-</ak-sticky-view-item>
+</ta-sticky-view-item>
 ```

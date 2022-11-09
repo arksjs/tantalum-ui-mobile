@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Divider > snapshot 1`] = `
-"<div class=\\"ak-divider ak-horizontal-hairline\\">
+"<div class=\\"ta-divider ta-horizontal-hairline\\">
   <!--v-if-->
 </div>"
 `;

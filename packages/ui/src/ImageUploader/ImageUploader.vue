@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-image-uploader" v-bind="$attrs">
+  <div class="ta-image-uploader" v-bind="$attrs">
     <Order
       :columnNumber="columnNumber"
       :deletable="deletable"
@@ -34,14 +34,14 @@
     <input type="hidden" :name="name" :value="formValue" />
   </div>
   <ImagePreview
-    class="ak-image-uploader_preview"
+    class="ta-image-uploader_preview"
     :urls="formValue"
     v-model:visible="previewVisible"
     v-model="previewCurrent"
     showClose
   >
     <template #close="{ activeIndex }">
-      <AkButton
+      <TaButton
         v-if="deletable"
         @click.stop="onPreviewDelete(activeIndex)"
         :icon="DeleteOutlined"
@@ -49,7 +49,7 @@
         pattern="borderless"
         shape="square"
         :ghost="true"
-      ></AkButton>
+      />
     </template>
   </ImagePreview>
 </template>
@@ -57,7 +57,7 @@
 <script lang="ts">
 import { defineComponent, reactive, computed, watch, ref } from 'vue'
 import type { PropType } from 'vue'
-import { Button as AkButton } from '../Button'
+import { Button as TaButton } from '../Button'
 import { Icon } from '../Icon'
 import { Order } from '../Order'
 import { ImagePreview } from '../ImagePreview'
@@ -94,12 +94,12 @@ const isValue = (val: string[]) => isStringArray(val)
 const addButtonID = -1
 
 export default defineComponent({
-  name: 'ak-image-uploader',
+  name: 'ta-image-uploader',
   components: {
     Order,
     Icon,
     ImagePreview,
-    AkButton,
+    TaButton,
     UploaderItem
   },
   props: {

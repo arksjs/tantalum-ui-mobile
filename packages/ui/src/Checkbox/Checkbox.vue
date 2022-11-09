@@ -1,7 +1,7 @@
 <template>
-  <label class="ak-checkbox" :class="classes" :style="styles">
+  <label class="ta-checkbox" :class="classes" :style="styles">
     <input
-      class="ak-checkbox_input ak-form-input"
+      class="ta-checkbox_input ta-form-input"
       type="checkbox"
       :name="name2"
       :value="checkedValue"
@@ -9,16 +9,16 @@
       @change="onChange"
       ref="inputEl"
     />
-    <div class="ak-checkbox_box">
+    <div class="ta-checkbox_box">
       <Icon
-        class="ak-checkbox_icon"
+        class="ta-checkbox_icon"
         :icon="circle ? CircleOutlined : BorderOutlined"
       />
       <Icon
-        class="ak-checkbox_checked-icon"
+        class="ta-checkbox_checked-icon"
         :icon="circle ? CheckCircleFilled : CheckSquareFilled"
       />
-      <span class="ak-checkbox_text" v-if="$slots.default">
+      <span class="ta-checkbox_text" v-if="$slots.default">
         <slot></slot>
       </span>
     </div>
@@ -38,7 +38,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { CheckboxEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-checkbox',
+  name: 'ta-checkbox',
   components: { Icon },
   props: {
     ...checkProps,

@@ -110,7 +110,7 @@ export function useHandlers(props: DatePickerCommonProps) {
     labelFormatter
   }
 
-  provide('akPickerHandlers', handlers)
+  provide('taPickerHandlers', handlers)
 
   return { handlers }
 }

@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkCircleProgress } from 'arkui-mobile-vue'
+import { TaCircleProgress } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -28,7 +28,7 @@ import { AkCircleProgress } from 'arkui-mobile-vue'
 ### 内容区（#default）
 
 ```vue
-<ak-circle-progress :percentage="5">
+<ta-circle-progress :percentage="5">
   <template #default="{ progress }"> 已抢{{ progress }} </template>
-</ak-circle-progress>
+</ta-circle-progress>
 ```

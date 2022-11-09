@@ -1,22 +1,22 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="开关"><ak-switch /></ak-cell>
-  </ak-group>
-  <ak-group title="自定义颜色/大小">
-    <ak-cell label="红色"
-      ><ak-switch activeColor="#8b1721" color="#d79996"
-    /></ak-cell>
-    <ak-cell label="40px"><ak-switch size="40" /></ak-cell>
-  </ak-group>
-  <ak-group title="禁用">
-    <ak-cell label="关"><ak-switch disabled /></ak-cell>
-    <ak-cell label="开"><ak-switch disabled :modelValue="true" /></ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell label="change">
-      <ak-switch v-model="value" @change="onChange" />
-    </ak-cell>
-  </ak-group>
+  <ta-group title="基础用法">
+    <ta-cell label="开关"><ta-switch /></ta-cell>
+  </ta-group>
+  <ta-group title="自定义颜色/大小">
+    <ta-cell label="红色"
+      ><ta-switch activeColor="#8b1721" color="#d79996"
+    /></ta-cell>
+    <ta-cell label="40px"><ta-switch size="40" /></ta-cell>
+  </ta-group>
+  <ta-group title="禁用">
+    <ta-cell label="关"><ta-switch disabled /></ta-cell>
+    <ta-cell label="开"><ta-switch disabled :modelValue="true" /></ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell label="change">
+      <ta-switch v-model="value" @change="onChange" />
+    </ta-cell>
+  </ta-group>
 </template>
 
 <script lang="ts">

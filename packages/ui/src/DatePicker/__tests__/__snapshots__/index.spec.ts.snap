@@ -1,12 +1,12 @@
 // Vitest Snapshot v1
 
 exports[`DatePicker > snapshot 1`] = `
-"<div class=\\"ak-picker\\" options=\\"\\">
+"<div class=\\"ta-picker\\" options=\\"\\">
   <selector-field-stub label=\\"\\" name=\\"\\" placeholder=\\"\\" disabled=\\"false\\" value=\\"\\"></selector-field-stub>
   <!--v-if-->
 </div>"
 `;
 
-exports[`DatePickerPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"ak-picker-popup ak-date-picker-popup\\" options=\\"\\"></drawer-stub>"`;
+exports[`DatePickerPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"ta-picker-popup ta-date-picker-popup\\" options=\\"\\"></drawer-stub>"`;
 
-exports[`DatePickerView > snapshot 1`] = `"<picker-view-stub options=\\"\\" fieldnames=\\"[object Object]\\" class=\\"ak-date-picker-view\\"></picker-view-stub>"`;
+exports[`DatePickerView > snapshot 1`] = `"<picker-view-stub options=\\"\\" fieldnames=\\"[object Object]\\" class=\\"ta-date-picker-view\\"></picker-view-stub>"`;

@@ -1,13 +1,13 @@
 @import '../style/var.scss';
 
-.ak-pagination {
-  --ak-front-color: #{$font-color};
+.ta-pagination {
+  --ta-front-color: #{$font-color};
 
   display: flex;
   align-items: center;
   justify-content: center;
   height: 48px;
-  color: var(--ak-front-color);
+  color: var(--ta-front-color);
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
@@ -25,9 +25,9 @@
     padding: 0 12px;
     outline: 0;
 
-    .ak-icon {
-      --ak-icon-color: var(--ak-front-color);
-      --ak-icon-size: 16px;
+    .ta-icon {
+      --ta-icon-color: var(--ta-front-color);
+      --ta-icon-size: 16px;
     }
 
     &:active {

@@ -1,20 +1,20 @@
 @import '../style/var.scss';
 
-.ak-switch {
-  --ak-color: #{$border-color};
-  --ak-active-color: #{$primary-color};
-  --ak-size: 32px;
+.ta-switch {
+  --ta-color: #{$border-color};
+  --ta-active-color: #{$primary-color};
+  --ta-size: 32px;
 
-  height: var(--ak-size);
+  height: var(--ta-size);
 
   &_checkbox {
     position: relative;
     width: 1.875em;
     height: 1em;
-    background: var(--ak-color);
+    background: var(--ta-color);
     border: 0;
     border-radius: 1em;
-    font-size: var(--ak-size);
+    font-size: var(--ta-size);
     outline: 0;
     cursor: pointer;
     transition: all 0.2s linear;
@@ -24,7 +24,7 @@
     appearance: none;
 
     &:checked {
-      background-color: var(--ak-active-color);
+      background-color: var(--ta-active-color);
     }
 
     &::after {

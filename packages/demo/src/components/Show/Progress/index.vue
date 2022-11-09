@@ -1,50 +1,50 @@
 <template>
-  <ak-group title="基础用法">
+  <ta-group title="基础用法">
     <div class="exp-progress-box">
-      <ak-progress :percentage="percentage" />
+      <ta-progress :percentage="percentage" />
     </div>
     <div class="exp-progress-bottom">
-      <ak-stepper :min="0" :max="100" v-model="percentage" />
+      <ta-stepper :min="0" :max="100" v-model="percentage" />
     </div>
-  </ak-group>
-  <ak-group title="展示文字">
+  </ta-group>
+  <ta-group title="展示文字">
     <ul class="exp-progress-list">
       <li>
-        <ak-progress :percentage="5" show-text />
+        <ta-progress :percentage="5" show-text />
       </li>
       <li>
-        <ak-progress :percentage="50" show-text />
+        <ta-progress :percentage="50" show-text />
       </li>
       <li>
-        <ak-progress :percentage="100" show-text />
+        <ta-progress :percentage="100" show-text />
       </li>
     </ul>
-  </ak-group>
-  <ak-group title="固定进度条">
+  </ta-group>
+  <ta-group title="固定进度条">
     <ul class="exp-progress-list fixed-bar">
       <li>
-        <ak-progress :percentage="5" fixed-bar show-text />
+        <ta-progress :percentage="5" fixed-bar show-text />
       </li>
       <li>
-        <ak-progress :percentage="50" fixed-bar show-text />
+        <ta-progress :percentage="50" fixed-bar show-text />
       </li>
       <li>
-        <ak-progress :percentage="100" fixed-bar show-text />
+        <ta-progress :percentage="100" fixed-bar show-text />
       </li>
     </ul>
-  </ak-group>
-  <ak-group title="Slot default">
+  </ta-group>
+  <ta-group title="Slot default">
     <div class="exp-progress-box">
-      <ak-progress :percentage="5">
+      <ta-progress :percentage="5">
         <template #default="{ progress }"> 已抢{{ progress }} </template>
-      </ak-progress>
+      </ta-progress>
     </div>
-  </ak-group>
-  <ak-group title="自定义颜色">
+  </ta-group>
+  <ta-group title="自定义颜色">
     <div class="exp-progress-box">
-      <ak-progress :percentage="50" show-text color="#8b1721" />
+      <ta-progress :percentage="50" show-text color="#8b1721" />
     </div>
-  </ak-group>
+  </ta-group>
 </template>
 
 <script lang="ts">

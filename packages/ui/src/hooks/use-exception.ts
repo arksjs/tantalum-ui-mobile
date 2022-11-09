@@ -3,7 +3,7 @@ import { capitalize, kebabCase2CamelCase } from '../helpers/util'
 import Exception from '../helpers/exception'
 
 function getComponentName(name: string) {
-  return capitalize(kebabCase2CamelCase(name).replace(/^ak/i, ''))
+  return capitalize(kebabCase2CamelCase(name).replace(/^ta/i, ''))
 }
 
 function getListAndItemName(name: string) {

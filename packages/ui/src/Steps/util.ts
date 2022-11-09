@@ -4,7 +4,7 @@ export const getStepsClasses = ({
 }: {
   dot?: boolean
   horizontal?: boolean
-}) => ['ak-steps', { dot: !!dot, horizontal: !!horizontal }]
+}) => ['ta-steps', { dot: !!dot, horizontal: !!horizontal }]
 
 export const getStepClasses = ({
   active,
@@ -12,4 +12,4 @@ export const getStepClasses = ({
 }: {
   active: boolean
   finish: boolean
-}) => ['ak-step', 'ak-steps-item', 'ak-horizontal-hairline', { active, finish }]
+}) => ['ta-step', 'ta-steps-item', 'ta-horizontal-hairline', { active, finish }]

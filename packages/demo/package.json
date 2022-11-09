@@ -2,9 +2,9 @@
   "name": "@arksjs/demo",
   "private": true,
   "version": "0.0.0",
-  "description": "ArkUI demo",
+  "description": "UI demo",
   "keywords": [
-    "ArkUI",
+    "UI",
     "demo"
   ],
   "scripts": {
@@ -17,7 +17,7 @@
     "@formily/vue": "^2.0.18",
     "@arksjs/test-utils": "^workspace: *",
     "@arksjs/ui-icons": "^workspace: *",
-    "arkui-mobile-vue": "^workspace: *"
+    "tantalum-ui-mobile": "^workspace: *"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",

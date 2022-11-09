@@ -1,12 +1,12 @@
 <template>
   <div
-    class="ak-sticky-view-item"
+    class="ta-sticky-view-item"
     :data-name="name"
     :data-title="title"
     ref="root"
   >
-    <div class="ak-sticky-view-item_header">{{ title || name }}</div>
-    <div class="ak-sticky-view-item_body"><slot></slot></div>
+    <div class="ta-sticky-view-item_header">{{ title || name }}</div>
+    <div class="ta-sticky-view-item_body"><slot></slot></div>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ import { defineComponent } from 'vue'
 import { useListItem } from '../hooks/use-list'
 
 export default defineComponent({
-  name: 'ak-sticky-view-item',
+  name: 'ta-sticky-view-item',
   props: {
     title: {
       type: String,

@@ -1,8 +1,8 @@
 // Vitest Snapshot v1
 
 exports[`Image > snapshot 1`] = `
-"<div class=\\"ak-image\\">
-  <!--v-if--><i class=\\"ak-image_loading\\">
+"<div class=\\"ta-image\\">
+  <!--v-if--><i class=\\"ta-image_loading\\">
     <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" width=\\"0\\" height=\\"0\\"></icon-stub>
   </i>
   <!--v-if-->

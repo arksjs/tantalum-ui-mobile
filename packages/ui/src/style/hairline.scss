@@ -1,8 +1,8 @@
 @use 'sass:math';
 @import './var.scss';
 
-.ak-horizontal-hairline,
-.ak-vertical-hairline {
+.ta-horizontal-hairline,
+.ta-vertical-hairline {
   &::before,
   &::after {
     display: block;
@@ -16,7 +16,7 @@
   }
 }
 
-.ak-horizontal-hairline {
+.ta-horizontal-hairline {
   &::after {
     transform-origin: 0 100%;
   }
@@ -32,7 +32,7 @@
   }
 }
 
-.ak-vertical-hairline {
+.ta-vertical-hairline {
   &::before,
   &::after {
     height: 100%;
@@ -56,14 +56,14 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 2) {
-  .ak-horizontal-hairline {
+  .ta-horizontal-hairline {
     &::before,
     &::after {
       transform: scaleY(0.5);
     }
   }
 
-  .ak-vertical-hairline {
+  .ta-vertical-hairline {
     &::before,
     &::after {
       transform: scaleX(0.5);
@@ -72,14 +72,14 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 3) {
-  .ak-horizontal-hairline {
+  .ta-horizontal-hairline {
     &::before,
     &::after {
       transform: scaleY(math.div(1, 3));
     }
   }
 
-  .ak-vertical-hairline {
+  .ta-vertical-hairline {
     &::before,
     &::after {
       transform: scaleX(math.div(1, 3));

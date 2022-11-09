@@ -17,7 +17,7 @@ describe('SearchBar', () => {
       }
     })
 
-    expect(wrapper.find('.ak-search_cancel-button').exists()).toBeTruthy()
+    expect(wrapper.find('.ta-search_cancel-button').exists()).toBeTruthy()
   })
 
   test.concurrent('set placeholders', async () => {

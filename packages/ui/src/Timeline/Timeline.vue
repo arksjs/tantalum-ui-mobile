@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-timeline">
+  <div class="ta-timeline">
     <slot></slot>
   </div>
 </template>
@@ -8,6 +8,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'ak-timeline'
+  name: 'ta-timeline'
 })
 </script>

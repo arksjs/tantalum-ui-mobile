@@ -1,45 +1,45 @@
 <template>
-  <ak-group title="基础用法">
+  <ta-group title="基础用法">
     <div class="exp-skeleton-panel">
-      <ak-skeleton />
+      <ta-skeleton />
     </div>
-  </ak-group>
-  <ak-group title="显示头像">
+  </ta-group>
+  <ta-group title="显示头像">
     <div class="exp-skeleton-panel">
-      <ak-skeleton avatar />
+      <ta-skeleton avatar />
     </div>
-  </ak-group>
-  <ak-group title="带动画">
+  </ta-group>
+  <ta-group title="带动画">
     <div class="exp-skeleton-panel">
-      <ak-skeleton avatar :animated="animated" :avatarShape="avatarShape" />
+      <ta-skeleton avatar :animated="animated" :avatarShape="avatarShape" />
     </div>
-  </ak-group>
-  <ak-group title="显示子组件">
+  </ta-group>
+  <ta-group title="显示子组件">
     <div class="exp-skeleton-panel">
       <div class="exp-skeleton-switch">
-        <ak-switch v-model="loadingSwitch" />
+        <ta-switch v-model="loadingSwitch" />
       </div>
-      <ak-skeleton avatar :loading="!loadingSwitch">
+      <ta-skeleton avatar :loading="!loadingSwitch">
         <div class="exp-skeleton-sub-component">
-          <ak-icon icon="HeartFilled" size="32" />
+          <ta-icon icon="HeartFilled" size="32" />
           <h4 class="title">hello World</h4>
           <p class="paragraph">简单不先于复杂，而是在复杂之后。</p>
         </div>
-      </ak-skeleton>
+      </ta-skeleton>
     </div>
-  </ak-group>
-  <ak-group title="自由组合">
+  </ta-group>
+  <ta-group title="自由组合">
     <div class="exp-skeleton-panel">
-      <ak-skeleton class="exp-skeleton-custom" :buttonShape="buttonShape">
+      <ta-skeleton class="exp-skeleton-custom" :buttonShape="buttonShape">
         <template #layout>
-          <ak-skeleton-image />
-          <ak-skeleton-title />
-          <ak-skeleton-paragraph :row="2" />
-          <ak-skeleton-button />
+          <ta-skeleton-image />
+          <ta-skeleton-title />
+          <ta-skeleton-paragraph :row="2" />
+          <ta-skeleton-button />
         </template>
-      </ak-skeleton>
+      </ta-skeleton>
     </div>
-  </ak-group>
+  </ta-group>
 </template>
 
 <script lang="ts">

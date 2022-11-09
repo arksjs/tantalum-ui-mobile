@@ -1,12 +1,12 @@
 @import '../style/var.scss';
 
-.ak-picker {
+.ta-picker {
   display: flex;
   width: 100%;
   position: relative;
 }
 
-.ak-picker-view {
+.ta-picker-view {
   position: relative;
   background: $white-color;
   color: $title-color;
@@ -19,7 +19,7 @@
     display: flex;
     flex-wrap: nowrap;
 
-    .ak-empty {
+    .ta-empty {
       width: 100%;
     }
   }
@@ -90,14 +90,14 @@
     }
   }
 
-  .ak-virtual-list_item {
+  .ta-virtual-list_item {
     overflow: hidden;
 
-    &:first-child .ak-picker-view_item {
+    &:first-child .ta-picker-view_item {
       margin-top: calc(var(--pick-view-item-height) * 2);
     }
 
-    &:last-child .ak-picker-view_item {
+    &:last-child .ta-picker-view_item {
       margin-bottom: calc(var(--pick-view-item-height) * 2);
     }
   }

@@ -4,7 +4,7 @@ import { getEnumsValue } from '../helpers/validator'
 import type { SafeAreaInsets } from '../hooks/types'
 
 export const getClasses = (showMask?: boolean) => [
-  'ak-drawer',
+  'ta-drawer',
   { 'no--mask': !showMask }
 ]
 
@@ -44,8 +44,8 @@ export const getInnerClasses = ({
   placement?: PlacementType
   hasHeader: boolean
 }) => [
-  'ak-drawer_inner',
-  'ak-horizontal-hairline',
+  'ta-drawer_inner',
+  'ta-horizontal-hairline',
   'placement--' + getEnumsValue(PLACEMENT_TYPES, placement),
   {
     'has--header': hasHeader

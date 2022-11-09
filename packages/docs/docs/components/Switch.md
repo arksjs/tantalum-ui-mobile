@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkSwitch } from 'arkui-mobile-vue'
+import { TaSwitch } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。

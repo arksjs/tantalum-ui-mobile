@@ -1,9 +1,9 @@
 export const getClasses = (props: { label?: string; disabled?: boolean }) => [
-  'ak-input',
+  'ta-input',
   { 'has--value': !!props.label, disabled: !!props.disabled }
 ]
 
 export const getInputClasses = (label?: string) => [
-  'ak-input_input',
+  'ta-input_input',
   { placeholder: !label }
 ]

@@ -2,7 +2,7 @@
 @import '../style/layer.scss';
 @import '../style/mixin.scss';
 
-.ak-toast {
+.ta-toast {
   &_text {
     font-size: 17px;
     line-height: 24px;
@@ -36,7 +36,7 @@
     transform: translate3d(-50%, -50%, 0) scale(0);
 
     &.has--icon {
-      .ak-toast {
+      .ta-toast {
         &_icon {
           margin-right: 8px;
           flex-shrink: 0;
@@ -48,15 +48,15 @@
         }
       }
 
-      .ak-icon {
-        --ak-icon-size: 21px;
-        --ak-icon-color: #fff;
+      .ta-icon {
+        --ta-icon-size: 21px;
+        --ta-icon-color: #fff;
       }
     }
   }
 
   &.visible {
-    .ak-toast_box {
+    .ta-toast_box {
       opacity: 1;
       transform: translate3d(-50%, -50%, 0) scale(1);
     }

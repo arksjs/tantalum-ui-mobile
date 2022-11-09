@@ -1,23 +1,23 @@
 <template>
-  <ak-group title="基本用法">
+  <ta-group title="基本用法">
     <div class="exp-copy-pad">
-      <ak-copy class="exp-copy-box" text="复制的文本">
-        <ak-button type="primary">点击复制</ak-button>
-      </ak-copy>
+      <ta-copy class="exp-copy-box" text="复制的文本">
+        <ta-button type="primary">点击复制</ta-button>
+      </ta-copy>
     </div>
-  </ak-group>
-  <ak-group title="事件监听">
+  </ta-group>
+  <ta-group title="事件监听">
     <div class="exp-copy-pad">
-      <ak-copy
+      <ta-copy
         class="exp-copy-box"
         text="复制的文本2"
         @success="onSuccess"
         @error="onError"
       >
-        <ak-button type="primary">点击复制</ak-button>
-      </ak-copy>
+        <ta-button type="primary">点击复制</ta-button>
+      </ta-copy>
     </div>
-  </ak-group>
+  </ta-group>
 </template>
 
 <script lang="ts">

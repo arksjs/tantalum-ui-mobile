@@ -4,8 +4,8 @@ import type { HandleOptionItem } from './types'
 export const getStyles = (color?: string, activeColor?: string) => {
   const obj: CSSProperties = {}
 
-  color && (obj['--ak-color'] = color)
-  activeColor && (obj['--ak-active-color'] = activeColor)
+  color && (obj['--ta-color'] = color)
+  activeColor && (obj['--ta-active-color'] = activeColor)
 
   return obj
 }
@@ -16,7 +16,7 @@ export const getClasses = (
   hasSub: boolean
 ) => {
   return [
-    'ak-tab',
+    'ta-tab',
     {
       'no--scroll': options2.length <= scrollThreshold,
       'has--sub': hasSub
@@ -26,8 +26,8 @@ export const getClasses = (
 
 export const getItemClasses = (index: number, activeIndex: number) => {
   return [
-    'ak-tab_item',
-    'ak-vertical-hairline',
+    'ta-tab_item',
+    'ta-vertical-hairline',
     {
       active: index === activeIndex,
       'active-prev': index === activeIndex - 1,

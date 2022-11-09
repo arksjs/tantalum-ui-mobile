@@ -1,3 +1,3 @@
 // Vitest Snapshot v1
 
-exports[`TimeAgo > snapshot 1`] = `"<div class=\\"ak-time-ago\\">刚刚</div>"`;
+exports[`TimeAgo > snapshot 1`] = `"<div class=\\"ta-time-ago\\">刚刚</div>"`;

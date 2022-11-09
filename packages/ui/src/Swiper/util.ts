@@ -1,6 +1,6 @@
 export const getClasses = (direction: string) => {
   return [
-    'ak-swiper',
+    'ta-swiper',
     {
       vertical: direction === 'y'
     }
@@ -9,7 +9,7 @@ export const getClasses = (direction: string) => {
 
 export const getIndicatorsClasses = (direction: string) => {
   return [
-    'ak-swiper_indicators',
+    'ta-swiper_indicators',
     {
       vertical: direction === 'y'
     }
@@ -21,7 +21,7 @@ export const getPaginationItemClasses = (
   activeIndex: number
 ) => {
   return [
-    'ak-swiper_indicator',
+    'ta-swiper_indicator',
     {
       active: pageIndex === activeIndex
     }

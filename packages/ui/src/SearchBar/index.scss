@@ -1,7 +1,7 @@
 @import '../style/var.scss';
 @import '../style/mixin.scss';
 
-.ak-search {
+.ta-search {
   flex: 1;
   height: 52px;
 
@@ -72,7 +72,7 @@
     }
 
     &-item {
-      .ak-cell {
+      .ta-cell {
         &_label {
           font-size: 15px;
         }

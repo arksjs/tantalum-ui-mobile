@@ -1,12 +1,12 @@
 <template>
-  <div class="ak-search">
+  <div class="ta-search">
     <form
       :class="innerClasses"
       @submit.prevent="onSearch(searchText)"
       ref="innerEl"
       :style="innerStyles"
     >
-      <AkInput
+      <TaInput
         :class="fieldClasses"
         :placeholder="placeholder"
         type="search"
@@ -23,10 +23,10 @@
         <template #prepend>
           <Icon :icon="SearchOutlined" />
         </template>
-      </AkInput>
-      <button class="ak-search_button">Search</button>
-      <AkButton
-        class="ak-search_cancel-button"
+      </TaInput>
+      <button class="ta-search_button">Search</button>
+      <TaButton
+        class="ta-search_cancel-button"
         size="large"
         type="default"
         formType="button"
@@ -37,7 +37,7 @@
         @click="onCancel"
       >
         {{ locale.searchBarCancelText }}
-      </AkButton>
+      </TaButton>
     </form>
     <Dropdown
       :selector="innerEl ?? undefined"
@@ -46,12 +46,12 @@
     >
       <template #default="{ height }">
         <div :style="getSuggestStyles(height)">
-          <div class="ak-search_suggest-list">
+          <div class="ta-search_suggest-list">
             <Cell
               v-for="item in suggestList"
               :key="item.text"
               :label="item.text.toString()"
-              class="ak-search_suggest-item"
+              class="ta-search_suggest-item"
               clickable
               @click="onSuggestItemClick(item.text)"
             >
@@ -76,8 +76,8 @@ import {
   type PropType
 } from 'vue'
 import { Icon } from '../Icon'
-import { Input as AkInput } from '../Input'
-import { Button as AkButton } from '../Button'
+import { Input as TaInput } from '../Input'
+import { Button as TaButton } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { Cell } from '../Cell'
 import { Tag } from '../Tag'
@@ -100,8 +100,8 @@ const emitValidator: VoidFnToBooleanFn<OnInput> = (payload, setSuggestList) =>
   isString(payload) && typeof setSuggestList === 'function'
 
 export default defineComponent({
-  name: 'ak-search-bar',
-  components: { Icon, AkInput, AkButton, Dropdown, Cell, Tag },
+  name: 'ta-search-bar',
+  components: { Icon, TaInput, TaButton, Dropdown, Cell, Tag },
   props: {
     ghost: {
       type: Boolean,

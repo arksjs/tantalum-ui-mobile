@@ -1,13 +1,13 @@
 @use 'sass:math';
 @import '../style/mixin.scss';
 
-.ak-button {
-  --ak-color: transparent;
-  --ak-dark-color: transparent;
-  --ak-light-color: transparent;
-  --ak-front-color: var(--ak-color);
-  --ak-button-icon-size: 20px;
-  --ak-size: 48px;
+.ta-button {
+  --ta-color: transparent;
+  --ta-dark-color: transparent;
+  --ta-light-color: transparent;
+  --ta-front-color: var(--ta-color);
+  --ta-button-icon-size: 20px;
+  --ta-size: 48px;
 
   display: inline-flex;
   flex-grow: 1;
@@ -18,7 +18,7 @@
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-  height: var(--ak-size);
+  height: var(--ta-size);
   padding: 0 12px;
   font-size: 17px;
   line-height: 24px;
@@ -29,19 +29,19 @@
   overflow: hidden;
   appearance: none;
   transform: translateZ(0);
-  background-color: var(--ak-color);
-  border: 1px solid var(--ak-color);
-  color: var(--ak-front-color);
+  background-color: var(--ta-color);
+  border: 1px solid var(--ta-color);
+  color: var(--ta-front-color);
 
-  + .ak-button {
+  + .ta-button {
     margin-left: 12px;
   }
 
-  .ak-icon {
+  .ta-icon {
     flex-shrink: 0;
 
-    --ak-icon-color: var(--ak-front-color);
-    --ak-icon-size: var(--ak-button-icon-size);
+    --ta-icon-color: var(--ta-front-color);
+    --ta-icon-size: var(--ta-button-icon-size);
   }
 
   &:disabled {
@@ -52,12 +52,12 @@
   &:not(.type--default) {
     &.pattern--default {
       &:not(.ghost) {
-        --ak-front-color: #fff;
+        --ta-front-color: #fff;
       }
 
       &:not(:disabled):active {
-        background-color: var(--ak-dark-color);
-        border-color: var(--ak-dark-color);
+        background-color: var(--ta-dark-color);
+        border-color: var(--ta-dark-color);
       }
     }
 
@@ -75,30 +75,30 @@
       background-color: $white-color;
 
       &:not(:disabled):active {
-        --ak-front-color: var(--ak-dark-color);
+        --ta-front-color: var(--ta-dark-color);
 
         background-color: $background-color;
-        border-color: var(--ak-dark-color);
+        border-color: var(--ta-dark-color);
       }
     }
 
     &.pattern--gradient {
       &:not(.ghost) {
-        --ak-front-color: #fff;
+        --ta-front-color: #fff;
       }
 
       background-image: linear-gradient(
         90deg,
-        var(--ak-light-color) 0%,
-        var(--ak-color) 100%
+        var(--ta-light-color) 0%,
+        var(--ta-color) 100%
       );
       border-color: transparent !important;
 
       &:not(:disabled):active {
         background-image: linear-gradient(
           90deg,
-          var(--ak-color) 0%,
-          var(--ak-dark-color) 100%
+          var(--ta-color) 0%,
+          var(--ta-dark-color) 100%
         );
       }
     }
@@ -107,10 +107,10 @@
       background: transparent;
 
       &:not(:disabled):active {
-        --ak-front-color: var(--ak-dark-color);
+        --ta-front-color: var(--ta-dark-color);
 
         background: transparent;
-        border-color: var(--ak-dark-color);
+        border-color: var(--ta-dark-color);
       }
     }
 
@@ -118,49 +118,49 @@
       background: transparent;
 
       &:not(:disabled):active {
-        --ak-front-color: var(--ak-light-color);
+        --ta-front-color: var(--ta-light-color);
 
         background: transparent;
-        border-color: var(--ak-light-color);
+        border-color: var(--ta-light-color);
       }
     }
   }
 
   &.type--primary {
-    --ak-color: #{$primary-color};
-    --ak-dark-color: var(--ak-color-primary-dark);
-    --ak-light-color: var(--ak-color-primary-light);
+    --ta-color: #{$primary-color};
+    --ta-dark-color: var(--ta-color-primary-dark);
+    --ta-light-color: var(--ta-color-primary-light);
   }
 
   &.type--success {
-    --ak-color: #{$success-color};
-    --ak-dark-color: var(--ak-color-success-dark);
-    --ak-light-color: var(--ak-color-success-light);
+    --ta-color: #{$success-color};
+    --ta-dark-color: var(--ta-color-success-dark);
+    --ta-light-color: var(--ta-color-success-light);
   }
 
   &.type--warning {
-    --ak-color: #{$warning-color};
-    --ak-dark-color: var(--ak-color-warning-dark);
-    --ak-light-color: var(--ak-color-warning-light);
+    --ta-color: #{$warning-color};
+    --ta-dark-color: var(--ta-color-warning-dark);
+    --ta-light-color: var(--ta-color-warning-light);
   }
 
   &.type--danger {
-    --ak-color: #{$danger-color};
-    --ak-dark-color: var(--ak-color-danger-dark);
-    --ak-light-color: var(--ak-color-danger-light);
+    --ta-color: #{$danger-color};
+    --ta-dark-color: var(--ta-color-danger-dark);
+    --ta-light-color: var(--ta-color-danger-light);
   }
 
   &.type--default {
     background-color: $white-color;
 
-    --ak-color: #{$border-color};
-    --ak-dark-color: #{$border-color};
-    --ak-light-color: #{$border-color};
-    --ak-front-color: #{$font-color};
+    --ta-color: #{$border-color};
+    --ta-dark-color: #{$border-color};
+    --ta-light-color: #{$border-color};
+    --ta-front-color: #{$font-color};
 
     &:not(:disabled):active {
       background-color: $background-color;
-      border-color: var(--ak-dark-color);
+      border-color: var(--ta-dark-color);
     }
 
     &.pattern--dashed {
@@ -172,8 +172,8 @@
     }
 
     &.ghost {
-      --ak-color: #fff;
-      --ak-front-color: #fff;
+      --ta-color: #fff;
+      --ta-front-color: #fff;
     }
 
     &.transparent,
@@ -199,16 +199,16 @@
     height: 12px;
     width: 1px;
     transform: translate3d(0, -50%, 0) scaleX(1);
-    background-color: var(--ak-color);
+    background-color: var(--ta-color);
   }
 
   &.shape--round {
-    border-radius: calc(var(--ak-size) / 2);
+    border-radius: calc(var(--ta-size) / 2);
   }
 
   &.shape--round,
   &.shape--rectangle {
-    .ak-icon {
+    .ta-icon {
       margin: 0 8px 0 -2px;
     }
   }
@@ -218,14 +218,14 @@
     flex-grow: 0;
     flex-shrink: 0;
 
-    --ak-button-icon-size: 24px;
+    --ta-button-icon-size: 24px;
 
     &.size--middle {
-      --ak-button-icon-size: 20px;
+      --ta-button-icon-size: 20px;
     }
 
     &.size--small {
-      --ak-button-icon-size: 18px;
+      --ta-button-icon-size: 18px;
     }
 
     span {
@@ -238,12 +238,12 @@
   }
 
   &.size--middle {
-    --ak-size: 40px;
+    --ta-size: 40px;
 
     line-height: 21px;
     font-size: 15px;
 
-    --ak-button-icon-size: 18px;
+    --ta-button-icon-size: 18px;
 
     &.shape--square,
     &.shape--circle {
@@ -261,15 +261,15 @@
 
     &.shape--round,
     &.shape--rectangle {
-      .ak-icon {
+      .ta-icon {
         margin: 0 4px 0 -2px;
       }
     }
   }
 
   &.size--small {
-    --ak-size: 28px;
-    --ak-button-icon-size: 16px;
+    --ta-size: 28px;
+    --ta-button-icon-size: 16px;
 
     line-height: 17px;
     font-size: 12px;
@@ -286,7 +286,7 @@
 
     &.shape--round,
     &.shape--rectangle {
-      .ak-icon {
+      .ta-icon {
         margin: 0 2px 0 -2px;
       }
     }
@@ -294,7 +294,7 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 2) {
-  .ak-button {
+  .ta-button {
     &::before {
       transform: translate3d(0, -50%, 0) scaleX(0.5);
     }
@@ -302,14 +302,14 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 3) {
-  .ak-button {
+  .ta-button {
     &::before {
       transform: translate3d(0, -50%, 0) scaleX(math.div(1, 3));
     }
   }
 }
 
-.ak-button-group {
+.ta-button-group {
   display: inline-flex;
   flex: 1;
 
@@ -318,12 +318,12 @@
     flex: 0;
   }
 
-  + .ak-button-group {
+  + .ta-button-group {
     margin-left: 16px;
   }
 
   &:not(.count--1) {
-    > .ak-button {
+    > .ta-button {
       &:first-child {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -340,7 +340,7 @@
         }
       }
 
-      + .ak-button {
+      + .ta-button {
         position: relative;
         margin-left: 0;
         border-left-width: 0;

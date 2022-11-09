@@ -1,16 +1,16 @@
 @import '../style/var.scss';
 @import '../style/animation.scss';
 
-.ak-icon {
-  --ak-icon-size: 24px;
-  --ak-icon-color: #{$title-color};
+.ta-icon {
+  --ta-icon-size: 24px;
+  --ta-icon-color: #{$title-color};
 
   display: inline-block;
-  width: var(--ak-icon-size);
-  height: var(--ak-icon-size);
+  width: var(--ta-icon-size);
+  height: var(--ta-icon-size);
   overflow: hidden;
   line-height: 0;
-  fill: var(--ak-icon-color);
+  fill: var(--ta-icon-color);
 
   &.spin {
     @include rotate-360-animation(800ms);

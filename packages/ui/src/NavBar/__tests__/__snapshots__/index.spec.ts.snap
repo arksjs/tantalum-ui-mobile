@@ -1,13 +1,13 @@
 // Vitest Snapshot v1
 
 exports[`NavBar > snapshot 1`] = `
-"<div class=\\"ak-nav-bar ak-horizontal-hairline\\">
-  <div class=\\"ak-nav-bar_inner\\">
-    <div class=\\"ak-nav-bar_left\\">
+"<div class=\\"ta-nav-bar ta-horizontal-hairline\\">
+  <div class=\\"ta-nav-bar_inner\\">
+    <div class=\\"ta-nav-bar_left\\">
       <!--v-if-->
     </div>
-    <div class=\\"ak-nav-bar_title\\"></div>
-    <div class=\\"ak-nav-bar_right\\">
+    <div class=\\"ta-nav-bar_title\\"></div>
+    <div class=\\"ta-nav-bar_right\\">
       <!--v-if-->
     </div>
   </div>

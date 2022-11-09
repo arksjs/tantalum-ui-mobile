@@ -1,7 +1,7 @@
 <template>
-  <label class="ak-radio" :class="classes" :style="styles">
+  <label class="ta-radio" :class="classes" :style="styles">
     <input
-      class="ak-radio_input ak-form-input"
+      class="ta-radio_input ta-form-input"
       type="radio"
       :name="name2"
       :value="checkedValue"
@@ -9,10 +9,10 @@
       @change="onChange"
       ref="inputEl"
     />
-    <div class="ak-radio_box">
-      <Icon class="ak-radio_icon" :icon="CircleOutlined" />
-      <Icon class="ak-radio_checked-icon" :icon="CheckCircleFilled" />
-      <span class="ak-radio_text" v-if="$slots.default">
+    <div class="ta-radio_box">
+      <Icon class="ta-radio_icon" :icon="CircleOutlined" />
+      <Icon class="ta-radio_checked-icon" :icon="CheckCircleFilled" />
+      <span class="ta-radio_text" v-if="$slots.default">
         <slot></slot>
       </span>
     </div>
@@ -30,7 +30,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { RadioEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-radio',
+  name: 'ta-radio',
   components: { Icon },
   props: {
     ...checkProps

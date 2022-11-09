@@ -1,7 +1,7 @@
 <template>
   <div :class="classes" :style="styles" ref="root">
     <slot></slot>
-    <button class="ak-tag_close" v-if="closable">
+    <button class="ta-tag_close" v-if="closable">
       <Icon
         :icon="CloseOutlined"
         @mousedown.stop="noop"
@@ -26,7 +26,7 @@ import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { getStyles, getClasses, TAG_PATTERN_TYPES } from './util'
 
 export default defineComponent({
-  name: 'ak-tag',
+  name: 'ta-tag',
   components: { Icon },
   props: {
     size: {

@@ -11,13 +11,13 @@ function getSideEffects(dirName, options) {
   return;
 }
 function getPath(options) {
-  return `arkui-mobile-vue/${options.format === "cjs" ? "lib" : "es"}`;
+  return `tantalum-ui-mobile/${options.format === "cjs" ? "lib" : "es"}`;
 }
-function ArkUIResolver(options = {}) {
+function UIResolver(options = {}) {
   return {
     type: "component",
     resolve: (name) => {
-      if (name.startsWith("Ak")) {
+      if (name.startsWith("Ta")) {
         const partialName = name.slice(2);
         return {
           importName: partialName,
@@ -29,5 +29,5 @@ function ArkUIResolver(options = {}) {
   };
 }
 export {
-  ArkUIResolver
+  UIResolver
 };

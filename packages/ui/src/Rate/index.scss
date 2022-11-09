@@ -1,18 +1,18 @@
 @import '../style/var.scss';
 
-.ak-rate {
-  --ak-size: 24px;
-  --ak-color: #{$border-color};
-  --ak-active-color: #{$danger-color};
+.ta-rate {
+  --ta-size: 24px;
+  --ta-color: #{$border-color};
+  --ta-active-color: #{$danger-color};
 
   display: flex;
   align-items: center;
   height: 32px;
 
   &_item {
-    width: var(--ak-size);
-    height: var(--ak-size);
-    font-size: var(--ak-size);
+    width: var(--ta-size);
+    height: var(--ta-size);
+    font-size: var(--ta-size);
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -22,9 +22,9 @@
     }
   }
 
-  .ak-icon {
-    --ak-icon-size: var(--ak-size);
-    --ak-icon-color: var(--ak-color);
+  .ta-icon {
+    --ta-icon-size: var(--ta-size);
+    --ta-icon-color: var(--ta-color);
 
     flex-shrink: 0;
     display: block;
@@ -43,8 +43,8 @@
     width: 100%;
     height: 100%;
 
-    .ak-icon {
-      --ak-icon-color: var(--ak-active-color);
+    .ta-icon {
+      --ta-icon-color: var(--ta-active-color);
     }
   }
 
@@ -57,7 +57,7 @@
   }
 
   &.readonly {
-    .ak-rate {
+    .ta-rate {
       &_item {
         cursor: default;
       }
@@ -67,7 +67,7 @@
   &.disabled {
     opacity: 0.2;
 
-    .ak-rate {
+    .ta-rate {
       &_item {
         cursor: not-allowed;
       }
@@ -75,7 +75,7 @@
   }
 
   &_item.active {
-    .ak-rate {
+    .ta-rate {
       &_icon {
         display: none;
       }
@@ -87,7 +87,7 @@
   }
 
   &_item.active.half {
-    .ak-rate {
+    .ta-rate {
       &_icon {
         width: 50%;
         margin-left: 50%;

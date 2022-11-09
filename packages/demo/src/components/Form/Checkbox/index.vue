@@ -1,65 +1,65 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="默认">
-      <ak-checkbox />
-    </ak-cell>
-    <ak-cell label="带文案">
-      <ak-checkbox v-model:checked="checked">勾选</ak-checkbox>
-    </ak-cell>
-    <ak-cell label="默认激活">
-      <ak-checkbox checked>勾选</ak-checkbox>
-    </ak-cell>
-    <ak-cell label="自定义颜色">
-      <ak-checkbox checked activeColor="#8b1721">勾选</ak-checkbox>
-    </ak-cell>
-    <ak-cell label="禁用">
-      <ak-checkbox disabled>勾选</ak-checkbox>
-    </ak-cell>
-  </ak-group>
-  <ak-group title="CheckboxGroup">
-    <ak-cell label="默认">
-      <ak-checkbox-group v-model="groupValue">
-        <ak-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
+  <ta-group title="基础用法">
+    <ta-cell label="默认">
+      <ta-checkbox />
+    </ta-cell>
+    <ta-cell label="带文案">
+      <ta-checkbox v-model:checked="checked">勾选</ta-checkbox>
+    </ta-cell>
+    <ta-cell label="默认激活">
+      <ta-checkbox checked>勾选</ta-checkbox>
+    </ta-cell>
+    <ta-cell label="自定义颜色">
+      <ta-checkbox checked activeColor="#8b1721">勾选</ta-checkbox>
+    </ta-cell>
+    <ta-cell label="禁用">
+      <ta-checkbox disabled>勾选</ta-checkbox>
+    </ta-cell>
+  </ta-group>
+  <ta-group title="CheckboxGroup">
+    <ta-cell label="默认">
+      <ta-checkbox-group v-model="groupValue">
+        <ta-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
           item
-        }}</ak-checkbox>
-      </ak-checkbox-group>
-    </ak-cell>
-    <ak-cell label="内联">
-      <ak-checkbox-group v-model="groupValue" inline activeColor="#8b1721">
-        <ak-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
+        }}</ta-checkbox>
+      </ta-checkbox-group>
+    </ta-cell>
+    <ta-cell label="内联">
+      <ta-checkbox-group v-model="groupValue" inline activeColor="#8b1721">
+        <ta-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
           item
-        }}</ak-checkbox>
-      </ak-checkbox-group>
-    </ak-cell>
-    <ak-cell label="禁用">
-      <ak-checkbox-group :modelValue="['A']" disabled>
-        <ak-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
+        }}</ta-checkbox>
+      </ta-checkbox-group>
+    </ta-cell>
+    <ta-cell label="禁用">
+      <ta-checkbox-group :modelValue="['A']" disabled>
+        <ta-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
           item
-        }}</ak-checkbox>
-      </ak-checkbox-group>
-    </ak-cell>
-    <ak-cell label="通过options设置">
-      <ak-checkbox-group v-model="groupValue" :options="groups" />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="CheckboxGroup + Cell">
-    <ak-checkbox-group v-model="groupValue">
-      <ak-cell v-for="item in groups" :key="item" :label="'单元格 ' + item">
+        }}</ta-checkbox>
+      </ta-checkbox-group>
+    </ta-cell>
+    <ta-cell label="通过options设置">
+      <ta-checkbox-group v-model="groupValue" :options="groups" />
+    </ta-cell>
+  </ta-group>
+  <ta-group title="CheckboxGroup + Cell">
+    <ta-checkbox-group v-model="groupValue">
+      <ta-cell v-for="item in groups" :key="item" :label="'单元格 ' + item">
         <template #icon>
-          <ak-checkbox circle :checkedValue="item" />
+          <ta-checkbox circle :checkedValue="item" />
         </template>
-      </ak-cell>
-    </ak-checkbox-group>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell label="change">
-      <ak-checkbox-group @change="onChange">
-        <ak-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
+      </ta-cell>
+    </ta-checkbox-group>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell label="change">
+      <ta-checkbox-group @change="onChange">
+        <ta-checkbox v-for="item in groups" :key="item" :checkedValue="item">{{
           item
-        }}</ak-checkbox>
-      </ak-checkbox-group>
-    </ak-cell>
-  </ak-group>
+        }}</ta-checkbox>
+      </ta-checkbox-group>
+    </ta-cell>
+  </ta-group>
 </template>
 
 <script lang="ts">

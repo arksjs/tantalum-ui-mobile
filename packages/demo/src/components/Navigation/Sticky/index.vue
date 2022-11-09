@@ -1,24 +1,24 @@
 <template>
-  <ak-group title="Sticky View">
-    <ak-sticky-view
+  <ta-group title="Sticky View">
+    <ta-sticky-view
       ref="viewRef"
       class="exp-sticky-box"
       v-model="activeName"
       @change="onChange"
     >
-      <ak-sticky-view-item v-for="i in 4" :key="i" :name="`Sticky ${i}`">
+      <ta-sticky-view-item v-for="i in 4" :key="i" :name="`Sticky ${i}`">
         <div :class="`exp-sticky-box-${i}`"></div>
-      </ak-sticky-view-item>
-    </ak-sticky-view>
+      </ta-sticky-view-item>
+    </ta-sticky-view>
     <!-- <div class="exp-sticky-box" id="stickyContainer">
       <div class="exp-sticky-header">
         头部
       </div>
       <div class="exp-sticky-box-1">
-        <ak-sticky-view :container="'#stickyContainer'" :offset-top="50">哈哈哈</ak-sticky-view>
+        <ta-sticky-view :container="'#stickyContainer'" :offset-top="50">哈哈哈</ta-sticky-view>
       </div>
     </div> -->
-  </ak-group>
+  </ta-group>
 </template>
 
 <script lang="ts">

@@ -24,7 +24,7 @@ describe('Group', () => {
       }
     })
 
-    expect(wrapper.find('.ak-group_title').text()).toBe(title)
+    expect(wrapper.find('.ta-group_title').text()).toBe(title)
   })
 
   test('strongHeader', () => {

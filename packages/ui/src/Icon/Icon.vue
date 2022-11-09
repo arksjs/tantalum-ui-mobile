@@ -1,7 +1,7 @@
 <template>
   <component
     :is="component"
-    class="ak-icon"
+    class="ta-icon"
     :class="{ spin }"
     :style="styles"
     :iconName="iconName"
@@ -22,7 +22,7 @@ import type { IconData } from './types'
 import { getIconStyles } from './util'
 
 export default defineComponent({
-  name: 'ak-icon',
+  name: 'ta-icon',
   props: {
     icon: {
       type: [String, Object] as PropType<IconData>,

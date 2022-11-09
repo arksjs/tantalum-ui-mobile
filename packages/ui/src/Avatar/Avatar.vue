@@ -1,8 +1,8 @@
 <template>
   <Badge :class="classes" :style="styles" v-bind="{ ...$attrs, ...badge2 }">
     <slot>
-      <AkImage
-        class="ak-avatar_image"
+      <TaImage
+        class="ta-avatar_image"
         :src="src"
         mode="aspectFill"
         :loadingIcon="UserOutlined"
@@ -20,7 +20,7 @@ import { defineComponent, computed } from 'vue'
 import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import { Badge } from '../Badge'
-import { Image as AkImage } from '../Image'
+import { Image as TaImage } from '../Image'
 import { colorValidator, createEnumsValidator } from '../helpers/validator'
 import { avatarProps } from './props'
 import {
@@ -39,8 +39,8 @@ import UserOutlined from '../Icon/icons/UserOutlined'
 import { useConsumer } from './context'
 
 export default defineComponent({
-  name: 'ak-avatar',
-  components: { Badge, AkImage, Icon },
+  name: 'ta-avatar',
+  components: { Badge, TaImage, Icon },
   props: {
     ...avatarProps,
     shape: {

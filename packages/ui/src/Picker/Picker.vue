@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-picker" :class="{ disabled }" ref="root">
+  <div class="ta-picker" :class="{ disabled }" ref="root">
     <SelectorField
       :label="fieldLabel"
       :value="fieldValue"
@@ -34,7 +34,7 @@ import type { PropsToEmits } from '../helpers/types'
 import type { PickerEmits } from './types'
 
 export default defineComponent({
-  name: 'ak-picker',
+  name: 'ta-picker',
   components: { SelectorField, PickerPopup },
   props: { ...commonProps, ...pickerProps },
   emits: { ...pickerEmits } as PropsToEmits<PickerEmits>,

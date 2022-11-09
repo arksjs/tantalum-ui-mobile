@@ -1,8 +1,8 @@
 @import '../style/var.scss';
 
-.ak-radio {
-  --ak-active-color: #{$primary-color};
-  --ak-radio-icon-size: 20px;
+.ta-radio {
+  --ta-active-color: #{$primary-color};
+  --ta-radio-icon-size: 20px;
 
   display: inline-flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
   text-align: left;
   position: relative;
 
-  + .ak-radio {
+  + .ta-radio {
     margin-left: 16px;
   }
 
@@ -26,14 +26,14 @@
 
   &_icon,
   &_checked-icon {
-    --ak-icon-size: var(--ak-radio-icon-size);
-    --ak-icon-color: #{$border-color};
+    --ta-icon-size: var(--ta-radio-icon-size);
+    --ta-icon-color: #{$border-color};
   }
 
   &_checked-icon {
     display: none;
 
-    --ak-icon-color: var(--ak-active-color);
+    --ta-icon-color: var(--ta-active-color);
   }
 
   &_input {
@@ -42,11 +42,11 @@
     top: 0;
     opacity: 0;
 
-    &:checked + .ak-radio_box .ak-radio_icon {
+    &:checked + .ta-radio_box .ta-radio_icon {
       display: none;
     }
 
-    &:checked + .ak-radio_box .ak-radio_checked-icon {
+    &:checked + .ta-radio_box .ta-radio_checked-icon {
       display: block;
     }
   }
@@ -62,7 +62,7 @@
   }
 }
 
-.ak-radio-group {
+.ta-radio-group {
   display: flex;
   height: 32px;
   align-items: center;
@@ -75,11 +75,11 @@
     height: auto;
     min-height: 32px;
 
-    > .ak-radio {
+    > .ta-radio {
       display: flex;
       width: 100%;
 
-      + .ak-radio {
+      + .ta-radio {
         margin-left: 0;
 
         &::before {

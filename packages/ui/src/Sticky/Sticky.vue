@@ -1,6 +1,6 @@
 <template>
-  <div class="ak-sticky" :style="styles" ref="root">
-    <div class="ak-sticky_content" ref="contentEl">
+  <div class="ta-sticky" :style="styles" ref="root">
+    <div class="ta-sticky_content" ref="contentEl">
       <slot></slot>
     </div>
   </div>
@@ -32,7 +32,7 @@ import type { ResetContainer } from './types'
 import { getStyles } from './util'
 
 export default defineComponent({
-  name: 'ak-sticky',
+  name: 'ta-sticky',
   props: {
     containSelector: {
       type: [String, HTMLElement] as PropType<Selector>,

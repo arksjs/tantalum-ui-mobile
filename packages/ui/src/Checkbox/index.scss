@@ -1,8 +1,8 @@
 @import '../style/var.scss';
 
-.ak-checkbox {
-  --ak-active-color: #{$primary-color};
-  --ak-checkbox-icon-size: 20px;
+.ta-checkbox {
+  --ta-active-color: #{$primary-color};
+  --ta-checkbox-icon-size: 20px;
 
   display: inline-flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
   text-align: left;
   position: relative;
 
-  + .ak-checkbox {
+  + .ta-checkbox {
     margin-left: 16px;
   }
 
@@ -26,14 +26,14 @@
 
   &_icon,
   &_checked-icon {
-    --ak-icon-size: var(--ak-checkbox-icon-size);
-    --ak-icon-color: #{$border-color};
+    --ta-icon-size: var(--ta-checkbox-icon-size);
+    --ta-icon-color: #{$border-color};
   }
 
   &_checked-icon {
     display: none;
 
-    --ak-icon-color: var(--ak-active-color);
+    --ta-icon-color: var(--ta-active-color);
   }
 
   &_input {
@@ -42,11 +42,11 @@
     top: 0;
     opacity: 0;
 
-    &:checked + .ak-checkbox_box .ak-checkbox_icon {
+    &:checked + .ta-checkbox_box .ta-checkbox_icon {
       display: none;
     }
 
-    &:checked + .ak-checkbox_box .ak-checkbox_checked-icon {
+    &:checked + .ta-checkbox_box .ta-checkbox_checked-icon {
       display: block;
     }
   }
@@ -62,7 +62,7 @@
   }
 }
 
-.ak-checkbox-group {
+.ta-checkbox-group {
   display: flex;
   height: 32px;
   align-items: center;
@@ -75,11 +75,11 @@
     height: auto;
     min-height: 32px;
 
-    > .ak-checkbox {
+    > .ta-checkbox {
       display: flex;
       width: 100%;
 
-      + .ak-checkbox {
+      + .ta-checkbox {
         margin-left: 0;
 
         &::before {

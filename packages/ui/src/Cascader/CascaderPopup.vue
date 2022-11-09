@@ -1,6 +1,6 @@
 <template>
   <Drawer
-    class="ak-cascader-popup"
+    class="ta-cascader-popup"
     placement="bottom"
     :visible="visible"
     @visibleStateChange="onVisibleStateChange"
@@ -37,7 +37,7 @@ import { mergeHandlers } from '../Picker/util'
 import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
-  name: 'ak-cascader-popup',
+  name: 'ta-cascader-popup',
   components: { Drawer, CascaderView },
   props: {
     ...pickerPopupProps,

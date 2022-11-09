@@ -1,9 +1,9 @@
 // Vitest Snapshot v1
 
-exports[`Avatar > snapshot 1`] = `"<badge-stub content=\\"0\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ak-avatar size--middle shape--circle\\"></badge-stub>"`;
+exports[`Avatar > snapshot 1`] = `"<badge-stub content=\\"0\\" maxcount=\\"99\\" dot=\\"false\\" showzero=\\"false\\" animated=\\"false\\" offset=\\"0,0\\" class=\\"ta-avatar size--middle shape--circle\\"></badge-stub>"`;
 
 exports[`AvatarGroup > snapshot 1`] = `
-"<div class=\\"ak-avatar-group count--1\\">
+"<div class=\\"ta-avatar-group count--1\\">
   <!--v-if-->
 </div>"
 `;

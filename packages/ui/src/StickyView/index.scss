@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-sticky-view {
+.ta-sticky-view {
   position: relative;
 
   &.self {
@@ -13,7 +13,7 @@
     top: 0;
     width: 100%;
 
-    .ak-sticky_content {
+    .ta-sticky_content {
       overflow: hidden;
     }
   }
@@ -39,7 +39,7 @@
   }
 }
 
-.ak-sticky-view-item {
+.ta-sticky-view-item {
   &_header {
     width: 100%;
     height: 28px;

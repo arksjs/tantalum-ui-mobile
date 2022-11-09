@@ -1,17 +1,17 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="基础">
-      <ak-button
+  <ta-group title="基础用法">
+    <ta-cell label="基础">
+      <ta-button
         size="small"
         id="popDialog"
         shape="circle"
         icon="DeleteOutlined"
         @click=";(selector = '#popDialog'), (visible = true)"
       >
-      </ak-button>
-    </ak-cell>
-    <ak-cell label="不展示取消按钮">
-      <ak-button
+      </ta-button>
+    </ta-cell>
+    <ta-cell label="不展示取消按钮">
+      <ta-button
         size="small"
         id="popDialogNoCancel"
         shape="circle"
@@ -22,10 +22,10 @@
             (visible = true)
         "
       >
-      </ak-button>
-    </ak-cell>
-    <ak-cell label="设置按钮文案">
-      <ak-button
+      </ta-button>
+    </ta-cell>
+    <ta-cell label="设置按钮文案">
+      <ta-button
         size="small"
         id="popDialogButtonText"
         shape="circle"
@@ -37,23 +37,23 @@
             (visible = true)
         "
       >
-      </ak-button>
-    </ak-cell>
-    <ak-cell label="不展示蒙层">
-      <ak-button
+      </ta-button>
+    </ta-cell>
+    <ta-cell label="不展示蒙层">
+      <ta-button
         size="small"
         id="popDialogNoMask"
         shape="circle"
         icon="DeleteOutlined"
         @click="visible3 = true"
       >
-      </ak-button>
-    </ak-cell>
-  </ak-group>
-  <ak-group title="方向 placement=top/bottom/left/right">
+      </ta-button>
+    </ta-cell>
+  </ta-group>
+  <ta-group title="方向 placement=top/bottom/left/right">
     <div class="exp-popover-box2">
       <div>
-        <ak-button
+        <ta-button
           size="small"
           id="popDialogTop2"
           shape="circle"
@@ -65,10 +65,10 @@
           "
         >
           上
-        </ak-button>
+        </ta-button>
       </div>
       <div>
-        <ak-button
+        <ta-button
           size="small"
           id="popDialogLeft2"
           shape="circle"
@@ -80,8 +80,8 @@
           "
         >
           左
-        </ak-button>
-        <ak-button
+        </ta-button>
+        <ta-button
           class="exp-popover-box2-ml"
           size="small"
           id="popDialogRight2"
@@ -94,10 +94,10 @@
           "
         >
           右
-        </ak-button>
+        </ta-button>
       </div>
       <div>
-        <ak-button
+        <ta-button
           size="small"
           id="popDialogBottom2"
           shape="circle"
@@ -109,13 +109,13 @@
           "
         >
           下
-        </ak-button>
+        </ta-button>
       </div>
     </div>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell label="confirm/cancel">
-      <ak-button
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell label="confirm/cancel">
+      <ta-button
         size="small"
         id="popDialogEvent"
         shape="circle"
@@ -124,10 +124,10 @@
           ;(selector = '#popDialogEvent'), (showEvent = true), (visible = true)
         "
       >
-      </ak-button>
-    </ak-cell>
-    <ak-cell label="visible-state-change">
-      <ak-button
+      </ta-button>
+    </ta-cell>
+    <ta-cell label="visible-state-change">
+      <ta-button
         size="small"
         id="popDialogPopupEvent"
         shape="circle"
@@ -138,22 +138,22 @@
             (visible = true)
         "
       >
-      </ak-button>
-    </ak-cell>
-  </ak-group>
-  <ak-group title="API">
-    <ak-cell label="showPopDialog">
-      <ak-button
+      </ta-button>
+    </ta-cell>
+  </ta-group>
+  <ta-group title="API">
+    <ta-cell label="showPopDialog">
+      <ta-button
         size="small"
         id="popDialogApi"
         shape="circle"
         icon="DeleteOutlined"
         @click="onCallApi('#popDialogApi')"
       >
-      </ak-button>
-    </ak-cell>
-  </ak-group>
-  <ak-pop-dialog
+      </ta-button>
+    </ta-cell>
+  </ta-group>
+  <ta-pop-dialog
     v-model:visible="visible"
     :selector="selector"
     :content="content"
@@ -164,23 +164,23 @@
     @confirm="onConfirm"
     @visibleStateChange="onVisibleStateChange"
   >
-  </ak-pop-dialog>
-  <ak-pop-dialog
+  </ta-pop-dialog>
+  <ta-pop-dialog
     v-model:visible="visible2"
     :selector="selector2"
     :placement="placement2"
     content="这是气泡内容"
     :show-cancel="false"
   >
-  </ak-pop-dialog>
-  <ak-pop-dialog
+  </ta-pop-dialog>
+  <ta-pop-dialog
     v-model:visible="visible3"
     selector="#popDialogNoMask"
     content="这是气泡内容"
     :showCancel="false"
     :showMask="false"
   >
-  </ak-pop-dialog>
+  </ta-pop-dialog>
 </template>
 
 <script lang="ts">

@@ -23,7 +23,7 @@ describe('Price', () => {
       }
     })
 
-    expect(wrapper.find('.ak-price_symbol').text()).toBe('￥')
+    expect(wrapper.find('.ta-price_symbol').text()).toBe('￥')
   })
 
   test('thousands', () => {
@@ -34,7 +34,7 @@ describe('Price', () => {
       }
     })
 
-    expect(wrapper.find('.ak-price_integer').text()).toBe('1,111')
+    expect(wrapper.find('.ta-price_integer').text()).toBe('1,111')
   })
 
   test('decimalDigits=3', () => {
@@ -45,6 +45,6 @@ describe('Price', () => {
       }
     })
 
-    expect(wrapper.find('.ak-price_decimal').text()).toBe('.110')
+    expect(wrapper.find('.ta-price_decimal').text()).toBe('.110')
   })
 })

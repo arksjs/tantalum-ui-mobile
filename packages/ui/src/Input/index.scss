@@ -1,10 +1,10 @@
 @import '../style/var.scss';
 
-.ak-input {
-  --ak-font-size: 17px;
-  --ak-input-icon-size: 20px;
-  --ak-front-color: #{$title-color};
-  --ak-secondary-color: #{$font3-color};
+.ta-input {
+  --ta-font-size: 17px;
+  --ta-input-icon-size: 20px;
+  --ta-front-color: #{$title-color};
+  --ta-secondary-color: #{$font3-color};
 
   height: 48px;
   width: 100%;
@@ -15,13 +15,13 @@
   border-radius: 0;
   box-sizing: border-box;
   padding: 11px 16px;
-  font-size: var(--ak-font-size);
+  font-size: var(--ta-font-size);
   background-color: $white-color;
-  color: var(--ak-front-color);
+  color: var(--ta-front-color);
 
-  .ak-icon {
-    --ak-icon-size: var(--ak-input-icon-size);
-    --ak-icon-color: var(--ak-secondary-color);
+  .ta-icon {
+    --ta-icon-size: var(--ta-input-icon-size);
+    --ta-icon-color: var(--ta-secondary-color);
   }
 
   &.disabled {
@@ -35,7 +35,7 @@
     display: flex;
     align-items: center;
     padding: 0 8px 0 0;
-    color: var(--ak-secondary-color);
+    color: var(--ta-secondary-color);
   }
 
   &_append,
@@ -45,9 +45,9 @@
   }
 
   &.has--value {
-    .ak-input {
+    .ta-input {
       &_arrow {
-        --ak-icon-color: var(--ak-front-color);
+        --ta-icon-color: var(--ta-front-color);
       }
     }
   }
@@ -70,9 +70,9 @@
     height: 100%;
     line-height: 1.412;
     padding: 0;
-    font-size: var(--ak-font-size);
+    font-size: var(--ta-font-size);
     cursor: pointer;
-    color: var(--ak-front-color);
+    color: var(--ta-front-color);
     background: none;
     box-sizing: border-box;
     box-shadow: none;
@@ -121,10 +121,10 @@
   }
 }
 
-.ak-textarea {
+.ta-textarea {
   height: 108px;
 
-  .ak-input_limit {
+  .ta-input_limit {
     position: absolute;
     right: 16px;
     bottom: 8px;

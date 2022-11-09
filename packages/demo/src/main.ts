@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-import ArkUI from '@/index'
+import TantalumUI from '@/index'
 import '@/style'
 import './styles.scss'
 
@@ -10,7 +10,7 @@ import '@arksjs/ui-icons'
 
 import { isIOS, isMobile } from '@/helpers/device'
 
-createApp(App).use(router).use(ArkUI).mount('#app')
+createApp(App).use(router).use(TantalumUI).mount('#app')
 
 if (isMobile && isIOS) {
   window.onload = function () {

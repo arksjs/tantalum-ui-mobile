@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-collapse-item {
+.ta-collapse-item {
   &_body {
     overflow: hidden;
     transition: height 0.2s;
@@ -17,7 +17,7 @@
     line-height: 20px;
   }
 
-  + .ak-collapse-item::before {
+  + .ta-collapse-item::before {
     content: '';
   }
 
@@ -26,7 +26,7 @@
       content: none;
     }
 
-    .ak-cell_link-icon {
+    .ta-cell_link-icon {
       transition: transform 0.2s;
     }
   }

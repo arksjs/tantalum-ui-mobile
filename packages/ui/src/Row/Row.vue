@@ -19,7 +19,7 @@ import {
 } from './util'
 
 export default defineComponent({
-  name: 'ak-row',
+  name: 'ta-row',
   props: {
     // 栅格间隔
     gutter: {
@@ -56,7 +56,7 @@ export default defineComponent({
       }
     )
 
-    provide('akRowGutter', gutter)
+    provide('taRowGutter', gutter)
 
     return {
       styles,

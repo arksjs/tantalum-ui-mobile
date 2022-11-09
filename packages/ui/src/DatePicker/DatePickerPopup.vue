@@ -1,6 +1,6 @@
 <template>
   <Drawer
-    class="ak-picker-popup ak-date-picker-popup"
+    class="ta-picker-popup ta-date-picker-popup"
     placement="bottom"
     :visible="visible"
     @visibleStateChange="onVisibleStateChange"
@@ -11,7 +11,7 @@
   >
     <template #header>
       <NavBar
-        class="ak-drawer_header"
+        class="ta-drawer_header"
         :title="title"
         :leftButtons="[{ text: locale.datePickerCancelText, type: 'primary' }]"
         :rightButtons="[
@@ -51,7 +51,7 @@ import type { DatePickerDetail, DatePickerPopupEmits } from './types'
 import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
-  name: 'ak-date-picker-popup',
+  name: 'ta-date-picker-popup',
   components: { PickerView, Drawer, NavBar },
   props: {
     ...pickerPopupProps,

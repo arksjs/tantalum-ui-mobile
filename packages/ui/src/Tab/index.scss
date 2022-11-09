@@ -1,9 +1,9 @@
 @import '../style/var.scss';
 
-.ak-tab {
-  --ak-color: #{$font-color};
-  --ak-active-color: #{$primary-color};
-  --ak-front-color: var(--ak-color);
+.ta-tab {
+  --ta-color: #{$font-color};
+  --ta-active-color: #{$primary-color};
+  --ta-front-color: var(--ta-color);
 
   background-color: $white-color;
   height: 40px;
@@ -13,7 +13,7 @@
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: var(--ak-active-color);
+    background-color: var(--ta-active-color);
     transition: all 0.2s;
   }
 
@@ -39,9 +39,9 @@
     box-sizing: border-box;
     user-select: none;
 
-    .ak-icon {
-      --ak-icon-size: 20px;
-      --ak-icon-color: var(--ak-front-color);
+    .ta-icon {
+      --ta-icon-size: 20px;
+      --ta-icon-color: var(--ta-front-color);
 
       margin-right: 4px;
     }
@@ -54,7 +54,7 @@
       font-size: 16px;
       line-height: 22px;
       font-weight: 500;
-      color: var(--ak-front-color);
+      color: var(--ta-front-color);
     }
 
     &-text {
@@ -71,20 +71,20 @@
       border-radius: 2px;
       margin-top: 2px;
       font-size: 12px;
-      color: var(--ak-front-color);
+      color: var(--ta-front-color);
       opacity: 0.8;
     }
 
     &.active {
-      --ak-front-color: var(--ak-active-color);
+      --ta-front-color: var(--ta-active-color);
 
-      .ak-tab_item {
+      .ta-tab_item {
         &-inner {
           font-weight: 700;
         }
 
         &-sub-text {
-          background-color: var(--ak-front-color);
+          background-color: var(--ta-front-color);
           color: #fff;
           opacity: 1;
         }
@@ -95,7 +95,7 @@
   &.has--sub {
     height: 48px;
 
-    .ak-tab {
+    .ta-tab {
       &_underline {
         display: none;
       }
@@ -120,7 +120,7 @@
   }
 
   &.no--scroll:not(.vertical) {
-    .ak-tab {
+    .ta-tab {
       &_list {
         display: flex;
         padding: 0;

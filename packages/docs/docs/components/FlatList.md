@@ -16,7 +16,7 @@
 ## Import
 
 ```js
-import { AkFlatList } from 'arkui-mobile-vue'
+import { TaFlatList } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -32,7 +32,7 @@ import type {
   FlatListOnEndReached,
   FlatListOnVisibleItemsChange,
   FlatListRef
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -70,30 +70,30 @@ import type {
 ### 列表项（#default）
 
 ```vue
-<ak-flat-list>
+<ta-flat-list>
  <template #default="{ id, index }">
   {{ index }} : {{ id }}
  </template>
-</ak-flat-list>
+</ta-flat-list>
 ```
 
 ### 列表为空（#empty）
 
 ```vue
-<ak-flat-list>
+<ta-flat-list>
   <template #empty>暂无数据</template>
   ...
-</ak-flat-list>
+</ta-flat-list>
 ```
 
 ### 分割线（#separator）
 
 ```vue
-<ak-flat-list>
+<ta-flat-list>
   <template #separator>
     <div class="line"></div>
   </template>
-</ak-flat-list>
+</ta-flat-list>
 ```
 
 注： `itemSize` 设定值需要把分割线也考虑进去。
@@ -101,10 +101,10 @@ import type {
 ### 前置（#header）
 
 ```vue
-<ak-flat-list>
+<ta-flat-list>
   <template #header></template>
   ...
-</ak-flat-list>
+</ta-flat-list>
 ```
 
 也可以传入 [Icon](./Icon.md)，比如常见的搜索。
@@ -114,10 +114,10 @@ import type {
 常见的方式是可以通过 footer 插槽来定义底部效果，替代默认的 `lowerLoading` 来实现无限滚动的加载效果。
 
 ```vue
-<ak-flat-list>
+<ta-flat-list>
   ...
   <template #footer>暂时没有更多了</template>
-</ak-flat-list>
+</ta-flat-list>
 ```
 
 ## Methods

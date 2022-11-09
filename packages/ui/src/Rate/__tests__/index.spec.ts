@@ -27,7 +27,7 @@ describe('Rate', () => {
       }
     })
 
-    expect(wrapper.attributes('style')).toContain('--ak-size: 40px;')
+    expect(wrapper.attributes('style')).toContain('--ta-size: 40px;')
   })
 
   test('count=8', () => {
@@ -37,6 +37,6 @@ describe('Rate', () => {
       }
     })
 
-    expect(wrapper.findAll('.ak-rate_item').length).toBe(8)
+    expect(wrapper.findAll('.ta-rate_item').length).toBe(8)
   })
 })

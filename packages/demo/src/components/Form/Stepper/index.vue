@@ -1,41 +1,41 @@
 <template>
-  <ak-group title="基础用法">
-    <ak-cell label="默认">
-      <ak-stepper />
-    </ak-cell>
-    <ak-cell label="步长设置">
-      <ak-stepper :step="2" />
-    </ak-cell>
-    <ak-cell label="限制输入范围">
-      <ak-stepper :min="5" :max="10" />
-    </ak-cell>
-    <ak-cell label="限制输入整数">
-      <ak-stepper :decimal-length="0" />
-    </ak-cell>
-    <ak-cell label="禁用状态">
-      <ak-stepper :disabled="true" />
-    </ak-cell>
-    <ak-cell label="禁用输入框">
-      <ak-stepper :disabled-input="true" />
-    </ak-cell>
-    <ak-cell label="固定小数位">
-      <ak-stepper :decimal-length="1" :step="0.2" />
-    </ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell label="change">
-      <ak-stepper @change="onChange" v-model="value" />
-    </ak-cell>
-    <ak-cell label="input/focus/blur/plus-click/minus-click">
-      <ak-stepper
+  <ta-group title="基础用法">
+    <ta-cell label="默认">
+      <ta-stepper />
+    </ta-cell>
+    <ta-cell label="步长设置">
+      <ta-stepper :step="2" />
+    </ta-cell>
+    <ta-cell label="限制输入范围">
+      <ta-stepper :min="5" :max="10" />
+    </ta-cell>
+    <ta-cell label="限制输入整数">
+      <ta-stepper :decimal-length="0" />
+    </ta-cell>
+    <ta-cell label="禁用状态">
+      <ta-stepper :disabled="true" />
+    </ta-cell>
+    <ta-cell label="禁用输入框">
+      <ta-stepper :disabled-input="true" />
+    </ta-cell>
+    <ta-cell label="固定小数位">
+      <ta-stepper :decimal-length="1" :step="0.2" />
+    </ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell label="change">
+      <ta-stepper @change="onChange" v-model="value" />
+    </ta-cell>
+    <ta-cell label="input/focus/blur/plus-click/minus-click">
+      <ta-stepper
         @plus-click="onPlusClick"
         @minus-click="onMinusClick"
         @focus="onFocus"
         @blur="onBlur"
         @input="onInput"
       />
-    </ak-cell>
-  </ak-group>
+    </ta-cell>
+  </ta-group>
 </template>
 
 <script lang="ts">

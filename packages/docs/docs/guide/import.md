@@ -24,13 +24,13 @@ npm i @arksjs/ui-resolver -D
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
-import { ArkUIResolver } from '@arksjs/ui-resolver'
+import { UIResolver } from '@arksjs/ui-resolver'
 
 export default defineConfig({
   plugins: [
     vue(),
     Components({
-      resolvers: [ArkUIResolver()]
+      resolvers: [UIResolver()]
     })
   ]
 })
@@ -40,26 +40,26 @@ Or `vue.config.js`
 
 ```JavaScript
 const Components = require('unplugin-vue-components/webpack')
-const { ArkUIResolver } = require('@arksjs/ui-resolver')
+const { UIResolver } = require('@arksjs/ui-resolver')
 
 module.exports = {
   configureWebpack: {
     plugins: [
       Components({
-        resolvers: [ArkUIResolver()]
+        resolvers: [UIResolver()]
       })
     ]
   }
 }
 ```
 
-更多 ArkUIResolver 参数可以[查看](https://github.com/arksjs/arkui-mobile-vue/tree/main/packages/arkui-mobile-vue-resolver)。
+更多 UIResolver 参数可以[查看](https://github.com/arksjs/tantalum-ui-mobile/tree/main/packages/tantalum-ui-mobile-resolver)。
 
 4. 现在就可以在模版中引入组件
 
 ```Vue
 <template>
-  <ak-button>提交</ak-button>
+  <ta-button>提交</ta-button>
 </template>
 ```
 
@@ -73,28 +73,28 @@ module.exports = {
 
 ```Vue
 <script>
-import { AkButton } from 'arkui-mobile-vue/es/Button'
-import 'arkui-mobile-vue/es/Button/style'
-// import 'arkui-mobile-vue/es/Button/style/sass' // use sass
+import { TaButton } from 'tantalum-ui-mobile/es/Button'
+import 'tantalum-ui-mobile/es/Button/style'
+// import 'tantalum-ui-mobile/es/Button/style/sass' // use sass
 
 export default {
-  components: { AkButton }
+  components: { TaButton }
 }
 </script>
 
 <template>
-  <ak-button>按钮</ak-button>
+  <ta-button>按钮</ta-button>
 </template>
 ```
 
 ## 全组件引入
 
 ```JavaScript
-import ArkUI from 'arkui-mobile-vue'
-import 'arkui-mobile-vue/dist/index.css'
-// import 'arkui-mobile-vue/es/style/sass' // use sass
+import TantalumUI from 'tantalum-ui-mobile'
+import 'tantalum-ui-mobile/dist/index.css'
+// import 'tantalum-ui-mobile/es/style/sass' // use sass
 
-app.use(ArkUI)
+app.use(TantalumUI)
 ```
 
 > 引入所有组件会增大代码包体积，毕竟 70+ 组件了，除非项目对大小要求不高。
@@ -106,14 +106,14 @@ API 调用需要先引入对应的组件，方可调用，引用方式同上。
 如果是全组件引入：
 
 ```JavaScript
-import { showToast } from 'arkui-mobile-vue'
+import { showToast } from 'tantalum-ui-mobile'
 ```
 
 如果是按需引入：
 
 ```JavaScript
-import { showToast } from 'arkui-mobile-vue/es/Toast'
-import 'arkui-mobile-vue/es/Toast/style'
+import { showToast } from 'tantalum-ui-mobile/es/Toast'
+import 'tantalum-ui-mobile/es/Toast/style'
 ```
 
 调用方式：
@@ -137,7 +137,7 @@ export default {
 ```JSON
 {
   "compilerOptions": {
-    "types": ["arkui-mobile-vue/global"]
+    "types": ["tantalum-ui-mobile/global"]
   }
 }
 ```
@@ -150,8 +150,8 @@ export default {
 
 ```HTML
 <!-- CSS -->
-<link rel="stylesheet" href="https://unpkg.com/arkui-mobile-vue/dist/index.css" />
+<link rel="stylesheet" href="https://unpkg.com/tantalum-ui-mobile/dist/index.css" />
 
 <!-- JavaScript -->
-<script src="https://unpkg.com/arkui-mobile-vue/dist/index.js"></script>
+<script src="https://unpkg.com/tantalum-ui-mobile/dist/index.js"></script>
 ```

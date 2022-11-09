@@ -1,17 +1,17 @@
 <template>
   <div ref="root" :class="classes">
-    <div class="ak-sticky-view_list" ref="listEl">
+    <div class="ta-sticky-view_list" ref="listEl">
       <slot></slot>
     </div>
     <Sticky
       :offsetTop="offsetTop"
       :containSelector="containSelector"
       :disabled="disabled"
-      class="ak-sticky-view_top"
+      class="ta-sticky-view_top"
       ref="stickyRef"
     >
-      <div class="ak-sticky-view_fixed">
-        <div class="ak-sticky-view_fixed-inner" ref="fixedEl"></div>
+      <div class="ta-sticky-view_fixed">
+        <div class="ta-sticky-view_fixed-inner" ref="fixedEl"></div>
       </div>
     </Sticky>
   </div>
@@ -50,7 +50,7 @@ import { useException } from '../hooks/use-exception'
 import { useOnce } from '../hooks/use-once'
 
 export default defineComponent({
-  name: 'ak-sticky-view',
+  name: 'ta-sticky-view',
   components: { Sticky },
   props: {
     modelValue: {

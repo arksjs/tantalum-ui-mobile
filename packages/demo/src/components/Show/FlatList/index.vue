@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import {
-  AkFlatList,
+  TaFlatList,
   type FlatListOnEndReached,
   type FlatListOnRefreshing,
   type FlatListOnVisibleItemsChange,
@@ -94,7 +94,7 @@ const onEndReached: FlatListOnEndReached = res => {
 }
 
 // 方法调用
-const methodList = ref<InstanceType<typeof AkFlatList>>()
+const methodList = ref<InstanceType<typeof TaFlatList>>()
 function scrollToIndex(index: number, viewPosition: ViewPosition = 0) {
   methodList.value?.scrollToIndex({ index, viewPosition })
 }
@@ -113,17 +113,17 @@ export default {
 </script>
 
 <template>
-  <ak-group title="基础用法">
-    <ak-flat-list class="exp-flatList-box" :ids="list.map(v => v.id)">
+  <ta-group title="基础用法">
+    <ta-flat-list class="exp-flatList-box" :ids="list.map(v => v.id)">
       <template #default="{ index }">
         <div class="exp-flatList-item">
           {{ list[index].text }}
         </div>
       </template>
-    </ak-flat-list>
-  </ak-group>
-  <ak-group title="水平列表">
-    <ak-flat-list
+    </ta-flat-list>
+  </ta-group>
+  <ta-group title="水平列表">
+    <ta-flat-list
       class="exp-flatList-box"
       :ids="list.map(v => v.id)"
       :itemSize="140"
@@ -134,10 +134,10 @@ export default {
           {{ list[index].text }}
         </div>
       </template>
-    </ak-flat-list>
-  </ak-group>
-  <ak-group title="开启下拉刷新">
-    <ak-flat-list
+    </ta-flat-list>
+  </ta-group>
+  <ta-group title="开启下拉刷新">
+    <ta-flat-list
       class="exp-flatList-box"
       :ids="list.map(v => v.id)"
       :itemSize="50"
@@ -149,10 +149,10 @@ export default {
           {{ list[index].text }}
         </div>
       </template>
-    </ak-flat-list>
-  </ak-group>
-  <ak-group title="展示底部加载更多提示">
-    <ak-flat-list
+    </ta-flat-list>
+  </ta-group>
+  <ta-group title="展示底部加载更多提示">
+    <ta-flat-list
       class="exp-flatList-box"
       :ids="loadList.map(v => v.id)"
       :lowerLoading="lowerLoading"
@@ -163,10 +163,10 @@ export default {
           {{ list[index].text }}
         </div>
       </template>
-    </ak-flat-list>
-  </ak-group>
-  <ak-group title="分割线（#separator）">
-    <ak-flat-list class="exp-flatList-box" :ids="list.map(v => v.id)">
+    </ta-flat-list>
+  </ta-group>
+  <ta-group title="分割线（#separator）">
+    <ta-flat-list class="exp-flatList-box" :ids="list.map(v => v.id)">
       <template #default="{ index }">
         <div class="exp-flatList-item">
           {{ list[index].text }}
@@ -178,10 +178,10 @@ export default {
           v-if="index < list.length - 1"
         ></div>
       </template>
-    </ak-flat-list>
-  </ak-group>
-  <ak-group title="瀑布流">
-    <ak-flat-list
+    </ta-flat-list>
+  </ta-group>
+  <ta-group title="瀑布流">
+    <ta-flat-list
       class="exp-flatList-box"
       :ids="list.map(v => v.id)"
       :itemSize="getItemSize"
@@ -193,10 +193,10 @@ export default {
           {{ list[index].text }}
         </div>
       </template>
-    </ak-flat-list>
-  </ak-group>
-  <ak-group title="事件监听（end-reached/visible-items-change）">
-    <ak-flat-list
+    </ta-flat-list>
+  </ta-group>
+  <ta-group title="事件监听（end-reached/visible-items-change）">
+    <ta-flat-list
       class="exp-flatList-box"
       :ids="list.map(v => v.id)"
       :itemSize="50"
@@ -208,17 +208,17 @@ export default {
           {{ list[index].text }}
         </div>
       </template>
-    </ak-flat-list>
-  </ak-group>
-  <ak-group title="Slot empty">
-    <ak-flat-list class="exp-flatList-box" :ids="[]" :itemSize="50">
+    </ta-flat-list>
+  </ta-group>
+  <ta-group title="Slot empty">
+    <ta-flat-list class="exp-flatList-box" :ids="[]" :itemSize="50">
       <template #empty>
-        <ak-empty description="暂无列表"></ak-empty>
+        <ta-empty description="暂无列表"></ta-empty>
       </template>
-    </ak-flat-list>
-  </ak-group>
-  <ak-group title="Method">
-    <ak-flat-list
+    </ta-flat-list>
+  </ta-group>
+  <ta-group title="Method">
+    <ta-flat-list
       class="exp-flatList-box"
       :ids="largeList.map(v => v.id)"
       :itemSize="50"
@@ -229,31 +229,31 @@ export default {
           {{ largeList[index].text }}
         </div>
       </template>
-    </ak-flat-list>
-    <ak-cell
+    </ta-flat-list>
+    <ta-cell
       label="scrollToIndex({ index: 49999 })"
       isLink
       @click="scrollToIndex(49999)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="同上加 viewPosition=0.5"
       isLink
       @click="scrollToIndex(49999, 0.5)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="同上加 viewPosition=1"
       isLink
       @click="scrollToIndex(49999, 1)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="scrollTo({ offset: 200 })"
       isLink
       @click="scrollTo(200)"
-    ></ak-cell>
-    <ak-cell
+    ></ta-cell>
+    <ta-cell
       label="scrollToEnd(true)"
       isLink
       @click="scrollToEnd(true)"
-    ></ak-cell>
-  </ak-group>
+    ></ta-cell>
+  </ta-group>
 </template>

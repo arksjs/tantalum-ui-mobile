@@ -3,7 +3,7 @@ import Sun from './icons/SunIcon.vue'
 import Moon from './icons/MoonIcon.vue'
 import GitHub from './icons/GitHubIcon.vue'
 import Share from './icons/ShareIcon.vue'
-import { showToast } from 'arkui-mobile-vue'
+import { showToast } from 'tantalum-ui-mobile'
 
 function toggleDark() {
   const cls = document.documentElement.classList
@@ -24,7 +24,7 @@ async function copyLink() {
   <nav>
     <h1>
       <img alt="logo" src="./logo.svg" />
-      <span>ArkUI Playground</span>
+      <span>Tantalum UI Playground</span>
     </h1>
     <div class="links">
       <button title="Toggle dark mode" class="toggle-dark" @click="toggleDark">
@@ -35,7 +35,7 @@ async function copyLink() {
         <Share />
       </button>
       <button title="View on GitHub" class="github">
-        <a href="https://github.com/arksjs/arkui-mobile-vue" target="_blank">
+        <a href="https://github.com/arksjs/tantalum-ui-mobile" target="_blank">
           <GitHub />
         </a>
       </button>

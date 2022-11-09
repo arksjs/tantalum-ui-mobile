@@ -26,33 +26,33 @@ export default {
 </script>
 
 <template>
-  <ak-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Picker" />
-  <ak-group title="单列">
-    <ak-picker-view
+  <ta-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Picker" />
+  <ta-group title="单列">
+    <ta-picker-view
       :options="options"
       @change="onChange"
       v-model="colValue"
-    ></ak-picker-view>
-  </ak-group>
-  <ak-group title="多列">
-    <ak-picker-view
+    ></ta-picker-view>
+  </ta-group>
+  <ta-group title="多列">
+    <ta-picker-view
       :options="multiOptions"
       @change="onChange"
       v-model="multiValue"
-    ></ak-picker-view>
-  </ak-group>
-  <ak-group title="级联">
-    <ak-picker-view
+    ></ta-picker-view>
+  </ta-group>
+  <ta-group title="级联">
+    <ta-picker-view
       :options="cascadeOptions"
       @change="onChange"
       v-model="cascadeValue"
-    ></ak-picker-view>
-  </ak-group>
-  <ak-group title="change 事件">
-    <ak-picker-view
+    ></ta-picker-view>
+  </ta-group>
+  <ta-group title="change 事件">
+    <ta-picker-view
       :options="multiOptions"
       @change="onChangeEvent"
       v-model="changeValue"
-    ></ak-picker-view>
-  </ak-group>
+    ></ta-picker-view>
+  </ta-group>
 </template>

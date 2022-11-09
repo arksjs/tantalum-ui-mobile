@@ -1,7 +1,7 @@
 @import '../style/var.scss';
 
-.ak-timeline-item {
-  --ak-color: #{$border-color};
+.ta-timeline-item {
+  --ta-color: #{$border-color};
 
   position: relative;
 
@@ -16,10 +16,10 @@
     display: block;
     width: 10px;
     height: 10px;
-    border: 2px solid var(--ak-color);
+    border: 2px solid var(--ta-color);
     box-sizing: border-box;
     border-radius: 50%;
-    color: var(--ak-color);
+    color: var(--ta-color);
     background-color: $white-color;
     overflow: hidden;
   }
@@ -30,7 +30,7 @@
     top: 24px;
     width: 1px;
     height: 100%;
-    background-color: var(--ak-color);
+    background-color: var(--ta-color);
   }
 
   &_inner {
@@ -65,18 +65,18 @@
       color: $primary-color;
     }
 
-    .ak-timeline-item_title + & {
+    .ta-timeline-item_title + & {
       margin-top: 4px;
     }
   }
 
   &:last-child {
-    .ak-timeline-item_line {
+    .ta-timeline-item_line {
       display: none;
     }
   }
 
-  + .ak-timeline-item {
+  + .ta-timeline-item {
     &::before {
       content: '';
       margin-left: 40px;

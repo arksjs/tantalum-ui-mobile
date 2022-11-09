@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkScrollTab, AkScrollTabItem } from 'arkui-mobile-vue'
+import { TaScrollTab, TaScrollTabItem } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkScrollTab, AkScrollTabItem } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { ScrollTabOnChange, ScrollTabRef } from 'arkui-mobile-vue'
+import type { ScrollTabOnChange, ScrollTabRef } from 'tantalum-ui-mobile'
 ```
 
 ## ScrollTab Props
@@ -42,18 +42,18 @@ import type { ScrollTabOnChange, ScrollTabRef } from 'arkui-mobile-vue'
 注：其中只可放置 [ScrollTabItem](./ScrollTab.md#scrolltabitem-props) 组件，否则会导致未定义的行为。
 
 ```vue
-<ak-scroll-tab>
-  <ak-scroll-tab-item name="Dust Red">
+<ta-scroll-tab>
+  <ta-scroll-tab-item name="Dust Red">
     <div class="scroll-tab-box box-1"></div>
-  </ak-scroll-tab-item>
-  <ak-scroll-tab-item name="Volcano">
+  </ta-scroll-tab-item>
+  <ta-scroll-tab-item name="Volcano">
     <div class="scroll-tab-box box-2"></div>
-  </ak-scroll-tab-item>
-  <ak-scroll-tab-item name="Sunset Orange">
+  </ta-scroll-tab-item>
+  <ta-scroll-tab-item name="Sunset Orange">
     <div class="scroll-tab-box box-3"></div>
-  </ak-scroll-tab-item>
+  </ta-scroll-tab-item>
   ...
-</ak-scroll-tab>
+</ta-scroll-tab>
 ```
 
 ## Methods
@@ -82,7 +82,7 @@ interface ScrollTabRef {
 ### #default
 
 ```vue
-<ak-scroll-tab-item name="Dust Red">
+<ta-scroll-tab-item name="Dust Red">
   <div class="scroll-tab-box box-1"></div>
-</ak-scroll-tab-item>
+</ta-scroll-tab-item>
 ```

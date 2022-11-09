@@ -62,14 +62,14 @@ export default {
 </script>
 
 <template>
-  <ak-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Picker" />
-  <ak-group title="基础用法">
-    <ak-cell label="v-model" isLink @click="visible = true">{{
+  <ta-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Picker" />
+  <ta-group title="基础用法">
+    <ta-cell label="v-model" isLink @click="visible = true">{{
       popupValue
-    }}</ak-cell>
-  </ak-group>
-  <ak-group title="事件监听">
-    <ak-cell
+    }}</ta-cell>
+  </ta-group>
+  <ta-group title="事件监听">
+    <ta-cell
       label="change"
       isLink
       @click="
@@ -79,7 +79,7 @@ export default {
         }
       "
     />
-    <ak-cell
+    <ta-cell
       label="confirm/cancel"
       isLink
       @click="
@@ -89,7 +89,7 @@ export default {
         }
       "
     />
-    <ak-cell
+    <ta-cell
       label="visible-state-change"
       isLink
       @click="
@@ -99,8 +99,8 @@ export default {
         }
       "
     />
-  </ak-group>
-  <ak-picker-popup
+  </ta-group>
+  <ta-picker-popup
     v-model:visible="visible"
     title="PickerPopup"
     :options="multiOptions"

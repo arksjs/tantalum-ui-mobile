@@ -45,17 +45,17 @@ export type UniqueID = number | string
 /**
  * Style
  */
-interface AkCSS {
-  '--ak-color'?: string
-  '--ak-dark-color'?: string
-  '--ak-light-color'?: string
-  '--ak-front-color'?: string
-  '--ak-icon-color'?: string
-  '--ak-icon-size'?: string
-  '--ak-white-color'?: string
-  '--ak-black-color'?: string
-  '--ak-active-color'?: string
-  '--ak-size'?: string
+interface UICSS {
+  '--ta-color'?: string
+  '--ta-dark-color'?: string
+  '--ta-light-color'?: string
+  '--ta-front-color'?: string
+  '--ta-icon-color'?: string
+  '--ta-icon-size'?: string
+  '--ta-white-color'?: string
+  '--ta-black-color'?: string
+  '--ta-active-color'?: string
+  '--ta-size'?: string
 }
 
 export type { Dayjs } from 'dayjs'
@@ -145,7 +145,7 @@ export type PropsToEmits<P> = Required<P> extends infer T
  */
 import type * as Vue from 'vue'
 
-export interface CSSProperties extends Vue.CSSProperties, AkCSS {}
+export interface CSSProperties extends Vue.CSSProperties, UICSS {}
 
 export type OnError = (e: Error) => void
 export type OnClick = (e: MouseEvent) => void

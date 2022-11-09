@@ -46,11 +46,11 @@ describe('Slider', () => {
         showValue: true
       }
     })
-    expect(wrapper.find('.ak-slider_thumb').text()).toBe('0')
+    expect(wrapper.find('.ta-slider_thumb').text()).toBe('0')
 
     await wrapper.setProps({
       modelValue: 50
     })
-    expect(wrapper.find('.ak-slider_thumb').text()).toBe('50')
+    expect(wrapper.find('.ta-slider_thumb').text()).toBe('50')
   })
 })

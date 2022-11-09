@@ -15,19 +15,19 @@ describe('Pagination', () => {
         total: 5
       }
     })
-    expect(wrapper.find('.ak-pagination_content').text()).toBe('1 / 5')
+    expect(wrapper.find('.ta-pagination_content').text()).toBe('1 / 5')
 
-    await wrapper.find('.ak-pagination_next').trigger('click')
-    expect(wrapper.find('.ak-pagination_content').text()).toBe('2 / 5')
+    await wrapper.find('.ta-pagination_next').trigger('click')
+    expect(wrapper.find('.ta-pagination_content').text()).toBe('2 / 5')
 
-    await wrapper.find('.ak-pagination_next').trigger('click')
-    await wrapper.find('.ak-pagination_next').trigger('click')
-    await wrapper.find('.ak-pagination_next').trigger('click')
-    expect(wrapper.find('.ak-pagination_content').text()).toBe('5 / 5')
+    await wrapper.find('.ta-pagination_next').trigger('click')
+    await wrapper.find('.ta-pagination_next').trigger('click')
+    await wrapper.find('.ta-pagination_next').trigger('click')
+    expect(wrapper.find('.ta-pagination_content').text()).toBe('5 / 5')
 
     // 超出了
-    await wrapper.find('.ak-pagination_next').trigger('click')
-    expect(wrapper.find('.ak-pagination_content').text()).toBe('5 / 5')
+    await wrapper.find('.ta-pagination_next').trigger('click')
+    expect(wrapper.find('.ta-pagination_content').text()).toBe('5 / 5')
   })
 
   test('slots prev & next', () => {
@@ -38,7 +38,7 @@ describe('Pagination', () => {
       }
     })
 
-    expect(wrapper.find('.ak-pagination_prev').text()).toBe('Prev')
-    expect(wrapper.find('.ak-pagination_next').text()).toBe('Next')
+    expect(wrapper.find('.ta-pagination_prev').text()).toBe('Prev')
+    expect(wrapper.find('.ta-pagination_next').text()).toBe('Next')
   })
 })

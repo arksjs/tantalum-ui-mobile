@@ -1,6 +1,6 @@
 <template>
   <Drawer
-    class="ak-picker-popup"
+    class="ta-picker-popup"
     placement="bottom"
     :visible="visible"
     @visibleStateChange="onVisibleStateChange"
@@ -11,7 +11,7 @@
   >
     <template #header>
       <NavBar
-        class="ak-drawer_header"
+        class="ta-drawer_header"
         :title="title"
         :leftButtons="[{ text: locale.pickerCancelText, type: 'primary' }]"
         :rightButtons="[{ text: locale.pickerConfirmText, type: 'primary' }]"
@@ -46,7 +46,7 @@ import { mergeHandlers } from './util'
 import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
-  name: 'ak-picker-popup',
+  name: 'ta-picker-popup',
   components: { PickerView, Drawer, NavBar },
   props: {
     ...pickerPopupProps,
@@ -61,7 +61,7 @@ export default defineComponent({
   } as PropsToEmits<PickerPopupEmits>,
   setup(props, ctx) {
     const { locale } = useLocale()
-    const handlers = inject<Partial<PickerHandlers>>('akPickerHandlers', {})
+    const handlers = inject<Partial<PickerHandlers>>('taPickerHandlers', {})
 
     const popup = usePopupExtend<PickerDetail>(ctx)
     const pickerPopup = usePickerPopup(props, ctx, popup, {

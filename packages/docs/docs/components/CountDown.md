@@ -13,7 +13,7 @@
 ## Import
 
 ```js
-import { AkCountDown } from 'arkui-mobile-vue'
+import { TaCountDown } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -52,13 +52,13 @@ import type {
 支持自定义风格显示
 
 ```vue
-<ak-count-down :initial-timing="timestamp">
+<ta-count-down :initial-timing="timestamp">
   <template #default="countTime">
     {{ countTime.fullHours }}:{{ countTime.minutes }}:{{
         countTime.seconds
     }}.{{ countTime.milliseconds }}
   </template>
-</ak-count-down>
+</ta-count-down>
 ```
 
 ### countTime 的结构

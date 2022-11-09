@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkCheckbox, AkCheckboxGroup } from 'arkui-mobile-vue'
+import { TaCheckbox, TaCheckboxGroup } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkCheckbox, AkCheckboxGroup } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { CheckboxOptionItem } from 'arkui-mobile-vue'
+import type { CheckboxOptionItem } from 'tantalum-ui-mobile'
 ```
 
 ## Checkbox Props
@@ -41,8 +41,8 @@ import type { CheckboxOptionItem } from 'arkui-mobile-vue'
 ## Checkbox Slots
 
 ```vue
-<ak-checkbox>开朗</ak-checkbox>
-<ak-checkbox>活泼</ak-checkbox>
+<ta-checkbox>开朗</ta-checkbox>
+<ta-checkbox>活泼</ta-checkbox>
 ...
 ```
 
@@ -81,9 +81,9 @@ import type { CheckboxOptionItem } from 'arkui-mobile-vue'
 ### #default
 
 ```vue
-<ak-checkbox-group>
-  <ak-checkbox>开朗</ak-checkbox>
-  <ak-checkbox>活泼</ak-checkbox>
+<ta-checkbox-group>
+  <ta-checkbox>开朗</ta-checkbox>
+  <ta-checkbox>活泼</ta-checkbox>
   ...
-</ak-checkbox-group>
+</ta-checkbox-group>
 ```

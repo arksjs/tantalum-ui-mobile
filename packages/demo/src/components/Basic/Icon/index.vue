@@ -1,129 +1,129 @@
 <template>
-  <ak-group title="基础用法">
+  <ta-group title="基础用法">
     <div class="exp-icon-flex">
-      <ak-row :gutter="[16, 16]">
-        <ak-col :span="6">
-          <ak-icon class="exp-icon-icon" icon="UpOutlined"></ak-icon>
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="6">
+          <ta-icon class="exp-icon-icon" icon="UpOutlined"></ta-icon>
           <span class="exp-icon-text">UpOutlined</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon class="exp-icon-icon" icon="DownOutlined"></ak-icon>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon class="exp-icon-icon" icon="DownOutlined"></ta-icon>
           <span class="exp-icon-text">DownOutlined</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon class="exp-icon-icon" icon="LeftOutlined"></ak-icon>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon class="exp-icon-icon" icon="LeftOutlined"></ta-icon>
           <span class="exp-icon-text">LeftOutlined</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon class="exp-icon-icon" icon="RightOutlined"></ak-icon>
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon class="exp-icon-icon" icon="RightOutlined"></ta-icon>
           <span class="exp-icon-text">RightOutlined</span>
-        </ak-col>
-      </ak-row>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="大小">
+  </ta-group>
+  <ta-group title="大小">
     <div class="exp-icon-flex">
-      <ak-row :gutter="[16, 16]" align="bottom">
-        <ak-col :span="6">
-          <ak-icon
+      <ta-row :gutter="[16, 16]" align="bottom">
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon"
             size="16"
             icon="CheckCircleOutlined"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">16px</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon"
             size="24"
             icon="CheckCircleOutlined"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">24px</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon"
             size="32"
             icon="CheckCircleOutlined"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">32px</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon"
             size="40"
             icon="CheckCircleOutlined"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">40px</span>
-        </ak-col>
-      </ak-row>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="颜色">
+  </ta-group>
+  <ta-group title="颜色">
     <div class="exp-icon-flex">
-      <ak-row :gutter="[16, 16]" align="bottom">
-        <ak-col :span="6">
-          <ak-icon
+      <ta-row :gutter="[16, 16]" align="bottom">
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon color-primary"
             icon="CheckCircleOutlined"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">蓝色</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon color-success"
             icon="CheckCircleOutlined"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">绿色</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon color-warning"
             icon="CheckCircleOutlined"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">橙色</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon color-danger"
             icon="CheckCircleOutlined"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">红色</span>
-        </ak-col>
-      </ak-row>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
-  <ak-group title="颜色">
+  </ta-group>
+  <ta-group title="颜色">
     <div class="exp-icon-flex">
-      <ak-row :gutter="[16, 16]" align="bottom">
-        <ak-col :span="6">
-          <ak-icon class="exp-icon-icon color-primary" :icon="QqSvg"></ak-icon>
+      <ta-row :gutter="[16, 16]" align="bottom">
+        <ta-col :span="6">
+          <ta-icon class="exp-icon-icon color-primary" :icon="QqSvg"></ta-icon>
           <span class="exp-icon-text">QQ</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon color-success"
             :icon="WechatSvg"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">微信</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon color-warning"
             :icon="TaobaoSvg"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">淘宝</span>
-        </ak-col>
-        <ak-col :span="6">
-          <ak-icon
+        </ta-col>
+        <ta-col :span="6">
+          <ta-icon
             class="exp-icon-icon color-danger"
             :icon="WeiboSvg"
-          ></ak-icon>
+          ></ta-icon>
           <span class="exp-icon-text">微博</span>
-        </ak-col>
-      </ak-row>
+        </ta-col>
+      </ta-row>
     </div>
-  </ak-group>
+  </ta-group>
 </template>
 
 <script lang="ts">

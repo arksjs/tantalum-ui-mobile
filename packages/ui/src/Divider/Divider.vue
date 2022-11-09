@@ -9,7 +9,7 @@ import { computed, defineComponent } from 'vue'
 import { getClasses } from './util'
 
 export default defineComponent({
-  name: 'ak-divider',
+  name: 'ta-divider',
   props: {
     title: {
       type: String

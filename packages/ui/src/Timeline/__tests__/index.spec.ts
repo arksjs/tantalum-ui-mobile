@@ -32,8 +32,8 @@ describe('TimelineItem', () => {
       }
     })
 
-    expect(wrapper.find('.ak-timeline-item_title').text()).toBe(itemTitle)
-    expect(wrapper.find('.ak-timeline-item_content').text()).toBe(itemContent)
+    expect(wrapper.find('.ta-timeline-item_title').text()).toBe(itemTitle)
+    expect(wrapper.find('.ta-timeline-item_content').text()).toBe(itemContent)
   })
 
   const color = '#52c41a'
@@ -45,7 +45,7 @@ describe('TimelineItem', () => {
       }
     })
 
-    expect(wrapper.find('.ak-timeline-item_dot').attributes('style')).toContain(
+    expect(wrapper.find('.ta-timeline-item_dot').attributes('style')).toContain(
       `border-color: ${color};`
     )
   })

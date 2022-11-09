@@ -1,12 +1,12 @@
 @import '../style/var.scss';
 
-.ak-sticky {
-  --ak-background-color: transparent;
+.ta-sticky {
+  --ta-background-color: transparent;
 
-  background-color: var(--ak-background-color);
+  background-color: var(--ta-background-color);
 
   &_content {
-    background-color: var(--ak-background-color);
+    background-color: var(--ta-background-color);
 
     // &.fixed {
     //   position: fixed;

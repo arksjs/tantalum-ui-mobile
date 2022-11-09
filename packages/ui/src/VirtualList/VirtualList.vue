@@ -1,8 +1,8 @@
 <template>
   <div :class="classes" ref="root">
-    <ul class="ak-virtual-list_list" :style="listStyles" ref="listEl">
+    <ul class="ta-virtual-list_list" :style="listStyles" ref="listEl">
       <li
-        class="ak-virtual-list_item"
+        class="ta-virtual-list_item"
         v-for="item in renderList"
         :key="item.id"
         :data-index="item.index"
@@ -11,9 +11,9 @@
         <slot :id="item.id" :index="item.index"></slot>
       </li>
     </ul>
-    <ul class="ak-virtual-list_list pool" ref="poolEl">
+    <ul class="ta-virtual-list_list pool" ref="poolEl">
       <li
-        class="ak-virtual-list_item"
+        class="ta-virtual-list_item"
         v-for="item in poolList"
         :key="item.id"
         :data-index="item.index"
@@ -54,7 +54,7 @@ import { getClasses, getItemStyles, getListStyles } from './util'
 import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
-  name: 'ak-virtual-list',
+  name: 'ta-virtual-list',
   props: {
     ...virtualListProps
   },

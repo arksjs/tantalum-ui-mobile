@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkNotify } from 'arkui-mobile-vue'
+import { TaNotify } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -23,7 +23,7 @@ import type {
   VisibleState,
   PopupOnVisibleStateChange,
   StateType
-} from 'arkui-mobile-vue'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props

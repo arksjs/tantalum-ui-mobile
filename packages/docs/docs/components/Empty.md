@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkEmpty } from 'arkui-mobile-vue'
+import { TaEmpty } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkEmpty } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { EmptyType } from 'arkui-mobile-vue'
+import type { EmptyType } from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -34,19 +34,19 @@ import type { EmptyType } from 'arkui-mobile-vue'
 ### 底部（#default）
 
 ```vue
-<ak-empty description="网络错误" type="network">
-  <ak-button>刷新试试</ak-button>
-</ak-empty>
+<ta-empty description="网络错误" type="network">
+  <ta-button>刷新试试</ta-button>
+</ta-empty>
 ```
 
 ### 图片区域（#image）
 
 ```vue
-<ak-empty description="描述文字">
+<ta-empty description="描述文字">
   <template #image>
-    <ak-image src="xxx.jpg" />
+    <ta-image src="xxx.jpg" />
   </template>
-</ak-empty>
+</ta-empty>
 ```
 
 注：优先级比内置图片高。

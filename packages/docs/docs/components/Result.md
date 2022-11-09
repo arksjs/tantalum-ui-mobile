@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkResult } from 'arkui-mobile-vue'
+import { TaResult } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -19,7 +19,7 @@ import { AkResult } from 'arkui-mobile-vue'
 组件导出的类型定义：
 
 ```ts
-import type { ResultType } from 'arkui-mobile-vue'
+import type { ResultType } from 'tantalum-ui-mobile'
 ```
 
 ## Props
@@ -45,9 +45,9 @@ import type { ResultType } from 'arkui-mobile-vue'
 ### 附加内容（#default）
 
 ```vue
-<ak-result type="fail" title="支付失败" description="">
+<ta-result type="fail" title="支付失败" description="">
   <div class="result-extra">
     在这里可以附加组件元素或者相应的提示文案，样式自定。
   </div>
-</ak-result>
+</ta-result>
 ```

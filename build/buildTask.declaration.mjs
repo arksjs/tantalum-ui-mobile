@@ -16,7 +16,9 @@ export const buildGlobalDeclaration = async () => {
   const imports = []
 
   for (const name of config.components) {
-    imports.push(`Ak${name}: typeof import('arkui-mobile-vue/es')['Ak${name}']`)
+    imports.push(
+      `Ta${name}: typeof import('tantalum-ui-mobile/es')['Ta${name}']`
+    )
   }
 
   const code = `declare module 'vue' {
@@ -33,7 +35,10 @@ export {}
   // 同时放到demo一份
   await fs.promises.writeFile(
     resolve('./packages/demo/src/ui.d.ts'),
-    code.replace(/arkui-mobile-vue\/es/g, 'arkui-mobile-vue/packages/ui/src'),
+    code.replace(
+      /tantalum-ui-mobile\/es/g,
+      'tantalum-ui-mobile/packages/ui/src'
+    ),
     'utf-8'
   )
 }

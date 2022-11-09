@@ -1,5 +1,5 @@
 <template>
-  <div class="ak-form-footer">
+  <div class="ta-form-footer">
     <slot></slot>
   </div>
 </template>
@@ -8,6 +8,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'ak-form-footer'
+  name: 'ta-form-footer'
 })
 </script>

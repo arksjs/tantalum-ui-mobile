@@ -54,10 +54,10 @@ describe('Tab', () => {
 
     wrapper.findComponent(Tab).vm.switchToIndex(1)
     await nextTick()
-    expect(wrapper.findAll('.ak-tab_item')[1].classes()).toContain('active')
+    expect(wrapper.findAll('.ta-tab_item')[1].classes()).toContain('active')
 
     wrapper.findComponent(Tab).vm.switchTo(4)
     await nextTick()
-    expect(wrapper.findAll('.ak-tab_item')[3].classes()).toContain('active')
+    expect(wrapper.findAll('.ta-tab_item')[3].classes()).toContain('active')
   })
 })

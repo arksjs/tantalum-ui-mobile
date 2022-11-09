@@ -1,13 +1,13 @@
 // Vitest Snapshot v1
 
 exports[`Checkbox > snapshot 1`] = `
-"<label class=\\"ak-checkbox ak-horizontal-hairline\\"><input class=\\"ak-checkbox_input ak-form-input\\" type=\\"checkbox\\" name=\\"\\" value=\\"\\">
-  <div class=\\"ak-checkbox_box\\">
-    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"ak-checkbox_icon\\"></icon-stub>
-    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"ak-checkbox_checked-icon\\"></icon-stub>
+"<label class=\\"ta-checkbox ta-horizontal-hairline\\"><input class=\\"ta-checkbox_input ta-form-input\\" type=\\"checkbox\\" name=\\"\\" value=\\"\\">
+  <div class=\\"ta-checkbox_box\\">
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"ta-checkbox_icon\\"></icon-stub>
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\" class=\\"ta-checkbox_checked-icon\\"></icon-stub>
     <!--v-if-->
   </div>
 </label>"
 `;
 
-exports[`CheckboxGroup > snapshot 1`] = `"<div class=\\"ak-checkbox-group vertical\\"></div>"`;
+exports[`CheckboxGroup > snapshot 1`] = `"<div class=\\"ta-checkbox-group vertical\\"></div>"`;

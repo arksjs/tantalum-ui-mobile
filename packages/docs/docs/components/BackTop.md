@@ -9,7 +9,7 @@
 ## Import
 
 ```js
-import { AkBackTop } from 'arkui-mobile-vue'
+import { TaBackTop } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -45,9 +45,9 @@ import { AkBackTop } from 'arkui-mobile-vue'
 ### 点击区域（#default）
 
 ```vue
-<ak-back-top>
+<ta-back-top>
   回顶部
-</ak-back-top>
+</ta-back-top>
 ```
 
 #### default 的缺省内容

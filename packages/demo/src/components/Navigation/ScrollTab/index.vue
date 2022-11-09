@@ -1,7 +1,7 @@
 <template>
-  <ak-group title="基础用法">
+  <ta-group title="基础用法">
     <!-- <div class="exp-scrollTab-header">占位头部</div> -->
-    <ak-scroll-tab
+    <ta-scroll-tab
       ref="scrollTabRef"
       class="exp-scrollTab-boxs"
       v-model="value"
@@ -9,44 +9,44 @@
       :stickyOffsetBottom="offsetBottom"
       @change="onChange"
     >
-      <ak-scroll-tab-item name="Dust Red">
+      <ta-scroll-tab-item name="Dust Red">
         <div class="exp-scrollTab-box box-1"></div>
-      </ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Volcano">
+      </ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Volcano">
         <div class="exp-scrollTab-box box-2"></div
-      ></ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Sunset Orange">
+      ></ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Sunset Orange">
         <div class="exp-scrollTab-box box-3"></div
-      ></ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Calendula Gold">
+      ></ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Calendula Gold">
         <div class="exp-scrollTab-box box-4"></div
-      ></ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Sunrise Yellow">
+      ></ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Sunrise Yellow">
         <div class="exp-scrollTab-box box-5"></div
-      ></ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Lime">
+      ></ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Lime">
         <div class="exp-scrollTab-box box-6"></div
-      ></ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Polar Green">
+      ></ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Polar Green">
         <div class="exp-scrollTab-box box-7"></div
-      ></ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Cyan">
+      ></ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Cyan">
         <div class="exp-scrollTab-box box-8"></div
-      ></ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Daybreak Blue">
+      ></ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Daybreak Blue">
         <div class="exp-scrollTab-box box-9"></div
-      ></ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Geek Blue">
+      ></ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Geek Blue">
         <div class="exp-scrollTab-box box-10"></div
-      ></ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Golden Purple">
+      ></ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Golden Purple">
         <div class="exp-scrollTab-box box-11"></div
-      ></ak-scroll-tab-item>
-      <ak-scroll-tab-item name="Magenta">
+      ></ta-scroll-tab-item>
+      <ta-scroll-tab-item name="Magenta">
         <div class="exp-scrollTab-box box-12"></div
-      ></ak-scroll-tab-item>
-    </ak-scroll-tab>
-  </ak-group>
+      ></ta-scroll-tab-item>
+    </ta-scroll-tab>
+  </ta-group>
 </template>
 
 <script lang="ts">

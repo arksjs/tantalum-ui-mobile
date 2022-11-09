@@ -1,14 +1,14 @@
 @use 'sass:math';
 @import '../style/var.scss';
 
-.ak-badge {
+.ta-badge {
   display: inline-block;
   position: relative;
   vertical-align: top;
 
   &_badge {
-    --ak-color: #{$danger-color};
-    --ak-front-color: #fff;
+    --ta-color: #{$danger-color};
+    --ta-front-color: #fff;
 
     position: absolute;
     height: 17px;
@@ -22,14 +22,14 @@
     box-sizing: border-box;
     font-size: 11px;
     font-weight: 400;
-    color: var(--ak-front-color);
-    background-color: var(--ak-color);
+    color: var(--ta-front-color);
+    background-color: var(--ta-color);
     transform: scale(0);
     border: 1px solid $white-color;
 
-    .ak-icon {
-      --ak-icon-size: 11px;
-      --ak-icon-color: var(--ak-front-color);
+    .ta-icon {
+      --ta-icon-size: 11px;
+      --ta-icon-color: var(--ta-front-color);
 
       margin: 0 -4px;
     }
@@ -51,7 +51,7 @@
   }
 
   &.animated {
-    .ak-badge {
+    .ta-badge {
       &_badge {
         transition: transform 0.2s;
       }

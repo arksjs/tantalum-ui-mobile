@@ -7,13 +7,13 @@ import { markRaw } from 'vue'
 
 const CollapseTmpl = {
   template: `
-  <ak-collapse v-model="modelValue" :accordion="accordion">
-    <ak-collapse-item v-for="(item, index) in list" :key="item.title" :name="item.title" :title="item.title">
+  <ta-collapse v-model="modelValue" :accordion="accordion">
+    <ta-collapse-item v-for="(item, index) in list" :key="item.title" :name="item.title" :title="item.title">
       {{ item.content }}
-    </ak-collapse-item>
-  </ak-collapse>
+    </ta-collapse-item>
+  </ta-collapse>
     `,
-  components: { 'ak-collapse': Collapse, 'ak-collapse-item': CollapseItem },
+  components: { 'ta-collapse': Collapse, 'ta-collapse-item': CollapseItem },
   props: {
     accordion: Boolean
   },
@@ -38,15 +38,15 @@ describe('Collapse', () => {
     expect(wrapper.vm.modelValue).toEqual([])
 
     // click item 1
-    await wrapper.find('.ak-collapse-item_header').trigger('click')
+    await wrapper.find('.ta-collapse-item_header').trigger('click')
     expect(wrapper.vm.modelValue).toEqual(['title 1'])
 
     // click item 2
-    await wrapper.findAll('.ak-collapse-item_header')[1].trigger('click')
+    await wrapper.findAll('.ta-collapse-item_header')[1].trigger('click')
     expect(wrapper.vm.modelValue).toEqual(['title 1', 'title 2'])
 
     // click item 1
-    await wrapper.find('.ak-collapse-item_header').trigger('click')
+    await wrapper.find('.ta-collapse-item_header').trigger('click')
     expect(wrapper.vm.modelValue).toEqual(['title 2'])
   })
 
@@ -59,15 +59,15 @@ describe('Collapse', () => {
     expect(wrapper.vm.modelValue).toEqual([])
 
     // click item 1
-    await wrapper.find('.ak-collapse-item_header').trigger('click')
+    await wrapper.find('.ta-collapse-item_header').trigger('click')
     expect(wrapper.vm.modelValue).toEqual(['title 1'])
 
     // click item 2
-    await wrapper.findAll('.ak-collapse-item_header')[1].trigger('click')
+    await wrapper.findAll('.ta-collapse-item_header')[1].trigger('click')
     expect(wrapper.vm.modelValue).toEqual(['title 2'])
 
     // click item 1
-    await wrapper.find('.ak-collapse-item_header').trigger('click')
+    await wrapper.find('.ta-collapse-item_header').trigger('click')
     expect(wrapper.vm.modelValue).toEqual(['title 1'])
   })
 })
@@ -94,7 +94,7 @@ describe('CollapseItem', () => {
       }
     })
 
-    expect(wrapper.find('.ak-cell_label').text()).toBe(title)
+    expect(wrapper.find('.ta-cell_label').text()).toBe(title)
   })
 
   test('icon', () => {
@@ -116,7 +116,7 @@ describe('CollapseItem', () => {
       }
     })
 
-    expect(wrapper.find('.ak-collapse-item_header').classes()).toContain(
+    expect(wrapper.find('.ta-collapse-item_header').classes()).toContain(
       'disabled'
     )
   })

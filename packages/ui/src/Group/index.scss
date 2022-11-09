@@ -1,6 +1,6 @@
 @import '../style/var.scss';
 
-.ak-group {
+.ta-group {
   overflow: hidden;
   margin-bottom: 12px;
 
@@ -31,7 +31,7 @@
   &.strong-header {
     background-color: $white-color;
 
-    .ak-group {
+    .ta-group {
       &_header {
         height: 48px;
         background-color: $white-color;

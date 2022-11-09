@@ -1,9 +1,9 @@
-import { AkFormItem } from '@/index'
+import { TaFormItem } from '@/index'
 import { connect, mapProps } from '@formily/vue'
 import { isVoidField } from '@formily/core'
 
 export default connect(
-  AkFormItem,
+  TaFormItem,
   mapProps(
     { validateStatus: true, title: 'label', required: true },
     (props: any, field) => {
