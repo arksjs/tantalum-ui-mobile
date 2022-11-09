@@ -44,8 +44,7 @@ module.exports = {
       },
       {
         text: 'Playground',
-        link: '/playground/',
-        target: '_blank'
+        link: 'https://arksjs.github.io/tantalum-ui-mobile/playground/'
       }
     ],
     sidebar: {
@@ -54,11 +53,14 @@ module.exports = {
       '/components/': getComponentsSideBar(),
       '/': getGuideSideBar()
     },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/arksjs/tantalum-ui-mobile' }
+    ],
     logo: '/logo.svg',
     algolia: {
       appId: '3QN7BVCVD6',
       apiKey: '59e6f0e7edc17769c57fec593899939a',
-      indexName: 'tantalum-ui-mobile'
+      indexName: 'arkui-mobile-vue'
     }
   },
   markdown: {
