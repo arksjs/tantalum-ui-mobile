@@ -1,6 +1,7 @@
-const path = require('path')
+import path from 'path'
+import { defineConfig } from 'vitepress'
 
-module.exports = {
+export default defineConfig({
   title: 'Tantalum UI',
   description: '基于 Vue3 移动端组件库',
   base: '/tantalum-ui-mobile/',
@@ -25,7 +26,11 @@ module.exports = {
     ]
   ],
   themeConfig: {
-    docsBranch: 'main',
+    editLink: {
+      pattern:
+        'https://github.com/arksjs/tantalum-ui-mobile/edit/main/packages/docs/docs/:path',
+      text: 'Edit this page on GitHub'
+    },
     nav: [
       {
         text: '指南',
@@ -81,7 +86,7 @@ module.exports = {
       }
     }
   }
-}
+})
 
 function getGuideSideBar() {
   return [
