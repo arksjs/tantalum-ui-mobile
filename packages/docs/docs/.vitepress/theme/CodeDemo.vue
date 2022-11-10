@@ -1,13 +1,10 @@
 <!--.vitepress/theme/CodeDemo.vue-->
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps({
-  name: {
-    type: String,
-    default: ''
-  }
-})
+const props = defineProps<{
+  name?: string
+}>()
 
 // const demoLink = computed(() => `http://localhost:3001/#/${props.name}?docs=1`)
 const demoLink = computed(
