@@ -68,7 +68,9 @@ export default defineComponent({
   },
   emits: { ...popupEmits } as PropsToEmits<DrawerEmits>,
   setup(props, ctx) {
-    const popup = usePopup(props, ctx, {})
+    const popup = usePopup(props, ctx, {
+      initialFocusFixed: true
+    })
     const { safeAreaInsets } = useSafeAreaInsets(
       toRef(props, 'enableSafeAreaInsets')
     )
@@ -92,7 +94,10 @@ export default defineComponent({
 
     watch(
       () => props.showMask,
-      val => popup.setEnableBlurCancel(!val),
+      val => {
+        popup.setEnableBlurCancel(!val)
+        popup.setForbidScroll(!!val)
+      },
       { immediate: true }
     )
 

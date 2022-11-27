@@ -272,6 +272,10 @@ export function usePopupExtend<T>(ctx: SetupContext<any>) {
     customCancel('cancelClick')
   }
 
+  function onCloseClick() {
+    customCancel('closeClick', true)
+  }
+
   const onCancel: OnCancel = res => {
     emitHook('cancel', res)
   }
@@ -294,6 +298,7 @@ export function usePopupExtend<T>(ctx: SetupContext<any>) {
     onUpdateVisible,
     onVisibleStateChange,
     onCancelClick,
+    onCloseClick,
     onCancel,
     onConfirm
   }
