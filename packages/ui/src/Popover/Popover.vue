@@ -1,6 +1,10 @@
 <template>
   <teleport to="body">
-    <div :class="popoverClasses" :style="popupStyles" v-bind="$attrs">
+    <div
+      :class="['ta-popover', popupClasses]"
+      :style="popupStyles"
+      v-bind="$attrs"
+    >
       <div class="ta-mask" @click="onMaskClick"></div>
       <div class="ta-popover_inner" ref="innerEl" :style="innerStyles">
         <i class="ta-popover_arrow" :style="arrowStyles"></i>
@@ -112,18 +116,11 @@ export default defineComponent({
       })
     })
 
-    const popoverClasses = computed(() => [
-      popup.popupClasses.value,
-      { 'no--mask': !props.showMask },
-      'ta-popover'
-    ])
-
     return {
       ...popup,
       innerEl,
       arrowStyles,
-      innerStyles,
-      popoverClasses
+      innerStyles
     }
   }
 })

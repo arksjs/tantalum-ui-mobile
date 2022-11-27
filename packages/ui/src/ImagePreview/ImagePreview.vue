@@ -1,70 +1,73 @@
 <template>
-  <teleport to="body">
-    <div
-      class="ta-preview-image"
-      :class="popupClasses"
-      :style="popupStyles"
-      v-bind="$attrs"
+  <Modal
+    class="ta-image-preview"
+    :visible="visible"
+    :showClose="false"
+    :maskClosable="maskClosable"
+    @visibleStateChange="onVisibleStateChange"
+    @confirm="onConfirm"
+    @cancel="onCancel"
+    @update:visible="onUpdateVisible"
+    ref="popupRef"
+  >
+    <Swiper
+      v-if="swiperInit"
+      v-model:activeIndex="activeIndex"
+      :navigationButtons="navigationButtons"
+      @click="onPreviewClick"
+      @activeIndexChange="onSwiperChange"
+      @animated="onSwiperAnimated"
     >
-      <div class="ta-mask"></div>
-      <Swiper
-        v-if="swiperInit"
-        v-model:activeIndex="activeIndex"
-        :navigationButtons="navigationButtons"
-        @click="onPreviewClick"
-        @activeIndexChange="onSwiperChange"
-        @animated="onSwiperAnimated"
-      >
-        <SwiperItem v-for="(item, index) in images" :key="index">
-          <div class="ta-preview-image_image-container">
-            <TaImage
-              :src="item.src"
-              :mode="'aspectFit'"
-              @load="onImageLoad"
-              :class="{ animated: zoomAnimated }"
-              :style="getImageStyles(item)"
-              @touchstart="onImageTouchStart($event, item)"
-              @touchmove="onImageTouchMove($event, item)"
-              @touchend="onImageTouchEnd($event, item)"
-            />
-          </div>
-        </SwiperItem>
-      </Swiper>
-      <div class="ta-preview-image_pagination">
-        {{ activeIndex + 1 }} / {{ urls.length }}
-      </div>
-      <div class="ta-preview-image_close">
-        <slot name="close" :activeIndex="activeIndex">
-          <TaButton
-            v-if="showClose"
-            @click.stop="onCloseClick"
-            :icon="CloseOutlined"
-            size="large"
-            pattern="borderless"
-            shape="square"
-            :ghost="true"
-          ></TaButton>
-        </slot>
-      </div>
+      <SwiperItem v-for="(item, index) in images" :key="index">
+        <div class="ta-image-preview_image-container">
+          <TaImage
+            :src="item.src"
+            :mode="'aspectFit'"
+            @load="onImageLoad"
+            :class="{ animated: zoomAnimated }"
+            :style="getImageStyles(item)"
+            @touchstart="onImageTouchStart($event, item)"
+            @touchmove="onImageTouchMove($event, item)"
+            @touchend="onImageTouchEnd($event, item)"
+          />
+        </div>
+      </SwiperItem>
+    </Swiper>
+    <div class="ta-image-preview_pagination">
+      {{ activeIndex + 1 }} / {{ urls.length }}
     </div>
-  </teleport>
+    <div class="ta-image-preview_close">
+      <slot name="close" :activeIndex="activeIndex">
+        <TaButton
+          v-if="showClose"
+          @click.stop="onCloseClick"
+          :icon="CloseOutlined"
+          size="large"
+          pattern="borderless"
+          shape="square"
+          :ghost="true"
+        ></TaButton>
+      </slot>
+    </div>
+  </Modal>
 </template>
 
 <script lang="ts">
 import { defineComponent, reactive, ref, watch } from 'vue'
 import type { PropType } from 'vue'
+import { Modal } from '../Modal'
 import { Button as TaButton } from '../Button'
 import { Image as TaImage } from '../Image'
 import { Swiper, SwiperItem } from '../Swiper'
 import { isStringArray, rangeNumber, isString, isNumber } from '../helpers/util'
-import { usePopup } from '../popup/use-popup'
+import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/popup'
 import type { ImageOnLoad } from '../Image/types'
 import type { SwiperOnActiveIndexChange } from '../Swiper/types'
 import type { ImageObject, DistanceOptions, ImagePreviewEmits } from './types'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { getDistance, mergeLoadedData, getImageStyles } from './util'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits, EmptyObject } from '../helpers/types'
 
 type ImageCoordsImage = {
   width: number
@@ -97,7 +100,7 @@ interface ImageCoords {
 
 export default defineComponent({
   name: 'ta-image-preview',
-  components: { TaButton, Swiper, SwiperItem, TaImage },
+  components: { TaButton, Swiper, SwiperItem, TaImage, Modal },
   props: {
     ...popupProps,
     urls: {
@@ -135,7 +138,7 @@ export default defineComponent({
     const zoomAnimated = ref(false)
     const swiperInit = ref(false)
 
-    const popup = usePopup(props, ctx, {})
+    const popup = usePopupExtend<EmptyObject>(ctx)
 
     let coords: ImageCoords | null
 
@@ -366,7 +369,7 @@ export default defineComponent({
     }
 
     function onPreviewClick() {
-      popup.customCancel('previewClick')
+      props.maskClosable && popup.customCancel('previewClick')
     }
 
     const onImageLoad: ImageOnLoad = res => {

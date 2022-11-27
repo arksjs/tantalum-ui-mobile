@@ -39,7 +39,9 @@ function useApiHook(emit: any) {
   const apis = inject<PopupBridge>('taApis', {})
 
   const emitHook: UseEmitFn<PropsToEmits<PopupEmits>> = (event, res) => {
-    apis.in ? apis.in(event, res) : emit(event, res)
+    // 增加api的钩子
+    apis.in && apis.in(event, res)
+    emit(event, res)
   }
 
   function cancelHook(customCancel: PopupCustomCancel) {
@@ -53,7 +55,9 @@ function useApiHook(emit: any) {
 }
 
 export function usePopup(
-  props: PopupProps,
+  props: PopupProps & {
+    showMask?: boolean
+  },
   ctx: SetupContext<any>,
   useOptions: UseOptions
 ) {
@@ -70,16 +74,16 @@ export function usePopup(
   let isHiding = false
   let visibleTimer: number
 
-  let forbidScroll = !(useOptions.initialForbidScroll === false)
   let enableBlurCancel = !!useOptions.initialEnableBlurCancel
   const focusFixed = !!useOptions.initialFocusFixed
 
-  function setForbidScroll(isForbid: boolean) {
-    forbidScroll = isForbid
-  }
-
   function setEnableBlurCancel(enable: boolean) {
     enableBlurCancel = enable
+  }
+
+  function isShowMask() {
+    // 如果有蒙层，则禁止滚动
+    return !(props.showMask === false)
   }
 
   function doShow(callback: () => void) {
@@ -92,7 +96,7 @@ export function usePopup(
     clearTimeout(visibleTimer)
 
     // 如果禁止滚动
-    if (forbidScroll) {
+    if (isShowMask()) {
       addClassName(document.body, 'ta-overflow-hidden')
     } else if (!focusFixed) {
       position.value = 'absolute'
@@ -222,7 +226,10 @@ export function usePopup(
     getPopupStyles(zIndex.value, absTop.value, isShow.value)
   )
 
-  const popupClasses = computed(() => ['ta-popup', { visible: visible2.value }])
+  const popupClasses = computed(() => [
+    'ta-popup',
+    { visible: visible2.value, dismask: props.showMask === false }
+  ])
 
   watch(
     () => props.visible,
@@ -247,14 +254,13 @@ export function usePopup(
     onMaskClick,
     onCloseClick,
     onCancelClick,
-    setEnableBlurCancel,
-    setForbidScroll
+    setEnableBlurCancel
   }
 }
 
-export function usePopupExtend<T>(ctx: SetupContext<any>) {
+export function usePopupExtend<T>({ emit }: SetupContext<any>) {
   const popupRef = shallowRef<PopupRef | null>(null)
-  const { emitHook, cancelHook } = useApiHook(ctx.emit)
+  const isShow = ref(false)
 
   const customCancel: PopupCustomCancel = (key, focus = false) => {
     popupRef.value?.customCancel(key, focus)
@@ -265,7 +271,18 @@ export function usePopupExtend<T>(ctx: SetupContext<any>) {
   }
 
   const onVisibleStateChange: OnVisibleStateChange = e => {
-    emitHook('visibleStateChange', e)
+    switch (e.state) {
+      case 'show':
+        isShow.value = true
+        break
+      case 'hidden':
+        isShow.value = false
+        break
+      default:
+        break
+    }
+
+    emit('visibleStateChange', e)
   }
 
   function onCancelClick() {
@@ -277,21 +294,22 @@ export function usePopupExtend<T>(ctx: SetupContext<any>) {
   }
 
   const onCancel: OnCancel = res => {
-    emitHook('cancel', res)
+    emit('cancel', res)
   }
 
   function onConfirm(res: T) {
-    emitHook('confirm', res)
+    emit('confirm', res)
   }
 
   function onUpdateVisible(value: boolean) {
-    emitHook('update:visible', value)
+    emit('update:visible', value)
   }
 
   // provide('taPopupExtend', true)
-  cancelHook(customCancel)
+  // cancelHook(customCancel)
 
   return {
+    isShow,
     popupRef,
     customCancel,
     customConfirm,

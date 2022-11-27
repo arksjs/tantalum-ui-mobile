@@ -3,11 +3,6 @@ import type { CSSProperties, PlacementType } from '../helpers/types'
 import { getEnumsValue } from '../helpers/validator'
 import type { SafeAreaInsets } from '../hooks/types'
 
-export const getClasses = (showMask?: boolean) => [
-  'ta-drawer',
-  { 'no--mask': !showMask }
-]
-
 export const getInnerStyles = ({
   placement,
   safeAreaInsets

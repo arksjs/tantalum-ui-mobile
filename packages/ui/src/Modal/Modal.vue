@@ -7,9 +7,7 @@
     >
       <div class="ta-mask" @click="onMaskClick"></div>
       <div class="ta-modal_box" :style="boxStyles">
-        <div class="ta-modal_box-inner">
-          <slot></slot>
-        </div>
+        <slot></slot>
         <i v-if="showClose" class="ta-modal_close" @click="onCloseClick">
           <Icon :icon="CloseCircleFilled" />
         </i>
@@ -19,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, watch } from 'vue'
 import { usePopup } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/popup'
 import { Icon } from '../Icon'
@@ -40,11 +38,17 @@ export default defineComponent({
     showClose: {
       type: Boolean,
       default: true
+    },
+    showMask: {
+      type: Boolean,
+      default: true
     }
   },
   emits: { ...popupEmits } as PropsToEmits<ModalEmits>,
   setup(props, ctx) {
-    const popup = usePopup(props, ctx, {})
+    const popup = usePopup(props, ctx, {
+      initialEnableBlurCancel: false
+    })
     const boxStyles = computed(() => getBoxStyles(props.width))
 
     return {

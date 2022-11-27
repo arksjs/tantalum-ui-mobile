@@ -1,6 +1,10 @@
 <template>
   <teleport to="body">
-    <div :class="[popupClasses, classes]" :style="popupStyles" v-bind="$attrs">
+    <div
+      :class="['ta-drawer', popupClasses]"
+      :style="popupStyles"
+      v-bind="$attrs"
+    >
       <div class="ta-mask" @click="onMaskClick"></div>
       <div :class="innerClasses" :style="innerStyles">
         <slot name="header">
@@ -35,7 +39,7 @@ import { createEnumsValidator, getEnumsValue } from '../helpers/validator'
 import { PLACEMENT_TYPES } from '../helpers/constants'
 import type { PlacementType, PropsToEmits } from '../helpers/types'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
-import { getClasses, getInnerClasses, getInnerStyles } from './util'
+import { getInnerClasses, getInnerStyles } from './util'
 import type { DrawerEmits } from './types'
 
 export default defineComponent({
@@ -92,16 +96,6 @@ export default defineComponent({
       }
     }
 
-    watch(
-      () => props.showMask,
-      val => {
-        popup.setEnableBlurCancel(!val)
-        popup.setForbidScroll(!!val)
-      },
-      { immediate: true }
-    )
-
-    const classes = computed(() => getClasses(props.showMask))
     const innerClasses = computed(() =>
       getInnerClasses({
         placement: props.placement,
@@ -111,7 +105,6 @@ export default defineComponent({
 
     return {
       ...popup,
-      classes,
       innerClasses,
       hasHeader,
       innerStyles,
