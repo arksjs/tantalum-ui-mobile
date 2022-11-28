@@ -54,15 +54,23 @@ export default defineComponent({
     const showPos = ref(DEFAULT_POS)
 
     const popup = usePopup(props, ctx, {
-      afterShow() {
-        nextTick(() => {
-          isShow.value = true
-          updatePos('afterShow')
-        })
-      },
-      afterHidden() {
-        showPos.value = cloneData(DEFAULT_POS)
-        isShow.value = false
+      emitCallback(event, res) {
+        if (event === 'visibleStateChange') {
+          switch (res.state) {
+            case 'show':
+              nextTick(() => {
+                isShow.value = true
+                updatePos('show')
+              })
+              break
+            case 'hidden':
+              showPos.value = cloneData(DEFAULT_POS)
+              isShow.value = false
+              break
+            default:
+              break
+          }
+        }
       },
       initialForbidScroll: true,
       initialEnableBlurCancel: false
@@ -91,7 +99,6 @@ export default defineComponent({
     watch(
       () => props.showMask,
       val => {
-        popup.setForbidScroll(!!val)
         popup.setEnableBlurCancel(!val)
       },
       {

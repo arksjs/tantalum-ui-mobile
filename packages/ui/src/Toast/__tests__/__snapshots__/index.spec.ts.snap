@@ -2,7 +2,7 @@
 
 exports[`Toast > snapshot 1`] = `
 "<teleport-stub>
-  <div class=\\"ta-toast ta-popup no--mask\\" style=\\"z-index: 2000; display: none;\\">
+  <div class=\\"ta-toast ta-popup dismask\\" style=\\"z-index: 2000; display: none;\\">
     <div class=\\"ta-toast_box\\">
       <!--v-if-->
       <div class=\\"ta-toast_text\\"></div>

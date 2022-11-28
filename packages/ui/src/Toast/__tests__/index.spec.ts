@@ -79,11 +79,11 @@ describe('Toast', () => {
         stubs: { teleport: true }
       }
     })
-    expect(wrapper.find('.ta-toast').classes('no--mask')).toBeTruthy()
+    expect(wrapper.find('.ta-toast').classes('dismask')).toBeTruthy()
 
     await wrapper.setProps({
       showMask: true
     })
-    expect(wrapper.find('.ta-toast').classes('no--mask')).toBeFalsy()
+    expect(wrapper.find('.ta-toast').classes('dismask')).toBeFalsy()
   })
 })

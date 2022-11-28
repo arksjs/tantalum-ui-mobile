@@ -2,6 +2,28 @@
 @import '../style/mixin.scss';
 
 .ta-toast {
+  &_box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    min-width: 100px;
+    max-width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    opacity: 0;
+    min-height: 48px;
+    padding: 12px 16px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgb(0 0 0 / 90%);
+    @include box-shadow-2;
+
+    color: #fff;
+    transform: translate3d(-50%, -50%, 0) scale(0);
+  }
+
   &_text {
     font-size: 17px;
     line-height: 24px;
@@ -13,9 +35,6 @@
   }
 
   &_icon {
-    --ta-icon-size: 21px;
-    --ta-icon-color: #fff;
-
     margin-right: 8px;
     flex-shrink: 0;
 
@@ -25,18 +44,15 @@
     }
   }
 
-  > .ta-modal_box {
-    width: auto;
-    min-width: 100px;
-    max-width: 70%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 48px;
-    padding: 12px 16px;
-    background-color: rgb(0 0 0 / 90%);
-    @include box-shadow-2;
+  .ta-icon {
+    --ta-icon-size: 21px;
+    --ta-icon-color: #fff;
+  }
 
-    color: #fff;
+  &.visible {
+    .ta-toast_box {
+      opacity: 1;
+      transform: translate3d(-50%, -50%, 0) scale(1);
+    }
   }
 }

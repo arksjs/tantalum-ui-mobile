@@ -65,9 +65,19 @@ export default defineComponent({
     }
 
     const popupHook = usePopup(props, ctx, {
-      afterShow: updatePos,
-      afterHidden() {
-        top.value = -1
+      emitCallback(event, res) {
+        if (event === 'visibleStateChange') {
+          switch (res.state) {
+            case 'show':
+              updatePos()
+              break
+            case 'hidden':
+              top.value = -1
+              break
+            default:
+              break
+          }
+        }
       }
     })
 

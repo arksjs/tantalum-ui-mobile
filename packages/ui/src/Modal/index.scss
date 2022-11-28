@@ -2,24 +2,26 @@
 
 .ta-modal {
   &_box {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    box-sizing: border-box;
-    transform: translate3d(-50%, -50%, 0) scale(0);
-    transition: all 0.2s;
-    opacity: 0;
-    background-color: $white-color;
-    border-radius: 4px;
-    min-height: 100px;
     width: calc(100% - 96px);
     max-width: 480px;
+    box-sizing: border-box;
+    transform: scale(0);
+    transition: all 0.2s;
+    opacity: 0;
+    position: relative;
+  }
+
+  &_box-inner {
+    min-height: 100px;
+    border-radius: 4px;
+    background-color: $white-color;
+    overflow: hidden;
   }
 
   &.visible {
     .ta-modal_box {
       opacity: 1;
-      transform: translate3d(-50%, -50%, 0) scale(1);
+      transform: scale(1);
     }
   }
 

@@ -15,33 +15,27 @@ import type {
   PopupEmits,
   PopupRef
 } from './types'
-import type { Noop, PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers/types'
 import { useDocumentBlur } from '../hooks/use-event'
 import { getNewZIndex, getPopupStyles } from './util'
 
-type LifeName =
-  | 'afterConfirm'
-  | 'afterCancel'
-  | 'afterShow'
-  | 'afterShown'
-  | 'afterHide'
-  | 'afterHidden'
+type EmitCallback = (event: keyof PropsToEmits<PopupEmits>, res: any) => void
 
-type UseOptions = Partial<
-  Record<LifeName, Noop> & {
-    initialForbidScroll: boolean // 初始是否禁用滚动条
-    initialFocusFixed: boolean // 初始话固定不跟随，（在不禁用滚动条的场景下使用）
-    initialEnableBlurCancel: boolean
-  }
->
+type UseOptions = Partial<{
+  initialForbidScroll: boolean // 初始是否禁用滚动条
+  initialFocusFixed: boolean // 初始话固定不跟随，（在不禁用滚动条的场景下使用）
+  initialEnableBlurCancel: boolean
+  emitCallback: EmitCallback
+}>
 
-function useApiHook(emit: any) {
+function useEmitHook(emit: any, emitCallback?: EmitCallback) {
   const apis = inject<PopupBridge>('taApis', {})
 
   const emitHook: UseEmitFn<PropsToEmits<PopupEmits>> = (event, res) => {
     // 增加api的钩子
-    apis.in && apis.in(event, res)
     emit(event, res)
+    emitCallback && emitCallback(event, res)
+    apis.in && apis.in(event, res)
   }
 
   function cancelHook(customCancel: PopupCustomCancel) {
@@ -61,7 +55,10 @@ export function usePopup(
   ctx: SetupContext<any>,
   useOptions: UseOptions
 ) {
-  const { emitHook, cancelHook } = useApiHook(ctx.emit)
+  const { emitHook, cancelHook } = useEmitHook(
+    ctx.emit,
+    useOptions.emitCallback
+  )
   // const isParent = inject<boolean>('taPopupExtend', false)
 
   const isShow = ref(false)
@@ -86,15 +83,13 @@ export function usePopup(
     return !(props.showMask === false)
   }
 
-  function doShow(callback: () => void) {
+  function show() {
     if (isShowing || isShow.value) {
-      return false
+      return
     }
+
     isHiding = false
     isShowing = true
-
-    clearTimeout(visibleTimer)
-
     // 如果禁止滚动
     if (isShowMask()) {
       addClassName(document.body, 'ta-overflow-hidden')
@@ -102,16 +97,16 @@ export function usePopup(
       position.value = 'absolute'
       absTop.value = getScrollTop()
     }
-
     zIndex.value = getNewZIndex()
     isShow.value = true
 
+    clearTimeout(visibleTimer)
     visibleTimer = window.setTimeout(() => {
       visible2.value = true
 
       visibleTimer = window.setTimeout(() => {
         isShowing = false
-        callback()
+        emitVisibleState('shown')
       }, 210)
     }, 17)
 
@@ -119,24 +114,14 @@ export function usePopup(
       emitHook('update:visible', true)
     }
 
-    return true
+    emitVisibleState('show')
   }
 
-  function show() {
-    const isSuccess = doShow(() => {
-      emitVisibleState('shown')
-    })
-
-    if (isSuccess) {
-      emitVisibleState('show')
-      afterCall('afterShow')
-    }
-  }
-
-  function _doHide(callback?: () => void) {
+  function hide() {
     if (isHiding || !isShow.value) {
-      return false
+      return
     }
+
     isHiding = true
     isShowing = false
     removeClassName(document.body, 'ta-overflow-hidden')
@@ -149,32 +134,14 @@ export function usePopup(
 
       position.value = null
       absTop.value = null
-      callback && typeof callback === 'function' && callback()
+      emitVisibleState('hidden')
     }, 210)
 
     if (props.visible) {
       emitHook('update:visible', false)
     }
 
-    return true
-  }
-
-  function hide(lifeName?: LifeName) {
-    const isSuccess = _doHide(() => {
-      emitVisibleState('hidden')
-      afterCall('afterHidden')
-    })
-
-    if (isSuccess) {
-      lifeName && afterCall(lifeName)
-      emitVisibleState('hide')
-    }
-  }
-
-  function afterCall(lifeName: LifeName) {
-    if (typeof useOptions[lifeName] === 'function') {
-      ;(useOptions[lifeName] as () => void)()
-    }
+    emitVisibleState('hide')
   }
 
   function emitVisibleState(state: VisibleState) {
@@ -203,12 +170,12 @@ export function usePopup(
       return
     }
     emitHook('cancel', { source: key })
-    hide('afterCancel')
+    hide()
   }
 
   const customConfirm: PopupCustomConfirm = detail => {
     emitHook('confirm', detail)
-    hide('afterConfirm')
+    hide()
   }
 
   useDocumentBlur(() => {
@@ -304,9 +271,6 @@ export function usePopupExtend<T>({ emit }: SetupContext<any>) {
   function onUpdateVisible(value: boolean) {
     emit('update:visible', value)
   }
-
-  // provide('taPopupExtend', true)
-  // cancelHook(customCancel)
 
   return {
     isShow,

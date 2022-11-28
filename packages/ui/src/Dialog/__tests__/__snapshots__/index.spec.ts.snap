@@ -1,3 +1,3 @@
 // Vitest Snapshot v1
 
-exports[`Dialog > snapshot 1`] = `"<modal-stub visible=\\"false\\" maskclosable=\\"false\\" showclose=\\"false\\" class=\\"ta-dialog\\"></modal-stub>"`;
+exports[`Dialog > snapshot 1`] = `"<modal-stub visible=\\"false\\" maskclosable=\\"false\\" showclose=\\"false\\" showmask=\\"true\\" class=\\"ta-dialog\\"></modal-stub>"`;

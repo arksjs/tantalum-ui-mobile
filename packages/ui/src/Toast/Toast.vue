@@ -1,45 +1,42 @@
 <template>
-  <Modal
-    class="ta-toast"
-    :visible="visible"
-    :showClose="false"
-    :showMask="showMask"
-    :maskClosable="maskClosable"
-    @visibleStateChange="onVisibleStateChange"
-    @confirm="onConfirm"
-    @cancel="onCancel"
-    @update:visible="onUpdateVisible"
-    ref="popupRef"
-  >
-    <ActivityIndicator
-      class="ta-toast_icon"
-      :size="21"
-      color="#ffffff"
-      v-if="type === 'loading'"
-    />
-    <Icon
-      v-else-if="type === 'success'"
-      class="ta-toast_icon"
-      :icon="CheckOutlined"
-    />
-    <Icon
-      v-else-if="type === 'fail'"
-      class="ta-toast_icon"
-      :icon="CloseOutlined"
-    />
-    <Icon v-else-if="icon" class="ta-toast_icon" :icon="icon" />
-    <div class="ta-toast_text">
-      {{ title }}
+  <teleport to="body">
+    <div
+      :class="['ta-toast', popupClasses]"
+      :style="popupStyles"
+      v-bind="$attrs"
+    >
+      <div class="ta-toast_box">
+        <ActivityIndicator
+          class="ta-toast_icon"
+          :size="21"
+          color="#ffffff"
+          v-if="type === 'loading'"
+        />
+        <Icon
+          v-else-if="type === 'success'"
+          class="ta-toast_icon"
+          :icon="CheckOutlined"
+        />
+        <Icon
+          v-else-if="type === 'fail'"
+          class="ta-toast_icon"
+          :icon="CloseOutlined"
+        />
+        <Icon v-else-if="icon" class="ta-toast_icon" :icon="icon" />
+        <div class="ta-toast_text">
+          {{ title }}
+        </div>
+      </div>
     </div>
-  </Modal>
+  </teleport>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRef, type PropType } from 'vue'
-import { Modal } from '../Modal'
+import { defineComponent, toRef } from 'vue'
+import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
-import { usePopupExtend } from '../popup/use-popup'
+import { usePopup } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/popup'
 import { createEnumsValidator, iconValidator } from '../helpers/validator'
 import type { StateType, ToastEmits } from './types'
@@ -48,12 +45,11 @@ import CloseOutlined from '../Icon/icons/CloseOutlined'
 import type { IconData } from '../Icon/types'
 import { STATE_TYPES } from './util'
 import { useDelay } from '../hooks/use-delay'
-import type { EmptyObject, PropsToEmits } from '../helpers/types'
-import { OnCancel, OnVisibleStateChange } from '../popup/types'
+import type { PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
   name: 'ta-toast',
-  components: { Icon, ActivityIndicator, Modal },
+  components: { Icon, ActivityIndicator },
   props: {
     ...popupProps,
     title: {
@@ -73,10 +69,6 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    maskClosable: {
-      type: Boolean,
-      default: false
-    },
     // 展示时长(ms)，值为 0 时，notify 不会消失
     duration: {
       type: Number,
@@ -89,27 +81,22 @@ export default defineComponent({
       popup.customCancel('auto', true)
     }, toRef(props, 'duration'))
 
-    const popup = usePopupExtend<EmptyObject>(ctx)
-
-    const onVisibleStateChange: OnVisibleStateChange = e => {
-      if (e.state === 'show') {
-        addDelayTask()
+    const popup = usePopup(props, ctx, {
+      initialForbidScroll: false,
+      initialEnableBlurCancel: false,
+      emitCallback(event, res) {
+        if (event === 'cancel') {
+          removeDelayTask()
+        } else if (event === 'visibleStateChange' && res.state === 'show') {
+          addDelayTask()
+        }
       }
-      popup.onVisibleStateChange(e)
-    }
-
-    const onCancel: OnCancel = res => {
-      removeDelayTask()
-
-      popup.onCancel(res)
-    }
+    })
 
     return {
       ...popup,
       CheckOutlined,
-      CloseOutlined,
-      onVisibleStateChange,
-      onCancel
+      CloseOutlined
     }
   }
 })
