@@ -11,7 +11,7 @@ import {
   isSameArray,
   isString,
   isStringArray,
-  stringOrStringArrayValidator,
+  isStringOrStringArray,
   type PropsToEmits
 } from '../helpers'
 import { useGroup } from '../hooks'
@@ -22,7 +22,7 @@ export default defineComponent({
   props: {
     modelValue: {
       type: [String, Array] as PropType<string | string[]>,
-      validator: stringOrStringArrayValidator,
+      validator: isStringOrStringArray,
       default: () => [] as string[]
     },
     accordion: {

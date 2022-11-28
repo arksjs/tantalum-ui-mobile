@@ -84,6 +84,7 @@ import { Tag } from '../Tag'
 import {
   isString,
   isStringArray,
+  isStringOrStringArray,
   emitEventValidator,
   type VoidFnToBooleanFn,
   type PropsToEmits
@@ -133,7 +134,7 @@ export default defineComponent({
     },
     placeholders: {
       type: [String, Array] as PropType<Placeholders>,
-      validator: (val: Placeholders) => isString(val) || isStringArray(val),
+      validator: isStringOrStringArray,
       default: () => [] as string[]
     },
     placeholderInterval: {

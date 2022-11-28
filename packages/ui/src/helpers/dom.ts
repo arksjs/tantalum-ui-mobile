@@ -1,4 +1,4 @@
-import { camelCase2KebabCase, isNumber, objectForEach } from './util'
+import { camelCase2KebabCase, isNumber, isString, objectForEach } from './util'
 import type { CSSProperties } from './types'
 
 export function appendToBody($el: Element) {
@@ -93,7 +93,7 @@ export function getRelativeOffset(
 export function getSizeValue(size: unknown, defaultValue = 0) {
   if (isNumber(size)) {
     return size as number
-  } else if (typeof size === 'string') {
+  } else if (isString(size)) {
     const matches = size.match(/^([\d.]+)((px)|(vw)|(vh)|)$/)
 
     if (matches) {
@@ -123,7 +123,7 @@ export function querySelector(selector: unknown) {
 
   if (selector instanceof HTMLElement) {
     $el = selector
-  } else if (typeof selector === 'string' && selector.trim() !== '') {
+  } else if (isString(selector) && selector.trim() !== '') {
     $el = document.querySelector(selector)
   } else if (selector === document) {
     $el = document.documentElement
@@ -156,7 +156,7 @@ export function scrollTo(
     {
       behavior: animated ? 'smooth' : 'auto'
     },
-    typeof scrollNumber === 'number'
+    isNumber(scrollNumber)
       ? {
           top: scrollNumber,
           left: 0

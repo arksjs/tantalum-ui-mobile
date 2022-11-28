@@ -164,6 +164,17 @@ export const isStringArray = createArrayValidator(
 ) as (object: unknown) => object is string[]
 
 /**
+ * 是否string或string[]
+ * @param object 值
+ * @returns boolean
+ */
+export function isStringOrStringArray(
+  object: unknown
+): object is string | string[] {
+  return !!(isStringArray(object) || isString(object))
+}
+
+/**
  * string/string[]统一转为string[]
  * @param object 值
  * @returns string[]

@@ -50,9 +50,8 @@ import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
 import {
   stringMix2StringArray,
-  isStringArray,
-  isString,
-  type PropsToEmits
+  type PropsToEmits,
+  isStringOrStringArray
 } from '../helpers'
 import { useTouch, useScrollTo } from '../hooks'
 import { useLocale } from '../ConfigProvider/context'
@@ -132,8 +131,7 @@ export default defineComponent({
     // 下拉刷新方向
     enablePullDirections: {
       type: [String, Array] as PropType<PullDirection | PullDirection[]>,
-      validator: (val: PullDirection | PullDirection[]) =>
-        isString(val) || isStringArray(val),
+      validator: isStringOrStringArray,
       default: null
     },
     // 下拉刷新阈值
