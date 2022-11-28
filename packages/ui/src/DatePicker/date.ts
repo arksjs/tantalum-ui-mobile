@@ -1,8 +1,7 @@
 import type { ColRow } from '../Picker/types'
 import type { SelectorValue } from '../SelectorField/types'
 import type { ColName, Mode, RowsParser } from './types'
-import type { Dayjs } from '../helpers/types'
-import dayjs from '../helpers/day'
+import { dayjs, type Dayjs } from '../helpers'
 
 export const MODE_NAMES: Mode[] = [
   'date',

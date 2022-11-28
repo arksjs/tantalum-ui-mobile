@@ -1,4 +1,4 @@
-import { getNumber } from '../helpers/util'
+import { getNumber } from '../helpers'
 import type { LoadingIconProps } from './types'
 
 export const DEFAULT_SIZE = 100

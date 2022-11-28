@@ -21,19 +21,19 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import {
   createEnumsValidator,
   emitClickValidator,
-  iconValidator
-} from '../helpers/validator'
+  iconValidator,
+  type OnClick,
+  type PropsToEmits
+} from '../helpers'
 import type { ArrowDirection, CellEmits } from './types'
 import RightOutlined from '../Icon/icons/RightOutlined'
 import type { IconData } from '../Icon/types'
 import { getCellArrowClasses, getCellClasses, LINK_ICON_NAMES } from './util'
-import type { OnClick, PropsToEmits } from '../helpers/types'
 
 export default defineComponent({
   name: 'ta-cell',

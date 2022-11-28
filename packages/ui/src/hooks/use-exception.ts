@@ -1,6 +1,5 @@
 import { getCurrentInstance, onMounted } from 'vue'
-import { capitalize, kebabCase2CamelCase } from '../helpers/util'
-import Exception from '../helpers/exception'
+import { capitalize, kebabCase2CamelCase, Exception } from '../helpers'
 
 function getComponentName(name: string) {
   return capitalize(kebabCase2CamelCase(name).replace(/^ta/i, ''))

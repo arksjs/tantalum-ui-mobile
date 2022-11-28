@@ -29,7 +29,7 @@ import { usePicker } from '../Picker/use-picker'
 import { commonProps } from './props'
 import { useHandlers } from '../DatePicker/use-date-picker'
 import type { DatePickerEmits } from './types'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers'
 
 export default defineComponent({
   name: 'ta-date-picker',

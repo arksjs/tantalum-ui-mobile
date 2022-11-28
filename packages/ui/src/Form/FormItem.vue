@@ -21,9 +21,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { PropType } from 'vue'
-import { isStringArray } from '../helpers/util'
+import { computed, defineComponent, type PropType } from 'vue'
+import { isString, isStringArray } from '../helpers'
 
 export default defineComponent({
   name: 'ta-form-item',
@@ -37,8 +36,7 @@ export default defineComponent({
     },
     error: {
       type: [String, Array] as PropType<string | string[]>,
-      validator: (val: string | string[]) =>
-        typeof val === 'string' || isStringArray(val)
+      validator: (val: string | string[]) => isString(val) || isStringArray(val)
     },
     validateStatus: {
       type: String

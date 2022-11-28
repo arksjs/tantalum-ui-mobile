@@ -28,18 +28,20 @@ import {
   onBeforeUnmount,
   ref,
   watch,
-  shallowRef
+  shallowRef,
+  type PropType
 } from 'vue'
-import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import {
   colorValidator,
   createEnumsValidator,
   emitClickValidator,
-  iconValidator
-} from '../helpers/validator'
-import type { OnClick, PropsToEmits, StateType } from '../helpers/types'
-import { STATE_TYPES } from '../helpers/constants'
+  iconValidator,
+  STATE_TYPES,
+  type OnClick,
+  type PropsToEmits,
+  type StateType
+} from '../helpers'
 import type { Mode, NoticeBarEmits } from './types'
 import RightOutlined from '../Icon/icons/RightOutlined'
 import CloseOutlined from '../Icon/icons/CloseOutlined'

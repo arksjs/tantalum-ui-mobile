@@ -81,11 +81,15 @@ import { Button as TaButton } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { Cell } from '../Cell'
 import { Tag } from '../Tag'
-import { isString, isStringArray } from '../helpers/util'
+import {
+  isString,
+  isStringArray,
+  emitEventValidator,
+  type VoidFnToBooleanFn,
+  type PropsToEmits
+} from '../helpers'
 import { useLocale } from '../ConfigProvider/context'
-import { emitEventValidator } from '../helpers/validator'
 import type { OnInput, SearchBarEmits, SuggestItem, SuggestList } from './types'
-import type { VoidFnToBooleanFn, PropsToEmits } from '../helpers/types'
 import SearchOutlined from '../Icon/icons/SearchOutlined'
 import {
   getFieldClasses,

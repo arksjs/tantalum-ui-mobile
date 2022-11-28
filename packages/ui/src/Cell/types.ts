@@ -1,4 +1,4 @@
-import type { OnClick } from '../helpers/types'
+import type { OnClick } from '../helpers'
 import type { IconData } from '../Icon/types'
 
 export type ArrowDirection = 'right' | 'up' | 'down' | 'left'

@@ -1,7 +1,10 @@
-import { getEnumsValue } from '../helpers/validator'
-import { STATE_TYPES } from '../helpers/constants'
-import type { CSSProperties, StateType } from '../helpers/types'
-import { getColorObject } from '../helpers/color'
+import {
+  getEnumsValue,
+  STATE_TYPES,
+  getColorObject,
+  type CSSProperties,
+  type StateType
+} from '../helpers'
 
 export const getClasses = (type?: StateType) => {
   return ['ta-notice-bar', 'type--' + getEnumsValue(STATE_TYPES, type)]

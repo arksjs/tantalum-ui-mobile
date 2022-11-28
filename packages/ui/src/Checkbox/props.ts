@@ -1,9 +1,7 @@
 import type { PropType } from 'vue'
 import type { CheckCommonEmits, UserOptionItem } from './types'
 import { formItemProps } from '../Form/form'
-import { colorValidator } from '../helpers/validator'
-import type { PropsToEmits } from '../helpers/types'
-import { isBoolean } from '../helpers/util'
+import { colorValidator, isBoolean, type PropsToEmits } from '../helpers'
 
 export const checkGroupProps = {
   ...formItemProps,

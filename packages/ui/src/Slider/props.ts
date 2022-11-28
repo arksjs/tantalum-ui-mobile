@@ -1,5 +1,4 @@
-import { isNumeric } from '../helpers/util'
-import { colorValidator } from '../helpers/validator'
+import { isNumeric, colorValidator } from '../helpers'
 
 export const slideProps = {
   min: {

@@ -8,8 +8,12 @@ import {
   isString
 } from './util'
 import { getSizeValue } from './dom'
-import type { AnyObject, EmptyObject, Validator } from './types'
+import type { AnyObject, EmptyObject } from './types'
 import { isColorValue } from './color'
+
+interface Validator<T = unknown> {
+  (value: T): boolean
+}
 
 export const selectorValidator: Validator = value => {
   return (
@@ -35,7 +39,7 @@ export const sizeValidator: Validator<number | string> = value => {
   return getSizeValue(value, Infinity) !== Infinity
 }
 
-export const createEnumsValidator = (enums: string[]) => {
+export const createEnumsValidator = (enums: readonly string[]) => {
   const validator: Validator<string> = value => {
     return enums.includes(value)
   }
@@ -43,8 +47,11 @@ export const createEnumsValidator = (enums: string[]) => {
   return validator
 }
 
-export function getEnumsValue<T = string>(enums: T[], value?: unknown): T {
-  return enums.includes(value as T) ? (value as T) : enums[0]
+export function getEnumsValue<T extends readonly any[]>(
+  enums: T,
+  value?: string
+): T[number] {
+  return enums.includes(value as T[number]) ? (value as T[number]) : enums[0]
 }
 
 /**

@@ -31,15 +31,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { PropType } from 'vue'
-import { popoverProps, popoverEmits } from '../Popover/props'
+import { computed, defineComponent, type PropType } from 'vue'
+import { Popover } from '../Popover'
 import { Icon } from '../Icon'
 import type { Option, Detail, PopMenuEmits } from './types'
 import { getOptions, getItemClasses } from './util'
-import type { PropsToEmits } from '../helpers/types'
-import { isNumber, isString } from '../helpers/util'
-import { Popover } from '../Popover'
+import { isNumber, isString, type PropsToEmits } from '../helpers'
+import { popoverProps, popoverEmits } from '../Popover/props'
 import { usePopupExtend } from '../popup/use-popup'
 
 export default defineComponent({

@@ -5,11 +5,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { PropType } from 'vue'
-import { createEnumsValidator } from '../helpers/validator'
-import { SIZE_TYPES } from '../helpers/constants'
-import type { SizeType } from '../helpers/types'
+import { computed, defineComponent, type PropType } from 'vue'
+import { createEnumsValidator, SIZE_TYPES, type SizeType } from '../helpers'
 import type { PatternType, ShapeType } from './types'
 import {
   getGroupClasses,

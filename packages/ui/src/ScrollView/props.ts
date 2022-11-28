@@ -1,4 +1,4 @@
-import type { VoidFnToBooleanFn } from '../helpers/types'
+import type { VoidFnToBooleanFn } from '../helpers'
 import type {
   OnRefreshing,
   OnScroll,

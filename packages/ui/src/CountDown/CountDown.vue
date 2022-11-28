@@ -24,11 +24,10 @@ import { defineComponent, onMounted } from 'vue'
 import { useCountTime } from '../CountDown/use-count-time'
 import { useLocale } from '../ConfigProvider/context'
 import type { CountDownEmits, OnPauseOrResume, Reset } from './types'
-import type { VoidFnToBooleanFn, PropsToEmits } from '../helpers/types'
-import { isNumber } from '../helpers/util'
+import { isNumber, type VoidFnToBooleanFn, type PropsToEmits } from '../helpers'
 
 const pauseOrResumeValidator: VoidFnToBooleanFn<OnPauseOrResume> = payload =>
-  payload && typeof payload.remainTime === 'number'
+  payload && isNumber(payload.remainTime)
 
 export default defineComponent({
   name: 'ta-count-down',

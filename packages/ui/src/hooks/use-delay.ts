@@ -1,6 +1,5 @@
-import type { Ref } from 'vue'
-import { onBeforeUnmount } from 'vue'
-import type { Noop } from '../helpers/types'
+import { onBeforeUnmount, type Ref } from 'vue'
+import type { Noop } from '../helpers'
 
 export function useDelay(callback: Noop, duration: Ref<number>) {
   let timer: number | undefined

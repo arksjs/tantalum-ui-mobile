@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, toRef } from 'vue'
-import { noop } from '../helpers/util'
-import { useList } from '../hooks/use-list'
+import { noop } from '../helpers'
+import { useList } from '../hooks'
 import { getStepsClasses } from './util'
 
 export default defineComponent({

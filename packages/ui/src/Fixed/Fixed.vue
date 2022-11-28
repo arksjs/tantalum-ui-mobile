@@ -19,15 +19,15 @@ import {
   ref,
   shallowRef,
   toRef,
-  watch
+  watch,
+  type PropType
 } from 'vue'
-import type { PropType } from 'vue'
-import { createEnumsValidator } from '../helpers/validator'
-import { PLACEMENT_TYPES } from '../helpers/constants'
-import type { PlacementType } from '../helpers/types'
-import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
-import { useFixed } from '../hooks/use-fixed'
-import { useResizeObserver } from '../hooks/use-resize-observer'
+import {
+  createEnumsValidator,
+  PLACEMENT_TYPES,
+  type PlacementType
+} from '../helpers'
+import { useSafeAreaInsets, useFixed, useResizeObserver } from '../hooks'
 import { getStyles, getInnerClasses, getInnerStyles } from './util'
 
 export default defineComponent({

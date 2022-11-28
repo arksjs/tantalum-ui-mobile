@@ -1,9 +1,13 @@
 import { computed, onMounted, ref, watch, inject, shallowRef } from 'vue'
 import type { SetupContext } from 'vue'
-import { noop } from '../helpers/util'
-import { addClassName, getScrollTop, removeClassName } from '../helpers/dom'
-import { popupZIndex } from '../helpers/layer'
-import type { UseEmitFn } from '../hooks/types'
+import {
+  noop,
+  addClassName,
+  getScrollTop,
+  removeClassName,
+  popupZIndex,
+  type PropsToEmits
+} from '../helpers'
 import type {
   VisibleState,
   PopupCustomCancel,
@@ -15,8 +19,7 @@ import type {
   PopupEmits,
   PopupRef
 } from './types'
-import type { PropsToEmits } from '../helpers/types'
-import { useDocumentBlur } from '../hooks/use-event'
+import { useDocumentBlur, type UseEmitFn } from '../hooks'
 import { getNewZIndex, getPopupStyles } from './util'
 
 type EmitCallback = (event: keyof PropsToEmits<PopupEmits>, res: any) => void

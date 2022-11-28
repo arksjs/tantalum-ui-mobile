@@ -1,9 +1,16 @@
-import { onMounted, reactive, onBeforeUnmount } from 'vue'
-import type { Ref } from 'vue'
+import { onMounted, reactive, onBeforeUnmount, type Ref } from 'vue'
 import safeAreaInsets from 'safe-area-insets'
 
+export interface SafeAreaInsets {
+  support: boolean
+  top: number
+  left: number
+  right: number
+  bottom: number
+}
+
 export function useSafeAreaInsets(enable: Ref<boolean>) {
-  const data = reactive({
+  const data = reactive<SafeAreaInsets>({
     support: safeAreaInsets.support,
     top: 0,
     left: 0,

@@ -54,17 +54,21 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import { Drawer } from '../Drawer'
-import { isString, isStringArray, noop } from '../helpers/util'
+import {
+  isString,
+  isStringArray,
+  noop,
+  type EmptyObject,
+  type PropsToEmits
+} from '../helpers'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupExtendProps } from '../popup/popup'
 import type { OnCancel, OnVisibleStateChange } from '../popup/types'
 import { useLocale } from '../ConfigProvider/context'
 import { formStringValueEmits } from '../Form/form'
-import type { EmptyObject, PropsToEmits } from '../helpers/types'
 import type {
   NumberKeyboardItem,
   KeyboardType,

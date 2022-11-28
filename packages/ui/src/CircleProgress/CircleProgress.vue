@@ -24,8 +24,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { LoadingIcon } from '../LoadingIcon'
-import { getNumber, isNumeric, rangeInteger } from '../helpers/util'
-import { colorValidator } from '../helpers/validator'
+import { getNumber, isNumeric, rangeInteger, colorValidator } from '../helpers'
 import { getFontSize } from './util'
 import { DEFAULT_SIZE, DEFAULT_STROKE_WIDTH } from '../LoadingIcon/util'
 

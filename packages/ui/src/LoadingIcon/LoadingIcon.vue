@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { colorValidator } from '../helpers/validator'
+import { colorValidator } from '../helpers'
 import { getRealStrokeWidth } from './util'
 
 export default defineComponent({

@@ -1,6 +1,5 @@
-import { onBeforeUnmount, onMounted } from 'vue'
-import type { Ref } from 'vue'
-import { touchEvent } from '../helpers/events'
+import { onBeforeUnmount, onMounted, type Ref } from 'vue'
+import { touchEvent } from '../helpers'
 
 interface UseTouchEvent extends Event {
   touchObject: {

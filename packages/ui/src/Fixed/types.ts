@@ -1,4 +1,4 @@
-import type { PlacementType } from '../helpers/types'
+import type { PlacementType } from '../helpers'
 
 export interface FixedProps {
   fixed?: boolean

@@ -30,7 +30,7 @@ import PickerPopup from './PickerPopup.vue'
 import { pickerEmits, pickerProps, commonProps } from './props'
 import { mergeHandlers } from './util'
 import { usePicker } from './use-picker'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers'
 import type { PickerEmits } from './types'
 
 export default defineComponent({

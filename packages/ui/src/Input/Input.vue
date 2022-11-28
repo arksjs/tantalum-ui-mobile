@@ -53,7 +53,12 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref, watch } from 'vue'
 import { Icon } from '../Icon'
-import { isNumeric, isStringNumberMix } from '../helpers/util'
+import {
+  isNumeric,
+  isStringNumberMix,
+  type OnFocus,
+  type PropsToEmits
+} from '../helpers'
 import { getClasses, getInputMode, getMaxLength, getValue } from './util'
 import {
   formFocusEmits,
@@ -62,7 +67,6 @@ import {
 } from '../Form/form'
 import { useInput } from '../Form/use-form'
 import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
-import type { OnFocus, PropsToEmits } from '../helpers/types'
 import type { InputEmits } from './types'
 
 export default defineComponent({

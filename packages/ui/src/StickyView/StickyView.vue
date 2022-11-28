@@ -25,9 +25,9 @@ import {
   ref,
   watch,
   nextTick,
-  shallowRef
+  shallowRef,
+  type PropType
 } from 'vue'
-import type { PropType } from 'vue'
 import { Sticky } from '../Sticky'
 import {
   CSSProperties2CssText,
@@ -35,19 +35,19 @@ import {
   getScrollTop,
   getSizeValue,
   querySelector,
-  scrollTo as _scrollTo
-} from '../helpers/dom'
-import { selectorValidator, sizeValidator } from '../helpers/validator'
-import { useScroll } from '../hooks/use-scroll'
-import { useList } from '../hooks/use-list'
+  scrollTo as _scrollTo,
+  selectorValidator,
+  sizeValidator,
+  isNumber,
+  isString,
+  type PropsToEmits,
+  type Selector
+} from '../helpers'
+import { useScroll, useList, useException, useOnce } from '../hooks'
 import { emitChangeValidator } from './props'
 import type { StickyViewEmits } from './types'
-import type { PropsToEmits, Selector } from '../helpers/types'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import { getClasses, getFixedStyles, FIXED_HEIGHT } from './util'
-import { isNumber, isString } from '../helpers/util'
-import { useException } from '../hooks/use-exception'
-import { useOnce } from '../hooks/use-once'
 
 export default defineComponent({
   name: 'ta-sticky-view',

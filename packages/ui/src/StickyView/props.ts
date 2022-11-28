@@ -1,5 +1,4 @@
-import { isNumber, isString } from '../helpers/util'
-import type { VoidFnToBooleanFn } from '../helpers/types'
+import { isNumber, isString, type VoidFnToBooleanFn } from '../helpers'
 import type { OnChange } from './types'
 
 export const emitChangeValidator: VoidFnToBooleanFn<OnChange> = (

@@ -37,21 +37,20 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { Drawer } from '../Drawer'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupExtendProps } from '../popup/popup'
 import type { Option, Detail, OnConfirm, ActionSheetEmits } from './types'
 import { useLocale } from '../ConfigProvider/context'
-import type { PropsToEmits, VoidFnToBooleanFn } from '../helpers/types'
+import { isNumber, isString, PropsToEmits, VoidFnToBooleanFn } from '../helpers'
 import { getItemClasses, getOptions } from './util'
 
 const confirmValidator: VoidFnToBooleanFn<OnConfirm> = payload =>
   payload &&
-  typeof payload.index === 'number' &&
+  isNumber(payload.index) &&
   payload.item &&
-  typeof payload.item.name === 'string'
+  isString(payload.item.name)
 
 export default defineComponent({
   name: 'ta-action-sheet',

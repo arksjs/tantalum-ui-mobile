@@ -13,13 +13,11 @@
 </template>
 
 <script lang="ts">
-import { isBoolean } from '../helpers/util'
 import { onMounted, ref, watch, defineComponent, computed } from 'vue'
 import { formItemProps } from '../Form/form'
 import { useInput } from '../Form/use-form'
-import { colorValidator } from '../helpers/validator'
+import { isBoolean, colorValidator, type PropsToEmits } from '../helpers'
 import { getClasses, getStyles } from './util'
-import type { PropsToEmits } from '../helpers/types'
 import type { SwitchEmits } from './types'
 
 export default defineComponent({

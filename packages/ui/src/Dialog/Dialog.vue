@@ -48,7 +48,7 @@ import { Modal } from '../Modal'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupExtendProps } from '../popup/popup'
 import { useLocale } from '../ConfigProvider/context'
-import type { EmptyObject, PropsToEmits } from '../helpers/types'
+import type { EmptyObject, PropsToEmits } from '../helpers'
 import type { DialogEmits } from './types'
 
 export default defineComponent({

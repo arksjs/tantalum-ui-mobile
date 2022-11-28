@@ -1,7 +1,7 @@
 import Notify from './Notify.vue'
 import { createAlertHook, createShowPopup, createHidePopup } from '../popup/api'
 import type { PopupSuccessAlertArgs } from '../popup/types'
-import type { StateType } from '../helpers/types'
+import type { StateType } from '../helpers'
 
 const showNotify = createShowPopup<
   | string

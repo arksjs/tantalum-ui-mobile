@@ -1,4 +1,4 @@
-import { getEnumsValue } from '../helpers/validator'
+import { getEnumsValue } from '../helpers'
 import type { EmptyType } from './types'
 
 export const TYPE_NAMES: EmptyType[] = ['default', 'error', 'network', 'search']

@@ -1,5 +1,9 @@
-import { formatInputNumber } from '../helpers/input'
-import { getNumber, rangeInteger, rangeNumber } from '../helpers/util'
+import {
+  formatInputNumber,
+  getNumber,
+  rangeInteger,
+  rangeNumber
+} from '../helpers'
 
 export const getClasses = (disabled?: boolean) => {
   return ['ta-stepper', { disabled: !!disabled }]

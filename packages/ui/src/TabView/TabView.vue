@@ -35,7 +35,7 @@ import { ref, defineComponent, provide, watch, shallowRef } from 'vue'
 import { Tab } from '../Tab'
 import { SideTab } from '../SideTab'
 import { Swiper } from '../Swiper'
-import { useList } from '../hooks/use-list'
+import { useList, useException } from '../hooks'
 import type {
   SwiperOnActiveIndexChange,
   SwiperOnAnimated,
@@ -43,11 +43,9 @@ import type {
 } from '../Swiper/types'
 import { emitChangeValidator } from '../Swiper/props'
 import { getClasses } from './util'
-import type { PropsToEmits } from '../helpers/types'
 import type { TabViewEmits } from './types'
-import { isNumber, isString } from '../helpers/util'
+import { isNumber, isString, type PropsToEmits } from '../helpers'
 import type { TabOnChange } from '../Tab/types'
-import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
   name: 'ta-tab-view',

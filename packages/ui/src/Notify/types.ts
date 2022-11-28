@@ -1,6 +1,6 @@
 import type { IconData } from '../Icon/types'
 import type { PopupProps, PopupEmits } from '../popup/types'
-import type { StateType } from '../helpers/types'
+import type { StateType } from '../helpers'
 
 export interface NotifyProps extends PopupProps {
   title: string

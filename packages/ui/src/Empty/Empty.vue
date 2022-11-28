@@ -12,9 +12,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { PropType } from 'vue'
-import { createEnumsValidator } from '../helpers/validator'
+import { computed, defineComponent, type PropType } from 'vue'
+import { createEnumsValidator } from '../helpers'
 import type { EmptyType } from './types'
 import { getImageUrl, TYPE_NAMES } from './util'
 

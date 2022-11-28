@@ -1,4 +1,4 @@
-import type { OnError } from '../helpers/types'
+import type { OnError } from '../helpers'
 
 export interface CopyProps {
   text: string

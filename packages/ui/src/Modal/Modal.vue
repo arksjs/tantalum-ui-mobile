@@ -25,7 +25,7 @@ import { popupEmits, popupProps } from '../popup/popup'
 import { Icon } from '../Icon'
 import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
 import { getBoxStyles } from './util'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers'
 import type { ModalEmits } from './types'
 
 export default defineComponent({

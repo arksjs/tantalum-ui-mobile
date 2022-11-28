@@ -1,11 +1,12 @@
 import { computed, shallowRef } from 'vue'
-import { getNumber, rangeNumber } from '../helpers/util'
-import { useTouch } from '../hooks/use-touch'
 import {
+  getNumber,
+  rangeNumber,
   addClassName,
   getRelativeOffset,
   removeClassName
-} from '../helpers/dom'
+} from '../helpers'
+import { useTouch } from '../hooks'
 import type { SlideCommonProps } from './types'
 import { getSlideClasses, getSlideStyles } from './util'
 

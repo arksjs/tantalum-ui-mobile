@@ -1,5 +1,5 @@
 import { camelCase2KebabCase, isNumber, objectForEach } from './util'
-import type { CSSProperties, ViewPosition } from './types'
+import type { CSSProperties } from './types'
 
 export function appendToBody($el: Element) {
   document.body.appendChild($el)
@@ -20,6 +20,8 @@ export function removeClassName($el: Element, className: string) {
 export function hasClassName($el: Element, className: string) {
   return ([].slice.call($el.classList, 0) as string[]).includes(className)
 }
+
+export type ViewPosition = 'start' | 'center' | 'end' | 0 | 0.5 | 1
 
 export function getViewPosition(viewPosition?: ViewPosition): 0 | 0.5 | 1 {
   const viewPositionMap = new Map<ViewPosition, 0 | 0.5 | 1>([
@@ -109,6 +111,8 @@ export function getSizeValue(size: unknown, defaultValue = 0) {
 
   return defaultValue
 }
+
+export type Selector = HTMLElement | string
 
 /**
  * 指定条件获取 HTMLElement

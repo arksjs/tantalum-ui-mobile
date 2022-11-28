@@ -1,15 +1,14 @@
-import type { Dayjs } from '../helpers/types'
 import type { TimeAgoProps } from './types'
-import dayjs from '../helpers/day'
+import { isNumber, dayjs, type Dayjs, isString } from '../helpers'
 
 export function getDate(props: TimeAgoProps) {
   let djs: Dayjs | null = null
 
   const { time, formatTemplate } = props
 
-  if (time instanceof Date || typeof time === 'number') {
+  if (time instanceof Date || isNumber(time)) {
     djs = dayjs(time)
-  } else if (typeof time === 'string' && formatTemplate) {
+  } else if (isString(time) && formatTemplate) {
     djs = dayjs(time, formatTemplate)
   }
 

@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { isNumeric } from '../helpers/util'
+import { isNumeric } from '../helpers'
 import { getPrice } from './util'
 
 export default defineComponent({

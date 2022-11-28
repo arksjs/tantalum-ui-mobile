@@ -1,4 +1,4 @@
-import type { EmptyObject } from '../helpers/types'
+import type { EmptyObject } from '../helpers'
 import type { PopoverProps } from '../Popover/types'
 import type { PopupEmits } from '../popup/types'
 

@@ -17,8 +17,7 @@ import Radio from './Radio.vue'
 import { useCheckGroup } from '../Checkbox/use-check'
 import type { ModelValue } from '../Checkbox/types'
 import { checkGroupProps } from '../Checkbox/props'
-import { isStringNumberMix } from '../helpers/util'
-import type { PropsToEmits } from '../helpers/types'
+import { isStringNumberMix, type PropsToEmits } from '../helpers'
 import type { RadioGroupEmits } from './types'
 
 const isValue = (value: ModelValue) => isStringNumberMix(value)

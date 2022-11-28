@@ -1,5 +1,5 @@
-import type { Noop } from '../helpers/types'
 import { onBeforeUnmount } from 'vue'
+import type { Noop } from '../helpers'
 
 export function useOnce(interval = 0) {
   let handle: number | null = null

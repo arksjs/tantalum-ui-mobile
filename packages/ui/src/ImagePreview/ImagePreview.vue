@@ -53,13 +53,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, watch } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, reactive, ref, watch, type PropType } from 'vue'
 import { Modal } from '../Modal'
 import { Button as TaButton } from '../Button'
 import { Image as TaImage } from '../Image'
 import { Swiper, SwiperItem } from '../Swiper'
-import { isStringArray, rangeNumber, isString, isNumber } from '../helpers/util'
+import {
+  isStringArray,
+  rangeNumber,
+  isString,
+  isNumber,
+  type PropsToEmits,
+  type EmptyObject
+} from '../helpers'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/popup'
 import type { ImageOnLoad } from '../Image/types'
@@ -67,7 +73,6 @@ import type { SwiperOnActiveIndexChange } from '../Swiper/types'
 import type { ImageObject, DistanceOptions, ImagePreviewEmits } from './types'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { getDistance, mergeLoadedData, getImageStyles } from './util'
-import type { PropsToEmits, EmptyObject } from '../helpers/types'
 
 type ImageCoordsImage = {
   width: number

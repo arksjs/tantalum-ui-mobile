@@ -1,5 +1,8 @@
 import { isMobile } from './device'
-import type { LongPressEventCallback } from './types'
+
+export interface LongPressEventCallback {
+  (res: { type: 'long-press' | 'click' }): void
+}
 
 export function addEvent(
   type: string,

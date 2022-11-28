@@ -1,5 +1,11 @@
-import { getNumber, isNumber } from '../helpers/util'
-import { getEnumsValue } from '../helpers/validator'
+import {
+  getNumber,
+  isNumber,
+  simpleNumber,
+  getEnumsValue,
+  getColorObject,
+  type CSSProperties
+} from '../helpers'
 import type {
   AvatarGroupProps,
   AvatarProps,
@@ -8,9 +14,6 @@ import type {
   SizeType,
   UserSizeType
 } from './types'
-import { simpleNumber } from '../helpers/digital-conversion'
-import type { CSSProperties } from '../helpers/types'
-import { getColorObject } from '../helpers/color'
 import type { BadgeProps } from '../Badge/types'
 import { handleBadge } from '../Badge/util'
 

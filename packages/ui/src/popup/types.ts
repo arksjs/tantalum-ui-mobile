@@ -1,4 +1,4 @@
-import type { AnyObject, EmptyObject, Noop } from '../helpers/types'
+import type { AnyObject, EmptyObject, Noop } from '../helpers'
 
 export interface PopupProps {
   visible?: boolean

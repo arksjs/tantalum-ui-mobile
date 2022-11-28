@@ -1,4 +1,4 @@
-import type { Noop, SizeType, StateType } from '../helpers/types'
+import type { Noop, SizeType, StateType } from '../helpers'
 
 export type PatternType = 'light' | 'dark' | 'plain'
 

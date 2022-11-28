@@ -58,35 +58,12 @@ interface UICSS {
   '--ta-size'?: string
 }
 
-export type { Dayjs } from 'dayjs'
-
 export type AnyObject = Record<string, any>
 export type EmptyObject = Record<string, never>
-
-export type ViewPosition = 'start' | 'center' | 'end' | 0 | 0.5 | 1
-
-export interface Validator<T = unknown> {
-  (value: T): boolean
-}
-
-export type Selector = HTMLElement | string
-
-/**
- * 事件
- */
-export interface LongPressEventCallback {
-  (res: { type: 'long-press' | 'click' }): void
-}
-
-export type EasingType = 'linear' | 'swing'
 
 export interface Noop {
   (): void
 }
-
-export type PlacementType = 'bottom' | 'top' | 'left' | 'right'
-export type StateType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
-export type SizeType = 'large' | 'middle' | 'small'
 
 export type UnionToIntersection<T> = (
   T extends any ? (x: T) => any : never

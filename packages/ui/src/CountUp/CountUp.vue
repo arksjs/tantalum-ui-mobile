@@ -5,14 +5,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
-import type { PropType } from 'vue'
-import { getNumber, isNumber } from '../helpers/util'
-import { thousands } from '../helpers/digital-conversion'
+import { defineComponent, ref, watch, type PropType } from 'vue'
+import {
+  getNumber,
+  isNumber,
+  thousands,
+  type PropsToEmits,
+  type VoidFnToBooleanFn
+} from '../helpers'
 import type { CountUpEmits, OnCancel, Speed } from './types'
-import type { PropsToEmits, VoidFnToBooleanFn } from '../helpers/types'
 import { getDuration, SpeedMap } from './util'
-import { useFrameTask } from '../hooks/use-frame-task'
+import { useFrameTask } from '../hooks'
 
 const emitValidator: VoidFnToBooleanFn<OnCancel> = payload =>
   payload && isNumber(payload.number)

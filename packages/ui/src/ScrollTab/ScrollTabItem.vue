@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted } from 'vue'
-import { useException } from '../hooks/use-exception'
+import { useException } from '../hooks'
 
 export default defineComponent({
   name: 'ta-scroll-tab-item',

@@ -5,11 +5,16 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, provide, ref, watch } from 'vue'
-import type { PropType } from 'vue'
+import {
+  computed,
+  defineComponent,
+  provide,
+  ref,
+  watch,
+  type PropType
+} from 'vue'
 import type { JustifyType, AlignType, UserGutter } from './types'
-import { createEnumsValidator } from '../helpers/validator'
-import { isNumberArray, isNumeric } from '../helpers/util'
+import { createEnumsValidator, isNumberArray, isNumeric } from '../helpers'
 import {
   getRowClasses,
   getRowStyles,

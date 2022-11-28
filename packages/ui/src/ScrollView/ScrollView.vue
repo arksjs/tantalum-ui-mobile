@@ -43,13 +43,18 @@ import {
   onMounted,
   watch,
   provide,
-  shallowRef
+  shallowRef,
+  type PropType
 } from 'vue'
-import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
-import { stringMix2StringArray, isStringArray } from '../helpers/util'
-import { useTouch } from '../hooks/use-touch'
+import {
+  stringMix2StringArray,
+  isStringArray,
+  isString,
+  type PropsToEmits
+} from '../helpers'
+import { useTouch, useScrollTo } from '../hooks'
 import { useLocale } from '../ConfigProvider/context'
 import {
   emitRefreshingValidator,
@@ -63,7 +68,6 @@ import type {
   PullIndicatorSafeArea,
   ScrollViewEmits
 } from './types'
-import { useScrollTo } from '../hooks/use-scroll'
 import CircleOutlined from '../Icon/icons/CircleOutlined'
 import {
   ScrollState,
@@ -74,7 +78,6 @@ import {
   getLoadMoreClasses,
   getPullRefreshClasses
 } from './util'
-import type { PropsToEmits } from '../helpers/types'
 
 interface ScrollCoords {
   pageX: number
@@ -130,7 +133,7 @@ export default defineComponent({
     enablePullDirections: {
       type: [String, Array] as PropType<PullDirection | PullDirection[]>,
       validator: (val: PullDirection | PullDirection[]) =>
-        typeof val === 'string' || isStringArray(val),
+        isString(val) || isStringArray(val),
       default: null
     },
     // 下拉刷新阈值

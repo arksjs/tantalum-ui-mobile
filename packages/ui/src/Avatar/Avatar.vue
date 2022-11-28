@@ -16,12 +16,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, computed, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import { Badge } from '../Badge'
 import { Image as TaImage } from '../Image'
-import { colorValidator, createEnumsValidator } from '../helpers/validator'
+import { colorValidator, createEnumsValidator } from '../helpers'
 import { avatarProps } from './props'
 import {
   AVATAR_SHAPE_TYPES,

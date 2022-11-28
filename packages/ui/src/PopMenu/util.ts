@@ -1,4 +1,4 @@
-import { isObject } from '../helpers/util'
+import { isObject } from '../helpers'
 import type { Option } from './types'
 
 export const getOptions = (options?: Option[]) => {

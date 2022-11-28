@@ -1,6 +1,6 @@
 import ImagePreview from './ImagePreview.vue'
 import { createConfirmHook, createShowPopup } from '../popup/api'
-import type { EmptyObject } from '../helpers/types'
+import type { EmptyObject } from '../helpers'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
 import type { ShowImagePreviewOptions } from './types'
 

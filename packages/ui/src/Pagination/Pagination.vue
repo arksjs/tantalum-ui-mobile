@@ -29,11 +29,15 @@
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from 'vue'
 import { Icon } from '../Icon'
-import type { PropsToEmits } from '../helpers/types'
+import {
+  isNumber,
+  isNumeric,
+  rangeInteger,
+  type PropsToEmits
+} from '../helpers'
 import type { PaginationEmits } from './types'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import RightOutlined from '../Icon/icons/RightOutlined'
-import { isNumber, isNumeric, rangeInteger } from '../helpers/util'
 import { getTotal } from './util'
 
 export default defineComponent({

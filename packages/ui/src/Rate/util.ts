@@ -1,5 +1,10 @@
-import type { CSSProperties } from '../helpers/types'
-import { getNumber, isInteger, isNumeric, rangeInteger } from '../helpers/util'
+import {
+  getNumber,
+  isInteger,
+  isNumeric,
+  rangeInteger,
+  type CSSProperties
+} from '../helpers'
 
 export const DEFAULT_COUNT = 5
 export const MAX_COUNT = 20

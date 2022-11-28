@@ -55,8 +55,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed, watch, ref } from 'vue'
-import type { PropType } from 'vue'
+import {
+  defineComponent,
+  reactive,
+  computed,
+  watch,
+  ref,
+  type PropType
+} from 'vue'
 import { Button as TaButton } from '../Button'
 import { Icon } from '../Icon'
 import { Order } from '../Order'
@@ -68,9 +74,12 @@ import {
   isSameArray,
   cloneData,
   noop,
-  isNumber
-} from '../helpers/util'
-import { formatFileSize } from '../helpers/digital-conversion'
+  isNumber,
+  formatFileSize,
+  type PropsToEmits,
+  type UniqueID,
+  isBoolean
+} from '../helpers'
 import { formItemProps } from '../Form/form'
 import type { Mode } from '../Image/types'
 import { useLocale } from '../ConfigProvider/context'
@@ -84,7 +93,6 @@ import type {
   FileItem,
   ImageUploaderEmits
 } from './types'
-import type { PropsToEmits, UniqueID } from '../helpers/types'
 import PlusOutlined from '../Icon/icons/PlusOutlined'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'
 import { getAccepts, getNewUid, getUploadButtonClasses, urlId } from './util'
@@ -217,7 +225,7 @@ export default defineComponent({
     function beforePromise(res: BeforeUploadReturn) {
       if (res == null) {
         return Promise.resolve(true)
-      } else if (typeof res === 'boolean') {
+      } else if (isBoolean(res)) {
         return Promise.resolve(res)
       } else if (isPromiseLike(res)) {
         return (res as Promise<boolean | File>)

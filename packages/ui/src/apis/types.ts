@@ -1,4 +1,4 @@
-import type { OnError, Noop } from '../helpers/types'
+import type { OnError, Noop } from '../helpers'
 
 export interface ApiOptionsSuccess {
   (...args: any[]): void

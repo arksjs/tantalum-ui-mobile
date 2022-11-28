@@ -1,7 +1,27 @@
 import type { Ref } from 'vue'
-import type { ScrollToOffset, ScrollToEnd } from './types'
-import { isNumber } from '../helpers/util'
+import { isNumber } from '../helpers'
 import { useEvent } from './use-event'
+
+export interface ScrollToOffsetOptions {
+  x?: number
+  y?: number
+  animated?: boolean
+}
+
+export interface ScrollToOffset {
+  (xpos: number, ypos?: number): void
+  (options: ScrollToOffsetOptions): void
+}
+
+export interface ScrollToEndOptions {
+  x?: boolean
+  y?: boolean
+  animated?: boolean
+}
+
+export interface ScrollToEnd {
+  (options: ScrollToEndOptions): void
+}
 
 /**
  * 绑定 scroll 事件

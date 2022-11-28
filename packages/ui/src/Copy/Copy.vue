@@ -11,11 +11,9 @@
 import { defineComponent, shallowRef } from 'vue'
 import { useLocale } from '../ConfigProvider/context'
 import { copy } from './util'
-import type { PropsToEmits } from '../helpers/types'
 import type { CopyEmits } from './types'
-import { isString } from '../helpers/util'
-import { useException } from '../hooks/use-exception'
-import { emitErrorValidator } from '../helpers/validator'
+import { isString, emitErrorValidator, type PropsToEmits } from '../helpers'
+import { useException } from '../hooks'
 
 export default defineComponent({
   name: 'ta-copy',

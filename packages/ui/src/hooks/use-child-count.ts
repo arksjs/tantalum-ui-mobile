@@ -1,6 +1,5 @@
-import type { Noop } from '../helpers/types'
 import { inject, onBeforeUnmount, onMounted, provide, ref } from 'vue'
-import { capitalize } from '../helpers/util'
+import { capitalize, type Noop } from '../helpers'
 
 interface Options {
   addCount?: Noop

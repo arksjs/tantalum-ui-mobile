@@ -1,4 +1,4 @@
-import type { OnClick } from '../helpers/types'
+import type { OnClick } from '../helpers'
 
 export type ResultType = 'info' | 'warning' | 'success' | 'fail'
 

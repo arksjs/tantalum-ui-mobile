@@ -1,5 +1,4 @@
-import { thousands } from '../helpers/digital-conversion'
-import { getNumber, isNumeric } from '../helpers/util'
+import { thousands, getNumber, isNumeric } from '../helpers'
 import type { PriceProps } from './types'
 
 export const getPrice = (props: PriceProps) => {

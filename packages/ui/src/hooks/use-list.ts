@@ -6,10 +6,10 @@ import {
   onMounted,
   onUnmounted,
   inject,
-  shallowRef
+  shallowRef,
+  type Ref
 } from 'vue'
-import type { Ref } from 'vue'
-import { camelCase2KebabCase, capitalize, isSameArray } from '../helpers/util'
+import { camelCase2KebabCase, capitalize, isSameArray } from '../helpers'
 import { useException } from './use-exception'
 
 type ListUpdateCallback = ($items: HTMLElement[]) => void

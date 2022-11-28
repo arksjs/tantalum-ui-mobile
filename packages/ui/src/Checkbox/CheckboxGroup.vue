@@ -12,14 +12,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, ref, type PropType } from 'vue'
 import Checkbox from './Checkbox.vue'
-import { isStringNumberMixArray, cloneData, isSameArray } from '../helpers/util'
+import {
+  isStringNumberMixArray,
+  cloneData,
+  isSameArray,
+  type PropsToEmits
+} from '../helpers'
 import { useCheckGroup } from './use-check'
 import type { CheckboxGroupEmits, ModelValue } from './types'
 import { checkGroupProps } from './props'
-import type { PropsToEmits } from '../helpers/types'
 
 const isValue = (value: ModelValue[]) => isStringNumberMixArray(value)
 

@@ -1,4 +1,4 @@
-import { cloneData, isObject } from '../helpers/util'
+import { cloneData, isObject } from '../helpers'
 import type { Option } from './types'
 
 export const getOptions = (options?: Option[]) => {

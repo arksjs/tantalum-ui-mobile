@@ -1,5 +1,3 @@
-import { isEmpty } from '../helpers/util'
-import type { AnyObject } from '../helpers/types'
 import type {
   UserFieldNames,
   UserOptionItem,
@@ -25,8 +23,10 @@ import {
   isStringNumberMixArray,
   objectForEach,
   isObject,
-  isStringNumberMix
-} from '../helpers/util'
+  isStringNumberMix,
+  isEmpty,
+  type AnyObject
+} from '../helpers'
 
 export const getDefaultFieldNames: () => FieldNames = () => {
   return { label: 'label', value: 'value', children: 'children' }

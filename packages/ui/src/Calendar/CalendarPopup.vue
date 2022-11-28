@@ -61,8 +61,7 @@ import type {
 } from './types'
 import { useLocale } from '../ConfigProvider/context'
 import { useHandlers } from './use-calendar'
-import { cloneData } from '../helpers/util'
-import type { PropsToEmits } from '../helpers/types'
+import { cloneData, type PropsToEmits } from '../helpers'
 import { getSourceDetail } from './util'
 
 export default defineComponent({

@@ -1,4 +1,4 @@
-import type { Selector } from '../helpers/types'
+import type { Selector } from '../helpers'
 
 export interface StickyProps {
   containSelector?: Selector

@@ -20,11 +20,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import { Button as TaButton } from '../Button'
-import { createEnumsValidator, emitEventValidator } from '../helpers/validator'
+import {
+  createEnumsValidator,
+  emitEventValidator,
+  type PropsToEmits
+} from '../helpers'
 import { useLocale } from '../ConfigProvider/context'
 import type { ResultEmits, ResultType } from './types'
 import InfoCircleFilled from '../Icon/icons/InfoCircleFilled'
@@ -33,7 +36,6 @@ import CheckCircleFilled from '../Icon/icons/CheckCircleFilled'
 import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
 import type { IconData } from '../Icon/types'
 import { getType, getTypeClass, RESULT_TYPES } from './util'
-import type { PropsToEmits } from '../helpers/types'
 
 const iconMap = new Map<ResultType, IconData>([
   ['info', InfoCircleFilled],

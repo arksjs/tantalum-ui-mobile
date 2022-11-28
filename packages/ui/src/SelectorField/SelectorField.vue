@@ -20,9 +20,8 @@ import { computed, defineComponent } from 'vue'
 import { Icon } from '../Icon'
 import RightOutlined from '../Icon/icons/RightOutlined'
 import { getClasses, getInputClasses } from './util'
-import type { PropsToEmits } from '../helpers/types'
 import type { SelectorFieldEmits } from './types'
-import { returnTrue } from '../helpers/util'
+import { returnTrue, type PropsToEmits } from '../helpers'
 
 export default defineComponent({
   name: 'ta-selector-field',

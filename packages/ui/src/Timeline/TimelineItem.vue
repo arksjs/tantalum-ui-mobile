@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { colorValidator } from '../helpers/validator'
+import { colorValidator } from '../helpers'
 
 export default defineComponent({
   name: 'ta-timeline-item',

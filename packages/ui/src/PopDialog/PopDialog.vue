@@ -38,7 +38,7 @@ import { Button as TaButton, ButtonGroup } from '../Button'
 import { useLocale } from '../ConfigProvider/context'
 import { Popover } from '../Popover'
 import { usePopupExtend } from '../popup/use-popup'
-import type { EmptyObject, PropsToEmits } from '../helpers/types'
+import type { EmptyObject, PropsToEmits } from '../helpers'
 import type { PopDialogEmits } from './types'
 
 export default defineComponent({

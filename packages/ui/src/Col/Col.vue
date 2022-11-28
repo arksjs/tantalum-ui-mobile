@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, computed, ref } from 'vue'
-import { numberValidator } from '../helpers/validator'
+import { numberValidator } from '../helpers'
 import { getColClasses, getColStyles } from './util'
 
 export default defineComponent({

@@ -14,7 +14,7 @@ import { pickerViewEmits } from '../Picker/props'
 import { commonProps } from './props'
 import { useHandlers } from '../DatePicker/use-date-picker'
 import type { SelectorModelValue } from '../SelectorField/types'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers'
 import type { DatePickerViewEmits } from './types'
 
 export default defineComponent({

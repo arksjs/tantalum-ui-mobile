@@ -1,5 +1,4 @@
-import type { CSSProperties } from '../helpers/types'
-import { rangeInteger } from '../helpers/util'
+import { rangeInteger, type CSSProperties } from '../helpers'
 
 export const getClasses = (fixedBar?: boolean) => [
   'ta-progress',

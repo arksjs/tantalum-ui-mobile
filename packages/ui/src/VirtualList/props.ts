@@ -1,6 +1,5 @@
-import type { UniqueID } from '../helpers/types'
 import type { PropType } from 'vue'
-import { isInNumberRange, isInteger } from '../helpers/util'
+import { isInNumberRange, isInteger, type UniqueID } from '../helpers'
 import type { OnVisibleItemsChangePayload } from './types'
 
 export const virtualListProps = {

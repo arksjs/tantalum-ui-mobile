@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject, ref, shallowRef } from 'vue'
-import { useListItem } from '../hooks/use-list'
+import { useListItem } from '../hooks'
 import { getStepClasses } from './util'
 
 export default defineComponent({

@@ -82,11 +82,14 @@ import type {
   OnTitleDbClick
 } from './types'
 import { useLocale } from '../ConfigProvider/context'
-import { iconValidator } from '../helpers/validator'
-import type { PropsToEmits, VoidFnToBooleanFn } from '../helpers/types'
+import {
+  iconValidator,
+  type PropsToEmits,
+  type VoidFnToBooleanFn
+} from '../helpers'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import HomeOutlined from '../Icon/icons/HomeOutlined'
-import { useDbclick } from '../hooks/use-event'
+import { useDbclick } from '../hooks'
 
 const buttonsValidator = (items: ButtonOption[]) => {
   return (

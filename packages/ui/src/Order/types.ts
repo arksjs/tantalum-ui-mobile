@@ -1,4 +1,4 @@
-import type { UniqueID } from '../helpers/types'
+import type { UniqueID } from '../helpers'
 
 export type Item = {
   id: UniqueID

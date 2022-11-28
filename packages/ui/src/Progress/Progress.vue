@@ -13,8 +13,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { isNumeric } from '../helpers/util'
-import { colorValidator } from '../helpers/validator'
+import { isNumeric, colorValidator } from '../helpers'
 import {
   getClasses,
   getProgress,

@@ -29,15 +29,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRef, watch } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, computed, toRef, type PropType } from 'vue'
 import { NavBar } from '../NavBar'
 import { usePopup } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/popup'
-import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
-import { createEnumsValidator, getEnumsValue } from '../helpers/validator'
-import { PLACEMENT_TYPES } from '../helpers/constants'
-import type { PlacementType, PropsToEmits } from '../helpers/types'
+import { useSafeAreaInsets } from '../hooks'
+import {
+  createEnumsValidator,
+  getEnumsValue,
+  PLACEMENT_TYPES,
+  type PlacementType,
+  type PropsToEmits
+} from '../helpers'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { getInnerClasses, getInnerStyles } from './util'
 import type { DrawerEmits } from './types'

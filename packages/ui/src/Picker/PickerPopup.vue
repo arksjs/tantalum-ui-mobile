@@ -43,7 +43,7 @@ import { usePickerPopup } from '../Picker/use-picker'
 import { useLocale } from '../ConfigProvider/context'
 import type { PickerDetail, PickerHandlers, PickerPopupEmits } from './types'
 import { mergeHandlers } from './util'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers'
 
 export default defineComponent({
   name: 'ta-picker-popup',

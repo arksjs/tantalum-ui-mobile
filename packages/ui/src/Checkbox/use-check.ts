@@ -1,7 +1,7 @@
 import { computed, onMounted, watch, inject, provide, shallowRef } from 'vue'
 import type { SetupContext } from 'vue'
-import { capitalize, isStringNumberMix } from '../helpers/util'
-import { useGroup, useGroupItem } from '../hooks/use-group'
+import { capitalize, isStringNumberMix } from '../helpers'
+import { useGroup, useGroupItem } from '../hooks'
 import type {
   ModelValue,
   OptionItem,

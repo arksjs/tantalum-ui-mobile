@@ -10,10 +10,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
-import type { PropType } from 'vue'
-import { getNumber, isNumber, rangeInteger } from '../helpers/util'
-import { colorValidator } from '../helpers/validator'
+import { computed, defineComponent, ref, watch, type PropType } from 'vue'
+import {
+  getNumber,
+  isNumber,
+  rangeInteger,
+  colorValidator,
+  isString
+} from '../helpers'
 import {
   DEFAULT_MAX_COUNT,
   getBadgeClasses,
@@ -22,7 +26,7 @@ import {
   getDefaultContent,
   getShowContent
 } from './util'
-import { useFrameTask } from '../hooks/use-frame-task'
+import { useFrameTask } from '../hooks'
 
 export default defineComponent({
   name: 'ta-badge',
@@ -70,7 +74,7 @@ export default defineComponent({
     watch([() => props.content, () => props.maxCount], ([val, max]) => {
       frameStop()
 
-      if (typeof val === 'string') {
+      if (isString(val)) {
         content2.value = val
         return
       }

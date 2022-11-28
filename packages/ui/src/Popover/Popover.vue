@@ -29,12 +29,10 @@ import {
   watch
 } from 'vue'
 import { popoverProps, popoverEmits } from '../Popover/props'
-import { cloneData } from '../helpers/util'
-import { querySelector } from '../helpers/dom'
+import { cloneData, querySelector, type PropsToEmits } from '../helpers'
 import { usePopup } from '../popup/use-popup'
-import { useResizeObserver } from '../hooks/use-resize-observer'
+import { useResizeObserver } from '../hooks'
 import { getArrowStyles, getInnerStyles, getShowPos, DEFAULT_POS } from './util'
-import type { PropsToEmits } from '../helpers/types'
 import type { PopoverEmits } from './types'
 
 export default defineComponent({

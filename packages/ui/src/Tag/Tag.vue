@@ -13,14 +13,21 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, shallowRef } from 'vue'
-import type { PropType } from 'vue'
+import { computed, defineComponent, shallowRef, type PropType } from 'vue'
 import { Icon } from '../Icon'
-import { colorValidator, createEnumsValidator } from '../helpers/validator'
-import { SIZE_TYPES, STATE_TYPES } from '../helpers/constants'
-import { useLongPress } from '../hooks/use-event'
-import { kebabCase2CamelCase, noop, returnTrue } from '../helpers/util'
-import type { PropsToEmits, SizeType, StateType } from '../helpers/types'
+import {
+  colorValidator,
+  createEnumsValidator,
+  SIZE_TYPES,
+  STATE_TYPES,
+  kebabCase2CamelCase,
+  noop,
+  returnTrue,
+  type PropsToEmits,
+  type SizeType,
+  type StateType
+} from '../helpers'
+import { useLongPress } from '../hooks'
 import type { PatternType, TagEmits } from './types'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { getStyles, getClasses, TAG_PATTERN_TYPES } from './util'

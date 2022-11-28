@@ -1,8 +1,11 @@
 import type { PropType } from 'vue'
-import { isNumber, isStringNumberMix } from '../helpers/util'
+import {
+  isNumber,
+  isStringNumberMix,
+  colorValidator,
+  type PropsToEmits
+} from '../helpers'
 import type { OptionItem, OptionList, TabCommonEmits } from './types'
-import { colorValidator } from '../helpers/validator'
-import type { PropsToEmits } from '../helpers/types'
 
 export const tabEmits: PropsToEmits<TabCommonEmits> = {
   'update:modelValue': value => isStringNumberMix(value),

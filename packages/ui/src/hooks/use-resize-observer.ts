@@ -1,7 +1,6 @@
-import { onBeforeUnmount, watch } from 'vue'
-import type { Ref } from 'vue'
+import { onBeforeUnmount, watch, type Ref } from 'vue'
 import { useMounted } from './use-life'
-import { noop } from '../helpers/util'
+import { noop } from '../helpers'
 
 export function useResizeObserver(
   container: Ref<HTMLElement | null>,

@@ -1,5 +1,5 @@
 import type { FocusEmits, FormItemCommonProps } from '../Form/types'
-import type { OnClick } from '../helpers/types'
+import type { OnClick } from '../helpers'
 
 type OnChange = (value: string) => void
 

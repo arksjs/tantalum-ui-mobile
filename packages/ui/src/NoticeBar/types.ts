@@ -1,4 +1,4 @@
-import type { OnClick, StateType } from '../helpers/types'
+import type { OnClick, StateType } from '../helpers'
 import type { IconData } from '../Icon/types'
 
 export type Mode = 'default' | 'clickable' | 'closable'

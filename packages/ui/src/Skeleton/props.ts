@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import { createEnumsValidator } from '../helpers/validator'
+import { createEnumsValidator } from '../helpers'
 import type { AvatarShape, ButtonShape } from './types'
 import { AVATAR_SHAPE_NAMES, BUTTON_SHAPE_NAMES } from './util'
 

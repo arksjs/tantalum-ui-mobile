@@ -1,4 +1,4 @@
-import type { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers'
 
 export const getCheckStyles = (activeColor?: string) => {
   const obj: CSSProperties = {}

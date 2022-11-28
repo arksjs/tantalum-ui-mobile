@@ -1,4 +1,4 @@
-import type { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers'
 import type { HandleOptionItem } from './types'
 
 export const getStyles = (color?: string, activeColor?: string) => {
