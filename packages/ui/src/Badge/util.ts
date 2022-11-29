@@ -3,7 +3,7 @@ import {
   isNumber,
   isObject,
   isString,
-  isStringNumberMix,
+  isStringOrNumber,
   rangeInteger,
   getColorObject,
   type CSSProperties
@@ -11,7 +11,7 @@ import {
 import type { BadgeOption, BadgeProps } from './types'
 
 export function handleBadge(badge?: BadgeOption): BadgeProps {
-  if (isStringNumberMix(badge)) {
+  if (isStringOrNumber(badge)) {
     return {
       content: badge
     }

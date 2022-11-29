@@ -49,7 +49,7 @@ import {
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
 import {
-  stringMix2StringArray,
+  string2StringArray,
   type PropsToEmits,
   isStringOrStringArray
 } from '../helpers'
@@ -352,7 +352,7 @@ export default defineComponent({
           return
         }
 
-        const allowPullDirections = stringMix2StringArray(
+        const allowPullDirections = string2StringArray(
           props.enablePullDirections
         )
 

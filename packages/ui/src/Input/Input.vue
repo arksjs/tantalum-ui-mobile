@@ -53,12 +53,7 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref, watch } from 'vue'
 import { Icon } from '../Icon'
-import {
-  isNumeric,
-  isStringNumberMix,
-  type OnFocus,
-  type PropsToEmits
-} from '../helpers'
+import { isStringOrNumber, type OnFocus, type PropsToEmits } from '../helpers'
 import { getClasses, getInputMode, getMaxLength, getValue } from './util'
 import {
   formFocusEmits,
@@ -76,7 +71,6 @@ export default defineComponent({
     ...formItemProps,
     maxlength: {
       type: [Number, String],
-      validator: (val: number | string) => isNumeric(val),
       default: 140
     },
     placeholder: {
@@ -89,7 +83,7 @@ export default defineComponent({
     },
     modelValue: {
       type: [Number, String],
-      validator: (val: number | string) => isStringNumberMix(val)
+      validator: isStringOrNumber
     },
     focus: {
       type: Boolean,

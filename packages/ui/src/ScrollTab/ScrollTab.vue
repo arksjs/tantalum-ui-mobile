@@ -33,7 +33,7 @@ import { defineComponent, onMounted, ref, shallowRef, watch } from 'vue'
 import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
-import { sizeValidator, isString, type PropsToEmits } from '../helpers'
+import { isSizeValue, isString, type PropsToEmits } from '../helpers'
 import type { OnResetItems, StickyViewRef } from '../StickyView/types'
 import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
@@ -48,11 +48,13 @@ export default defineComponent({
       type: String
     },
     stickyOffsetTop: {
-      validator: sizeValidator,
+      type: [Number, String],
+      validator: isSizeValue,
       default: 0
     },
     stickyOffsetBottom: {
-      validator: sizeValidator,
+      type: [Number, String],
+      validator: isSizeValue,
       default: 0
     }
   },

@@ -87,14 +87,14 @@ export function getRelativeOffset(
 
 /**
  * 获取长度值
- * @param size eg: 10 10vw 10vh 10px
+ * @param value eg: 10 10vw 10vh 10px
  * @param defaultValue
  */
-export function getSizeValue(size: unknown, defaultValue = 0) {
-  if (isNumber(size)) {
-    return size as number
-  } else if (isString(size)) {
-    const matches = size.match(/^([\d.]+)((px)|(vw)|(vh)|)$/)
+export function getSizeValue(value: unknown, defaultValue = 0) {
+  if (isNumber(value)) {
+    return value
+  } else if (isString(value)) {
+    const matches = value.match(/^([\d.]+)((px)|(vw)|(vh)|)$/)
 
     if (matches) {
       let sizeNum = parseFloat(matches[1])
@@ -110,6 +110,10 @@ export function getSizeValue(size: unknown, defaultValue = 0) {
   }
 
   return defaultValue
+}
+
+export function isSizeValue(object: unknown): object is string | number {
+  return getSizeValue(object, Infinity) !== Infinity
 }
 
 export type Selector = HTMLElement | string

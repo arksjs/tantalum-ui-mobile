@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import { isString, PropsToEmits, isStringNumberMix } from '../helpers'
+import { isString, PropsToEmits, isStringOrNumber } from '../helpers'
 import type {
   PickerEmits,
   PickerPopupEmits,
@@ -20,7 +20,7 @@ import { formActiveEmits, formItemProps } from '../Form/form'
 import { popupEmits, popupExtendProps } from '../popup/popup'
 
 const isValue = (value: SelectorValue) => {
-  return isStringNumberMix(value) || value instanceof Date
+  return isStringOrNumber(value) || value instanceof Date
 }
 
 const isModelValue = (value: SelectorModelValue) => {

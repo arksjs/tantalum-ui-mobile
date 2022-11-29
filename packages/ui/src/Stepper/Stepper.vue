@@ -38,7 +38,8 @@ import {
   emitClickValidator,
   type OnFocus,
   type OnClick,
-  type PropsToEmits
+  type PropsToEmits,
+  isNumeric
 } from '../helpers'
 import { formatNumber, getRangeNumber, getClasses } from './util'
 import {
@@ -57,7 +58,8 @@ export default defineComponent({
   props: {
     ...formItemProps,
     modelValue: {
-      type: [Number, String]
+      type: [Number, String],
+      validator: isNumeric
     },
     // 是否禁用减少按钮
     disabledMinus: {

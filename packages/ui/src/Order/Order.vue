@@ -51,7 +51,7 @@ import {
 import { Icon } from '../Icon'
 import { Drawer } from '../Drawer'
 import {
-  isStringNumberMix,
+  isStringOrNumber,
   rangeNumber,
   cloneData,
   isNumber,
@@ -91,7 +91,7 @@ const itemsValidator = (items: Item[]) => {
   return (
     Array.isArray(items) &&
     items.filter(item => {
-      return !(item && isStringNumberMix(item.id))
+      return !(item && isStringOrNumber(item.id))
     }).length === 0
   )
 }
@@ -127,7 +127,7 @@ export default defineComponent({
       payload &&
       isNumber(payload.index) &&
       payload.item &&
-      isStringNumberMix(payload.item.id)
+      isStringOrNumber(payload.item.id)
   } as PropsToEmits<OrderEmits>,
   setup(props, { emit }) {
     const { locale } = useLocale()

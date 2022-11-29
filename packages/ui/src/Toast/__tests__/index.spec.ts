@@ -42,7 +42,6 @@ describe('Toast', () => {
     })
 
     expect(wrapper.findComponent(ActivityIndicator).exists()).toBeTruthy()
-    expect(wrapper.find('.ta-toast_box').classes()).toContain('has--icon')
   })
 
   test.concurrent('type="success"', () => {
@@ -56,7 +55,6 @@ describe('Toast', () => {
     })
 
     expect(wrapper.findComponent(CheckOutlined).exists()).toBeTruthy()
-    expect(wrapper.find('.ta-toast_box').classes()).toContain('has--icon')
   })
 
   test.concurrent('type="fail"', () => {
@@ -70,7 +68,6 @@ describe('Toast', () => {
     })
 
     expect(wrapper.findComponent(CloseOutlined).exists()).toBeTruthy()
-    expect(wrapper.find('.ta-toast_box').classes()).toContain('has--icon')
   })
 
   test.concurrent('showMask', async () => {

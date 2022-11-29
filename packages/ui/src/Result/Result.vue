@@ -25,7 +25,7 @@ import { Icon } from '../Icon'
 import { Button as TaButton } from '../Button'
 import {
   createEnumsValidator,
-  emitEventValidator,
+  emitClickValidator,
   type PropsToEmits
 } from '../helpers'
 import { useLocale } from '../ConfigProvider/context'
@@ -78,8 +78,8 @@ export default defineComponent({
     }
   },
   emits: {
-    confirm: emitEventValidator,
-    back: emitEventValidator
+    confirm: emitClickValidator,
+    back: emitClickValidator
   } as PropsToEmits<ResultEmits>,
   setup(props, { emit }) {
     const { locale } = useLocale()

@@ -20,7 +20,7 @@ import {
 import {
   widgetZIndex,
   selectorValidator,
-  sizeValidator,
+  isSizeValue,
   getRelativeOffset,
   getScrollTop,
   getSizeValue,
@@ -40,12 +40,12 @@ export default defineComponent({
     },
     offsetTop: {
       type: [Number, String],
-      validator: sizeValidator,
+      validator: isSizeValue,
       default: 0
     },
     offsetBottom: {
       type: [Number, String],
-      validator: sizeValidator,
+      validator: isSizeValue,
       default: null
     },
     disabled: {

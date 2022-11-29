@@ -20,12 +20,13 @@ import {
   isSameArray,
   isSameDate,
   isNumber,
-  isStringNumberMixArray,
+  isStringOrNumberArray,
   objectForEach,
   isObject,
-  isStringNumberMix,
+  isStringOrNumber,
   isEmpty,
-  type AnyObject
+  type AnyObject,
+  isString
 } from '../helpers'
 
 export const getDefaultFieldNames: () => FieldNames = () => {
@@ -46,9 +47,9 @@ const defaultFormatter: SelectorValueFormatter = (valueArray, labelArray) => {
 const defaultParser: SelectorValueParser = value => {
   if (isNumber(value)) {
     return [value as number]
-  } else if (typeof value === 'string' && value) {
+  } else if (isString(value) && value) {
     return [value]
-  } else if (isStringNumberMixArray(value)) {
+  } else if (isStringOrNumberArray(value)) {
     return cloneValue(value as (string | number)[]) as SelectorValue[]
   }
 
@@ -107,7 +108,7 @@ function parseOptions(
         if (subOptions.length > 0) {
           ;(newOptions as OptionItem[][]).push(subOptions)
         }
-      } else if (isNumber(option) || typeof option === 'string') {
+      } else if (isStringOrNumber(option)) {
         // 纯数值或者字符串
         ;(newOptions as OptionItem[]).push({
           label: option.toString(),
@@ -118,7 +119,7 @@ function parseOptions(
       } else if (isObject(option)) {
         const newOption = option as AnyObject
 
-        if (isStringNumberMix(newOption[fieldNames.value])) {
+        if (isStringOrNumber(newOption[fieldNames.value])) {
           ;(newOptions as OptionItem[]).push({
             label: (newOption[fieldNames.label] == null
               ? newOption[fieldNames.value]
@@ -336,13 +337,13 @@ export function getFormatOptions(
 
   if (virtualHandler == null) {
     if (fieldNames) {
-      typeof fieldNames.label === 'string' &&
+      isString(fieldNames.label) &&
         fieldNames.label &&
         (newFieldNames.label = fieldNames.label)
-      typeof fieldNames.value === 'string' &&
+      isString(fieldNames.value) &&
         fieldNames.value &&
         (newFieldNames.value = fieldNames.value)
-      typeof fieldNames.children === 'string' &&
+      isString(fieldNames.children) &&
         fieldNames.children &&
         (newFieldNames.children = fieldNames.children)
     }

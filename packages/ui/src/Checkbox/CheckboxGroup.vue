@@ -15,7 +15,7 @@
 import { defineComponent, ref, type PropType } from 'vue'
 import Checkbox from './Checkbox.vue'
 import {
-  isStringNumberMixArray,
+  isStringOrNumberArray,
   cloneData,
   isSameArray,
   type PropsToEmits
@@ -24,7 +24,7 @@ import { useCheckGroup } from './use-check'
 import type { CheckboxGroupEmits, ModelValue } from './types'
 import { checkGroupProps } from './props'
 
-const isValue = (value: ModelValue[]) => isStringNumberMixArray(value)
+const isValue = (value: ModelValue[]) => isStringOrNumberArray(value)
 
 export default defineComponent({
   name: 'ta-checkbox-group',
@@ -70,7 +70,7 @@ export default defineComponent({
       },
       watchValue({ children, value }) {
         if (
-          isStringNumberMixArray(value) &&
+          isStringOrNumberArray(value) &&
           !isSameArray(value, inputValue.value)
         ) {
           const newVal: ModelValue[] = []

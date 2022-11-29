@@ -120,7 +120,7 @@ export function isEmptyObject(object: unknown): object is EmptyObject {
  * @param object 值
  * @returns boolean
  */
-export function isStringNumberMix(object: unknown): object is string | number {
+export function isStringOrNumber(object: unknown): object is string | number {
   return typeof object === 'string' || typeof object === 'number'
 }
 
@@ -179,12 +179,8 @@ export function isStringOrStringArray(
  * @param object 值
  * @returns string[]
  */
-export const stringMix2StringArray = (object: unknown) => {
-  return isStringArray(object)
-    ? (object as string[])
-    : typeof object === 'string'
-    ? [object]
-    : []
+export const string2StringArray = (object: unknown) => {
+  return isStringArray(object) ? object : isString(object) ? [object] : []
 }
 
 /**
@@ -192,8 +188,8 @@ export const stringMix2StringArray = (object: unknown) => {
  * @param object 值
  * @returns boolean
  */
-export const isStringNumberMixArray = createArrayValidator(object =>
-  isStringNumberMix(object)
+export const isStringOrNumberArray = createArrayValidator(object =>
+  isStringOrNumber(object)
 ) as (object: unknown) => object is (number | string)[]
 
 /**
@@ -460,6 +456,12 @@ export const isURL = (object: unknown) => {
   )
 }
 
+/**
+ * 获取基于一个值的数组列表
+ * @param value 数值项值
+ * @param len 数组长度
+ * @returns 数组
+ */
 export const getSameValueArray: <T>(value: T, len: number) => T[] = (
   value,
   len

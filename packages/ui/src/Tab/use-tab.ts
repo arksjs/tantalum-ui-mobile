@@ -12,7 +12,7 @@ import {
   isNumber,
   isObject,
   isString,
-  isStringNumberMix,
+  isStringOrNumber,
   isURL
 } from '../helpers'
 import { handleBadge } from '../Badge/util'
@@ -70,7 +70,7 @@ export function useTab(
         } else if (isObject(item)) {
           item = item as OptionItem
 
-          if (isStringNumberMix(item.value)) {
+          if (isStringOrNumber(item.value)) {
             option = {
               label: isString(item.label) ? item.label : item.value.toString(),
               subLabel: isString(item.subLabel) ? item.subLabel : '',

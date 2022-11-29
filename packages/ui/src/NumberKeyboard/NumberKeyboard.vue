@@ -61,6 +61,7 @@ import {
   isString,
   isStringArray,
   noop,
+  string2StringArray,
   type EmptyObject,
   type PropsToEmits
 } from '../helpers'
@@ -124,8 +125,7 @@ export default defineComponent({
       popup.onVisibleStateChange(e)
 
       if (e.state === 'show') {
-        valueCache =
-          (typeof props.modelValue === 'string' && props.modelValue) || ''
+        valueCache = (isString(props.modelValue) && props.modelValue) || ''
       }
     }
 
@@ -156,12 +156,7 @@ export default defineComponent({
         })
       }
 
-      const customKey =
-        typeof props.customKey === 'string'
-          ? [props.customKey]
-          : isStringArray(props.customKey)
-          ? (props.customKey as string[])
-          : []
+      const customKey = string2StringArray(props.customKey)
 
       if (props.type === 'rightColumn') {
         if (customKey.length > 1) {

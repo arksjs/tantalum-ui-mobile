@@ -1,6 +1,6 @@
 import { computed, onMounted, watch, inject, provide, shallowRef } from 'vue'
 import type { SetupContext } from 'vue'
-import { capitalize, isStringNumberMix } from '../helpers'
+import { capitalize, isStringOrNumber } from '../helpers'
 import { useGroup, useGroupItem } from '../hooks'
 import type {
   ModelValue,
@@ -177,7 +177,7 @@ export function useCheckGroup<T>(
 
     if (Array.isArray(props.options)) {
       props.options.forEach(v => {
-        if (isStringNumberMix(v)) {
+        if (isStringOrNumber(v)) {
           ret.push({
             value: v,
             label: v.toString()

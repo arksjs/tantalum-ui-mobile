@@ -37,7 +37,7 @@ import {
   querySelector,
   scrollTo as _scrollTo,
   selectorValidator,
-  sizeValidator,
+  isSizeValue,
   isNumber,
   isString,
   type PropsToEmits,
@@ -62,7 +62,7 @@ export default defineComponent({
     },
     offsetTop: {
       type: [Number, String],
-      validator: sizeValidator,
+      validator: isSizeValue,
       default: 0
     },
     disabled: {

@@ -1,15 +1,16 @@
 import type { PropType } from 'vue'
 import {
   isNumber,
-  isStringNumberMix,
+  isStringOrNumber,
   colorValidator,
-  type PropsToEmits
+  type PropsToEmits,
+  isString
 } from '../helpers'
 import type { OptionItem, OptionList, TabCommonEmits } from './types'
 
 export const tabEmits: PropsToEmits<TabCommonEmits> = {
-  'update:modelValue': value => isStringNumberMix(value),
-  change: (value, index) => isStringNumberMix(value) && isNumber(index)
+  'update:modelValue': value => isStringOrNumber(value),
+  change: (value, index) => isStringOrNumber(value) && isNumber(index)
 }
 
 export const tabProps = {
@@ -20,12 +21,12 @@ export const tabProps = {
         for (let i = 0; i < val.length; i++) {
           const option = val[i]
 
-          if (typeof option === 'string' || typeof option === 'number') {
+          if (isStringOrNumber(option)) {
             //
           } else if (
             option &&
-            typeof option.label === 'string' &&
-            isStringNumberMix(option.value)
+            isString(option.label) &&
+            isStringOrNumber(option.value)
           ) {
             //
           } else {
@@ -42,7 +43,7 @@ export const tabProps = {
     default: () => [] as OptionItem[]
   },
   modelValue: {
-    type: [Number, String] as PropType<number | string>
+    type: [Number, String]
   },
   color: {
     type: String,

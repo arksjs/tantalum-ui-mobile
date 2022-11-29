@@ -73,8 +73,7 @@ export default defineComponent({
     ...formItemProps,
     modelValue: {
       type: [Number, String],
-      validator: isIntegerOrHalf,
-      default: null
+      validator: isIntegerOrHalf
     },
     count: {
       type: [Number, String],

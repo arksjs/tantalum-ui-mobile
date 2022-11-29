@@ -85,9 +85,10 @@ import {
   isString,
   isStringArray,
   isStringOrStringArray,
-  emitEventValidator,
+  emitClickValidator,
   type VoidFnToBooleanFn,
-  type PropsToEmits
+  type PropsToEmits,
+  isStringOrNumber
 } from '../helpers'
 import { useLocale } from '../ConfigProvider/context'
 import type { OnInput, SearchBarEmits, SuggestItem, SuggestList } from './types'
@@ -143,7 +144,7 @@ export default defineComponent({
     }
   },
   emits: {
-    cancelClick: emitEventValidator,
+    cancelClick: emitClickValidator,
     input: emitValidator,
     focus: emitValidator,
     blur: emitValidator,
@@ -183,13 +184,13 @@ export default defineComponent({
 
       if (Array.isArray(res)) {
         res.forEach(v => {
-          if (typeof v === 'string' || typeof v === 'number') {
+          if (isStringOrNumber(v)) {
             newList.push({
               text: v.toString(),
               tags: []
             })
           } else if (v) {
-            if (typeof v.text === 'string' || typeof v.text === 'number') {
+            if (isStringOrNumber(v.text)) {
               v.text = v.text.toString()
               v.tags = isStringArray(v.tags) ? v.tags : []
               newList.push(v)
@@ -261,7 +262,7 @@ export default defineComponent({
       (val: Placeholders) => {
         phsStop()
 
-        if (typeof val === 'string') {
+        if (isString(val)) {
           placeholder.value = val
           phs = [val]
         } else if (isStringArray(val) && val.length > 0) {

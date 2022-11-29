@@ -1,4 +1,4 @@
-import type { VoidFnToBooleanFn } from '../helpers'
+import { isNumber, isString, type VoidFnToBooleanFn } from '../helpers'
 import type {
   OnRefreshing,
   OnScroll,
@@ -7,16 +7,14 @@ import type {
 } from './types'
 
 export const emitScrollValidator: VoidFnToBooleanFn<OnScroll> = payload =>
-  payload &&
-  typeof payload.scrollTop === 'number' &&
-  typeof payload.scrollLeft === 'number'
+  payload && isNumber(payload.scrollTop) && isNumber(payload.scrollLeft)
 
 export const emitRefreshingValidator: VoidFnToBooleanFn<OnRefreshing> = (
   payload,
   loadComplete
 ) =>
   payload &&
-  typeof payload.pullDirection === 'string' &&
+  isString(payload.pullDirection) &&
   typeof loadComplete === 'function'
 
 export const emitScrollToUpperValidator: VoidFnToBooleanFn<

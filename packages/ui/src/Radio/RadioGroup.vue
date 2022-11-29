@@ -17,10 +17,10 @@ import Radio from './Radio.vue'
 import { useCheckGroup } from '../Checkbox/use-check'
 import type { ModelValue } from '../Checkbox/types'
 import { checkGroupProps } from '../Checkbox/props'
-import { isStringNumberMix, type PropsToEmits } from '../helpers'
+import { isStringOrNumber, type PropsToEmits } from '../helpers'
 import type { RadioGroupEmits } from './types'
 
-const isValue = (value: ModelValue) => isStringNumberMix(value)
+const isValue = (value: ModelValue) => isStringOrNumber(value)
 
 export default defineComponent({
   name: 'ta-radio-group',

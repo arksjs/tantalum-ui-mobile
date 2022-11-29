@@ -31,7 +31,7 @@
 import { defineComponent, onMounted, ref, shallowRef, watch } from 'vue'
 import { StickyView } from '../StickyView'
 import {
-  sizeValidator,
+  isSizeValue,
   isString,
   rangeInteger,
   type PropsToEmits
@@ -54,7 +54,8 @@ export default defineComponent({
       type: String
     },
     stickyOffsetTop: {
-      validator: sizeValidator,
+      type: [Number, String],
+      validator: isSizeValue,
       default: 0
     }
   },

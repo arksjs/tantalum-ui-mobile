@@ -83,9 +83,11 @@ import type {
 } from './types'
 import { useLocale } from '../ConfigProvider/context'
 import {
+  isString,
   iconValidator,
   type PropsToEmits,
-  type VoidFnToBooleanFn
+  type VoidFnToBooleanFn,
+  isNumber
 } from '../helpers'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import HomeOutlined from '../Icon/icons/HomeOutlined'
@@ -95,10 +97,7 @@ const buttonsValidator = (items: ButtonOption[]) => {
   return (
     Array.isArray(items) &&
     items.filter(item => {
-      return !(
-        (item && typeof item.text === 'string') ||
-        iconValidator(item.icon)
-      )
+      return !((item && isString(item.text)) || iconValidator(item.icon))
     }).length === 0
   )
 }
@@ -108,9 +107,9 @@ const emitClickValidator: VoidFnToBooleanFn<OnButtonClick> = (
   buttonEl
 ) =>
   payload &&
-  typeof payload.index === 'number' &&
+  isNumber(payload.index) &&
   payload.item &&
-  typeof payload.item.text === 'string' &&
+  isString(payload.item.text) &&
   buttonEl instanceof HTMLElement
 
 const emitTitleDbClickValidator: VoidFnToBooleanFn<OnTitleDbClick> = titleEl =>

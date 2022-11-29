@@ -20,7 +20,7 @@ import { Icon } from '../Icon'
 import {
   getScrollTop,
   scrollTo,
-  emitEventValidator,
+  emitClickValidator,
   getNumber,
   type OnClick,
   type PropsToEmits
@@ -52,7 +52,7 @@ export default defineComponent({
     }
   },
   emits: {
-    click: emitEventValidator
+    click: emitClickValidator
   } as PropsToEmits<BackTopEmits>,
   setup(props, { emit }) {
     const isShow = ref(false)

@@ -1,13 +1,5 @@
-import {
-  isObject,
-  isStringNumberMixArray,
-  isNumber,
-  isURL,
-  isNumeric,
-  isString
-} from './util'
-import { getSizeValue } from './dom'
-import type { AnyObject, EmptyObject } from './types'
+import { isObject, isURL, isString } from './util'
+import type { AnyObject } from './types'
 import { isColorValue } from './color'
 
 interface Validator<T = unknown> {
@@ -18,18 +10,6 @@ export const selectorValidator: Validator = value => {
   return (
     isString(value) || value instanceof HTMLElement || value instanceof Document
   )
-}
-
-export const stringNumberArrayMixValidator: Validator = value => {
-  return (
-    isStringNumberMixArray(value) ||
-    typeof value === 'string' ||
-    isNumber(value)
-  )
-}
-
-export const sizeValidator: Validator<number | string> = value => {
-  return getSizeValue(value, Infinity) !== Infinity
 }
 
 export const createEnumsValidator = (enums: readonly string[]) => {
@@ -55,7 +35,7 @@ export function isSvgComponent(value: unknown) {
   if (isObject(value)) {
     const obj = value as AnyObject
 
-    if (typeof obj.template === 'string' || typeof obj.render === 'function') {
+    if (isString(obj.template) || typeof obj.render === 'function') {
       // vue component
       return true
     } else if (obj.__file && obj.__file.indexOf('.svg') > -1) {
@@ -68,25 +48,16 @@ export function isSvgComponent(value: unknown) {
 }
 
 export const iconValidator: Validator = value => {
-  return (typeof value === 'string' && !isURL(value)) || isSvgComponent(value)
+  return (isString(value) && !isURL(value)) || isSvgComponent(value)
 }
-
-export const numberValidator: Validator<number | string> = value =>
-  isNumeric(value)
 
 export const colorValidator: Validator = value => {
   return value == null || value === '' || isColorValue(value as string)
 }
 
-export const emitEventValidator = (e: Event) => e instanceof Event
+export const emitFocusValidator = (e: FocusEvent) => e instanceof FocusEvent
 export const emitClickValidator = (e: MouseEvent) => e instanceof MouseEvent
-
 export const emitErrorValidator = (e: Error) => e instanceof Error
-
-export const emitTypeValidator = (payload: { type: string }) =>
-  payload && typeof payload.type === 'string'
-
-export const emitEmptyValidator = (payload: EmptyObject) => !!payload
 
 export const createListValidator = <T>(itemValidator: (item: T) => boolean) => {
   const validator = (value: unknown) => {

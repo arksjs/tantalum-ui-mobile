@@ -1,4 +1,4 @@
-import { stringMix2StringArray } from '../helpers'
+import { string2StringArray } from '../helpers'
 import type { Accept } from './types'
 
 export const ACCEPT_TYPES = new Map<Accept, string>([
@@ -15,7 +15,7 @@ export function getAccepts(val?: Accept | Accept[]) {
   if (val == null) {
     ret.push(ACCEPT_TYPES.get('all') as string)
   } else {
-    const arr = stringMix2StringArray(val) as Accept[]
+    const arr = string2StringArray(val) as Accept[]
 
     for (let i = 0; i < arr.length; i++) {
       const accept = ACCEPT_TYPES.get(arr[i])
