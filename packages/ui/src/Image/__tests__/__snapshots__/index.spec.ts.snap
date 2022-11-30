@@ -3,7 +3,7 @@
 exports[`Image > snapshot 1`] = `
 "<div class=\\"ta-image\\">
   <!--v-if--><i class=\\"ta-image_loading\\">
-    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
   </i>
   <!--v-if-->
   <!--v-if-->

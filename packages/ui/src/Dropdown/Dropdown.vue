@@ -25,7 +25,7 @@ import {
   type PropType
 } from 'vue'
 import { usePopup } from '../popup/use-popup'
-import { popupEmits, popupProps } from '../popup/popup'
+import { popupEmits, popupProps } from '../popup/props'
 import {
   selectorValidator,
   querySelector,

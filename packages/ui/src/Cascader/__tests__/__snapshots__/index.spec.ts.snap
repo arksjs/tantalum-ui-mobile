@@ -7,7 +7,7 @@ exports[`Cascader > snapshot 1`] = `
 </div>"
 `;
 
-exports[`CascaderPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"ta-cascader-popup\\"></drawer-stub>"`;
+exports[`CascaderPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" initialenableblurcancel=\\"true\\" class=\\"ta-cascader-popup\\"></drawer-stub>"`;
 
 exports[`CascaderView > snapshot 1`] = `
 "<div class=\\"ta-cascader-view\\">

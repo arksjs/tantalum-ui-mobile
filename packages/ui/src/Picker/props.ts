@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import { isString, PropsToEmits, isStringOrNumber } from '../helpers'
+import { isString, isStringOrNumber, type PropsToEmits } from '../helpers'
 import type {
   PickerEmits,
   PickerPopupEmits,
@@ -17,7 +17,7 @@ import type {
 } from '../SelectorField/types'
 import { getDefaultFieldNames } from './util'
 import { formActiveEmits, formItemProps } from '../Form/form'
-import { popupEmits, popupExtendProps } from '../popup/popup'
+import { popupEmits, popupExtendProps } from '../popup/props'
 
 const isValue = (value: SelectorValue) => {
   return isStringOrNumber(value) || value instanceof Date

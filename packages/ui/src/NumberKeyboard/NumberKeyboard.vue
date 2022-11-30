@@ -59,14 +59,14 @@ import { Icon } from '../Icon'
 import { Drawer } from '../Drawer'
 import {
   isString,
-  isStringArray,
+  isStringOrStringArray,
   noop,
   string2StringArray,
   type EmptyObject,
   type PropsToEmits
 } from '../helpers'
 import { usePopupExtend } from '../popup/use-popup'
-import { popupEmits, popupExtendProps } from '../popup/popup'
+import { popupEmits, popupExtendProps } from '../popup/props'
 import type { OnCancel, OnVisibleStateChange } from '../popup/types'
 import { useLocale } from '../ConfigProvider/context'
 import { formStringValueEmits } from '../Form/form'
@@ -89,8 +89,7 @@ export default defineComponent({
       default: ''
     },
     title: {
-      type: String,
-      default: null
+      type: String
     },
     // 键盘模式
     type: {
@@ -99,7 +98,8 @@ export default defineComponent({
     },
     // 自定义键盘额外的键
     customKey: {
-      type: [Array, String] as PropType<string | string[]>,
+      type: [String, Array] as PropType<string | string[]>,
+      validator: isStringOrStringArray,
       default: () => [] as string[]
     }
   },

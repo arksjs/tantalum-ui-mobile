@@ -1,3 +1,3 @@
 // Vitest Snapshot v1
 
-exports[`ActionSheet > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"ta-action-sheet\\"></drawer-stub>"`;
+exports[`ActionSheet > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" initialenableblurcancel=\\"true\\" class=\\"ta-action-sheet\\"></drawer-stub>"`;

@@ -104,8 +104,7 @@ export default defineComponent({
       default: 5000
     },
     duration: {
-      type: Number,
-      default: null
+      type: Number
     },
     initialCircular: {
       type: Boolean,

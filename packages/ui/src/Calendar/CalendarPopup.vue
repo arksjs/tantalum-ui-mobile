@@ -50,7 +50,7 @@ import { Drawer } from '../Drawer'
 import { Button as TaButton } from '../Button'
 import { commonProps, calendarDetailValidator } from './props'
 import { usePopupExtend } from '../popup/use-popup'
-import { popupExtendProps } from '../popup/popup'
+import { popupExtendProps } from '../popup/props'
 import { pickerPopupEmits } from '../Picker/props'
 import { cloneDetail, isSameDetail, isValidValue } from '../Picker/util'
 import type {

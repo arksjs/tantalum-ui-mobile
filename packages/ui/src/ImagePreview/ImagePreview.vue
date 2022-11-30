@@ -67,7 +67,7 @@ import {
   type EmptyObject
 } from '../helpers'
 import { usePopupExtend } from '../popup/use-popup'
-import { popupEmits, popupProps } from '../popup/popup'
+import { popupEmits, popupProps } from '../popup/props'
 import type { ImageOnLoad } from '../Image/types'
 import type { SwiperOnActiveIndexChange } from '../Swiper/types'
 import type { ImageObject, DistanceOptions, ImagePreviewEmits } from './types'

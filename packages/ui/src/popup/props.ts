@@ -1,4 +1,4 @@
-import { isBoolean, isString, PropsToEmits } from '../helpers'
+import { isBoolean, isString, type PropsToEmits } from '../helpers'
 import type { PopupEmits } from './types'
 import { VISIBLE_STATE_TYPES } from './util'
 

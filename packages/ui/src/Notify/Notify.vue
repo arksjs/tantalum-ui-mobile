@@ -4,6 +4,7 @@
     placement="top"
     :showMask="false"
     :visible="visible"
+    :initialEnableBlurCancel="false"
     @visibleStateChange="onVisibleStateChange"
     @cancel="onCancel"
     @confirm="onConfirm"
@@ -26,7 +27,7 @@
 import { defineComponent, toRef, type PropType } from 'vue'
 import { Drawer } from '../Drawer'
 import { NoticeBar } from '../NoticeBar'
-import { popupEmits, popupProps } from '../popup/popup'
+import { popupEmits, popupProps } from '../popup/props'
 import {
   iconValidator,
   type PropsToEmits,
@@ -37,7 +38,7 @@ import type { IconData } from '../Icon/types'
 import { useDelay } from '../hooks'
 import type { NotifyEmits } from './types'
 import { usePopupExtend } from '../popup/use-popup'
-import { OnCancel, OnVisibleStateChange } from '../popup/types'
+import type { OnCancel, OnVisibleStateChange } from '../popup/types'
 
 export default defineComponent({
   name: 'ta-notify',

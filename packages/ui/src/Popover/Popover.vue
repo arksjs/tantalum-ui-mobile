@@ -6,7 +6,7 @@
       v-bind="$attrs"
     >
       <div class="ta-mask" @click="onMaskClick"></div>
-      <div class="ta-popover_inner" ref="innerEl" :style="innerStyles">
+      <div class="ta-popover_inner" :style="innerStyles" ref="popupInnerEl">
         <i class="ta-popover_arrow" :style="arrowStyles"></i>
         <div class="ta-popover_content">
           <slot>
@@ -47,7 +47,6 @@ export default defineComponent({
   emits: { ...popoverEmits } as PropsToEmits<PopoverEmits>,
   setup(props, ctx) {
     const container = shallowRef<HTMLElement | null>(null)
-    const innerEl = shallowRef<HTMLElement | null>(null)
     const isShow = ref(false)
     const showPos = ref(DEFAULT_POS)
 
@@ -75,13 +74,13 @@ export default defineComponent({
     })
 
     function updatePos(source?: string) {
-      if (!container.value || !innerEl.value || !isShow.value) {
+      if (!container.value || !popup.popupInnerEl.value || !isShow.value) {
         return
       }
 
       showPos.value = getShowPos(
         container.value,
-        innerEl.value,
+        popup.popupInnerEl.value,
         props.placement
       )
     }
@@ -123,7 +122,6 @@ export default defineComponent({
 
     return {
       ...popup,
-      innerEl,
       arrowStyles,
       innerStyles
     }

@@ -45,8 +45,7 @@ export default defineComponent({
     },
     offsetBottom: {
       type: [Number, String],
-      validator: isSizeValue,
-      default: null
+      validator: isSizeValue
     },
     disabled: {
       type: Boolean,

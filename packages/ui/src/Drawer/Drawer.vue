@@ -6,7 +6,7 @@
       v-bind="$attrs"
     >
       <div class="ta-mask" @click="onMaskClick"></div>
-      <div :class="innerClasses" :style="innerStyles">
+      <div :class="innerClasses" :style="innerStyles" ref="popupInnerEl">
         <slot name="header">
           <NavBar
             v-if="hasHeader"
@@ -32,7 +32,7 @@
 import { defineComponent, computed, toRef, type PropType } from 'vue'
 import { NavBar } from '../NavBar'
 import { usePopup } from '../popup/use-popup'
-import { popupEmits, popupProps } from '../popup/popup'
+import { popupEmits, popupProps } from '../popup/props'
 import { useSafeAreaInsets } from '../hooks'
 import {
   createEnumsValidator,
@@ -51,8 +51,7 @@ export default defineComponent({
   props: {
     ...popupProps,
     title: {
-      type: String,
-      default: null
+      type: String
     },
     placement: {
       type: String as PropType<PlacementType>,
@@ -71,13 +70,20 @@ export default defineComponent({
     showMask: {
       type: Boolean,
       default: true
+    },
+    // 在没有蒙层的情况下，点击抽屉外其他区域是否关闭抽屉
+    initialEnableBlurCancel: {
+      type: Boolean,
+      default: true
     }
   },
   emits: { ...popupEmits } as PropsToEmits<DrawerEmits>,
   setup(props, ctx) {
     const popup = usePopup(props, ctx, {
-      initialFocusFixed: true
+      initialFocusFixed: true,
+      initialEnableBlurCancel: props.initialEnableBlurCancel
     })
+
     const { safeAreaInsets } = useSafeAreaInsets(
       toRef(props, 'enableSafeAreaInsets')
     )

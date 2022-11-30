@@ -2,10 +2,7 @@
   <div :class="classes" ref="root" @scroll="onScroll">
     <div class="ta-scroll-view_inner">
       <div class="ta-scroll-view_content" :style="contentStyles">
-        <div
-          v-if="enablePullDirections && enablePullDirections.length > 0"
-          :class="pullRefreshClasses"
-        >
+        <div v-if="allowPullDirections.length > 0" :class="pullRefreshClasses">
           <slot
             v-bind:pullDirection="pullDirection"
             v-bind:pullRefreshState="pullRefreshState"
@@ -131,8 +128,7 @@ export default defineComponent({
     // 下拉刷新方向
     enablePullDirections: {
       type: [String, Array] as PropType<PullDirection | PullDirection[]>,
-      validator: isStringOrStringArray,
-      default: null
+      validator: isStringOrStringArray
     },
     // 下拉刷新阈值
     pullRefreshThreshold: {
@@ -325,6 +321,9 @@ export default defineComponent({
     const indicatorStyles = computed(() =>
       getIndicatorStyles(pullIndicatorSafeArea.value)
     )
+    const allowPullDirections = computed(() =>
+      string2StringArray(props.enablePullDirections)
+    )
 
     useTouch({
       el: root,
@@ -352,11 +351,7 @@ export default defineComponent({
           return
         }
 
-        const allowPullDirections = string2StringArray(
-          props.enablePullDirections
-        )
-
-        if (allowPullDirections.length === 0) {
+        if (allowPullDirections.value.length === 0) {
           return
         }
 
@@ -367,21 +362,21 @@ export default defineComponent({
         // 猜想可能刷新的方向，0-4个都有可能
         const directions: PullDirection[] = []
 
-        if (scrollTop === 0 && allowPullDirections.includes('down')) {
+        if (scrollTop === 0 && allowPullDirections.value.includes('down')) {
           directions.push('down')
         }
         if (
           scrollTop + clientHeight >= scrollHeight &&
-          allowPullDirections.includes('up')
+          allowPullDirections.value.includes('up')
         ) {
           directions.push('up')
         }
-        if (scrollLeft === 0 && allowPullDirections.includes('right')) {
+        if (scrollLeft === 0 && allowPullDirections.value.includes('right')) {
           directions.push('right')
         }
         if (
           scrollLeft + clientWidth >= scrollWidth &&
-          allowPullDirections.includes('left')
+          allowPullDirections.value.includes('left')
         ) {
           directions.push('left')
         }
@@ -545,6 +540,7 @@ export default defineComponent({
     provide('disableFixed', true)
 
     return {
+      allowPullDirections,
       pullRefreshState,
       pullDistance,
       pullDirection,

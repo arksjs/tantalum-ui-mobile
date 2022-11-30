@@ -1,3 +1,3 @@
 // Vitest Snapshot v1
 
-exports[`Notify > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"top\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"false\\" class=\\"ta-notify\\"></drawer-stub>"`;
+exports[`Notify > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"top\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"false\\" initialenableblurcancel=\\"false\\" class=\\"ta-notify\\"></drawer-stub>"`;

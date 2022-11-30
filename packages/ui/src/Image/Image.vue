@@ -73,8 +73,7 @@ export default defineComponent({
     },
     // 自适应正方形
     aspectRatio: {
-      type: Number,
-      default: null
+      type: [Number, String]
     },
     // 允许拖拽
     draggable: {
@@ -94,8 +93,7 @@ export default defineComponent({
       default: ImageBreakOutlined
     },
     iconSize: {
-      type: Number,
-      default: null
+      type: [Number, String]
     }
   },
   emits: {

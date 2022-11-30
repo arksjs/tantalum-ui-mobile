@@ -26,8 +26,7 @@ export default defineComponent({
     },
     // 货币符号
     symbol: {
-      type: String,
-      default: null
+      type: String
     },
     // 是否千分位展示
     thousands: {

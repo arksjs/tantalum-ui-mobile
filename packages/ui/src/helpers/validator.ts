@@ -2,22 +2,16 @@ import { isObject, isURL, isString } from './util'
 import type { AnyObject } from './types'
 import { isColorValue } from './color'
 
-interface Validator<T = unknown> {
-  (value: T): boolean
-}
-
-export const selectorValidator: Validator = value => {
+export const selectorValidator = (value?: string | HTMLElement | Document) => {
   return (
     isString(value) || value instanceof HTMLElement || value instanceof Document
   )
 }
 
 export const createEnumsValidator = (enums: readonly string[]) => {
-  const validator: Validator<string> = value => {
+  return (value: string) => {
     return enums.includes(value)
   }
-
-  return validator
 }
 
 export function getEnumsValue<T extends readonly any[]>(
@@ -47,29 +41,14 @@ export function isSvgComponent(value: unknown) {
   return false
 }
 
-export const iconValidator: Validator = value => {
+export const iconValidator = (value: unknown) => {
   return (isString(value) && !isURL(value)) || isSvgComponent(value)
 }
 
-export const colorValidator: Validator = value => {
+export const colorValidator = (value: unknown) => {
   return value == null || value === '' || isColorValue(value as string)
 }
 
 export const emitFocusValidator = (e: FocusEvent) => e instanceof FocusEvent
 export const emitClickValidator = (e: MouseEvent) => e instanceof MouseEvent
 export const emitErrorValidator = (e: Error) => e instanceof Error
-
-export const createListValidator = <T>(itemValidator: (item: T) => boolean) => {
-  const validator = (value: unknown) => {
-    if (Array.isArray(value)) {
-      return (
-        value.filter(v => {
-          return !itemValidator(v as T)
-        }).length === 0
-      )
-    }
-    return false
-  }
-
-  return validator as (payload: T[]) => boolean
-}

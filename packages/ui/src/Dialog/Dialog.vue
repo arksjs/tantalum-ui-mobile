@@ -46,7 +46,7 @@ import { defineComponent } from 'vue'
 import { Button as TaButton, ButtonGroup } from '../Button'
 import { Modal } from '../Modal'
 import { usePopupExtend } from '../popup/use-popup'
-import { popupEmits, popupExtendProps } from '../popup/popup'
+import { popupEmits, popupExtendProps } from '../popup/props'
 import { useLocale } from '../ConfigProvider/context'
 import type { EmptyObject, PropsToEmits } from '../helpers'
 import type { DialogEmits } from './types'
@@ -57,8 +57,7 @@ export default defineComponent({
   props: {
     ...popupExtendProps,
     title: {
-      type: String,
-      default: null
+      type: String
     },
     cancelText: {
       type: String
@@ -75,8 +74,7 @@ export default defineComponent({
       default: true
     },
     content: {
-      type: String,
-      default: null
+      type: String
     }
   },
   emits: { ...popupEmits } as PropsToEmits<DialogEmits>,

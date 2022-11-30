@@ -19,7 +19,7 @@ import type {
   PopupEmits,
   PopupRef
 } from './types'
-import { useDocumentBlur, type UseEmitFn } from '../hooks'
+import { useDocumentBlur, useStopBlur, type UseEmitFn } from '../hooks'
 import { getNewZIndex, getPopupStyles } from './util'
 
 type EmitCallback = (event: keyof PropsToEmits<PopupEmits>, res: any) => void
@@ -69,6 +69,7 @@ export function usePopup(
   const visible2 = ref(false)
   const absTop = ref<number | null>(null)
   const position = ref<'absolute' | null>(null)
+  const popupInnerEl = shallowRef<HTMLElement | null>(null)
 
   let isShowing = false
   let isHiding = false
@@ -181,6 +182,8 @@ export function usePopup(
     hide()
   }
 
+  useStopBlur(popupInnerEl)
+
   useDocumentBlur(() => {
     if (enableBlurCancel && isShow.value) {
       customCancel('blur')
@@ -224,7 +227,8 @@ export function usePopup(
     onMaskClick,
     onCloseClick,
     onCancelClick,
-    setEnableBlurCancel
+    setEnableBlurCancel,
+    popupInnerEl
   }
 }
 

@@ -26,8 +26,7 @@ export default defineComponent({
   props: {
     ...avatarProps,
     totalCount: {
-      type: Number,
-      default: null
+      type: [Number, String]
     },
     countColor: {
       type: String

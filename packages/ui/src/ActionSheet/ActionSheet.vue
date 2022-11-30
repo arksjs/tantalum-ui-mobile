@@ -40,10 +40,15 @@
 import { computed, defineComponent, type PropType } from 'vue'
 import { Drawer } from '../Drawer'
 import { usePopupExtend } from '../popup/use-popup'
-import { popupEmits, popupExtendProps } from '../popup/popup'
+import { popupEmits, popupExtendProps } from '../popup/props'
 import type { Option, Detail, OnConfirm, ActionSheetEmits } from './types'
 import { useLocale } from '../ConfigProvider/context'
-import { isNumber, isString, PropsToEmits, VoidFnToBooleanFn } from '../helpers'
+import {
+  isNumber,
+  isString,
+  type PropsToEmits,
+  type VoidFnToBooleanFn
+} from '../helpers'
 import { getItemClasses, getOptions } from './util'
 
 const confirmValidator: VoidFnToBooleanFn<OnConfirm> = payload =>
@@ -58,8 +63,7 @@ export default defineComponent({
   props: {
     ...popupExtendProps,
     title: {
-      type: String,
-      default: null
+      type: String
     },
     showCancel: {
       type: Boolean,

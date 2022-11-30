@@ -44,12 +44,10 @@ export default defineComponent({
     ...avatarProps,
     shape: {
       type: String as PropType<ShapeType>,
-      validator: createEnumsValidator(AVATAR_SHAPE_TYPES),
-      default: null
+      validator: createEnumsValidator(AVATAR_SHAPE_TYPES)
     },
     src: {
-      type: String,
-      default: null
+      type: String
     },
     badge: {
       type: [Number, String, Object] as PropType<BadgeOption>

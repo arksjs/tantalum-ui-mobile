@@ -122,6 +122,14 @@ export function useBlur(elRef: ElRef, callback: Noop) {
   return { off }
 }
 
+export function useStopBlur(elRef: ElRef) {
+  const { off } = useEvent(elRef, touchEvent.touchend, e => {
+    e.stopPropagation()
+  })
+
+  return { off }
+}
+
 export function useDocumentBlur(callback: Noop) {
   const elRef = shallowRef<HTMLElement | null>(null)
 

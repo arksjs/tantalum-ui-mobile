@@ -8,7 +8,7 @@ import {
   type PropsToEmits,
   type Selector
 } from '../helpers'
-import { popupEmits, popupProps } from '../popup/popup'
+import { popupEmits, popupProps } from '../popup/props'
 import type { PopoverEmits } from './types'
 
 export const popoverProps = {
