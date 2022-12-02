@@ -1,4 +1,4 @@
-import type { OnClick } from '../helpers/types'
+import type { OnClick } from '../helpers'
 
 export interface SuggestItem {
   text: string | number

@@ -1,8 +1,12 @@
 <template>
   <teleport to="body">
-    <div :class="[popupClasses, classes]" :style="popupStyles" v-bind="$attrs">
+    <div
+      :class="['ta-drawer', popupClasses]"
+      :style="popupStyles"
+      v-bind="$attrs"
+    >
       <div class="ta-mask" @click="onMaskClick"></div>
-      <div :class="innerClasses" :style="innerStyles">
+      <div :class="innerClasses" :style="innerStyles" ref="popupInnerEl">
         <slot name="header">
           <NavBar
             v-if="hasHeader"
@@ -25,17 +29,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRef, watch } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, computed, toRef, type PropType } from 'vue'
 import { NavBar } from '../NavBar'
 import { usePopup } from '../popup/use-popup'
-import { popupEmits, popupProps } from '../popup/popup'
-import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
-import { createEnumsValidator, getEnumsValue } from '../helpers/validator'
-import { PLACEMENT_TYPES } from '../helpers/constants'
-import type { PlacementType, PropsToEmits } from '../helpers/types'
+import { popupEmits, popupProps } from '../popup/props'
+import { useSafeAreaInsets } from '../hooks'
+import {
+  createEnumsValidator,
+  getEnumsValue,
+  PLACEMENT_TYPES,
+  type PlacementType,
+  type PropsToEmits
+} from '../helpers'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
-import { getClasses, getInnerClasses, getInnerStyles } from './util'
+import { getInnerClasses, getInnerStyles } from './util'
 import type { DrawerEmits } from './types'
 
 export default defineComponent({
@@ -44,8 +51,7 @@ export default defineComponent({
   props: {
     ...popupProps,
     title: {
-      type: String,
-      default: null
+      type: String
     },
     placement: {
       type: String as PropType<PlacementType>,
@@ -64,11 +70,20 @@ export default defineComponent({
     showMask: {
       type: Boolean,
       default: true
+    },
+    // 在没有蒙层的情况下，点击抽屉外其他区域是否关闭抽屉
+    initialEnableBlurCancel: {
+      type: Boolean,
+      default: true
     }
   },
   emits: { ...popupEmits } as PropsToEmits<DrawerEmits>,
   setup(props, ctx) {
-    const popup = usePopup(props, ctx, {})
+    const popup = usePopup(props, ctx, {
+      initialFocusFixed: true,
+      initialEnableBlurCancel: props.initialEnableBlurCancel
+    })
+
     const { safeAreaInsets } = useSafeAreaInsets(
       toRef(props, 'enableSafeAreaInsets')
     )
@@ -90,13 +105,6 @@ export default defineComponent({
       }
     }
 
-    watch(
-      () => props.showMask,
-      val => popup.setEnableBlurCancel(!val),
-      { immediate: true }
-    )
-
-    const classes = computed(() => getClasses(props.showMask))
     const innerClasses = computed(() =>
       getInnerClasses({
         placement: props.placement,
@@ -106,7 +114,6 @@ export default defineComponent({
 
     return {
       ...popup,
-      classes,
       innerClasses,
       hasHeader,
       innerStyles,

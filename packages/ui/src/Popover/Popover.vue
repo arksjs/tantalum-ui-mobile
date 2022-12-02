@@ -1,8 +1,12 @@
 <template>
   <teleport to="body">
-    <div :class="popoverClasses" :style="popupStyles" v-bind="$attrs">
+    <div
+      :class="['ta-popover', popupClasses]"
+      :style="popupStyles"
+      v-bind="$attrs"
+    >
       <div class="ta-mask" @click="onMaskClick"></div>
-      <div class="ta-popover_inner" ref="innerEl" :style="innerStyles">
+      <div class="ta-popover_inner" :style="innerStyles" ref="popupInnerEl">
         <i class="ta-popover_arrow" :style="arrowStyles"></i>
         <div class="ta-popover_content">
           <slot>
@@ -25,12 +29,10 @@ import {
   watch
 } from 'vue'
 import { popoverProps, popoverEmits } from '../Popover/props'
-import { cloneData } from '../helpers/util'
-import { querySelector } from '../helpers/dom'
+import { cloneData, querySelector, type PropsToEmits } from '../helpers'
 import { usePopup } from '../popup/use-popup'
-import { useResizeObserver } from '../hooks/use-resize-observer'
+import { useResizeObserver } from '../hooks'
 import { getArrowStyles, getInnerStyles, getShowPos, DEFAULT_POS } from './util'
-import type { PropsToEmits } from '../helpers/types'
 import type { PopoverEmits } from './types'
 
 export default defineComponent({
@@ -45,33 +47,40 @@ export default defineComponent({
   emits: { ...popoverEmits } as PropsToEmits<PopoverEmits>,
   setup(props, ctx) {
     const container = shallowRef<HTMLElement | null>(null)
-    const innerEl = shallowRef<HTMLElement | null>(null)
     const isShow = ref(false)
     const showPos = ref(DEFAULT_POS)
 
     const popup = usePopup(props, ctx, {
-      afterShow() {
-        nextTick(() => {
-          isShow.value = true
-          updatePos('afterShow')
-        })
-      },
-      afterHidden() {
-        showPos.value = cloneData(DEFAULT_POS)
-        isShow.value = false
+      emitCallback(event, res) {
+        if (event === 'visibleStateChange') {
+          switch (res.state) {
+            case 'show':
+              nextTick(() => {
+                isShow.value = true
+                updatePos('show')
+              })
+              break
+            case 'hidden':
+              showPos.value = cloneData(DEFAULT_POS)
+              isShow.value = false
+              break
+            default:
+              break
+          }
+        }
       },
       initialForbidScroll: true,
       initialEnableBlurCancel: false
     })
 
     function updatePos(source?: string) {
-      if (!container.value || !innerEl.value || !isShow.value) {
+      if (!container.value || !popup.popupInnerEl.value || !isShow.value) {
         return
       }
 
       showPos.value = getShowPos(
         container.value,
-        innerEl.value,
+        popup.popupInnerEl.value,
         props.placement
       )
     }
@@ -87,7 +96,6 @@ export default defineComponent({
     watch(
       () => props.showMask,
       val => {
-        popup.setForbidScroll(!!val)
         popup.setEnableBlurCancel(!val)
       },
       {
@@ -112,18 +120,10 @@ export default defineComponent({
       })
     })
 
-    const popoverClasses = computed(() => [
-      popup.popupClasses.value,
-      { 'no--mask': !props.showMask },
-      'ta-popover'
-    ])
-
     return {
       ...popup,
-      innerEl,
       arrowStyles,
-      innerStyles,
-      popoverClasses
+      innerStyles
     }
   }
 })

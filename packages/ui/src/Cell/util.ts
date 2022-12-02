@@ -1,4 +1,4 @@
-import { getEnumsValue } from '../helpers/validator'
+import { getEnumsValue } from '../helpers'
 import type { ArrowDirection, CellProps } from './types'
 
 export const LINK_ICON_NAMES: ArrowDirection[] = ['right', 'up', 'down', 'left']

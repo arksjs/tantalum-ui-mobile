@@ -62,12 +62,12 @@ describe('PopDialog', () => {
         selector
       }
     })
-    expect(wrapper.find('.ta-popover').classes('no--mask')).toBeFalsy()
+    expect(wrapper.find('.ta-popover').classes('dismask')).toBeFalsy()
 
     await wrapper.setProps({
       showMask: false
     })
-    expect(wrapper.find('.ta-popover').classes('no--mask')).toBeTruthy()
+    expect(wrapper.find('.ta-popover').classes('dismask')).toBeTruthy()
   })
 
   test.concurrent('cancelText & confirmText', async () => {

@@ -7,6 +7,6 @@ exports[`DatePicker > snapshot 1`] = `
 </div>"
 `;
 
-exports[`DatePickerPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" class=\\"ta-picker-popup ta-date-picker-popup\\" options=\\"\\"></drawer-stub>"`;
+exports[`DatePickerPopup > snapshot 1`] = `"<drawer-stub visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showclose=\\"false\\" enablesafeareainsets=\\"true\\" showmask=\\"true\\" initialenableblurcancel=\\"true\\" class=\\"ta-picker-popup ta-date-picker-popup\\" options=\\"\\"></drawer-stub>"`;
 
 exports[`DatePickerView > snapshot 1`] = `"<picker-view-stub options=\\"\\" fieldnames=\\"[object Object]\\" class=\\"ta-date-picker-view\\"></picker-view-stub>"`;

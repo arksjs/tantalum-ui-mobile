@@ -11,9 +11,8 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { LoadingIcon } from '../LoadingIcon'
-import { colorValidator } from '../helpers/validator'
+import { colorValidator, getNumber } from '../helpers'
 import { getActivityIndicatorClasses } from './util'
-import { getNumber } from '../helpers/util'
 
 const DEFAULT_SIZE = 20
 

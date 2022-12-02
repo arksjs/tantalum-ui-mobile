@@ -34,7 +34,7 @@ import {
 } from '../Picker/props'
 import { usePickerPopup } from '../Picker/use-picker'
 import { mergeHandlers } from '../Picker/util'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers'
 
 export default defineComponent({
   name: 'ta-cascader-popup',

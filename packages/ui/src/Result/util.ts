@@ -1,4 +1,4 @@
-import { getEnumsValue } from '../helpers/validator'
+import { getEnumsValue } from '../helpers'
 import type { ResultType } from './types'
 
 export const RESULT_TYPES: ResultType[] = ['info', 'warning', 'success', 'fail']

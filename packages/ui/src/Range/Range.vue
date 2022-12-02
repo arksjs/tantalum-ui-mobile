@@ -37,18 +37,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, nextTick, reactive, computed } from 'vue'
-import type { PropType } from 'vue'
+import {
+  defineComponent,
+  watch,
+  nextTick,
+  reactive,
+  computed,
+  type PropType
+} from 'vue'
 import {
   cloneData,
   isNumberArray,
   isSameArray,
-  isString
-} from '../helpers/util'
+  isString,
+  type PropsToEmits
+} from '../helpers'
 import { formItemProps } from '../Form/form'
 import { slideProps } from '../Slider/props'
 import { useSlide } from '../Slider/use-slide'
-import type { PropsToEmits } from '../helpers/types'
 import type { RangeEmits } from './types'
 
 const isValue = (value: number[]) => isNumberArray(value)

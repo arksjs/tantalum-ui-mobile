@@ -1,4 +1,4 @@
-import { thousands } from '../helpers/digital-conversion'
+import { thousands } from '../helpers'
 import type { CountTime } from './types'
 
 function formatNumber(num: number) {

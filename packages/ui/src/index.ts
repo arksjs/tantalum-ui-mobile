@@ -19,7 +19,7 @@ export type {
   PlacementType,
   SizeType,
   ViewPosition
-} from './helpers/types'
+} from './helpers'
 export type {
   PopupVisibleState,
   PopupOnVisibleStateChange,

@@ -2,7 +2,7 @@
 
 exports[`Drawer > snapshot 1`] = `
 "<teleport-stub>
-  <div class=\\"ta-popup ta-drawer\\" style=\\"z-index: 2000; display: none;\\">
+  <div class=\\"ta-drawer ta-popup\\" style=\\"z-index: 2000; display: none;\\">
     <div class=\\"ta-mask\\"></div>
     <div class=\\"ta-drawer_inner ta-horizontal-hairline placement--bottom\\" style=\\"padding: 0px 0px 0px 0px;\\">
       <!--v-if-->

@@ -81,11 +81,17 @@ import { Button as TaButton } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { Cell } from '../Cell'
 import { Tag } from '../Tag'
-import { isString, isStringArray } from '../helpers/util'
+import {
+  isString,
+  isStringArray,
+  isStringOrStringArray,
+  emitClickValidator,
+  type VoidFnToBooleanFn,
+  type PropsToEmits,
+  isStringOrNumber
+} from '../helpers'
 import { useLocale } from '../ConfigProvider/context'
-import { emitEventValidator } from '../helpers/validator'
 import type { OnInput, SearchBarEmits, SuggestItem, SuggestList } from './types'
-import type { VoidFnToBooleanFn, PropsToEmits } from '../helpers/types'
 import SearchOutlined from '../Icon/icons/SearchOutlined'
 import {
   getFieldClasses,
@@ -129,7 +135,7 @@ export default defineComponent({
     },
     placeholders: {
       type: [String, Array] as PropType<Placeholders>,
-      validator: (val: Placeholders) => isString(val) || isStringArray(val),
+      validator: isStringOrStringArray,
       default: () => [] as string[]
     },
     placeholderInterval: {
@@ -138,7 +144,7 @@ export default defineComponent({
     }
   },
   emits: {
-    cancelClick: emitEventValidator,
+    cancelClick: emitClickValidator,
     input: emitValidator,
     focus: emitValidator,
     blur: emitValidator,
@@ -178,13 +184,13 @@ export default defineComponent({
 
       if (Array.isArray(res)) {
         res.forEach(v => {
-          if (typeof v === 'string' || typeof v === 'number') {
+          if (isStringOrNumber(v)) {
             newList.push({
               text: v.toString(),
               tags: []
             })
           } else if (v) {
-            if (typeof v.text === 'string' || typeof v.text === 'number') {
+            if (isStringOrNumber(v.text)) {
               v.text = v.text.toString()
               v.tags = isStringArray(v.tags) ? v.tags : []
               newList.push(v)
@@ -256,7 +262,7 @@ export default defineComponent({
       (val: Placeholders) => {
         phsStop()
 
-        if (typeof val === 'string') {
+        if (isString(val)) {
           placeholder.value = val
           phs = [val]
         } else if (isStringArray(val) && val.length > 0) {

@@ -14,20 +14,20 @@ import {
   onMounted,
   inject,
   watch,
-  shallowRef
+  shallowRef,
+  type PropType
 } from 'vue'
-import type { PropType } from 'vue'
-import { widgetZIndex } from '../helpers/layer'
-import { selectorValidator, sizeValidator } from '../helpers/validator'
-import { useScroll } from '../hooks/use-scroll'
 import {
+  widgetZIndex,
+  selectorValidator,
+  isSizeValue,
   getRelativeOffset,
   getScrollTop,
   getSizeValue,
-  querySelector
-} from '../helpers/dom'
-import type { Selector } from '../helpers/types'
-import { useFixed } from '../hooks/use-fixed'
+  querySelector,
+  type Selector
+} from '../helpers'
+import { useScroll, useFixed } from '../hooks'
 import type { ResetContainer } from './types'
 import { getStyles } from './util'
 
@@ -40,13 +40,12 @@ export default defineComponent({
     },
     offsetTop: {
       type: [Number, String],
-      validator: sizeValidator,
+      validator: isSizeValue,
       default: 0
     },
     offsetBottom: {
       type: [Number, String],
-      validator: sizeValidator,
-      default: null
+      validator: isSizeValue
     },
     disabled: {
       type: Boolean,

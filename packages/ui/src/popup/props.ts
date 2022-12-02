@@ -1,4 +1,4 @@
-import type { PropsToEmits } from '../helpers/types'
+import { isBoolean, isString, type PropsToEmits } from '../helpers'
 import type { PopupEmits } from './types'
 import { VISIBLE_STATE_TYPES } from './util'
 
@@ -16,8 +16,8 @@ export const popupProps = {
 export const popupEmits: PropsToEmits<PopupEmits> = {
   visibleStateChange: payload =>
     payload && VISIBLE_STATE_TYPES.includes(payload.state),
-  'update:visible': visible => typeof visible === 'boolean',
-  cancel: payload => payload && typeof payload.source === 'string',
+  'update:visible': visible => isBoolean(visible),
+  cancel: payload => payload && isString(payload.source),
   confirm: payload => !!payload
 }
 

@@ -1,4 +1,4 @@
-import type { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers'
 
 export const getClasses = (disabled?: boolean) => {
   return ['ta-switch', { disabled: !!disabled }]

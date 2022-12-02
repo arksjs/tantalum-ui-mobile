@@ -30,7 +30,7 @@ import { Badge } from '../Badge'
 import { tabEmits, tabProps } from './tab'
 import { useTab } from './use-tab'
 import { getClasses, getItemClasses } from './util'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers'
 import type { TabEmits } from './types'
 
 export default defineComponent({

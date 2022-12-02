@@ -1,7 +1,12 @@
 import { provide } from 'vue'
-import dayjs from '../helpers/day'
-import type { Dayjs } from '../helpers/types'
-import { getEnumsValue } from '../helpers/validator'
+import {
+  getEnumsValue,
+  rangeNumber,
+  returnTrue,
+  dayjs,
+  type Dayjs,
+  isString
+} from '../helpers'
 import type {
   PickerOptionsHandler,
   PickerLabelFormatter,
@@ -18,7 +23,6 @@ import {
   MODE_NAMES,
   parseRows
 } from './date'
-import { rangeNumber, returnTrue } from '../helpers/util'
 import type { DatePickerCommonProps } from './types'
 import { getMaxDate, getMinDate, handleMinMaxDate } from './util'
 
@@ -55,7 +59,7 @@ export function useHandlers(props: DatePickerCommonProps) {
       props.formatTemplate &&
       value != null &&
       value !== '' &&
-      typeof value === 'string'
+      isString(value)
     ) {
       djs = dayjs(value as string, props.formatTemplate, true)
     }

@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted } from 'vue'
 import { Group } from '../Group'
-import { useException } from '../hooks/use-exception'
+import { useException } from '../hooks'
 
 export default defineComponent({
   name: 'ta-index-view-item',

@@ -1,11 +1,11 @@
 <template>
   <teleport to="body">
     <div
-      :class="['ta-toast', popupClasses, { 'no--mask': !showMask }]"
+      :class="['ta-toast', popupClasses]"
       :style="popupStyles"
       v-bind="$attrs"
     >
-      <div :class="boxClasses">
+      <div class="ta-toast_box">
         <ActivityIndicator
           class="ta-toast_icon"
           :size="21"
@@ -32,20 +32,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRef } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, toRef, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
 import { usePopup } from '../popup/use-popup'
-import { popupEmits, popupProps } from '../popup/popup'
-import { createEnumsValidator, iconValidator } from '../helpers/validator'
+import { popupEmits, popupProps } from '../popup/props'
+import {
+  createEnumsValidator,
+  iconValidator,
+  type PropsToEmits
+} from '../helpers'
 import type { StateType, ToastEmits } from './types'
 import CheckOutlined from '../Icon/icons/CheckOutlined'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import type { IconData } from '../Icon/types'
-import { getBoxClasses, STATE_TYPES } from './util'
-import { useDelay } from '../hooks/use-delay'
-import type { PropsToEmits } from '../helpers/types'
+import { STATE_TYPES } from './util'
+import { useDelay } from '../hooks'
 
 export default defineComponent({
   name: 'ta-toast',
@@ -83,15 +85,18 @@ export default defineComponent({
 
     const popup = usePopup(props, ctx, {
       initialForbidScroll: false,
-      afterCancel: removeDelayTask,
-      afterShow: addDelayTask
+      initialEnableBlurCancel: false,
+      emitCallback(event, res) {
+        if (event === 'cancel') {
+          removeDelayTask()
+        } else if (event === 'visibleStateChange' && res.state === 'show') {
+          addDelayTask()
+        }
+      }
     })
-
-    const boxClasses = computed(() => getBoxClasses(props))
 
     return {
       ...popup,
-      boxClasses,
       CheckOutlined,
       CloseOutlined
     }

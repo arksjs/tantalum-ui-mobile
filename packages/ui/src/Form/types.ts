@@ -1,4 +1,4 @@
-import type { Noop, OnFocus } from '../helpers/types'
+import type { Noop, OnFocus } from '../helpers'
 
 export interface FormItemCommonProps {
   name?: string

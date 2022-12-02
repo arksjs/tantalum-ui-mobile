@@ -28,9 +28,9 @@ import {
   watch,
   onBeforeUnmount,
   computed,
-  shallowRef
+  shallowRef,
+  type PropType
 } from 'vue'
-import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import {
   addLazyQueue,
@@ -41,16 +41,17 @@ import {
 import {
   createEnumsValidator,
   emitErrorValidator,
-  iconValidator
-} from '../helpers/validator'
-import type { OnError, PropsToEmits } from '../helpers/types'
+  iconValidator,
+  isString,
+  type OnError,
+  type PropsToEmits
+} from '../helpers'
 import type { ImageEmits, LoadedResource, Mode } from './types'
 import ImageOutlined from '../Icon/icons/ImageOutlined'
 import ImageBreakOutlined from '../Icon/icons/ImageBreakOutlined'
 import type { IconData } from '../Icon/types'
 import { getImgClasses, getRatioStyles, MODE_NAMES } from './util'
-import { isString } from '../helpers/util'
-import { useException } from '../hooks/use-exception'
+import { useException } from '../hooks'
 
 export default defineComponent({
   name: 'ta-image',
@@ -72,8 +73,7 @@ export default defineComponent({
     },
     // 自适应正方形
     aspectRatio: {
-      type: Number,
-      default: null
+      type: [Number, String]
     },
     // 允许拖拽
     draggable: {
@@ -93,8 +93,7 @@ export default defineComponent({
       default: ImageBreakOutlined
     },
     iconSize: {
-      type: Number,
-      default: null
+      type: [Number, String]
     }
   },
   emits: {

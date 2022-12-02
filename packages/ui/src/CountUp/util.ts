@@ -1,4 +1,4 @@
-import { isNumber } from '../helpers/util'
+import { isNumber } from '../helpers'
 import type { Speed } from './types'
 
 export const SpeedMap = new Map<Speed, number>([

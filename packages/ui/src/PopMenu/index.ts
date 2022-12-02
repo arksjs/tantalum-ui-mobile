@@ -1,7 +1,7 @@
 import PopMenu from './PopMenu.vue'
 import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
-import type { Selector, PlacementType } from '../helpers/types'
+import type { Selector, PlacementType } from '../helpers'
 import type { Option, Detail } from './types'
 
 const showPopMenu = createShowPopup<

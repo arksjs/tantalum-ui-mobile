@@ -1,4 +1,4 @@
-import { getNumber } from '../helpers/util'
+import { getNumber } from '../helpers'
 import type { Position } from './types'
 
 export const getClasses = (dragOn: boolean) => ['ta-order', { drag: dragOn }]

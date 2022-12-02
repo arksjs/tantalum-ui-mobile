@@ -26,11 +26,10 @@
 
 <script lang="ts">
 import { ref, defineComponent, watch, nextTick } from 'vue'
-import { isNumeric } from '../helpers/util'
+import { isNumeric, type PropsToEmits } from '../helpers'
 import { formNumberValueEmits, formItemProps } from '../Form/form'
 import { slideProps } from './props'
 import { useSlide } from './use-slide'
-import type { PropsToEmits } from '../helpers/types'
 import type { SliderEmits } from './types'
 
 export default defineComponent({

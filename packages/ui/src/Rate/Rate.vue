@@ -27,13 +27,24 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, shallowRef, watch } from 'vue'
-import type { PropType } from 'vue'
+import {
+  computed,
+  defineComponent,
+  ref,
+  shallowRef,
+  watch,
+  type PropType
+} from 'vue'
 import { Icon } from '../Icon'
-import { isInteger, rangeInteger } from '../helpers/util'
-import { colorValidator, iconValidator } from '../helpers/validator'
+import {
+  isInteger,
+  rangeInteger,
+  colorValidator,
+  iconValidator,
+  type PropsToEmits
+} from '../helpers'
 import { formItemProps, formNumberValueEmits } from '../Form/form'
-import { useTouch } from '../hooks/use-touch'
+import { useTouch } from '../hooks'
 import StarOutlined from '../Icon/icons/StarOutlined'
 import StarFilled from '../Icon/icons/StarFilled'
 import type { IconData } from '../Icon/types'
@@ -44,7 +55,6 @@ import {
   DEFAULT_COUNT,
   getMax
 } from './util'
-import type { PropsToEmits } from '../helpers/types'
 import type { RateEmits } from './types'
 
 interface RateCoords {
@@ -63,8 +73,7 @@ export default defineComponent({
     ...formItemProps,
     modelValue: {
       type: [Number, String],
-      validator: isIntegerOrHalf,
-      default: null
+      validator: isIntegerOrHalf
     },
     count: {
       type: [Number, String],

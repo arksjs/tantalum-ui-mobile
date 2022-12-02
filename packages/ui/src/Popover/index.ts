@@ -1,7 +1,7 @@
 import Popover from './Popover.vue'
 import { createAlertHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessAlertArgs } from '../popup/types'
-import type { PlacementType, Selector } from '../helpers/types'
+import type { PlacementType, Selector } from '../helpers'
 
 interface ShowPopoverOptions {
   selector: Selector

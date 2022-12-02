@@ -1,11 +1,15 @@
-import { createApp } from 'vue'
-import type { Component } from 'vue'
-import { isObject, objectForEach } from '../helpers/util'
+import { createApp, type Component } from 'vue'
+import {
+  isObject,
+  objectForEach,
+  Exception,
+  type AnyObject,
+  type EmptyObject,
+  isString
+} from '../helpers'
 import { getCallbackFns } from '../apis/callback'
-import type { AnyObject, EmptyObject } from '../helpers/types'
 import type { PopupCustomCancel, PopupBridge, PopupHook } from './types'
 import type { ApiOptionsComplete, ApiOptionsFail } from '../apis/types'
-import Exception from '../helpers/exception'
 
 type PopupDone = (res: any) => void
 
@@ -45,7 +49,7 @@ export function createShowPopup<T, E = EmptyObject>({
   ) {
     let options: AnyObject
 
-    if (typeof object === 'string') {
+    if (isString(object)) {
       options = {
         title: object
       }

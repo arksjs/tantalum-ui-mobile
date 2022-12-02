@@ -2,7 +2,7 @@ import type {
   BadgeOption,
   BadgeProps as HandleBadgeOption
 } from '../Badge/types'
-import type { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers'
 import type { IconData } from '../Icon/types'
 
 export interface OptionItem {

@@ -1,4 +1,5 @@
-import type { ScrollToEnd, ScrollToOffset } from '../hooks/types'
+import type { Noop } from '../helpers'
+import type { ScrollToEnd, ScrollToOffset } from '../hooks'
 
 export type PullDirection = 'up' | 'right' | 'down' | 'left'
 export type PullDirectionOrDefault = '' | PullDirection
@@ -16,7 +17,7 @@ export type OnRefreshing = (
   payload: {
     pullDirection: PullDirection
   },
-  loadComplete: () => void
+  loadComplete: Noop
 ) => void
 
 export type OnScrollToUpper = (payload: { direction: 'top' | 'left' }) => void

@@ -39,26 +39,31 @@ import {
   shallowRef
 } from 'vue'
 import { Icon } from '../Icon'
-import { isNumber, returnTrue } from '../helpers/util'
-import { useList } from '../hooks/use-list'
-import { getStretchOffset } from '../helpers/animation'
-import { useTouch } from '../hooks/use-touch'
-import { CSSProperties2CssText } from '../helpers/dom'
+import {
+  isNumber,
+  returnTrue,
+  getStretchOffset,
+  CSSProperties2CssText,
+  colorValidator,
+  type PropsToEmits
+} from '../helpers'
+import {
+  useList,
+  useTouch,
+  useResizeObserver,
+  useException,
+  useOnce
+} from '../hooks'
 import { emitChangeValidator } from './props'
-import { colorValidator } from '../helpers/validator'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import RightOutlined from '../Icon/icons/RightOutlined'
-import { useResizeObserver } from '../hooks/use-resize-observer'
 import {
   getClasses,
   getIndicatorsClasses,
   getPaginationItemClasses,
   getPaginationItemStyles
 } from './util'
-import type { PropsToEmits } from '../helpers/types'
 import type { SwiperEmits } from './types'
-import { useException } from '../hooks/use-exception'
-import { useOnce } from '../hooks/use-once'
 
 interface SwiperCoords {
   offset: boolean | null
@@ -99,8 +104,7 @@ export default defineComponent({
       default: 5000
     },
     duration: {
-      type: Number,
-      default: null
+      type: Number
     },
     initialCircular: {
       type: Boolean,

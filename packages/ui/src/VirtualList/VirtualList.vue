@@ -34,9 +34,16 @@ import {
   watch,
   shallowRef
 } from 'vue'
-import { cloneData, isNumber, rangeInteger, rangeNumber } from '../helpers/util'
-import { getViewPosition } from '../helpers/dom'
-import type { ViewPosition, UniqueID, PropsToEmits } from '../helpers/types'
+import {
+  cloneData,
+  isNumber,
+  rangeInteger,
+  rangeNumber,
+  getViewPosition,
+  type ViewPosition,
+  type UniqueID,
+  type PropsToEmits
+} from '../helpers'
 import type {
   OnVisibleItemsChangePayload,
   ListItem,
@@ -46,12 +53,15 @@ import type {
   ScrollToIndex,
   VirtualListEmits
 } from './types'
-import { useScroll, useScrollTo } from '../hooks/use-scroll'
+import {
+  useScroll,
+  useScrollTo,
+  useResizeObserver,
+  useException,
+  type ScrollToOffsetOptions
+} from '../hooks'
 import { emitVisibleItemsChangeValidator, virtualListProps } from './props'
-import { useResizeObserver } from '../hooks/use-resize-observer'
-import type { ScrollToOffsetOptions } from '../hooks/types'
 import { getClasses, getItemStyles, getListStyles } from './util'
-import { useException } from '../hooks/use-exception'
 
 export default defineComponent({
   name: 'ta-virtual-list',
@@ -437,7 +447,7 @@ export default defineComponent({
       const animated = true
       let newOptions: ScrollToOffsetOptions
 
-      if (typeof options === 'number') {
+      if (isNumber(options)) {
         newOptions = {
           x: horizontal ? options : 0,
           y: !horizontal ? options : 0,
@@ -473,7 +483,7 @@ export default defineComponent({
       let animated = true
       let viewPosition: ViewPosition | undefined
 
-      if (typeof options === 'number') {
+      if (isNumber(options)) {
         index = options
         options = {
           index

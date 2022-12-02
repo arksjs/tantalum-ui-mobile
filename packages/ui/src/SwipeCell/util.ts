@@ -1,5 +1,4 @@
-import { STATE_TYPES } from '../helpers/constants'
-import { getEnumsValue } from '../helpers/validator'
+import { STATE_TYPES, getEnumsValue, isString } from '../helpers'
 import type { ButtonOption } from './types'
 
 export const getButtons = (buttons?: ButtonOption[]) => {
@@ -7,7 +6,7 @@ export const getButtons = (buttons?: ButtonOption[]) => {
 
   if (Array.isArray(buttons)) {
     buttons.forEach(v => {
-      if (v && typeof v.text === 'string') {
+      if (v && isString(v.text)) {
         _buttons.push({
           text: v.text,
           type: getEnumsValue(STATE_TYPES, v.type)

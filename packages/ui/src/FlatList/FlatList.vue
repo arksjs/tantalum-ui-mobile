@@ -69,8 +69,7 @@ import {
   virtualListProps
 } from '../VirtualList/props'
 import { getClasses } from './util'
-import { isNumber } from '../helpers/util'
-import type { PropsToEmits } from '../helpers/types'
+import { isNumber, type PropsToEmits } from '../helpers'
 import type { FlatListEmits } from './types'
 
 export default defineComponent({

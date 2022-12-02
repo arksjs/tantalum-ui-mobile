@@ -1,5 +1,4 @@
-import { rangeInteger } from '../helpers/util'
-import type { CSSProperties } from '../helpers/types'
+import { rangeInteger, type CSSProperties } from '../helpers'
 import type { ColProps } from './types'
 
 function rangeCol(number: number | string = 0) {

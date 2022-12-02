@@ -10,19 +10,19 @@ import {
   cloneData,
   isSameArray,
   isString,
-  isStringArray
-} from '../helpers/util'
-import { useGroup } from '../hooks/use-group'
+  isStringArray,
+  isStringOrStringArray,
+  type PropsToEmits
+} from '../helpers'
+import { useGroup } from '../hooks'
 import type { CollapseEmits } from './types'
-import type { PropsToEmits } from '../helpers/types'
-import { stringOrStringArrayValidator } from '../helpers/validator'
 
 export default defineComponent({
   name: 'ta-collapse',
   props: {
     modelValue: {
       type: [String, Array] as PropType<string | string[]>,
-      validator: stringOrStringArrayValidator,
+      validator: isStringOrStringArray,
       default: () => [] as string[]
     },
     accordion: {

@@ -7,7 +7,7 @@
 <script lang="ts">
 import { defineComponent, ref, toRef, watch } from 'vue'
 import { format } from 'timeago.js'
-import { useTimer } from '../hooks/use-timer'
+import { useTimer } from '../hooks'
 import { getDate } from './util'
 import { useLocale } from '../ConfigProvider/context'
 

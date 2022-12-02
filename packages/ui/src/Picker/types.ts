@@ -1,5 +1,5 @@
 import type { PopupEmits, PopupProps, PopupRef } from '../popup/types'
-import type { AnyObject, Noop } from '../helpers/types'
+import type { AnyObject, Noop } from '../helpers'
 import type {
   SelectorValue,
   SelectorModelValue,

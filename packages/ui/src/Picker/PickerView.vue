@@ -16,14 +16,13 @@
 <script lang="ts">
 import { defineComponent, nextTick, inject, shallowRef } from 'vue'
 import { Empty } from '../Empty'
-import { frameTo } from '../helpers/animation'
+import { frameTo, type PropsToEmits } from '../helpers'
 import { pickerViewEmits, pickerViewProps } from './props'
 import { usePickerView } from '../Picker/use-picker'
 import type { PickerHandlers, PickerViewEmits } from './types'
 import { useLocale } from '../ConfigProvider/context'
 import ViewCol from './PickerViewCol.vue'
 import { DEFAULT_ITEM_HEIGHT, mergeHandlers } from './util'
-import type { PropsToEmits } from '../helpers/types'
 
 interface ScrollElement extends HTMLElement {
   scrolling?: boolean

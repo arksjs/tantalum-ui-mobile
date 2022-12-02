@@ -1,4 +1,4 @@
-import type { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers'
 import type { PullDirectionOrDefault, PullIndicatorSafeArea } from './types'
 
 export const ScrollState = {

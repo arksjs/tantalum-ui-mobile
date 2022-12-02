@@ -25,15 +25,26 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, computed, reactive, shallowRef } from 'vue'
-import type { PropType } from 'vue'
-import { cloneData, rangeNumber, noop } from '../helpers/util'
+import {
+  ref,
+  defineComponent,
+  computed,
+  reactive,
+  shallowRef,
+  type PropType
+} from 'vue'
+import {
+  cloneData,
+  rangeNumber,
+  noop,
+  getStretchOffset,
+  type PropsToEmits,
+  isString,
+  isNumber
+} from '../helpers'
 import type { ButtonOption, SwipeCellEmits } from './types'
-import { useTouch } from '../hooks/use-touch'
-import { getStretchOffset } from '../helpers/animation'
-import type { PropsToEmits } from '../helpers/types'
+import { useTouch, useStop, useDocumentBlur } from '../hooks'
 import { getButtons, getInnerStyles, getButtonStyles } from './util'
-import { useStop, useDocumentBlur } from '../hooks/use-event'
 
 interface SwipeCellCoords {
   startX: number
@@ -51,7 +62,7 @@ export default defineComponent({
         return (
           Array.isArray(items) &&
           items.filter(item => {
-            return !(item && typeof item.text === 'string')
+            return !(item && isString(item.text))
           }).length === 0
         )
       },
@@ -59,7 +70,7 @@ export default defineComponent({
     }
   },
   emits: {
-    buttonClick: payload => payload && typeof payload.index === 'number'
+    buttonClick: payload => payload && isNumber(payload.index)
   } as PropsToEmits<SwipeCellEmits>,
   setup(props, ctx) {
     const root = shallowRef<HTMLElement | null>(null)

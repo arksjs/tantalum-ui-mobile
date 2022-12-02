@@ -40,9 +40,14 @@ import {
   shallowRef,
   watch
 } from 'vue'
-import dayjs from '../helpers/day'
-import type { Dayjs, PropsToEmits } from '../helpers/types'
-import { isSameArray } from '../helpers/util'
+import {
+  dayjs,
+  isSameArray,
+  CSSProperties2CssText,
+  getScrollTop,
+  type Dayjs,
+  type PropsToEmits
+} from '../helpers'
 import { showToast } from '../Toast'
 import { commonProps, calendarDetailValidator } from './props'
 import {
@@ -59,8 +64,7 @@ import { pickerViewEmits } from '../Picker/props'
 import { useLocale } from '../ConfigProvider/context'
 import ViewMonth from './CalendarViewMonth.vue'
 import { VirtualList } from '../VirtualList'
-import { CSSProperties2CssText, getScrollTop } from '../helpers/dom'
-import { useException } from '../hooks/use-exception'
+import { useException } from '../hooks'
 
 type WeekDay = '0' | '1' | '2' | '3' | '4' | '5' | '6'
 

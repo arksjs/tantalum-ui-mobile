@@ -1,25 +1,13 @@
 @import '../style/var.scss';
-@import '../style/layer.scss';
 @import '../style/mixin.scss';
 
 .ta-toast {
-  &_text {
-    font-size: 17px;
-    line-height: 24px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-align: center;
-  }
-
   &_box {
     position: fixed;
     left: 50%;
     top: 50%;
     min-width: 100px;
     max-width: 70%;
-    z-index: $default-z-index;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,25 +22,31 @@
 
     color: #fff;
     transform: translate3d(-50%, -50%, 0) scale(0);
+  }
 
-    &.has--icon {
-      .ta-toast {
-        &_icon {
-          margin-right: 8px;
-          flex-shrink: 0;
-        }
+  &_text {
+    font-size: 17px;
+    line-height: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: center;
+  }
 
-        &_text {
-          -webkit-line-clamp: 1;
-          height: 24px;
-        }
-      }
+  &_icon {
+    margin-right: 8px;
+    flex-shrink: 0;
 
-      .ta-icon {
-        --ta-icon-size: 21px;
-        --ta-icon-color: #fff;
-      }
+    + .ta-toast_text {
+      -webkit-line-clamp: 1;
+      height: 24px;
     }
+  }
+
+  .ta-icon {
+    --ta-icon-size: 21px;
+    --ta-icon-color: #fff;
   }
 
   &.visible {

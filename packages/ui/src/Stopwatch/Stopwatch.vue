@@ -26,8 +26,7 @@ import { defineComponent } from 'vue'
 import type { CountTime } from '../CountDown/types'
 import { getCountTime } from '../CountDown/util'
 import { useCountTime } from '../CountDown/use-count-time'
-import { cloneData, returnTrue } from '../helpers/util'
-import type { PropsToEmits } from '../helpers/types'
+import { cloneData, returnTrue, type PropsToEmits } from '../helpers'
 import type { StopwatchEmits } from './types'
 
 export default defineComponent({

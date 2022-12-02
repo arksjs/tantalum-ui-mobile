@@ -24,8 +24,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { LoadingIcon } from '../LoadingIcon'
-import { getNumber, isNumeric, rangeInteger } from '../helpers/util'
-import { colorValidator } from '../helpers/validator'
+import { rangeInteger, colorValidator } from '../helpers'
 import { getFontSize } from './util'
 import { DEFAULT_SIZE, DEFAULT_STROKE_WIDTH } from '../LoadingIcon/util'
 
@@ -35,10 +34,7 @@ export default defineComponent({
   props: {
     percentage: {
       type: [Number, String],
-      validator: (val: number | string) =>
-        isNumeric(val) && getNumber(val) >= 0 && getNumber(val) <= 100,
-      default: 0,
-      required: true
+      default: 0
     },
     size: {
       type: [Number, String],

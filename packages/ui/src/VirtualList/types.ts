@@ -4,7 +4,7 @@ import type {
   Noop,
   UniqueID,
   ViewPosition
-} from '../helpers/types'
+} from '../helpers'
 
 export interface ScrollToOptions {
   offset: number

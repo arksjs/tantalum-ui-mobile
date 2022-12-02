@@ -1,5 +1,5 @@
-import type { Noop } from '../helpers/types'
 import { getCurrentInstance, onMounted } from 'vue'
+import type { Noop } from '../helpers'
 
 export function useMounted(callback: Noop) {
   const instance = getCurrentInstance()

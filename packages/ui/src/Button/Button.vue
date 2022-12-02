@@ -12,17 +12,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, computed, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import {
   colorValidator,
   createEnumsValidator,
   getEnumsValue,
-  iconValidator
-} from '../helpers/validator'
-import { SIZE_TYPES, STATE_TYPES } from '../helpers/constants'
-import type { SizeType, StateType } from '../helpers/types'
+  iconValidator,
+  SIZE_TYPES,
+  STATE_TYPES,
+  type SizeType,
+  type StateType
+} from '../helpers'
 import type { FormType, PatternType, ShapeType } from './types'
 import LoadingOutlined from '../Icon/icons/LoadingOutlined'
 import type { IconData } from '../Icon/types'

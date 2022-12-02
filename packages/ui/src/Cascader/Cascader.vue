@@ -29,7 +29,7 @@ import { SelectorField } from '../SelectorField'
 import { pickerEmits, pickerProps, commonProps } from '../Picker/props'
 import { mergeHandlers } from '../Picker/util'
 import { usePicker } from '../Picker/use-picker'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers'
 import type { CascaderEmits } from './types'
 
 export default defineComponent({

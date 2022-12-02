@@ -33,13 +33,11 @@ import { defineComponent, onMounted, ref, shallowRef, watch } from 'vue'
 import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
-import { sizeValidator } from '../helpers/validator'
+import { isSizeValue, isString, type PropsToEmits } from '../helpers'
 import type { OnResetItems, StickyViewRef } from '../StickyView/types'
 import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
-import type { PropsToEmits } from '../helpers/types'
 import type { ScrollTabEmits, ScrollTabOnChange } from './types'
-import { isString } from '../helpers/util'
 import type { SideTabOnChange } from '../SideTab/types'
 
 export default defineComponent({
@@ -50,11 +48,13 @@ export default defineComponent({
       type: String
     },
     stickyOffsetTop: {
-      validator: sizeValidator,
+      type: [Number, String],
+      validator: isSizeValue,
       default: 0
     },
     stickyOffsetBottom: {
-      validator: sizeValidator,
+      type: [Number, String],
+      validator: isSizeValue,
       default: 0
     }
   },

@@ -33,7 +33,14 @@
 <script lang="ts">
 import { onMounted, ref, defineComponent, watch, computed } from 'vue'
 import { Button as TaButton } from '../Button'
-import { getNumber } from '../helpers/util'
+import {
+  getNumber,
+  emitClickValidator,
+  type OnFocus,
+  type OnClick,
+  type PropsToEmits,
+  isNumeric
+} from '../helpers'
 import { formatNumber, getRangeNumber, getClasses } from './util'
 import {
   formStringValueEmits,
@@ -43,8 +50,6 @@ import {
 import { useInput } from '../Form/use-form'
 import PlusOutlined from '../Icon/icons/PlusOutlined'
 import MinusOutlined from '../Icon/icons/MinusOutlined'
-import type { OnFocus, OnClick, PropsToEmits } from '../helpers/types'
-import { emitClickValidator } from '../helpers/validator'
 import type { StepperEmits } from './types'
 
 export default defineComponent({
@@ -53,7 +58,8 @@ export default defineComponent({
   props: {
     ...formItemProps,
     modelValue: {
-      type: [Number, String]
+      type: [Number, String],
+      validator: isNumeric
     },
     // 是否禁用减少按钮
     disabledMinus: {

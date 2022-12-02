@@ -1,12 +1,10 @@
-import { PLACEMENT_TYPES } from '../helpers/constants'
-import type { CSSProperties, PlacementType } from '../helpers/types'
-import { getEnumsValue } from '../helpers/validator'
-import type { SafeAreaInsets } from '../hooks/types'
-
-export const getClasses = (showMask?: boolean) => [
-  'ta-drawer',
-  { 'no--mask': !showMask }
-]
+import {
+  PLACEMENT_TYPES,
+  getEnumsValue,
+  type CSSProperties,
+  type PlacementType
+} from '../helpers'
+import type { SafeAreaInsets } from '../hooks'
 
 export const getInnerStyles = ({
   placement,

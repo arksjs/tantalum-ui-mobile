@@ -1,6 +1,5 @@
 import { onBeforeUnmount } from 'vue'
-import type { FrameTask, FrameOption } from '../helpers/animation'
-import { frameTo } from '../helpers/animation'
+import { frameTo, type FrameTask, type FrameOption } from '../helpers'
 
 export function useFrameTask() {
   let task: FrameTask | null = null

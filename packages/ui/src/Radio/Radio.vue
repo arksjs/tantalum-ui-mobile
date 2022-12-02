@@ -26,7 +26,7 @@ import { checkEmits, checkProps } from '../Checkbox/props'
 import { useCheck } from '../Checkbox/use-check'
 import CircleOutlined from '../Icon/icons/CircleOutlined'
 import CheckCircleFilled from '../Icon/icons/CheckCircleFilled'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers'
 import type { RadioEmits } from './types'
 
 export default defineComponent({

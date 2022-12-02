@@ -13,18 +13,21 @@ import {
   toRef,
   ref,
   onMounted,
-  shallowRef
+  shallowRef,
+  type PropType
 } from 'vue'
-import type { PropType } from 'vue'
 import { Icon } from '../Icon'
-import { getScrollTop, scrollTo } from '../helpers/dom'
-import { useSafeAreaInsets } from '../hooks/use-safe-area-insets'
-import { useScroll } from '../hooks/use-scroll'
-import { emitEventValidator } from '../helpers/validator'
+import {
+  getScrollTop,
+  scrollTo,
+  emitClickValidator,
+  getNumber,
+  type OnClick,
+  type PropsToEmits
+} from '../helpers'
+import { useSafeAreaInsets, useScroll } from '../hooks'
 import UpCircleOutlined from '../Icon/icons/UpCircleOutlined'
-import type { OnClick, PropsToEmits } from '../helpers/types'
 import { DEFAULT_VISIBLE_HEIGHT, getStyles } from './util'
-import { getNumber } from '../helpers/util'
 import type { BackTopEmits } from './types'
 
 export default defineComponent({
@@ -49,7 +52,7 @@ export default defineComponent({
     }
   },
   emits: {
-    click: emitEventValidator
+    click: emitClickValidator
   } as PropsToEmits<BackTopEmits>,
   setup(props, { emit }) {
     const isShow = ref(false)

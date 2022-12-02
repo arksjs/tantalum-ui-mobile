@@ -4,18 +4,27 @@ import {
   watch,
   computed,
   nextTick,
-  shallowRef
+  shallowRef,
+  type SetupContext,
+  type ExtractPropTypes
 } from 'vue'
-import type { SetupContext, ExtractPropTypes } from 'vue'
-import { isNumber, isObject, isStringNumberMix, isURL } from '../helpers/util'
+import {
+  isNumber,
+  isObject,
+  isString,
+  isStringOrNumber,
+  isURL
+} from '../helpers'
 import { handleBadge } from '../Badge/util'
 import type { OptionItem, HandleOptionItem } from './types'
 import type { tabEmits, tabProps } from './tab'
 import { getStyles } from './util'
-import { useFrameTask } from '../hooks/use-frame-task'
-import { useException } from '../hooks/use-exception'
-import { useOnce } from '../hooks/use-once'
-import { useResizeObserver } from '../hooks/use-resize-observer'
+import {
+  useFrameTask,
+  useOnce,
+  useException,
+  useResizeObserver
+} from '../hooks'
 
 interface UseOptions {
   tabName: string
@@ -53,7 +62,7 @@ export function useTab(
             label: item.toString(),
             value: item as number
           }
-        } else if (typeof item === 'string') {
+        } else if (isString(item)) {
           option = {
             label: item,
             value: item
@@ -61,13 +70,10 @@ export function useTab(
         } else if (isObject(item)) {
           item = item as OptionItem
 
-          if (isStringNumberMix(item.value)) {
+          if (isStringOrNumber(item.value)) {
             option = {
-              label:
-                typeof item.label === 'string'
-                  ? item.label
-                  : item.value.toString(),
-              subLabel: typeof item.subLabel === 'string' ? item.subLabel : '',
+              label: isString(item.label) ? item.label : item.value.toString(),
+              subLabel: isString(item.subLabel) ? item.subLabel : '',
               value: item.value,
               icon: null
             }

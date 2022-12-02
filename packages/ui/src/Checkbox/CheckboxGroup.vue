@@ -12,16 +12,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, ref, type PropType } from 'vue'
 import Checkbox from './Checkbox.vue'
-import { isStringNumberMixArray, cloneData, isSameArray } from '../helpers/util'
+import {
+  isStringOrNumberArray,
+  cloneData,
+  isSameArray,
+  type PropsToEmits
+} from '../helpers'
 import { useCheckGroup } from './use-check'
 import type { CheckboxGroupEmits, ModelValue } from './types'
 import { checkGroupProps } from './props'
-import type { PropsToEmits } from '../helpers/types'
 
-const isValue = (value: ModelValue[]) => isStringNumberMixArray(value)
+const isValue = (value: ModelValue[]) => isStringOrNumberArray(value)
 
 export default defineComponent({
   name: 'ta-checkbox-group',
@@ -67,7 +70,7 @@ export default defineComponent({
       },
       watchValue({ children, value }) {
         if (
-          isStringNumberMixArray(value) &&
+          isStringOrNumberArray(value) &&
           !isSameArray(value, inputValue.value)
         ) {
           const newVal: ModelValue[] = []

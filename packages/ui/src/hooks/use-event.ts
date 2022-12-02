@@ -1,7 +1,11 @@
-import { type Ref, shallowRef } from 'vue'
-import { onBeforeUnmount, onMounted, watch } from 'vue'
-import { addEvent, touchEvent, addLongPressEvent } from '../helpers/events'
-import type { LongPressEventCallback, Noop } from '../helpers/types'
+import { onBeforeUnmount, onMounted, watch, shallowRef, type Ref } from 'vue'
+import {
+  addEvent,
+  touchEvent,
+  addLongPressEvent,
+  type LongPressEventCallback,
+  type Noop
+} from '../helpers'
 
 type ElRef = Ref<HTMLElement | undefined | null>
 
@@ -114,6 +118,14 @@ export function useDbclick(
 
 export function useBlur(elRef: ElRef, callback: Noop) {
   const { off } = useEvent(elRef, touchEvent.touchend, callback)
+
+  return { off }
+}
+
+export function useStopBlur(elRef: ElRef) {
+  const { off } = useEvent(elRef, touchEvent.touchend, e => {
+    e.stopPropagation()
+  })
 
   return { off }
 }

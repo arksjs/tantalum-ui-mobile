@@ -16,12 +16,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, computed, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import { Badge } from '../Badge'
 import { Image as TaImage } from '../Image'
-import { colorValidator, createEnumsValidator } from '../helpers/validator'
+import { colorValidator, createEnumsValidator } from '../helpers'
 import { avatarProps } from './props'
 import {
   AVATAR_SHAPE_TYPES,
@@ -45,12 +44,10 @@ export default defineComponent({
     ...avatarProps,
     shape: {
       type: String as PropType<ShapeType>,
-      validator: createEnumsValidator(AVATAR_SHAPE_TYPES),
-      default: null
+      validator: createEnumsValidator(AVATAR_SHAPE_TYPES)
     },
     src: {
-      type: String,
-      default: null
+      type: String
     },
     badge: {
       type: [Number, String, Object] as PropType<BadgeOption>

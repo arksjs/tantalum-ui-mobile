@@ -1,6 +1,5 @@
-import { isNumber, isNumberArray } from '../helpers/util'
-import type { CSSProperties } from '../helpers/types'
-import type { SafeAreaInsets } from '../hooks/types'
+import { isNumber, isNumberArray, type CSSProperties } from '../helpers'
+import type { SafeAreaInsets } from '../hooks'
 
 export const DEFAULT_VISIBLE_HEIGHT = 200
 

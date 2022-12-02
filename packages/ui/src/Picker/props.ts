@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import type { PropsToEmits } from '../helpers/types'
+import { isString, isStringOrNumber, type PropsToEmits } from '../helpers'
 import type {
   PickerEmits,
   PickerPopupEmits,
@@ -15,13 +15,12 @@ import type {
   SelectorValueParser,
   SelectorValueFormatter
 } from '../SelectorField/types'
-import { isStringNumberMix } from '../helpers/util'
 import { getDefaultFieldNames } from './util'
 import { formActiveEmits, formItemProps } from '../Form/form'
-import { popupEmits, popupExtendProps } from '../popup/popup'
+import { popupEmits, popupExtendProps } from '../popup/props'
 
 const isValue = (value: SelectorValue) => {
-  return isStringNumberMix(value) || value instanceof Date
+  return isStringOrNumber(value) || value instanceof Date
 }
 
 const isModelValue = (value: SelectorModelValue) => {
@@ -36,7 +35,7 @@ const isModelValue = (value: SelectorModelValue) => {
 }
 
 export const isPickerDetail = <T extends SelectorSourceDetail>(detail: T) => {
-  return detail && detail.value && typeof detail.label === 'string'
+  return detail && detail.value && isString(detail.label)
 }
 
 export const commonProps = {

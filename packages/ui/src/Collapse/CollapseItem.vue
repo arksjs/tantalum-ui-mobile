@@ -22,16 +22,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, inject, computed, shallowRef } from 'vue'
-import type { PropType } from 'vue'
+import {
+  defineComponent,
+  ref,
+  inject,
+  computed,
+  shallowRef,
+  type PropType
+} from 'vue'
 import { Cell } from '../Cell'
-import { iconValidator } from '../helpers/validator'
-import { useGroupItem } from '../hooks/use-group'
+import { iconValidator, isBoolean, noop, type PropsToEmits } from '../helpers'
+import { useGroupItem } from '../hooks'
 import type { CollapseItemEmits } from './types'
-import type { PropsToEmits } from '../helpers/types'
 import type { IconData } from '../Icon/types'
 import { getItemClasses } from './util'
-import { isBoolean, noop } from '../helpers/util'
 
 export default defineComponent({
   name: 'ta-collapse-item',

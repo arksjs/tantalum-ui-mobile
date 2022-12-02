@@ -1,5 +1,4 @@
-import { camelCase2KebabCase, isNumber, objectForEach } from './util'
-import type { CSSProperties, ViewPosition } from './types'
+import { isNumber, isString } from './util'
 
 export function appendToBody($el: Element) {
   document.body.appendChild($el)
@@ -20,6 +19,8 @@ export function removeClassName($el: Element, className: string) {
 export function hasClassName($el: Element, className: string) {
   return ([].slice.call($el.classList, 0) as string[]).includes(className)
 }
+
+export type ViewPosition = 'start' | 'center' | 'end' | 0 | 0.5 | 1
 
 export function getViewPosition(viewPosition?: ViewPosition): 0 | 0.5 | 1 {
   const viewPositionMap = new Map<ViewPosition, 0 | 0.5 | 1>([
@@ -85,14 +86,14 @@ export function getRelativeOffset(
 
 /**
  * 获取长度值
- * @param size eg: 10 10vw 10vh 10px
+ * @param value eg: 10 10vw 10vh 10px
  * @param defaultValue
  */
-export function getSizeValue(size: unknown, defaultValue = 0) {
-  if (isNumber(size)) {
-    return size as number
-  } else if (typeof size === 'string') {
-    const matches = size.match(/^([\d.]+)((px)|(vw)|(vh)|)$/)
+export function getSizeValue(value: unknown, defaultValue = 0) {
+  if (isNumber(value)) {
+    return value
+  } else if (isString(value)) {
+    const matches = value.match(/^([\d.]+)((px)|(vw)|(vh)|)$/)
 
     if (matches) {
       let sizeNum = parseFloat(matches[1])
@@ -110,6 +111,12 @@ export function getSizeValue(size: unknown, defaultValue = 0) {
   return defaultValue
 }
 
+export function isSizeValue(object: unknown): object is string | number {
+  return getSizeValue(object, Infinity) !== Infinity
+}
+
+export type Selector = HTMLElement | string
+
 /**
  * 指定条件获取 HTMLElement
  * @param selector 选择参数
@@ -119,7 +126,7 @@ export function querySelector(selector: unknown) {
 
   if (selector instanceof HTMLElement) {
     $el = selector
-  } else if (typeof selector === 'string' && selector.trim() !== '') {
+  } else if (isString(selector) && selector.trim() !== '') {
     $el = document.querySelector(selector)
   } else if (selector === document) {
     $el = document.documentElement
@@ -152,7 +159,7 @@ export function scrollTo(
     {
       behavior: animated ? 'smooth' : 'auto'
     },
-    typeof scrollNumber === 'number'
+    isNumber(scrollNumber)
       ? {
           top: scrollNumber,
           left: 0
@@ -165,18 +172,6 @@ export function scrollTo(
   } else {
     $el.scrollTo(options)
   }
-}
-
-export function CSSProperties2CssText(object: CSSProperties) {
-  const arr: string[] = []
-
-  objectForEach(object, (v, k) => {
-    const key = camelCase2KebabCase(k)
-
-    arr.push(`${key.indexOf('webkit') === 0 ? `--${key}` : key}: ${v}`)
-  })
-
-  return arr.join('; ')
 }
 
 export function getParentTarget($el: HTMLElement, className: string) {

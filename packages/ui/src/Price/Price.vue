@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { isNumeric } from '../helpers/util'
+import { isNumeric } from '../helpers'
 import { getPrice } from './util'
 
 export default defineComponent({
@@ -26,8 +26,7 @@ export default defineComponent({
     },
     // 货币符号
     symbol: {
-      type: String,
-      default: null
+      type: String
     },
     // 是否千分位展示
     thousands: {

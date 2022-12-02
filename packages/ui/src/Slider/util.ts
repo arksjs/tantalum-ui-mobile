@@ -1,4 +1,4 @@
-import type { CSSProperties } from '../helpers/types'
+import type { CSSProperties } from '../helpers'
 
 export const getSlideClasses = (disabled?: boolean) => [
   'ta-slider',

@@ -1,6 +1,10 @@
-import type { PropsToEmits } from '../helpers/types'
-import { isNumber, isString, returnTrue } from '../helpers/util'
-import { emitEventValidator } from '../helpers/validator'
+import {
+  isNumber,
+  isString,
+  returnTrue,
+  emitFocusValidator,
+  type PropsToEmits
+} from '../helpers'
 import type { FocusEmits, FocusWithoutEventEmits } from './types'
 
 export const formItemProps = {
@@ -14,24 +18,21 @@ export const formItemProps = {
   }
 }
 
-export const isStringValue = (value: string) => isString(value)
-export const isNumberValue = (value: number) => isNumber(value)
-
 export const formStringValueEmits = {
-  'update:modelValue': isStringValue,
-  change: isStringValue,
-  input: isStringValue
+  'update:modelValue': isString,
+  change: isString,
+  input: isString
 }
 
 export const formNumberValueEmits = {
-  'update:modelValue': isNumberValue,
-  change: isNumberValue,
-  input: isNumberValue
+  'update:modelValue': isNumber,
+  change: isNumber,
+  input: isNumber
 }
 
 export const formFocusEmits: PropsToEmits<FocusEmits> = {
-  focus: emitEventValidator,
-  blur: emitEventValidator
+  focus: emitFocusValidator,
+  blur: emitFocusValidator
 }
 
 export const formActiveEmits: PropsToEmits<FocusWithoutEventEmits> = {

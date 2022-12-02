@@ -1,25 +1,7 @@
 @import '../style/var.scss';
 
-.ta-popup.ta-notify {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: auto;
-}
-
 .ta-notify {
-  &_inner {
-    width: 100%;
-    transform: translate3d(0, calc(-100%), 0);
-    transition: all 0.2s;
-    opacity: 0;
-  }
-
-  &.visible {
-    .ta-notify_inner {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-    }
+  > .ta-drawer_inner {
+    min-height: 0;
   }
 }

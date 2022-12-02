@@ -43,7 +43,7 @@ import type {
 import { useHandlers } from '../Calendar/use-calendar'
 import { cloneDetail, isSameValue } from '../Picker/util'
 import { pickerEmits, pickerProps } from '../Picker/props'
-import type { PropsToEmits } from '../helpers/types'
+import type { PropsToEmits } from '../helpers'
 
 export default defineComponent({
   name: 'ta-calendar',

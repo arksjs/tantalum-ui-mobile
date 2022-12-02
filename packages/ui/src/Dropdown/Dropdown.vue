@@ -25,11 +25,14 @@ import {
   type PropType
 } from 'vue'
 import { usePopup } from '../popup/use-popup'
-import { popupEmits, popupProps } from '../popup/popup'
-import { selectorValidator } from '../helpers/validator'
-import { useException } from '../hooks/use-exception'
-import { querySelector } from '../helpers/dom'
-import type { PropsToEmits, Selector } from '../helpers/types'
+import { popupEmits, popupProps } from '../popup/props'
+import {
+  selectorValidator,
+  querySelector,
+  type PropsToEmits,
+  type Selector
+} from '../helpers'
+import { useException } from '../hooks'
 import type { DropdownEmits } from './types'
 
 export default defineComponent({
@@ -65,9 +68,19 @@ export default defineComponent({
     }
 
     const popupHook = usePopup(props, ctx, {
-      afterShow: updatePos,
-      afterHidden() {
-        top.value = -1
+      emitCallback(event, res) {
+        if (event === 'visibleStateChange') {
+          switch (res.state) {
+            case 'show':
+              updatePos()
+              break
+            case 'hidden':
+              top.value = -1
+              break
+            default:
+              break
+          }
+        }
       }
     })
 

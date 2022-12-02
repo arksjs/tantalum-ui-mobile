@@ -2,17 +2,19 @@ import type { PropType } from 'vue'
 import {
   selectorValidator,
   createEnumsValidator,
-  getEnumsValue
-} from '../helpers/validator'
-import { PLACEMENT_TYPES } from '../helpers/constants'
-import { popupEmits, popupProps } from '../popup/popup'
-import type { PlacementType, PropsToEmits, Selector } from '../helpers/types'
+  getEnumsValue,
+  PLACEMENT_TYPES,
+  type PlacementType,
+  type PropsToEmits,
+  type Selector
+} from '../helpers'
+import { popupEmits, popupProps } from '../popup/props'
 import type { PopoverEmits } from './types'
 
 export const popoverProps = {
   ...popupProps,
   selector: {
-    type: [String, Object] as PropType<Selector>,
+    type: [String, HTMLElement] as PropType<Selector>,
     validator: selectorValidator,
     required: true
   },

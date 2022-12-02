@@ -1,9 +1,6 @@
 import type { AvatarGroupProps } from './types'
 import { provide, inject } from 'vue'
-import {
-  useChildCountConsumer,
-  useChildCountProvider
-} from '../hooks/use-child-count'
+import { useChildCountConsumer, useChildCountProvider } from '../hooks'
 
 const KEY = 'Avatar'
 const CONTEXT_KEY = `ta${KEY}GroupOptions`

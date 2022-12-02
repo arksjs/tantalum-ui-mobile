@@ -10,14 +10,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { PropType } from 'vue'
+import { computed, defineComponent, type PropType } from 'vue'
 import SpriteSVG from './SpriteSVG.vue'
-import {
-  colorValidator,
-  iconValidator,
-  isSvgComponent
-} from '../helpers/validator'
+import { colorValidator, iconValidator, isSvgComponent } from '../helpers'
 import type { IconData } from './types'
 import { getIconStyles } from './util'
 

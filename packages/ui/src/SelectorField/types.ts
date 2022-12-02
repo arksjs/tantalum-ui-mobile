@@ -1,4 +1,4 @@
-import type { Noop } from '../helpers/types'
+import type { Noop } from '../helpers'
 
 export type SelectorValue = string | number | Date
 export type SelectorModelValue = SelectorValue | SelectorValue[]

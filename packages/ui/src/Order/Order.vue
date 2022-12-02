@@ -45,23 +45,26 @@ import {
   onBeforeUnmount,
   onBeforeMount,
   computed,
-  shallowRef
+  shallowRef,
+  type PropType
 } from 'vue'
-import type { PropType } from 'vue'
 import { Icon } from '../Icon'
 import { Drawer } from '../Drawer'
 import {
-  isStringNumberMix,
+  isStringOrNumber,
   rangeNumber,
   cloneData,
-  isNumber
-} from '../helpers/util'
-import { useTouch } from '../hooks/use-touch'
-import { addClassName, getParentTarget, removeClassName } from '../helpers/dom'
+  isNumber,
+  addClassName,
+  getParentTarget,
+  removeClassName,
+  type PropsToEmits,
+  type Noop
+} from '../helpers'
+import { useTouch, useResizeObserver, useOnce } from '../hooks'
 import type { OnVisibleStateChange } from '../popup/types'
 import { useLocale } from '../ConfigProvider/context'
 import type { Item, OrderEmits, Position } from './types'
-import type { PropsToEmits } from '../helpers/types'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'
 import {
   getClasses,
@@ -70,8 +73,6 @@ import {
   getItemStyles,
   getStyles
 } from './util'
-import { useResizeObserver } from '../hooks/use-resize-observer'
-import { useOnce } from '../hooks/use-once'
 
 interface TargetObject {
   id: string | number
@@ -90,7 +91,7 @@ const itemsValidator = (items: Item[]) => {
   return (
     Array.isArray(items) &&
     items.filter(item => {
-      return !(item && isStringNumberMix(item.id))
+      return !(item && isStringOrNumber(item.id))
     }).length === 0
   )
 }
@@ -124,9 +125,9 @@ export default defineComponent({
     'update:items': itemsValidator,
     delete: payload =>
       payload &&
-      typeof isNumber(payload.index) &&
+      isNumber(payload.index) &&
       payload.item &&
-      isStringNumberMix(payload.item.id)
+      isStringOrNumber(payload.item.id)
   } as PropsToEmits<OrderEmits>,
   setup(props, { emit }) {
     const { locale } = useLocale()
@@ -206,7 +207,7 @@ export default defineComponent({
 
     let lazyTimer: number
 
-    function exitDragDone(callback: () => void) {
+    function exitDragDone(callback: Noop) {
       lazyTimer = window.setTimeout(() => {
         callback()
         drag.on = false

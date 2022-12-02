@@ -21,12 +21,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import { Image as TaImage } from '../Image'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
-import { noop } from '../helpers/util'
+import { noop } from '../helpers'
 import type { ImageMode } from '../Image/types'
 import type { FileItem } from './types'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'

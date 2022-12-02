@@ -1,5 +1,4 @@
-import { isNumberArray, isNumeric } from '../helpers/util'
-import type { CSSProperties } from '../helpers/types'
+import { isNumberArray, isNumeric, type CSSProperties } from '../helpers'
 import type { JustifyType, AlignType, UserGutter, RowProps } from './types'
 
 export const JUSTIFY_TYPES: JustifyType[] = [

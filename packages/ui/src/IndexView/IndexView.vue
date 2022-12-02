@@ -30,17 +30,20 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, shallowRef, watch } from 'vue'
 import { StickyView } from '../StickyView'
-import { sizeValidator } from '../helpers/validator'
-import { isString, rangeInteger } from '../helpers/util'
+import {
+  isSizeValue,
+  isString,
+  rangeInteger,
+  type PropsToEmits
+} from '../helpers'
 import type {
   StickyViewOnResetItems,
   StickyViewRef,
   StickyViewOnChange
 } from '../StickyView/types'
-import { useTouch } from '../hooks/use-touch'
+import { useTouch } from '../hooks'
 import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer } from '../Sticky/types'
-import type { PropsToEmits } from '../helpers/types'
 import type { IndexViewEmits } from './types'
 
 export default defineComponent({
@@ -51,7 +54,8 @@ export default defineComponent({
       type: String
     },
     stickyOffsetTop: {
-      validator: sizeValidator,
+      type: [Number, String],
+      validator: isSizeValue,
       default: 0
     }
   },

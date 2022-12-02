@@ -1,39 +1,48 @@
 <template>
-  <teleport to="body">
-    <div
-      class="ta-notify"
-      :class="popupClasses"
-      :style="popupStyles"
-      v-bind="$attrs"
-    >
-      <NoticeBar
-        class="ta-notify_inner"
-        :type="type"
-        :leftIcon="icon"
-        :title="title"
-        :color="color"
-        :mode="closable ? 'closable' : 'default'"
-        @closeClick="onCloseClick"
-      />
-    </div>
-  </teleport>
+  <Drawer
+    class="ta-notify"
+    placement="top"
+    :showMask="false"
+    :visible="visible"
+    :initialEnableBlurCancel="false"
+    @visibleStateChange="onVisibleStateChange"
+    @cancel="onCancel"
+    @confirm="onConfirm"
+    @update:visible="onUpdateVisible"
+    ref="popupRef"
+  >
+    <NoticeBar
+      class="ta-notify_inner"
+      :type="type"
+      :leftIcon="icon"
+      :title="title"
+      :color="color"
+      :mode="closable ? 'closable' : 'default'"
+      @closeClick="onCloseClick"
+    />
+  </Drawer>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRef } from 'vue'
-import type { PropType } from 'vue'
+import { defineComponent, toRef, type PropType } from 'vue'
+import { Drawer } from '../Drawer'
 import { NoticeBar } from '../NoticeBar'
-import { usePopup } from '../popup/use-popup'
-import { popupEmits, popupProps } from '../popup/popup'
-import { iconValidator } from '../helpers/validator'
-import type { PropsToEmits, StateType } from '../helpers/types'
+import { popupEmits, popupProps } from '../popup/props'
+import {
+  iconValidator,
+  type PropsToEmits,
+  type StateType,
+  type EmptyObject
+} from '../helpers'
 import type { IconData } from '../Icon/types'
-import { useDelay } from '../hooks/use-delay'
+import { useDelay } from '../hooks'
 import type { NotifyEmits } from './types'
+import { usePopupExtend } from '../popup/use-popup'
+import type { OnCancel, OnVisibleStateChange } from '../popup/types'
 
 export default defineComponent({
   name: 'ta-notify',
-  components: { NoticeBar },
+  components: { NoticeBar, Drawer },
   props: {
     ...popupProps,
     closable: {
@@ -68,15 +77,25 @@ export default defineComponent({
       popup.customCancel('auto', true)
     }, toRef(props, 'duration'))
 
-    const popup = usePopup(props, ctx, {
-      initialForbidScroll: false,
-      initialFocusFixed: true,
-      afterCancel: removeDelayTask,
-      afterShow: addDelayTask
-    })
+    const popup = usePopupExtend<EmptyObject>(ctx)
+
+    const onVisibleStateChange: OnVisibleStateChange = e => {
+      if (e.state === 'show') {
+        addDelayTask()
+      }
+      popup.onVisibleStateChange(e)
+    }
+
+    const onCancel: OnCancel = res => {
+      removeDelayTask()
+
+      popup.onCancel(res)
+    }
 
     return {
-      ...popup
+      ...popup,
+      onVisibleStateChange,
+      onCancel
     }
   }
 })

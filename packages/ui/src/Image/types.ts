@@ -1,5 +1,5 @@
 import type { IconData } from '../Icon/types'
-import type { OnError } from '../helpers/types'
+import type { OnError } from '../helpers'
 
 export type Mode =
   | 'scaleToFill'

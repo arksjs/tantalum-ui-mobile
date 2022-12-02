@@ -1,5 +1,5 @@
-import { capitalize } from '../helpers/util'
 import { inject, onBeforeUnmount, provide, reactive } from 'vue'
+import { capitalize } from '../helpers'
 
 function getKey(name: string) {
   return `ta${capitalize(name)}Group`

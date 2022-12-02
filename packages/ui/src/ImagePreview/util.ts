@@ -1,5 +1,4 @@
-import type { CSSProperties } from '../helpers/types'
-import { cloneData } from '../helpers/util'
+import { cloneData, type CSSProperties } from '../helpers'
 import type { DistanceOptions, ImageObject } from './types'
 
 export const mergeLoadedData = (

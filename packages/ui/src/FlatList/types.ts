@@ -1,4 +1,4 @@
-import type { Noop } from '../helpers/types'
+import type { Noop } from '../helpers'
 import type { OnRefreshing, OnScroll } from '../ScrollView/types'
 import type {
   ScrollTo,

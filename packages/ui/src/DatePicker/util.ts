@@ -1,4 +1,4 @@
-import dayjs from '../helpers/day'
+import { dayjs } from '../helpers'
 
 export const getMinDate = () =>
   dayjs().startOf('day').subtract(9, 'year').toDate()

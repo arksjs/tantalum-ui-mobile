@@ -13,8 +13,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { isNumeric } from '../helpers/util'
-import { colorValidator } from '../helpers/validator'
+import { colorValidator } from '../helpers'
 import {
   getClasses,
   getProgress,
@@ -28,15 +27,7 @@ export default defineComponent({
   props: {
     percentage: {
       type: [Number, String],
-      validator: (val: string | number) => {
-        return (
-          isNumeric(val) &&
-          parseFloat(val as string) >= 0 &&
-          parseFloat(val as string) <= 100
-        )
-      },
-      default: 0,
-      required: true
+      default: 0
     },
     showText: {
       type: Boolean,

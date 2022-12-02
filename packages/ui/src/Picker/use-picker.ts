@@ -1,6 +1,11 @@
 import { nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import type { SetupContext } from 'vue'
-import { cloneData, isSameArray } from '../helpers/util'
+import {
+  cloneData,
+  isSameArray,
+  type Noop,
+  type PropsToEmits
+} from '../helpers'
 import type {
   ColRow,
   OptionItem,
@@ -32,7 +37,6 @@ import {
   isValidValue
 } from './util'
 import type { PopupCustomConfirm, PopupEmits } from '../popup/types'
-import type { PropsToEmits } from '../helpers/types'
 
 function getDefaultDetail(handlers: PickerHandlers) {
   return formatter([], [], handlers)
@@ -165,7 +169,7 @@ export function usePickerPopup(
     onCancelClick
   }: {
     customConfirm: PopupCustomConfirm<SelectorSourceDetail>
-    onCancelClick: () => void
+    onCancelClick: Noop
   },
   { handlers }: { handlers: PickerHandlers }
 ) {
