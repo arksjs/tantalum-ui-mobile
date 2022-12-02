@@ -1,5 +1,5 @@
 import { removeEl } from './dom'
-import type { Noop } from './types'
+import type { Noop } from './util'
 
 /**
  * 监听元素大小变化

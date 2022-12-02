@@ -1,5 +1,9 @@
 import { isMobile } from './device'
 
+export type OnError = (e: Error) => void
+export type OnClick = (e: MouseEvent) => void
+export type OnFocus = (e: FocusEvent) => void
+
 export interface LongPressEventCallback {
   (res: { type: 'long-press' | 'click' }): void
 }

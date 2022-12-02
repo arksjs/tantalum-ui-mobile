@@ -1,4 +1,4 @@
-import type { Noop } from './types'
+import type { Noop } from './util'
 
 type EasingType = 'linear' | 'swing'
 

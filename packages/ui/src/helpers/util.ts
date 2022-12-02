@@ -1,4 +1,52 @@
-import type { AnyObject, EmptyObject } from './types'
+/**
+ * '123' -> "1" | "2" | "3"
+ */
+type StringToUnion<T extends string> = T extends `${infer First}${infer Rest}`
+  ? First | StringToUnion<Rest>
+  : never
+
+/**
+ * 所有大写字母联合
+ */
+type UpperCases = StringToUnion<'ABCDEFGH'> | StringToUnion<'IJKLMNOPQRSTUVXYZ'>
+
+/**
+ * for-bar-baz -> forBarBaz
+ */
+type ConcatDash<S extends string> = `-${S}`
+export type CamelCase<S extends string> =
+  S extends `${infer L}-${infer M}${infer R}`
+    ? M extends '-'
+      ? `${L}-${CamelCase<ConcatDash<R>>}`
+      : M extends Uppercase<M>
+      ? `${L}-${M}${CamelCase<R>}`
+      : `${L}${Uppercase<M>}${CamelCase<R>}`
+    : S
+
+/**
+ * FooBarBaz -> for-bar-baz
+ */
+type Split<S extends string> = S extends `${infer L}${infer R}`
+  ? L extends UpperCases
+    ? L extends Uppercase<L>
+      ? `-${Lowercase<L>}${Split<R>}`
+      : `${L}${Split<R>}`
+    : `${L}${Split<R>}`
+  : S
+type DelFirst<T extends string, U extends string> = T extends `-${string}`
+  ? U
+  : U extends `-${infer R}`
+  ? R
+  : U
+export type KebabCase<T extends string> = DelFirst<T, Split<T>>
+
+export type UnionToIntersection<T> = (
+  T extends any ? (x: T) => any : never
+) extends (x: infer R) => any
+  ? R
+  : never
+
+export type UniqueID = number | string
 
 /**
  * 将字段名转为驼峰式格式
@@ -276,10 +324,14 @@ export function arrayLike2Array(object: ArrayLike<unknown>) {
   return Array.prototype.slice.call(object)
 }
 
+export interface Noop {
+  (): void
+}
+
 /**
  * 不执行任何操作的函数
  */
-export const noop = function () {
+export const noop: Noop = function () {
   // empty
 }
 
@@ -298,6 +350,9 @@ export function returnTrue() {
 export function returnFalse() {
   return false
 }
+
+export type AnyObject = Record<string, any>
+export type EmptyObject = Record<string, never>
 
 function hasOwnProperty(object: AnyObject, key: string) {
   return Object.prototype.hasOwnProperty.call(object, key)

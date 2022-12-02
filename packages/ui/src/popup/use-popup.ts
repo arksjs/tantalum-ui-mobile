@@ -6,7 +6,8 @@ import {
   getScrollTop,
   removeClassName,
   popupZIndex,
-  type PropsToEmits
+  type PropsToEmits,
+  type EmitFn
 } from '../helpers'
 import type {
   VisibleState,
@@ -19,7 +20,7 @@ import type {
   PopupEmits,
   PopupRef
 } from './types'
-import { useDocumentBlur, useStopBlur, type UseEmitFn } from '../hooks'
+import { useDocumentBlur, useStopBlur } from '../hooks'
 import { getNewZIndex, getPopupStyles } from './util'
 
 type EmitCallback = (event: keyof PropsToEmits<PopupEmits>, res: any) => void
@@ -34,7 +35,7 @@ type UseOptions = Partial<{
 function useEmitHook(emit: any, emitCallback?: EmitCallback) {
   const apis = inject<PopupBridge>('taApis', {})
 
-  const emitHook: UseEmitFn<PropsToEmits<PopupEmits>> = (event, res) => {
+  const emitHook: EmitFn<PropsToEmits<PopupEmits>> = (event, res) => {
     // 增加api的钩子
     emit(event, res)
     emitCallback && emitCallback(event, res)

@@ -1,5 +1,4 @@
-import { camelCase2KebabCase, isNumber, isString, objectForEach } from './util'
-import type { CSSProperties } from './types'
+import { isNumber, isString } from './util'
 
 export function appendToBody($el: Element) {
   document.body.appendChild($el)
@@ -173,18 +172,6 @@ export function scrollTo(
   } else {
     $el.scrollTo(options)
   }
-}
-
-export function CSSProperties2CssText(object: CSSProperties) {
-  const arr: string[] = []
-
-  objectForEach(object, (v, k) => {
-    const key = camelCase2KebabCase(k)
-
-    arr.push(`${key.indexOf('webkit') === 0 ? `--${key}` : key}: ${v}`)
-  })
-
-  return arr.join('; ')
 }
 
 export function getParentTarget($el: HTMLElement, className: string) {
