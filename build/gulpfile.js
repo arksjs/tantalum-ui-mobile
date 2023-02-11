@@ -44,14 +44,22 @@ function copySass() {
 function buildStyleImport() {
   return gulp
     .src(`${corePath}/src/**/style/index.ts`)
+    .pipe(replace(/style\/index/g, 'style/index.mjs'))
     .pipe(replace('.scss', '.css'))
+    .pipe(
+      rename(function (path) {
+        path.extname = '.mjs'
+        return path
+      })
+    )
+    .pipe(gulp.dest(destEs))
     .pipe(
       rename(function (path) {
         path.extname = '.js'
         return path
       })
     )
-    .pipe(gulp.dest(destEs))
+    .pipe(replace(/\.mjs/g, ''))
     .pipe(
       replace(/import\s+\'([\w\.\/\-]+)\'/g, function (p, a) {
         return `require('${a}')`
@@ -67,15 +75,22 @@ function buildStyleImport() {
 function buildSassImport() {
   return gulp
     .src(`${corePath}/src/**/style/index.ts`)
-    .pipe(replace(/style\/index/g, 'style/sass'))
+    .pipe(replace(/style\/index/g, 'style/sass.mjs'))
     .pipe(
       rename(function (path) {
-        path.extname = '.js'
+        path.extname = '.mjs'
         path.basename = 'sass'
         return path
       })
     )
     .pipe(gulp.dest(destEs))
+    .pipe(
+      rename(function (path) {
+        path.extname = '.js'
+        return path
+      })
+    )
+    .pipe(replace(/\.mjs/g, ''))
     .pipe(
       replace(/import\s+\'([\w\.\/\-]+)\'/g, function (p, a) {
         return `require('${a}')`
