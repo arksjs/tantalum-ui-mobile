@@ -1,5 +1,5 @@
 import type { Plugin } from 'vue'
-import * as Components from './components'
+import * as Components from './components/index'
 
 const UI: Plugin = {
   install(app) {
@@ -10,7 +10,7 @@ const UI: Plugin = {
 }
 
 export * from './components/api'
-export * from './components'
+export * from './components/index'
 export default UI
 
 export type {

@@ -73,8 +73,8 @@ module.exports = {
 
 ```Vue
 <script>
-import { TaButton } from 'tantalum-ui-mobile/es/Button'
-import 'tantalum-ui-mobile/es/Button/style'
+import { TaButton } from 'tantalum-ui-mobile'
+import 'tantalum-ui-mobile/es/Button/style/index'
 // import 'tantalum-ui-mobile/es/Button/style/sass' // use sass
 
 export default {
@@ -109,11 +109,12 @@ API 调用需要先引入对应的组件，方可调用，引用方式同上。
 import { showToast } from 'tantalum-ui-mobile'
 ```
 
-如果是按需引入：
+如果是按需引入，还需额外引入样式：
 
 ```JavaScript
-import { showToast } from 'tantalum-ui-mobile/es/Toast'
-import 'tantalum-ui-mobile/es/Toast/style'
+import { showToast } from 'tantalum-ui-mobile'
+import 'tantalum-ui-mobile/es/Toast/style/index'
+// import 'tantalum-ui-mobile/es/Toast/style/sass' // use sass
 ```
 
 调用方式：

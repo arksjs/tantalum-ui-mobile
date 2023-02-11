@@ -1,11 +1,27 @@
 {
   "name": "tantalum-ui-mobile",
-  "version": "0.2.1",
+  "version": "0.2.4",
   "description": "A Mobile UI Components built on Vue 3.x",
   "main": "lib/index.js",
-  "module": "es/index.js",
+  "module": "es/index.mjs",
   "style": "es/style/index.css",
   "typings": "es/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs",
+      "require": "./lib/index.js"
+    },
+    "./es": "./es/index.mjs",
+    "./es/*.mjs": "./es/*.mjs",
+    "./es/*": "./es/*.mjs",
+    "./lib": "./lib/index.js",
+    "./lib/*.js": "./lib/*.js",
+    "./lib/*": "./lib/*.js",
+    "./*": "./*"
+  },
+  "unpkg": "dist/index.js",
+  "jsdelivr": "dist/index.js",
   "scripts": {
     "test": "vitest",
     "coverage": "vitest run --coverage",

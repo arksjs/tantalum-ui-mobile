@@ -22,26 +22,47 @@ const getEntryPoints = async () => {
   return entryPoints
 }
 
-const externalPlugin = () => {
+const externalPlugin = (esm = false) => {
   return {
     name: 'external',
     setup(build) {
       // Match an import called "./*" and mark it as external
-      build.onResolve({ filter: /^\.\// }, () => ({ external: true }))
-      build.onResolve({ filter: /^\.\.\// }, () => ({ external: true }))
+      build.onResolve({ filter: /^\.\.?\// }, args => {
+        let path = args.path
+
+        if (esm) {
+          // import add .mjs
+          if (!/[A-Za-z]+\./.test(path)) {
+            // Exclude the ./a.css
+            if (
+              /helpers|hooks|locale/.test(path) ||
+              /\/[A-Z][^/]+$/.test(path)
+            ) {
+              // add  /index.mjs
+              path += '/index.mjs'
+            } else {
+              path += '.mjs'
+            }
+          }
+        }
+
+        return { external: true, path }
+      })
     }
   }
 }
 
 const buildCompsEsm = async (entryPoints, deps) => {
   await build({
-    plugins: [vuePlugin(), externalPlugin()],
+    plugins: [vuePlugin(), externalPlugin(true)],
     entryPoints: entryPoints,
     external: deps,
     outdir: resolve('./es/'),
     format: 'esm',
     bundle: true,
-    target: ['es2019']
+    target: ['es2019'],
+    platform: 'node',
+    outExtension: { '.js': '.mjs' }
   })
 }
 
