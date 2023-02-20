@@ -17,7 +17,7 @@ import {
 } from '../helpers'
 import { handleBadge } from '../Badge/util'
 import type { OptionItem, HandleOptionItem } from './types'
-import type { tabEmits, tabProps } from './tab'
+import type { tabEmits, tabProps } from './props'
 import { getStyles } from './util'
 import {
   useFrameTask,
@@ -232,18 +232,18 @@ export function useTab(
       frameStart({
         from,
         to,
-        duration: 200,
+        duration: 100,
         progress({ current }) {
           $list[scrollDirectionKey] = current
         },
         complete({ current }) {
           $list[scrollDirectionKey] = current
+
+          if (tabName === 'Tab') {
+            updateUnderline()
+          }
         }
       })
-
-      if (tabName === 'Tab') {
-        updateUnderline()
-      }
     })
   }
 

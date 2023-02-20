@@ -23,7 +23,7 @@
 import { defineComponent } from 'vue'
 import { Icon } from '../Icon'
 import { Badge } from '../Badge'
-import { tabEmits, tabProps } from '../Tab/tab'
+import { tabEmits, tabProps } from '../Tab/props'
 import { useTab } from '../Tab/use-tab'
 import { getItemClasses } from './util'
 import type { PropsToEmits } from '../helpers'
