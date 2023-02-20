@@ -1,1 +1,0 @@
-import{a9 as e}from"./index.7b478d1a.js";const n="YYYY\u5E74MM\u6708DD\u65E5",m=(t,o)=>{const r=t.length===0?"":o==="range"?t.map(a=>e(a).format(n)).join(" ~ "):e(t[0]).format(n);return{value:r,label:r}},p=(t,o)=>o==="range"?t?t.split(" ~ ").map(r=>e(r,n,!0).toDate()):[]:t?[e(t,n,!0).toDate()]:[];export{m as f,p,n as t};

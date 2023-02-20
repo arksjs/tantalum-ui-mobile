@@ -735,7 +735,6 @@ var FrameTask = class {
     this.stop = function() {
       if (ref46.idle) {
         cancelAnimationFrame(ref46.idle);
-        ref46.idle = null;
         ref46.done();
         return true;
       }
@@ -750,6 +749,7 @@ function frameTo(options) {
   const end = start + duration;
   const id = ++uid;
   function done() {
+    ref46.idle = null;
     complete && complete({ current, id });
   }
   const ref46 = { idle: null, id, done };
@@ -2753,27 +2753,28 @@ import { inject as inject2, onBeforeUnmount as onBeforeUnmount6, provide as prov
 function getKey(name) {
   return `ta${capitalize(name)}Group`;
 }
-function useGroup(name) {
+function useGroup(name, values) {
   const children = reactive([]);
-  provide2(getKey(name), {
-    addChild(obj) {
+  provide2(getKey(name), Object.assign({
+    hasGroup: true,
+    addItem(obj) {
       children.push(obj);
     },
-    removeChild(obj) {
+    removeItem(obj) {
       children.splice(children.indexOf(obj), 1);
     }
-  });
+  }, values || {}));
   return {
     children
   };
 }
 function useGroupItem(name, object) {
   const group = inject2(getKey(name), null);
-  group && group.addChild(object);
+  group && group.addItem(object);
   onBeforeUnmount6(() => {
-    group && group.removeChild(object);
+    group && group.removeItem(object);
   });
-  return {};
+  return group || { hasGroup: false };
 }
 
 // packages/ui/src/hooks/use-life.ts
@@ -2859,13 +2860,13 @@ function useOnce(interval = 0) {
       handle = null;
     }
   }
-  function call(fn) {
+  function call(fn, forceInterval) {
     cancel2();
     if (interval > 0) {
       handle = window.setTimeout(() => {
         handle = null;
         fn();
-      }, 50);
+      }, forceInterval != null ? forceInterval : interval);
     } else {
       handle = requestAnimationFrame(() => {
         handle = null;
@@ -7334,7 +7335,7 @@ import { defineComponent as defineComponent24, ref as ref13, watch as watch13, n
 // vue:./Tab.vue
 import { computed as computed18, defineComponent as defineComponent22 } from "vue";
 
-// packages/ui/src/Tab/tab.ts
+// packages/ui/src/Tab/props.ts
 var tabEmits = {
   "update:modelValue": (value) => isStringOrNumber(value),
   change: (value, index) => isStringOrNumber(value) && isNumber(index)
@@ -7563,17 +7564,17 @@ function useTab(props, { emit, expose }, { tabName }) {
       frameStart({
         from,
         to,
-        duration: 200,
+        duration: 100,
         progress({ current }) {
           $list[scrollDirectionKey] = current;
         },
         complete({ current }) {
           $list[scrollDirectionKey] = current;
+          if (tabName === "Tab") {
+            updateUnderline();
+          }
         }
       });
-      if (tabName === "Tab") {
-        updateUnderline();
-      }
     });
   }
   const updateUnderlineOnce = useOnce(50);
@@ -8702,7 +8703,14 @@ var checkProps = {
 };
 
 // packages/ui/src/Checkbox/use-check.ts
-import { computed as computed21, onMounted as onMounted16, watch as watch14, inject as inject8, provide as provide7, shallowRef as shallowRef13 } from "vue";
+import {
+  computed as computed21,
+  onMounted as onMounted16,
+  watch as watch14,
+  inject as inject8,
+  provide as provide7,
+  shallowRef as shallowRef13
+} from "vue";
 
 // packages/ui/src/Checkbox/util.ts
 var getCheckStyles = (activeColor) => {
@@ -8776,7 +8784,8 @@ function useCheck(props, { emit }, name) {
     const $input = getInputEl();
     let checked;
     if (groupOptions) {
-      checked = name === "checkbox" ? !!(Array.isArray(groupOptions.props.modelValue) && props.checkedValue && groupOptions.props.modelValue.includes(props.checkedValue)) : props.checkedValue === groupOptions.props.modelValue;
+      const groupValues = groupOptions.props.modelValue;
+      checked = name === "checkbox" ? !!(Array.isArray(groupValues) && props.checkedValue && groupValues.includes(props.checkedValue)) : props.checkedValue === groupValues;
     } else {
       checked = !!props.checked;
     }
@@ -9218,7 +9227,12 @@ _sfc_script47.__file = "packages/ui/src/Col/Col.vue";
 var Col_default = _sfc_script47;
 
 // vue:./Collapse.vue
-import { defineComponent as defineComponent32, onMounted as onMounted17, watch as watch15, provide as provide8 } from "vue";
+import { defineComponent as defineComponent32, onMounted as onMounted17, watch as watch15 } from "vue";
+
+// packages/ui/src/Collapse/context.ts
+var CollapseContext = "collapse";
+
+// vue:./Collapse.vue
 import { renderSlot as _renderSlot16, openBlock as _openBlock48, createElementBlock as _createElementBlock42 } from "vue";
 var _sfc_script48 = defineComponent32({
   name: "ta-collapse",
@@ -9239,13 +9253,16 @@ var _sfc_script48 = defineComponent32({
   },
   setup(props, { emit }) {
     let activeNames = [];
-    const { children } = useGroup("collapse");
+    const { children } = useGroup(CollapseContext, {
+      onChange,
+      hasGroup: true
+    });
     function updateValue(val) {
       let values = cloneData(isStringArray(val) ? val : isString(val) ? [val] : []);
       if (props.accordion) {
         values = values.slice(0, 1);
       }
-      if (isSameArray(values, activeNames)) {
+      if (Array.isArray(values) && isSameArray(values, activeNames)) {
         return;
       }
       activeNames = [];
@@ -9281,7 +9298,6 @@ var _sfc_script48 = defineComponent32({
     watch15(() => props.modelValue, updateValue, {
       deep: true
     });
-    provide8("taCollapseChange", onChange);
     return {};
   }
 });
@@ -9295,13 +9311,7 @@ _sfc_script48.render = render48;
 _sfc_script48.__file = "packages/ui/src/Collapse/Collapse.vue";
 
 // vue:./CollapseItem.vue
-import {
-  defineComponent as defineComponent33,
-  ref as ref16,
-  inject as inject10,
-  computed as computed24,
-  shallowRef as shallowRef14
-} from "vue";
+import { defineComponent as defineComponent33, ref as ref16, computed as computed24, shallowRef as shallowRef14 } from "vue";
 
 // packages/ui/src/Collapse/util.ts
 var getItemClasses3 = (active) => [
@@ -9337,10 +9347,24 @@ var _sfc_script49 = defineComponent33({
     toggle: (payload) => payload && isBoolean(payload.spread)
   },
   setup(props, { emit }) {
-    const active = ref16(false);
-    const bodyEl = shallowRef14(null);
-    const onChange = inject10("taCollapseChange", noop);
+    const { printItemIsolationWarn } = useException();
     const uid3 = Symbol();
+    const bodyEl = shallowRef14(null);
+    const active = ref16(false);
+    const { onChange } = useGroupItem(CollapseContext, {
+      uid: uid3,
+      show,
+      hide,
+      getName: () => props.name,
+      getActive: () => active.value
+    });
+    function handleChange(uid4) {
+      if (onChange) {
+        onChange(uid4);
+      } else {
+        printItemIsolationWarn();
+      }
+    }
     let visibleTimer;
     function show(isClick = false) {
       if (active.value) {
@@ -9348,6 +9372,9 @@ var _sfc_script49 = defineComponent33({
       }
       active.value = true;
       clearTimeout(visibleTimer);
+      if (!bodyEl.value) {
+        return;
+      }
       const $body = bodyEl.value;
       $body.style.cssText = "position: absolute; opacity: 0;";
       const contentHeight = $body.getBoundingClientRect().height;
@@ -9359,13 +9386,16 @@ var _sfc_script49 = defineComponent33({
         }, 210);
       }, 17);
       emitToggle(true);
-      isClick && onChange(uid3);
+      isClick && handleChange(uid3);
     }
     function hide(isClick = false) {
       if (!active.value) {
         return;
       }
       active.value = false;
+      if (!bodyEl.value) {
+        return;
+      }
       clearTimeout(visibleTimer);
       const $body = bodyEl.value;
       $body.style.cssText = `height: ${$body.getBoundingClientRect().height}px;`;
@@ -9376,7 +9406,7 @@ var _sfc_script49 = defineComponent33({
         }, 210);
       }, 17);
       emitToggle(false);
-      isClick && onChange(uid3);
+      isClick && handleChange(uid3);
     }
     function emitToggle(spread) {
       emit("toggle", {
@@ -9387,13 +9417,6 @@ var _sfc_script49 = defineComponent33({
     function onClick() {
       active.value ? hide(true) : show(true);
     }
-    useGroupItem("collapse", {
-      uid: uid3,
-      getName: () => props.name,
-      getActive: () => active.value,
-      show,
-      hide
-    });
     const classes = computed24(() => getItemClasses3(active.value));
     return {
       active,
@@ -9821,10 +9844,10 @@ import { defineComponent as defineComponent42 } from "vue";
 import { defineComponent as defineComponent41 } from "vue";
 
 // vue:./PickerPopup.vue
-import { defineComponent as defineComponent40, inject as inject12 } from "vue";
+import { defineComponent as defineComponent40, inject as inject11 } from "vue";
 
 // vue:./PickerView.vue
-import { defineComponent as defineComponent39, nextTick as nextTick6, inject as inject11, shallowRef as shallowRef16 } from "vue";
+import { defineComponent as defineComponent39, nextTick as nextTick6, inject as inject10, shallowRef as shallowRef16 } from "vue";
 
 // vue:./PickerViewCol.vue
 import { defineComponent as defineComponent38 } from "vue";
@@ -9901,7 +9924,7 @@ var _sfc_script55 = defineComponent39({
   setup(props, ctx) {
     const { locale } = useLocale();
     const root = shallowRef16(null);
-    const handlers = inject11("taPickerHandlers", {});
+    const handlers = inject10("taPickerHandlers", {});
     const {
       getDetail,
       cols,
@@ -10053,7 +10076,7 @@ var _sfc_script56 = defineComponent40({
   },
   setup(props, ctx) {
     const { locale } = useLocale();
-    const handlers = inject12("taPickerHandlers", {});
+    const handlers = inject11("taPickerHandlers", {});
     const popup = usePopupExtend(ctx);
     const pickerPopup = usePickerPopup(props, ctx, popup, {
       handlers: mergeHandlers({
@@ -10466,7 +10489,7 @@ var commonProps3 = {
 };
 
 // packages/ui/src/DatePicker/use-date-picker.ts
-import { provide as provide9 } from "vue";
+import { provide as provide8 } from "vue";
 
 // packages/ui/src/DatePicker/util.ts
 var getMinDate = () => dayjs().startOf("day").subtract(9, "year").toDate();
@@ -10537,7 +10560,7 @@ function useHandlers2(props) {
     defaultValueGetter,
     labelFormatter: labelFormatter2
   };
-  provide9("taPickerHandlers", handlers);
+  provide8("taPickerHandlers", handlers);
   return { handlers };
 }
 
@@ -11064,7 +11087,7 @@ var Dropdown_default = _sfc_script65;
 import {
   computed as computed28,
   defineComponent as defineComponent49,
-  inject as inject13,
+  inject as inject12,
   onMounted as onMounted19,
   ref as ref20,
   shallowRef as shallowRef18,
@@ -11141,7 +11164,7 @@ var _sfc_script66 = defineComponent49({
     const root = shallowRef18(null);
     const innerEl = shallowRef18(null);
     const contentEl = shallowRef18(null);
-    const disableFixed = inject13("disableFixed", false);
+    const disableFixed = inject12("disableFixed", false);
     const rootStyle = ref20({
       width: null,
       height: null
@@ -11294,7 +11317,7 @@ import {
   ref as ref21,
   onMounted as onMounted20,
   watch as watch18,
-  provide as provide10,
+  provide as provide9,
   shallowRef as shallowRef19
 } from "vue";
 
@@ -11671,7 +11694,7 @@ var _sfc_script68 = defineComponent51({
       }
     });
     const { scrollToOffset, scrollToEnd } = useScrollTo(root);
-    provide10("disableFixed", true);
+    provide9("disableFixed", true);
     return {
       allowPullDirections,
       pullRefreshState,
@@ -12126,7 +12149,7 @@ import {
   onMounted as onMounted22,
   watch as watch19,
   onBeforeUnmount as onBeforeUnmount14,
-  provide as provide11,
+  provide as provide10,
   shallowRef as shallowRef21
 } from "vue";
 
@@ -12194,18 +12217,18 @@ var _sfc_script74 = defineComponent57({
       default: false
     },
     interval: {
-      type: Number,
+      type: [Number, String],
       default: 5e3
     },
     duration: {
-      type: Number
+      type: [Number, String]
     },
     initialCircular: {
       type: Boolean,
       default: false
     },
     activeIndex: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     initialVertical: {
@@ -12239,9 +12262,10 @@ var _sfc_script74 = defineComponent57({
     let horizontal = null;
     let isEmitChange = true;
     function _swipeTo(activeIndex, isProp = false) {
-      if ($items.length === 0) {
+      const len = $items.length;
+      if (len === 0) {
         goTo(0);
-      } else if (isNumber(activeIndex) && activeIndex >= 0 && activeIndex < $items.length) {
+      } else if (isNumber(activeIndex) && activeIndex >= 0 && activeIndex < len) {
         if (activeIndex !== index.value) {
           isEmitChange = !isProp;
           goTo(activeIndex, false);
@@ -12258,8 +12282,8 @@ var _sfc_script74 = defineComponent57({
       goTo(getCircleIndex(1));
     }
     function getCircleIndex(step2) {
-      const length = $items.length;
-      return length === 0 ? 0 : (index.value + length + step2 % length) % length;
+      const len = $items.length;
+      return len === 0 ? 0 : (index.value + len + step2 % len) % len;
     }
     function updateSwipeLoop(offset) {
       if (!circular) {
@@ -12357,10 +12381,12 @@ var _sfc_script74 = defineComponent57({
         updateSwipeLoop(transSizeOffset);
       }
       onBeforeSlide(toIndex, fromIndex);
-      let duration = props.duration;
-      if (duration == null) {
+      let duration = 0;
+      if (props.duration == null) {
         duration = Math.abs(transSizeOffset);
         duration = Math.max(100, Math.min(800, duration));
+      } else {
+        duration = getNumber(props.duration);
       }
       if (animated === false) {
         duration = 0;
@@ -12428,7 +12454,7 @@ var _sfc_script74 = defineComponent57({
     let autoplayTimer;
     function start() {
       stop();
-      props.autoplay && $items.length > 1 && (autoplayTimer = window.setInterval(() => next(), props.interval));
+      props.autoplay && $items.length > 1 && (autoplayTimer = window.setInterval(() => next(), getNumber(props.interval)));
     }
     function stop() {
       clearTimeout(autoplayTimer);
@@ -12526,11 +12552,12 @@ var _sfc_script74 = defineComponent57({
     watch19([() => props.autoplay, () => props.interval], () => {
       start();
     });
-    watch19(() => props.activeIndex, (val) => _swipeTo(val, true));
+    watch19(() => props.activeIndex, (val) => _swipeTo(getNumber(val), true));
     onMounted22(() => {
       start();
-      if (props.activeIndex !== 0) {
-        _swipeTo(props.activeIndex, true);
+      const activeIndex = props.activeIndex;
+      if (activeIndex != null && activeIndex !== 0) {
+        _swipeTo(getNumber(activeIndex), true);
       }
     });
     onBeforeUnmount14(() => {
@@ -12538,7 +12565,7 @@ var _sfc_script74 = defineComponent57({
       stop();
       $items = [];
     });
-    provide11("disableFixed", true);
+    provide10("disableFixed", true);
     const swipeTo = (newIndex) => _swipeTo(newIndex, false);
     expose({
       swipeTo,
@@ -14039,7 +14066,7 @@ import {
   computed as computed36,
   ref as ref27,
   onMounted as onMounted24,
-  inject as inject14,
+  inject as inject13,
   watch as watch23,
   shallowRef as shallowRef24
 } from "vue";
@@ -14082,7 +14109,7 @@ var _sfc_script82 = defineComponent63({
     const contentEl = shallowRef24(null);
     const width = ref27(null);
     const height = ref27(null);
-    const disableFixed = inject14("disableFixed", false);
+    const disableFixed = inject13("disableFixed", false);
     const fixed = ref27(false);
     useFixed({
       disableFixed,
@@ -14255,21 +14282,7 @@ var _sfc_script83 = defineComponent64({
       }
       return -1;
     }
-    useScroll(container, () => updateFixed(null));
-    const resetContainer = (containSelector) => {
-      var _a;
-      container.value = querySelector(containSelector) || root.value;
-      isSelfContainer.value = container.value === root.value;
-      (_a = stickyRef.value) == null ? void 0 : _a.resetContainer(container.value);
-      updateFixed(null);
-    };
-    function updateTitle(t, tY) {
-      if (!fixedEl.value) {
-        return;
-      }
-      fixedEl.value.textContent = t;
-      fixedEl.value.style.cssText = CSSProperties2CssText(getFixedStyles(tY));
-    }
+    let oldIndex = -1;
     function onChange() {
       if (oldIndex !== activeIndex.value) {
         const name = getItemName(activeIndex.value);
@@ -14278,7 +14291,13 @@ var _sfc_script83 = defineComponent64({
       }
       oldIndex = -1;
     }
-    let oldIndex = -1;
+    function updateTitle(t, tY) {
+      if (!fixedEl.value) {
+        return;
+      }
+      fixedEl.value.textContent = t;
+      fixedEl.value.style.cssText = CSSProperties2CssText(getFixedStyles(tY));
+    }
     function updateFixed(ss) {
       if (!fixedEl.value || !container.value) {
         return;
@@ -14341,17 +14360,6 @@ var _sfc_script83 = defineComponent64({
       isSpecifyScrolling = true;
       nextTick9(() => scrollTo(container.value, offset, false));
     }
-    function resetItems(res) {
-      $items = res;
-      updateFixed(null);
-      emit("resetItems", $items.map((v, k) => {
-        return {
-          name: getItemName(k),
-          index: k,
-          title: getItemTitle(k)
-        };
-      }));
-    }
     function scrollToIndex(newIndex) {
       if ($items[newIndex]) {
         if (newIndex != activeIndex.value && container.value) {
@@ -14368,6 +14376,29 @@ var _sfc_script83 = defineComponent64({
       } else {
         printListItemNotFoundError("name");
       }
+    }
+    useScroll(container, () => updateFixed(null));
+    const resetContainer = (containSelector) => {
+      var _a;
+      const newEl = querySelector(containSelector) || root.value;
+      if (newEl === container.value) {
+        return;
+      }
+      container.value = newEl;
+      isSelfContainer.value = container.value === root.value;
+      (_a = stickyRef.value) == null ? void 0 : _a.resetContainer(newEl);
+      updateFixed(null);
+    };
+    function resetItems(res) {
+      $items = res;
+      updateFixed(null);
+      emit("resetItems", $items.map((v, k) => {
+        return {
+          name: getItemName(k),
+          index: k,
+          title: getItemTitle(k)
+        };
+      }));
     }
     const { listEl } = useList("stickyView", resetItems);
     function updateValue(val) {
@@ -14510,11 +14541,11 @@ var _sfc_script85 = defineComponent66({
     const indexList = ref29([]);
     const activeName = ref29();
     function updateActiveName(name) {
-      if (name != null && isInTab(name) && name !== activeName.value) {
+      if (name != null && nameInList(name) && name !== activeName.value) {
         activeName.value = name;
       }
     }
-    function isInTab(name) {
+    function nameInList(name) {
       for (let i = 0; i < indexList.value.length; i++) {
         if (indexList.value[i].value === name) {
           return true;
@@ -14522,19 +14553,7 @@ var _sfc_script85 = defineComponent66({
       }
       return false;
     }
-    const resetContainer = (containSelector) => {
-      var _a;
-      (_a = bodyRef.value) == null ? void 0 : _a.resetContainer(containSelector);
-    };
-    const onResetItems = (items) => {
-      indexList.value = items.map((item) => {
-        return {
-          value: item.name,
-          label: item.title
-        };
-      });
-    };
-    const onChange = (name, index) => {
+    const onStickyViewChange = (name, index) => {
       updateActiveName(name);
       emit("update:modelValue", name);
       emit("change", name, index);
@@ -14548,7 +14567,7 @@ var _sfc_script85 = defineComponent66({
       (_a = bodyRef.value) == null ? void 0 : _a.scrollTo(name);
     }
     let coords = null;
-    let changeTimer;
+    const lazyDo = useOnce(100);
     useTouch({
       el: navEl,
       onTouchStart(e) {
@@ -14563,8 +14582,7 @@ var _sfc_script85 = defineComponent66({
           current: index,
           isChange: false
         };
-        clearTimeout(changeTimer);
-        changeTimer = window.setTimeout(() => {
+        lazyDo(() => {
           scrollToIndex(index);
         }, 500);
         e.preventDefault();
@@ -14583,25 +14601,38 @@ var _sfc_script85 = defineComponent66({
           offsetCount = -Math.floor(-y / size) + (-y % size > offsetY ? -1 : 0);
         }
         if (offsetCount !== 0) {
-          clearTimeout(changeTimer);
           coords.isChange = true;
-          changeTimer = window.setTimeout(() => {
+          lazyDo(() => {
             scrollToIndex(rangeInteger(current + offsetCount, 0, indexList.value.length - 1));
-          }, 100);
+          });
         }
         e.stopPropagation();
       },
       onTouchEnd(e) {
         if (coords) {
           if (!coords.isChange) {
-            clearTimeout(changeTimer);
-            scrollToIndex(coords.current);
+            const toIndex = coords.current;
+            lazyDo(() => {
+              scrollToIndex(toIndex);
+            }, 0);
           }
           coords = null;
           e.stopPropagation();
         }
       }
     });
+    const resetContainer = (containSelector) => {
+      var _a;
+      (_a = bodyRef.value) == null ? void 0 : _a.resetContainer(containSelector);
+    };
+    const onResetItems = (items) => {
+      indexList.value = items.map((item) => {
+        return {
+          value: item.name,
+          label: item.title
+        };
+      });
+    };
     watch25(() => props.modelValue, (val) => updateActiveName(val));
     onMounted26(() => {
       resetContainer(document.documentElement);
@@ -14620,7 +14651,7 @@ var _sfc_script85 = defineComponent66({
       bodyRef,
       activeName,
       indexList,
-      onChange,
+      onStickyViewChange,
       onResetItems,
       scrollTo: scrollTo2,
       scrollToIndex,
@@ -14657,7 +14688,7 @@ function render84(_ctx, _cache) {
         modelValue: _ctx.modelValue,
         ref: "bodyRef",
         onResetItems: _ctx.onResetItems,
-        onChange: _ctx.onChange
+        onChange: _ctx.onStickyViewChange
       }, {
         default: _withCtx20(() => [
           _renderSlot38(_ctx.$slots, "default")
@@ -14671,7 +14702,7 @@ _sfc_script85.render = render84;
 _sfc_script85.__file = "packages/ui/src/IndexView/IndexView.vue";
 
 // vue:./IndexViewItem.vue
-import { defineComponent as defineComponent67, inject as inject15, onMounted as onMounted27, onUnmounted as onUnmounted2 } from "vue";
+import { defineComponent as defineComponent67, inject as inject14, onMounted as onMounted27, onUnmounted as onUnmounted2 } from "vue";
 import { renderSlot as _renderSlot39, resolveComponent as _resolveComponent43, withCtx as _withCtx21, openBlock as _openBlock84, createBlock as _createBlock33 } from "vue";
 var _sfc_script86 = defineComponent67({
   name: "ta-index-view-item",
@@ -14688,7 +14719,7 @@ var _sfc_script86 = defineComponent67({
   },
   setup() {
     const { printItemIsolationWarn } = useException();
-    const update = inject15("taStickyViewUpdate", printItemIsolationWarn);
+    const update = inject14("taStickyViewUpdate", printItemIsolationWarn);
     onMounted27(update);
     onUnmounted2(update);
     return {};
@@ -17256,7 +17287,7 @@ var Result_default = _sfc_script107;
 import {
   computed as computed50,
   defineComponent as defineComponent83,
-  provide as provide12,
+  provide as provide11,
   ref as ref36,
   watch as watch32
 } from "vue";
@@ -17322,7 +17353,7 @@ var _sfc_script108 = defineComponent83({
     }, {
       immediate: true
     });
-    provide12("taRowGutter", gutter);
+    provide11("taRowGutter", gutter);
     return {
       styles,
       classes
@@ -17450,17 +17481,33 @@ var _sfc_script110 = defineComponent85({
     const tabList = ref37([]);
     const activeName = ref37();
     function updateActiveName(name) {
-      if (name != null && isInTab(name) && name !== activeName.value) {
+      if (name != null && nameInList(name) && name !== activeName.value) {
         activeName.value = name;
       }
     }
-    function isInTab(name) {
+    function nameInList(name) {
       for (let i = 0; i < tabList.value.length; i++) {
         if (tabList.value[i].value === name) {
           return true;
         }
       }
       return false;
+    }
+    const onTabChange = (name, index) => {
+      scrollToIndex(index);
+    };
+    const onStickyViewChange = (name, index) => {
+      updateActiveName(name);
+      emit("update:modelValue", name);
+      emit("change", name, index);
+    };
+    function scrollToIndex(index) {
+      var _a;
+      (_a = bodyRef.value) == null ? void 0 : _a.scrollToIndex(index);
+    }
+    function scrollTo2(name) {
+      var _a;
+      (_a = bodyRef.value) == null ? void 0 : _a.scrollTo(name);
     }
     const resetContainer = (containSelector) => {
       var _a, _b;
@@ -17475,22 +17522,6 @@ var _sfc_script110 = defineComponent85({
         };
       });
     };
-    const onTabChange = (name, index) => {
-      scrollToIndex(index);
-    };
-    const onChange = (name, index) => {
-      updateActiveName(name);
-      emit("update:modelValue", name);
-      emit("change", name, index);
-    };
-    function scrollToIndex(index) {
-      var _a;
-      (_a = bodyRef.value) == null ? void 0 : _a.scrollToIndex(index);
-    }
-    function scrollTo2(name) {
-      var _a;
-      (_a = bodyRef.value) == null ? void 0 : _a.scrollTo(name);
-    }
     watch33(() => props.modelValue, (val) => updateActiveName(val));
     onMounted31(() => {
       resetContainer(document.documentElement);
@@ -17510,7 +17541,7 @@ var _sfc_script110 = defineComponent85({
       activeName,
       tabList,
       onTabChange,
-      onChange,
+      onStickyViewChange,
       onResetItems,
       scrollTo: scrollTo2,
       scrollToIndex,
@@ -17549,7 +17580,7 @@ function render109(_ctx, _cache) {
         modelValue: _ctx.modelValue,
         ref: "bodyRef",
         onResetItems: _ctx.onResetItems,
-        onChange: _ctx.onChange
+        onChange: _ctx.onStickyViewChange
       }, {
         default: _withCtx29(() => [
           _renderSlot50(_ctx.$slots, "default")
@@ -17563,7 +17594,7 @@ _sfc_script110.render = render109;
 _sfc_script110.__file = "packages/ui/src/ScrollTab/ScrollTab.vue";
 
 // vue:./ScrollTabItem.vue
-import { defineComponent as defineComponent86, inject as inject16, onMounted as onMounted32, onUnmounted as onUnmounted3 } from "vue";
+import { defineComponent as defineComponent86, inject as inject15, onMounted as onMounted32, onUnmounted as onUnmounted3 } from "vue";
 import { toDisplayString as _toDisplayString44, createElementVNode as _createElementVNode78, renderSlot as _renderSlot51, openBlock as _openBlock109, createElementBlock as _createElementBlock95 } from "vue";
 var _sfc_script111 = defineComponent86({
   name: "ta-scroll-tab-item",
@@ -17578,7 +17609,7 @@ var _sfc_script111 = defineComponent86({
   },
   setup() {
     const { printItemIsolationWarn } = useException();
-    const update = inject16("taStickyViewUpdate", printItemIsolationWarn);
+    const update = inject15("taStickyViewUpdate", printItemIsolationWarn);
     onMounted32(update);
     onUnmounted3(update);
     return {};
@@ -18128,15 +18159,15 @@ var rootProps = {
 };
 
 // packages/ui/src/Skeleton/context.ts
-import { provide as provide13, inject as inject17 } from "vue";
+import { provide as provide12, inject as inject16 } from "vue";
 var KEY3 = "Skeleton";
 var CONTEXT_KEY4 = `ta${KEY3}Options`;
 function useProvider2(props) {
-  provide13(CONTEXT_KEY4, props);
+  provide12(CONTEXT_KEY4, props);
   return {};
 }
 function useConsumer2() {
-  const parentOptions = inject17(CONTEXT_KEY4, {});
+  const parentOptions = inject16(CONTEXT_KEY4, {});
   return parentOptions;
 }
 
@@ -18488,7 +18519,7 @@ _sfc_script122.__file = "packages/ui/src/Slider/Slider.vue";
 var Slider_default = _sfc_script122;
 
 // vue:./Steps.vue
-import { computed as computed59, defineComponent as defineComponent97, provide as provide14, toRef as toRef6 } from "vue";
+import { computed as computed59, defineComponent as defineComponent97, provide as provide13, toRef as toRef6 } from "vue";
 
 // packages/ui/src/Steps/util.ts
 var getStepsClasses = ({
@@ -18520,7 +18551,7 @@ var _sfc_script123 = defineComponent97({
   },
   setup(props) {
     const { listEl } = useList("steps", noop);
-    provide14(`taStepsActiveIndex`, toRef6(props, "activeIndex"));
+    provide13(`taStepsActiveIndex`, toRef6(props, "activeIndex"));
     const classes = computed59(() => getStepsClasses(props));
     return { listEl, classes };
   }
@@ -18537,7 +18568,7 @@ _sfc_script123.render = render121;
 _sfc_script123.__file = "packages/ui/src/Steps/Steps.vue";
 
 // vue:./Step.vue
-import { computed as computed60, defineComponent as defineComponent98, inject as inject18, ref as ref40, shallowRef as shallowRef35 } from "vue";
+import { computed as computed60, defineComponent as defineComponent98, inject as inject17, ref as ref40, shallowRef as shallowRef35 } from "vue";
 import { createElementVNode as _createElementVNode83, renderSlot as _renderSlot55, toDisplayString as _toDisplayString47, createTextVNode as _createTextVNode22, openBlock as _openBlock121, createElementBlock as _createElementBlock107, createCommentVNode as _createCommentVNode48, normalizeClass as _normalizeClass61 } from "vue";
 var _sfc_script124 = defineComponent98({
   name: "ta-step",
@@ -18548,7 +18579,7 @@ var _sfc_script124 = defineComponent98({
     }
   },
   setup() {
-    const activeIndex = inject18(`taStepsActiveIndex`, ref40(0));
+    const activeIndex = inject17(`taStepsActiveIndex`, ref40(0));
     const root = shallowRef35(null);
     const { index } = useListItem("steps", root);
     const active = computed60(() => {
@@ -19304,7 +19335,7 @@ _sfc_script130.__file = "packages/ui/src/TabBar/TabBar.vue";
 var TabBar_default = _sfc_script130;
 
 // vue:./TabView.vue
-import { ref as ref44, defineComponent as defineComponent104, provide as provide15, watch as watch38, shallowRef as shallowRef37 } from "vue";
+import { ref as ref44, defineComponent as defineComponent104, provide as provide14, watch as watch38, shallowRef as shallowRef37 } from "vue";
 
 // packages/ui/src/TabView/util.ts
 var getClasses21 = (vertical) => ["ta-tab-view", { vertical }];
@@ -19338,28 +19369,16 @@ var _sfc_script131 = defineComponent104({
     const swiperRef = shallowRef37(null);
     const tabList = ref44([]);
     const activeIndex = ref44(0);
-    let nameArr = [];
+    let itemNames = [];
     function getActiveIndexByName(name) {
       if (name) {
-        for (let i = 0; i < nameArr.length; i++) {
-          if (nameArr[i] === name) {
+        for (let i = 0; i < itemNames.length; i++) {
+          if (itemNames[i] === name) {
             return i;
           }
         }
       }
       return -1;
-    }
-    function resetItems($items) {
-      nameArr = [];
-      tabList.value = $items.map(($item, index) => {
-        const { name, subTitle, title } = $item.dataset;
-        nameArr.push(name);
-        return {
-          value: index,
-          label: title || name || "",
-          subLabel: subTitle || ""
-        };
-      });
     }
     const { listEl } = useList("tabView", resetItems);
     const onTabChange = (index) => {
@@ -19367,7 +19386,7 @@ var _sfc_script131 = defineComponent104({
     };
     const onSwiperChange = (index) => {
       activeIndex.value = index;
-      const activeName = nameArr[index] || "";
+      const activeName = itemNames[index] || "";
       emit("update:modelValue", activeName);
       emit("change", activeName, index);
     };
@@ -19394,7 +19413,19 @@ var _sfc_script131 = defineComponent104({
         printListItemNotFoundError("index");
       }
     }
-    provide15("taTabViewVertical", vertical.value);
+    function resetItems($items) {
+      itemNames = [];
+      tabList.value = $items.map(($item, index) => {
+        const { name, subTitle, title } = $item.dataset;
+        itemNames.push(name);
+        return {
+          value: index,
+          label: title || name || "",
+          subLabel: subTitle || ""
+        };
+      });
+    }
+    provide14("taTabViewVertical", vertical.value);
     watch38(() => props.modelValue, (val) => val != null && _switchTo(val, true));
     const classes = getClasses21(vertical.value);
     const switchTo = (name) => _switchTo(name, false);
@@ -19464,7 +19495,7 @@ _sfc_script131.render = render129;
 _sfc_script131.__file = "packages/ui/src/TabView/TabView.vue";
 
 // vue:./TabViewItem.vue
-import { defineComponent as defineComponent105, inject as inject19, shallowRef as shallowRef38 } from "vue";
+import { defineComponent as defineComponent105, inject as inject18, shallowRef as shallowRef38 } from "vue";
 import { renderSlot as _renderSlot59, openBlock as _openBlock129, createElementBlock as _createElementBlock115 } from "vue";
 var _sfc_script132 = defineComponent105({
   name: "ta-tab-view-item",
@@ -19482,7 +19513,7 @@ var _sfc_script132 = defineComponent105({
   },
   setup() {
     const root = shallowRef38(null);
-    const vertical = inject19("taTabViewVertical", false);
+    const vertical = inject18("taTabViewVertical", false);
     useListItem("swiper");
     useListItem("tabView");
     let coords;
