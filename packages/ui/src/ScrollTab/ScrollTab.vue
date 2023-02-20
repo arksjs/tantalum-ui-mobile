@@ -20,7 +20,7 @@
         :modelValue="modelValue"
         ref="bodyRef"
         @resetItems="onResetItems"
-        @change="onChange"
+        @change="onStickyViewChange"
       >
         <slot></slot>
       </StickyView>
@@ -34,10 +34,14 @@ import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
 import { isSizeValue, isString, type PropsToEmits } from '../helpers'
-import type { OnResetItems, StickyViewRef } from '../StickyView/types'
+import type {
+  StickyViewOnResetItems,
+  StickyViewRef,
+  StickyViewOnChange
+} from '../StickyView/types'
 import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
-import type { ScrollTabEmits, ScrollTabOnChange } from './types'
+import type { ScrollTabEmits } from './types'
 import type { SideTabOnChange } from '../SideTab/types'
 
 export default defineComponent({
@@ -75,12 +79,12 @@ export default defineComponent({
 
     // 单独更新以下tab的activeName
     function updateActiveName(name?: string) {
-      if (name != null && isInTab(name) && name !== activeName.value) {
+      if (name != null && nameInList(name) && name !== activeName.value) {
         activeName.value = name
       }
     }
 
-    function isInTab(name: string) {
+    function nameInList(name: string) {
       for (let i = 0; i < tabList.value.length; i++) {
         if (tabList.value[i].value === name) {
           return true
@@ -90,25 +94,11 @@ export default defineComponent({
       return false
     }
 
-    const resetContainer: ResetContainer = containSelector => {
-      sideRef.value?.resetContainer(containSelector)
-      bodyRef.value?.resetContainer(containSelector)
-    }
-
-    const onResetItems: OnResetItems = items => {
-      tabList.value = items.map(item => {
-        return {
-          value: item.name,
-          label: item.title || item.name
-        }
-      })
-    }
-
     const onTabChange: SideTabOnChange = (name, index) => {
       scrollToIndex(index)
     }
 
-    const onChange: ScrollTabOnChange = (name, index) => {
+    const onStickyViewChange: StickyViewOnChange = (name, index) => {
       updateActiveName(name)
       emit('update:modelValue', name)
       emit('change', name, index)
@@ -126,6 +116,20 @@ export default defineComponent({
      */
     function scrollTo(name: string) {
       bodyRef.value?.scrollTo(name)
+    }
+
+    const resetContainer: ResetContainer = containSelector => {
+      sideRef.value?.resetContainer(containSelector)
+      bodyRef.value?.resetContainer(containSelector)
+    }
+
+    const onResetItems: StickyViewOnResetItems = items => {
+      tabList.value = items.map(item => {
+        return {
+          value: item.name,
+          label: item.title || item.name
+        }
+      })
     }
 
     watch(
@@ -154,7 +158,7 @@ export default defineComponent({
       activeName,
       tabList,
       onTabChange,
-      onChange,
+      onStickyViewChange,
       onResetItems,
 
       scrollTo,
