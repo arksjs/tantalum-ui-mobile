@@ -26,7 +26,8 @@ import { TaCountUp } from 'tantalum-ui-mobile'
 import type {
   CountUpSpeed,
   CountUpOnCancel,
-  CountUpOnAnimated
+  CountUpOnAnimated,
+  CountUpRef
 } from 'tantalum-ui-mobile'
 ```
 

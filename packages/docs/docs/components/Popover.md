@@ -55,9 +55,7 @@ import type {
 ### #default
 
 ```vue
-<ta-popover>
-  自定义内容
-</ta-popover>
+<ta-popover>自定义内容</ta-popover>
 ```
 
 ## showPopover(object)

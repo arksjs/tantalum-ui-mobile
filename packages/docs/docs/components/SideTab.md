@@ -32,8 +32,8 @@ import type {
 
 | 属性         | 类型             | 默认值 | 必填 | 说明                         |
 | ------------ | ---------------- | ------ | ---- | ---------------------------- |
-| options      | SideTabOptions   | []     | 是   | tab 数据集                   |
 | v-model      | string \| number |        | 否   | 当前激活项的 value 值        |
+| options      | SideTabOptions   | []     | 是   | tab 数据集                   |
 | color        | string           |        | 否   | 自定义默认态字体和图标颜色   |
 | active-color | string           |        | 否   | 自定义激活态的字体和图标颜色 |
 
@@ -54,7 +54,7 @@ type SideTabOptions = (number | string | SideTabOption)[]
 
 | key        | 类型                | 默认值 | 必填 | 说明                                                       |
 | ---------- | ------------------- | ------ | ---- | ---------------------------------------------------------- |
-| value      | string \| number    |        | 是   | 唯一值（v-model:active-value 使用）                        |
+| value      | string \| number    |        | 是   | 唯一值（v-model 使用）                                     |
 | label      | string              |        | 是   | 标签名                                                     |
 | icon       | string \| Component |        | 否   | 设置图标，使用 [Icon](./Icon.md) 组件，也支持图像 URL      |
 | activeIcon | string \| Component |        | 否   | 设置激活态图标，也支持图像 URL，没有设置则沿用 `icon` 属性 |

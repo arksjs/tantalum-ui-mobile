@@ -51,7 +51,7 @@ import type {
 
 ## Swiper Slots
 
-### 内容（#default）
+### #default
 
 注：其中只可放置 [SwiperItem](./Swiper.md#swiperitem-slots) 组件，否则会导致未定义的行为。
 
@@ -69,7 +69,7 @@ import type {
 
 ## SwiperItem Slots
 
-### 内容（#default）
+### #default
 
 ```vue
 <ta-swiper-item>

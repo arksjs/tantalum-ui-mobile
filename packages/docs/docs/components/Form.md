@@ -100,12 +100,12 @@ npm install --save @formily/core @formily/vue
 `FormilyFormItem.js`:
 
 ```js
-import { FormItem } from 'tantalum-ui-mobile'
+import { TaFormItem } from 'tantalum-ui-mobile'
 import { connect, mapProps } from '@formily/vue'
 import { isVoidField } from '@formily/core'
 
 export default connect(
-  FormItem,
+  TaFormItem,
   mapProps(
     { validateStatus: true, title: 'label', required: true },
     (props, field) => {

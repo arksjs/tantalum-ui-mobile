@@ -22,6 +22,7 @@ import { TaNumberKeyboard } from 'tantalum-ui-mobile'
 import type {
   NumberKeyboardOnDelete,
   NumberKeyboardOnClose,
+  NumberKeyboardType,
   VisibleState,
   PopupOnVisibleStateChange
 } from 'tantalum-ui-mobile'

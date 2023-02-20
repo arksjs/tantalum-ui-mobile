@@ -40,7 +40,5 @@ import { TaFixed } from 'tantalum-ui-mobile'
 ### 底部（#default）
 
 ```vue
-<ta-fixed placement="bottom">
-  固定内容
-</ta-fixed>
+<ta-fixed placement="bottom">固定内容</ta-fixed>
 ```

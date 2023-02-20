@@ -29,15 +29,15 @@ import type {
   CountDownOnPause,
   CountDownOnResume,
   CountDownRef
-} from 'rfox'
+} from 'tantalum-ui-mobile'
 ```
 
 ## Props
 
-| 属性           | 类型    | 默认值 | 必填 | 说明                |
-| -------------- | ------- | ------ | ---- | ------------------- |
-| initial-timing | number  | 99     | 否   | 倒计时时长，单位 ms |
-| show-days      | boolean | false  | 否   | 是否显示天数        |
+| 属性           | 类型    | 默认值 | 必填 | 说明                    |
+| -------------- | ------- | ------ | ---- | ----------------------- |
+| initial-timing | number  | 99     | 否   | 初始倒计时时长，单位 ms |
+| show-days      | boolean | false  | 否   | 是否显示天数            |
 
 ## Events
 
@@ -49,7 +49,7 @@ import type {
 
 ## Slots
 
-支持自定义风格显示
+### 支持自定义风格显示（#default）
 
 ```vue
 <ta-count-down :initial-timing="timestamp">

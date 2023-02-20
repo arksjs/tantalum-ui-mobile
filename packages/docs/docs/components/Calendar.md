@@ -35,17 +35,17 @@ import type {
 
 ## 公共 Props
 
-| 属性           | 类型                                                           | 默认值             | 必填 | 说明                                                             |
-| -------------- | -------------------------------------------------------------- | ------------------ | ---- | ---------------------------------------------------------------- |
-| v-model        | [SelectorModelValue](./Calendar.md#selectormodelvalue)         | []                 | 否   | 选中值                                                           |
-| min-date       | Date                                                           | 当前日期           | 否   | 可选最小值                                                       |
-| max-date       | Date                                                           | 当前日期的六个月后 | 否   | 可选最大值                                                       |
-| initial-mode   | [CalendarMode](./Calendar.md#calendarmode)                     | 'single'           | 否   | 模式                                                             |
-| allow-same-day | boolean                                                        | false              | 否   | `range` 模式生效，设置开始结束时间是否可以同一天                 |
-| max-range      | number                                                         | Infinity           | 否   | `range` 模式生效，选择区间的最长天数                             |
-| day-handler    | [CalendarDayHandler](./Calendar.md#calendardayhandler)         |                    | 否   | 日历每个日期处理函数                                             |
-| formatter      | [CalendarValueFormatter](./Calendar.md#calendarvalueformatter) |                    | 否   | 和 `parser` 成对设置，对于 v-model 和 onChange 的值进行转化      |
-| parser         | [CalendarValueParser](./Calendar.md#calendarvalueparser)       |                    | 否   | 和 `formatter` 成对设置，对于 v-model 和 onChange 的值进行反转化 |
+| 属性           | 类型                                                           | 默认值             | 必填 | 说明                                                           |
+| -------------- | -------------------------------------------------------------- | ------------------ | ---- | -------------------------------------------------------------- |
+| v-model        | [SelectorModelValue](./Calendar.md#selectormodelvalue)         | []                 | 否   | 选中值                                                         |
+| min-date       | Date                                                           | 当前日期           | 否   | 可选最小值                                                     |
+| max-date       | Date                                                           | 当前日期的六个月后 | 否   | 可选最大值                                                     |
+| initial-mode   | [CalendarMode](./Calendar.md#calendarmode)                     | 'single'           | 否   | 模式                                                           |
+| allow-same-day | boolean                                                        | false              | 否   | `range` 模式生效，设置开始结束时间是否可以同一天               |
+| max-range      | number \| string                                               | Infinity           | 否   | `range` 模式生效，选择区间的最长天数                           |
+| day-handler    | [CalendarDayHandler](./Calendar.md#calendardayhandler)         |                    | 否   | 日历每个日期处理函数                                           |
+| formatter      | [CalendarValueFormatter](./Calendar.md#calendarvalueformatter) |                    | 否   | 和 `parser` 成对设置，对于 v-model 和 change 的值进行转化      |
+| parser         | [CalendarValueParser](./Calendar.md#calendarvalueparser)       |                    | 否   | 和 `formatter` 成对设置，对于 v-model 和 change 的值进行反转化 |
 
 ## Calendar 日历选择器
 
@@ -147,8 +147,8 @@ import type {
 
 | 属性     | 类型                                           | 说明                                          |
 | -------- | ---------------------------------------------- | --------------------------------------------- |
-| cancel?  | boolean                                        | 为 true 时，表示取消                          |
 | confirm? | boolean                                        | 为 true 时，表示点击了确定，此时返回 `detail` |
+| cancel?  | boolean                                        | 为 true 时，表示取消                          |
 | detail?  | [CalendarDetail](./Calendar.md#calendardetail) |                                               |
 
 ### Usage

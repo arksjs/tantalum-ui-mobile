@@ -14,16 +14,18 @@ import { TaSteps, TaStep } from 'tantalum-ui-mobile'
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
 
-## Steps Props
+## Steps
+
+### Steps Props
 
 | 属性         | 类型    | 默认值 | 必填 | 说明                 |
 | ------------ | ------- | ------ | ---- | -------------------- |
 | active-index | number  | 0      | 否   | 当前步骤对应的索引值 |
 | dot          | boolean | false  | 否   | 是否开启小点样式     |
 
-## Steps Slots
+### Steps Slots
 
-### #default
+#### #default
 
 注：其中只可放置 [Step](./Steps.md#step-props) 组件，否则会导致未定义的行为。
 
@@ -35,21 +37,23 @@ import { TaSteps, TaStep } from 'tantalum-ui-mobile'
 </ta-steps>
 ```
 
-## Step Props
+## Step
+
+### Step Props
 
 | 属性  | 类型   | 默认值 | 必填 | 说明         |
 | ----- | ------ | ------ | ---- | ------------ |
 | title | string |        | 否   | 步骤子项标题 |
 
-## Step Slots
+### Step Slots
 
-### 内容（#default）
+#### 内容（#default）
 
 ```vue
 <ta-step title="标题">自定义内容</ta-step>
 ```
 
-### 标题（#title）
+#### 标题（#title）
 
 ```vue
 <ta-step>
@@ -62,7 +66,7 @@ import { TaSteps, TaStep } from 'tantalum-ui-mobile'
 
 注：优先级高于 Props `title`。
 
-### 步骤标（#step）
+#### 步骤标（#step）
 
 ```vue
 <ta-step>

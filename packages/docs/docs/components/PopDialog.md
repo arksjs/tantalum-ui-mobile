@@ -43,8 +43,8 @@ import type {
 
 | 事件                 | 描述               | 回调函数参数                                                           | TypeScript 函数           |
 | -------------------- | ------------------ | ---------------------------------------------------------------------- | ------------------------- |
+| confirm              | 确认按钮点击时触发 |                                                                        |                           |
 | cancel               | 取消按钮点击时触发 | payload: { source: string }                                            | PopupOnCancel             |
-| confirm              | 确认按钮点击时触发 |                                                                        |
 | visible-state-change | 展示隐藏时触发     | payload: { state: [VisibleState](./PopDialog.md#visiblestate-值说明) } | PopupOnVisibleStateChange |
 
 ### VisibleState 值说明

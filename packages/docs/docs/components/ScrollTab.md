@@ -22,24 +22,26 @@ import { TaScrollTab, TaScrollTabItem } from 'tantalum-ui-mobile'
 import type { ScrollTabOnChange, ScrollTabRef } from 'tantalum-ui-mobile'
 ```
 
-## ScrollTab Props
+## ScrollTab
+
+### ScrollTab Props
 
 | 属性                 | 类型             | 默认值 | 必填 | 说明                        |
 | -------------------- | ---------------- | ------ | ---- | --------------------------- |
 | sticky-offset-top    | string \| number | 0      | 否   | 数值默认是 px，也支持 vw/vh |
 | sticky-offset-bottom | string \| number | 0      | 否   | 数值默认是 px，也支持 vw/vh |
 
-## ScrollTab Events
+### ScrollTab Events
 
 | 事件   | 描述       | 回调函数参数                        | TypeScript 函数   |
 | ------ | ---------- | ----------------------------------- | ----------------- |
 | change | 切换时触发 | (name: string, activeIndex: number) | ScrollTabOnChange |
 
-## ScrollTab Slots
+### ScrollTab Slots
 
-### #default
+#### #default
 
-注：其中只可放置 [ScrollTabItem](./ScrollTab.md#scrolltabitem-props) 组件，否则会导致未定义的行为。
+注：其中只可放置 [ScrollTabItem](./ScrollTab.md#scrolltabitem) 组件，否则会导致未定义的行为。
 
 ```vue
 <ta-scroll-tab>
@@ -56,7 +58,7 @@ import type { ScrollTabOnChange, ScrollTabRef } from 'tantalum-ui-mobile'
 </ta-scroll-tab>
 ```
 
-## Methods
+### Methods
 
 ```ts
 interface ScrollTabRef {
@@ -70,16 +72,18 @@ interface ScrollTabRef {
 | scrollTo      | 切换到指定 name 的 Item  |
 | scrollToIndex | 切换到指定 index 的 Item |
 
-## ScrollTabItem Props
+## ScrollTabItem
 
-| 属性  | 类型   | 默认值 | 必填 | 说明                                                               |
-| ----- | ------ | ------ | ---- | ------------------------------------------------------------------ |
-| name  | string |        | 是   | 唯一标识，设置后配合 ScrollTab 组件的 `v-model` 和 `onChange` 使用 |
-| title | string |        | 否   | 分组名，也应用于吸附，如果没有设置则获取 `name` 的值               |
+### ScrollTabItem Props
 
-## ScrollTabItem Slots
+| 属性  | 类型   | 默认值 | 必填 | 说明                                                             |
+| ----- | ------ | ------ | ---- | ---------------------------------------------------------------- |
+| name  | string |        | 是   | 唯一标识，设置后配合 ScrollTab 组件的 `v-model` 和 `change` 使用 |
+| title | string |        | 否   | 分组名，也应用于吸附，如果没有设置则获取 `name` 的值             |
 
-### #default
+### ScrollTabItem Slots
+
+#### #default
 
 ```vue
 <ta-scroll-tab-item name="Dust Red">

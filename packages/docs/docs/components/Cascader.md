@@ -33,13 +33,13 @@ import type {
 
 ## 公共 Props
 
-| 属性        | 类型                                                           | 默认值                                                   | 必填 | 说明                                                             |
-| ----------- | -------------------------------------------------------------- | -------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
-| options     | [Options](./Cascader.md#options-的结构)                        | []                                                       | 否   | 数据集                                                           |
-| v-model     | [SelectorModelValue](./Cascader.md#selectormodelvalue)         | []                                                       | 否   | 选中值                                                           |
-| field-names | [CascaderFieldNames](./Cascader.md#cascaderfieldnames)         | { label: 'label', value: 'value', children: 'children' } | 否   | 自定义 options 中 label value children 的字段 key                |
-| formatter   | [SelectorValueFormatter](./Cascader.md#selectorvalueformatter) |                                                          | 否   | 和 `parser` 成对设置，对于 v-model 和 onChange 的值进行转化      |
-| parser      | [SelectorValueParser](./Cascader.md#selectorvalueparser)       |                                                          | 否   | 和 `formatter` 成对设置，对于 v-model 和 onChange 的值进行反转化 |
+| 属性        | 类型                                                           | 默认值                                                   | 必填 | 说明                                                           |
+| ----------- | -------------------------------------------------------------- | -------------------------------------------------------- | ---- | -------------------------------------------------------------- |
+| options     | [Options](./Cascader.md#options-的结构)                        | []                                                       | 否   | 数据集                                                         |
+| v-model     | [SelectorModelValue](./Cascader.md#selectormodelvalue)         | []                                                       | 否   | 选中值                                                         |
+| field-names | [CascaderFieldNames](./Cascader.md#cascaderfieldnames)         | { label: 'label', value: 'value', children: 'children' } | 否   | 自定义 options 中 label value children 的字段 key              |
+| formatter   | [SelectorValueFormatter](./Cascader.md#selectorvalueformatter) |                                                          | 否   | 和 `parser` 成对设置，对于 v-model 和 change 的值进行转化      |
+| parser      | [SelectorValueParser](./Cascader.md#selectorvalueparser)       |                                                          | 否   | 和 `formatter` 成对设置，对于 v-model 和 change 的值进行反转化 |
 
 ### Options 的结构
 
@@ -131,8 +131,8 @@ const options = [
 
 | 事件                 | 描述                 | 回调函数参数                                                          | 函数 TypeScript           |
 | -------------------- | -------------------- | --------------------------------------------------------------------- | ------------------------- |
-| cancel               | 点击蒙层关闭后触发   |                                                                       | PopupOnCancel             |
 | confirm              | 点击确定按钮后触发   | payload: [CascaderDetail](./Cascader.md#cascaderdetail)               | CascaderOnConfirm         |
+| cancel               | 点击蒙层关闭后触发   |                                                                       | PopupOnCancel             |
 | change               | 选中值发生变化时触发 | payload: [SelectorModelValue](./Cascader.md#selectormodelvalue)       | SelectorOnChange          |
 | visible-state-change | 展示隐藏时触发       | payload: { state: [VisibleState](./Cascader.md#visiblestate-值说明) } | PopupOnVisibleStateChange |
 
@@ -177,8 +177,8 @@ const options = [
 
 | 属性     | 类型                                           | 说明                                          |
 | -------- | ---------------------------------------------- | --------------------------------------------- |
-| cancel?  | boolean                                        | 为 true 时，表示取消                          |
 | confirm? | boolean                                        | 为 true 时，表示点击了确定，此时返回 `detail` |
+| cancel?  | boolean                                        | 为 true 时，表示取消                          |
 | detail?  | [CascaderDetail](./Cascader.md#cascaderdetail) |                                               |
 
 ### Usage

@@ -46,8 +46,8 @@ import type {
 | max-date        | Date                                                             | 当天最后一秒的 Date 实例     | 否   | 最大时间对应的 Date 实例（含）                                                                                                                                                                                                                                                                                                       |
 | format-template | string                                                           |                              | 否   | 格式的模板，如 `YYYY-MM-DD`，模板规则参考 [Dayjs](https://dayjs.fenxianglu.cn/category/parse.html#%E5%AD%97%E7%AC%A6%E4%B8%B2)。设置后 v-model 的绑定变为格式化后的 string 类型，不再是 number[] 。推荐根据 `initialMode` 选型来确定，如 `initialMode='minute-second'`，则可设置 `formatTemplate='mm分ss秒'`。优先级低于 `formatter` |
 | filter          | [DatePickerOptionFilter](./DatePicker.md#datepickeroptionfilter) |                              | 否   | 选项过滤器                                                                                                                                                                                                                                                                                                                           |
-| formatter       | [SelectorValueFormatter](./DatePicker.md#selectorvalueformatter) |                              | 否   | 和 `parser` 成对设置，对于 v-model 和 onChange 的值进行转化                                                                                                                                                                                                                                                                          |
-| parser          | [SelectorValueParser](./DatePicker.md#selectorvalueparser)       |                              | 否   | 和 `formatter` 成对设置，对于 v-model 和 onChange 的值进行反转化                                                                                                                                                                                                                                                                     |
+| formatter       | [SelectorValueFormatter](./DatePicker.md#selectorvalueformatter) |                              | 否   | 和 `parser` 成对设置，对于 v-model 和 change 的值进行转化                                                                                                                                                                                                                                                                            |
+| parser          | [SelectorValueParser](./DatePicker.md#selectorvalueparser)       |                              | 否   | 和 `formatter` 成对设置，对于 v-model 和 change 的值进行反转化                                                                                                                                                                                                                                                                       |
 
 注：v-model 对未设置的前段值采用当前时间补上，后段则采用初始时间，如：initialMode='month-day-hour'下， 选取 5 月 7 日 12 点，则 v-model 对应的时间为：`Fri May 07 2021 12:00:00 GMT+0800`，设置 `minDate`，`maxDate` 的时候需要考虑到。
 
@@ -96,8 +96,8 @@ import type {
 
 | 事件                 | 描述                 | 回调函数参数                                                            | 函数 TypeScript           |
 | -------------------- | -------------------- | ----------------------------------------------------------------------- | ------------------------- |
-| cancel               | 点击取消按钮后触发   |                                                                         | PopupOnCancel             |
 | confirm              | 点击确定按钮后触发   | payload: [DatePickerDetail](./DatePicker.md#datepickerdetail)           | DatePickerOnConfirm       |
+| cancel               | 点击取消按钮后触发   |                                                                         | PopupOnCancel             |
 | change               | 选中值发生变化时触发 | payload: [SelectorModelValue](./DatePicker.md#selectormodelvalue)       | SelectorOnChange          |
 | visible-state-change | 展示隐藏时触发       | payload: { state: [VisibleState](./DatePicker.md#visiblestate-值说明) } | PopupOnVisibleStateChange |
 
@@ -144,8 +144,8 @@ import type {
 
 | 属性     | 类型                                                 | 说明                                          |
 | -------- | ---------------------------------------------------- | --------------------------------------------- |
-| cancel?  | boolean                                              | 为 true 时，表示取消                          |
 | confirm? | boolean                                              | 为 true 时，表示点击了确定，此时返回 `detail` |
+| cancel?  | boolean                                              | 为 true 时，表示取消                          |
 | detail?  | [DatePickerDetail](./DatePicker.md#datepickerdetail) |                                               |
 
 ### Usage

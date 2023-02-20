@@ -35,7 +35,5 @@ import { TaCopy } from 'tantalum-ui-mobile'
 ## Slots
 
 ```vue
-<ta-copy text="复制的内容">
-  <ta-button>复制</ta-button>
-</ta-copy>
+<ta-copy text="复制的文本">复制</ta-copy>
 ```
