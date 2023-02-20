@@ -3,7 +3,7 @@
     <ta-cell
       label="单元格"
       content="内容"
-      description="网站大概部分组件都由这个组件进行分组"
+      description="网站大部分组件都由这个组件进行分组"
     ></ta-cell>
     <ta-cell label="单元格" content="内容"></ta-cell>
     <ta-cell label="单元格" content="内容"></ta-cell>
