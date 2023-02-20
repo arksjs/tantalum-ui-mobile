@@ -25,7 +25,7 @@ export interface HandleOptionItem extends OptionItem {
 export type OnChange = (value: string | number, index: number) => void
 
 export interface TabCommonProps {
-  activeValue?: string | number
+  modelValue?: string | number
   options: OptionList
   color?: string
   activeColor?: string

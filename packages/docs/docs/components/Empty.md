@@ -35,7 +35,9 @@ import type { EmptyType } from 'tantalum-ui-mobile'
 
 ```vue
 <ta-empty description="网络错误" type="network">
-  <ta-button>刷新试试</ta-button>
+  <ta-button>
+    刷新试试
+  </ta-button>
 </ta-empty>
 ```
 

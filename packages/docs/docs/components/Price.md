@@ -23,4 +23,4 @@ import { TaPrice } from 'tantalum-ui-mobile'
 | price          | string \| number |        | 是   | 金额，如：'1234.56'                    |
 | symbol         | string           |        | 否   | 显示货币货号：如：'￥'                 |
 | thousands      | boolean          | false  | 否   | 是否以千分号的形式显示，如：'1,234.56' |
-| decimal-digits | number           | 2      | 否   | 保留 `decimalDigits` 小数位数          |
+| decimal-digits | number \| string | 2      | 否   | 保留 `decimalDigits` 小数位数          |

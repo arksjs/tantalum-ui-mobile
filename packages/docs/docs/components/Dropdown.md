@@ -50,7 +50,5 @@ import type {
 ## Slots
 
 ```vue
-<ta-dropdown>
-  展开的内容
-</ta-dropdown>
+<ta-dropdown>展开的内容</ta-dropdown>
 ```

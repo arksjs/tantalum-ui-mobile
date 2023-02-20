@@ -137,12 +137,16 @@ export type {
   CountUpRef
 } from './CountUp/types'
 export type { StopwatchOnStop, StopwatchRef } from './Stopwatch/types'
-export type { VirtualListOnVisibleItemsChange } from './VirtualList/types'
+export type {
+  VirtualListOnVisibleItemsChange,
+  VirtualListRef
+} from './VirtualList/types'
 export type {
   FlatListOnEndReached,
   FlatListOnVisibleItemsChange,
   FlatListOnRefreshing,
-  FlatListOnScroll
+  FlatListOnScroll,
+  FlatListRef
 } from './FlatList/types'
 export type {
   NumberKeyboardOnDelete,

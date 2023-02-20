@@ -1,6 +1,13 @@
-import { computed, onMounted, watch, inject, provide, shallowRef } from 'vue'
-import type { SetupContext } from 'vue'
-import { capitalize, isStringOrNumber } from '../helpers'
+import {
+  computed,
+  onMounted,
+  watch,
+  inject,
+  provide,
+  shallowRef,
+  type SetupContext
+} from 'vue'
+import { capitalize, type EmptyObject, isStringOrNumber } from '../helpers'
 import { useGroup, useGroupItem } from '../hooks'
 import type {
   ModelValue,
@@ -86,7 +93,7 @@ export function useCheck(
     }
   )
 
-  useGroupItem<GroupItem>(name, {
+  useGroupItem<EmptyObject, GroupItem>(name, {
     uid,
     getInputChecked,
     getValue,
@@ -98,14 +105,16 @@ export function useCheck(
 
     let checked: boolean
     if (groupOptions) {
+      const groupValues = groupOptions.props.modelValue
+
       checked =
         name === 'checkbox'
           ? !!(
-              Array.isArray(groupOptions.props.modelValue) &&
+              Array.isArray(groupValues) &&
               props.checkedValue &&
-              groupOptions.props.modelValue.includes(props.checkedValue)
+              groupValues.includes(props.checkedValue)
             )
-          : props.checkedValue === groupOptions.props.modelValue
+          : props.checkedValue === groupValues
     } else {
       checked = !!props.checked
     }
@@ -152,7 +161,7 @@ export function useCheckGroup<T>(
   }
 ) {
   const root = shallowRef<HTMLElement | null>(null)
-  const { children } = useGroup<GroupItem>(name)
+  const { children } = useGroup<EmptyObject, GroupItem>(name)
 
   function _updateValue(isChange: boolean, uid?: symbol) {
     return updateValue({ isChange, children, uid })

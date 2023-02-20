@@ -82,34 +82,18 @@ export default defineComponent({
     >([])
     const activeIndex = ref(0)
 
-    let nameArr: string[] = []
+    let itemNames: string[] = []
 
     function getActiveIndexByName(name?: string) {
       if (name) {
-        for (let i = 0; i < nameArr.length; i++) {
-          if (nameArr[i] === name) {
+        for (let i = 0; i < itemNames.length; i++) {
+          if (itemNames[i] === name) {
             return i
           }
         }
       }
 
       return -1
-    }
-
-    function resetItems($items: HTMLElement[]) {
-      nameArr = []
-
-      tabList.value = $items.map(($item, index) => {
-        const { name, subTitle, title } = $item.dataset
-
-        nameArr.push(name as string)
-
-        return {
-          value: index,
-          label: title || name || '',
-          subLabel: subTitle || ''
-        }
-      })
     }
 
     const { listEl } = useList('tabView', resetItems)
@@ -120,8 +104,7 @@ export default defineComponent({
 
     const onSwiperChange: SwiperOnActiveIndexChange = index => {
       activeIndex.value = index
-
-      const activeName = nameArr[index] || ''
+      const activeName = itemNames[index] || ''
 
       emit('update:modelValue', activeName)
       emit('change', activeName, index)
@@ -151,6 +134,22 @@ export default defineComponent({
       } else {
         printListItemNotFoundError('index')
       }
+    }
+
+    function resetItems($items: HTMLElement[]) {
+      itemNames = []
+
+      tabList.value = $items.map(($item, index) => {
+        const { name, subTitle, title } = $item.dataset
+
+        itemNames.push(name as string)
+
+        return {
+          value: index,
+          label: title || name || '',
+          subLabel: subTitle || ''
+        }
+      })
     }
 
     provide('taTabViewVertical', vertical.value)

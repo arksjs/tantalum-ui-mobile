@@ -4,6 +4,7 @@ import type {
 } from '../StickyView/types'
 
 export interface ScrollTabProps {
+  modelValue?: string
   stickyOffsetTop?: number | string
   stickyOffsetBottom?: number | string
 }

@@ -123,26 +123,7 @@ export default defineComponent({
       return -1
     }
 
-    useScroll(container, () => updateFixed(null))
-
-    const resetContainer: ResetContainer = containSelector => {
-      container.value =
-        querySelector(containSelector) || (root.value as HTMLElement)
-      isSelfContainer.value = container.value === root.value
-
-      stickyRef.value?.resetContainer(container.value)
-
-      updateFixed(null)
-    }
-
-    function updateTitle(t: string, tY: number | null) {
-      if (!fixedEl.value) {
-        return
-      }
-
-      fixedEl.value.textContent = t
-      fixedEl.value.style.cssText = CSSProperties2CssText(getFixedStyles(tY))
-    }
+    let oldIndex = -1
 
     function onChange() {
       if (oldIndex !== activeIndex.value) {
@@ -153,7 +134,14 @@ export default defineComponent({
       oldIndex = -1
     }
 
-    let oldIndex = -1
+    function updateTitle(t: string, tY: number | null) {
+      if (!fixedEl.value) {
+        return
+      }
+
+      fixedEl.value.textContent = t
+      fixedEl.value.style.cssText = CSSProperties2CssText(getFixedStyles(tY))
+    }
 
     function updateFixed(ss: number | null) {
       if (!fixedEl.value || !container.value) {
@@ -248,23 +236,6 @@ export default defineComponent({
       nextTick(() => _scrollTo(container.value as HTMLElement, offset, false))
     }
 
-    function resetItems(res: HTMLElement[]) {
-      $items = res
-
-      updateFixed(null)
-
-      emit(
-        'resetItems',
-        $items.map((v, k) => {
-          return {
-            name: getItemName(k),
-            index: k,
-            title: getItemTitle(k)
-          }
-        })
-      )
-    }
-
     /**
      * 滚动到第index个
      */
@@ -291,6 +262,40 @@ export default defineComponent({
       } else {
         printListItemNotFoundError('name')
       }
+    }
+
+    useScroll(container, () => updateFixed(null))
+
+    const resetContainer: ResetContainer = containSelector => {
+      const newEl =
+        querySelector(containSelector) || (root.value as HTMLElement)
+
+      if (newEl === container.value) {
+        return
+      }
+
+      container.value = newEl
+      isSelfContainer.value = container.value === root.value
+      stickyRef.value?.resetContainer(newEl)
+
+      updateFixed(null)
+    }
+
+    function resetItems(res: HTMLElement[]) {
+      $items = res
+
+      updateFixed(null)
+
+      emit(
+        'resetItems',
+        $items.map((v, k) => {
+          return {
+            name: getItemName(k),
+            index: k,
+            title: getItemTitle(k)
+          }
+        })
+      )
     }
 
     const { listEl } = useList('stickyView', resetItems)

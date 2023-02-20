@@ -3,6 +3,7 @@ import type { SwiperOnAnimated } from '../Swiper/types'
 type OnChange = (name: string, index: number) => void
 
 export interface TabViewProps {
+  modelValue?: string
   initialVertical?: boolean
   scrollThreshold?: number
 }
@@ -13,10 +14,9 @@ export interface TabViewEmits {
 }
 
 export interface TabViewItemProps {
-  name?: string
-  subName?: string
-  vertical?: boolean
-  index?: number
+  name: string
+  title?: string
+  subTitle?: string
 }
 
 export interface TabViewRef {

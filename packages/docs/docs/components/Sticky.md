@@ -26,7 +26,7 @@ import type { StickyViewOnChange, StickyViewRef } from 'tantalum-ui-mobile'
 
 粘性容器。
 
-## Sticky Props
+### Sticky Props
 
 | 属性             | 类型                              | 默认值   | 必填 | 说明                                                                            |
 | ---------------- | --------------------------------- | -------- | ---- | ------------------------------------------------------------------------------- |
@@ -34,9 +34,9 @@ import type { StickyViewOnChange, StickyViewRef } from 'tantalum-ui-mobile'
 | offset-top       | string \| number                  | 0        | 否   | 数值默认是 px，也支持 vw/vh                                                     |
 | offset-bottom    | string \| number                  | 0        | 否   | 数值默认是 px，也支持 vw/vh                                                     |
 
-## Sticky Slots
+### Sticky Slots
 
-### #default
+#### #default
 
 ```vue
 <ta-sticky>自定义内容</ta-sticky>
@@ -46,7 +46,7 @@ import type { StickyViewOnChange, StickyViewRef } from 'tantalum-ui-mobile'
 
 粘性布局。
 
-## StickyView Props
+### StickyView Props
 
 | 属性             | 类型                              | 默认值   | 必填 | 说明                                                                            |
 | ---------------- | --------------------------------- | -------- | ---- | ------------------------------------------------------------------------------- |
@@ -54,17 +54,17 @@ import type { StickyViewOnChange, StickyViewRef } from 'tantalum-ui-mobile'
 | contain-selector | string \| HTMLElement \| Document | document | 否   | 基于哪个容器，如果是 string，则为可以被 document.querySelector(selector) 获取到 |
 | offset-top       | string \| number                  | 0        | 否   | 数值默认是 px，也支持 vw/vh                                                     |
 
-## StickyView Events
+### StickyView Events
 
 | 事件   | 描述       | 回调函数参数                        | TypeScript 函数    |
 | ------ | ---------- | ----------------------------------- | ------------------ |
 | change | 切换时触发 | (name: string, activeIndex: number) | StickyViewOnChange |
 
-## StickyView Slots
+### StickyView Slots
 
-### #default
+#### #default
 
-注：其中只可放置 [StickyViewItem](./Sticky.md#stickyviewitem-props) 组件，否则会导致未定义的行为。
+注：其中只可放置 [StickyViewItem](./Sticky.md#stickyviewitem) 组件，否则会导致未定义的行为。
 
 ```vue
 <ta-sticky-view>
@@ -86,7 +86,7 @@ import type { StickyViewOnChange, StickyViewRef } from 'tantalum-ui-mobile'
 </ta-sticky-view>
 ```
 
-## Methods
+### Methods
 
 ```ts
 interface StickyViewRef {
@@ -102,16 +102,18 @@ interface StickyViewRef {
 | scrollToIndex  | 切换到指定 index 的 Item  |
 | scrollToOffset | 切换到指定位置（单位 px） |
 
-## StickyViewItem Props
+## StickyViewItem
 
-| 属性  | 类型   | 默认值 | 必填 | 说明                                                               |
-| ----- | ------ | ------ | ---- | ------------------------------------------------------------------ |
-| name  | string |        | 是   | 唯一标识，设置后配合 ScrollTab 组件的 `v-model` 和 `onChange` 使用 |
-| title | string |        | 否   | 分组名，也应用于吸附，如果没有设置则获取 `name` 的值               |
+### StickyViewItem Props
 
-## StickyViewItem Slots
+| 属性  | 类型   | 默认值 | 必填 | 说明                                                             |
+| ----- | ------ | ------ | ---- | ---------------------------------------------------------------- |
+| name  | string |        | 是   | 唯一标识，设置后配合 ScrollTab 组件的 `v-model` 和 `change` 使用 |
+| title | string |        | 否   | 分组名，也应用于吸附，如果没有设置则获取 `name` 的值             |
 
-### #default
+### StickyViewItem Slots
+
+#### #default
 
 ```vue
 <ta-sticky-view-item name="Sticky 1">

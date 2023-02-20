@@ -22,22 +22,24 @@ import { TaCollapse, TaCollapseItem } from 'tantalum-ui-mobile'
 import type { CollapseOnChange, CollapseItemOnToggle } from 'tantalum-ui-mobile'
 ```
 
-## Collapse Props
+## Collapse
 
-| 属性      | 类型            | 默认值 | 必填 | 说明                                                                    |
-| --------- | --------------- | ------ | ---- | ----------------------------------------------------------------------- |
-| v-model   | string/string[] | []     | 否   | 当前展开面板的 `name` 列表，需要每个 `CollapseItem` 组件都设置上 `name` |
-| accordion | boolean         | false  | 否   | 是否开启手风琴模式                                                      |
+### Collapse Props
 
-## Collapse Events
+| 属性      | 类型               | 默认值 | 必填 | 说明                                                                                                |
+| --------- | ------------------ | ------ | ---- | --------------------------------------------------------------------------------------------------- |
+| v-model   | string \| string[] | []     | 否   | 当前展开面板的 `name` 列表，需要每个 [CollapseItem](./Collapse.md#collapseitem) 组件都设置上 `name` |
+| accordion | boolean            | false  | 否   | 是否开启手风琴模式                                                                                  |
 
-| 事件   | 描述           | 回调函数参数                      | TypeScript 函数  |
-| ------ | -------------- | --------------------------------- | ---------------- |
-| change | 切换面板时触发 | activeNames: (string \| number)[] | CollapseOnChange |
+### Collapse Events
 
-## Collapse Slots
+| 事件   | 描述           | 回调函数参数          | TypeScript 函数  |
+| ------ | -------------- | --------------------- | ---------------- |
+| change | 切换面板时触发 | activeNames: string[] | CollapseOnChange |
 
-### #default
+### Collapse Slots
+
+#### #default
 
 注：其中只可放置 [CollapseItem](./Collapse.md#collapseitem-折叠面板子项) 组件，否则会导致未定义的行为。
 
@@ -61,14 +63,16 @@ import type { CollapseOnChange, CollapseItemOnToggle } from 'tantalum-ui-mobile'
 </ta-collapse>
 ```
 
-## CollapseItem Props
+## CollapseItem
 
-| 属性     | 类型    | 默认值 | 必填 | 说明                                                              |
-| -------- | ------- | ------ | ---- | ----------------------------------------------------------------- |
-| title    | string  | ''     | 否   | 面板子项标题                                                      |
-| icon     | string  |        | 否   | 面板子项标题前图标，使用 [Icon](./Icon.md) 组件                   |
-| name     | string  |        | 是   | 唯一标识，设置后配合 Collapse 组件的 `v-model` 和 `onChange` 使用 |
-| disabled | boolean | false  | 否   | 是否禁用                                                          |
+### CollapseItem Props
+
+| 属性     | 类型    | 默认值 | 必填 | 说明                                                                                  |
+| -------- | ------- | ------ | ---- | ------------------------------------------------------------------------------------- |
+| title    | string  | ''     | 否   | 面板子项标题                                                                          |
+| icon     | string  |        | 否   | 面板子项标题前图标，使用 [Icon](./Icon.md) 组件                                       |
+| name     | string  |        | 是   | 唯一标识，设置后配合 [Collapse](./Collapse.md#collapse) 的 `v-model` 和 `change` 使用 |
+| disabled | boolean | false  | 否   | 是否禁用                                                                              |
 
 ## CollapseItem Events
 

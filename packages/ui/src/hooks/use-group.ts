@@ -1,44 +1,64 @@
 import { inject, onBeforeUnmount, provide, reactive } from 'vue'
-import { capitalize } from '../helpers'
+import { capitalize, type AnyObject } from '../helpers'
+
+export type GroupContextValue = {
+  hasGroup: boolean
+}
+
+export type GroupContextItemRef = {
+  uid: symbol
+}
+
+export type GroupContext = {
+  hasGroup: boolean
+  addItem: (obj: unknown) => void
+  removeItem: (obj: unknown) => void
+}
 
 function getKey(name: string) {
   return `ta${capitalize(name)}Group`
 }
 
-interface GroupProvide {
-  addChild: (obj: unknown) => void
-  removeChild: (obj: unknown) => void
-}
-
-export function useGroup<T = any>(
-  name: string
+export function useGroup<P extends AnyObject, T extends AnyObject>(
+  name: string,
+  values?: P
 ): {
-  children: any[]
+  children: T[]
 } {
   const children = reactive<T[]>([])
 
-  provide(getKey(name), {
-    addChild(obj: any) {
-      children.push(obj)
-    },
-    removeChild(obj: any) {
-      children.splice(children.indexOf(obj), 1)
-    }
-  } as GroupProvide)
+  provide(
+    getKey(name),
+    Object.assign(
+      {
+        hasGroup: true,
+        addItem(obj: any) {
+          children.push(obj)
+        },
+        removeItem(obj: any) {
+          children.splice(children.indexOf(obj), 1)
+        }
+      },
+      values || {}
+    ) as GroupContext
+  )
 
   return {
     children
   }
 }
 
-export function useGroupItem<T = any>(name: string, object: T) {
-  const group = inject<GroupProvide | null>(getKey(name), null)
+export function useGroupItem<P extends AnyObject, T extends AnyObject>(
+  name: string,
+  object: T
+) {
+  const group = inject<GroupContext | null>(getKey(name), null)
 
-  group && (group as GroupProvide).addChild(object)
+  group && group.addItem(object)
 
   onBeforeUnmount(() => {
-    group && (group as GroupProvide).removeChild(object)
+    group && group.removeItem(object)
   })
 
-  return {}
+  return (group || { hasGroup: false }) as P & GroupContext
 }

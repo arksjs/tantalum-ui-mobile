@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, watch, provide, type PropType } from 'vue'
+import { defineComponent, onMounted, watch, type PropType } from 'vue'
 import {
   cloneData,
   isSameArray,
@@ -15,7 +15,12 @@ import {
   type PropsToEmits
 } from '../helpers'
 import { useGroup } from '../hooks'
-import type { CollapseEmits } from './types'
+import { CollapseContext } from './context'
+import type {
+  CollapseContextValue,
+  CollapseEmits,
+  CollapseContextItemRef
+} from './types'
 
 export default defineComponent({
   name: 'ta-collapse',
@@ -37,7 +42,13 @@ export default defineComponent({
   setup(props, { emit }) {
     let activeNames: string[] = []
 
-    const { children } = useGroup('collapse')
+    const { children } = useGroup<CollapseContextValue, CollapseContextItemRef>(
+      CollapseContext,
+      {
+        onChange,
+        hasGroup: true
+      }
+    )
 
     function updateValue(val: string | string[]) {
       let values = cloneData(
@@ -49,14 +60,14 @@ export default defineComponent({
         values = values.slice(0, 1)
       }
 
-      if (isSameArray(values, activeNames)) {
+      if (Array.isArray(values) && isSameArray(values, activeNames)) {
         return
       }
 
       activeNames = []
 
       children.forEach(child => {
-        const childName = child.getName() as string
+        const childName = child.getName()
 
         if (childName && values.includes(childName)) {
           activeNames.push(childName)
@@ -67,7 +78,7 @@ export default defineComponent({
       })
     }
 
-    function onChange(uid: number) {
+    function onChange(uid: symbol) {
       activeNames = []
 
       if (props.accordion) {
@@ -97,8 +108,6 @@ export default defineComponent({
     watch(() => props.modelValue, updateValue, {
       deep: true
     })
-
-    provide('taCollapseChange', onChange)
 
     return {}
   }

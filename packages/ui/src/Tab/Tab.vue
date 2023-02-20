@@ -27,7 +27,7 @@
 import { computed, defineComponent } from 'vue'
 import { Icon } from '../Icon'
 import { Badge } from '../Badge'
-import { tabEmits, tabProps } from './tab'
+import { tabEmits, tabProps } from './props'
 import { useTab } from './use-tab'
 import { getClasses, getItemClasses } from './util'
 import type { PropsToEmits } from '../helpers'

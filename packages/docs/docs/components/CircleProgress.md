@@ -28,7 +28,7 @@ import { TaCircleProgress } from 'tantalum-ui-mobile'
 ### 内容区（#default）
 
 ```vue
-<ta-circle-progress :percentage="5">
+<ta-circle-progress :percentage="percentage">
   <template #default="{ progress }"> 已抢{{ progress }} </template>
 </ta-circle-progress>
 ```

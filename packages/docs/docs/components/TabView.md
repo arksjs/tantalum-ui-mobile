@@ -26,7 +26,9 @@ import type {
 } from 'tantalum-ui-mobile'
 ```
 
-## TabView Props
+## TabView
+
+### TabView Props
 
 | 属性                   | 类型    | 默认值 | 必填 | 说明                                            |
 | ---------------------- | ------- | ------ | ---- | ----------------------------------------------- |
@@ -34,18 +36,18 @@ import type {
 | scroll-threshold       | number  | 4      | 否   | 超过 `scrollThreshold` 个 Tab 使用滚动形式      |
 | back-upper-when-change | boolean | false  | 否   | 切换面板时，如果是旧面板，是否返回顶部/左侧位置 |
 
-## TabView Events
+### TabView Events
 
 | 事件     | 描述           | 回调函数参数                        | TypeScript 函数   |
 | -------- | -------------- | ----------------------------------- | ----------------- |
 | change   | 切换时触发     | (name: string, activeIndex: number) | TabViewOnChange   |
-| animated | 动画结束时触发 | (activeIndex: number )              | TabViewOnAnimated |
+| animated | 动画结束时触发 | (activeIndex: number)               | TabViewOnAnimated |
 
-## TabView Slots
+### TabView Slots
 
-### #default
+#### #default
 
-注：其中只可放置 [TabViewItem](./TabView.md#tabviewitem-props) 组件，否则会导致未定义的行为。
+注：其中只可放置 [TabViewItem](./TabView.md#tabviewitem) 组件，否则会导致未定义的行为。
 
 ```vue
 <ta-tab-view>
@@ -58,7 +60,7 @@ import type {
 </ta-tab-view>
 ```
 
-## Methods
+### Methods
 
 ```ts
 interface TabViewRef {
@@ -72,15 +74,17 @@ interface TabViewRef {
 | switchTo      | 切换到指定 name 的 Tab |
 | switchToIndex | 切换到指定索引的 Tab   |
 
-## TabViewItem Props
+## TabViewItem
+
+### TabViewItem Props
 
 | 属性 | 类型   | 默认值 | 必填 | 说明           |
 | ---- | ------ | ------ | ---- | -------------- |
 | name | string |        | 是   | 对应的菜单名称 |
 
-## TabViewItem Slots
+### TabViewItem Slots
 
-### 内容（#default）
+#### 内容（#default）
 
 ```vue
 <ta-tab-view-item name="Tab 1">

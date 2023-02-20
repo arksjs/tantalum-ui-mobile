@@ -71,8 +71,8 @@ const options: ActionSheetOption[] = [
 | 事件                 | 描述                           | 回调函数参数                                                             | 函数 TypeScript           |
 | -------------------- | ------------------------------ | ------------------------------------------------------------------------ | ------------------------- |
 | confirm              | 点击选项时触发                 | payload: { item: { name: string }, index: number }                       | ActionSheetOnConfirm      |
-| visible-state-change | 展示隐藏时触发                 | payload: { state: [VisibleState](./ActionSheet.md#visiblestate-值说明) } | PopupOnVisibleStateChange |
 | cancel               | 取消按钮或者点击蒙层关闭时触发 | payload: { source: string }                                              | PopupOnCancel             |
+| visible-state-change | 展示隐藏时触发                 | payload: { state: [VisibleState](./ActionSheet.md#visiblestate-值说明) } | PopupOnVisibleStateChange |
 
 ### VisibleState 值说明
 

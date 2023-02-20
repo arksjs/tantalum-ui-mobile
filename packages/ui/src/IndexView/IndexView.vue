@@ -19,7 +19,7 @@
         :modelValue="modelValue"
         ref="bodyRef"
         @resetItems="onResetItems"
-        @change="onChange"
+        @change="onStickyViewChange"
       >
         <slot></slot>
       </StickyView>
@@ -41,7 +41,7 @@ import type {
   StickyViewRef,
   StickyViewOnChange
 } from '../StickyView/types'
-import { useTouch } from '../hooks'
+import { useOnce, useTouch } from '../hooks'
 import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer } from '../Sticky/types'
 import type { IndexViewEmits } from './types'
@@ -64,7 +64,7 @@ export default defineComponent({
     change: emitChangeValidator
   } as PropsToEmits<IndexViewEmits>,
   setup(props, { emit, expose }) {
-    const navEl = shallowRef<HTMLElement | null>(null)
+    const navEl = shallowRef<HTMLUListElement | null>(null)
     const bodyRef = shallowRef<StickyViewRef | null>(null)
     const indexList = ref<
       {
@@ -76,12 +76,12 @@ export default defineComponent({
 
     // 单独更新以下tab的activeName
     function updateActiveName(name?: string) {
-      if (name != null && isInTab(name) && name !== activeName.value) {
+      if (name != null && nameInList(name) && name !== activeName.value) {
         activeName.value = name
       }
     }
 
-    function isInTab(name: string) {
+    function nameInList(name: string) {
       for (let i = 0; i < indexList.value.length; i++) {
         if (indexList.value[i].value === name) {
           return true
@@ -91,20 +91,7 @@ export default defineComponent({
       return false
     }
 
-    const resetContainer: ResetContainer = containSelector => {
-      bodyRef.value?.resetContainer(containSelector)
-    }
-
-    const onResetItems: StickyViewOnResetItems = items => {
-      indexList.value = items.map(item => {
-        return {
-          value: item.name,
-          label: item.title
-        }
-      })
-    }
-
-    const onChange: StickyViewOnChange = (name, index) => {
+    const onStickyViewChange: StickyViewOnChange = (name, index) => {
       updateActiveName(name)
       emit('update:modelValue', name)
       emit('change', name, index)
@@ -131,7 +118,7 @@ export default defineComponent({
       current: number
       isChange: boolean
     } | null = null
-    let changeTimer: number
+    const lazyDo = useOnce(100)
 
     useTouch({
       el: navEl,
@@ -150,8 +137,7 @@ export default defineComponent({
           isChange: false
         }
 
-        clearTimeout(changeTimer)
-        changeTimer = window.setTimeout(() => {
+        lazyDo(() => {
           scrollToIndex(index)
         }, 500)
 
@@ -178,14 +164,13 @@ export default defineComponent({
         }
 
         if (offsetCount !== 0) {
-          clearTimeout(changeTimer)
           coords.isChange = true
 
-          changeTimer = window.setTimeout(() => {
+          lazyDo(() => {
             scrollToIndex(
               rangeInteger(current + offsetCount, 0, indexList.value.length - 1)
             )
-          }, 100)
+          })
         }
 
         e.stopPropagation()
@@ -194,8 +179,11 @@ export default defineComponent({
       onTouchEnd(e) {
         if (coords) {
           if (!coords.isChange) {
-            clearTimeout(changeTimer)
-            scrollToIndex(coords.current)
+            const toIndex = coords.current
+
+            lazyDo(() => {
+              scrollToIndex(toIndex)
+            }, 0)
           }
 
           coords = null
@@ -203,6 +191,19 @@ export default defineComponent({
         }
       }
     })
+
+    const resetContainer: ResetContainer = containSelector => {
+      bodyRef.value?.resetContainer(containSelector)
+    }
+
+    const onResetItems: StickyViewOnResetItems = items => {
+      indexList.value = items.map(item => {
+        return {
+          value: item.name,
+          label: item.title
+        }
+      })
+    }
 
     watch(
       () => props.modelValue,
@@ -229,7 +230,7 @@ export default defineComponent({
       bodyRef,
       activeName,
       indexList,
-      onChange,
+      onStickyViewChange,
       onResetItems,
 
       scrollTo,

@@ -45,7 +45,8 @@ import {
   getStretchOffset,
   CSSProperties2CssText,
   colorValidator,
-  type PropsToEmits
+  type PropsToEmits,
+  getNumber
 } from '../helpers'
 import {
   useList,
@@ -100,18 +101,18 @@ export default defineComponent({
       default: false
     },
     interval: {
-      type: Number,
+      type: [Number, String],
       default: 5000
     },
     duration: {
-      type: Number
+      type: [Number, String]
     },
     initialCircular: {
       type: Boolean,
       default: false
     },
     activeIndex: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     initialVertical: {
@@ -155,12 +156,14 @@ export default defineComponent({
      * @param activeIndex 索引
      */
     function _swipeTo(activeIndex: number, isProp = false) {
-      if ($items.length === 0) {
+      const len = $items.length
+
+      if (len === 0) {
         goTo(0)
       } else if (
         isNumber(activeIndex) &&
         activeIndex >= 0 &&
-        activeIndex < $items.length
+        activeIndex < len
       ) {
         if (activeIndex !== index.value) {
           // 通过props设置的activeIndex不emit change
@@ -185,15 +188,12 @@ export default defineComponent({
     function next() {
       goTo(getCircleIndex(1))
     }
-
     /**
      * 获取循环的索引
      */
     function getCircleIndex(step: number) {
-      const length = $items.length
-      return length === 0
-        ? 0
-        : (index.value + length + (step % length)) % length
+      const len = $items.length
+      return len === 0 ? 0 : (index.value + len + (step % len)) % len
     }
 
     function updateSwipeLoop(offset?: number) {
@@ -338,11 +338,13 @@ export default defineComponent({
       //   onChange(toIndex, fromIndex)
       // }
 
-      let duration = props.duration
+      let duration = 0
 
-      if (duration == null) {
+      if (props.duration == null) {
         duration = Math.abs(transSizeOffset)
         duration = Math.max(100, Math.min(800, duration))
+      } else {
+        duration = getNumber(props.duration)
       }
 
       if (animated === false) {
@@ -461,7 +463,10 @@ export default defineComponent({
       stop()
       props.autoplay &&
         $items.length > 1 &&
-        (autoplayTimer = window.setInterval(() => next(), props.interval))
+        (autoplayTimer = window.setInterval(
+          () => next(),
+          getNumber(props.interval)
+        ))
     }
 
     /**
@@ -609,14 +614,15 @@ export default defineComponent({
 
     watch(
       () => props.activeIndex,
-      val => _swipeTo(val, true)
+      val => _swipeTo(getNumber(val), true)
     )
 
     onMounted(() => {
       start()
 
-      if (props.activeIndex !== 0) {
-        _swipeTo(props.activeIndex, true)
+      const activeIndex = props.activeIndex
+      if (activeIndex != null && activeIndex !== 0) {
+        _swipeTo(getNumber(activeIndex), true)
       }
     })
 

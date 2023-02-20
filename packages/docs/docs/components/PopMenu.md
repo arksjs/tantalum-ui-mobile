@@ -68,8 +68,8 @@ const options = [
 
 | 事件                 | 描述               | 回调函数参数                                                         | TypeScript 函数           |
 | -------------------- | ------------------ | -------------------------------------------------------------------- | ------------------------- |
-| cancel               | 取消时触发         | payload: { source: string }                                          | PopupOnCancel             |
 | confirm              | 确认按钮点击时触发 | payload: { item: { name: string }, index: number }                   | PopMenuOnConfirm          |
+| cancel               | 取消时触发         | payload: { source: string }                                          | PopupOnCancel             |
 | visible-state-change | 展示隐藏时触发     | payload: { state: [VisibleState](./PopMenu.md#visiblestate-值说明) } | PopupOnVisibleStateChange |
 
 ### VisibleState 值说明
