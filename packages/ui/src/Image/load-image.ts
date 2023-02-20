@@ -1,3 +1,4 @@
+import type { OnError } from '../helpers'
 import type { LoadedResource } from './types'
 
 type LoadObject = {
@@ -5,7 +6,7 @@ type LoadObject = {
   src: string
   checkInView: () => boolean
   onLoad: (res: LoadedResource) => void
-  onError: (e: Error) => void
+  onError: OnError
   done?: boolean
 }
 
@@ -55,7 +56,7 @@ export function loadNow(vm: LoadObject) {
 function loadImageAsync(
   item: LoadObject,
   resolve: (res: LoadedResource) => void,
-  reject: (e: Error) => void
+  reject: OnError
 ) {
   const image = new Image()
   if (!item || !item.src) {
