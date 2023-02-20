@@ -11,7 +11,7 @@ export function useOnce(interval = 0) {
     }
   }
 
-  function call(fn: Noop) {
+  function call(fn: Noop, forceInterval?: number) {
     cancel()
 
     if (interval > 0) {
@@ -19,7 +19,7 @@ export function useOnce(interval = 0) {
         handle = null
 
         fn()
-      }, 50)
+      }, forceInterval ?? interval)
     } else {
       handle = requestAnimationFrame(() => {
         handle = null
