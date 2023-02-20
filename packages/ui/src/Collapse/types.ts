@@ -1,3 +1,5 @@
+import type { GroupContextValue, GroupContextItemRef } from '../hooks'
+import type { Noop } from '../helpers'
 import type { IconData } from '../Icon/types'
 
 export type OnChange = (activeNames: string[]) => void
@@ -16,7 +18,7 @@ export interface CollapseEmits {
 export interface CollapseItemProps {
   icon?: IconData
   title?: string
-  name: string | number
+  name: string
   disabled?: boolean
 }
 
@@ -27,4 +29,15 @@ export interface CollapseItemEmits {
 export type {
   OnChange as CollapseOnChange,
   ItemOnToggle as CollapseItemOnToggle
+}
+
+export interface CollapseContextValue extends GroupContextValue {
+  onChange?: (uid: symbol) => void
+}
+
+export interface CollapseContextItemRef extends GroupContextItemRef {
+  show: Noop
+  hide: Noop
+  getName: () => string
+  getActive: () => boolean
 }

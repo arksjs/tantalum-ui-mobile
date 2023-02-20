@@ -22,20 +22,18 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  inject,
-  computed,
-  shallowRef,
-  type PropType
-} from 'vue'
+import { defineComponent, ref, computed, shallowRef, type PropType } from 'vue'
 import { Cell } from '../Cell'
-import { iconValidator, isBoolean, noop, type PropsToEmits } from '../helpers'
-import { useGroupItem } from '../hooks'
-import type { CollapseItemEmits } from './types'
+import { iconValidator, isBoolean, type PropsToEmits } from '../helpers'
+import { useException, useGroupItem } from '../hooks'
+import type {
+  CollapseContextValue,
+  CollapseItemEmits,
+  CollapseContextItemRef
+} from './types'
 import type { IconData } from '../Icon/types'
 import { getItemClasses } from './util'
+import { CollapseContext } from './context'
 
 export default defineComponent({
   name: 'ta-collapse-item',
@@ -62,10 +60,29 @@ export default defineComponent({
     toggle: payload => payload && isBoolean(payload.spread)
   } as PropsToEmits<CollapseItemEmits>,
   setup(props, { emit }) {
-    const active = ref(false)
-    const bodyEl = shallowRef<HTMLElement | null>(null)
-    const onChange = inject<(uid: symbol) => void>('taCollapseChange', noop)
+    const { printItemIsolationWarn } = useException()
     const uid = Symbol()
+    const bodyEl = shallowRef<HTMLElement | null>(null)
+    const active = ref(false)
+
+    const { onChange } = useGroupItem<
+      CollapseContextValue,
+      CollapseContextItemRef
+    >(CollapseContext, {
+      uid,
+      show,
+      hide,
+      getName: () => props.name,
+      getActive: () => active.value
+    })
+
+    function handleChange(uid: symbol) {
+      if (onChange) {
+        onChange(uid)
+      } else {
+        printItemIsolationWarn()
+      }
+    }
 
     let visibleTimer: number
 
@@ -76,8 +93,10 @@ export default defineComponent({
       active.value = true
 
       clearTimeout(visibleTimer)
-
-      const $body = bodyEl.value as HTMLElement
+      if (!bodyEl.value) {
+        return
+      }
+      const $body = bodyEl.value
 
       $body.style.cssText = 'position: absolute; opacity: 0;'
       const contentHeight = $body.getBoundingClientRect().height
@@ -93,7 +112,7 @@ export default defineComponent({
 
       emitToggle(true)
 
-      isClick && onChange(uid)
+      isClick && handleChange(uid)
     }
 
     function hide(isClick = false) {
@@ -102,9 +121,12 @@ export default defineComponent({
       }
       active.value = false
 
+      if (!bodyEl.value) {
+        return
+      }
       clearTimeout(visibleTimer)
+      const $body = bodyEl.value
 
-      const $body = bodyEl.value as HTMLElement
       $body.style.cssText = `height: ${$body.getBoundingClientRect().height}px;`
 
       visibleTimer = window.setTimeout(() => {
@@ -117,7 +139,7 @@ export default defineComponent({
 
       emitToggle(false)
 
-      isClick && onChange(uid)
+      isClick && handleChange(uid)
     }
 
     function emitToggle(spread: boolean) {
@@ -130,14 +152,6 @@ export default defineComponent({
     function onClick() {
       active.value ? hide(true) : show(true)
     }
-
-    useGroupItem('collapse', {
-      uid,
-      getName: () => props.name,
-      getActive: () => active.value,
-      show,
-      hide
-    })
 
     const classes = computed(() => getItemClasses(active.value))
 
