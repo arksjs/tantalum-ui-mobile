@@ -1,9 +1,11 @@
 <template>
-  <button class="ta-back-top" :style="styles" @click="onClick">
-    <slot>
-      <Icon :icon="UpCircleOutlined" />
-    </slot>
-  </button>
+  <teleport to="body">
+    <button class="ta-back-top" :style="styles" @click="onClick">
+      <slot>
+        <Icon :icon="UpCircleOutlined" />
+      </slot>
+    </button>
+  </teleport>
 </template>
 
 <script lang="ts">

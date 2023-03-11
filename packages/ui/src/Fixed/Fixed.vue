@@ -1,12 +1,12 @@
 <template>
   <div class="ta-fixed" :style="styles" ref="root">
-    <!--fixed start-->
-    <div :class="innerClasses" :style="innerStyles" ref="innerEl">
-      <div class="ta-fixed_content-wrapper" ref="contentEl">
-        <slot></slot>
+    <teleport to="body" :disabled="!isFixed">
+      <div :class="innerClasses" :style="innerStyles" ref="innerEl">
+        <div class="ta-fixed_content-wrapper" ref="contentEl">
+          <slot></slot>
+        </div>
       </div>
-    </div>
-    <!--fixed end-->
+    </teleport>
   </div>
 </template>
 
@@ -14,7 +14,6 @@
 import {
   computed,
   defineComponent,
-  inject,
   onMounted,
   ref,
   shallowRef,
@@ -27,16 +26,11 @@ import {
   PLACEMENT_TYPES,
   type PlacementType
 } from '../helpers'
-import { useSafeAreaInsets, useFixed, useResizeObserver } from '../hooks'
+import { useSafeAreaInsets, useResizeObserver } from '../hooks'
 import { getStyles, getInnerClasses, getInnerStyles } from './util'
 
 export default defineComponent({
   name: 'ta-fixed',
-  inject: {
-    disableFixed: {
-      default: false
-    }
-  },
   props: {
     // 开启fixed模式
     fixed: {
@@ -69,7 +63,7 @@ export default defineComponent({
     const root = shallowRef<HTMLElement | null>(null)
     const innerEl = shallowRef<HTMLElement | null>(null)
     const contentEl = shallowRef<HTMLElement | null>(null)
-    const disableFixed = inject('disableFixed', false)
+
     const rootStyle = ref<{
       width: number | null
       height: number | null
@@ -77,7 +71,7 @@ export default defineComponent({
       width: null,
       height: null
     })
-    const fixed2 = ref(true)
+    const isFixed = ref(true)
 
     const { safeAreaInsets } = useSafeAreaInsets(
       toRef(props, 'enableSafeAreaInsets')
@@ -95,7 +89,7 @@ export default defineComponent({
           width: null,
           height: null
         }
-        fixed2.value = false
+        isFixed.value = false
         return
       }
 
@@ -103,21 +97,14 @@ export default defineComponent({
         width: props.fixed && props.spaceHold ? offsetWidth : null,
         height: props.fixed && props.spaceHold ? offsetHeight : null
       }
-      fixed2.value = !!props.fixed
+      isFixed.value = !!props.fixed
     }
 
     const styles = computed(() => getStyles(rootStyle.value))
-    const innerClasses = computed(() => getInnerClasses(props, fixed2.value))
+    const innerClasses = computed(() => getInnerClasses(props, isFixed.value))
     const innerStyles = computed(() => getInnerStyles(props, safeAreaInsets))
 
     useResizeObserver(contentEl, updateSize)
-
-    useFixed({
-      disableFixed,
-      root,
-      inner: innerEl,
-      fixed: fixed2
-    })
 
     watch([() => props.fixed, () => props.spaceHold], updateSize)
 
@@ -127,6 +114,7 @@ export default defineComponent({
 
     return {
       root,
+      isFixed,
       innerEl,
       contentEl,
       styles,

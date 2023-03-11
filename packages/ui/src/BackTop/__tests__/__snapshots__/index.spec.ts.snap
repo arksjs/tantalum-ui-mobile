@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`BackTop > snapshot 1`] = `
-"<button class=\\"ta-back-top\\" style=\\"transform: translate3d(0px, 0px, 0px); display: none;\\">
-  <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
-</button>"
+"<teleport-stub><button class=\\"ta-back-top\\" style=\\"transform: translate3d(0px, 0px, 0px); display: none;\\">
+    <icon-stub icon=\\"[object Object]\\" spin=\\"false\\" size=\\"0\\" width=\\"0\\" height=\\"0\\"></icon-stub>
+  </button></teleport-stub>"
 `;

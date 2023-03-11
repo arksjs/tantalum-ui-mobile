@@ -35,7 +35,6 @@ import {
   onMounted,
   watch,
   onBeforeUnmount,
-  provide,
   shallowRef
 } from 'vue'
 import { Icon } from '../Icon'
@@ -631,8 +630,6 @@ export default defineComponent({
       stop()
       $items = []
     })
-
-    provide('disableFixed', true)
 
     const swipeTo = (newIndex: number) => _swipeTo(newIndex, false)
 

@@ -4,7 +4,11 @@ import { Sticky } from '@/Sticky'
 
 describe('Sticky', () => {
   test('snapshot', () => {
-    const wrapper = shallowMount(Sticky, {})
+    const wrapper = shallowMount(Sticky, {
+      global: {
+        stubs: { teleport: true }
+      }
+    })
 
     expect(wrapper.html()).toMatchSnapshot()
   })

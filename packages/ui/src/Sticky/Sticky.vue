@@ -1,8 +1,10 @@
 <template>
   <div class="ta-sticky" :style="styles" ref="root">
-    <div class="ta-sticky_content" ref="contentEl">
-      <slot></slot>
-    </div>
+    <teleport to="body" :disabled="!isFixed">
+      <div class="ta-sticky_content" ref="contentEl">
+        <slot></slot>
+      </div>
+    </teleport>
   </div>
 </template>
 
@@ -12,7 +14,6 @@ import {
   computed,
   ref,
   onMounted,
-  inject,
   watch,
   shallowRef,
   type PropType
@@ -27,7 +28,7 @@ import {
   querySelector,
   type Selector
 } from '../helpers'
-import { useScroll, useFixed } from '../hooks'
+import { useScroll } from '../hooks'
 import type { ResetContainer } from './types'
 import { getStyles } from './util'
 
@@ -58,15 +59,7 @@ export default defineComponent({
     const contentEl = shallowRef<HTMLElement | null>(null)
     const width = ref<number | null>(null)
     const height = ref<number | null>(null)
-    const disableFixed = inject('disableFixed', false)
-    const fixed = ref(false)
-
-    useFixed({
-      disableFixed,
-      root,
-      inner: contentEl,
-      fixed
-    })
+    const isFixed = ref(false)
 
     function updateFixed() {
       if (!root.value || !container.value) {
@@ -95,11 +88,11 @@ export default defineComponent({
       }
     }
 
-    function updateStyles(isFixed: boolean) {
+    function updateStyles(_isFixed: boolean) {
       const $root = root.value as HTMLElement
       const styles = (contentEl.value as HTMLElement).style
 
-      if (isFixed) {
+      if (_isFixed) {
         const { offsetTop } = getRelativeOffset(container.value as HTMLElement)
         const { offsetLeft } = getRelativeOffset($root)
 
@@ -117,7 +110,7 @@ export default defineComponent({
         styles.cssText = ''
       }
 
-      fixed.value = isFixed
+      isFixed.value = _isFixed
     }
 
     useScroll(container, updateFixed)
@@ -142,7 +135,7 @@ export default defineComponent({
 
     return {
       root,
-      fixed,
+      isFixed,
       contentEl,
       styles,
       resetContainer

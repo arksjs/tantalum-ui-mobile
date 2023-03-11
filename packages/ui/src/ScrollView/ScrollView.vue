@@ -39,7 +39,6 @@ import {
   ref,
   onMounted,
   watch,
-  provide,
   shallowRef,
   type PropType
 } from 'vue'
@@ -536,8 +535,6 @@ export default defineComponent({
     })
 
     const { scrollToOffset, scrollToEnd } = useScrollTo(root)
-
-    provide('disableFixed', true)
 
     return {
       allowPullDirections,

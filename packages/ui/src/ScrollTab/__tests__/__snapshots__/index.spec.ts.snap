@@ -4,18 +4,22 @@ exports[`ScrollTab > snapshot 1`] = `
 "<div class=\\"ta-scroll-tab\\">
   <div class=\\"ta-scroll-tab_sidebar\\">
     <div class=\\"ta-sticky\\">
+      <!--teleport start-->
       <div class=\\"ta-sticky_content\\"></div>
+      <!--teleport end-->
     </div>
   </div>
   <div class=\\"ta-scroll-tab_body\\">
     <div class=\\"ta-sticky-view\\">
       <div class=\\"ta-sticky-view_list\\"></div>
       <div class=\\"ta-sticky ta-sticky-view_top\\">
+        <!--teleport start-->
         <div class=\\"ta-sticky_content\\">
           <div class=\\"ta-sticky-view_fixed\\">
             <div class=\\"ta-sticky-view_fixed-inner\\" style=\\"transform: translate3d(0px, -100%, 0px);\\"></div>
           </div>
         </div>
+        <!--teleport end-->
       </div>
     </div>
   </div>

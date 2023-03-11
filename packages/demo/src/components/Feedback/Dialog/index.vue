@@ -104,7 +104,7 @@ interface DialogArgs {
 
 export default defineComponent({
   name: 'ExpDialog',
-  setup(props, ctx) {
+  setup() {
     const visible = ref(false)
     let callbackEvent = false
     let visibleEvent = false
