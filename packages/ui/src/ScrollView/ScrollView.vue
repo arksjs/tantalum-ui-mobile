@@ -39,7 +39,6 @@ import {
   ref,
   onMounted,
   watch,
-  provide,
   shallowRef,
   type PropType
 } from 'vue'

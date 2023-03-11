@@ -35,7 +35,6 @@ import {
   onMounted,
   watch,
   onBeforeUnmount,
-  provide,
   shallowRef
 } from 'vue'
 import { Icon } from '../Icon'

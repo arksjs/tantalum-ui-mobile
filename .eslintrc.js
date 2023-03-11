@@ -13,6 +13,7 @@ module.exports = {
     '@vue/eslint-config-prettier'
   ],
   rules: {
-    '@typescript-eslint/no-extra-semi': 'off'
+    '@typescript-eslint/no-extra-semi': 'off',
+    '@typescript-eslint/no-explicit-any': ['off']
   }
 }
