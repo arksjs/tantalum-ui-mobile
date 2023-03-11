@@ -632,8 +632,6 @@ export default defineComponent({
       $items = []
     })
 
-    provide('disableFixed', true)
-
     const swipeTo = (newIndex: number) => _swipeTo(newIndex, false)
 
     expose({

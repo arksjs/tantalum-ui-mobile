@@ -4,7 +4,11 @@ import { BackTop } from '@/BackTop'
 
 describe('BackTop', () => {
   test('snapshot', () => {
-    const wrapper = shallowMount(BackTop, {})
+    const wrapper = shallowMount(BackTop, {
+      global: {
+        stubs: { teleport: true }
+      }
+    })
 
     expect(wrapper.html()).toMatchSnapshot()
   })

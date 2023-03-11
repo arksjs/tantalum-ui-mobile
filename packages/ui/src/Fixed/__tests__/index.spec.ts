@@ -4,13 +4,21 @@ import { Fixed } from '@/Fixed'
 
 describe('Fixed', () => {
   test('snapshot', () => {
-    const wrapper = shallowMount(Fixed, {})
+    const wrapper = shallowMount(Fixed, {
+      global: {
+        stubs: { teleport: true }
+      }
+    })
 
     expect(wrapper.html()).toMatchSnapshot()
   })
 
   test.concurrent('set placement', async () => {
-    const wrapper = shallowMount(Fixed, {})
+    const wrapper = shallowMount(Fixed, {
+      global: {
+        stubs: { teleport: true }
+      }
+    })
 
     expect(wrapper.find('.ta-fixed_inner').classes()).toContain(
       'placement--bottom'
@@ -42,6 +50,9 @@ describe('Fixed', () => {
     const wrapper = shallowMount(Fixed, {
       props: {
         background: '#ffffff'
+      },
+      global: {
+        stubs: { teleport: true }
       }
     })
 
@@ -51,7 +62,11 @@ describe('Fixed', () => {
   })
 
   test.concurrent('zIndex', async () => {
-    const wrapper = shallowMount(Fixed, {})
+    const wrapper = shallowMount(Fixed, {
+      global: {
+        stubs: { teleport: true }
+      }
+    })
     expect(wrapper.find('.ta-fixed_inner').attributes('style')).toContain(
       'z-index: 1'
     )

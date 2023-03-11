@@ -537,8 +537,6 @@ export default defineComponent({
 
     const { scrollToOffset, scrollToEnd } = useScrollTo(root)
 
-    provide('disableFixed', true)
-
     return {
       allowPullDirections,
       pullRefreshState,

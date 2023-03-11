@@ -2,10 +2,10 @@
 
 exports[`Fixed > snapshot 1`] = `
 "<div class=\\"ta-fixed\\">
-  <!--fixed start-->
-  <div class=\\"ta-fixed_inner placement--bottom fixed\\" style=\\"z-index: 1;\\">
-    <div class=\\"ta-fixed_content-wrapper\\"></div>
-  </div>
-  <!--fixed end-->
+  <teleport-stub>
+    <div class=\\"ta-fixed_inner placement--bottom fixed\\" style=\\"z-index: 1;\\">
+      <div class=\\"ta-fixed_content-wrapper\\"></div>
+    </div>
+  </teleport-stub>
 </div>"
 `;
