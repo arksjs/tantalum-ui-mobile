@@ -61,6 +61,14 @@ export default defineConfig(async () => {
     plugins: [vue(), copyVuePlugin(), copyUIPlugin()],
     build: {
       outDir: '../docs/docs/.vitepress/dist/playground'
+    },
+    resolve: {
+      alias: [
+        {
+          find: 'tantalum-ui-mobile',
+          replacement: path.resolve('../../')
+        }
+      ]
     }
   }
 })
