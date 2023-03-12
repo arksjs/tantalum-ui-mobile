@@ -107,7 +107,7 @@ export function isBoolean(object: unknown): object is boolean {
  * @param object 值
  * @returns boolean
  */
-export function isObject(object: unknown) {
+export function isObject(object: unknown): object is Record<any, any> {
   return typeof object === 'object' && object !== null
 }
 
