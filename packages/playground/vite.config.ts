@@ -66,7 +66,7 @@ export default defineConfig(async () => {
       alias: [
         {
           find: 'tantalum-ui-mobile',
-          replacement: path.resolve('../../')
+          replacement: path.resolve('../../es')
         }
       ]
     }

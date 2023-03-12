@@ -3,7 +3,6 @@ import * as defaultCompiler from 'vue/compiler-sfc'
 import type { Store, SFCOptions, StoreState, OutputModes } from '@vue/repl'
 import { compileFile, File } from '@vue/repl'
 import { utoa, atou } from './utils/encode'
-import { showToast } from 'tantalum-ui-mobile'
 import { genUnpkgLink } from './utils/link'
 
 const defaultMainFile = 'App.vue'
@@ -145,7 +144,7 @@ export class ReplStore implements Store {
 
   deleteFile(filename: string) {
     if (filename === uiSetupFile) {
-      showToast('This is TantalumUI setup file.')
+      alert('This is TantalumUI setup file.')
       return
     }
 
