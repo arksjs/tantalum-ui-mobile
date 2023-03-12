@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, shallowRef } from 'vue'
-import { useListItem, useTouch } from '../hooks'
+import { useTouch } from '../hooks'
 
 interface TabViewItemCoords {
   vertical: boolean
@@ -40,9 +40,6 @@ export default defineComponent({
   setup() {
     const root = shallowRef<HTMLElement | null>(null)
     const vertical = inject('taTabViewVertical', false)
-
-    useListItem('swiper')
-    useListItem('tabView')
 
     // onUpdated(() => {
     //   const $item = root.value as HTMLElement

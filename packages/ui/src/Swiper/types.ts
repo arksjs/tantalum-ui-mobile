@@ -31,6 +31,7 @@ export interface SwiperEmits {
   onActiveIndexChange?: OnActiveIndexChange
   onAnimated?: OnAnimated
   onClick?: Noop
+  onResetItems: (items: HTMLElement[]) => void
 }
 
 export type SwiperItemProps = {

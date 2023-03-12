@@ -15,11 +15,12 @@
         @change="onTabChange"
       />
     </div>
-    <div class="ta-tab-view_body" ref="listEl">
+    <div class="ta-tab-view_body">
       <Swiper
         :activeIndex="activeIndex"
         @activeIndexChange="onSwiperChange"
         @animated="onSwiperAnimated"
+        @resetItems="resetItems"
         ref="swiperRef"
         :initialVertical="vertical"
         :bounces="false"
@@ -35,7 +36,7 @@ import { ref, defineComponent, provide, watch, shallowRef } from 'vue'
 import { Tab } from '../Tab'
 import { SideTab } from '../SideTab'
 import { Swiper } from '../Swiper'
-import { useList, useException } from '../hooks'
+import { useException } from '../hooks'
 import type {
   SwiperOnActiveIndexChange,
   SwiperOnAnimated,
@@ -95,8 +96,6 @@ export default defineComponent({
 
       return -1
     }
-
-    const { listEl } = useList('tabView', resetItems)
 
     const onTabChange: TabOnChange = index => {
       switchToIndex(index as number)
@@ -172,11 +171,11 @@ export default defineComponent({
       activeIndex,
       tabList,
       vertical,
-      listEl,
       onTabChange,
       swiperRef,
       onSwiperChange,
       onSwiperAnimated,
+      resetItems,
       classes,
 
       switchTo,

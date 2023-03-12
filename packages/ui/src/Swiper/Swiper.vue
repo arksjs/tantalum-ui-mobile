@@ -1,7 +1,7 @@
 <template>
   <div :class="classes" ref="root">
     <div class="ta-swiper_list" ref="listEl">
-      <slot></slot>
+      <SwiperItems @resetItems="resetItems"><slot></slot></SwiperItems>
     </div>
     <div :class="indicatorsClasses" v-if="indicatorDots">
       <span
@@ -45,15 +45,11 @@ import {
   CSSProperties2CssText,
   colorValidator,
   type PropsToEmits,
-  getNumber
+  getNumber,
+  isSameArray
 } from '../helpers'
-import {
-  useList,
-  useTouch,
-  useResizeObserver,
-  useException,
-  useOnce
-} from '../hooks'
+import { useTouch, useResizeObserver, useException, useOnce } from '../hooks'
+import SwiperItems from './SwiperItems.vue'
 import { emitChangeValidator } from './props'
 import LeftOutlined from '../Icon/icons/LeftOutlined'
 import RightOutlined from '../Icon/icons/RightOutlined'
@@ -76,7 +72,7 @@ interface SwiperCoords {
 
 export default defineComponent({
   name: 'ta-swiper',
-  components: { Icon },
+  components: { Icon, SwiperItems },
   props: {
     // 是否显示面板指示点
     indicatorDots: {
@@ -128,11 +124,13 @@ export default defineComponent({
     'update:activeIndex': activeIndex => isNumber(activeIndex),
     activeIndexChange: emitChangeValidator,
     animated: emitChangeValidator,
-    click: returnTrue
+    click: returnTrue,
+    resetItems: (items: HTMLElement[]) => Array.isArray(items)
   } as PropsToEmits<SwiperEmits>,
   setup(props, { emit, expose }) {
     const { printListItemNotFoundError } = useException()
     const root = shallowRef<HTMLElement | null>(null)
+    const listEl = shallowRef<HTMLElement | null>(null)
     const index = ref(0)
     const pagination = ref<number[]>([])
 
@@ -392,15 +390,27 @@ export default defineComponent({
       })
     }
 
-    function resetItems(res: HTMLElement[]) {
-      $items = res
+    function getItems(): HTMLElement[] {
+      return listEl.value
+        ? [].slice.call(listEl.value.querySelectorAll(`.ta-swiper-item`), 0)
+        : []
+    }
+
+    function resetItems() {
+      const $newItems = getItems()
+      if (isSameArray($newItems, $items)) {
+        return
+      }
+      $items = $newItems
+      emit('resetItems', $newItems)
 
       // 处理索引和页码
-      pagination.value = []
+      const _pagination: number[] = []
       $items.forEach(($item, i) => {
-        $item.dataset.index = i.toString()
-        pagination.value.push(i)
+        // $item.dataset.index = i.toString()
+        _pagination.push(i)
       })
+      pagination.value = _pagination
 
       setSlideStyle()
 
@@ -478,8 +488,6 @@ export default defineComponent({
     function getItemEl(index: number) {
       return $items[index] || null
     }
-
-    const { listEl, update } = useList('swiper', resetItems)
 
     useResizeObserver(root, setSlideStyle)
 
@@ -642,9 +650,9 @@ export default defineComponent({
     return {
       root,
       listEl,
+      resetItems,
       index,
       pagination,
-      update,
       getItemEl,
       LeftOutlined,
       RightOutlined,
