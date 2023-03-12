@@ -1,8 +1,8 @@
 <template>
   <div ref="root" :class="classes">
-    <div class="ta-sticky-view_list" ref="listEl">
+    <StickyViewList ref="itemsRef" @resetItems="resetItems">
       <slot></slot>
-    </div>
+    </StickyViewList>
     <Sticky
       :offsetTop="offsetTop"
       :containSelector="containSelector"
@@ -26,7 +26,8 @@ import {
   watch,
   nextTick,
   shallowRef,
-  type PropType
+  type PropType,
+  VNode
 } from 'vue'
 import { Sticky } from '../Sticky'
 import {
@@ -41,17 +42,23 @@ import {
   isNumber,
   isString,
   type PropsToEmits,
-  type Selector
+  type Selector,
+  getElementItems
 } from '../helpers'
-import { useScroll, useList, useException, useOnce } from '../hooks'
+import StickyViewList from './StickyViewList.vue'
+import { useScroll, useException, useOnce } from '../hooks'
 import { emitChangeValidator } from './props'
-import type { StickyViewEmits } from './types'
+import type {
+  StickyViewEmits,
+  StickyViewItem,
+  StickyViewListRef
+} from './types'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import { getClasses, getFixedStyles, FIXED_HEIGHT } from './util'
 
 export default defineComponent({
   name: 'ta-sticky-view',
-  components: { Sticky },
+  components: { Sticky, StickyViewList },
   props: {
     modelValue: {
       type: String
@@ -95,20 +102,18 @@ export default defineComponent({
     const container = shallowRef<HTMLElement | null>(null)
     const fixedEl = shallowRef<HTMLElement | null>(null)
     const stickyRef = shallowRef<StickyRef | null>(null)
+    const itemsRef = shallowRef<StickyViewListRef | null>(null)
     const activeIndex = ref(0)
     const isSelfContainer = ref(false)
 
+    let cachedItems: StickyViewItem[] = []
     let $items: HTMLElement[] = []
     let isSpecifyScrolling = false // 是否指定滚动
 
     const once = useOnce()
 
     function getItemName(index: number) {
-      return $items[index]?.dataset.name || ''
-    }
-
-    function getItemTitle(index: number) {
-      return $items[index]?.dataset.title || getItemName(index)
+      return cachedItems[index]?.name || ''
     }
 
     function getActiveIndexByName(name?: string) {
@@ -218,7 +223,7 @@ export default defineComponent({
     function getOffsetTops() {
       const offset =
         getRelativeOffset(
-          listEl.value as HTMLElement,
+          getListEl() as HTMLElement,
           container.value as HTMLElement
         ).offsetTop - getSizeValue(props.offsetTop)
 
@@ -281,24 +286,38 @@ export default defineComponent({
       updateFixed(null)
     }
 
-    function resetItems(res: HTMLElement[]) {
-      $items = res
+    function getListEl() {
+      return itemsRef.value?.ref || null
+    }
+
+    function isSameItems(a: StickyViewItem[], b: StickyViewItem[]) {
+      if (a.length !== b.length) return false
+      for (let i = 0; i < a.length; i++) {
+        if (!(a[i].name === b[i].name && a[i].title === b[i].title)) {
+          return false
+        }
+      }
+      return true
+    }
+
+    function resetItems(_items: VNode[]) {
+      $items = getElementItems(getListEl(), 'ta-sticky-view-item')
 
       updateFixed(null)
 
-      emit(
-        'resetItems',
-        $items.map((v, k) => {
-          return {
-            name: getItemName(k),
-            index: k,
-            title: getItemTitle(k)
-          }
-        })
-      )
-    }
+      const newItems: StickyViewItem[] = _items.map((item, index) => {
+        return {
+          index,
+          name: item.props?.name || '',
+          title: item.props?.title || item.props?.name || ''
+        }
+      })
 
-    const { listEl } = useList('stickyView', resetItems)
+      if (!isSameItems(newItems, cachedItems)) {
+        cachedItems = newItems
+        emit('resetItems', newItems)
+      }
+    }
 
     function updateValue(val?: string) {
       const newIndex = getActiveIndexByName(val)
@@ -318,6 +337,8 @@ export default defineComponent({
 
     onMounted(() => {
       resetContainer(props.containSelector)
+
+      $items = getElementItems(getListEl(), 'ta-sticky-view-item')
       // 首次设置 modelValue 非string类型认为是没配置，不做更新
       props.modelValue != null && updateValue(props.modelValue)
     })
@@ -333,10 +354,11 @@ export default defineComponent({
 
     return {
       root,
-      listEl,
       fixedEl,
+      itemsRef,
       stickyRef,
       classes,
+      resetItems,
 
       scrollTo,
       scrollToIndex,

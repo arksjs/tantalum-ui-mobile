@@ -1,3 +1,4 @@
+import type { ShallowRef } from 'vue'
 import type { ResetContainer } from '../Sticky/types'
 
 export interface StickyViewItem {
@@ -9,6 +10,10 @@ export interface StickyViewItem {
 export type OnResetItems = (items: StickyViewItem[]) => void
 
 export type OnChange = (name: string, activeIndex: number) => void
+
+export interface StickyViewListRef {
+  ref: HTMLElement
+}
 
 export interface StickyViewRef {
   scrollTo: (name: string) => void
