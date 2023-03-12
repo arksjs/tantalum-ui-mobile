@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'ta-swiper-list',
+  name: 'ta-swiper-items',
   emits: ['reset-items'],
   setup(_, { slots, emit }) {
     return () => {

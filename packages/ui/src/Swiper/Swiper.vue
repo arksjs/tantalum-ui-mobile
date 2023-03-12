@@ -46,7 +46,8 @@ import {
   colorValidator,
   type PropsToEmits,
   getNumber,
-  isSameArray
+  isSameArray,
+  getElementItems
 } from '../helpers'
 import { useTouch, useResizeObserver, useException, useOnce } from '../hooks'
 import SwiperItems from './SwiperItems.vue'
@@ -390,14 +391,9 @@ export default defineComponent({
       })
     }
 
-    function getItems(): HTMLElement[] {
-      return listEl.value
-        ? [].slice.call(listEl.value.querySelectorAll(`.ta-swiper-item`), 0)
-        : []
-    }
-
     function resetItems() {
-      const $newItems = getItems()
+      const $newItems = getElementItems(listEl.value, 'ta-swiper-item')
+
       if (isSameArray($newItems, $items)) {
         return
       }
@@ -405,12 +401,7 @@ export default defineComponent({
       emit('resetItems', $newItems)
 
       // 处理索引和页码
-      const _pagination: number[] = []
-      $items.forEach(($item, i) => {
-        // $item.dataset.index = i.toString()
-        _pagination.push(i)
-      })
-      pagination.value = _pagination
+      pagination.value = $items.map((_, index) => index)
 
       setSlideStyle()
 
@@ -625,7 +616,7 @@ export default defineComponent({
     )
 
     onMounted(() => {
-      start()
+      resetItems()
 
       const activeIndex = props.activeIndex
       if (activeIndex != null && activeIndex !== 0) {
