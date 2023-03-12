@@ -10,6 +10,10 @@ export type OnResetItems = (items: StickyViewItem[]) => void
 
 export type OnChange = (name: string, activeIndex: number) => void
 
+export interface StickyViewListRef {
+  ref: HTMLElement
+}
+
 export interface StickyViewRef {
   scrollTo: (name: string) => void
   scrollToIndex: (index: number) => void

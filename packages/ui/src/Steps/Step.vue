@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" ref="root">
+  <div :class="classes">
     <div class="ta-step_line"></div>
     <div class="ta-step_index">
       <slot name="step" :index="index" :active="active" :finish="finish">{{
@@ -18,8 +18,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, ref, shallowRef } from 'vue'
-import { useListItem } from '../hooks'
+import { computed, defineComponent } from 'vue'
 import { getStepClasses } from './util'
 
 export default defineComponent({
@@ -28,20 +27,23 @@ export default defineComponent({
     title: {
       type: String,
       default: ''
+    },
+    index: {
+      type: Number,
+      default: -1
+    },
+    activeIndex: {
+      type: Number,
+      default: -1
     }
   },
-  setup() {
-    const activeIndex = inject(`taStepsActiveIndex`, ref(0))
-    const root = shallowRef<HTMLElement | null>(null)
-
-    const { index } = useListItem('steps', root)
-
+  setup(props) {
     const active = computed(() => {
-      return activeIndex.value === index.value
+      return props.activeIndex === props.index
     })
 
     const finish = computed(() => {
-      return index.value < activeIndex.value
+      return props.index < props.activeIndex
     })
 
     const classes = computed(() =>
@@ -52,8 +54,6 @@ export default defineComponent({
     )
 
     return {
-      root,
-      index,
       active,
       finish,
       classes

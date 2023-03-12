@@ -12,7 +12,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useListItem } from '../hooks'
 
 export default defineComponent({
   name: 'ta-sticky-view-item',
@@ -25,11 +24,6 @@ export default defineComponent({
       type: String,
       required: true
     }
-  },
-  setup() {
-    useListItem('stickyView')
-
-    return {}
   }
 })
 </script>

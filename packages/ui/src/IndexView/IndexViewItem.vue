@@ -10,9 +10,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, onMounted, onUnmounted } from 'vue'
+import { defineComponent } from 'vue'
 import { Group } from '../Group'
-import { useException } from '../hooks'
 
 export default defineComponent({
   name: 'ta-index-view-item',
@@ -26,15 +25,6 @@ export default defineComponent({
       type: String,
       required: true
     }
-  },
-  setup() {
-    const { printItemIsolationWarn } = useException()
-    const update = inject('taStickyViewUpdate', printItemIsolationWarn)
-
-    onMounted(update)
-    onUnmounted(update)
-
-    return {}
   }
 })
 </script>

@@ -1,4 +1,3 @@
-import { isObject } from '../helpers'
 import type { Option } from './types'
 
 export const getOptions = (options?: Option[]) => {
@@ -6,19 +5,11 @@ export const getOptions = (options?: Option[]) => {
 
   if (Array.isArray(options)) {
     options.forEach(v => {
-      newOptions.push(
-        isObject(v)
-          ? {
-              icon: v.icon || undefined,
-              name: v.name,
-              disabled: !!v.disabled
-            }
-          : {
-              icon: undefined,
-              name: v.toString(),
-              disabled: false
-            }
-      )
+      newOptions.push({
+        icon: v.icon || undefined,
+        name: v.name,
+        disabled: !!v.disabled
+      })
     })
   }
 

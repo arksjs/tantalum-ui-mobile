@@ -2,7 +2,9 @@
 
 exports[`Swiper > snapshot 1`] = `
 "<div class=\\"ta-swiper\\">
-  <div class=\\"ta-swiper_list\\"></div>
+  <div class=\\"ta-swiper_list\\">
+    <swiper-items-stub></swiper-items-stub>
+  </div>
   <!--v-if-->
   <!--v-if-->
 </div>"

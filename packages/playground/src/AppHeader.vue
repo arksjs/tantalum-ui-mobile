@@ -3,7 +3,6 @@ import Sun from './icons/SunIcon.vue'
 import Moon from './icons/MoonIcon.vue'
 import GitHub from './icons/GitHubIcon.vue'
 import Share from './icons/ShareIcon.vue'
-import { showToast } from 'tantalum-ui-mobile'
 
 function toggleDark() {
   const cls = document.documentElement.classList
@@ -16,7 +15,7 @@ function toggleDark() {
 
 async function copyLink() {
   await navigator.clipboard.writeText(location.href)
-  showToast('Sharable URL has been copied to clipboard.')
+  alert('Sharable URL has been copied to clipboard.')
 }
 </script>
 

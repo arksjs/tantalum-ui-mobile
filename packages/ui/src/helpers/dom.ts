@@ -185,3 +185,12 @@ export function getParentTarget($el: HTMLElement, className: string) {
 
   return null
 }
+
+export function getElementItems(
+  $list: HTMLElement | null | undefined,
+  itemClassName: string
+): HTMLElement[] {
+  return $list
+    ? [].slice.call($list.querySelectorAll(`.${itemClassName}`), 0)
+    : []
+}

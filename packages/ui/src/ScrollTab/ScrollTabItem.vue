@@ -10,8 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, onMounted, onUnmounted } from 'vue'
-import { useException } from '../hooks'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'ta-scroll-tab-item',
@@ -23,15 +22,6 @@ export default defineComponent({
       type: String,
       required: true
     }
-  },
-  setup() {
-    const { printItemIsolationWarn } = useException()
-    const update = inject('taStickyViewUpdate', printItemIsolationWarn)
-
-    onMounted(update)
-    onUnmounted(update)
-
-    return {}
   }
 })
 </script>

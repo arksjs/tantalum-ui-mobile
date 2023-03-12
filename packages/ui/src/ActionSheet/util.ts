@@ -1,4 +1,4 @@
-import { cloneData, isObject } from '../helpers'
+import { cloneData } from '../helpers'
 import type { Option } from './types'
 
 export const getOptions = (options?: Option[]) => {
@@ -6,13 +6,7 @@ export const getOptions = (options?: Option[]) => {
 
   if (Array.isArray(options)) {
     options.forEach(v => {
-      newOptions.push(
-        isObject(v)
-          ? cloneData(v)
-          : {
-              name: v.toString()
-            }
-      )
+      newOptions.push(cloneData(v))
     })
   }
 
