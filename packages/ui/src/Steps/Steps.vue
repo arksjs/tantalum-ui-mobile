@@ -1,14 +1,7 @@
-<template>
-  <div :class="classes" ref="listEl">
-    <slot></slot>
-  </div>
-</template>
-
 <script lang="ts">
-import { computed, defineComponent, provide, toRef } from 'vue'
-import { noop } from '../helpers'
-import { useList } from '../hooks'
+import { cloneVNode, computed, defineComponent, h } from 'vue'
 import { getStepsClasses } from './util'
+import { getComponentChildren } from './slot'
 
 export default defineComponent({
   name: 'ta-steps',
@@ -26,14 +19,27 @@ export default defineComponent({
       default: false
     }
   },
-  setup(props) {
-    const { listEl } = useList('steps', noop)
-
-    provide(`taStepsActiveIndex`, toRef(props, 'activeIndex'))
-
+  setup(props, { slots }) {
     const classes = computed(() => getStepsClasses(props))
 
-    return { listEl, classes }
+    return () => {
+      const children = slots.default?.()
+
+      // console.log(children)
+
+      const newChildren = getComponentChildren(children, 'ta-step').map(
+        (child, index) =>
+          cloneVNode(child, { index, activeIndex: props.activeIndex })
+      )
+
+      return h(
+        'div',
+        {
+          class: classes.value
+        },
+        newChildren
+      )
+    }
   }
 })
 </script>
