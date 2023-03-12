@@ -27,7 +27,7 @@ import {
   nextTick,
   shallowRef,
   type PropType,
-  VNode
+  type VNode
 } from 'vue'
 import { Sticky } from '../Sticky'
 import {

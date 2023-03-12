@@ -1,4 +1,3 @@
-import type { ShallowRef } from 'vue'
 import type { ResetContainer } from '../Sticky/types'
 
 export interface StickyViewItem {
