@@ -7,9 +7,15 @@ import {
 } from 'vue'
 import { isObject } from '../helpers'
 
-export function getComponentChildren(
+/**
+ * 获取指定组件的VNode列表
+ * @param children VNode列表
+ * @param componentName 组件名称
+ * @returns VNode列表项
+ */
+export function getComponentVNodeItems(
   children: VNodeNormalizedChildren | undefined,
-  componentName: string
+  componentName: string | RegExp
 ) {
   let newChildren: VNode[] = []
 
@@ -17,15 +23,20 @@ export function getComponentChildren(
     return newChildren
   }
 
+  const nameRegex =
+    componentName instanceof RegExp
+      ? componentName
+      : new RegExp(`^${componentName}$`)
+
   for (const child of children) {
     if (isVNode(child)) {
       if (child.type === Fragment) {
         newChildren = newChildren.concat(
-          getComponentChildren(child.children, componentName)
+          getComponentVNodeItems(child.children, componentName)
         )
       } else if (
         isObject(child.type) &&
-        (child.type as Component).name === componentName
+        nameRegex.test((child.type as Component).name ?? '')
       ) {
         newChildren.push(child)
       }

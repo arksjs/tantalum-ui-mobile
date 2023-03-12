@@ -1,15 +1,9 @@
 <script lang="ts">
-import {
-  defineComponent,
-  h,
-  isVNode,
-  shallowRef,
-  type VNode,
-  type Component
-} from 'vue'
+import { getComponentVNodeItems } from '@/slots'
+import { defineComponent, h, shallowRef } from 'vue'
 
 export default defineComponent({
-  name: 'ta-sticky-view-items',
+  name: 'ta-sticky-view-list',
   emits: ['reset-items'],
   setup(_, { slots, emit, expose }) {
     const root = shallowRef<HTMLElement | null>(null)
@@ -21,25 +15,7 @@ export default defineComponent({
     return () => {
       const children = slots.default?.()
 
-      let items: VNode[] = []
-      if (children && isVNode(children[0])) {
-        if (Array.isArray(children[0].children)) {
-          items = children[0].children
-            .map(item => {
-              if (isVNode(item) && Array.isArray(item.children)) {
-                return item.children.filter(
-                  item =>
-                    isVNode(item) &&
-                    (item.type as Component).name === 'ta-sticky-view-item'
-                )
-              }
-
-              return []
-            })
-            .flat() as VNode[]
-        }
-      }
-      emit('reset-items', items)
+      emit('reset-items', getComponentVNodeItems(children, /^ta-[\w-]+-item$/))
 
       return h('div', { class: 'ta-sticky-view_list', ref: root }, children)
     }

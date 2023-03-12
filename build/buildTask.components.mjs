@@ -35,7 +35,7 @@ const externalPlugin = (esm = false) => {
           if (!/[A-Za-z]+\./.test(path)) {
             // Exclude the ./a.css
             if (
-              /helpers|hooks|locale/.test(path) ||
+              /helpers|hooks|locale|slots/.test(path) ||
               /\/[A-Z][^/]+$/.test(path)
             ) {
               // add  /index.mjs

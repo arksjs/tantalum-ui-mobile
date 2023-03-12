@@ -1,7 +1,7 @@
 <script lang="ts">
 import { cloneVNode, computed, defineComponent, h } from 'vue'
 import { getStepsClasses } from './util'
-import { getComponentChildren } from './slot'
+import { getComponentVNodeItems } from '../slots'
 
 export default defineComponent({
   name: 'ta-steps',
@@ -25,9 +25,7 @@ export default defineComponent({
     return () => {
       const children = slots.default?.()
 
-      // console.log(children)
-
-      const newChildren = getComponentChildren(children, 'ta-step').map(
+      const newChildren = getComponentVNodeItems(children, 'ta-step').map(
         (child, index) =>
           cloneVNode(child, { index, activeIndex: props.activeIndex })
       )
