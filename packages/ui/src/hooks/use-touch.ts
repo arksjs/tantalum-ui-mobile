@@ -1,7 +1,6 @@
-import { onBeforeUnmount, onMounted, type Ref } from 'vue'
 import { touchEvent } from '../helpers'
 
-interface UseTouchEvent extends Event {
+interface UseTouchEvent extends UIEvent {
   touchObject: {
     pageX: number
     pageY: number
@@ -9,70 +8,74 @@ interface UseTouchEvent extends Event {
     clientY: number
   }
   target: HTMLElement
+  touchTargetElement: HTMLElement
+  touchCurrentElement: HTMLElement
 }
 
-interface UseOptions {
-  el: Ref<HTMLElement | undefined | null>
-  onTouchStart: (e: UseTouchEvent) => void
-  onTouchMove: (e: UseTouchEvent) => void
-  onTouchEnd: (e: UseTouchEvent) => void
-  handleEvent?: (e: Event) => void
-}
-
-const {
-  touchstart,
-  touchmove,
-  touchend,
-  addListeners,
-  removeListeners,
-  getTouch
-} = touchEvent
+const getTouch = touchEvent.getTouch
+const isTouchEvent = touchEvent.touchstart === 'touchstart'
 
 export function useTouch({
-  el,
-  onTouchStart,
-  onTouchMove,
-  onTouchEnd
-}: UseOptions) {
+  onStart,
+  onMove,
+  onEnd
+}: {
+  onStart: (e: UseTouchEvent) => void
+  onMove: (e: UseTouchEvent) => void
+  onEnd: (e: UseTouchEvent) => void
+}) {
   let isTouching = false
 
-  const object = {
-    handleEvent(e: UseTouchEvent) {
-      e.touchObject = getTouch(e)
+  function getUseEvent(e: UIEvent) {
+    ;(e as UseTouchEvent).touchObject = getTouch(e)
+    e.currentTarget instanceof HTMLElement &&
+      ((e as UseTouchEvent).touchCurrentElement = e.currentTarget)
+    e.target instanceof HTMLElement &&
+      ((e as UseTouchEvent).touchTargetElement = e.target)
+    return e as UseTouchEvent
+  }
 
-      switch (e.type) {
-        case touchstart:
-          isTouching = true
-          onTouchStart(e)
-          break
-        case touchmove:
-          isTouching && onTouchMove(e)
-          break
-        case touchend:
-          if (isTouching) {
-            isTouching = false
-            onTouchEnd(e)
-          }
-          break
-        case 'mouseleave':
-          if (isTouching) {
-            isTouching = false
-            onTouchEnd(e)
-          }
-          break
-        case 'dragstart':
-          // 禁用拖拽事件
-          e.preventDefault()
-          break
-        default:
-          break
-      }
+  /**
+   * 是否允许被调用
+   * @param type 事件类型
+   * @returns boolean
+   */
+  function allowCallback(type: string) {
+    return (
+      (isTouchEvent && type.indexOf('touch') === 0) ||
+      (!isTouchEvent && type.indexOf('mouse') === 0)
+    )
+  }
+
+  function onTouchStart(e: UIEvent) {
+    isTouching = true
+    allowCallback(e.type) && onStart(getUseEvent(e))
+  }
+
+  function onTouchMove(e: UIEvent) {
+    isTouching && allowCallback(e.type) && onMove(getUseEvent(e))
+  }
+
+  function onTouchEnd(e: UIEvent) {
+    if (isTouching) {
+      isTouching = false
+      allowCallback(e.type) && onEnd(getUseEvent(e))
     }
   }
 
-  onMounted(() => addListeners((el as Ref<HTMLElement>).value, object))
+  function onDragStart(e: UIEvent) {
+    // 禁用拖拽事件
+    e.preventDefault()
+  }
 
-  onBeforeUnmount(() => removeListeners((el as Ref<HTMLElement>).value, object))
-
-  return {}
+  return {
+    // touchstart/mousedown,
+    onTouchStart,
+    // touchmove/mousemove
+    onTouchMove,
+    // touchend/mouseup/mouseleave
+    onTouchEnd,
+    // dragstart
+    onDragStart
+  }
 }

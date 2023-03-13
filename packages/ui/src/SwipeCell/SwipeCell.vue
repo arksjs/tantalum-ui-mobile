@@ -1,5 +1,15 @@
 <template>
-  <div class="ta-swipe-cell ta-horizontal-hairline" ref="root">
+  <div
+    class="ta-swipe-cell ta-horizontal-hairline"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @mousedown="onTouchStart"
+    @mousemove="onTouchMove"
+    @mouseup="onTouchEnd"
+    @mouseleave="onTouchEnd"
+    @dragstart="onDragStart"
+  >
     <div class="ta-swipe-cell_inner" :style="innerStyles">
       <slot></slot>
       <div class="ta-swipe-cell_buttons" ref="buttonsEl">
@@ -73,7 +83,6 @@ export default defineComponent({
     buttonClick: payload => payload && isNumber(payload.index)
   } as PropsToEmits<SwipeCellEmits>,
   setup(props, ctx) {
-    const root = shallowRef<HTMLElement | null>(null)
     const buttonsEl = shallowRef<HTMLElement | null>(null)
     const translateX = ref(0)
     const duration = ref(0)
@@ -118,9 +127,8 @@ export default defineComponent({
 
     const buttons2 = computed(() => getButtons(props.buttons))
 
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         if (props.buttons.length === 0) {
           return
         }
@@ -136,7 +144,7 @@ export default defineComponent({
           e.stopPropagation()
         }
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords) {
           return
         }
@@ -171,7 +179,7 @@ export default defineComponent({
 
         e.stopPropagation()
       },
-      onTouchEnd(e) {
+      onEnd(e) {
         if (coords) {
           const { isSwipe, buttonsW } = coords
 
@@ -200,7 +208,6 @@ export default defineComponent({
     useStop(buttonsEl, 'click')
 
     return {
-      root,
       buttonsEl,
       buttonTranslateXs,
       buttons2,
@@ -208,7 +215,12 @@ export default defineComponent({
       noop,
       onButtonClick,
       innerStyles,
-      getButtonStyles
+      getButtonStyles,
+
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     }
   }
 })

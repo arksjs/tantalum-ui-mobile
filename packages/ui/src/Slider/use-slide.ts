@@ -1,4 +1,4 @@
-import { computed, shallowRef } from 'vue'
+import { computed } from 'vue'
 import {
   getNumber,
   rangeNumber,
@@ -42,8 +42,6 @@ export function useSlide(
   props: SlideCommonProps,
   { move, end, getValue }: UseOptions
 ) {
-  const sliderEl = shallowRef<HTMLElement | null>(null)
-
   let coords: Coords | null
   let tempValue = 0
 
@@ -90,18 +88,21 @@ export function useSlide(
     move({ value: tempValue, progress: value2Progress(newVal), $target })
   }
 
-  useTouch({
-    el: sliderEl,
-    onTouchStart(e) {
+  const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+    onStart(e) {
       if (props.disabled) {
         // 禁用
+        return
+      }
+
+      if (!e.touchCurrentElement) {
         return
       }
 
       const { clientX } = e.touchObject
 
       const $target = e.target as HTMLElement
-      const trackRects = (sliderEl.value as HTMLElement).getClientRects()[0]
+      const trackRects = e.touchCurrentElement.getClientRects()[0]
       const thumb = !!$target.dataset.thumb
 
       coords = {
@@ -109,7 +110,7 @@ export function useSlide(
         thumb,
         thumbW,
         clientStartX: clientX,
-        thumbXInTrack: getRelativeOffset($target, sliderEl.value as HTMLElement)
+        thumbXInTrack: getRelativeOffset($target, e.touchCurrentElement)
           .offsetLeft,
         trackX: trackRects.left,
         trackW: trackRects.width - thumbW,
@@ -125,8 +126,7 @@ export function useSlide(
 
       e.preventDefault()
     },
-
-    onTouchMove(e) {
+    onMove(e) {
       if (!coords) {
         return
       }
@@ -144,8 +144,7 @@ export function useSlide(
 
       e.stopPropagation()
     },
-
-    onTouchEnd(e) {
+    onEnd(e) {
       if (coords) {
         if (!coords.thumb && !coords.moved) {
           updateByX(
@@ -174,12 +173,16 @@ export function useSlide(
   const slideStyles = computed(() => getSlideStyles(props.color))
 
   return {
-    sliderEl,
     toInteger,
     rangeValue,
     value2Progress,
     getMinMax,
     slideClasses,
-    slideStyles
+    slideStyles,
+
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
+    onDragStart
   }
 }

@@ -1,5 +1,18 @@
 <template>
-  <div :class="classes" :style="styles" v-bind="$attrs" ref="root">
+  <div
+    :class="classes"
+    :style="styles"
+    v-bind="$attrs"
+    ref="root"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @mousedown="onTouchStart"
+    @mousemove="onTouchMove"
+    @mouseup="onTouchEnd"
+    @mouseleave="onTouchEnd"
+    @dragstart="onDragStart"
+  >
     <div
       :class="getItemClasses(item, index, dragCurrent, dragFixed)"
       :style="getItemStyles(item, columnNumber)"
@@ -392,9 +405,8 @@ export default defineComponent({
       }
     }
 
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         const target = getParentTarget(e.target, 'ta-order_item')
 
         if (!target || drag.on) {
@@ -437,7 +449,7 @@ export default defineComponent({
 
         // const index = parseInt(target.dataset.index as string)
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!dragOn.value || !drag.targetObject) {
           // 取消拖拽判定
           clearTimeout(onTimer)
@@ -493,8 +505,7 @@ export default defineComponent({
           positions[index].top = top + targetObject.fixedOffsetY
         }
       },
-
-      onTouchEnd() {
+      onEnd() {
         clearTimeout(onTimer)
 
         if (dragOn.value) {
@@ -546,7 +557,12 @@ export default defineComponent({
       styles,
       getItemClasses,
       getItemStyles,
-      getItemRatioStyles
+      getItemRatioStyles,
+
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     }
   }
 })

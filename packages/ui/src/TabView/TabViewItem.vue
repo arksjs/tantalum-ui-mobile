@@ -4,14 +4,21 @@
     :data-name="name"
     :data-title="title"
     :data-sub-title="subTitle"
-    ref="root"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @mousedown="onTouchStart"
+    @mousemove="onTouchMove"
+    @mouseup="onTouchEnd"
+    @mouseleave="onTouchEnd"
+    @dragstart="onDragStart"
   >
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, shallowRef } from 'vue'
+import { defineComponent, inject } from 'vue'
 import { useTouch } from '../hooks'
 
 interface TabViewItemCoords {
@@ -38,7 +45,6 @@ export default defineComponent({
     }
   },
   setup() {
-    const root = shallowRef<HTMLElement | null>(null)
     const vertical = inject('taTabViewVertical', false)
 
     // onUpdated(() => {
@@ -52,9 +58,8 @@ export default defineComponent({
 
     let coords: TabViewItemCoords | null
 
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         const {
           scrollHeight,
           scrollTop,
@@ -98,7 +103,7 @@ export default defineComponent({
           // e.stopPropagation()
         }
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords) {
           return
         }
@@ -122,13 +127,16 @@ export default defineComponent({
           e.stopPropagation()
         }
       },
-      onTouchEnd() {
+      onEnd() {
         coords = null
       }
     })
 
     return {
-      root
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     }
   }
 })

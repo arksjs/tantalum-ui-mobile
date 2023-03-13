@@ -48,15 +48,10 @@ const touchmove = isMobile ? 'touchmove' : 'mousemove'
 const touchend = isMobile ? 'touchend' : 'mouseup'
 const touchOptions = passiveSupported ? { passive: false } : false
 
-function getStretchOffset(offset: number) {
-  return Math.ceil(offset / Math.log(Math.abs(offset)))
-}
-
 export const touchEvent = {
   touchstart,
   touchmove,
   touchend,
-  getStretchOffset,
   addListeners($el: HTMLElement | Document, object: EventListenerObject) {
     $el.addEventListener(touchstart, object, touchOptions)
     $el.addEventListener(touchmove, object, touchOptions)
