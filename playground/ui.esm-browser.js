@@ -2136,14 +2136,10 @@ var touchstart = isMobile ? "touchstart" : "mousedown";
 var touchmove = isMobile ? "touchmove" : "mousemove";
 var touchend = isMobile ? "touchend" : "mouseup";
 var touchOptions = passiveSupported ? { passive: false } : false;
-function getStretchOffset2(offset) {
-  return Math.ceil(offset / Math.log(Math.abs(offset)));
-}
 var touchEvent = {
   touchstart,
   touchmove,
   touchend,
-  getStretchOffset: getStretchOffset2,
   addListeners($el, object) {
     $el.addEventListener(touchstart, object, touchOptions);
     $el.addEventListener(touchmove, object, touchOptions);
@@ -2906,56 +2902,46 @@ var useTimer = (callback, interval) => {
 };
 
 // packages/ui/src/hooks/use-touch.ts
-import { onBeforeUnmount as onBeforeUnmount9, onMounted as onMounted6 } from "vue";
-var {
-  touchstart: touchstart2,
-  touchmove: touchmove2,
-  touchend: touchend2,
-  addListeners,
-  removeListeners,
-  getTouch
-} = touchEvent;
+var getTouch = touchEvent.getTouch;
+var isTouchEvent = touchEvent.touchstart === "touchstart";
 function useTouch({
-  el,
-  onTouchStart,
-  onTouchMove,
-  onTouchEnd
+  onStart,
+  onMove,
+  onEnd
 }) {
   let isTouching = false;
-  const object = {
-    handleEvent(e) {
-      e.touchObject = getTouch(e);
-      switch (e.type) {
-        case touchstart2:
-          isTouching = true;
-          onTouchStart(e);
-          break;
-        case touchmove2:
-          isTouching && onTouchMove(e);
-          break;
-        case touchend2:
-          if (isTouching) {
-            isTouching = false;
-            onTouchEnd(e);
-          }
-          break;
-        case "mouseleave":
-          if (isTouching) {
-            isTouching = false;
-            onTouchEnd(e);
-          }
-          break;
-        case "dragstart":
-          e.preventDefault();
-          break;
-        default:
-          break;
-      }
+  function getUseEvent(e) {
+    ;
+    e.touchObject = getTouch(e);
+    e.currentTarget instanceof HTMLElement && (e.touchCurrentElement = e.currentTarget);
+    e.target instanceof HTMLElement && (e.touchTargetElement = e.target);
+    return e;
+  }
+  function allowCallback(type) {
+    return isTouchEvent && type.indexOf("touch") === 0 || !isTouchEvent && type.indexOf("mouse") === 0;
+  }
+  function onTouchStart(e) {
+    isTouching = true;
+    allowCallback(e.type) && onStart(getUseEvent(e));
+  }
+  function onTouchMove(e) {
+    isTouching && allowCallback(e.type) && onMove(getUseEvent(e));
+  }
+  function onTouchEnd(e) {
+    if (isTouching) {
+      isTouching = false;
+      allowCallback(e.type) && onEnd(getUseEvent(e));
     }
+  }
+  function onDragStart(e) {
+    e.preventDefault();
+  }
+  return {
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
+    onDragStart
   };
-  onMounted6(() => addListeners(el.value, object));
-  onBeforeUnmount9(() => removeListeners(el.value, object));
-  return {};
 }
 
 // packages/ui/src/Button/context.ts
@@ -3420,7 +3406,7 @@ _sfc_script8.__file = "packages/ui/src/NavBar/NavBar.vue";
 var NavBar_default = _sfc_script8;
 
 // packages/ui/src/popup/use-popup.ts
-import { computed as computed5, onMounted as onMounted7, ref as ref2, watch as watch3, inject as inject5, shallowRef as shallowRef3 } from "vue";
+import { computed as computed5, onMounted as onMounted6, ref as ref2, watch as watch3, inject as inject5, shallowRef as shallowRef3 } from "vue";
 
 // packages/ui/src/popup/util.ts
 var VISIBLE_STATE_TYPES = [
@@ -3564,7 +3550,7 @@ function usePopup(props, ctx, useOptions) {
       customCancel("blur");
     }
   });
-  onMounted7(() => {
+  onMounted6(() => {
     props.visible && show();
   });
   const popupStyles = computed5(() => getPopupStyles(zIndex2.value, absTop.value, isShow.value));
@@ -4424,10 +4410,10 @@ var Badge_default = _sfc_script14;
 // vue:./Image.vue
 import {
   defineComponent as defineComponent11,
-  onMounted as onMounted8,
+  onMounted as onMounted7,
   ref as ref4,
   watch as watch5,
-  onBeforeUnmount as onBeforeUnmount10,
+  onBeforeUnmount as onBeforeUnmount9,
   computed as computed11,
   shallowRef as shallowRef4
 } from "vue";
@@ -4693,8 +4679,8 @@ var _sfc_script17 = defineComponent11({
         e.preventDefault();
       }
     }
-    onMounted8(() => props.src && load(props.src));
-    onBeforeUnmount10(() => removeComponentFromLazy(uid3));
+    onMounted7(() => props.src && load(props.src));
+    onBeforeUnmount9(() => removeComponentFromLazy(uid3));
     watch5(() => props.src, (val) => load(val));
     const imgClasses = computed11(() => getImgClasses(props.mode));
     const ratioStyles = computed11(() => getRatioStyles(props.aspectRatio));
@@ -5019,7 +5005,7 @@ import {
   computed as computed14,
   toRef as toRef2,
   ref as ref5,
-  onMounted as onMounted9,
+  onMounted as onMounted8,
   shallowRef as shallowRef5
 } from "vue";
 
@@ -5099,7 +5085,7 @@ var _sfc_script24 = defineComponent14({
       isShow.value = getScrollTop() >= getNumber(props.visibleHeight, DEFAULT_VISIBLE_HEIGHT);
     }
     useScroll(docEl, updateShow);
-    onMounted9(() => {
+    onMounted8(() => {
       updateShow();
       docEl.value = document.documentElement;
     });
@@ -5229,7 +5215,7 @@ var SelectorField_default = _sfc_script26;
 import {
   defineComponent as defineComponent20,
   nextTick as nextTick2,
-  onMounted as onMounted12,
+  onMounted as onMounted11,
   ref as ref8,
   shallowRef as shallowRef8,
   watch as watch8
@@ -5238,7 +5224,7 @@ import {
 // vue:./CalendarView.vue
 import {
   defineComponent as defineComponent19,
-  onMounted as onMounted11,
+  onMounted as onMounted10,
   reactive as reactive3,
   ref as ref7,
   shallowRef as shallowRef7,
@@ -5976,7 +5962,7 @@ _sfc_script29.__file = "packages/ui/src/Calendar/CalendarViewMonth.vue";
 import {
   computed as computed16,
   defineComponent as defineComponent18,
-  onMounted as onMounted10,
+  onMounted as onMounted9,
   ref as ref6,
   nextTick,
   watch as watch6,
@@ -6413,7 +6399,7 @@ var _sfc_script30 = defineComponent18({
     }
     useScroll(scrollEl, handleScroll);
     useResizeObserver(scrollEl, handleResize);
-    onMounted10(() => {
+    onMounted9(() => {
       resetScrollContainer(root.value);
       dataToList(props.ids);
     });
@@ -6888,7 +6874,7 @@ var _sfc_script31 = defineComponent19({
       deep: true,
       immediate: true
     });
-    onMounted11(() => {
+    onMounted10(() => {
       updateBodyFixed(bodyScrollTop);
     });
     return {
@@ -7029,7 +7015,7 @@ var _sfc_script32 = defineComponent20({
     }, {
       deep: true
     });
-    onMounted12(() => {
+    onMounted11(() => {
       detail = getViewDetail();
     });
     return {
@@ -7672,7 +7658,7 @@ _sfc_script35.__file = "packages/ui/src/Empty/Empty.vue";
 var Empty_default = _sfc_script35;
 
 // packages/ui/src/Picker/use-picker.ts
-import { nextTick as nextTick4, onMounted as onMounted13, ref as ref11, shallowRef as shallowRef11, watch as watch11 } from "vue";
+import { nextTick as nextTick4, onMounted as onMounted12, ref as ref11, shallowRef as shallowRef11, watch as watch11 } from "vue";
 function getDefaultDetail(handlers) {
   return formatter([], [], handlers);
 }
@@ -7802,7 +7788,7 @@ function usePickerPopup(props, { emit }, {
   }, {
     deep: true
   });
-  onMounted13(() => {
+  onMounted12(() => {
     if (isValidValue(props.modelValue)) {
       detail = getViewDetail();
     }
@@ -8620,7 +8606,7 @@ var checkProps = {
 // packages/ui/src/Checkbox/use-check.ts
 import {
   computed as computed21,
-  onMounted as onMounted14,
+  onMounted as onMounted13,
   watch as watch13,
   inject as inject7,
   provide as provide6,
@@ -8695,7 +8681,7 @@ function useCheck(props, { emit }, name) {
     getValue: getValue3,
     setChecked
   });
-  onMounted14(() => {
+  onMounted13(() => {
     const $input = getInputEl();
     let checked;
     if (groupOptions) {
@@ -8759,7 +8745,7 @@ function useCheckGroup(props, {
     }
     return ret;
   });
-  onMounted14(() => _updateValue(false));
+  onMounted13(() => _updateValue(false));
   provide6(`ta${capitalize(name)}Options`, {
     props,
     onChange
@@ -9142,7 +9128,7 @@ _sfc_script47.__file = "packages/ui/src/Col/Col.vue";
 var Col_default = _sfc_script47;
 
 // vue:./Collapse.vue
-import { defineComponent as defineComponent32, onMounted as onMounted15, watch as watch14 } from "vue";
+import { defineComponent as defineComponent32, onMounted as onMounted14, watch as watch14 } from "vue";
 
 // packages/ui/src/Collapse/context.ts
 var CollapseContext = "collapse";
@@ -9209,7 +9195,7 @@ var _sfc_script48 = defineComponent32({
       emit("update:modelValue", cloneData(activeNames));
       emit("change", cloneData(activeNames));
     }
-    onMounted15(() => updateValue(props.modelValue));
+    onMounted14(() => updateValue(props.modelValue));
     watch14(() => props.modelValue, updateValue, {
       deep: true
     });
@@ -9472,10 +9458,10 @@ _sfc_script51.__file = "packages/ui/src/Copy/Copy.vue";
 var Copy_default = _sfc_script51;
 
 // vue:./CountDown.vue
-import { defineComponent as defineComponent36, onMounted as onMounted16 } from "vue";
+import { defineComponent as defineComponent36, onMounted as onMounted15 } from "vue";
 
 // packages/ui/src/CountDown/use-count-time.ts
-import { onBeforeUnmount as onBeforeUnmount11, ref as ref16 } from "vue";
+import { onBeforeUnmount as onBeforeUnmount10, ref as ref16 } from "vue";
 
 // packages/ui/src/CountDown/util.ts
 function formatNumber(num) {
@@ -9529,7 +9515,7 @@ function useCountTime(onStep) {
   function stop() {
     cancelAnimationFrame(timer);
   }
-  onBeforeUnmount11(stop);
+  onBeforeUnmount10(stop);
   return {
     times,
     timeStart: start,
@@ -9612,7 +9598,7 @@ var _sfc_script52 = defineComponent36({
       timeUpdate(remainTime);
       !paused && timeStart();
     };
-    onMounted16(() => {
+    onMounted15(() => {
       if (props.initialTiming > 0) {
         reset(props.initialTiming, !paused);
       }
@@ -11002,7 +10988,7 @@ var Dropdown_default = _sfc_script65;
 import {
   computed as computed28,
   defineComponent as defineComponent49,
-  onMounted as onMounted17,
+  onMounted as onMounted16,
   ref as ref19,
   shallowRef as shallowRef17,
   toRef as toRef4,
@@ -11103,7 +11089,7 @@ var _sfc_script66 = defineComponent49({
     const innerStyles = computed28(() => getInnerStyles2(props, safeAreaInsets2));
     useResizeObserver(contentEl, updateSize);
     watch16([() => props.fixed, () => props.spaceHold], updateSize);
-    onMounted17(() => {
+    onMounted16(() => {
       updateSize();
     });
     return {
@@ -11151,7 +11137,7 @@ _sfc_script66.__file = "packages/ui/src/Fixed/Fixed.vue";
 var Fixed_default = _sfc_script66;
 
 // vue:./FlatList.vue
-import { computed as computed31, defineComponent as defineComponent52, onMounted as onMounted19, ref as ref21, shallowRef as shallowRef19 } from "vue";
+import { computed as computed31, defineComponent as defineComponent52, onMounted as onMounted18, ref as ref21, shallowRef as shallowRef19 } from "vue";
 
 // vue:./LoadMore.vue
 import { computed as computed29, defineComponent as defineComponent50 } from "vue";
@@ -11221,7 +11207,7 @@ import {
   defineComponent as defineComponent51,
   computed as computed30,
   ref as ref20,
-  onMounted as onMounted18,
+  onMounted as onMounted17,
   watch as watch17,
   shallowRef as shallowRef18
 } from "vue";
@@ -11444,7 +11430,7 @@ var _sfc_script68 = defineComponent51({
         });
       }
     }
-    onMounted18(() => updateScroll);
+    onMounted17(() => updateScroll);
     watch17([() => props.scrollLeft, () => props.scrollTop], updateScroll);
     const classes = computed30(() => getClasses7({
       scrollX: props.scrollX,
@@ -11460,9 +11446,8 @@ var _sfc_script68 = defineComponent51({
     }));
     const indicatorStyles = computed30(() => getIndicatorStyles(pullIndicatorSafeArea.value));
     const allowPullDirections = computed30(() => string2StringArray(props.enablePullDirections));
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         const { pageX, pageY } = e.touchObject;
         const $scroll = root.value;
         const {
@@ -11506,7 +11491,7 @@ var _sfc_script68 = defineComponent51({
           coords.directions = directions;
         }
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords) {
           return;
         }
@@ -11581,7 +11566,7 @@ var _sfc_script68 = defineComponent51({
         }
         pullDistance.value = ["down", "right"].includes(pullDirection.value) ? distance : -distance;
       },
-      onTouchEnd() {
+      onEnd() {
         if (!coords) {
           return;
         }
@@ -11616,7 +11601,11 @@ var _sfc_script68 = defineComponent51({
       scrollTo: scrollToOffset,
       scrollToEnd,
       locale,
-      CircleOutlined: _sfc_script40
+      CircleOutlined: _sfc_script40,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     };
   }
 });
@@ -11628,7 +11617,15 @@ function render68(_ctx, _cache) {
   return _openBlock67(), _createElementBlock56("div", {
     class: _normalizeClass29(_ctx.classes),
     ref: "root",
-    onScroll: _cache[0] || (_cache[0] = (...args) => _ctx.onScroll && _ctx.onScroll(...args))
+    onScroll: _cache[0] || (_cache[0] = (...args) => _ctx.onScroll && _ctx.onScroll(...args)),
+    onTouchstart: _cache[1] || (_cache[1] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+    onTouchmove: _cache[2] || (_cache[2] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+    onTouchend: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onMousedown: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+    onMousemove: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+    onMouseup: _cache[6] || (_cache[6] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onMouseleave: _cache[7] || (_cache[7] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onDragstart: _cache[8] || (_cache[8] = (...args) => _ctx.onDragStart && _ctx.onDragStart(...args))
   }, [
     _createElementVNode45("div", _hoisted_149, [
       _createElementVNode45("div", {
@@ -11761,7 +11758,7 @@ var _sfc_script69 = defineComponent52({
       }
       return [];
     });
-    onMounted19(() => {
+    onMounted18(() => {
       var _a;
       if (scrollViewRef.value) {
         (_a = virtualListRef.value) == null ? void 0 : _a.resetScrollContainer(getScrollContainer());
@@ -12050,9 +12047,9 @@ import { defineComponent as defineComponent60, reactive as reactive4, ref as ref
 import {
   ref as ref22,
   defineComponent as defineComponent58,
-  onMounted as onMounted20,
+  onMounted as onMounted19,
   watch as watch18,
-  onBeforeUnmount as onBeforeUnmount12,
+  onBeforeUnmount as onBeforeUnmount11,
   shallowRef as shallowRef20
 } from "vue";
 
@@ -12385,9 +12382,8 @@ var _sfc_script75 = defineComponent58({
     }
     useResizeObserver(root, setSlideStyle);
     let coords;
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         if (playing) {
           return;
         }
@@ -12402,7 +12398,7 @@ var _sfc_script75 = defineComponent58({
           offset: null
         };
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords || horizontal === false) {
           return;
         }
@@ -12441,7 +12437,7 @@ var _sfc_script75 = defineComponent58({
           updateListStyle(-transSize);
         }
       },
-      onTouchEnd(e) {
+      onEnd(e) {
         if (!horizontal) {
           emit("click");
         } else if (coords) {
@@ -12473,14 +12469,14 @@ var _sfc_script75 = defineComponent58({
       start();
     });
     watch18(() => props.activeIndex, (val) => _swipeTo(getNumber(val), true));
-    onMounted20(() => {
+    onMounted19(() => {
       resetItems();
       const activeIndex = props.activeIndex;
       if (activeIndex != null && activeIndex !== 0) {
         _swipeTo(getNumber(activeIndex), true);
       }
     });
-    onBeforeUnmount12(() => {
+    onBeforeUnmount11(() => {
       clearTimeout(durationTimer);
       stop();
       $items = [];
@@ -12504,6 +12500,10 @@ var _sfc_script75 = defineComponent58({
       indicatorsClasses,
       getPaginationItemClasses,
       getPaginationItemStyles,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart,
       swipeTo,
       prev,
       next
@@ -12519,7 +12519,15 @@ function render73(_ctx, _cache) {
   const _component_Icon = _resolveComponent36("Icon");
   return _openBlock72(), _createElementBlock61("div", {
     class: _normalizeClass33(_ctx.classes),
-    ref: "root"
+    ref: "root",
+    onTouchstart: _cache[2] || (_cache[2] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+    onTouchmove: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+    onTouchend: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onMousedown: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+    onMousemove: _cache[6] || (_cache[6] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+    onMouseup: _cache[7] || (_cache[7] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onMouseleave: _cache[8] || (_cache[8] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onDragstart: _cache[9] || (_cache[9] = (...args) => _ctx.onDragStart && _ctx.onDragStart(...args))
   }, [
     _createElementVNode48("div", _hoisted_154, [
       _createVNode24(_component_SwiperItems, { onResetItems: _ctx.resetItems }, {
@@ -12555,7 +12563,7 @@ function render73(_ctx, _cache) {
         _createVNode24(_component_Icon, { icon: _ctx.RightOutlined }, null, 8, ["icon"])
       ])
     ], 64)) : _createCommentVNode29("v-if", true)
-  ], 2);
+  ], 34);
 }
 _sfc_script75.render = render73;
 _sfc_script75.__file = "packages/ui/src/Swiper/Swiper.vue";
@@ -12996,10 +13004,10 @@ import {
   defineComponent as defineComponent61,
   ref as ref24,
   reactive as reactive5,
-  onMounted as onMounted21,
+  onMounted as onMounted20,
   nextTick as nextTick8,
   watch as watch20,
-  onBeforeUnmount as onBeforeUnmount13,
+  onBeforeUnmount as onBeforeUnmount12,
   onBeforeMount,
   computed as computed34,
   shallowRef as shallowRef22
@@ -13270,9 +13278,8 @@ var _sfc_script79 = defineComponent61({
         deleteAreaY = rects.top;
       }
     };
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         const target = getParentTarget(e.target, "ta-order_item");
         if (!target || drag.on) {
           return;
@@ -13305,7 +13312,7 @@ var _sfc_script79 = defineComponent61({
           }
         }, 500);
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!dragOn.value || !drag.targetObject) {
           clearTimeout(onTimer);
           return;
@@ -13342,7 +13349,7 @@ var _sfc_script79 = defineComponent61({
           positions[index].top = top + targetObject.fixedOffsetY;
         }
       },
-      onTouchEnd() {
+      onEnd() {
         clearTimeout(onTimer);
         if (dragOn.value) {
           exitDrag();
@@ -13355,10 +13362,10 @@ var _sfc_script79 = defineComponent61({
     onBeforeMount(() => {
       deleteAreaY = document.documentElement.clientHeight;
     });
-    onMounted21(() => {
+    onMounted20(() => {
       updateItemsData();
     });
-    onBeforeUnmount13(() => {
+    onBeforeUnmount12(() => {
       clearTimeout(onTimer);
       clearTimeout(lazyTimer);
     });
@@ -13383,7 +13390,11 @@ var _sfc_script79 = defineComponent61({
       styles,
       getItemClasses: getItemClasses4,
       getItemStyles: getItemStyles2,
-      getItemRatioStyles
+      getItemRatioStyles,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     };
   }
 });
@@ -13400,7 +13411,17 @@ function render77(_ctx, _cache) {
     _createElementVNode51("div", _mergeProps7({
       class: _ctx.classes,
       style: _ctx.styles
-    }, _ctx.$attrs, { ref: "root" }), [
+    }, _ctx.$attrs, {
+      ref: "root",
+      onTouchstart: _cache[0] || (_cache[0] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+      onTouchmove: _cache[1] || (_cache[1] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+      onTouchend: _cache[2] || (_cache[2] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+      onMousedown: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+      onMousemove: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+      onMouseup: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+      onMouseleave: _cache[6] || (_cache[6] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+      onDragstart: _cache[7] || (_cache[7] = (...args) => _ctx.onDragStart && _ctx.onDragStart(...args))
+    }), [
       (_openBlock76(true), _createElementBlock65(_Fragment13, null, _renderList13(_ctx.positions, (item, index) => {
         return _openBlock76(), _createElementBlock65("div", {
           class: _normalizeClass35(_ctx.getItemClasses(item, index, _ctx.dragCurrent, _ctx.dragFixed)),
@@ -13971,13 +13992,13 @@ _sfc_script82.__file = "packages/ui/src/ImageUploader/ImageUploader.vue";
 var ImageUploader_default = _sfc_script82;
 
 // vue:./IndexView.vue
-import { defineComponent as defineComponent68, onMounted as onMounted24, ref as ref28, shallowRef as shallowRef26, watch as watch24 } from "vue";
+import { defineComponent as defineComponent68, onMounted as onMounted23, ref as ref28, shallowRef as shallowRef26, watch as watch24 } from "vue";
 
 // vue:./StickyView.vue
 import {
   computed as computed37,
   defineComponent as defineComponent66,
-  onMounted as onMounted23,
+  onMounted as onMounted22,
   ref as ref27,
   watch as watch23,
   nextTick as nextTick9,
@@ -13989,7 +14010,7 @@ import {
   defineComponent as defineComponent64,
   computed as computed36,
   ref as ref26,
-  onMounted as onMounted22,
+  onMounted as onMounted21,
   watch as watch22,
   shallowRef as shallowRef23
 } from "vue";
@@ -14085,7 +14106,7 @@ var _sfc_script83 = defineComponent64({
       return getStyles5((_a = height.value) != null ? _a : void 0);
     });
     watch22(() => props.disabled, () => updateFixed());
-    onMounted22(() => resetContainer(props.containSelector));
+    onMounted21(() => resetContainer(props.containSelector));
     expose({
       resetContainer
     });
@@ -14393,7 +14414,7 @@ var _sfc_script85 = defineComponent66({
       }
     }
     watch23(() => props.modelValue, updateValue);
-    onMounted23(() => {
+    onMounted22(() => {
       resetContainer(props.containSelector);
       $items = getElementItems(getListEl(), "ta-sticky-view-item");
       props.modelValue != null && updateValue(props.modelValue);
@@ -14517,7 +14538,6 @@ var _sfc_script87 = defineComponent68({
     change: emitChangeValidator2
   },
   setup(props, { emit, expose }) {
-    const navEl = shallowRef26(null);
     const bodyRef = shallowRef26(null);
     const indexList = ref28([]);
     const activeName = ref28();
@@ -14549,9 +14569,8 @@ var _sfc_script87 = defineComponent68({
     }
     let coords = null;
     const lazyDo = useOnce(100);
-    useTouch({
-      el: navEl,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         const { clientY } = e.touchObject;
         const $target = e.target;
         const index = parseInt($target.dataset.index);
@@ -14568,7 +14587,7 @@ var _sfc_script87 = defineComponent68({
         }, 500);
         e.preventDefault();
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords) {
           return;
         }
@@ -14589,7 +14608,7 @@ var _sfc_script87 = defineComponent68({
         }
         e.stopPropagation();
       },
-      onTouchEnd(e) {
+      onEnd(e) {
         if (coords) {
           if (!coords.isChange) {
             const toIndex = coords.current;
@@ -14615,7 +14634,7 @@ var _sfc_script87 = defineComponent68({
       });
     };
     watch24(() => props.modelValue, (val) => updateActiveName(val));
-    onMounted24(() => {
+    onMounted23(() => {
       resetContainer(document.documentElement);
       updateActiveName(props.modelValue);
       if (activeName.value == null && indexList.value.length > 0) {
@@ -14628,7 +14647,6 @@ var _sfc_script87 = defineComponent68({
       resetContainer
     });
     return {
-      navEl,
       bodyRef,
       activeName,
       indexList,
@@ -14636,34 +14654,44 @@ var _sfc_script87 = defineComponent68({
       onResetItems,
       scrollTo: scrollTo2,
       scrollToIndex,
-      resetContainer
+      resetContainer,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     };
   }
 });
 var _hoisted_165 = { class: "ta-index-view" };
 var _hoisted_249 = { class: "ta-index-view_sidebar" };
-var _hoisted_339 = {
-  class: "ta-index-view_list",
-  ref: "navEl"
-};
-var _hoisted_414 = ["data-value", "data-index"];
-var _hoisted_56 = { class: "ta-index-view_body" };
+var _hoisted_339 = ["data-value", "data-index"];
+var _hoisted_414 = { class: "ta-index-view_body" };
 function render84(_ctx, _cache) {
   const _component_StickyView = _resolveComponent42("StickyView");
   return _openBlock83(), _createElementBlock72("div", _hoisted_165, [
     _createElementVNode58("div", _hoisted_249, [
-      _createElementVNode58("ul", _hoisted_339, [
+      _createElementVNode58("ul", {
+        class: "ta-index-view_list",
+        onTouchstart: _cache[0] || (_cache[0] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+        onTouchmove: _cache[1] || (_cache[1] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+        onTouchend: _cache[2] || (_cache[2] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+        onMousedown: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+        onMousemove: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+        onMouseup: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+        onMouseleave: _cache[6] || (_cache[6] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+        onDragstart: _cache[7] || (_cache[7] = (...args) => _ctx.onDragStart && _ctx.onDragStart(...args))
+      }, [
         (_openBlock83(true), _createElementBlock72(_Fragment15, null, _renderList14(_ctx.indexList, (item, index) => {
           return _openBlock83(), _createElementBlock72("li", {
             class: _normalizeClass38({ active: item.value === _ctx.activeName }),
             "data-value": item.value,
             "data-index": index,
             key: item.value
-          }, _toDisplayString30(item.label), 11, _hoisted_414);
+          }, _toDisplayString30(item.label), 11, _hoisted_339);
         }), 128))
-      ], 512)
+      ], 32)
     ]),
-    _createElementVNode58("div", _hoisted_56, [
+    _createElementVNode58("div", _hoisted_414, [
       _createVNode30(_component_StickyView, {
         offsetTop: _ctx.stickyOffsetTop,
         modelValue: _ctx.modelValue,
@@ -14723,7 +14751,7 @@ var IndexView_default = _sfc_script87;
 var IndexViewItem_default = _sfc_script88;
 
 // vue:./Input.vue
-import { computed as computed38, defineComponent as defineComponent70, onMounted as onMounted25, ref as ref29, watch as watch25 } from "vue";
+import { computed as computed38, defineComponent as defineComponent70, onMounted as onMounted24, ref as ref29, watch as watch25 } from "vue";
 
 // packages/ui/src/Input/util.ts
 var TYPE_NAMES2 = [
@@ -14967,7 +14995,7 @@ var _sfc_script89 = defineComponent70({
         isShowClear.value = false;
       }
     });
-    onMounted25(() => {
+    onMounted24(() => {
       var _a;
       updateValue((_a = props.modelValue) != null ? _a : "");
       props.focus && setFocus();
@@ -15001,7 +15029,7 @@ var _hoisted_415 = {
   key: 3,
   class: "ta-input_limit"
 };
-var _hoisted_57 = {
+var _hoisted_56 = {
   key: 5,
   class: "ta-input_append"
 };
@@ -15051,7 +15079,7 @@ function render86(_ctx, _cache) {
       icon: _ctx.CloseCircleFilled,
       onMousedown: _withModifiers5(_ctx.onClear, ["prevent"])
     }, null, 8, ["icon", "onMousedown"])) : _createCommentVNode33("v-if", true),
-    _ctx.$slots.append ? (_openBlock85(), _createElementBlock73("div", _hoisted_57, [
+    _ctx.$slots.append ? (_openBlock85(), _createElementBlock73("div", _hoisted_56, [
       _renderSlot40(_ctx.$slots, "append")
     ])) : _createCommentVNode33("v-if", true)
   ], 2);
@@ -15066,8 +15094,8 @@ var Input_default = _sfc_script89;
 import {
   defineComponent as defineComponent71,
   computed as computed39,
-  onMounted as onMounted26,
-  onBeforeUnmount as onBeforeUnmount14,
+  onMounted as onMounted25,
+  onBeforeUnmount as onBeforeUnmount13,
   ref as ref30,
   watch as watch26,
   shallowRef as shallowRef28
@@ -15192,8 +15220,8 @@ var _sfc_script90 = defineComponent71({
         emit("closeClick", e);
       }
     };
-    onMounted26(() => props.marquee && startMarquee());
-    onBeforeUnmount14(() => stopMarquee());
+    onMounted25(() => props.marquee && startMarquee());
+    onBeforeUnmount13(() => stopMarquee());
     watch26([() => props.marquee, () => props.title], () => {
       resetMarquee();
     });
@@ -15574,7 +15602,7 @@ var _hoisted_342 = {
   class: "ta-number-keyboard_right-column"
 };
 var _hoisted_417 = { class: "ta-number-keyboard_backspace" };
-var _hoisted_58 = { class: "ta-number-keyboard_confirm" };
+var _hoisted_57 = { class: "ta-number-keyboard_confirm" };
 function render91(_ctx, _cache) {
   const _component_Icon = _resolveComponent47("Icon");
   const _component_Drawer = _resolveComponent47("Drawer");
@@ -15627,7 +15655,7 @@ function render91(_ctx, _cache) {
                 _createVNode33(_component_Icon, { icon: _ctx.BackspaceOutlined }, null, 8, ["icon"])
               ])
             ]),
-            _createElementVNode62("div", _hoisted_58, [
+            _createElementVNode62("div", _hoisted_57, [
               _createElementVNode62("div", {
                 class: "ta-number-keyboard_confirm-button",
                 onClick: _cache[1] || (_cache[1] = (...args) => _ctx.onConfirmClick && _ctx.onConfirmClick(...args))
@@ -15769,7 +15797,7 @@ import {
   computed as computed42,
   defineComponent as defineComponent75,
   nextTick as nextTick10,
-  onMounted as onMounted27,
+  onMounted as onMounted26,
   ref as ref32,
   shallowRef as shallowRef29,
   watch as watch28
@@ -15913,7 +15941,7 @@ var _sfc_script96 = defineComponent75({
       immediate: true
     });
     watch28(() => props.selector, (val) => container.value = querySelector(val));
-    onMounted27(() => {
+    onMounted26(() => {
       container.value = querySelector(props.selector);
       useResizeObserver(container, () => updatePos("container resize"));
       const docEl = shallowRef29(document.documentElement);
@@ -16539,7 +16567,7 @@ var slideProps = {
 };
 
 // packages/ui/src/Slider/use-slide.ts
-import { computed as computed46, shallowRef as shallowRef30 } from "vue";
+import { computed as computed46 } from "vue";
 
 // packages/ui/src/Slider/util.ts
 var getSlideClasses = (disabled) => [
@@ -16557,7 +16585,6 @@ var getSlideStyles = (color) => {
 // packages/ui/src/Slider/use-slide.ts
 var thumbW = 24;
 function useSlide(props, { move, end, getValue: getValue3 }) {
-  const sliderEl = shallowRef30(null);
   let coords;
   let tempValue = 0;
   function toInteger(number) {
@@ -16589,22 +16616,24 @@ function useSlide(props, { move, end, getValue: getValue3 }) {
     tempValue = newVal;
     move({ value: tempValue, progress: value2Progress(newVal), $target });
   }
-  useTouch({
-    el: sliderEl,
-    onTouchStart(e) {
+  const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+    onStart(e) {
       if (props.disabled) {
+        return;
+      }
+      if (!e.touchCurrentElement) {
         return;
       }
       const { clientX } = e.touchObject;
       const $target = e.target;
-      const trackRects = sliderEl.value.getClientRects()[0];
+      const trackRects = e.touchCurrentElement.getClientRects()[0];
       const thumb = !!$target.dataset.thumb;
       coords = {
         prevValue: getValue3($target),
         thumb,
         thumbW,
         clientStartX: clientX,
-        thumbXInTrack: getRelativeOffset($target, sliderEl.value).offsetLeft,
+        thumbXInTrack: getRelativeOffset($target, e.touchCurrentElement).offsetLeft,
         trackX: trackRects.left,
         trackW: trackRects.width - thumbW,
         moved: false,
@@ -16616,7 +16645,7 @@ function useSlide(props, { move, end, getValue: getValue3 }) {
       tempValue = coords.prevValue;
       e.preventDefault();
     },
-    onTouchMove(e) {
+    onMove(e) {
       if (!coords) {
         return;
       }
@@ -16629,7 +16658,7 @@ function useSlide(props, { move, end, getValue: getValue3 }) {
       updateByX(thumbXInTrack + clientX - clientStartX, coords);
       e.stopPropagation();
     },
-    onTouchEnd(e) {
+    onEnd(e) {
       if (coords) {
         if (!coords.thumb && !coords.moved) {
           updateByX(coords.clientStartX - coords.trackX - coords.thumbW / 2, coords);
@@ -16650,13 +16679,16 @@ function useSlide(props, { move, end, getValue: getValue3 }) {
   const slideClasses = computed46(() => getSlideClasses(props.disabled));
   const slideStyles = computed46(() => getSlideStyles(props.color));
   return {
-    sliderEl,
     toInteger,
     rangeValue,
     value2Progress,
     getMinMax,
     slideClasses,
-    slideStyles
+    slideStyles,
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
+    onDragStart
   };
 }
 
@@ -16687,13 +16719,16 @@ var _sfc_script103 = defineComponent82({
     const progressValue = reactive7([0, 0]);
     const { emit } = ctx;
     const {
-      sliderEl,
       toInteger,
       rangeValue,
       value2Progress,
       getMinMax,
       slideClasses,
-      slideStyles
+      slideStyles,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     } = useSlide(props, {
       getValue($target) {
         const { thumb, index } = $target.dataset;
@@ -16785,27 +16820,36 @@ var _sfc_script103 = defineComponent82({
     }
     return {
       inputValue,
-      sliderEl,
       progress,
       progressValue,
       slideClasses,
-      slideStyles
+      slideStyles,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     };
   }
 });
-var _hoisted_178 = {
-  class: "ta-slider_inner",
-  ref: "sliderEl"
-};
-var _hoisted_262 = { class: "ta-slider_box" };
-var _hoisted_348 = ["name", "disabled", "value"];
+var _hoisted_178 = { class: "ta-slider_box" };
+var _hoisted_262 = ["name", "disabled", "value"];
 function render100(_ctx, _cache) {
   return _openBlock99(), _createElementBlock84("div", {
     class: _normalizeClass46(["ta-range", _ctx.slideClasses]),
     style: _normalizeStyle24(_ctx.slideStyles)
   }, [
-    _createElementVNode70("div", _hoisted_178, [
-      _createElementVNode70("div", _hoisted_262, [
+    _createElementVNode70("div", {
+      class: "ta-slider_inner",
+      onTouchstart: _cache[0] || (_cache[0] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+      onTouchmove: _cache[1] || (_cache[1] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+      onTouchend: _cache[2] || (_cache[2] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+      onMousedown: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+      onMousemove: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+      onMouseup: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+      onMouseleave: _cache[6] || (_cache[6] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+      onDragstart: _cache[7] || (_cache[7] = (...args) => _ctx.onDragStart && _ctx.onDragStart(...args))
+    }, [
+      _createElementVNode70("div", _hoisted_178, [
         _createElementVNode70("div", {
           class: "ta-slider_track",
           style: _normalizeStyle24({
@@ -16831,8 +16875,8 @@ function render100(_ctx, _cache) {
         name: _ctx.name,
         disabled: _ctx.disabled,
         value: _ctx.inputValue
-      }, null, 8, _hoisted_348)
-    ], 512)
+      }, null, 8, _hoisted_262)
+    ], 32)
   ], 6);
 }
 _sfc_script103.render = render100;
@@ -16842,13 +16886,7 @@ _sfc_script103.__file = "packages/ui/src/Range/Range.vue";
 var Range_default = _sfc_script103;
 
 // vue:./Rate.vue
-import {
-  computed as computed48,
-  defineComponent as defineComponent83,
-  ref as ref34,
-  shallowRef as shallowRef31,
-  watch as watch30
-} from "vue";
+import { computed as computed48, defineComponent as defineComponent83, ref as ref34, watch as watch30 } from "vue";
 
 // vue:./StarOutlined.vue
 import { createElementVNode as _createElementVNode71, openBlock as _openBlock100, createElementBlock as _createElementBlock85 } from "vue";
@@ -16858,11 +16896,11 @@ var _hoisted_179 = {
   focusable: "false"
 };
 var _hoisted_263 = /* @__PURE__ */ _createElementVNode71("path", { d: "M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3zM664.8 561.6l36.1 210.3L512 672.7 323.1 772l36.1-210.3-152.8-149L417.6 382 512 190.7 606.4 382l211.2 30.7-152.8 148.9z" }, null, -1);
-var _hoisted_349 = [
+var _hoisted_348 = [
   _hoisted_263
 ];
 function render101(_ctx, _cache) {
-  return _openBlock100(), _createElementBlock85("svg", _hoisted_179, _hoisted_349);
+  return _openBlock100(), _createElementBlock85("svg", _hoisted_179, _hoisted_348);
 }
 _sfc_script104.render = render101;
 _sfc_script104.__file = "packages/ui/src/Icon/icons/StarOutlined/StarOutlined.vue";
@@ -16875,11 +16913,11 @@ var _hoisted_180 = {
   focusable: "false"
 };
 var _hoisted_264 = /* @__PURE__ */ _createElementVNode72("path", { d: "M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" }, null, -1);
-var _hoisted_350 = [
+var _hoisted_349 = [
   _hoisted_264
 ];
 function render102(_ctx, _cache) {
-  return _openBlock101(), _createElementBlock86("svg", _hoisted_180, _hoisted_350);
+  return _openBlock101(), _createElementBlock86("svg", _hoisted_180, _hoisted_349);
 }
 _sfc_script105.render = render102;
 _sfc_script105.__file = "packages/ui/src/Icon/icons/StarFilled/StarFilled.vue";
@@ -16962,7 +17000,6 @@ var _sfc_script106 = defineComponent83({
   emits: { ...formNumberValueEmits },
   setup(props, ctx) {
     const { emit } = ctx;
-    const root = shallowRef31(null);
     const inputValue = ref34(0);
     function change(value, isHalf = false) {
       if (props.allowHalf && isHalf) {
@@ -16979,9 +17016,8 @@ var _sfc_script106 = defineComponent83({
     const max = computed48(() => getMax(props.count));
     const isReadonly = computed48(() => !!(props.disabled || props.readonly));
     let coords;
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         if (isReadonly.value) {
           return;
         }
@@ -17004,7 +17040,7 @@ var _sfc_script106 = defineComponent83({
         change(value, coords.isHalf);
         e.preventDefault();
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords) {
           return;
         }
@@ -17023,7 +17059,7 @@ var _sfc_script106 = defineComponent83({
         change(rangeInteger(current + offsetCount, 1, max.value), isHalf);
         e.stopPropagation();
       },
-      onTouchEnd(e) {
+      onEnd(e) {
         if (coords) {
           coords = null;
           e.stopPropagation();
@@ -17049,24 +17085,34 @@ var _sfc_script106 = defineComponent83({
     updateValue();
     watch30(() => props.modelValue, updateValue);
     return {
-      root,
       inputValue,
       classes,
       styles,
-      max
+      max,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     };
   }
 });
 var _hoisted_181 = ["name", "value", "disabled"];
 var _hoisted_265 = ["data-value"];
-var _hoisted_351 = { class: "ta-rate_icon" };
+var _hoisted_350 = { class: "ta-rate_icon" };
 var _hoisted_420 = { class: "ta-rate_active-icon" };
 function render103(_ctx, _cache) {
   const _component_Icon = _resolveComponent53("Icon");
   return _openBlock102(), _createElementBlock87("div", {
     class: _normalizeClass47(_ctx.classes),
     style: _normalizeStyle25(_ctx.styles),
-    ref: "root"
+    onTouchstart: _cache[0] || (_cache[0] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+    onTouchmove: _cache[1] || (_cache[1] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+    onTouchend: _cache[2] || (_cache[2] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onMousedown: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+    onMousemove: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+    onMouseup: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onMouseleave: _cache[6] || (_cache[6] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onDragstart: _cache[7] || (_cache[7] = (...args) => _ctx.onDragStart && _ctx.onDragStart(...args))
   }, [
     _createElementVNode73("input", {
       name: _ctx.name,
@@ -17083,7 +17129,7 @@ function render103(_ctx, _cache) {
         key: num,
         "data-value": num
       }, [
-        _createElementVNode73("i", _hoisted_351, [
+        _createElementVNode73("i", _hoisted_350, [
           _createVNode37(_component_Icon, { icon: _ctx.icon }, null, 8, ["icon"])
         ]),
         _createElementVNode73("i", _hoisted_420, [
@@ -17091,7 +17137,7 @@ function render103(_ctx, _cache) {
         ])
       ], 10, _hoisted_265);
     }), 128))
-  ], 6);
+  ], 38);
 }
 _sfc_script106.render = render103;
 _sfc_script106.__file = "packages/ui/src/Rate/Rate.vue";
@@ -17110,11 +17156,11 @@ var _hoisted_183 = {
   focusable: "false"
 };
 var _hoisted_266 = /* @__PURE__ */ _createElementVNode74("path", { d: "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm32 664c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V456c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272zm-32-344a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" }, null, -1);
-var _hoisted_352 = [
+var _hoisted_351 = [
   _hoisted_266
 ];
 function render104(_ctx, _cache) {
-  return _openBlock103(), _createElementBlock88("svg", _hoisted_183, _hoisted_352);
+  return _openBlock103(), _createElementBlock88("svg", _hoisted_183, _hoisted_351);
 }
 _sfc_script107.render = render104;
 _sfc_script107.__file = "packages/ui/src/Icon/icons/InfoCircleFilled/InfoCircleFilled.vue";
@@ -17127,11 +17173,11 @@ var _hoisted_184 = {
   focusable: "false"
 };
 var _hoisted_267 = /* @__PURE__ */ _createElementVNode75("path", { d: "M955.7 856l-416-720c-6.2-10.7-16.9-16-27.7-16s-21.6 5.3-27.7 16l-416 720C56 877.4 71.4 904 96 904h832c24.6 0 40-26.6 27.7-48zM480 416c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v184c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V416zm32 352a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" }, null, -1);
-var _hoisted_353 = [
+var _hoisted_352 = [
   _hoisted_267
 ];
 function render105(_ctx, _cache) {
-  return _openBlock104(), _createElementBlock89("svg", _hoisted_184, _hoisted_353);
+  return _openBlock104(), _createElementBlock89("svg", _hoisted_184, _hoisted_352);
 }
 _sfc_script108.render = render105;
 _sfc_script108.__file = "packages/ui/src/Icon/icons/WarningFilled/WarningFilled.vue";
@@ -17204,7 +17250,7 @@ var _hoisted_268 = {
   key: 0,
   class: "ta-result_title"
 };
-var _hoisted_354 = {
+var _hoisted_353 = {
   key: 1,
   class: "ta-result_description"
 };
@@ -17221,7 +17267,7 @@ function render106(_ctx, _cache) {
         icon: _ctx.icon
       }, null, 8, ["class", "icon"]),
       _ctx.title ? (_openBlock105(), _createElementBlock90("div", _hoisted_268, _toDisplayString42(_ctx.title), 1)) : _createCommentVNode41("v-if", true),
-      _ctx.description ? (_openBlock105(), _createElementBlock90("div", _hoisted_354, _toDisplayString42(_ctx.description), 1)) : _createCommentVNode41("v-if", true)
+      _ctx.description ? (_openBlock105(), _createElementBlock90("div", _hoisted_353, _toDisplayString42(_ctx.description), 1)) : _createCommentVNode41("v-if", true)
     ]),
     _renderSlot48(_ctx.$slots, "default"),
     _createElementVNode76("div", _hoisted_421, [
@@ -17345,7 +17391,7 @@ _sfc_script110.__file = "packages/ui/src/Row/Row.vue";
 var Row_default = _sfc_script110;
 
 // vue:./ScrollTab.vue
-import { defineComponent as defineComponent87, onMounted as onMounted28, ref as ref36, shallowRef as shallowRef32, watch as watch32 } from "vue";
+import { defineComponent as defineComponent87, onMounted as onMounted27, ref as ref36, shallowRef as shallowRef30, watch as watch32 } from "vue";
 
 // vue:./SideTab.vue
 import { defineComponent as defineComponent86 } from "vue";
@@ -17387,7 +17433,7 @@ var _hoisted_269 = {
   class: "ta-side-tab_list",
   ref: "listEl"
 };
-var _hoisted_355 = ["onClick"];
+var _hoisted_354 = ["onClick"];
 var _hoisted_422 = { class: "ta-side-tab_item-text" };
 function render108(_ctx, _cache) {
   const _component_Icon = _resolveComponent55("Icon");
@@ -17410,7 +17456,7 @@ function render108(_ctx, _cache) {
             ]),
             _: 2
           }, 1040)
-        ], 10, _hoisted_355);
+        ], 10, _hoisted_354);
       }), 128))
     ], 512)
   ]);
@@ -17446,8 +17492,8 @@ var _sfc_script112 = defineComponent87({
     change: emitChangeValidator2
   },
   setup(props, { emit, expose }) {
-    const sideRef = shallowRef32(null);
-    const bodyRef = shallowRef32(null);
+    const sideRef = shallowRef30(null);
+    const bodyRef = shallowRef30(null);
     const tabList = ref36([]);
     const activeName = ref36();
     function updateActiveName(name) {
@@ -17493,7 +17539,7 @@ var _sfc_script112 = defineComponent87({
       });
     };
     watch32(() => props.modelValue, (val) => updateActiveName(val));
-    onMounted28(() => {
+    onMounted27(() => {
       resetContainer(document.documentElement);
       updateActiveName(props.modelValue);
       if (activeName.value == null && tabList.value.length > 0) {
@@ -17521,7 +17567,7 @@ var _sfc_script112 = defineComponent87({
 });
 var _hoisted_187 = { class: "ta-scroll-tab" };
 var _hoisted_270 = { class: "ta-scroll-tab_sidebar" };
-var _hoisted_356 = { class: "ta-scroll-tab_body" };
+var _hoisted_355 = { class: "ta-scroll-tab_body" };
 function render109(_ctx, _cache) {
   const _component_SideTab = _resolveComponent56("SideTab");
   const _component_Sticky = _resolveComponent56("Sticky");
@@ -17544,7 +17590,7 @@ function render109(_ctx, _cache) {
         _: 1
       }, 8, ["offsetTop", "offsetBottom"])
     ]),
-    _createElementVNode78("div", _hoisted_356, [
+    _createElementVNode78("div", _hoisted_355, [
       _createVNode40(_component_StickyView, {
         offsetTop: _ctx.stickyOffsetTop,
         modelValue: _ctx.modelValue,
@@ -17580,7 +17626,7 @@ var _sfc_script113 = defineComponent88({
 });
 var _hoisted_188 = ["data-name", "data-title"];
 var _hoisted_271 = { class: "ta-sticky-view-item_header" };
-var _hoisted_357 = { class: "ta-sticky-view-item_body" };
+var _hoisted_356 = { class: "ta-sticky-view-item_body" };
 function render110(_ctx, _cache) {
   return _openBlock109(), _createElementBlock94("div", {
     class: "ta-sticky-view-item ta-scroll-tab-item",
@@ -17588,7 +17634,7 @@ function render110(_ctx, _cache) {
     "data-title": _ctx.title
   }, [
     _createElementVNode79("div", _hoisted_271, _toDisplayString44(_ctx.title || _ctx.name), 1),
-    _createElementVNode79("div", _hoisted_357, [
+    _createElementVNode79("div", _hoisted_356, [
       _renderSlot51(_ctx.$slots, "default")
     ])
   ], 8, _hoisted_188);
@@ -17607,14 +17653,14 @@ import {
   computed as computed52,
   defineComponent as defineComponent90,
   onBeforeMount as onBeforeMount2,
-  onBeforeUnmount as onBeforeUnmount15,
+  onBeforeUnmount as onBeforeUnmount14,
   ref as ref37,
-  shallowRef as shallowRef34,
+  shallowRef as shallowRef32,
   watch as watch33
 } from "vue";
 
 // vue:./Tag.vue
-import { computed as computed51, defineComponent as defineComponent89, shallowRef as shallowRef33 } from "vue";
+import { computed as computed51, defineComponent as defineComponent89, shallowRef as shallowRef31 } from "vue";
 
 // packages/ui/src/Tag/util.ts
 var TAG_PATTERN_TYPES = ["light", "dark", "plain"];
@@ -17675,7 +17721,7 @@ var _sfc_script114 = defineComponent89({
     longPress: returnTrue
   },
   setup(props, { emit }) {
-    const root = shallowRef33(null);
+    const root = shallowRef31(null);
     function onClose() {
       if (!props.disabled) {
         emit("close");
@@ -17734,11 +17780,11 @@ var _hoisted_190 = {
   focusable: "false"
 };
 var _hoisted_272 = /* @__PURE__ */ _createElementVNode80("path", { d: "M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z" }, null, -1);
-var _hoisted_358 = [
+var _hoisted_357 = [
   _hoisted_272
 ];
 function render112(_ctx, _cache) {
-  return _openBlock111(), _createElementBlock96("svg", _hoisted_190, _hoisted_358);
+  return _openBlock111(), _createElementBlock96("svg", _hoisted_190, _hoisted_357);
 }
 _sfc_script115.render = render112;
 _sfc_script115.__file = "packages/ui/src/Icon/icons/SearchOutlined/SearchOutlined.vue";
@@ -17810,7 +17856,7 @@ var _sfc_script116 = defineComponent90({
     const initDropdown = ref37(false);
     const suggestVisible = ref37(false);
     const suggestList = ref37([]);
-    const innerEl = shallowRef34(null);
+    const innerEl = shallowRef32(null);
     function proxyEvent(e) {
       emitHook(e.type, searchText.value);
     }
@@ -17910,7 +17956,7 @@ var _sfc_script116 = defineComponent90({
       isTimerReady = true;
       phsStart();
     });
-    onBeforeUnmount15(() => phsStop());
+    onBeforeUnmount14(() => phsStop());
     const innerClasses = computed52(() => getInnerClasses3(props.showCancel));
     const innerStyles = computed52(() => getInnerStyles4(props.background));
     const fieldClasses = computed52(() => getFieldClasses(props.ghost));
@@ -17939,7 +17985,7 @@ var _sfc_script116 = defineComponent90({
 });
 var _hoisted_191 = { class: "ta-search" };
 var _hoisted_273 = /* @__PURE__ */ _createElementVNode81("button", { class: "ta-search_button" }, "Search", -1);
-var _hoisted_359 = { class: "ta-search_suggest-list" };
+var _hoisted_358 = { class: "ta-search_suggest-list" };
 function render113(_ctx, _cache) {
   var _a;
   const _component_Icon = _resolveComponent58("Icon");
@@ -18003,7 +18049,7 @@ function render113(_ctx, _cache) {
         _createElementVNode81("div", {
           style: _normalizeStyle28(_ctx.getSuggestStyles(height))
         }, [
-          _createElementVNode81("div", _hoisted_359, [
+          _createElementVNode81("div", _hoisted_358, [
             (_openBlock112(true), _createElementBlock97(_Fragment21, null, _renderList20(_ctx.suggestList, (item) => {
               return _openBlock112(), _createBlock47(_component_Cell, {
                 key: item.text,
@@ -18240,7 +18286,7 @@ var _hoisted_274 = {
   key: 0,
   class: "ta-skeleton_layout-left"
 };
-var _hoisted_360 = { class: "ta-skeleton_layout-right" };
+var _hoisted_359 = { class: "ta-skeleton_layout-right" };
 function render117(_ctx, _cache) {
   const _component_SkeletonAvatar = _resolveComponent59("SkeletonAvatar");
   const _component_SkeletonTitle = _resolveComponent59("SkeletonTitle");
@@ -18253,7 +18299,7 @@ function render117(_ctx, _cache) {
         _ctx.avatar ? (_openBlock116(), _createElementBlock101("div", _hoisted_274, [
           _createVNode43(_component_SkeletonAvatar)
         ])) : _createCommentVNode46("v-if", true),
-        _createElementVNode82("div", _hoisted_360, [
+        _createElementVNode82("div", _hoisted_359, [
           _createVNode43(_component_SkeletonTitle),
           _createVNode43(_component_SkeletonParagraph)
         ])
@@ -18380,12 +18426,15 @@ var _sfc_script124 = defineComponent98({
     const inputValue = ref38(0);
     const { emit } = ctx;
     const {
-      sliderEl,
       toInteger,
       rangeValue,
       value2Progress,
       slideClasses,
-      slideStyles
+      slideStyles,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     } = useSlide(props, {
       getValue() {
         return inputValue.value;
@@ -18435,27 +18484,36 @@ var _sfc_script124 = defineComponent98({
       emit("change", inputValue.value);
     }
     return {
-      sliderEl,
       progress,
       inputValue,
       slideClasses,
-      slideStyles
+      slideStyles,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     };
   }
 });
-var _hoisted_193 = {
-  class: "ta-slider_inner",
-  ref: "sliderEl"
-};
-var _hoisted_275 = { class: "ta-slider_box" };
-var _hoisted_361 = ["name", "disabled", "value"];
+var _hoisted_193 = { class: "ta-slider_box" };
+var _hoisted_275 = ["name", "disabled", "value"];
 function render120(_ctx, _cache) {
   return _openBlock119(), _createElementBlock104("div", {
     class: _normalizeClass59(_ctx.slideClasses),
     style: _normalizeStyle29(_ctx.slideStyles)
   }, [
-    _createElementVNode83("div", _hoisted_193, [
-      _createElementVNode83("div", _hoisted_275, [
+    _createElementVNode83("div", {
+      class: "ta-slider_inner",
+      onTouchstart: _cache[0] || (_cache[0] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+      onTouchmove: _cache[1] || (_cache[1] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+      onTouchend: _cache[2] || (_cache[2] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+      onMousedown: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+      onMousemove: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+      onMouseup: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+      onMouseleave: _cache[6] || (_cache[6] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+      onDragstart: _cache[7] || (_cache[7] = (...args) => _ctx.onDragStart && _ctx.onDragStart(...args))
+    }, [
+      _createElementVNode83("div", _hoisted_193, [
         _createElementVNode83("div", {
           class: "ta-slider_track",
           style: _normalizeStyle29({ width: _ctx.progress * 100 + "%" })
@@ -18471,8 +18529,8 @@ function render120(_ctx, _cache) {
         name: _ctx.name,
         disabled: _ctx.disabled,
         value: _ctx.inputValue
-      }, null, 8, _hoisted_361)
-    ], 512)
+      }, null, 8, _hoisted_275)
+    ], 32)
   ], 6);
 }
 _sfc_script124.render = render120;
@@ -18563,12 +18621,12 @@ var _sfc_script126 = defineComponent100({
 });
 var _hoisted_194 = /* @__PURE__ */ _createElementVNode84("div", { class: "ta-step_line" }, null, -1);
 var _hoisted_276 = { class: "ta-step_index" };
-var _hoisted_362 = { class: "ta-step_inner" };
+var _hoisted_360 = { class: "ta-step_inner" };
 var _hoisted_423 = {
   key: 0,
   class: "ta-step_title"
 };
-var _hoisted_59 = { class: "ta-step_content" };
+var _hoisted_58 = { class: "ta-step_content" };
 function render121(_ctx, _cache) {
   return _openBlock120(), _createElementBlock105("div", {
     class: _normalizeClass60(_ctx.classes)
@@ -18583,13 +18641,13 @@ function render121(_ctx, _cache) {
         _createTextVNode22(_toDisplayString47(_ctx.index + 1), 1)
       ])
     ]),
-    _createElementVNode84("div", _hoisted_362, [
+    _createElementVNode84("div", _hoisted_360, [
       _ctx.title || _ctx.$slots.title ? (_openBlock120(), _createElementBlock105("div", _hoisted_423, [
         _renderSlot54(_ctx.$slots, "title", {}, () => [
           _createTextVNode22(_toDisplayString47(_ctx.title), 1)
         ])
       ])) : _createCommentVNode47("v-if", true),
-      _createElementVNode84("div", _hoisted_59, [
+      _createElementVNode84("div", _hoisted_58, [
         _renderSlot54(_ctx.$slots, "default")
       ])
     ])
@@ -18605,7 +18663,7 @@ var Steps_default = _sfc_script125;
 var Step_default = _sfc_script126;
 
 // vue:./Stepper.vue
-import { onMounted as onMounted29, ref as ref39, defineComponent as defineComponent101, watch as watch35, computed as computed61 } from "vue";
+import { onMounted as onMounted28, ref as ref39, defineComponent as defineComponent101, watch as watch35, computed as computed61 } from "vue";
 
 // packages/ui/src/Stepper/util.ts
 var getClasses19 = (disabled) => {
@@ -18635,11 +18693,11 @@ var _hoisted_195 = {
   focusable: "false"
 };
 var _hoisted_277 = /* @__PURE__ */ _createElementVNode85("path", { d: "M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z" }, null, -1);
-var _hoisted_363 = [
+var _hoisted_361 = [
   _hoisted_277
 ];
 function render122(_ctx, _cache) {
-  return _openBlock121(), _createElementBlock106("svg", _hoisted_195, _hoisted_363);
+  return _openBlock121(), _createElementBlock106("svg", _hoisted_195, _hoisted_361);
 }
 _sfc_script127.render = render122;
 _sfc_script127.__file = "packages/ui/src/Icon/icons/MinusOutlined/MinusOutlined.vue";
@@ -18730,7 +18788,7 @@ var _sfc_script128 = defineComponent101({
       updateValue(parseFloat(formValue.value) + nStep.value);
       emit("plusClick", e);
     };
-    onMounted29(() => {
+    onMounted28(() => {
       setInputValue(formValue.value);
     });
     watch35(() => props.modelValue, (val) => {
@@ -18915,7 +18973,7 @@ import {
   defineComponent as defineComponent103,
   computed as computed62,
   reactive as reactive8,
-  shallowRef as shallowRef35
+  shallowRef as shallowRef33
 } from "vue";
 
 // packages/ui/src/SwipeCell/util.ts
@@ -18968,8 +19026,7 @@ var _sfc_script130 = defineComponent103({
     buttonClick: (payload) => payload && isNumber(payload.index)
   },
   setup(props, ctx) {
-    const root = shallowRef35(null);
-    const buttonsEl = shallowRef35(null);
+    const buttonsEl = shallowRef33(null);
     const translateX = ref40(0);
     const duration = ref40(0);
     const buttonTranslateXs = reactive8([]);
@@ -19002,9 +19059,8 @@ var _sfc_script130 = defineComponent103({
       hide(false, "buttonClick");
     }
     const buttons2 = computed62(() => getButtons(props.buttons));
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         if (props.buttons.length === 0) {
           return;
         }
@@ -19018,7 +19074,7 @@ var _sfc_script130 = defineComponent103({
           e.stopPropagation();
         }
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords) {
           return;
         }
@@ -19041,7 +19097,7 @@ var _sfc_script130 = defineComponent103({
         duration.value = 0;
         e.stopPropagation();
       },
-      onTouchEnd(e) {
+      onEnd(e) {
         if (coords) {
           const { isSwipe, buttonsW } = coords;
           if (isSwipe && translateX.value > buttonsW / 2) {
@@ -19061,7 +19117,6 @@ var _sfc_script130 = defineComponent103({
     useDocumentBlur(() => hide(false, "blur"));
     useStop(buttonsEl, "click");
     return {
-      root,
       buttonsEl,
       buttonTranslateXs,
       buttons2,
@@ -19069,27 +19124,37 @@ var _sfc_script130 = defineComponent103({
       noop,
       onButtonClick,
       innerStyles,
-      getButtonStyles: getButtonStyles2
+      getButtonStyles: getButtonStyles2,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     };
   }
 });
 var _hoisted_198 = {
-  class: "ta-swipe-cell ta-horizontal-hairline",
-  ref: "root"
-};
-var _hoisted_278 = {
   class: "ta-swipe-cell_buttons",
   ref: "buttonsEl"
 };
-var _hoisted_364 = ["onClick"];
+var _hoisted_278 = ["onClick"];
 function render125(_ctx, _cache) {
-  return _openBlock124(), _createElementBlock109("div", _hoisted_198, [
+  return _openBlock124(), _createElementBlock109("div", {
+    class: "ta-swipe-cell ta-horizontal-hairline",
+    onTouchstart: _cache[0] || (_cache[0] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+    onTouchmove: _cache[1] || (_cache[1] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+    onTouchend: _cache[2] || (_cache[2] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onMousedown: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+    onMousemove: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+    onMouseup: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onMouseleave: _cache[6] || (_cache[6] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onDragstart: _cache[7] || (_cache[7] = (...args) => _ctx.onDragStart && _ctx.onDragStart(...args))
+  }, [
     _createElementVNode87("div", {
       class: "ta-swipe-cell_inner",
       style: _normalizeStyle30(_ctx.innerStyles)
     }, [
       _renderSlot56(_ctx.$slots, "default"),
-      _createElementVNode87("div", _hoisted_278, [
+      _createElementVNode87("div", _hoisted_198, [
         (_openBlock124(true), _createElementBlock109(_Fragment23, null, _renderList22(_ctx.buttons2, (item, index) => {
           return _openBlock124(), _createElementBlock109("button", {
             class: _normalizeClass62(["ta-swipe-cell_button", ["type--" + item.type]]),
@@ -19100,11 +19165,11 @@ function render125(_ctx, _cache) {
               index
             })),
             onClick: ($event) => _ctx.onButtonClick(item, index)
-          }, _toDisplayString49(item.text), 15, _hoisted_364);
+          }, _toDisplayString49(item.text), 15, _hoisted_278);
         }), 128))
       ], 512)
     ], 4)
-  ], 512);
+  ], 32);
 }
 _sfc_script130.render = render125;
 _sfc_script130.__file = "packages/ui/src/SwipeCell/SwipeCell.vue";
@@ -19116,7 +19181,7 @@ var SwipeCell_default = _sfc_script130;
 var SwiperItem_default = _sfc_script76;
 
 // vue:./Switch.vue
-import { onMounted as onMounted30, ref as ref41, watch as watch36, defineComponent as defineComponent104, computed as computed63 } from "vue";
+import { onMounted as onMounted29, ref as ref41, watch as watch36, defineComponent as defineComponent104, computed as computed63 } from "vue";
 
 // packages/ui/src/Switch/util.ts
 var getClasses20 = (disabled) => {
@@ -19170,7 +19235,7 @@ var _sfc_script131 = defineComponent104({
       }
       emit("change", value);
     }
-    onMounted30(() => {
+    onMounted29(() => {
       setInputChecked(checked.value);
     });
     watch36(() => props.modelValue, (val) => {
@@ -19253,7 +19318,7 @@ var _hoisted_1100 = {
   ref: "listEl"
 };
 var _hoisted_279 = ["onClick"];
-var _hoisted_365 = { class: "ta-tab-bar_item-text" };
+var _hoisted_362 = { class: "ta-tab-bar_item-text" };
 function render127(_ctx, _cache) {
   const _component_TaImage = _resolveComponent61("TaImage");
   const _component_Icon = _resolveComponent61("Icon");
@@ -19281,7 +19346,7 @@ function render127(_ctx, _cache) {
             ]),
             _: 2
           }, 1040),
-          _createElementVNode89("span", _hoisted_365, _toDisplayString50(item.label), 1)
+          _createElementVNode89("span", _hoisted_362, _toDisplayString50(item.label), 1)
         ], 10, _hoisted_279);
       }), 128))
     ], 512)
@@ -19294,7 +19359,7 @@ _sfc_script132.__file = "packages/ui/src/TabBar/TabBar.vue";
 var TabBar_default = _sfc_script132;
 
 // vue:./TabView.vue
-import { ref as ref42, defineComponent as defineComponent106, provide as provide10, watch as watch37, shallowRef as shallowRef36 } from "vue";
+import { ref as ref42, defineComponent as defineComponent106, provide as provide10, watch as watch37, shallowRef as shallowRef34 } from "vue";
 
 // packages/ui/src/TabView/util.ts
 var getClasses21 = (vertical) => ["ta-tab-view", { vertical }];
@@ -19325,7 +19390,7 @@ var _sfc_script133 = defineComponent106({
   setup(props, { emit, expose }) {
     const { printListItemNotFoundError } = useException();
     const vertical = ref42(!!props.initialVertical);
-    const swiperRef = shallowRef36(null);
+    const swiperRef = shallowRef34(null);
     const tabList = ref42([]);
     const activeIndex = ref42(0);
     let itemNames = [];
@@ -19451,7 +19516,7 @@ _sfc_script133.render = render128;
 _sfc_script133.__file = "packages/ui/src/TabView/TabView.vue";
 
 // vue:./TabViewItem.vue
-import { defineComponent as defineComponent107, inject as inject12, shallowRef as shallowRef37 } from "vue";
+import { defineComponent as defineComponent107, inject as inject12 } from "vue";
 import { renderSlot as _renderSlot58, openBlock as _openBlock128, createElementBlock as _createElementBlock113 } from "vue";
 var _sfc_script134 = defineComponent107({
   name: "ta-tab-view-item",
@@ -19468,12 +19533,10 @@ var _sfc_script134 = defineComponent107({
     }
   },
   setup() {
-    const root = shallowRef37(null);
     const vertical = inject12("taTabViewVertical", false);
     let coords;
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         const {
           scrollHeight,
           scrollTop,
@@ -19505,7 +19568,7 @@ var _sfc_script134 = defineComponent107({
           };
         }
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords) {
           return;
         }
@@ -19520,12 +19583,15 @@ var _sfc_script134 = defineComponent107({
           e.stopPropagation();
         }
       },
-      onTouchEnd() {
+      onEnd() {
         coords = null;
       }
     });
     return {
-      root
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     };
   }
 });
@@ -19536,10 +19602,17 @@ function render129(_ctx, _cache) {
     "data-name": _ctx.name,
     "data-title": _ctx.title,
     "data-sub-title": _ctx.subTitle,
-    ref: "root"
+    onTouchstart: _cache[0] || (_cache[0] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+    onTouchmove: _cache[1] || (_cache[1] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+    onTouchend: _cache[2] || (_cache[2] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onMousedown: _cache[3] || (_cache[3] = (...args) => _ctx.onTouchStart && _ctx.onTouchStart(...args)),
+    onMousemove: _cache[4] || (_cache[4] = (...args) => _ctx.onTouchMove && _ctx.onTouchMove(...args)),
+    onMouseup: _cache[5] || (_cache[5] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onMouseleave: _cache[6] || (_cache[6] = (...args) => _ctx.onTouchEnd && _ctx.onTouchEnd(...args)),
+    onDragstart: _cache[7] || (_cache[7] = (...args) => _ctx.onDragStart && _ctx.onDragStart(...args))
   }, [
     _renderSlot58(_ctx.$slots, "default")
-  ], 8, _hoisted_1102);
+  ], 40, _hoisted_1102);
 }
 _sfc_script134.render = render129;
 _sfc_script134.__file = "packages/ui/src/TabView/TabViewItem.vue";
@@ -19721,9 +19794,9 @@ var _hoisted_1105 = {
   ref: "root"
 };
 var _hoisted_281 = /* @__PURE__ */ _createElementVNode91("div", { class: "ta-timeline-item_line" }, null, -1);
-var _hoisted_366 = { class: "ta-timeline-item_index" };
+var _hoisted_363 = { class: "ta-timeline-item_index" };
 var _hoisted_424 = { class: "ta-timeline-item_inner" };
-var _hoisted_510 = {
+var _hoisted_59 = {
   key: 0,
   class: "ta-timeline-item_title"
 };
@@ -19731,7 +19804,7 @@ var _hoisted_63 = { class: "ta-timeline-item_content" };
 function render133(_ctx, _cache) {
   return _openBlock131(), _createElementBlock116("div", _hoisted_1105, [
     _hoisted_281,
-    _createElementVNode91("div", _hoisted_366, [
+    _createElementVNode91("div", _hoisted_363, [
       _renderSlot60(_ctx.$slots, "dot", {}, () => [
         _createElementVNode91("i", {
           class: "ta-timeline-item_dot",
@@ -19740,7 +19813,7 @@ function render133(_ctx, _cache) {
       ])
     ]),
     _createElementVNode91("div", _hoisted_424, [
-      _ctx.title || _ctx.$slots.title ? (_openBlock131(), _createElementBlock116("div", _hoisted_510, [
+      _ctx.title || _ctx.$slots.title ? (_openBlock131(), _createElementBlock116("div", _hoisted_59, [
         _renderSlot60(_ctx.$slots, "title", {}, () => [
           _createTextVNode24(_toDisplayString52(_ctx.title), 1)
         ])
