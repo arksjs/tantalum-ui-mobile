@@ -1,9 +1,10 @@
 <template>
-  <ta-group title="基础用法">
+  <ta-group class="exp-scrollTab" title="基础用法">
     <!-- <div class="exp-scrollTab-header">占位头部</div> -->
     <ta-scroll-tab
       ref="scrollTabRef"
       class="exp-scrollTab-boxs"
+      :sideBar="true"
       v-model="value"
       :stickyOffsetTop="offsetTop"
       :stickyOffsetBottom="offsetBottom"

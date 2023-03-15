@@ -1,13 +1,19 @@
 <template>
-  <div class="ta-scroll-tab">
-    <div class="ta-scroll-tab_sidebar">
+  <div :class="classes">
+    <div class="ta-scroll-tab_bar">
       <Sticky
         ref="sideRef"
         :offsetTop="stickyOffsetTop"
-        :offsetBottom="stickyOffsetBottom"
+        :offsetBottom="sideBar ? stickyOffsetBottom : undefined"
       >
+        <Tab
+          v-if="!sideBar && tabList.length > 0"
+          :options="tabList"
+          :modelValue="activeName"
+          @change="onTabChange"
+        />
         <SideTab
-          v-if="tabList.length > 0"
+          v-else-if="sideBar && tabList.length > 0"
           :options="tabList"
           :modelValue="activeName"
           @change="onTabChange"
@@ -18,6 +24,7 @@
       <StickyView
         :offsetTop="stickyOffsetTop"
         :modelValue="modelValue"
+        :disabledHeader="!sideBar"
         ref="bodyRef"
         @resetItems="onResetItems"
         @change="onStickyViewChange"
@@ -29,7 +36,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, shallowRef, watch } from 'vue'
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  shallowRef,
+  watch,
+  computed
+} from 'vue'
+import { Tab } from '../Tab'
 import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
@@ -43,10 +58,11 @@ import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import type { ScrollTabEmits } from './types'
 import type { SideTabOnChange } from '../SideTab/types'
+import { getClasses } from './util'
 
 export default defineComponent({
   name: 'ta-scroll-tab',
-  components: { SideTab, Sticky, StickyView },
+  components: { Tab, SideTab, Sticky, StickyView },
   props: {
     modelValue: {
       type: String
@@ -60,6 +76,10 @@ export default defineComponent({
       type: [Number, String],
       validator: isSizeValue,
       default: 0
+    },
+    sideBar: {
+      type: Boolean,
+      default: true
     }
   },
   emits: {
@@ -132,6 +152,8 @@ export default defineComponent({
       })
     }
 
+    const classes = computed(() => getClasses(props.sideBar))
+
     watch(
       () => props.modelValue,
       val => updateActiveName(val)
@@ -153,6 +175,7 @@ export default defineComponent({
     })
 
     return {
+      classes,
       sideRef,
       bodyRef,
       activeName,

@@ -30,6 +30,7 @@ import type { ScrollTabOnChange, ScrollTabRef } from 'tantalum-ui-mobile'
 | -------------------- | ---------------- | ------ | ---- | --------------------------- |
 | sticky-offset-top    | string \| number | 0      | 否   | 数值默认是 px，也支持 vw/vh |
 | sticky-offset-bottom | string \| number | 0      | 否   | 数值默认是 px，也支持 vw/vh |
+| side-bar             | boolean          | true   | 否   | 使用侧边 Tab                |
 
 ### ScrollTab Events
 
