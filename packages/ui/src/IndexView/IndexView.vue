@@ -1,7 +1,17 @@
 <template>
   <div class="ta-index-view">
     <div class="ta-index-view_sidebar">
-      <ul class="ta-index-view_list" ref="navEl">
+      <ul
+        class="ta-index-view_list"
+        @touchstart="onTouchStart"
+        @touchmove="onTouchMove"
+        @touchend="onTouchEnd"
+        @mousedown="onTouchStart"
+        @mousemove="onTouchMove"
+        @mouseup="onTouchEnd"
+        @mouseleave="onTouchEnd"
+        @dragstart="onDragStart"
+      >
         <li
           :class="{ active: item.value === activeName }"
           v-for="(item, index) in indexList"
@@ -64,7 +74,6 @@ export default defineComponent({
     change: emitChangeValidator
   } as PropsToEmits<IndexViewEmits>,
   setup(props, { emit, expose }) {
-    const navEl = shallowRef<HTMLUListElement | null>(null)
     const bodyRef = shallowRef<StickyViewRef | null>(null)
     const indexList = ref<
       {
@@ -120,9 +129,8 @@ export default defineComponent({
     } | null = null
     const lazyDo = useOnce(100)
 
-    useTouch({
-      el: navEl,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         const { clientY } = e.touchObject
 
         const $target = e.target as HTMLElement
@@ -144,7 +152,7 @@ export default defineComponent({
         e.preventDefault()
       },
 
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords) {
           return
         }
@@ -176,7 +184,7 @@ export default defineComponent({
         e.stopPropagation()
       },
 
-      onTouchEnd(e) {
+      onEnd(e) {
         if (coords) {
           if (!coords.isChange) {
             const toIndex = coords.current
@@ -226,7 +234,6 @@ export default defineComponent({
     })
 
     return {
-      navEl,
       bodyRef,
       activeName,
       indexList,
@@ -235,7 +242,12 @@ export default defineComponent({
 
       scrollTo,
       scrollToIndex,
-      resetContainer
+      resetContainer,
+
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     }
   }
 })

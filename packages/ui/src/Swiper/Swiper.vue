@@ -1,5 +1,16 @@
 <template>
-  <div :class="classes" ref="root">
+  <div
+    :class="classes"
+    ref="root"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @mousedown="onTouchStart"
+    @mousemove="onTouchMove"
+    @mouseup="onTouchEnd"
+    @mouseleave="onTouchEnd"
+    @dragstart="onDragStart"
+  >
     <div class="ta-swiper_list" ref="listEl">
       <SwiperItems @resetItems="resetItems"><slot></slot></SwiperItems>
     </div>
@@ -484,10 +495,9 @@ export default defineComponent({
 
     let coords: SwiperCoords | null
 
-    useTouch({
-      el: root,
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
       // 滑动开始事件-记录坐标
-      onTouchStart(e) {
+      onStart(e) {
         if (playing) {
           return
         }
@@ -507,10 +517,8 @@ export default defineComponent({
           offset: null
         }
       },
-      /**
-       * 滑动过程事件-判断横竖向，跟随滑动
-       */
-      onTouchMove(e) {
+      // 滑动过程事件-判断横竖向，跟随滑动
+      onMove(e) {
         if (!coords || horizontal === false) {
           // 确定非水平移动，就不需要计算数据了
           return
@@ -565,10 +573,8 @@ export default defineComponent({
           updateListStyle(-transSize)
         }
       },
-      /**
-       * 滑动结束事件-滑到指定位置，重置状态
-       */
-      onTouchEnd(e) {
+      // 滑动结束事件-滑到指定位置，重置状态
+      onEnd(e) {
         if (!horizontal) {
           // 未确定或者非水平移动情况，返回click事件
           emit('click')
@@ -651,6 +657,11 @@ export default defineComponent({
       indicatorsClasses,
       getPaginationItemClasses,
       getPaginationItemStyles,
+
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart,
 
       swipeTo,
       prev,

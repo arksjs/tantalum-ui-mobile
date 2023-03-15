@@ -1,5 +1,17 @@
 <template>
-  <div :class="classes" ref="root" @scroll="onScroll">
+  <div
+    :class="classes"
+    ref="root"
+    @scroll="onScroll"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @mousedown="onTouchStart"
+    @mousemove="onTouchMove"
+    @mouseup="onTouchEnd"
+    @mouseleave="onTouchEnd"
+    @dragstart="onDragStart"
+  >
     <div class="ta-scroll-view_inner">
       <div class="ta-scroll-view_content" :style="contentStyles">
         <div v-if="allowPullDirections.length > 0" :class="pullRefreshClasses">
@@ -324,9 +336,8 @@ export default defineComponent({
       string2StringArray(props.enablePullDirections)
     )
 
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         const { pageX, pageY } = e.touchObject
         const $scroll = root.value as HTMLElement
         const {
@@ -385,7 +396,7 @@ export default defineComponent({
           coords.directions = directions
         }
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords) {
           return
         }
@@ -507,7 +518,7 @@ export default defineComponent({
           ? distance
           : -distance
       },
-      onTouchEnd() {
+      onEnd() {
         if (!coords) {
           return
         }
@@ -553,7 +564,12 @@ export default defineComponent({
       scrollTo: scrollToOffset,
       scrollToEnd,
       locale,
-      CircleOutlined
+      CircleOutlined,
+
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     }
   }
 })

@@ -1,5 +1,16 @@
 <template>
-  <div :class="classes" :style="styles" ref="root">
+  <div
+    :class="classes"
+    :style="styles"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @mousedown="onTouchStart"
+    @mousemove="onTouchMove"
+    @mouseup="onTouchEnd"
+    @mouseleave="onTouchEnd"
+    @dragstart="onDragStart"
+  >
     <input
       :name="name"
       type="hidden"
@@ -27,14 +38,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  ref,
-  shallowRef,
-  watch,
-  type PropType
-} from 'vue'
+import { computed, defineComponent, ref, watch, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import {
   isInteger,
@@ -112,7 +116,6 @@ export default defineComponent({
   emits: { ...formNumberValueEmits } as PropsToEmits<RateEmits>,
   setup(props, ctx) {
     const { emit } = ctx
-    const root = shallowRef<HTMLElement | null>(null)
     const inputValue = ref(0)
 
     function change(value: number, isHalf = false) {
@@ -135,9 +138,8 @@ export default defineComponent({
 
     let coords: RateCoords | null
 
-    useTouch({
-      el: root,
-      onTouchStart(e) {
+    const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
+      onStart(e) {
         if (isReadonly.value) {
           return
         }
@@ -165,7 +167,7 @@ export default defineComponent({
 
         e.preventDefault()
       },
-      onTouchMove(e) {
+      onMove(e) {
         if (!coords) {
           return
         }
@@ -201,7 +203,7 @@ export default defineComponent({
 
         e.stopPropagation()
       },
-      onTouchEnd(e) {
+      onEnd(e) {
         if (coords) {
           coords = null
           e.stopPropagation()
@@ -236,11 +238,15 @@ export default defineComponent({
     watch(() => props.modelValue, updateValue)
 
     return {
-      root,
       inputValue,
       classes,
       styles,
-      max
+      max,
+
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     }
   }
 })

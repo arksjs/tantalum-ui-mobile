@@ -1,6 +1,16 @@
 <template>
   <div :class="slideClasses" :style="slideStyles">
-    <div class="ta-slider_inner" ref="sliderEl">
+    <div
+      class="ta-slider_inner"
+      @touchstart="onTouchStart"
+      @touchmove="onTouchMove"
+      @touchend="onTouchEnd"
+      @mousedown="onTouchStart"
+      @mousemove="onTouchMove"
+      @mouseup="onTouchEnd"
+      @mouseleave="onTouchEnd"
+      @dragstart="onDragStart"
+    >
       <div class="ta-slider_box">
         <div
           class="ta-slider_track"
@@ -51,12 +61,15 @@ export default defineComponent({
     const { emit } = ctx
 
     const {
-      sliderEl,
       toInteger,
       rangeValue,
       value2Progress,
       slideClasses,
-      slideStyles
+      slideStyles,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     } = useSlide(props, {
       getValue() {
         return inputValue.value
@@ -125,11 +138,15 @@ export default defineComponent({
     }
 
     return {
-      sliderEl,
       progress,
       inputValue,
       slideClasses,
-      slideStyles
+      slideStyles,
+
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+      onDragStart
     }
   }
 })
