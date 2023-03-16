@@ -7312,6 +7312,7 @@ var getItemClasses2 = (index, activeIndex) => {
     }
   ];
 };
+var TAB_HEIGHT = 40;
 
 // packages/ui/src/Tab/use-tab.ts
 function useTab(props, { emit, expose }, { tabName }) {
@@ -11187,7 +11188,7 @@ function render67(_ctx, _cache) {
     _ctx.loading ? (_openBlock66(), _createBlock29(_component_ActivityIndicator, {
       key: 0,
       class: "ta-load-more_icon",
-      size: 18
+      size: 16
     })) : _createCommentVNode25("v-if", true),
     _createElementVNode44("span", _hoisted_148, [
       _renderSlot25(_ctx.$slots, "default", {}, () => [
@@ -14255,6 +14256,10 @@ var _sfc_script85 = defineComponent66({
       var _a;
       return ((_a = cachedItems[index]) == null ? void 0 : _a.name) || "";
     }
+    function getItemTitle(index) {
+      var _a, _b;
+      return (((_a = cachedItems[index]) == null ? void 0 : _a.title) || "") + `<span>${((_b = cachedItems[index]) == null ? void 0 : _b.description) || ""}</span>`;
+    }
     function getActiveIndexByName(name) {
       if (name) {
         for (let i = 0; i < $items.length; i++) {
@@ -14274,11 +14279,11 @@ var _sfc_script85 = defineComponent66({
       }
       oldIndex = -1;
     }
-    function updateTitle(t, tY) {
+    function updateTitle(index, tY) {
       if (!fixedEl.value) {
         return;
       }
-      fixedEl.value.textContent = t;
+      fixedEl.value.innerHTML = index === -1 ? "" : getItemTitle(index);
       fixedEl.value.style.cssText = CSSProperties2CssText(getFixedStyles(tY));
     }
     function updateFixed(ss) {
@@ -14286,7 +14291,7 @@ var _sfc_script85 = defineComponent66({
         return;
       }
       if ($items.length === 0) {
-        updateTitle("", null);
+        updateTitle(-1, null);
         return;
       }
       if (oldIndex === -1) {
@@ -14300,27 +14305,27 @@ var _sfc_script85 = defineComponent66({
       const next = offsetTops[nextIndex] != null ? offsetTops[nextIndex] : Infinity;
       const first = offsetTops[0];
       if (scrollTop < first) {
-        updateTitle("", null);
+        updateTitle(-1, null);
       } else if (scrollTop >= current) {
         if (scrollTop >= next) {
           activeIndex.value = nextIndex;
-          updateTitle(getItemName(nextIndex), 0);
+          updateTitle(nextIndex, 0);
           if (offsetTops[nextIndex + 1] && scrollTop >= offsetTops[nextIndex + 1]) {
             updateFixed(scrollTop);
           } else if (!isSpecifyScrolling) {
             onChange();
           }
         } else if (next - scrollTop < FIXED_HEIGHT) {
-          updateTitle(getItemName(_index), next - scrollTop - FIXED_HEIGHT);
+          updateTitle(_index, next - scrollTop - FIXED_HEIGHT);
         } else {
-          updateTitle(getItemName(_index), 0);
+          updateTitle(_index, 0);
         }
       } else {
         if (current - scrollTop < FIXED_HEIGHT) {
-          updateTitle(getItemName(_index - 1), current - scrollTop - FIXED_HEIGHT);
+          updateTitle(_index - 1, current - scrollTop - FIXED_HEIGHT);
         } else {
           activeIndex.value = _index - 1;
-          updateTitle(getItemName(_index - 1), 0);
+          updateTitle(_index - 1, 0);
           if (offsetTops[_index - 1] && offsetTops[_index - 1] > scrollTop) {
             updateFixed(scrollTop);
           } else if (!isSpecifyScrolling) {
@@ -14346,7 +14351,7 @@ var _sfc_script85 = defineComponent66({
     function scrollToIndex(newIndex) {
       if ($items[newIndex]) {
         if (newIndex != activeIndex.value && container.value) {
-          scrollToOffset(getRelativeOffset($items[newIndex], container.value).offsetTop);
+          scrollToOffset(getRelativeOffset($items[newIndex], container.value).offsetTop - getSizeValue(props.offsetTop));
         }
       } else {
         printListItemNotFoundError("index");
@@ -14390,11 +14395,12 @@ var _sfc_script85 = defineComponent66({
       $items = getElementItems(getListEl(), "ta-sticky-view-item");
       updateFixed(null);
       const newItems = _items.map((item, index) => {
-        var _a, _b, _c;
+        var _a, _b, _c, _d;
         return {
           index,
           name: ((_a = item.props) == null ? void 0 : _a.name) || "",
-          title: ((_b = item.props) == null ? void 0 : _b.title) || ((_c = item.props) == null ? void 0 : _c.name) || ""
+          title: ((_b = item.props) == null ? void 0 : _b.title) || ((_c = item.props) == null ? void 0 : _c.name) || "",
+          description: ((_d = item.props) == null ? void 0 : _d.description) || ""
         };
       });
       if (!isSameItems(newItems, cachedItems)) {
@@ -14484,13 +14490,15 @@ _sfc_script85.__file = "packages/ui/src/StickyView/StickyView.vue";
 
 // vue:./StickyViewItem.vue
 import { defineComponent as defineComponent67 } from "vue";
-import { toDisplayString as _toDisplayString29, createElementVNode as _createElementVNode57, renderSlot as _renderSlot37, openBlock as _openBlock82, createElementBlock as _createElementBlock71 } from "vue";
+import { toDisplayString as _toDisplayString29, createElementVNode as _createElementVNode57, createTextVNode as _createTextVNode14, renderSlot as _renderSlot37, openBlock as _openBlock82, createElementBlock as _createElementBlock71 } from "vue";
 var _sfc_script86 = defineComponent67({
   name: "ta-sticky-view-item",
   props: {
     title: {
-      type: String,
-      default: ""
+      type: String
+    },
+    description: {
+      type: String
     },
     name: {
       type: String,
@@ -14498,7 +14506,7 @@ var _sfc_script86 = defineComponent67({
     }
   }
 });
-var _hoisted_164 = ["data-name", "data-title"];
+var _hoisted_164 = ["data-name", "data-title", "data-sub-title"];
 var _hoisted_248 = { class: "ta-sticky-view-item_header" };
 var _hoisted_338 = { class: "ta-sticky-view-item_body" };
 function render83(_ctx, _cache) {
@@ -14506,9 +14514,12 @@ function render83(_ctx, _cache) {
     class: "ta-sticky-view-item",
     "data-name": _ctx.name,
     "data-title": _ctx.title,
-    ref: "root"
+    "data-sub-title": _ctx.description
   }, [
-    _createElementVNode57("div", _hoisted_248, _toDisplayString29(_ctx.title || _ctx.name), 1),
+    _createElementVNode57("div", _hoisted_248, [
+      _createTextVNode14(_toDisplayString29(_ctx.title || _ctx.name), 1),
+      _createElementVNode57("span", null, _toDisplayString29(_ctx.description), 1)
+    ]),
     _createElementVNode57("div", _hoisted_338, [
       _renderSlot37(_ctx.$slots, "default")
     ])
@@ -15135,7 +15146,7 @@ var getContentStyles2 = ({
 };
 
 // vue:./NoticeBar.vue
-import { resolveComponent as _resolveComponent45, createVNode as _createVNode31, openBlock as _openBlock86, createElementBlock as _createElementBlock74, createCommentVNode as _createCommentVNode34, renderSlot as _renderSlot41, toDisplayString as _toDisplayString32, createTextVNode as _createTextVNode14, normalizeClass as _normalizeClass40, normalizeStyle as _normalizeStyle20, createElementVNode as _createElementVNode59 } from "vue";
+import { resolveComponent as _resolveComponent45, createVNode as _createVNode31, openBlock as _openBlock86, createElementBlock as _createElementBlock74, createCommentVNode as _createCommentVNode34, renderSlot as _renderSlot41, toDisplayString as _toDisplayString32, createTextVNode as _createTextVNode15, normalizeClass as _normalizeClass40, normalizeStyle as _normalizeStyle20, createElementVNode as _createElementVNode59 } from "vue";
 var modeMaps = /* @__PURE__ */ new Map([
   ["default", null],
   ["clickable", _sfc_script25],
@@ -15271,7 +15282,7 @@ function render87(_ctx, _cache) {
         style: _normalizeStyle20(_ctx.contentStyles)
       }, [
         _renderSlot41(_ctx.$slots, "default", {}, () => [
-          _createTextVNode14(_toDisplayString32(_ctx.title), 1)
+          _createTextVNode15(_toDisplayString32(_ctx.title), 1)
         ])
       ], 6)
     ]),
@@ -15452,7 +15463,7 @@ var isShowHeaderConfirm = ({
 }) => type !== "rightColumn" && (isString(customKey) || isStringArray(customKey) && customKey.length > 0);
 
 // vue:./NumberKeyboard.vue
-import { renderList as _renderList15, Fragment as _Fragment16, openBlock as _openBlock90, createElementBlock as _createElementBlock77, resolveComponent as _resolveComponent47, createBlock as _createBlock39, createCommentVNode as _createCommentVNode35, toDisplayString as _toDisplayString33, createTextVNode as _createTextVNode15, createElementVNode as _createElementVNode62, normalizeClass as _normalizeClass41, createVNode as _createVNode33, withModifiers as _withModifiers6, withCtx as _withCtx24 } from "vue";
+import { renderList as _renderList15, Fragment as _Fragment16, openBlock as _openBlock90, createElementBlock as _createElementBlock77, resolveComponent as _resolveComponent47, createBlock as _createBlock39, createCommentVNode as _createCommentVNode35, toDisplayString as _toDisplayString33, createTextVNode as _createTextVNode16, createElementVNode as _createElementVNode62, normalizeClass as _normalizeClass41, createVNode as _createVNode33, withModifiers as _withModifiers6, withCtx as _withCtx24 } from "vue";
 var _sfc_script94 = defineComponent73({
   name: "ta-number-keyboard",
   components: { Drawer: _sfc_script10, Icon: _sfc_script2 },
@@ -15642,7 +15653,7 @@ function render91(_ctx, _cache) {
                     key: 0,
                     icon: item.icon
                   }, null, 8, ["icon"])) : (_openBlock90(), _createElementBlock77(_Fragment16, { key: 1 }, [
-                    _createTextVNode15(_toDisplayString33(item.text), 1)
+                    _createTextVNode16(_toDisplayString33(item.text), 1)
                   ], 2112))
                 ], 8, _hoisted_254)
               ], 2);
@@ -15683,7 +15694,7 @@ import { computed as computed41, defineComponent as defineComponent74, ref as re
 var getTotal = (total) => Math.max(getNumber(total, 1), 1);
 
 // vue:./Pagination.vue
-import { renderSlot as _renderSlot42, resolveComponent as _resolveComponent48, createVNode as _createVNode34, createElementVNode as _createElementVNode63, toDisplayString as _toDisplayString34, createTextVNode as _createTextVNode16, openBlock as _openBlock91, createElementBlock as _createElementBlock78 } from "vue";
+import { renderSlot as _renderSlot42, resolveComponent as _resolveComponent48, createVNode as _createVNode34, createElementVNode as _createElementVNode63, toDisplayString as _toDisplayString34, createTextVNode as _createTextVNode17, openBlock as _openBlock91, createElementBlock as _createElementBlock78 } from "vue";
 var _sfc_script95 = defineComponent74({
   name: "ta-pagination",
   components: { Icon: _sfc_script2 },
@@ -15745,7 +15756,7 @@ function render92(_ctx, _cache) {
         current: _ctx.pageNum,
         total: _ctx.totalNum
       }, () => [
-        _createTextVNode16(_toDisplayString34(_ctx.pageNum) + " / " + _toDisplayString34(_ctx.totalNum), 1)
+        _createTextVNode17(_toDisplayString34(_ctx.pageNum) + " / " + _toDisplayString34(_ctx.totalNum), 1)
       ])
     ]),
     _createElementVNode63("button", {
@@ -16000,7 +16011,7 @@ var showPopover = createShowPopup({
 var Popover_default = _sfc_script96;
 
 // vue:./PopDialog.vue
-import { toDisplayString as _toDisplayString36, createElementVNode as _createElementVNode65, createTextVNode as _createTextVNode17, resolveComponent as _resolveComponent49, withCtx as _withCtx25, openBlock as _openBlock93, createBlock as _createBlock41, createCommentVNode as _createCommentVNode36, createVNode as _createVNode35 } from "vue";
+import { toDisplayString as _toDisplayString36, createElementVNode as _createElementVNode65, createTextVNode as _createTextVNode18, resolveComponent as _resolveComponent49, withCtx as _withCtx25, openBlock as _openBlock93, createBlock as _createBlock41, createCommentVNode as _createCommentVNode36, createVNode as _createVNode35 } from "vue";
 var _sfc_script97 = defineComponent76({
   name: "ta-pop-dialog",
   components: { TaButton: _sfc_script4, ButtonGroup: _sfc_script5, Popover: _sfc_script96 },
@@ -16072,7 +16083,7 @@ function render94(_ctx, _cache) {
               onClick: _ctx.onCancelClick
             }, {
               default: _withCtx25(() => [
-                _createTextVNode17(_toDisplayString36(_ctx.cancelText || _ctx.locale.popDialogCancelText), 1)
+                _createTextVNode18(_toDisplayString36(_ctx.cancelText || _ctx.locale.popDialogCancelText), 1)
               ]),
               _: 1
             }, 8, ["onClick"])) : _createCommentVNode36("v-if", true),
@@ -16081,7 +16092,7 @@ function render94(_ctx, _cache) {
               onClick: _ctx.onConfirmClick
             }, {
               default: _withCtx25(() => [
-                _createTextVNode17(_toDisplayString36(_ctx.confirmText || _ctx.locale.popDialogConfirmText), 1)
+                _createTextVNode18(_toDisplayString36(_ctx.confirmText || _ctx.locale.popDialogConfirmText), 1)
               ]),
               _: 1
             }, 8, ["onClick"])
@@ -16315,7 +16326,7 @@ var getStyles7 = (color) => {
 var getProgress = (percentage) => rangeInteger(percentage, 0, 100) + "%";
 
 // vue:./Progress.vue
-import { normalizeClass as _normalizeClass43, normalizeStyle as _normalizeStyle22, createElementVNode as _createElementVNode68, renderSlot as _renderSlot45, toDisplayString as _toDisplayString39, createTextVNode as _createTextVNode18, openBlock as _openBlock96, createElementBlock as _createElementBlock81, createCommentVNode as _createCommentVNode39 } from "vue";
+import { normalizeClass as _normalizeClass43, normalizeStyle as _normalizeStyle22, createElementVNode as _createElementVNode68, renderSlot as _renderSlot45, toDisplayString as _toDisplayString39, createTextVNode as _createTextVNode19, openBlock as _openBlock96, createElementBlock as _createElementBlock81, createCommentVNode as _createCommentVNode39 } from "vue";
 var _sfc_script100 = defineComponent79({
   name: "ta-progress",
   props: {
@@ -16373,7 +16384,7 @@ function render97(_ctx, _cache) {
     ]),
     _ctx.$slots.default || _ctx.showText ? (_openBlock96(), _createElementBlock81("div", _hoisted_260, [
       _renderSlot45(_ctx.$slots, "default", { progress: _ctx.progress }, () => [
-        _createTextVNode18(_toDisplayString39(_ctx.showText ? _ctx.progress : ""), 1)
+        _createTextVNode19(_toDisplayString39(_ctx.showText ? _ctx.progress : ""), 1)
       ])
     ])) : _createCommentVNode39("v-if", true)
   ], 6);
@@ -16443,7 +16454,7 @@ _sfc_script101.__file = "packages/ui/src/Radio/Radio.vue";
 
 // vue:./RadioGroup.vue
 import { defineComponent as defineComponent81, ref as ref33 } from "vue";
-import { renderSlot as _renderSlot47, renderList as _renderList17, Fragment as _Fragment18, openBlock as _openBlock98, createElementBlock as _createElementBlock83, toDisplayString as _toDisplayString40, createTextVNode as _createTextVNode19, resolveComponent as _resolveComponent52, withCtx as _withCtx27, createBlock as _createBlock43, normalizeClass as _normalizeClass45 } from "vue";
+import { renderSlot as _renderSlot47, renderList as _renderList17, Fragment as _Fragment18, openBlock as _openBlock98, createElementBlock as _createElementBlock83, toDisplayString as _toDisplayString40, createTextVNode as _createTextVNode20, resolveComponent as _resolveComponent52, withCtx as _withCtx27, createBlock as _createBlock43, normalizeClass as _normalizeClass45 } from "vue";
 var isValue4 = (value) => isStringOrNumber(value);
 var _sfc_script102 = defineComponent81({
   name: "ta-radio-group",
@@ -16518,7 +16529,7 @@ function render99(_ctx, _cache) {
           checkedValue: item.value
         }, {
           default: _withCtx27(() => [
-            _createTextVNode19(_toDisplayString40(item.label), 1)
+            _createTextVNode20(_toDisplayString40(item.label), 1)
           ]),
           _: 2
         }, 1032, ["checkedValue"]);
@@ -17190,7 +17201,7 @@ var getType = (type) => getEnumsValue(RESULT_TYPES, type);
 var getTypeClass = (type) => ["type--" + getType(type)];
 
 // vue:./Result.vue
-import { resolveComponent as _resolveComponent54, normalizeClass as _normalizeClass48, createVNode as _createVNode38, toDisplayString as _toDisplayString42, openBlock as _openBlock105, createElementBlock as _createElementBlock90, createCommentVNode as _createCommentVNode41, createElementVNode as _createElementVNode76, renderSlot as _renderSlot48, createTextVNode as _createTextVNode20, withCtx as _withCtx28, createBlock as _createBlock44 } from "vue";
+import { resolveComponent as _resolveComponent54, normalizeClass as _normalizeClass48, createVNode as _createVNode38, toDisplayString as _toDisplayString42, openBlock as _openBlock105, createElementBlock as _createElementBlock90, createCommentVNode as _createCommentVNode41, createElementVNode as _createElementVNode76, renderSlot as _renderSlot48, createTextVNode as _createTextVNode21, withCtx as _withCtx28, createBlock as _createBlock44 } from "vue";
 var iconMap = /* @__PURE__ */ new Map([
   ["info", _sfc_script107],
   ["warning", _sfc_script108],
@@ -17278,7 +17289,7 @@ function render106(_ctx, _cache) {
         onClick: _ctx.onConfirmClick
       }, {
         default: _withCtx28(() => [
-          _createTextVNode20(_toDisplayString42(_ctx.confirmText || _ctx.locale.resultConfirmText), 1)
+          _createTextVNode21(_toDisplayString42(_ctx.confirmText || _ctx.locale.resultConfirmText), 1)
         ]),
         _: 1
       }, 8, ["onClick"]),
@@ -17288,7 +17299,7 @@ function render106(_ctx, _cache) {
         onClick: _ctx.onCancelClick
       }, {
         default: _withCtx28(() => [
-          _createTextVNode20(_toDisplayString42(_ctx.backText || _ctx.locale.resultBackText), 1)
+          _createTextVNode21(_toDisplayString42(_ctx.backText || _ctx.locale.resultBackText), 1)
         ]),
         _: 1
       }, 8, ["onClick"])) : _createCommentVNode41("v-if", true)
@@ -17557,6 +17568,7 @@ var _sfc_script112 = defineComponent87({
         };
       });
     };
+    const viewOffsetTop = computed51(() => getSizeValue(props.stickyOffsetTop) + (props.sideBar ? 0 : TAB_HEIGHT));
     const classes = computed51(() => getClasses17(props.sideBar));
     watch32(() => props.modelValue, (val) => updateActiveName(val));
     onMounted27(() => {
@@ -17572,6 +17584,7 @@ var _sfc_script112 = defineComponent87({
       resetContainer
     });
     return {
+      viewOffsetTop,
       classes,
       sideRef,
       bodyRef,
@@ -17620,7 +17633,7 @@ function render109(_ctx, _cache) {
     ]),
     _createElementVNode78("div", _hoisted_270, [
       _createVNode40(_component_StickyView, {
-        offsetTop: _ctx.stickyOffsetTop,
+        offsetTop: _ctx.viewOffsetTop,
         modelValue: _ctx.modelValue,
         disabledHeader: !_ctx.sideBar,
         ref: "bodyRef",
@@ -17640,11 +17653,14 @@ _sfc_script112.__file = "packages/ui/src/ScrollTab/ScrollTab.vue";
 
 // vue:./ScrollTabItem.vue
 import { defineComponent as defineComponent88 } from "vue";
-import { toDisplayString as _toDisplayString44, createElementVNode as _createElementVNode79, renderSlot as _renderSlot51, openBlock as _openBlock109, createElementBlock as _createElementBlock94 } from "vue";
+import { toDisplayString as _toDisplayString44, createElementVNode as _createElementVNode79, createTextVNode as _createTextVNode22, renderSlot as _renderSlot51, openBlock as _openBlock109, createElementBlock as _createElementBlock94 } from "vue";
 var _sfc_script113 = defineComponent88({
   name: "ta-scroll-tab-item",
   props: {
     title: {
+      type: String
+    },
+    description: {
       type: String
     },
     name: {
@@ -17653,16 +17669,20 @@ var _sfc_script113 = defineComponent88({
     }
   }
 });
-var _hoisted_188 = ["data-name", "data-title"];
+var _hoisted_188 = ["data-name", "data-title", "data-sub-title"];
 var _hoisted_271 = { class: "ta-sticky-view-item_header" };
 var _hoisted_355 = { class: "ta-sticky-view-item_body" };
 function render110(_ctx, _cache) {
   return _openBlock109(), _createElementBlock94("div", {
     class: "ta-sticky-view-item ta-scroll-tab-item",
     "data-name": _ctx.name,
-    "data-title": _ctx.title
+    "data-title": _ctx.title,
+    "data-sub-title": _ctx.description
   }, [
-    _createElementVNode79("div", _hoisted_271, _toDisplayString44(_ctx.title || _ctx.name), 1),
+    _createElementVNode79("div", _hoisted_271, [
+      _createTextVNode22(_toDisplayString44(_ctx.title || _ctx.name), 1),
+      _createElementVNode79("span", null, _toDisplayString44(_ctx.description), 1)
+    ]),
     _createElementVNode79("div", _hoisted_355, [
       _renderSlot51(_ctx.$slots, "default")
     ])
@@ -17831,7 +17851,7 @@ var getFieldClasses = (ghost) => [
 var getSuggestStyles = (height) => ({ height: height + "px" });
 
 // vue:./SearchBar.vue
-import { resolveComponent as _resolveComponent58, createVNode as _createVNode42, normalizeClass as _normalizeClass53, withCtx as _withCtx31, createElementVNode as _createElementVNode81, toDisplayString as _toDisplayString45, createTextVNode as _createTextVNode21, openBlock as _openBlock112, createBlock as _createBlock47, createCommentVNode as _createCommentVNode45, withModifiers as _withModifiers8, normalizeStyle as _normalizeStyle28, renderList as _renderList20, Fragment as _Fragment21, createElementBlock as _createElementBlock97 } from "vue";
+import { resolveComponent as _resolveComponent58, createVNode as _createVNode42, normalizeClass as _normalizeClass53, withCtx as _withCtx31, createElementVNode as _createElementVNode81, toDisplayString as _toDisplayString45, createTextVNode as _createTextVNode23, openBlock as _openBlock112, createBlock as _createBlock47, createCommentVNode as _createCommentVNode45, withModifiers as _withModifiers8, normalizeStyle as _normalizeStyle28, renderList as _renderList20, Fragment as _Fragment21, createElementBlock as _createElementBlock97 } from "vue";
 var emitValidator2 = (payload, setSuggestList) => isString(payload) && typeof setSuggestList === "function";
 var _sfc_script116 = defineComponent90({
   name: "ta-search-bar",
@@ -18063,7 +18083,7 @@ function render113(_ctx, _cache) {
         onClick: _ctx.onCancel
       }, {
         default: _withCtx31(() => [
-          _createTextVNode21(_toDisplayString45(_ctx.locale.searchBarCancelText), 1)
+          _createTextVNode23(_toDisplayString45(_ctx.locale.searchBarCancelText), 1)
         ]),
         _: 1
       }, 8, ["ghost", "transparent", "onClick"])) : _createCommentVNode45("v-if", true)
@@ -18091,7 +18111,7 @@ function render113(_ctx, _cache) {
                   (_openBlock112(true), _createElementBlock97(_Fragment21, null, _renderList20(item.tags, (tag) => {
                     return _openBlock112(), _createBlock47(_component_Tag, { key: tag }, {
                       default: _withCtx31(() => [
-                        _createTextVNode21(_toDisplayString45(tag), 1)
+                        _createTextVNode23(_toDisplayString45(tag), 1)
                       ]),
                       _: 2
                     }, 1024);
@@ -18613,7 +18633,7 @@ var _sfc_script125 = defineComponent99({
 
 // vue:./Step.vue
 import { computed as computed61, defineComponent as defineComponent100 } from "vue";
-import { createElementVNode as _createElementVNode84, renderSlot as _renderSlot54, toDisplayString as _toDisplayString47, createTextVNode as _createTextVNode22, openBlock as _openBlock120, createElementBlock as _createElementBlock105, createCommentVNode as _createCommentVNode47, normalizeClass as _normalizeClass61 } from "vue";
+import { createElementVNode as _createElementVNode84, renderSlot as _renderSlot54, toDisplayString as _toDisplayString47, createTextVNode as _createTextVNode24, openBlock as _openBlock120, createElementBlock as _createElementBlock105, createCommentVNode as _createCommentVNode47, normalizeClass as _normalizeClass61 } from "vue";
 var _sfc_script126 = defineComponent100({
   name: "ta-step",
   props: {
@@ -18667,13 +18687,13 @@ function render121(_ctx, _cache) {
         active: _ctx.active,
         finish: _ctx.finish
       }, () => [
-        _createTextVNode22(_toDisplayString47(_ctx.index + 1), 1)
+        _createTextVNode24(_toDisplayString47(_ctx.index + 1), 1)
       ])
     ]),
     _createElementVNode84("div", _hoisted_359, [
       _ctx.title || _ctx.$slots.title ? (_openBlock120(), _createElementBlock105("div", _hoisted_423, [
         _renderSlot54(_ctx.$slots, "title", {}, () => [
-          _createTextVNode22(_toDisplayString47(_ctx.title), 1)
+          _createTextVNode24(_toDisplayString47(_ctx.title), 1)
         ])
       ])) : _createCommentVNode47("v-if", true),
       _createElementVNode84("div", _hoisted_58, [
@@ -18892,7 +18912,7 @@ var StickyViewItem_default = _sfc_script86;
 
 // vue:./Stopwatch.vue
 import { defineComponent as defineComponent102 } from "vue";
-import { renderSlot as _renderSlot55, toDisplayString as _toDisplayString48, createTextVNode as _createTextVNode23, openBlock as _openBlock123, createElementBlock as _createElementBlock108 } from "vue";
+import { renderSlot as _renderSlot55, toDisplayString as _toDisplayString48, createTextVNode as _createTextVNode25, openBlock as _openBlock123, createElementBlock as _createElementBlock108 } from "vue";
 var _sfc_script129 = defineComponent102({
   name: "ta-stopwatch",
   props: {
@@ -18986,7 +19006,7 @@ function render124(_ctx, _cache) {
       seconds: _ctx.countTime.seconds,
       milliseconds: _ctx.countTime.milliseconds
     }, () => [
-      _createTextVNode23(_toDisplayString48(parseInt(_ctx.countTime.fullHours) > 0 ? (_ctx.thousands ? _ctx.countTime.thousandsFullHours : _ctx.countTime.fullHours) + ":" : "") + _toDisplayString48(_ctx.countTime.minutes) + ":" + _toDisplayString48(_ctx.countTime.seconds) + _toDisplayString48(_ctx.showMilliseconds ? "." + _ctx.countTime.milliseconds : ""), 1)
+      _createTextVNode25(_toDisplayString48(parseInt(_ctx.countTime.fullHours) > 0 ? (_ctx.thousands ? _ctx.countTime.thousandsFullHours : _ctx.countTime.fullHours) + ":" : "") + _toDisplayString48(_ctx.countTime.minutes) + ":" + _toDisplayString48(_ctx.countTime.seconds) + _toDisplayString48(_ctx.showMilliseconds ? "." + _ctx.countTime.milliseconds : ""), 1)
     ])
   ]);
 }
@@ -19805,7 +19825,7 @@ _sfc_script136.__file = "packages/ui/src/Timeline/Timeline.vue";
 
 // vue:./TimelineItem.vue
 import { defineComponent as defineComponent110 } from "vue";
-import { createElementVNode as _createElementVNode91, renderSlot as _renderSlot60, normalizeStyle as _normalizeStyle33, toDisplayString as _toDisplayString52, createTextVNode as _createTextVNode24, openBlock as _openBlock131, createElementBlock as _createElementBlock116, createCommentVNode as _createCommentVNode50 } from "vue";
+import { createElementVNode as _createElementVNode91, renderSlot as _renderSlot60, normalizeStyle as _normalizeStyle33, toDisplayString as _toDisplayString52, createTextVNode as _createTextVNode26, openBlock as _openBlock131, createElementBlock as _createElementBlock116, createCommentVNode as _createCommentVNode50 } from "vue";
 var _sfc_script137 = defineComponent110({
   name: "ta-timeline-item",
   props: {
@@ -19844,7 +19864,7 @@ function render133(_ctx, _cache) {
     _createElementVNode91("div", _hoisted_424, [
       _ctx.title || _ctx.$slots.title ? (_openBlock131(), _createElementBlock116("div", _hoisted_59, [
         _renderSlot60(_ctx.$slots, "title", {}, () => [
-          _createTextVNode24(_toDisplayString52(_ctx.title), 1)
+          _createTextVNode26(_toDisplayString52(_ctx.title), 1)
         ])
       ])) : _createCommentVNode50("v-if", true),
       _createElementVNode91("div", _hoisted_63, [
