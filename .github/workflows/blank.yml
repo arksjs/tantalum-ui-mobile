@@ -54,7 +54,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Deploy Site
-        uses: JamesIves/github-pages-deploy-action@4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ github.token }}
           branch: gh-pages
