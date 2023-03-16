@@ -14204,7 +14204,7 @@ var getFixedStyles = (titleY) => ({
 var FIXED_HEIGHT = 28;
 
 // vue:./StickyView.vue
-import { renderSlot as _renderSlot36, resolveComponent as _resolveComponent41, withCtx as _withCtx20, createVNode as _createVNode29, createElementVNode as _createElementVNode56, normalizeClass as _normalizeClass37, openBlock as _openBlock81, createElementBlock as _createElementBlock70 } from "vue";
+import { renderSlot as _renderSlot36, resolveComponent as _resolveComponent41, withCtx as _withCtx20, createVNode as _createVNode29, createElementVNode as _createElementVNode56, vShow as _vShow, withDirectives as _withDirectives, normalizeClass as _normalizeClass37, openBlock as _openBlock81, createElementBlock as _createElementBlock70 } from "vue";
 var _sfc_script85 = defineComponent66({
   name: "ta-sticky-view",
   components: { Sticky: _sfc_script83, StickyViewList: _sfc_script84 },
@@ -14221,7 +14221,7 @@ var _sfc_script85 = defineComponent66({
       validator: isSizeValue,
       default: 0
     },
-    disabled: {
+    disabledHeader: {
       type: Boolean,
       default: false
     }
@@ -14461,10 +14461,10 @@ function render82(_ctx, _cache) {
       ]),
       _: 3
     }, 8, ["onResetItems"]),
-    _createVNode29(_component_Sticky, {
+    _withDirectives(_createVNode29(_component_Sticky, {
       offsetTop: _ctx.offsetTop,
       containSelector: _ctx.containSelector,
-      disabled: _ctx.disabled,
+      disabled: _ctx.disabledHeader,
       class: "ta-sticky-view_top",
       ref: "stickyRef"
     }, {
@@ -14474,7 +14474,9 @@ function render82(_ctx, _cache) {
         ])
       ]),
       _: 1
-    }, 8, ["offsetTop", "containSelector", "disabled"])
+    }, 8, ["offsetTop", "containSelector", "disabled"]), [
+      [_vShow, !_ctx.disabledHeader]
+    ])
   ], 2);
 }
 _sfc_script85.render = render82;
@@ -17391,7 +17393,14 @@ _sfc_script110.__file = "packages/ui/src/Row/Row.vue";
 var Row_default = _sfc_script110;
 
 // vue:./ScrollTab.vue
-import { defineComponent as defineComponent87, onMounted as onMounted27, ref as ref36, shallowRef as shallowRef30, watch as watch32 } from "vue";
+import {
+  defineComponent as defineComponent87,
+  onMounted as onMounted27,
+  ref as ref36,
+  shallowRef as shallowRef30,
+  watch as watch32,
+  computed as computed51
+} from "vue";
 
 // vue:./SideTab.vue
 import { defineComponent as defineComponent86 } from "vue";
@@ -17467,11 +17476,17 @@ _sfc_script111.__file = "packages/ui/src/SideTab/SideTab.vue";
 // packages/ui/src/SideTab/index.ts
 var SideTab_default = _sfc_script111;
 
+// packages/ui/src/ScrollTab/util.ts
+var getClasses17 = (sideBar) => [
+  "ta-scroll-tab",
+  { "is-side-bar": sideBar }
+];
+
 // vue:./ScrollTab.vue
-import { resolveComponent as _resolveComponent56, openBlock as _openBlock108, createBlock as _createBlock46, createCommentVNode as _createCommentVNode43, withCtx as _withCtx30, createVNode as _createVNode40, createElementVNode as _createElementVNode78, renderSlot as _renderSlot50, createElementBlock as _createElementBlock93 } from "vue";
+import { resolveComponent as _resolveComponent56, openBlock as _openBlock108, createBlock as _createBlock46, createCommentVNode as _createCommentVNode43, withCtx as _withCtx30, createVNode as _createVNode40, createElementVNode as _createElementVNode78, renderSlot as _renderSlot50, normalizeClass as _normalizeClass51, createElementBlock as _createElementBlock93 } from "vue";
 var _sfc_script112 = defineComponent87({
   name: "ta-scroll-tab",
-  components: { SideTab: _sfc_script111, Sticky: _sfc_script83, StickyView: _sfc_script85 },
+  components: { Tab: _sfc_script34, SideTab: _sfc_script111, Sticky: _sfc_script83, StickyView: _sfc_script85 },
   props: {
     modelValue: {
       type: String
@@ -17485,6 +17500,10 @@ var _sfc_script112 = defineComponent87({
       type: [Number, String],
       validator: isSizeValue,
       default: 0
+    },
+    sideBar: {
+      type: Boolean,
+      default: true
     }
   },
   emits: {
@@ -17538,6 +17557,7 @@ var _sfc_script112 = defineComponent87({
         };
       });
     };
+    const classes = computed51(() => getClasses17(props.sideBar));
     watch32(() => props.modelValue, (val) => updateActiveName(val));
     onMounted27(() => {
       resetContainer(document.documentElement);
@@ -17552,6 +17572,7 @@ var _sfc_script112 = defineComponent87({
       resetContainer
     });
     return {
+      classes,
       sideRef,
       bodyRef,
       activeName,
@@ -17565,23 +17586,30 @@ var _sfc_script112 = defineComponent87({
     };
   }
 });
-var _hoisted_187 = { class: "ta-scroll-tab" };
-var _hoisted_270 = { class: "ta-scroll-tab_sidebar" };
-var _hoisted_355 = { class: "ta-scroll-tab_body" };
+var _hoisted_187 = { class: "ta-scroll-tab_bar" };
+var _hoisted_270 = { class: "ta-scroll-tab_body" };
 function render109(_ctx, _cache) {
+  const _component_Tab = _resolveComponent56("Tab");
   const _component_SideTab = _resolveComponent56("SideTab");
   const _component_Sticky = _resolveComponent56("Sticky");
   const _component_StickyView = _resolveComponent56("StickyView");
-  return _openBlock108(), _createElementBlock93("div", _hoisted_187, [
-    _createElementVNode78("div", _hoisted_270, [
+  return _openBlock108(), _createElementBlock93("div", {
+    class: _normalizeClass51(_ctx.classes)
+  }, [
+    _createElementVNode78("div", _hoisted_187, [
       _createVNode40(_component_Sticky, {
         ref: "sideRef",
         offsetTop: _ctx.stickyOffsetTop,
-        offsetBottom: _ctx.stickyOffsetBottom
+        offsetBottom: _ctx.sideBar ? _ctx.stickyOffsetBottom : void 0
       }, {
         default: _withCtx30(() => [
-          _ctx.tabList.length > 0 ? (_openBlock108(), _createBlock46(_component_SideTab, {
+          !_ctx.sideBar && _ctx.tabList.length > 0 ? (_openBlock108(), _createBlock46(_component_Tab, {
             key: 0,
+            options: _ctx.tabList,
+            modelValue: _ctx.activeName,
+            onChange: _ctx.onTabChange
+          }, null, 8, ["options", "modelValue", "onChange"])) : _ctx.sideBar && _ctx.tabList.length > 0 ? (_openBlock108(), _createBlock46(_component_SideTab, {
+            key: 1,
             options: _ctx.tabList,
             modelValue: _ctx.activeName,
             onChange: _ctx.onTabChange
@@ -17590,10 +17618,11 @@ function render109(_ctx, _cache) {
         _: 1
       }, 8, ["offsetTop", "offsetBottom"])
     ]),
-    _createElementVNode78("div", _hoisted_355, [
+    _createElementVNode78("div", _hoisted_270, [
       _createVNode40(_component_StickyView, {
         offsetTop: _ctx.stickyOffsetTop,
         modelValue: _ctx.modelValue,
+        disabledHeader: !_ctx.sideBar,
         ref: "bodyRef",
         onResetItems: _ctx.onResetItems,
         onChange: _ctx.onStickyViewChange
@@ -17602,9 +17631,9 @@ function render109(_ctx, _cache) {
           _renderSlot50(_ctx.$slots, "default")
         ]),
         _: 3
-      }, 8, ["offsetTop", "modelValue", "onResetItems", "onChange"])
+      }, 8, ["offsetTop", "modelValue", "disabledHeader", "onResetItems", "onChange"])
     ])
-  ]);
+  ], 2);
 }
 _sfc_script112.render = render109;
 _sfc_script112.__file = "packages/ui/src/ScrollTab/ScrollTab.vue";
@@ -17626,7 +17655,7 @@ var _sfc_script113 = defineComponent88({
 });
 var _hoisted_188 = ["data-name", "data-title"];
 var _hoisted_271 = { class: "ta-sticky-view-item_header" };
-var _hoisted_356 = { class: "ta-sticky-view-item_body" };
+var _hoisted_355 = { class: "ta-sticky-view-item_body" };
 function render110(_ctx, _cache) {
   return _openBlock109(), _createElementBlock94("div", {
     class: "ta-sticky-view-item ta-scroll-tab-item",
@@ -17634,7 +17663,7 @@ function render110(_ctx, _cache) {
     "data-title": _ctx.title
   }, [
     _createElementVNode79("div", _hoisted_271, _toDisplayString44(_ctx.title || _ctx.name), 1),
-    _createElementVNode79("div", _hoisted_356, [
+    _createElementVNode79("div", _hoisted_355, [
       _renderSlot51(_ctx.$slots, "default")
     ])
   ], 8, _hoisted_188);
@@ -17650,7 +17679,7 @@ var ScrollTabItem_default = _sfc_script113;
 
 // vue:./SearchBar.vue
 import {
-  computed as computed52,
+  computed as computed53,
   defineComponent as defineComponent90,
   onBeforeMount as onBeforeMount2,
   onBeforeUnmount as onBeforeUnmount14,
@@ -17660,11 +17689,11 @@ import {
 } from "vue";
 
 // vue:./Tag.vue
-import { computed as computed51, defineComponent as defineComponent89, shallowRef as shallowRef31 } from "vue";
+import { computed as computed52, defineComponent as defineComponent89, shallowRef as shallowRef31 } from "vue";
 
 // packages/ui/src/Tag/util.ts
 var TAG_PATTERN_TYPES = ["light", "dark", "plain"];
-var getClasses17 = (props) => {
+var getClasses18 = (props) => {
   const { hasColor, isDark: isDark2 } = getColorObject(props.color);
   return [
     "ta-tag",
@@ -17685,7 +17714,7 @@ var getStyles9 = (color) => {
 };
 
 // vue:./Tag.vue
-import { renderSlot as _renderSlot52, resolveComponent as _resolveComponent57, withModifiers as _withModifiers7, createVNode as _createVNode41, openBlock as _openBlock110, createElementBlock as _createElementBlock95, createCommentVNode as _createCommentVNode44, normalizeClass as _normalizeClass51, normalizeStyle as _normalizeStyle27 } from "vue";
+import { renderSlot as _renderSlot52, resolveComponent as _resolveComponent57, withModifiers as _withModifiers7, createVNode as _createVNode41, openBlock as _openBlock110, createElementBlock as _createElementBlock95, createCommentVNode as _createCommentVNode44, normalizeClass as _normalizeClass52, normalizeStyle as _normalizeStyle27 } from "vue";
 var _sfc_script114 = defineComponent89({
   name: "ta-tag",
   components: { Icon: _sfc_script2 },
@@ -17727,8 +17756,8 @@ var _sfc_script114 = defineComponent89({
         emit("close");
       }
     }
-    const classes = computed51(() => getClasses17(props));
-    const styles = computed51(() => getStyles9(props.color));
+    const classes = computed52(() => getClasses18(props));
+    const styles = computed52(() => getStyles9(props.color));
     useLongPress(root, (e) => {
       if (!props.disabled) {
         emit(kebabCase2CamelCase(e.type));
@@ -17751,7 +17780,7 @@ var _hoisted_189 = {
 function render111(_ctx, _cache) {
   const _component_Icon = _resolveComponent57("Icon");
   return _openBlock110(), _createElementBlock95("div", {
-    class: _normalizeClass51(_ctx.classes),
+    class: _normalizeClass52(_ctx.classes),
     style: _normalizeStyle27(_ctx.styles),
     ref: "root"
   }, [
@@ -17780,11 +17809,11 @@ var _hoisted_190 = {
   focusable: "false"
 };
 var _hoisted_272 = /* @__PURE__ */ _createElementVNode80("path", { d: "M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z" }, null, -1);
-var _hoisted_357 = [
+var _hoisted_356 = [
   _hoisted_272
 ];
 function render112(_ctx, _cache) {
-  return _openBlock111(), _createElementBlock96("svg", _hoisted_190, _hoisted_357);
+  return _openBlock111(), _createElementBlock96("svg", _hoisted_190, _hoisted_356);
 }
 _sfc_script115.render = render112;
 _sfc_script115.__file = "packages/ui/src/Icon/icons/SearchOutlined/SearchOutlined.vue";
@@ -17802,7 +17831,7 @@ var getFieldClasses = (ghost) => [
 var getSuggestStyles = (height) => ({ height: height + "px" });
 
 // vue:./SearchBar.vue
-import { resolveComponent as _resolveComponent58, createVNode as _createVNode42, normalizeClass as _normalizeClass52, withCtx as _withCtx31, createElementVNode as _createElementVNode81, toDisplayString as _toDisplayString45, createTextVNode as _createTextVNode21, openBlock as _openBlock112, createBlock as _createBlock47, createCommentVNode as _createCommentVNode45, withModifiers as _withModifiers8, normalizeStyle as _normalizeStyle28, renderList as _renderList20, Fragment as _Fragment21, createElementBlock as _createElementBlock97 } from "vue";
+import { resolveComponent as _resolveComponent58, createVNode as _createVNode42, normalizeClass as _normalizeClass53, withCtx as _withCtx31, createElementVNode as _createElementVNode81, toDisplayString as _toDisplayString45, createTextVNode as _createTextVNode21, openBlock as _openBlock112, createBlock as _createBlock47, createCommentVNode as _createCommentVNode45, withModifiers as _withModifiers8, normalizeStyle as _normalizeStyle28, renderList as _renderList20, Fragment as _Fragment21, createElementBlock as _createElementBlock97 } from "vue";
 var emitValidator2 = (payload, setSuggestList) => isString(payload) && typeof setSuggestList === "function";
 var _sfc_script116 = defineComponent90({
   name: "ta-search-bar",
@@ -17957,9 +17986,9 @@ var _sfc_script116 = defineComponent90({
       phsStart();
     });
     onBeforeUnmount14(() => phsStop());
-    const innerClasses = computed52(() => getInnerClasses3(props.showCancel));
-    const innerStyles = computed52(() => getInnerStyles4(props.background));
-    const fieldClasses = computed52(() => getFieldClasses(props.ghost));
+    const innerClasses = computed53(() => getInnerClasses3(props.showCancel));
+    const innerStyles = computed53(() => getInnerStyles4(props.background));
+    const fieldClasses = computed53(() => getFieldClasses(props.ghost));
     return {
       innerClasses,
       innerStyles,
@@ -17985,7 +18014,7 @@ var _sfc_script116 = defineComponent90({
 });
 var _hoisted_191 = { class: "ta-search" };
 var _hoisted_273 = /* @__PURE__ */ _createElementVNode81("button", { class: "ta-search_button" }, "Search", -1);
-var _hoisted_358 = { class: "ta-search_suggest-list" };
+var _hoisted_357 = { class: "ta-search_suggest-list" };
 function render113(_ctx, _cache) {
   var _a;
   const _component_Icon = _resolveComponent58("Icon");
@@ -17996,13 +18025,13 @@ function render113(_ctx, _cache) {
   const _component_Dropdown = _resolveComponent58("Dropdown");
   return _openBlock112(), _createElementBlock97("div", _hoisted_191, [
     _createElementVNode81("form", {
-      class: _normalizeClass52(_ctx.innerClasses),
+      class: _normalizeClass53(_ctx.innerClasses),
       onSubmit: _cache[1] || (_cache[1] = _withModifiers8(($event) => _ctx.onSearch(_ctx.searchText), ["prevent"])),
       ref: "innerEl",
       style: _normalizeStyle28(_ctx.innerStyles)
     }, [
       _createVNode42(_component_TaInput, {
-        class: _normalizeClass52(_ctx.fieldClasses),
+        class: _normalizeClass53(_ctx.fieldClasses),
         placeholder: _ctx.placeholder,
         type: "search",
         readonly: _ctx.readonly,
@@ -18049,7 +18078,7 @@ function render113(_ctx, _cache) {
         _createElementVNode81("div", {
           style: _normalizeStyle28(_ctx.getSuggestStyles(height))
         }, [
-          _createElementVNode81("div", _hoisted_358, [
+          _createElementVNode81("div", _hoisted_357, [
             (_openBlock112(true), _createElementBlock97(_Fragment21, null, _renderList20(_ctx.suggestList, (item) => {
               return _openBlock112(), _createBlock47(_component_Cell, {
                 key: item.text,
@@ -18088,16 +18117,16 @@ var SearchBar_default = _sfc_script116;
 import { defineComponent as defineComponent95, h as h3 } from "vue";
 
 // vue:./SkeletonLayout.vue
-import { computed as computed56, defineComponent as defineComponent94 } from "vue";
+import { computed as computed57, defineComponent as defineComponent94 } from "vue";
 
 // vue:./SkeletonAvatar.vue
-import { computed as computed53, defineComponent as defineComponent91 } from "vue";
+import { computed as computed54, defineComponent as defineComponent91 } from "vue";
 
 // packages/ui/src/Skeleton/util.ts
 var PARAGRAPH_DEFAULT_ROW = 3;
 var AVATAR_SHAPE_NAMES = ["default", "circle"];
 var BUTTON_SHAPE_NAMES = ["default", "round"];
-var getClasses18 = (animated) => {
+var getClasses19 = (animated) => {
   return ["ta-skeleton", { animated: !!animated }];
 };
 var getAvatarClasses2 = (props, parentProps) => {
@@ -18181,7 +18210,7 @@ function useConsumer2() {
 }
 
 // vue:./SkeletonAvatar.vue
-import { normalizeClass as _normalizeClass53, openBlock as _openBlock113, createElementBlock as _createElementBlock98 } from "vue";
+import { normalizeClass as _normalizeClass54, openBlock as _openBlock113, createElementBlock as _createElementBlock98 } from "vue";
 var _sfc_script117 = defineComponent91({
   name: "ta-skeleton-avatar",
   props: {
@@ -18190,7 +18219,7 @@ var _sfc_script117 = defineComponent91({
   },
   setup(props) {
     const parentProps = useConsumer2();
-    const classes = computed53(() => getAvatarClasses2(props, parentProps));
+    const classes = computed54(() => getAvatarClasses2(props, parentProps));
     return {
       classes
     };
@@ -18198,15 +18227,15 @@ var _sfc_script117 = defineComponent91({
 });
 function render114(_ctx, _cache) {
   return _openBlock113(), _createElementBlock98("div", {
-    class: _normalizeClass53(_ctx.classes)
+    class: _normalizeClass54(_ctx.classes)
   }, null, 2);
 }
 _sfc_script117.render = render114;
 _sfc_script117.__file = "packages/ui/src/Skeleton/SkeletonAvatar.vue";
 
 // vue:./SkeletonTitle.vue
-import { computed as computed54, defineComponent as defineComponent92 } from "vue";
-import { normalizeClass as _normalizeClass54, openBlock as _openBlock114, createElementBlock as _createElementBlock99 } from "vue";
+import { computed as computed55, defineComponent as defineComponent92 } from "vue";
+import { normalizeClass as _normalizeClass55, openBlock as _openBlock114, createElementBlock as _createElementBlock99 } from "vue";
 var _sfc_script118 = defineComponent92({
   name: "ta-skeleton-title",
   props: {
@@ -18214,7 +18243,7 @@ var _sfc_script118 = defineComponent92({
   },
   setup(props) {
     const parentProps = useConsumer2();
-    const classes = computed54(() => getTitleClasses(props, parentProps));
+    const classes = computed55(() => getTitleClasses(props, parentProps));
     return {
       classes
     };
@@ -18222,15 +18251,15 @@ var _sfc_script118 = defineComponent92({
 });
 function render115(_ctx, _cache) {
   return _openBlock114(), _createElementBlock99("div", {
-    class: _normalizeClass54(_ctx.classes)
+    class: _normalizeClass55(_ctx.classes)
   }, null, 2);
 }
 _sfc_script118.render = render115;
 _sfc_script118.__file = "packages/ui/src/Skeleton/SkeletonTitle.vue";
 
 // vue:./SkeletonParagraph.vue
-import { defineComponent as defineComponent93, computed as computed55 } from "vue";
-import { renderList as _renderList21, Fragment as _Fragment22, openBlock as _openBlock115, createElementBlock as _createElementBlock100, normalizeClass as _normalizeClass55 } from "vue";
+import { defineComponent as defineComponent93, computed as computed56 } from "vue";
+import { renderList as _renderList21, Fragment as _Fragment22, openBlock as _openBlock115, createElementBlock as _createElementBlock100, normalizeClass as _normalizeClass56 } from "vue";
 var _sfc_script119 = defineComponent93({
   name: "ta-skeleton-paragraph",
   props: {
@@ -18244,8 +18273,8 @@ var _sfc_script119 = defineComponent93({
   },
   setup(props) {
     const parentProps = useConsumer2();
-    const classes = computed55(() => getParagraphClasses(props, parentProps));
-    const paragraphList = computed55(() => getParagraphRowList(props, parentProps));
+    const classes = computed56(() => getParagraphClasses(props, parentProps));
+    const paragraphList = computed56(() => getParagraphRowList(props, parentProps));
     return {
       classes,
       paragraphList
@@ -18254,7 +18283,7 @@ var _sfc_script119 = defineComponent93({
 });
 function render116(_ctx, _cache) {
   return _openBlock115(), _createElementBlock100("ul", {
-    class: _normalizeClass55(_ctx.classes)
+    class: _normalizeClass56(_ctx.classes)
   }, [
     (_openBlock115(true), _createElementBlock100(_Fragment22, null, _renderList21(_ctx.paragraphList, (num) => {
       return _openBlock115(), _createElementBlock100("li", { key: num });
@@ -18265,7 +18294,7 @@ _sfc_script119.render = render116;
 _sfc_script119.__file = "packages/ui/src/Skeleton/SkeletonParagraph.vue";
 
 // vue:./SkeletonLayout.vue
-import { renderSlot as _renderSlot53, resolveComponent as _resolveComponent59, createVNode as _createVNode43, openBlock as _openBlock116, createElementBlock as _createElementBlock101, createCommentVNode as _createCommentVNode46, createElementVNode as _createElementVNode82, normalizeClass as _normalizeClass56 } from "vue";
+import { renderSlot as _renderSlot53, resolveComponent as _resolveComponent59, createVNode as _createVNode43, openBlock as _openBlock116, createElementBlock as _createElementBlock101, createCommentVNode as _createCommentVNode46, createElementVNode as _createElementVNode82, normalizeClass as _normalizeClass57 } from "vue";
 var _sfc_script120 = defineComponent94({
   name: "ta-skeleton-layout",
   props: { animated: Boolean, avatar: Boolean },
@@ -18275,7 +18304,7 @@ var _sfc_script120 = defineComponent94({
     SkeletonParagraph: _sfc_script119
   },
   setup(props) {
-    const classes = computed56(() => getClasses18(props.animated));
+    const classes = computed57(() => getClasses19(props.animated));
     return {
       classes
     };
@@ -18286,20 +18315,20 @@ var _hoisted_274 = {
   key: 0,
   class: "ta-skeleton_layout-left"
 };
-var _hoisted_359 = { class: "ta-skeleton_layout-right" };
+var _hoisted_358 = { class: "ta-skeleton_layout-right" };
 function render117(_ctx, _cache) {
   const _component_SkeletonAvatar = _resolveComponent59("SkeletonAvatar");
   const _component_SkeletonTitle = _resolveComponent59("SkeletonTitle");
   const _component_SkeletonParagraph = _resolveComponent59("SkeletonParagraph");
   return _openBlock116(), _createElementBlock101("div", {
-    class: _normalizeClass56(_ctx.classes)
+    class: _normalizeClass57(_ctx.classes)
   }, [
     _renderSlot53(_ctx.$slots, "default", {}, () => [
       _createElementVNode82("div", _hoisted_192, [
         _ctx.avatar ? (_openBlock116(), _createElementBlock101("div", _hoisted_274, [
           _createVNode43(_component_SkeletonAvatar)
         ])) : _createCommentVNode46("v-if", true),
-        _createElementVNode82("div", _hoisted_359, [
+        _createElementVNode82("div", _hoisted_358, [
           _createVNode43(_component_SkeletonTitle),
           _createVNode43(_component_SkeletonParagraph)
         ])
@@ -18339,8 +18368,8 @@ var _sfc_script121 = defineComponent95({
 });
 
 // vue:./SkeletonButton.vue
-import { computed as computed57, defineComponent as defineComponent96 } from "vue";
-import { normalizeClass as _normalizeClass57, openBlock as _openBlock117, createElementBlock as _createElementBlock102 } from "vue";
+import { computed as computed58, defineComponent as defineComponent96 } from "vue";
+import { normalizeClass as _normalizeClass58, openBlock as _openBlock117, createElementBlock as _createElementBlock102 } from "vue";
 var _sfc_script122 = defineComponent96({
   name: "ta-skeleton-button",
   props: {
@@ -18349,7 +18378,7 @@ var _sfc_script122 = defineComponent96({
   },
   setup(props) {
     const parentProps = useConsumer2();
-    const classes = computed57(() => getButtonClasses2(props, parentProps));
+    const classes = computed58(() => getButtonClasses2(props, parentProps));
     return {
       classes
     };
@@ -18357,15 +18386,15 @@ var _sfc_script122 = defineComponent96({
 });
 function render118(_ctx, _cache) {
   return _openBlock117(), _createElementBlock102("div", {
-    class: _normalizeClass57(_ctx.classes)
+    class: _normalizeClass58(_ctx.classes)
   }, null, 2);
 }
 _sfc_script122.render = render118;
 _sfc_script122.__file = "packages/ui/src/Skeleton/SkeletonButton.vue";
 
 // vue:./SkeletonImage.vue
-import { computed as computed58, defineComponent as defineComponent97 } from "vue";
-import { normalizeClass as _normalizeClass58, openBlock as _openBlock118, createElementBlock as _createElementBlock103 } from "vue";
+import { computed as computed59, defineComponent as defineComponent97 } from "vue";
+import { normalizeClass as _normalizeClass59, openBlock as _openBlock118, createElementBlock as _createElementBlock103 } from "vue";
 var _sfc_script123 = defineComponent97({
   name: "ta-skeleton-image",
   props: {
@@ -18373,7 +18402,7 @@ var _sfc_script123 = defineComponent97({
   },
   setup(props) {
     const parentProps = useConsumer2();
-    const classes = computed58(() => getImageClasses(props, parentProps));
+    const classes = computed59(() => getImageClasses(props, parentProps));
     return {
       classes
     };
@@ -18381,7 +18410,7 @@ var _sfc_script123 = defineComponent97({
 });
 function render119(_ctx, _cache) {
   return _openBlock118(), _createElementBlock103("div", {
-    class: _normalizeClass58(_ctx.classes)
+    class: _normalizeClass59(_ctx.classes)
   }, null, 2);
 }
 _sfc_script123.render = render119;
@@ -18407,7 +18436,7 @@ var SkeletonTitle_default = _sfc_script118;
 
 // vue:./Slider.vue
 import { ref as ref38, defineComponent as defineComponent98, watch as watch34, nextTick as nextTick12 } from "vue";
-import { normalizeStyle as _normalizeStyle29, createElementVNode as _createElementVNode83, toDisplayString as _toDisplayString46, normalizeClass as _normalizeClass59, openBlock as _openBlock119, createElementBlock as _createElementBlock104 } from "vue";
+import { normalizeStyle as _normalizeStyle29, createElementVNode as _createElementVNode83, toDisplayString as _toDisplayString46, normalizeClass as _normalizeClass60, openBlock as _openBlock119, createElementBlock as _createElementBlock104 } from "vue";
 var _sfc_script124 = defineComponent98({
   name: "ta-slider",
   props: {
@@ -18499,7 +18528,7 @@ var _hoisted_193 = { class: "ta-slider_box" };
 var _hoisted_275 = ["name", "disabled", "value"];
 function render120(_ctx, _cache) {
   return _openBlock119(), _createElementBlock104("div", {
-    class: _normalizeClass59(_ctx.slideClasses),
+    class: _normalizeClass60(_ctx.slideClasses),
     style: _normalizeStyle29(_ctx.slideStyles)
   }, [
     _createElementVNode83("div", {
@@ -18540,7 +18569,7 @@ _sfc_script124.__file = "packages/ui/src/Slider/Slider.vue";
 var Slider_default = _sfc_script124;
 
 // vue:./Steps.vue
-import { cloneVNode, computed as computed59, defineComponent as defineComponent99, h as h4 } from "vue";
+import { cloneVNode, computed as computed60, defineComponent as defineComponent99, h as h4 } from "vue";
 
 // packages/ui/src/Steps/util.ts
 var getStepsClasses = ({
@@ -18570,7 +18599,7 @@ var _sfc_script125 = defineComponent99({
     }
   },
   setup(props, { slots }) {
-    const classes = computed59(() => getStepsClasses(props));
+    const classes = computed60(() => getStepsClasses(props));
     return () => {
       var _a;
       const children = (_a = slots.default) == null ? void 0 : _a.call(slots);
@@ -18583,8 +18612,8 @@ var _sfc_script125 = defineComponent99({
 });
 
 // vue:./Step.vue
-import { computed as computed60, defineComponent as defineComponent100 } from "vue";
-import { createElementVNode as _createElementVNode84, renderSlot as _renderSlot54, toDisplayString as _toDisplayString47, createTextVNode as _createTextVNode22, openBlock as _openBlock120, createElementBlock as _createElementBlock105, createCommentVNode as _createCommentVNode47, normalizeClass as _normalizeClass60 } from "vue";
+import { computed as computed61, defineComponent as defineComponent100 } from "vue";
+import { createElementVNode as _createElementVNode84, renderSlot as _renderSlot54, toDisplayString as _toDisplayString47, createTextVNode as _createTextVNode22, openBlock as _openBlock120, createElementBlock as _createElementBlock105, createCommentVNode as _createCommentVNode47, normalizeClass as _normalizeClass61 } from "vue";
 var _sfc_script126 = defineComponent100({
   name: "ta-step",
   props: {
@@ -18602,13 +18631,13 @@ var _sfc_script126 = defineComponent100({
     }
   },
   setup(props) {
-    const active = computed60(() => {
+    const active = computed61(() => {
       return props.activeIndex === props.index;
     });
-    const finish = computed60(() => {
+    const finish = computed61(() => {
       return props.index < props.activeIndex;
     });
-    const classes = computed60(() => getStepClasses({
+    const classes = computed61(() => getStepClasses({
       active: active.value,
       finish: finish.value
     }));
@@ -18621,7 +18650,7 @@ var _sfc_script126 = defineComponent100({
 });
 var _hoisted_194 = /* @__PURE__ */ _createElementVNode84("div", { class: "ta-step_line" }, null, -1);
 var _hoisted_276 = { class: "ta-step_index" };
-var _hoisted_360 = { class: "ta-step_inner" };
+var _hoisted_359 = { class: "ta-step_inner" };
 var _hoisted_423 = {
   key: 0,
   class: "ta-step_title"
@@ -18629,7 +18658,7 @@ var _hoisted_423 = {
 var _hoisted_58 = { class: "ta-step_content" };
 function render121(_ctx, _cache) {
   return _openBlock120(), _createElementBlock105("div", {
-    class: _normalizeClass60(_ctx.classes)
+    class: _normalizeClass61(_ctx.classes)
   }, [
     _hoisted_194,
     _createElementVNode84("div", _hoisted_276, [
@@ -18641,7 +18670,7 @@ function render121(_ctx, _cache) {
         _createTextVNode22(_toDisplayString47(_ctx.index + 1), 1)
       ])
     ]),
-    _createElementVNode84("div", _hoisted_360, [
+    _createElementVNode84("div", _hoisted_359, [
       _ctx.title || _ctx.$slots.title ? (_openBlock120(), _createElementBlock105("div", _hoisted_423, [
         _renderSlot54(_ctx.$slots, "title", {}, () => [
           _createTextVNode22(_toDisplayString47(_ctx.title), 1)
@@ -18663,10 +18692,10 @@ var Steps_default = _sfc_script125;
 var Step_default = _sfc_script126;
 
 // vue:./Stepper.vue
-import { onMounted as onMounted28, ref as ref39, defineComponent as defineComponent101, watch as watch35, computed as computed61 } from "vue";
+import { onMounted as onMounted28, ref as ref39, defineComponent as defineComponent101, watch as watch35, computed as computed62 } from "vue";
 
 // packages/ui/src/Stepper/util.ts
-var getClasses19 = (disabled) => {
+var getClasses20 = (disabled) => {
   return ["ta-stepper", { disabled: !!disabled }];
 };
 function formatNumber2(value, decimalLength) {
@@ -18693,17 +18722,17 @@ var _hoisted_195 = {
   focusable: "false"
 };
 var _hoisted_277 = /* @__PURE__ */ _createElementVNode85("path", { d: "M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z" }, null, -1);
-var _hoisted_361 = [
+var _hoisted_360 = [
   _hoisted_277
 ];
 function render122(_ctx, _cache) {
-  return _openBlock121(), _createElementBlock106("svg", _hoisted_195, _hoisted_361);
+  return _openBlock121(), _createElementBlock106("svg", _hoisted_195, _hoisted_360);
 }
 _sfc_script127.render = render122;
 _sfc_script127.__file = "packages/ui/src/Icon/icons/MinusOutlined/MinusOutlined.vue";
 
 // vue:./Stepper.vue
-import { resolveComponent as _resolveComponent60, createVNode as _createVNode44, createElementVNode as _createElementVNode86, normalizeClass as _normalizeClass61, openBlock as _openBlock122, createElementBlock as _createElementBlock107 } from "vue";
+import { resolveComponent as _resolveComponent60, createVNode as _createVNode44, createElementVNode as _createElementVNode86, normalizeClass as _normalizeClass62, openBlock as _openBlock122, createElementBlock as _createElementBlock107 } from "vue";
 var _sfc_script128 = defineComponent101({
   name: "ta-stepper",
   components: { TaButton: _sfc_script4 },
@@ -18749,11 +18778,11 @@ var _sfc_script128 = defineComponent101({
   },
   setup(props, { emit }) {
     const formValue = ref39("");
-    const nMin = computed61(() => getNumber(props.min, 1));
-    const nMax = computed61(() => getNumber(props.max, Infinity));
-    const nStep = computed61(() => getNumber(props.step, 1));
+    const nMin = computed62(() => getNumber(props.min, 1));
+    const nMax = computed62(() => getNumber(props.max, Infinity));
+    const nStep = computed62(() => getNumber(props.step, 1));
     const { inputEl, setInputValue, getInputValue } = useInput();
-    const classes = computed61(() => getClasses19(props.disabled));
+    const classes = computed62(() => getClasses20(props.disabled));
     function updateValue(val) {
       const newVal = getRangeNumber({
         min: nMin.value,
@@ -18821,7 +18850,7 @@ var _hoisted_196 = ["type", "inputmode", "name", "disabled", "readonly"];
 function render123(_ctx, _cache) {
   const _component_TaButton = _resolveComponent60("TaButton");
   return _openBlock122(), _createElementBlock107("div", {
-    class: _normalizeClass61(_ctx.classes)
+    class: _normalizeClass62(_ctx.classes)
   }, [
     _createVNode44(_component_TaButton, {
       icon: _ctx.MinusOutlined,
@@ -18971,7 +19000,7 @@ var Stopwatch_default = _sfc_script129;
 import {
   ref as ref40,
   defineComponent as defineComponent103,
-  computed as computed62,
+  computed as computed63,
   reactive as reactive8,
   shallowRef as shallowRef33
 } from "vue";
@@ -19008,7 +19037,7 @@ var getButtonStyles2 = ({
 });
 
 // vue:./SwipeCell.vue
-import { renderSlot as _renderSlot56, renderList as _renderList22, Fragment as _Fragment23, openBlock as _openBlock124, createElementBlock as _createElementBlock109, toDisplayString as _toDisplayString49, normalizeClass as _normalizeClass62, normalizeStyle as _normalizeStyle30, createElementVNode as _createElementVNode87 } from "vue";
+import { renderSlot as _renderSlot56, renderList as _renderList22, Fragment as _Fragment23, openBlock as _openBlock124, createElementBlock as _createElementBlock109, toDisplayString as _toDisplayString49, normalizeClass as _normalizeClass63, normalizeStyle as _normalizeStyle30, createElementVNode as _createElementVNode87 } from "vue";
 var _sfc_script130 = defineComponent103({
   name: "ta-swipe-cell",
   props: {
@@ -19058,7 +19087,7 @@ var _sfc_script130 = defineComponent103({
       });
       hide(false, "buttonClick");
     }
-    const buttons2 = computed62(() => getButtons(props.buttons));
+    const buttons2 = computed63(() => getButtons(props.buttons));
     const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
       onStart(e) {
         if (props.buttons.length === 0) {
@@ -19110,7 +19139,7 @@ var _sfc_script130 = defineComponent103({
         }
       }
     });
-    const innerStyles = computed62(() => getInnerStyles5({
+    const innerStyles = computed63(() => getInnerStyles5({
       translateX: translateX.value,
       duration: duration.value
     }));
@@ -19157,7 +19186,7 @@ function render125(_ctx, _cache) {
       _createElementVNode87("div", _hoisted_198, [
         (_openBlock124(true), _createElementBlock109(_Fragment23, null, _renderList22(_ctx.buttons2, (item, index) => {
           return _openBlock124(), _createElementBlock109("button", {
-            class: _normalizeClass62(["ta-swipe-cell_button", ["type--" + item.type]]),
+            class: _normalizeClass63(["ta-swipe-cell_button", ["type--" + item.type]]),
             key: index,
             style: _normalizeStyle30(_ctx.getButtonStyles({
               buttonTranslateXs: _ctx.buttonTranslateXs,
@@ -19181,10 +19210,10 @@ var SwipeCell_default = _sfc_script130;
 var SwiperItem_default = _sfc_script76;
 
 // vue:./Switch.vue
-import { onMounted as onMounted29, ref as ref41, watch as watch36, defineComponent as defineComponent104, computed as computed63 } from "vue";
+import { onMounted as onMounted29, ref as ref41, watch as watch36, defineComponent as defineComponent104, computed as computed64 } from "vue";
 
 // packages/ui/src/Switch/util.ts
-var getClasses20 = (disabled) => {
+var getClasses21 = (disabled) => {
   return ["ta-switch", { disabled: !!disabled }];
 };
 var getStyles10 = (props) => {
@@ -19196,7 +19225,7 @@ var getStyles10 = (props) => {
 };
 
 // vue:./Switch.vue
-import { createElementVNode as _createElementVNode88, normalizeClass as _normalizeClass63, normalizeStyle as _normalizeStyle31, openBlock as _openBlock125, createElementBlock as _createElementBlock110 } from "vue";
+import { createElementVNode as _createElementVNode88, normalizeClass as _normalizeClass64, normalizeStyle as _normalizeStyle31, openBlock as _openBlock125, createElementBlock as _createElementBlock110 } from "vue";
 var _sfc_script131 = defineComponent104({
   name: "ta-switch",
   props: {
@@ -19225,8 +19254,8 @@ var _sfc_script131 = defineComponent104({
     let isValueNull = props.modelValue == null;
     const checked = ref41(false);
     const { inputEl, setInputChecked, getInputChecked } = useInput();
-    const classes = computed63(() => getClasses20(props.disabled));
-    const styles = computed63(() => getStyles10(props));
+    const classes = computed64(() => getClasses21(props.disabled));
+    const styles = computed64(() => getStyles10(props));
     function onChange() {
       const value = getInputChecked();
       checked.value = value;
@@ -19260,7 +19289,7 @@ var _sfc_script131 = defineComponent104({
 var _hoisted_199 = ["disabled", "name", "value"];
 function render126(_ctx, _cache) {
   return _openBlock125(), _createElementBlock110("label", {
-    class: _normalizeClass63(_ctx.classes),
+    class: _normalizeClass64(_ctx.classes),
     style: _normalizeStyle31(_ctx.styles)
   }, [
     _createElementVNode88("input", {
@@ -19294,7 +19323,7 @@ var getItemClasses7 = (index, activeIndex) => {
 };
 
 // vue:./TabBar.vue
-import { renderList as _renderList23, Fragment as _Fragment24, openBlock as _openBlock126, createElementBlock as _createElementBlock111, resolveComponent as _resolveComponent61, createBlock as _createBlock48, createCommentVNode as _createCommentVNode48, mergeProps as _mergeProps11, withCtx as _withCtx32, createVNode as _createVNode45, toDisplayString as _toDisplayString50, createElementVNode as _createElementVNode89, normalizeClass as _normalizeClass64, normalizeStyle as _normalizeStyle32 } from "vue";
+import { renderList as _renderList23, Fragment as _Fragment24, openBlock as _openBlock126, createElementBlock as _createElementBlock111, resolveComponent as _resolveComponent61, createBlock as _createBlock48, createCommentVNode as _createCommentVNode48, mergeProps as _mergeProps11, withCtx as _withCtx32, createVNode as _createVNode45, toDisplayString as _toDisplayString50, createElementVNode as _createElementVNode89, normalizeClass as _normalizeClass65, normalizeStyle as _normalizeStyle32 } from "vue";
 var _sfc_script132 = defineComponent105({
   name: "ta-tab-bar",
   components: { TaImage: _sfc_script17, Icon: _sfc_script2, Badge: _sfc_script14 },
@@ -19318,7 +19347,7 @@ var _hoisted_1100 = {
   ref: "listEl"
 };
 var _hoisted_279 = ["onClick"];
-var _hoisted_362 = { class: "ta-tab-bar_item-text" };
+var _hoisted_361 = { class: "ta-tab-bar_item-text" };
 function render127(_ctx, _cache) {
   const _component_TaImage = _resolveComponent61("TaImage");
   const _component_Icon = _resolveComponent61("Icon");
@@ -19330,7 +19359,7 @@ function render127(_ctx, _cache) {
     _createElementVNode89("ul", _hoisted_1100, [
       (_openBlock126(true), _createElementBlock111(_Fragment24, null, _renderList23(_ctx.options2, (item, index) => {
         return _openBlock126(), _createElementBlock111("li", {
-          class: _normalizeClass64(_ctx.getItemClasses(index, _ctx.activeIndex)),
+          class: _normalizeClass65(_ctx.getItemClasses(index, _ctx.activeIndex)),
           key: item.value,
           onClick: ($event) => _ctx.onChange(item.value)
         }, [
@@ -19346,7 +19375,7 @@ function render127(_ctx, _cache) {
             ]),
             _: 2
           }, 1040),
-          _createElementVNode89("span", _hoisted_362, _toDisplayString50(item.label), 1)
+          _createElementVNode89("span", _hoisted_361, _toDisplayString50(item.label), 1)
         ], 10, _hoisted_279);
       }), 128))
     ], 512)
@@ -19362,10 +19391,10 @@ var TabBar_default = _sfc_script132;
 import { ref as ref42, defineComponent as defineComponent106, provide as provide10, watch as watch37, shallowRef as shallowRef34 } from "vue";
 
 // packages/ui/src/TabView/util.ts
-var getClasses21 = (vertical) => ["ta-tab-view", { vertical }];
+var getClasses22 = (vertical) => ["ta-tab-view", { vertical }];
 
 // vue:./TabView.vue
-import { resolveComponent as _resolveComponent62, openBlock as _openBlock127, createBlock as _createBlock49, createCommentVNode as _createCommentVNode49, createElementVNode as _createElementVNode90, renderSlot as _renderSlot57, withCtx as _withCtx33, createVNode as _createVNode46, normalizeClass as _normalizeClass65, createElementBlock as _createElementBlock112 } from "vue";
+import { resolveComponent as _resolveComponent62, openBlock as _openBlock127, createBlock as _createBlock49, createCommentVNode as _createCommentVNode49, createElementVNode as _createElementVNode90, renderSlot as _renderSlot57, withCtx as _withCtx33, createVNode as _createVNode46, normalizeClass as _normalizeClass66, createElementBlock as _createElementBlock112 } from "vue";
 var _sfc_script133 = defineComponent106({
   name: "ta-tab-view",
   components: { Tab: _sfc_script34, SideTab: _sfc_script111, Swiper: _sfc_script75 },
@@ -19450,7 +19479,7 @@ var _sfc_script133 = defineComponent106({
     }
     provide10("taTabViewVertical", vertical.value);
     watch37(() => props.modelValue, (val) => val != null && _switchTo(val, true));
-    const classes = getClasses21(vertical.value);
+    const classes = getClasses22(vertical.value);
     const switchTo = (name) => _switchTo(name, false);
     expose({
       switchTo,
@@ -19478,7 +19507,7 @@ function render128(_ctx, _cache) {
   const _component_Tab = _resolveComponent62("Tab");
   const _component_Swiper = _resolveComponent62("Swiper");
   return _openBlock127(), _createElementBlock112("div", {
-    class: _normalizeClass65(_ctx.classes)
+    class: _normalizeClass66(_ctx.classes)
   }, [
     _createElementVNode90("div", _hoisted_1101, [
       _ctx.vertical && _ctx.tabList.length > 0 ? (_openBlock127(), _createBlock49(_component_SideTab, {
@@ -19794,7 +19823,7 @@ var _hoisted_1105 = {
   ref: "root"
 };
 var _hoisted_281 = /* @__PURE__ */ _createElementVNode91("div", { class: "ta-timeline-item_line" }, null, -1);
-var _hoisted_363 = { class: "ta-timeline-item_index" };
+var _hoisted_362 = { class: "ta-timeline-item_index" };
 var _hoisted_424 = { class: "ta-timeline-item_inner" };
 var _hoisted_59 = {
   key: 0,
@@ -19804,7 +19833,7 @@ var _hoisted_63 = { class: "ta-timeline-item_content" };
 function render133(_ctx, _cache) {
   return _openBlock131(), _createElementBlock116("div", _hoisted_1105, [
     _hoisted_281,
-    _createElementVNode91("div", _hoisted_363, [
+    _createElementVNode91("div", _hoisted_362, [
       _renderSlot60(_ctx.$slots, "dot", {}, () => [
         _createElementVNode91("i", {
           class: "ta-timeline-item_dot",
