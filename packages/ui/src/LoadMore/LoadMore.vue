@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <ActivityIndicator class="ta-load-more_icon" v-if="loading" :size="18" />
+    <ActivityIndicator class="ta-load-more_icon" v-if="loading" :size="16" />
     <span class="ta-load-more_content">
       <slot>
         <i class="ta-load-more_dot"></i>
