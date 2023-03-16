@@ -48,6 +48,7 @@ export default defineComponent({
       type: [Number, String],
       validator: isSizeValue
     },
+    // 禁用吸附
     disabled: {
       type: Boolean,
       default: false

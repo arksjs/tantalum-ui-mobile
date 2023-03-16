@@ -4,9 +4,10 @@
       <slot></slot>
     </StickyViewList>
     <Sticky
+      v-show="!disabledHeader"
       :offsetTop="offsetTop"
       :containSelector="containSelector"
-      :disabled="disabled"
+      :disabled="disabledHeader"
       class="ta-sticky-view_top"
       ref="stickyRef"
     >
@@ -72,7 +73,8 @@ export default defineComponent({
       validator: isSizeValue,
       default: 0
     },
-    disabled: {
+    // 禁用吸附
+    disabledHeader: {
       type: Boolean,
       default: false
     }

@@ -25,7 +25,7 @@ export interface StickyViewProps {
   modelValue?: string
   containSelector?: HTMLElement
   offsetTop?: number | string
-  disabled?: false
+  disabledHeader?: boolean
 }
 
 export interface StickyViewEmits {

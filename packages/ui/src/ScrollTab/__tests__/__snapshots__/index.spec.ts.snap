@@ -1,8 +1,8 @@
 // Vitest Snapshot v1
 
 exports[`ScrollTab > snapshot 1`] = `
-"<div class=\\"ta-scroll-tab\\">
-  <div class=\\"ta-scroll-tab_sidebar\\">
+"<div class=\\"ta-scroll-tab is-side-bar\\">
+  <div class=\\"ta-scroll-tab_bar\\">
     <div class=\\"ta-sticky\\">
       <!--teleport start-->
       <div class=\\"ta-sticky_content\\"></div>
