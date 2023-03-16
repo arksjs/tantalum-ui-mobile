@@ -35,6 +35,12 @@
       color: $font-color;
       font-size: 14px;
       box-sizing: border-box;
+
+      span {
+        margin-left: 10px;
+        font-size: 12px;
+        color: $font3-color;
+      }
     }
   }
 }
@@ -52,5 +58,11 @@
     color: $font-color;
     font-size: 14px;
     box-sizing: border-box;
+
+    span {
+      margin-left: 10px;
+      font-size: 12px;
+      color: $font3-color;
+    }
   }
 }

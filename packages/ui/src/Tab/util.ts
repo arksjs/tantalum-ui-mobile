@@ -35,3 +35,5 @@ export const getItemClasses = (index: number, activeIndex: number) => {
     }
   ]
 }
+
+export const TAB_HEIGHT = 40

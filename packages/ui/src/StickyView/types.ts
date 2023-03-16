@@ -1,11 +1,5 @@
 import type { ResetContainer } from '../Sticky/types'
 
-export interface StickyViewItem {
-  name: string
-  index: number
-  title: string
-}
-
 export type OnResetItems = (items: StickyViewItem[]) => void
 
 export type OnChange = (name: string, activeIndex: number) => void
@@ -36,6 +30,11 @@ export interface StickyViewEmits {
 export interface StickyViewItemProps {
   name: string
   title?: string
+  description?: string
+}
+
+export interface StickyViewItem extends Required<StickyViewItemProps> {
+  index: number
 }
 
 export type {

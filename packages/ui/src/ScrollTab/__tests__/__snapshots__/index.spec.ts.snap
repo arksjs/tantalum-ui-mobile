@@ -28,7 +28,7 @@ exports[`ScrollTab > snapshot 1`] = `
 
 exports[`ScrollTabItem > snapshot 1`] = `
 "<div class=\\"ta-sticky-view-item ta-scroll-tab-item\\" data-name=\\"name\\">
-  <div class=\\"ta-sticky-view-item_header\\">name</div>
+  <div class=\\"ta-sticky-view-item_header\\">name<span></span></div>
   <div class=\\"ta-sticky-view-item_body\\"></div>
 </div>"
 `;

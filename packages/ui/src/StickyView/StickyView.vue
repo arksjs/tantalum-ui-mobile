@@ -118,6 +118,13 @@ export default defineComponent({
       return cachedItems[index]?.name || ''
     }
 
+    function getItemTitle(index: number) {
+      return (
+        (cachedItems[index]?.title || '') +
+        `<span>${cachedItems[index]?.description || ''}</span>`
+      )
+    }
+
     function getActiveIndexByName(name?: string) {
       if (name) {
         for (let i = 0; i < $items.length; i++) {
@@ -141,12 +148,12 @@ export default defineComponent({
       oldIndex = -1
     }
 
-    function updateTitle(t: string, tY: number | null) {
+    function updateTitle(index: number, tY: number | null) {
       if (!fixedEl.value) {
         return
       }
 
-      fixedEl.value.textContent = t
+      fixedEl.value.innerHTML = index === -1 ? '' : getItemTitle(index)
       fixedEl.value.style.cssText = CSSProperties2CssText(getFixedStyles(tY))
     }
 
@@ -156,7 +163,7 @@ export default defineComponent({
       }
 
       if ($items.length === 0) {
-        updateTitle('', null)
+        updateTitle(-1, null)
         return
       }
 
@@ -176,11 +183,11 @@ export default defineComponent({
       const first = offsetTops[0]
 
       if (scrollTop < first) {
-        updateTitle('', null)
+        updateTitle(-1, null)
       } else if (scrollTop >= current) {
         if (scrollTop >= next) {
           activeIndex.value = nextIndex
-          updateTitle(getItemName(nextIndex), 0)
+          updateTitle(nextIndex, 0)
 
           if (
             offsetTops[nextIndex + 1] &&
@@ -192,19 +199,16 @@ export default defineComponent({
             onChange()
           }
         } else if (next - scrollTop < FIXED_HEIGHT) {
-          updateTitle(getItemName(_index), next - scrollTop - FIXED_HEIGHT)
+          updateTitle(_index, next - scrollTop - FIXED_HEIGHT)
         } else {
-          updateTitle(getItemName(_index), 0)
+          updateTitle(_index, 0)
         }
       } else {
         if (current - scrollTop < FIXED_HEIGHT) {
-          updateTitle(
-            getItemName(_index - 1),
-            current - scrollTop - FIXED_HEIGHT
-          )
+          updateTitle(_index - 1, current - scrollTop - FIXED_HEIGHT)
         } else {
           activeIndex.value = _index - 1
-          updateTitle(getItemName(_index - 1), 0)
+          updateTitle(_index - 1, 0)
 
           if (offsetTops[_index - 1] && offsetTops[_index - 1] > scrollTop) {
             updateFixed(scrollTop)
@@ -250,7 +254,8 @@ export default defineComponent({
       if ($items[newIndex]) {
         if (newIndex != activeIndex.value && container.value) {
           scrollToOffset(
-            getRelativeOffset($items[newIndex], container.value).offsetTop
+            getRelativeOffset($items[newIndex], container.value).offsetTop -
+              getSizeValue(props.offsetTop)
           )
         }
       } else {
@@ -311,7 +316,8 @@ export default defineComponent({
         return {
           index,
           name: item.props?.name || '',
-          title: item.props?.title || item.props?.name || ''
+          title: item.props?.title || item.props?.name || '',
+          description: item.props?.description || ''
         }
       })
 

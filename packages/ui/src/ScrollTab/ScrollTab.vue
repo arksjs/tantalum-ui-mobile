@@ -22,7 +22,7 @@
     </div>
     <div class="ta-scroll-tab_body">
       <StickyView
-        :offsetTop="stickyOffsetTop"
+        :offsetTop="viewOffsetTop"
         :modelValue="modelValue"
         :disabledHeader="!sideBar"
         ref="bodyRef"
@@ -48,7 +48,12 @@ import { Tab } from '../Tab'
 import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
-import { isSizeValue, isString, type PropsToEmits } from '../helpers'
+import {
+  isSizeValue,
+  isString,
+  getSizeValue,
+  type PropsToEmits
+} from '../helpers'
 import type {
   StickyViewOnResetItems,
   StickyViewRef,
@@ -59,6 +64,7 @@ import type { ResetContainer, StickyRef } from '../Sticky/types'
 import type { ScrollTabEmits } from './types'
 import type { SideTabOnChange } from '../SideTab/types'
 import { getClasses } from './util'
+import { TAB_HEIGHT } from '../Tab/util'
 
 export default defineComponent({
   name: 'ta-scroll-tab',
@@ -152,6 +158,11 @@ export default defineComponent({
       })
     }
 
+    const viewOffsetTop = computed(
+      () =>
+        getSizeValue(props.stickyOffsetTop) + (props.sideBar ? 0 : TAB_HEIGHT)
+    )
+
     const classes = computed(() => getClasses(props.sideBar))
 
     watch(
@@ -175,6 +186,7 @@ export default defineComponent({
     })
 
     return {
+      viewOffsetTop,
       classes,
       sideRef,
       bodyRef,
