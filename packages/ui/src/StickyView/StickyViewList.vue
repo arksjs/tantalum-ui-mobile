@@ -1,5 +1,5 @@
 <script lang="ts">
-import { getComponentVNodeItems } from '@/slots'
+import { getComponentVNodeItems } from '../slots'
 import { defineComponent, h, shallowRef } from 'vue'
 
 export default defineComponent({
