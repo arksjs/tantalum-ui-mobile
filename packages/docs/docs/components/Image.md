@@ -30,6 +30,7 @@ import type { ImageMode, ImageOnLoad } from 'tantalum-ui-mobile'
 | mode         | ImageMode | 'scaleToFill' | 否   | 图片裁剪、缩放的模式                                                    |
 | aspect-ratio | boolean   |               | 否   | 限制宽高比，设置了该项，只要宽度设定，高度会按造比例显示，如 1 为正方形 |
 | lazy-load    | boolean   | false         | 否   | 图片懒加载，在即将进入一定范围(preload=1.3)时才开始加载                 |
+| auto-height  | boolean   | false         | 否   | 跟原生 img 标签一样，自动计算高度                                       |
 
 ### ImageMode 的合法值
 

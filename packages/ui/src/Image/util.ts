@@ -21,10 +21,19 @@ export const MODE_NAMES: Mode[] = [
   'bottom right'
 ]
 
-export const getImgClasses = (mode?: Mode) => [
+export const getClasses = (autoHeight?: boolean) => [
+  'ta-image',
+  {
+    'auto-height': !!autoHeight
+  }
+]
+
+export const getImgClasses = (mode?: Mode, autoHeight?: boolean) => [
   'ta-image_img',
   'mode--' +
-    camelCase2KebabCase(getEnumsValue(MODE_NAMES, mode)).replace(/\s+/g, '-')
+    camelCase2KebabCase(
+      autoHeight ? 'widthFix' : getEnumsValue(MODE_NAMES, mode)
+    ).replace(/\s+/g, '-')
 ]
 
 export const getRatioStyles = (aspectRatio?: number | string) => {

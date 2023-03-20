@@ -1,7 +1,7 @@
 <template>
-  <div class="ta-image" ref="root">
+  <div :class="classes" ref="root">
     <span
-      v-if="aspectRatio != null && aspectRatio > 0"
+      v-if="!autoHeight && aspectRatio != null && aspectRatio > 0"
       class="ta-image_ratio"
       :style="ratioStyles"
     ></span>
@@ -50,7 +50,7 @@ import type { ImageEmits, LoadedResource, Mode } from './types'
 import ImageOutlined from '../Icon/icons/ImageOutlined'
 import ImageBreakOutlined from '../Icon/icons/ImageBreakOutlined'
 import type { IconData } from '../Icon/types'
-import { getImgClasses, getRatioStyles, MODE_NAMES } from './util'
+import { getClasses, getImgClasses, getRatioStyles, MODE_NAMES } from './util'
 import { useException } from '../hooks'
 
 export default defineComponent({
@@ -94,6 +94,11 @@ export default defineComponent({
     },
     iconSize: {
       type: [Number, String]
+    },
+    // 自动计算高度
+    autoHeight: {
+      type: Boolean,
+      default: false
     }
   },
   emits: {
@@ -159,11 +164,15 @@ export default defineComponent({
       val => load(val)
     )
 
-    const imgClasses = computed(() => getImgClasses(props.mode))
+    const classes = computed(() => getClasses(props.autoHeight))
+    const imgClasses = computed(() =>
+      getImgClasses(props.mode, props.autoHeight)
+    )
     const ratioStyles = computed(() => getRatioStyles(props.aspectRatio))
 
     return {
       currentSrc,
+      classes,
       imgClasses,
       ratioStyles,
       loading,

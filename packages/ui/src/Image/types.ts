@@ -30,6 +30,7 @@ export interface ImageProps {
   loadingIcon?: IconData
   errorIcon?: IconData
   iconSize?: number | string
+  autoHeight?: boolean
 }
 
 export interface ImageEmits {

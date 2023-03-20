@@ -117,4 +117,14 @@
       height: auto;
     }
   }
+
+  &.auto-height {
+    min-height: 60px;
+
+    .ta-image {
+      &_img {
+        position: inherit;
+      }
+    }
+  }
 }

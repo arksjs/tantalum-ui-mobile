@@ -173,6 +173,26 @@
       </ta-row>
     </div>
   </ta-group>
+  <ta-group title="自动计算高度">
+    <div class="exp-image-flex">
+      <ta-row :gutter="[16, 16]">
+        <ta-col :span="8">
+          <ta-image
+            class="exp-image-image"
+            :src="imageUrl"
+            auto-height
+          ></ta-image>
+        </ta-col>
+        <ta-col :span="8">
+          <ta-image
+            class="exp-image-image"
+            auto-height
+            :aspect-ratio="1"
+          ></ta-image>
+        </ta-col>
+      </ta-row>
+    </div>
+  </ta-group>
   <ta-group title="懒加载">
     <div class="exp-image-flex">
       <ta-row :gutter="[16, 16]">
