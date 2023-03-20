@@ -1,15 +1,14 @@
+import type { SizeType } from '../helpers'
 import type { BadgeOption } from '../Badge/types'
 
 export type ShapeType = 'circle' | 'square'
 
-export type SizeType = 'middle' | 'large' | 'small'
-
-export type UserSizeType = number | 'middle' | 'large' | 'small'
+export type AvatarSize = number | SizeType
 
 export type Gender = 'man' | 'woman'
 
 interface AvatarCommonProps {
-  size?: UserSizeType
+  size?: AvatarSize
 }
 
 export interface AvatarProps extends AvatarCommonProps {
@@ -25,4 +24,4 @@ export interface AvatarGroupProps extends AvatarCommonProps {
   countColor?: string
 }
 
-export type { ShapeType as AvatarShape, UserSizeType as AvatarSize }
+export type { ShapeType as AvatarShape }

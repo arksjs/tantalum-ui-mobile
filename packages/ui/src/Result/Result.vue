@@ -9,10 +9,15 @@
     </div>
     <slot></slot>
     <div class="ta-result_footer">
-      <TaButton type="primary" @click="onConfirmClick">
+      <TaButton type="primary" size="large" @click="onConfirmClick">
         {{ confirmText || locale.resultConfirmText }}
       </TaButton>
-      <TaButton v-if="showBack" type="default" @click="onCancelClick">
+      <TaButton
+        v-if="showBack"
+        type="default"
+        size="large"
+        @click="onCancelClick"
+      >
         {{ backText || locale.resultBackText }}
       </TaButton>
     </div>

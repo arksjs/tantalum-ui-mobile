@@ -334,9 +334,17 @@
           padding: 0 12px;
         }
 
+        &.size--middle {
+          padding: 0 11px;
+        }
+
         &.shape--round,
         &.shape--circle {
           padding-left: 16px;
+
+          &.size--small {
+            padding-left: 14px;
+          }
         }
       }
 
@@ -354,12 +362,20 @@
         &.size--small {
           padding: 0 12px;
         }
+
+        &.size--middle {
+          padding: 0 11px;
+        }
       }
 
       &:last-child {
         &.shape--round,
         &.shape--circle {
           padding-right: 16px;
+
+          &.size--small {
+            padding-right: 14px;
+          }
         }
       }
     }

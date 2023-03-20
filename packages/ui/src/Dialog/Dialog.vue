@@ -20,7 +20,11 @@
       <slot v-else></slot>
     </div>
     <div class="ta-dialog_footer ta-horizontal-hairline">
-      <ButtonGroup class="ta-dialog_footer-inner" pattern="borderless">
+      <ButtonGroup
+        class="ta-dialog_footer-inner"
+        pattern="borderless"
+        size="large"
+      >
         <TaButton
           v-if="showCancel"
           class="ta-dialog_button"

@@ -6,6 +6,7 @@
         <ButtonGroup
           v-else-if="leftButtons.length > 0 || showBack || showHome"
           class="ta-nav-bar_button-group"
+          size="large"
           :shape="iconOnly ? 'square' : 'rectangle'"
           pattern="borderless"
         >
@@ -51,6 +52,7 @@
         <template v-else>
           <ButtonGroup
             class="ta-nav-bar_button-group"
+            size="large"
             :shape="iconOnly ? 'square' : 'rectangle'"
             pattern="borderless"
             v-if="rightButtons.length > 0"

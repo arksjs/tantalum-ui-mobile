@@ -42,6 +42,7 @@ import type { BadgeOption, AvatarShape, AvatarSize } from 'tantalum-ui-mobile'
 | large  | 大尺寸，宽高 64px，文字 32px，图标 43px         |
 | middle | 默认值，中尺寸，宽高 48px，文字 24px，图标 32px |
 | small  | 小尺寸，宽高 36px，文字 18px，图标 21px         |
+| 数值   | number 类型具体像素                             |
 
 #### AvatarShape 的合法值
 

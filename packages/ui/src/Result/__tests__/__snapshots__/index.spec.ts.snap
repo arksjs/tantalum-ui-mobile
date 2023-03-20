@@ -8,8 +8,8 @@ exports[`Result > snapshot 1`] = `
     <!--v-if-->
   </div>
   <div class=\\"ta-result_footer\\">
-    <ta-button-stub type=\\"primary\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></ta-button-stub>
-    <ta-button-stub type=\\"default\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></ta-button-stub>
+    <ta-button-stub type=\\"primary\\" size=\\"large\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></ta-button-stub>
+    <ta-button-stub type=\\"default\\" size=\\"large\\" loading=\\"false\\" disabled=\\"false\\" ghost=\\"false\\" transparent=\\"false\\"></ta-button-stub>
   </div>
 </div>"
 `;

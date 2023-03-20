@@ -59,6 +59,7 @@
     <ta-cell label="click & close &long-press">
       <ta-tag
         type="default"
+        size="large"
         closable
         @click="showToast('点击事件')"
         @close="showToast('关闭事件')"

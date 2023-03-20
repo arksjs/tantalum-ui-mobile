@@ -29,7 +29,7 @@ import type { StateType, SizeType, TagPattern } from 'tantalum-ui-mobile'
 | type     | StateType  | 'default' | 否   | 标签类型                                                                           |
 | pattern  | TagPattern | 'light'   | 否   | 标签款式                                                                           |
 | color    | string     |           | 否   | 自定义色彩，支持 hex rgb hsl 等写法，详细效果[查看](../design/color.md#自定义色彩) |
-| size     | SizeType   | 'large'   | 否   | 标签尺寸                                                                           |
+| size     | SizeType   | 'middle'  | 否   | 标签尺寸                                                                           |
 | closable | boolean    | true      | 否   | 是否展示关闭按钮，只推荐在 size='large' 情况下开启                                 |
 
 ### StateType 的合法值
@@ -54,6 +54,7 @@ import type { StateType, SizeType, TagPattern } from 'tantalum-ui-mobile'
 
 | 值     | 说明     |
 | ------ | -------- |
+| large  | 大尺寸   |
 | middle | 默认尺寸 |
 | small  | 小尺寸   |
 

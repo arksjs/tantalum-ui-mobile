@@ -28,6 +28,7 @@
     <div class="ta-calendar-popup_confirm" v-if="showConfirm">
       <TaButton
         type="primary"
+        size="large"
         @click="onConfirmClick"
         :disabled="valueSize == 0"
         >{{ locale.calendarConfirmText }}

@@ -31,7 +31,7 @@ describe('Tag', () => {
 
   test('size', async () => {
     const wrapper = mount(Tag, {})
-    expect(wrapper.classes()).toContain('size--large')
+    expect(wrapper.classes()).toContain('size--middle')
 
     await wrapper.setProps({
       size: 'small'

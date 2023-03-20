@@ -46,7 +46,7 @@
           pattern="borderless"
           shape="square"
           :ghost="true"
-        ></TaButton>
+        />
       </slot>
     </div>
   </Modal>

@@ -31,7 +31,7 @@ import type {
 
 | 属性      | 类型                | 默认值      | 必填 | 说明                                                                               |
 | --------- | ------------------- | ----------- | ---- | ---------------------------------------------------------------------------------- |
-| size      | SizeType            | 'large'     | 否   | 按钮尺寸                                                                           |
+| size      | SizeType            | 'middle'    | 否   | 按钮尺寸                                                                           |
 | type      | StateType           | 'default'   | 否   | 按钮类型                                                                           |
 | pattern   | ButtonPattern       | 'default'   | 否   | 按钮款式                                                                           |
 | shape     | ButtonShape         | 'rectangle' | 否   | 按钮形状                                                                           |

@@ -4,6 +4,7 @@ import {
   simpleNumber,
   getEnumsValue,
   getColorObject,
+  SIZE_TYPES,
   type CSSProperties
 } from '../helpers'
 import type {
@@ -11,13 +12,10 @@ import type {
   AvatarProps,
   Gender,
   ShapeType,
-  SizeType,
-  UserSizeType
+  AvatarSize
 } from './types'
 import type { BadgeProps } from '../Badge/types'
 import { handleBadge } from '../Badge/util'
-
-export const SIZE_TYPES: SizeType[] = ['middle', 'large', 'small']
 
 export const AVATAR_SHAPE_TYPES: ShapeType[] = ['circle', 'square']
 
@@ -49,7 +47,7 @@ export const getShowCount = (count?: number | string) =>
 
 export const getAvatarClasses = (
   props: AvatarProps,
-  size: UserSizeType,
+  size: AvatarSize,
   shape: ShapeType
 ) => [
   'ta-avatar',
@@ -61,7 +59,7 @@ export const getAvatarClasses = (
   }
 ]
 
-export const getAvatarStyles = (props: AvatarProps, size: UserSizeType) => {
+export const getAvatarStyles = (props: AvatarProps, size: AvatarSize) => {
   const styles: CSSProperties = {}
 
   if (isNumber(size)) {

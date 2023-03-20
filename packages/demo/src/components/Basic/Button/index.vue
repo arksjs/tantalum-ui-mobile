@@ -99,7 +99,7 @@
           icon="CheckOutlined"
         >
         </ta-button>
-        <ta-button type="danger" icon="SearchOutlined"> </ta-button>
+        <ta-button type="danger" icon="SearchOutlined">搜索</ta-button>
       </li>
       <li>
         <ta-button type="primary" shape="circle" icon="SearchOutlined">
@@ -122,40 +122,38 @@
       </li>
     </ul>
   </ta-group>
-  <ta-group title="middle 尺寸">
+  <ta-group title="large 尺寸">
     <ul class="exp-button-group">
       <li>
         <ta-button
           type="danger"
-          size="middle"
+          size="large"
           shape="circle"
           icon="HeartOutlined"
         >
         </ta-button>
-        <ta-button type="danger" size="middle" disabled>危险</ta-button>
-        <ta-button type="default" size="middle" loading shape="round"
+        <ta-button type="danger" size="large" disabled>危险</ta-button>
+        <ta-button type="default" size="large" loading shape="round"
           >加载中</ta-button
         >
       </li>
       <li>
         <ta-button
           type="warning"
-          size="middle"
+          size="large"
           shape="square"
           icon="BorderOutlined"
         >
         </ta-button>
         <ta-button
           type="primary"
-          size="middle"
+          size="large"
           pattern="solid"
           icon="PlusOutlined"
           >主要</ta-button
         >
-        <ta-button type="success" size="middle" pattern="dashed"
-          >成功</ta-button
-        >
-        <ta-button type="danger" size="middle" pattern="borderless"
+        <ta-button type="success" size="large" pattern="dashed">成功</ta-button>
+        <ta-button type="danger" size="large" pattern="borderless"
           >危险</ta-button
         >
       </li>
@@ -211,6 +209,16 @@
         </ta-button-group>
       </li>
       <li>
+        <ta-button-group shape="square" size="middle">
+          <ta-button type="default" icon="LeftOutlined"></ta-button>
+          <ta-button type="default" icon="HomeOutlined"></ta-button>
+        </ta-button-group>
+        <ta-button-group size="middle">
+          <ta-button type="default" icon="LeftOutlined">返回</ta-button>
+          <ta-button type="default" icon="HomeOutlined">首页</ta-button>
+        </ta-button-group>
+      </li>
+      <li>
         <ta-button-group shape="square" size="large">
           <ta-button type="default" icon="LeftOutlined"></ta-button>
           <ta-button type="default" icon="HomeOutlined"></ta-button>
@@ -226,6 +234,16 @@
           <ta-button type="default" icon="HomeOutlined"></ta-button>
         </ta-button-group>
         <ta-button-group shape="round" size="small">
+          <ta-button type="default" icon="LeftOutlined">返回</ta-button>
+          <ta-button type="default" icon="HomeOutlined">首页</ta-button>
+        </ta-button-group>
+      </li>
+      <li>
+        <ta-button-group shape="circle" size="middle">
+          <ta-button type="default" icon="LeftOutlined"></ta-button>
+          <ta-button type="default" icon="HomeOutlined"></ta-button>
+        </ta-button-group>
+        <ta-button-group shape="round" size="middle">
           <ta-button type="default" icon="LeftOutlined">返回</ta-button>
           <ta-button type="default" icon="HomeOutlined">首页</ta-button>
         </ta-button-group>

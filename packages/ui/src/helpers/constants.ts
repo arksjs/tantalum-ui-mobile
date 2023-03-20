@@ -10,5 +10,5 @@ export const STATE_TYPES = [
 ] as const
 export type StateType = typeof STATE_TYPES[number]
 
-export const SIZE_TYPES = ['large', 'middle', 'small'] as const
+export const SIZE_TYPES = ['middle', 'large', 'small'] as const
 export type SizeType = typeof SIZE_TYPES[number]
