@@ -1,24 +1,30 @@
 <template>
   <ta-group title="基础用法">
-    <ta-input type="text" focus placeholder="请输入文本" />
-    <ta-input type="text" modelValue="禁用" disabled />
-    <ta-input type="text" placeholder="showLimit=true" showLimit showClear />
+    <div class="exp-input-box">
+      <ta-input type="text" focus placeholder="请输入文本" />
+      <ta-input type="text" modelValue="禁用" disabled />
+      <ta-input type="text" placeholder="showLimit=true" showLimit showClear />
+    </div>
   </ta-group>
   <ta-group title="textarea">
-    <ta-input
-      type="textarea"
-      placeholder="showLimit=true"
-      showLimit
-      maxlength="200"
-    />
+    <div class="exp-input-box">
+      <ta-input
+        type="textarea"
+        placeholder="showLimit=true"
+        showLimit
+        maxlength="200"
+      />
+    </div>
   </ta-group>
   <ta-group title="Slot prepend/append">
-    <ta-input type="text" focus placeholder="请输入网址">
-      <template #prepend>https://</template>
-    </ta-input>
-    <ta-input type="text" focus placeholder="请输入网址">
-      <template #append>.com</template>
-    </ta-input>
+    <div class="exp-input-box">
+      <ta-input type="text" focus placeholder="请输入网址">
+        <template #prepend>https://</template>
+      </ta-input>
+      <ta-input type="text" focus placeholder="请输入网址">
+        <template #append>.com</template>
+      </ta-input>
+    </div>
   </ta-group>
   <ta-group title="与 Cell 组合">
     <ta-cell label="文本">

@@ -156,6 +156,17 @@ body {
   }
 }
 
+.exp-input {
+  &-box {
+    padding: 16px 16px 0;
+    overflow: hidden;
+
+    .ta-input {
+      margin-bottom: 16px;
+    }
+  }
+}
+
 .exp-scrollView {
   &-box {
     height: 200px;

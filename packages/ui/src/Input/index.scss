@@ -6,15 +6,15 @@
   --ta-front-color: #{$title-color};
   --ta-secondary-color: #{$font3-color};
 
-  height: 48px;
+  height: 40px;
   width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   border: 1px solid $border-color;
-  border-radius: 0;
+  border-radius: 3px;
   box-sizing: border-box;
-  padding: 11px 16px;
+  padding: 7px 12px;
   font-size: var(--ta-font-size);
   background-color: $white-color;
   color: var(--ta-front-color);
@@ -53,7 +53,7 @@
   }
 
   &_limit {
-    font-size: 17px;
+    font-size: 15px;
     line-height: 24px;
     height: 24px;
     color: $font-color;
@@ -126,7 +126,7 @@
 
   .ta-input_limit {
     position: absolute;
-    right: 16px;
+    right: 12px;
     bottom: 8px;
   }
 }
