@@ -19,9 +19,6 @@
   &_field {
     flex: 1;
     background-color: $background-color;
-    padding: 0 8px;
-    height: 36px;
-    border-radius: 4px;
 
     &.ghost {
       background-color: $white-color;
@@ -32,6 +29,21 @@
       }
 
       @include box-shadow;
+    }
+  }
+
+  &.mode-input {
+    height: 40px;
+
+    .ta-search {
+      &_inner {
+        padding: 0;
+      }
+
+      &_field {
+        height: 100%;
+        border-radius: 0;
+      }
     }
   }
 

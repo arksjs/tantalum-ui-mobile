@@ -24,6 +24,7 @@ export interface SearchBarProps {
   background?: string
   placeholders?: string | string[]
   placeholderInterval?: number
+  inputMode?: boolean
 }
 
 export interface SearchBarEmits {

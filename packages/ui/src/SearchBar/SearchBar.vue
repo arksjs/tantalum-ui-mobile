@@ -1,5 +1,5 @@
 <template>
-  <div class="ta-search">
+  <div :class="classes">
     <form
       :class="innerClasses"
       @submit.prevent="onSearch(searchText)"
@@ -27,7 +27,7 @@
       <button class="ta-search_button">Search</button>
       <TaButton
         class="ta-search_cancel-button"
-        size="large"
+        size="middle"
         type="default"
         formType="button"
         pattern="borderless"
@@ -55,7 +55,9 @@
               clickable
               @click="onSuggestItemClick(item.text)"
             >
-              <Tag v-for="tag in item.tags" :key="tag">{{ tag }}</Tag>
+              <Tag size="middle" v-for="tag in item.tags" :key="tag">{{
+                tag
+              }}</Tag>
             </Cell>
           </div>
         </div>
@@ -94,6 +96,7 @@ import { useLocale } from '../ConfigProvider/context'
 import type { OnInput, SearchBarEmits, SuggestItem, SuggestList } from './types'
 import SearchOutlined from '../Icon/icons/SearchOutlined'
 import {
+  getClasses,
   getFieldClasses,
   getInnerClasses,
   getInnerStyles,
@@ -141,6 +144,10 @@ export default defineComponent({
     placeholderInterval: {
       type: Number,
       default: 5000
+    },
+    inputMode: {
+      type: Boolean,
+      default: false
     }
   },
   emits: {
@@ -289,11 +296,13 @@ export default defineComponent({
 
     onBeforeUnmount(() => phsStop())
 
+    const classes = computed(() => getClasses(props.inputMode))
     const innerClasses = computed(() => getInnerClasses(props.showCancel))
     const innerStyles = computed(() => getInnerStyles(props.background))
     const fieldClasses = computed(() => getFieldClasses(props.ghost))
 
     return {
+      classes,
       innerClasses,
       innerStyles,
       fieldClasses,

@@ -1,5 +1,12 @@
 import type { CSSProperties } from '../helpers'
 
+export const getClasses = (inputMode?: boolean) => [
+  'ta-search',
+  {
+    'mode-input': !!inputMode
+  }
+]
+
 export const getInnerClasses = (showCancel?: boolean) => [
   'ta-search_inner',
   { 'has--cancel': !!showCancel }
