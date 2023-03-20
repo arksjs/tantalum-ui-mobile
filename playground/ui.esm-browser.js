@@ -1793,7 +1793,7 @@ var STATE_TYPES = [
   "danger",
   "success"
 ];
-var SIZE_TYPES = ["large", "middle", "small"];
+var SIZE_TYPES = ["middle", "large", "small"];
 
 // packages/ui/src/helpers/day.ts
 var import_dayjs = __toESM(require_dayjs_min());
@@ -3313,6 +3313,7 @@ function render8(_ctx, _cache) {
         _ctx.$slots.left ? _renderSlot3(_ctx.$slots, "left", { key: 0 }) : _ctx.leftButtons.length > 0 || _ctx.showBack || _ctx.showHome ? (_openBlock8(), _createBlock3(_component_ButtonGroup, {
           key: 1,
           class: "ta-nav-bar_button-group",
+          size: "large",
           shape: _ctx.iconOnly ? "square" : "rectangle",
           pattern: "borderless"
         }, {
@@ -3372,6 +3373,7 @@ function render8(_ctx, _cache) {
           _ctx.rightButtons.length > 0 ? (_openBlock8(), _createBlock3(_component_ButtonGroup, {
             key: 0,
             class: "ta-nav-bar_button-group",
+            size: "large",
             shape: _ctx.iconOnly ? "square" : "rectangle",
             pattern: "borderless"
           }, {
@@ -4587,9 +4589,15 @@ var MODE_NAMES = [
   "bottom left",
   "bottom right"
 ];
-var getImgClasses = (mode) => [
+var getClasses2 = (autoHeight) => [
+  "ta-image",
+  {
+    "auto-height": !!autoHeight
+  }
+];
+var getImgClasses = (mode, autoHeight) => [
   "ta-image_img",
-  "mode--" + camelCase2KebabCase(getEnumsValue(MODE_NAMES, mode)).replace(/\s+/g, "-")
+  "mode--" + camelCase2KebabCase(autoHeight ? "widthFix" : getEnumsValue(MODE_NAMES, mode)).replace(/\s+/g, "-")
 ];
 var getRatioStyles = (aspectRatio) => {
   return {
@@ -4634,6 +4642,10 @@ var _sfc_script17 = defineComponent11({
     },
     iconSize: {
       type: [Number, String]
+    },
+    autoHeight: {
+      type: Boolean,
+      default: false
     }
   },
   emits: {
@@ -4682,10 +4694,12 @@ var _sfc_script17 = defineComponent11({
     onMounted7(() => props.src && load(props.src));
     onBeforeUnmount9(() => removeComponentFromLazy(uid3));
     watch5(() => props.src, (val) => load(val));
-    const imgClasses = computed11(() => getImgClasses(props.mode));
+    const classes = computed11(() => getClasses2(props.autoHeight));
+    const imgClasses = computed11(() => getImgClasses(props.mode, props.autoHeight));
     const ratioStyles = computed11(() => getRatioStyles(props.aspectRatio));
     return {
       currentSrc,
+      classes,
       imgClasses,
       ratioStyles,
       loading,
@@ -4696,33 +4710,32 @@ var _sfc_script17 = defineComponent11({
   }
 });
 var _hoisted_113 = {
-  class: "ta-image",
-  ref: "root"
-};
-var _hoisted_211 = {
   key: 1,
   class: "ta-image_loading"
 };
-var _hoisted_310 = {
+var _hoisted_211 = {
   key: 2,
   class: "ta-image_error"
 };
-var _hoisted_44 = ["src"];
+var _hoisted_310 = ["src"];
 function render17(_ctx, _cache) {
   const _component_Icon = _resolveComponent6("Icon");
-  return _openBlock17(), _createElementBlock14("div", _hoisted_113, [
-    _ctx.aspectRatio != null && _ctx.aspectRatio > 0 ? (_openBlock17(), _createElementBlock14("span", {
+  return _openBlock17(), _createElementBlock14("div", {
+    class: _normalizeClass8(_ctx.classes),
+    ref: "root"
+  }, [
+    !_ctx.autoHeight && _ctx.aspectRatio != null && _ctx.aspectRatio > 0 ? (_openBlock17(), _createElementBlock14("span", {
       key: 0,
       class: "ta-image_ratio",
       style: _normalizeStyle6(_ctx.ratioStyles)
     }, null, 4)) : _createCommentVNode6("v-if", true),
-    _ctx.loading ? (_openBlock17(), _createElementBlock14("i", _hoisted_211, [
+    _ctx.loading ? (_openBlock17(), _createElementBlock14("i", _hoisted_113, [
       _createVNode(_component_Icon, {
         icon: _ctx.loadingIcon,
         size: _ctx.iconSize
       }, null, 8, ["icon", "size"])
     ])) : _createCommentVNode6("v-if", true),
-    _ctx.error ? (_openBlock17(), _createElementBlock14("i", _hoisted_310, [
+    _ctx.error ? (_openBlock17(), _createElementBlock14("i", _hoisted_211, [
       _createVNode(_component_Icon, {
         icon: _ctx.errorIcon,
         size: _ctx.iconSize
@@ -4733,8 +4746,8 @@ function render17(_ctx, _cache) {
       class: _normalizeClass8(_ctx.imgClasses),
       src: _ctx.currentSrc,
       onDragstart: _cache[0] || (_cache[0] = (...args) => _ctx.onDrag && _ctx.onDrag(...args))
-    }, null, 42, _hoisted_44)) : _createCommentVNode6("v-if", true)
-  ], 512);
+    }, null, 42, _hoisted_310)) : _createCommentVNode6("v-if", true)
+  ], 2);
 }
 _sfc_script17.render = render17;
 _sfc_script17.__file = "packages/ui/src/Image/Image.vue";
@@ -4742,14 +4755,21 @@ _sfc_script17.__file = "packages/ui/src/Image/Image.vue";
 // packages/ui/src/Image/index.ts
 var Image_default = _sfc_script17;
 
+// packages/ui/src/Avatar/props.ts
+var avatarProps = {
+  size: {
+    type: [Number, String],
+    default: SIZE_TYPES[0]
+  }
+};
+
 // packages/ui/src/Avatar/util.ts
-var SIZE_TYPES2 = ["middle", "large", "small"];
 var AVATAR_SHAPE_TYPES = ["circle", "square"];
 var GENDER_TYPES = ["woman", "man"];
 var getAvatarSize = (props, parentProps) => {
   var _a;
   const size = (_a = parentProps == null ? void 0 : parentProps.size) != null ? _a : props.size;
-  return isNumber(size) ? size : getEnumsValue(SIZE_TYPES2, size);
+  return isNumber(size) ? size : getEnumsValue(SIZE_TYPES, size);
 };
 var getAvatarShape = (props, hasGroup) => getEnumsValue(AVATAR_SHAPE_TYPES, hasGroup ? "circle" : props.shape);
 var getGroupClasses2 = (count) => [
@@ -4795,14 +4815,6 @@ var getBadgeProps = (props) => {
   }
   badge.offset = props.shape === "circle" ? [-5, 5] : [0, 0];
   return badge;
-};
-
-// packages/ui/src/Avatar/props.ts
-var avatarProps = {
-  size: {
-    type: [Number, String],
-    default: SIZE_TYPES2[0]
-  }
 };
 
 // vue:./ManOutlined.vue
@@ -5018,12 +5030,12 @@ var _hoisted_117 = {
 };
 var _hoisted_215 = /* @__PURE__ */ _createElementVNode17("path", { d: "M518.5 360.3a7.95 7.95 0 00-12.9 0l-178 246c-3.8 5.3 0 12.7 6.5 12.7H381c10.2 0 19.9-4.9 25.9-13.2L512 460.4l105.2 145.4c6 8.3 15.6 13.2 25.9 13.2H690c6.5 0 10.3-7.4 6.5-12.7l-178-246z" }, null, -1);
 var _hoisted_314 = /* @__PURE__ */ _createElementVNode17("path", { d: "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" }, null, -1);
-var _hoisted_45 = [
+var _hoisted_44 = [
   _hoisted_215,
   _hoisted_314
 ];
 function render23(_ctx, _cache) {
-  return _openBlock23(), _createElementBlock19("svg", _hoisted_117, _hoisted_45);
+  return _openBlock23(), _createElementBlock19("svg", _hoisted_117, _hoisted_44);
 }
 _sfc_script23.render = render23;
 _sfc_script23.__file = "packages/ui/src/Icon/icons/UpCircleOutlined/UpCircleOutlined.vue";
@@ -5145,7 +5157,7 @@ _sfc_script25.render = render25;
 _sfc_script25.__file = "packages/ui/src/Icon/icons/RightOutlined/RightOutlined.vue";
 
 // packages/ui/src/SelectorField/util.ts
-var getClasses2 = (props) => [
+var getClasses3 = (props) => [
   "ta-input",
   { "has--value": !!props.label, disabled: !!props.disabled }
 ];
@@ -5171,7 +5183,7 @@ var _sfc_script26 = defineComponent15({
     function onFieldClick() {
       emit("fieldClick");
     }
-    const classes = computed15(() => getClasses2(props));
+    const classes = computed15(() => getClasses3(props));
     const inputClasses = computed15(() => getInputClasses(props.label));
     return {
       onFieldClick,
@@ -6002,7 +6014,7 @@ var virtualListProps = {
 var emitVisibleItemsChangeValidator = (payload) => payload && Array.isArray(payload.items);
 
 // packages/ui/src/VirtualList/util.ts
-var getClasses3 = (horizontal) => [
+var getClasses4 = (horizontal) => [
   "ta-virtual-list",
   { horizontal }
 ];
@@ -6403,7 +6415,7 @@ var _sfc_script30 = defineComponent18({
       resetScrollContainer(root.value);
       dataToList(props.ids);
     });
-    const classes = getClasses3(horizontal);
+    const classes = getClasses4(horizontal);
     return {
       listEl,
       poolEl,
@@ -6894,7 +6906,7 @@ var _sfc_script31 = defineComponent19({
 var _hoisted_124 = { class: "ta-calendar-view" };
 var _hoisted_221 = { class: "ta-calendar-view_header" };
 var _hoisted_319 = { class: "ta-calendar-view_weekdays" };
-var _hoisted_46 = {
+var _hoisted_45 = {
   class: "ta-calendar-view_body",
   ref: "bodyEl"
 };
@@ -6916,7 +6928,7 @@ function render31(_ctx, _cache) {
         }), 128))
       ])
     ]),
-    _createElementVNode25("div", _hoisted_46, [
+    _createElementVNode25("div", _hoisted_45, [
       _createVNode5(_component_VirtualList, {
         ids: _ctx.months.map((v) => v.caption),
         itemSize: _ctx.getItemSize,
@@ -7067,6 +7079,7 @@ function render32(_ctx, _cache) {
       _ctx.showConfirm ? (_openBlock32(), _createElementBlock26("div", _hoisted_125, [
         _createVNode6(_component_TaButton, {
           type: "primary",
+          size: "large",
           onClick: _ctx.onConfirmClick,
           disabled: _ctx.valueSize == 0
         }, {
@@ -7292,7 +7305,7 @@ var getStyles2 = (color, activeColor) => {
   activeColor && (obj["--ta-active-color"] = activeColor);
   return obj;
 };
-var getClasses4 = (scrollThreshold, options2, hasSub) => {
+var getClasses5 = (scrollThreshold, options2, hasSub) => {
   return [
     "ta-tab",
     {
@@ -7540,7 +7553,7 @@ var _sfc_script34 = defineComponent22({
   emits: { ...tabEmits },
   setup(props, ctx) {
     const tab = useTab(props, ctx, { tabName: "Tab" });
-    const classes = computed18(() => getClasses4(props.scrollThreshold, tab.options2.value, tab.hasSub.value));
+    const classes = computed18(() => getClasses5(props.scrollThreshold, tab.options2.value, tab.hasSub.value));
     return {
       classes,
       getItemClasses: getItemClasses2,
@@ -7554,7 +7567,7 @@ var _hoisted_320 = {
   key: 0,
   class: "ta-tab_item-sub-text"
 };
-var _hoisted_47 = {
+var _hoisted_46 = {
   class: "ta-tab_underline",
   ref: "underlineEl"
 };
@@ -7589,7 +7602,7 @@ function render34(_ctx, _cache) {
         ], 10, _hoisted_126);
       }), 128))
     ], 544),
-    _createElementVNode26("span", _hoisted_47, null, 512)
+    _createElementVNode26("span", _hoisted_46, null, 512)
   ], 2);
 }
 _sfc_script34.render = render34;
@@ -8237,7 +8250,7 @@ var _sfc_script36 = defineComponent24({
 var _hoisted_128 = { class: "ta-cascader-view" };
 var _hoisted_224 = { class: "ta-cascader-view_body" };
 var _hoisted_322 = ["onClick"];
-var _hoisted_48 = { class: "ta-cascader-view_item-text" };
+var _hoisted_47 = { class: "ta-cascader-view_item-text" };
 function render36(_ctx, _cache) {
   const _component_Tab = _resolveComponent16("Tab");
   const _component_Icon = _resolveComponent16("Icon");
@@ -8274,7 +8287,7 @@ function render36(_ctx, _cache) {
                 }]),
                 onClick: ($event) => _ctx.onItemClick($event, colItem.rows[index])
               }, [
-                _createElementVNode27("span", _hoisted_48, _toDisplayString12(colItem.rows[index].label), 1),
+                _createElementVNode27("span", _hoisted_47, _toDisplayString12(colItem.rows[index].label), 1),
                 colItem.rows[index].selected ? (_openBlock36(), _createBlock14(_component_Icon, {
                   key: 0,
                   icon: _ctx.CheckOutlined
@@ -8510,7 +8523,7 @@ var _hoisted_323 = {
   key: 1,
   class: "ta-cell_icon"
 };
-var _hoisted_49 = {
+var _hoisted_48 = {
   key: 2,
   class: "ta-cell_label"
 };
@@ -8535,7 +8548,7 @@ function render39(_ctx, _cache) {
       ])) : _ctx.icon ? (_openBlock39(), _createElementBlock32("div", _hoisted_323, [
         _createVNode12(_component_Icon, { icon: _ctx.icon }, null, 8, ["icon"])
       ])) : _createCommentVNode17("v-if", true),
-      _ctx.label ? (_openBlock39(), _createElementBlock32("div", _hoisted_49, [
+      _ctx.label ? (_openBlock39(), _createElementBlock32("div", _hoisted_48, [
         _createTextVNode6(_toDisplayString13(_ctx.label) + " ", 1),
         _ctx.required ? (_openBlock39(), _createElementBlock32("span", _hoisted_53, "*")) : _createCommentVNode17("v-if", true)
       ])) : _createCommentVNode17("v-if", true),
@@ -10778,7 +10791,7 @@ var _hoisted_330 = {
   key: 0,
   class: "ta-dialog_content-text"
 };
-var _hoisted_410 = { class: "ta-dialog_footer ta-horizontal-hairline" };
+var _hoisted_49 = { class: "ta-dialog_footer ta-horizontal-hairline" };
 function render63(_ctx, _cache) {
   const _component_TaButton = _resolveComponent32("TaButton");
   const _component_ButtonGroup = _resolveComponent32("ButtonGroup");
@@ -10799,10 +10812,11 @@ function render63(_ctx, _cache) {
       _createElementVNode41("div", _hoisted_236, [
         _ctx.content ? (_openBlock62(), _createElementBlock52("div", _hoisted_330, _toDisplayString20(_ctx.content), 1)) : _renderSlot22(_ctx.$slots, "default", { key: 1 })
       ]),
-      _createElementVNode41("div", _hoisted_410, [
+      _createElementVNode41("div", _hoisted_49, [
         _createVNode22(_component_ButtonGroup, {
           class: "ta-dialog_footer-inner",
-          pattern: "borderless"
+          pattern: "borderless",
+          size: "large"
         }, {
           default: _withCtx14(() => [
             _ctx.showCancel ? (_openBlock62(), _createBlock26(_component_TaButton, {
@@ -10849,7 +10863,7 @@ var Dialog_default = _sfc_script63;
 import { computed as computed26, defineComponent as defineComponent47 } from "vue";
 
 // packages/ui/src/Divider/util.ts
-var getClasses5 = (props) => {
+var getClasses6 = (props) => {
   return [
     "ta-divider",
     "ta-horizontal-hairline",
@@ -10874,7 +10888,7 @@ var _sfc_script64 = defineComponent47({
     }
   },
   setup(props) {
-    const classes = computed26(() => getClasses5(props));
+    const classes = computed26(() => getClasses6(props));
     return {
       classes
     };
@@ -11144,7 +11158,7 @@ import { computed as computed31, defineComponent as defineComponent52, onMounted
 import { computed as computed29, defineComponent as defineComponent50 } from "vue";
 
 // packages/ui/src/LoadMore/util.ts
-var getClasses6 = (props) => [
+var getClasses7 = (props) => [
   "ta-load-more",
   "ta-horizontal-hairline",
   {
@@ -11169,7 +11183,7 @@ var _sfc_script67 = defineComponent50({
     }
   },
   setup(props) {
-    const classes = computed29(() => getClasses6({
+    const classes = computed29(() => getClasses7({
       loading: props.loading,
       vertical: props.vertical
     }));
@@ -11245,7 +11259,7 @@ var getIndicatorStyles = (pullIndicatorSafeArea) => {
     padding: `${pullIndicatorSafeArea.top}px ${pullIndicatorSafeArea.right}px ${pullIndicatorSafeArea.bottom}px ${pullIndicatorSafeArea.left}px`
   };
 };
-var getClasses7 = ({
+var getClasses8 = ({
   scrollX,
   scrollY,
   scrollAnimated
@@ -11433,7 +11447,7 @@ var _sfc_script68 = defineComponent51({
     }
     onMounted17(() => updateScroll);
     watch17([() => props.scrollLeft, () => props.scrollTop], updateScroll);
-    const classes = computed30(() => getClasses7({
+    const classes = computed30(() => getClasses8({
       scrollX: props.scrollX,
       scrollY: props.scrollY,
       scrollAnimated: props.scrollAnimated
@@ -11671,7 +11685,7 @@ _sfc_script68.__file = "packages/ui/src/ScrollView/ScrollView.vue";
 var ScrollView_default = _sfc_script68;
 
 // packages/ui/src/FlatList/util.ts
-var getClasses8 = (horizontal) => [
+var getClasses9 = (horizontal) => [
   "ta-flat-list",
   { horizontal }
 ];
@@ -11765,7 +11779,7 @@ var _sfc_script69 = defineComponent52({
         (_a = virtualListRef.value) == null ? void 0 : _a.resetScrollContainer(getScrollContainer());
       }
     });
-    const classes = getClasses8(horizontal);
+    const classes = getClasses9(horizontal);
     return {
       classes,
       scrollViewRef,
@@ -11944,7 +11958,7 @@ var _hoisted_332 = {
   key: 0,
   class: "ta-form-item_required"
 };
-var _hoisted_411 = { class: "ta-cell_content" };
+var _hoisted_410 = { class: "ta-cell_content" };
 var _hoisted_54 = {
   key: 0,
   class: "ta-cell_body"
@@ -11958,7 +11972,7 @@ function render71(_ctx, _cache) {
         _createTextVNode13(_toDisplayString24(_ctx.label) + " ", 1),
         _ctx.required ? (_openBlock70(), _createElementBlock59("span", _hoisted_332, "*")) : _createCommentVNode28("v-if", true)
       ])) : _createCommentVNode28("v-if", true),
-      _createElementVNode46("div", _hoisted_411, [
+      _createElementVNode46("div", _hoisted_410, [
         _renderSlot29(_ctx.$slots, "default")
       ])
     ]),
@@ -11985,7 +11999,7 @@ var FormItem_default = _sfc_script72;
 import { computed as computed33, defineComponent as defineComponent56 } from "vue";
 
 // packages/ui/src/Group/util.ts
-function getClasses9(strongHeader) {
+function getClasses10(strongHeader) {
   return [
     ["ta-group", "ta-horizontal-hairline"],
     { "strong-header": strongHeader }
@@ -12007,7 +12021,7 @@ var _sfc_script73 = defineComponent56({
     }
   },
   setup(props) {
-    const classes = computed33(() => getClasses9(props.strongHeader));
+    const classes = computed33(() => getClasses10(props.strongHeader));
     return {
       classes
     };
@@ -12016,7 +12030,7 @@ var _sfc_script73 = defineComponent56({
 var _hoisted_153 = { class: "ta-group_header" };
 var _hoisted_241 = { class: "ta-group_title" };
 var _hoisted_333 = { class: "ta-group_more" };
-var _hoisted_412 = { class: "ta-group_body ta-horizontal-hairline hairline-reverse" };
+var _hoisted_411 = { class: "ta-group_body ta-horizontal-hairline hairline-reverse" };
 var _hoisted_55 = { class: "ta-group_body-inner" };
 function render72(_ctx, _cache) {
   return _openBlock71(), _createElementBlock60("div", {
@@ -12028,7 +12042,7 @@ function render72(_ctx, _cache) {
         _renderSlot30(_ctx.$slots, "header")
       ])
     ]),
-    _createElementVNode47("div", _hoisted_412, [
+    _createElementVNode47("div", _hoisted_411, [
       _createElementVNode47("div", _hoisted_55, [
         _renderSlot30(_ctx.$slots, "default")
       ])
@@ -12073,7 +12087,7 @@ var _sfc_script74 = defineComponent57({
 var emitChangeValidator = (activeIndex, fromIndex) => isNumber(activeIndex) && isNumber(fromIndex);
 
 // packages/ui/src/Swiper/util.ts
-var getClasses10 = (direction) => {
+var getClasses11 = (direction) => {
   return [
     "ta-swiper",
     {
@@ -12172,7 +12186,7 @@ var _sfc_script75 = defineComponent58({
     const direction = props.initialVertical ? "y" : "x";
     const directionGroup = props.initialVertical ? ["Y", "X", "Height", "Width"] : ["X", "Y", "Width", "Height"];
     const circular = !!props.initialCircular;
-    const classes = getClasses10(direction);
+    const classes = getClasses11(direction);
     const indicatorsClasses = getIndicatorsClasses(direction);
     let prevTranSize = 0;
     let $items = [];
@@ -13032,7 +13046,7 @@ _sfc_script78.render = render76;
 _sfc_script78.__file = "packages/ui/src/Icon/icons/DeleteOutlined/DeleteOutlined.vue";
 
 // packages/ui/src/Order/util.ts
-var getClasses11 = (dragOn) => ["ta-order", { drag: dragOn }];
+var getClasses12 = (dragOn) => ["ta-order", { drag: dragOn }];
 var getStyles4 = (orderHeight) => ({
   height: orderHeight + "px"
 });
@@ -13370,7 +13384,7 @@ var _sfc_script79 = defineComponent61({
       clearTimeout(onTimer);
       clearTimeout(lazyTimer);
     });
-    const classes = computed34(() => getClasses11(dragOn.value));
+    const classes = computed34(() => getClasses12(dragOn.value));
     const styles = computed34(() => getStyles4(orderHeight.value));
     const resizeOnce = useOnce(50);
     useResizeObserver(root, () => resizeOnce(() => updateRender()));
@@ -13475,12 +13489,12 @@ var _hoisted_159 = {
 };
 var _hoisted_245 = /* @__PURE__ */ _createElementVNode52("path", { d: "M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z" }, null, -1);
 var _hoisted_337 = /* @__PURE__ */ _createElementVNode52("path", { d: "M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z" }, null, -1);
-var _hoisted_413 = [
+var _hoisted_412 = [
   _hoisted_245,
   _hoisted_337
 ];
 function render78(_ctx, _cache) {
-  return _openBlock77(), _createElementBlock66("svg", _hoisted_159, _hoisted_413);
+  return _openBlock77(), _createElementBlock66("svg", _hoisted_159, _hoisted_412);
 }
 _sfc_script80.render = render78;
 _sfc_script80.__file = "packages/ui/src/Icon/icons/PlusOutlined/PlusOutlined.vue";
@@ -14193,7 +14207,7 @@ var _sfc_script84 = defineComponent65({
 var emitChangeValidator2 = (name, activeIndex) => isString(name) && isNumber(activeIndex);
 
 // packages/ui/src/StickyView/util.ts
-var getClasses12 = (isSelfContainer) => [
+var getClasses13 = (isSelfContainer) => [
   "ta-sticky-view",
   {
     self: isSelfContainer
@@ -14425,7 +14439,7 @@ var _sfc_script85 = defineComponent66({
       $items = getElementItems(getListEl(), "ta-sticky-view-item");
       props.modelValue != null && updateValue(props.modelValue);
     });
-    const classes = computed37(() => getClasses12(isSelfContainer.value));
+    const classes = computed37(() => getClasses13(isSelfContainer.value));
     expose({
       scrollTo: scrollTo2,
       scrollToIndex,
@@ -14678,7 +14692,7 @@ var _sfc_script87 = defineComponent68({
 var _hoisted_165 = { class: "ta-index-view" };
 var _hoisted_249 = { class: "ta-index-view_sidebar" };
 var _hoisted_339 = ["data-value", "data-index"];
-var _hoisted_414 = { class: "ta-index-view_body" };
+var _hoisted_413 = { class: "ta-index-view_body" };
 function render84(_ctx, _cache) {
   const _component_StickyView = _resolveComponent42("StickyView");
   return _openBlock83(), _createElementBlock72("div", _hoisted_165, [
@@ -14704,7 +14718,7 @@ function render84(_ctx, _cache) {
         }), 128))
       ], 32)
     ]),
-    _createElementVNode58("div", _hoisted_414, [
+    _createElementVNode58("div", _hoisted_413, [
       _createVNode30(_component_StickyView, {
         offsetTop: _ctx.stickyOffsetTop,
         modelValue: _ctx.modelValue,
@@ -14811,7 +14825,7 @@ var getInputMode = (_type) => {
 var getMaxLength = (maxLength) => {
   return Math.max(0, getNumber(maxLength, 140));
 };
-var getClasses13 = ({
+var getClasses14 = ({
   type,
   readonly,
   prepend,
@@ -14984,7 +14998,7 @@ var _sfc_script89 = defineComponent70({
       emit("change", inputValue.value);
     }
     const typeMode = computed38(() => getInputMode(props.type));
-    const classes = computed38(() => getClasses13({
+    const classes = computed38(() => getClasses14({
       type: props.type,
       prepend: !!slots.prepend,
       append: !!slots.append,
@@ -15038,7 +15052,7 @@ var _hoisted_166 = {
 };
 var _hoisted_250 = ["name", "disabled", "placeholder", "readonly", "maxlength"];
 var _hoisted_340 = ["name", "type", "inputmode", "disabled", "placeholder", "readonly", "maxlength"];
-var _hoisted_415 = {
+var _hoisted_414 = {
   key: 3,
   class: "ta-input_limit"
 };
@@ -15085,7 +15099,7 @@ function render86(_ctx, _cache) {
       onCompositionend: _cache[9] || (_cache[9] = (...args) => _ctx.onCompositionEnd && _ctx.onCompositionEnd(...args)),
       ref: "inputEl"
     }, null, 40, _hoisted_340)),
-    _ctx.showLimit && _ctx.maxLength > 0 ? (_openBlock85(), _createElementBlock73("span", _hoisted_415, _toDisplayString31(_ctx.inputValue.length) + "/" + _toDisplayString31(_ctx.maxLength), 1)) : _createCommentVNode33("v-if", true),
+    _ctx.showLimit && _ctx.maxLength > 0 ? (_openBlock85(), _createElementBlock73("span", _hoisted_414, _toDisplayString31(_ctx.inputValue.length) + "/" + _toDisplayString31(_ctx.maxLength), 1)) : _createCommentVNode33("v-if", true),
     _ctx.showClear && _ctx.isShowClear ? (_openBlock85(), _createBlock37(_component_Icon, {
       key: 4,
       class: "ta-input_clear",
@@ -15115,7 +15129,7 @@ import {
 } from "vue";
 
 // packages/ui/src/NoticeBar/util.ts
-var getClasses14 = (type) => {
+var getClasses15 = (type) => {
   return ["ta-notice-bar", "type--" + getEnumsValue(STATE_TYPES, type)];
 };
 var getStyles6 = (color) => {
@@ -15241,7 +15255,7 @@ var _sfc_script90 = defineComponent71({
     const rightIcon2 = computed39(() => {
       return props.rightIcon || modeMaps.get(props.mode) || null;
     });
-    const classes = computed39(() => getClasses14(props.type));
+    const classes = computed39(() => getClasses15(props.type));
     const styles = computed39(() => getStyles6(props.color));
     const contentClasses = computed39(() => getContentClasses(props.marquee));
     const contentStyles = computed39(() => getContentStyles2({
@@ -15423,12 +15437,12 @@ var _hoisted_252 = /* @__PURE__ */ _createElementVNode60("path", {
   d: "M898,264H336.7L113.6,512l223.2,248H898V264z M336.7,202.1c-17.6,0-34.3,7.5-46.1,20.5l-223.2,248c-21.2,23.6-21.2,59.4,0,82.9l223.2,248c11.8,13.1,28.5,20.5,46.1,20.5H898c34.2,0,62-27.8,62-62V264c0-34.2-27.8-62-62-62H336.7z"
 }, null, -1);
 var _hoisted_341 = /* @__PURE__ */ _createElementVNode60("path", { d: "M743.7,376.7c0-3.7-3-6.7-6.7-6.7l-55.1,0.3l-83,99l-82.9-98.9l-55.2-0.3c-3.7,0-6.7,2.9-6.7,6.7c0,1.6,0.6,3.1,1.6,4.3l108.7,129.5L455.6,640c-1,1.3-1.6,2.8-1.6,4.3c0,3.7,3,6.7,6.7,6.7l55.2-0.3l82.9-99l82.9,98.9l55.1,0.3c3.7,0,6.7-2.9,6.7-6.7c0-1.6-0.6-3.1-1.6-4.3L633.5,510.5L742.2,381C743.2,379.9,743.7,378.3,743.7,376.7z" }, null, -1);
-var _hoisted_416 = [
+var _hoisted_415 = [
   _hoisted_252,
   _hoisted_341
 ];
 function render89(_ctx, _cache) {
-  return _openBlock88(), _createElementBlock75("svg", _hoisted_168, _hoisted_416);
+  return _openBlock88(), _createElementBlock75("svg", _hoisted_168, _hoisted_415);
 }
 _sfc_script92.render = render89;
 _sfc_script92.__file = "packages/ui/src/Icon/icons/BackspaceOutlined/BackspaceOutlined.vue";
@@ -15614,7 +15628,7 @@ var _hoisted_342 = {
   key: 0,
   class: "ta-number-keyboard_right-column"
 };
-var _hoisted_417 = { class: "ta-number-keyboard_backspace" };
+var _hoisted_416 = { class: "ta-number-keyboard_backspace" };
 var _hoisted_57 = { class: "ta-number-keyboard_confirm" };
 function render91(_ctx, _cache) {
   const _component_Icon = _resolveComponent47("Icon");
@@ -15660,7 +15674,7 @@ function render91(_ctx, _cache) {
             }), 128))
           ]),
           _ctx.type === "rightColumn" ? (_openBlock90(), _createElementBlock77("div", _hoisted_342, [
-            _createElementVNode62("div", _hoisted_417, [
+            _createElementVNode62("div", _hoisted_416, [
               _createElementVNode62("div", {
                 class: "ta-number-keyboard_button",
                 onClick: _cache[0] || (_cache[0] = ($event) => _ctx.onNumberClick(_ctx.backspaceItem))
@@ -15738,7 +15752,7 @@ var _sfc_script95 = defineComponent74({
 var _hoisted_171 = { class: "ta-pagination" };
 var _hoisted_255 = ["disabled"];
 var _hoisted_343 = { class: "ta-pagination_content" };
-var _hoisted_418 = ["disabled"];
+var _hoisted_417 = ["disabled"];
 function render92(_ctx, _cache) {
   const _component_Icon = _resolveComponent48("Icon");
   return _openBlock91(), _createElementBlock78("div", _hoisted_171, [
@@ -15767,7 +15781,7 @@ function render92(_ctx, _cache) {
       _renderSlot42(_ctx.$slots, "next", {}, () => [
         _createVNode34(_component_Icon, { icon: _ctx.RightOutlined }, null, 8, ["icon"])
       ])
-    ], 8, _hoisted_418)
+    ], 8, _hoisted_417)
   ]);
 }
 _sfc_script95.render = render92;
@@ -16285,7 +16299,7 @@ var _hoisted_259 = {
   class: "ta-price_symbol"
 };
 var _hoisted_346 = { class: "ta-price_integer" };
-var _hoisted_419 = {
+var _hoisted_418 = {
   key: 1,
   class: "ta-price_decimal"
 };
@@ -16294,7 +16308,7 @@ function render96(_ctx, _cache) {
     _renderSlot44(_ctx.$slots, "default"),
     _ctx.symbol ? (_openBlock95(), _createElementBlock80("span", _hoisted_259, _toDisplayString38(_ctx.symbol), 1)) : _createCommentVNode38("v-if", true),
     _createElementVNode67("span", _hoisted_346, _toDisplayString38(_ctx.priceStr.split(".")[0]), 1),
-    _ctx.decimalDigits > 0 ? (_openBlock95(), _createElementBlock80("span", _hoisted_419, "." + _toDisplayString38(_ctx.priceStr.split(".")[1]), 1)) : _createCommentVNode38("v-if", true)
+    _ctx.decimalDigits > 0 ? (_openBlock95(), _createElementBlock80("span", _hoisted_418, "." + _toDisplayString38(_ctx.priceStr.split(".")[1]), 1)) : _createCommentVNode38("v-if", true)
   ]);
 }
 _sfc_script99.render = render96;
@@ -16307,7 +16321,7 @@ var Price_default = _sfc_script99;
 import { computed as computed45, defineComponent as defineComponent79 } from "vue";
 
 // packages/ui/src/Progress/util.ts
-var getClasses15 = (fixedBar) => [
+var getClasses16 = (fixedBar) => [
   "ta-progress",
   { "fixed-bar": !!fixedBar }
 ];
@@ -16353,7 +16367,7 @@ var _sfc_script100 = defineComponent79({
   },
   setup(props) {
     const progress = computed45(() => getProgress(props.percentage));
-    const classes = computed45(() => getClasses15(props.fixedBar));
+    const classes = computed45(() => getClasses16(props.fixedBar));
     const styles = computed45(() => getStyles7(props.color));
     const trackClasses = computed45(() => getTrackClasses(props.animated));
     const trackStyles = computed45(() => getTrackStyles(progress.value));
@@ -16947,7 +16961,7 @@ var isIntegerOrHalf = (val) => {
   return false;
 };
 var getMax = (count) => rangeInteger(getNumber(count, DEFAULT_COUNT), 1, MAX_COUNT);
-var getClasses16 = ({
+var getClasses17 = ({
   disabled,
   readonly
 }) => {
@@ -17024,7 +17038,7 @@ var _sfc_script106 = defineComponent83({
         emit("change", value);
       }
     }
-    const classes = computed48(() => getClasses16(props));
+    const classes = computed48(() => getClasses17(props));
     const styles = computed48(() => getStyles8(props));
     const max = computed48(() => getMax(props.count));
     const isReadonly = computed48(() => !!(props.disabled || props.readonly));
@@ -17112,7 +17126,7 @@ var _sfc_script106 = defineComponent83({
 var _hoisted_181 = ["name", "value", "disabled"];
 var _hoisted_265 = ["data-value"];
 var _hoisted_350 = { class: "ta-rate_icon" };
-var _hoisted_420 = { class: "ta-rate_active-icon" };
+var _hoisted_419 = { class: "ta-rate_active-icon" };
 function render103(_ctx, _cache) {
   const _component_Icon = _resolveComponent53("Icon");
   return _openBlock102(), _createElementBlock87("div", {
@@ -17145,7 +17159,7 @@ function render103(_ctx, _cache) {
         _createElementVNode73("i", _hoisted_350, [
           _createVNode37(_component_Icon, { icon: _ctx.icon }, null, 8, ["icon"])
         ]),
-        _createElementVNode73("i", _hoisted_420, [
+        _createElementVNode73("i", _hoisted_419, [
           _createVNode37(_component_Icon, { icon: _ctx.activeIcon }, null, 8, ["icon"])
         ])
       ], 10, _hoisted_265);
@@ -17267,7 +17281,7 @@ var _hoisted_353 = {
   key: 1,
   class: "ta-result_description"
 };
-var _hoisted_421 = { class: "ta-result_footer" };
+var _hoisted_420 = { class: "ta-result_footer" };
 function render106(_ctx, _cache) {
   const _component_Icon = _resolveComponent54("Icon");
   const _component_TaButton = _resolveComponent54("TaButton");
@@ -17283,9 +17297,10 @@ function render106(_ctx, _cache) {
       _ctx.description ? (_openBlock105(), _createElementBlock90("div", _hoisted_353, _toDisplayString42(_ctx.description), 1)) : _createCommentVNode41("v-if", true)
     ]),
     _renderSlot48(_ctx.$slots, "default"),
-    _createElementVNode76("div", _hoisted_421, [
+    _createElementVNode76("div", _hoisted_420, [
       _createVNode38(_component_TaButton, {
         type: "primary",
+        size: "large",
         onClick: _ctx.onConfirmClick
       }, {
         default: _withCtx28(() => [
@@ -17296,6 +17311,7 @@ function render106(_ctx, _cache) {
       _ctx.showBack ? (_openBlock105(), _createBlock44(_component_TaButton, {
         key: 0,
         type: "default",
+        size: "large",
         onClick: _ctx.onCancelClick
       }, {
         default: _withCtx28(() => [
@@ -17454,7 +17470,7 @@ var _hoisted_269 = {
   ref: "listEl"
 };
 var _hoisted_354 = ["onClick"];
-var _hoisted_422 = { class: "ta-side-tab_item-text" };
+var _hoisted_421 = { class: "ta-side-tab_item-text" };
 function render108(_ctx, _cache) {
   const _component_Icon = _resolveComponent55("Icon");
   const _component_Badge = _resolveComponent55("Badge");
@@ -17472,7 +17488,7 @@ function render108(_ctx, _cache) {
                 key: 0,
                 icon: index === _ctx.activeIndex ? item.activeIcon : item.icon
               }, null, 8, ["icon"])) : _createCommentVNode42("v-if", true),
-              _createElementVNode77("span", _hoisted_422, _toDisplayString43(item.label), 1)
+              _createElementVNode77("span", _hoisted_421, _toDisplayString43(item.label), 1)
             ]),
             _: 2
           }, 1040)
@@ -17488,7 +17504,7 @@ _sfc_script111.__file = "packages/ui/src/SideTab/SideTab.vue";
 var SideTab_default = _sfc_script111;
 
 // packages/ui/src/ScrollTab/util.ts
-var getClasses17 = (sideBar) => [
+var getClasses18 = (sideBar) => [
   "ta-scroll-tab",
   { "is-side-bar": sideBar }
 ];
@@ -17569,7 +17585,7 @@ var _sfc_script112 = defineComponent87({
       });
     };
     const viewOffsetTop = computed51(() => getSizeValue(props.stickyOffsetTop) + (props.sideBar ? 0 : TAB_HEIGHT));
-    const classes = computed51(() => getClasses17(props.sideBar));
+    const classes = computed51(() => getClasses18(props.sideBar));
     watch32(() => props.modelValue, (val) => updateActiveName(val));
     onMounted27(() => {
       resetContainer(document.documentElement);
@@ -17713,7 +17729,7 @@ import { computed as computed52, defineComponent as defineComponent89, shallowRe
 
 // packages/ui/src/Tag/util.ts
 var TAG_PATTERN_TYPES = ["light", "dark", "plain"];
-var getClasses18 = (props) => {
+var getClasses19 = (props) => {
   const { hasColor, isDark: isDark2 } = getColorObject(props.color);
   return [
     "ta-tag",
@@ -17776,7 +17792,7 @@ var _sfc_script114 = defineComponent89({
         emit("close");
       }
     }
-    const classes = computed52(() => getClasses18(props));
+    const classes = computed52(() => getClasses19(props));
     const styles = computed52(() => getStyles9(props.color));
     useLongPress(root, (e) => {
       if (!props.disabled) {
@@ -17839,6 +17855,12 @@ _sfc_script115.render = render112;
 _sfc_script115.__file = "packages/ui/src/Icon/icons/SearchOutlined/SearchOutlined.vue";
 
 // packages/ui/src/SearchBar/util.ts
+var getClasses20 = (inputMode) => [
+  "ta-search",
+  {
+    "mode-input": !!inputMode
+  }
+];
 var getInnerClasses3 = (showCancel) => [
   "ta-search_inner",
   { "has--cancel": !!showCancel }
@@ -17888,6 +17910,10 @@ var _sfc_script116 = defineComponent90({
     placeholderInterval: {
       type: Number,
       default: 5e3
+    },
+    inputMode: {
+      type: Boolean,
+      default: false
     }
   },
   emits: {
@@ -18006,10 +18032,12 @@ var _sfc_script116 = defineComponent90({
       phsStart();
     });
     onBeforeUnmount14(() => phsStop());
+    const classes = computed53(() => getClasses20(props.inputMode));
     const innerClasses = computed53(() => getInnerClasses3(props.showCancel));
     const innerStyles = computed53(() => getInnerStyles4(props.background));
     const fieldClasses = computed53(() => getFieldClasses(props.ghost));
     return {
+      classes,
       innerClasses,
       innerStyles,
       fieldClasses,
@@ -18032,9 +18060,8 @@ var _sfc_script116 = defineComponent90({
     };
   }
 });
-var _hoisted_191 = { class: "ta-search" };
-var _hoisted_273 = /* @__PURE__ */ _createElementVNode81("button", { class: "ta-search_button" }, "Search", -1);
-var _hoisted_357 = { class: "ta-search_suggest-list" };
+var _hoisted_191 = /* @__PURE__ */ _createElementVNode81("button", { class: "ta-search_button" }, "Search", -1);
+var _hoisted_273 = { class: "ta-search_suggest-list" };
 function render113(_ctx, _cache) {
   var _a;
   const _component_Icon = _resolveComponent58("Icon");
@@ -18043,7 +18070,9 @@ function render113(_ctx, _cache) {
   const _component_Tag = _resolveComponent58("Tag");
   const _component_Cell = _resolveComponent58("Cell");
   const _component_Dropdown = _resolveComponent58("Dropdown");
-  return _openBlock112(), _createElementBlock97("div", _hoisted_191, [
+  return _openBlock112(), _createElementBlock97("div", {
+    class: _normalizeClass53(_ctx.classes)
+  }, [
     _createElementVNode81("form", {
       class: _normalizeClass53(_ctx.innerClasses),
       onSubmit: _cache[1] || (_cache[1] = _withModifiers8(($event) => _ctx.onSearch(_ctx.searchText), ["prevent"])),
@@ -18070,11 +18099,11 @@ function render113(_ctx, _cache) {
         ]),
         _: 1
       }, 8, ["class", "placeholder", "readonly", "modelValue", "focus", "maxlength", "onInput", "onFocus", "onBlur", "onClick"]),
-      _hoisted_273,
+      _hoisted_191,
       _ctx.showCancel ? (_openBlock112(), _createBlock47(_component_TaButton, {
         key: 0,
         class: "ta-search_cancel-button",
-        size: "large",
+        size: "middle",
         type: "default",
         formType: "button",
         pattern: "borderless",
@@ -18098,7 +18127,7 @@ function render113(_ctx, _cache) {
         _createElementVNode81("div", {
           style: _normalizeStyle28(_ctx.getSuggestStyles(height))
         }, [
-          _createElementVNode81("div", _hoisted_357, [
+          _createElementVNode81("div", _hoisted_273, [
             (_openBlock112(true), _createElementBlock97(_Fragment21, null, _renderList20(_ctx.suggestList, (item) => {
               return _openBlock112(), _createBlock47(_component_Cell, {
                 key: item.text,
@@ -18109,7 +18138,10 @@ function render113(_ctx, _cache) {
               }, {
                 default: _withCtx31(() => [
                   (_openBlock112(true), _createElementBlock97(_Fragment21, null, _renderList20(item.tags, (tag) => {
-                    return _openBlock112(), _createBlock47(_component_Tag, { key: tag }, {
+                    return _openBlock112(), _createBlock47(_component_Tag, {
+                      size: "middle",
+                      key: tag
+                    }, {
                       default: _withCtx31(() => [
                         _createTextVNode23(_toDisplayString45(tag), 1)
                       ]),
@@ -18125,7 +18157,7 @@ function render113(_ctx, _cache) {
       ]),
       _: 1
     }, 8, ["selector", "visible"])) : _createCommentVNode45("v-if", true)
-  ]);
+  ], 2);
 }
 _sfc_script116.render = render113;
 _sfc_script116.__file = "packages/ui/src/SearchBar/SearchBar.vue";
@@ -18146,7 +18178,7 @@ import { computed as computed54, defineComponent as defineComponent91 } from "vu
 var PARAGRAPH_DEFAULT_ROW = 3;
 var AVATAR_SHAPE_NAMES = ["default", "circle"];
 var BUTTON_SHAPE_NAMES = ["default", "round"];
-var getClasses19 = (animated) => {
+var getClasses21 = (animated) => {
   return ["ta-skeleton", { animated: !!animated }];
 };
 var getAvatarClasses2 = (props, parentProps) => {
@@ -18324,7 +18356,7 @@ var _sfc_script120 = defineComponent94({
     SkeletonParagraph: _sfc_script119
   },
   setup(props) {
-    const classes = computed57(() => getClasses19(props.animated));
+    const classes = computed57(() => getClasses21(props.animated));
     return {
       classes
     };
@@ -18335,7 +18367,7 @@ var _hoisted_274 = {
   key: 0,
   class: "ta-skeleton_layout-left"
 };
-var _hoisted_358 = { class: "ta-skeleton_layout-right" };
+var _hoisted_357 = { class: "ta-skeleton_layout-right" };
 function render117(_ctx, _cache) {
   const _component_SkeletonAvatar = _resolveComponent59("SkeletonAvatar");
   const _component_SkeletonTitle = _resolveComponent59("SkeletonTitle");
@@ -18348,7 +18380,7 @@ function render117(_ctx, _cache) {
         _ctx.avatar ? (_openBlock116(), _createElementBlock101("div", _hoisted_274, [
           _createVNode43(_component_SkeletonAvatar)
         ])) : _createCommentVNode46("v-if", true),
-        _createElementVNode82("div", _hoisted_358, [
+        _createElementVNode82("div", _hoisted_357, [
           _createVNode43(_component_SkeletonTitle),
           _createVNode43(_component_SkeletonParagraph)
         ])
@@ -18670,8 +18702,8 @@ var _sfc_script126 = defineComponent100({
 });
 var _hoisted_194 = /* @__PURE__ */ _createElementVNode84("div", { class: "ta-step_line" }, null, -1);
 var _hoisted_276 = { class: "ta-step_index" };
-var _hoisted_359 = { class: "ta-step_inner" };
-var _hoisted_423 = {
+var _hoisted_358 = { class: "ta-step_inner" };
+var _hoisted_422 = {
   key: 0,
   class: "ta-step_title"
 };
@@ -18690,8 +18722,8 @@ function render121(_ctx, _cache) {
         _createTextVNode24(_toDisplayString47(_ctx.index + 1), 1)
       ])
     ]),
-    _createElementVNode84("div", _hoisted_359, [
-      _ctx.title || _ctx.$slots.title ? (_openBlock120(), _createElementBlock105("div", _hoisted_423, [
+    _createElementVNode84("div", _hoisted_358, [
+      _ctx.title || _ctx.$slots.title ? (_openBlock120(), _createElementBlock105("div", _hoisted_422, [
         _renderSlot54(_ctx.$slots, "title", {}, () => [
           _createTextVNode24(_toDisplayString47(_ctx.title), 1)
         ])
@@ -18715,7 +18747,7 @@ var Step_default = _sfc_script126;
 import { onMounted as onMounted28, ref as ref39, defineComponent as defineComponent101, watch as watch35, computed as computed62 } from "vue";
 
 // packages/ui/src/Stepper/util.ts
-var getClasses20 = (disabled) => {
+var getClasses22 = (disabled) => {
   return ["ta-stepper", { disabled: !!disabled }];
 };
 function formatNumber2(value, decimalLength) {
@@ -18742,11 +18774,11 @@ var _hoisted_195 = {
   focusable: "false"
 };
 var _hoisted_277 = /* @__PURE__ */ _createElementVNode85("path", { d: "M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z" }, null, -1);
-var _hoisted_360 = [
+var _hoisted_359 = [
   _hoisted_277
 ];
 function render122(_ctx, _cache) {
-  return _openBlock121(), _createElementBlock106("svg", _hoisted_195, _hoisted_360);
+  return _openBlock121(), _createElementBlock106("svg", _hoisted_195, _hoisted_359);
 }
 _sfc_script127.render = render122;
 _sfc_script127.__file = "packages/ui/src/Icon/icons/MinusOutlined/MinusOutlined.vue";
@@ -18802,7 +18834,7 @@ var _sfc_script128 = defineComponent101({
     const nMax = computed62(() => getNumber(props.max, Infinity));
     const nStep = computed62(() => getNumber(props.step, 1));
     const { inputEl, setInputValue, getInputValue } = useInput();
-    const classes = computed62(() => getClasses20(props.disabled));
+    const classes = computed62(() => getClasses22(props.disabled));
     function updateValue(val) {
       const newVal = getRangeNumber({
         min: nMin.value,
@@ -19233,7 +19265,7 @@ var SwiperItem_default = _sfc_script76;
 import { onMounted as onMounted29, ref as ref41, watch as watch36, defineComponent as defineComponent104, computed as computed64 } from "vue";
 
 // packages/ui/src/Switch/util.ts
-var getClasses21 = (disabled) => {
+var getClasses23 = (disabled) => {
   return ["ta-switch", { disabled: !!disabled }];
 };
 var getStyles10 = (props) => {
@@ -19274,7 +19306,7 @@ var _sfc_script131 = defineComponent104({
     let isValueNull = props.modelValue == null;
     const checked = ref41(false);
     const { inputEl, setInputChecked, getInputChecked } = useInput();
-    const classes = computed64(() => getClasses21(props.disabled));
+    const classes = computed64(() => getClasses23(props.disabled));
     const styles = computed64(() => getStyles10(props));
     function onChange() {
       const value = getInputChecked();
@@ -19367,7 +19399,7 @@ var _hoisted_1100 = {
   ref: "listEl"
 };
 var _hoisted_279 = ["onClick"];
-var _hoisted_361 = { class: "ta-tab-bar_item-text" };
+var _hoisted_360 = { class: "ta-tab-bar_item-text" };
 function render127(_ctx, _cache) {
   const _component_TaImage = _resolveComponent61("TaImage");
   const _component_Icon = _resolveComponent61("Icon");
@@ -19395,7 +19427,7 @@ function render127(_ctx, _cache) {
             ]),
             _: 2
           }, 1040),
-          _createElementVNode89("span", _hoisted_361, _toDisplayString50(item.label), 1)
+          _createElementVNode89("span", _hoisted_360, _toDisplayString50(item.label), 1)
         ], 10, _hoisted_279);
       }), 128))
     ], 512)
@@ -19411,7 +19443,7 @@ var TabBar_default = _sfc_script132;
 import { ref as ref42, defineComponent as defineComponent106, provide as provide10, watch as watch37, shallowRef as shallowRef34 } from "vue";
 
 // packages/ui/src/TabView/util.ts
-var getClasses22 = (vertical) => ["ta-tab-view", { vertical }];
+var getClasses24 = (vertical) => ["ta-tab-view", { vertical }];
 
 // vue:./TabView.vue
 import { resolveComponent as _resolveComponent62, openBlock as _openBlock127, createBlock as _createBlock49, createCommentVNode as _createCommentVNode49, createElementVNode as _createElementVNode90, renderSlot as _renderSlot57, withCtx as _withCtx33, createVNode as _createVNode46, normalizeClass as _normalizeClass66, createElementBlock as _createElementBlock112 } from "vue";
@@ -19499,7 +19531,7 @@ var _sfc_script133 = defineComponent106({
     }
     provide10("taTabViewVertical", vertical.value);
     watch37(() => props.modelValue, (val) => val != null && _switchTo(val, true));
-    const classes = getClasses22(vertical.value);
+    const classes = getClasses24(vertical.value);
     const switchTo = (name) => _switchTo(name, false);
     expose({
       switchTo,
@@ -19843,8 +19875,8 @@ var _hoisted_1105 = {
   ref: "root"
 };
 var _hoisted_281 = /* @__PURE__ */ _createElementVNode91("div", { class: "ta-timeline-item_line" }, null, -1);
-var _hoisted_362 = { class: "ta-timeline-item_index" };
-var _hoisted_424 = { class: "ta-timeline-item_inner" };
+var _hoisted_361 = { class: "ta-timeline-item_index" };
+var _hoisted_423 = { class: "ta-timeline-item_inner" };
 var _hoisted_59 = {
   key: 0,
   class: "ta-timeline-item_title"
@@ -19853,7 +19885,7 @@ var _hoisted_63 = { class: "ta-timeline-item_content" };
 function render133(_ctx, _cache) {
   return _openBlock131(), _createElementBlock116("div", _hoisted_1105, [
     _hoisted_281,
-    _createElementVNode91("div", _hoisted_362, [
+    _createElementVNode91("div", _hoisted_361, [
       _renderSlot60(_ctx.$slots, "dot", {}, () => [
         _createElementVNode91("i", {
           class: "ta-timeline-item_dot",
@@ -19861,7 +19893,7 @@ function render133(_ctx, _cache) {
         }, null, 4)
       ])
     ]),
-    _createElementVNode91("div", _hoisted_424, [
+    _createElementVNode91("div", _hoisted_423, [
       _ctx.title || _ctx.$slots.title ? (_openBlock131(), _createElementBlock116("div", _hoisted_59, [
         _renderSlot60(_ctx.$slots, "title", {}, () => [
           _createTextVNode26(_toDisplayString52(_ctx.title), 1)
