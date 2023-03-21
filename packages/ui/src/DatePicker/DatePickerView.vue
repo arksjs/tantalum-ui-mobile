@@ -16,6 +16,7 @@ import { useHandlers } from '../DatePicker/use-date-picker'
 import type { SelectorModelValue } from '../SelectorField/types'
 import type { PropsToEmits } from '../helpers'
 import type { DatePickerViewEmits } from './types'
+import type { PickerOnChange } from '../Picker/types'
 
 export default defineComponent({
   name: 'ta-date-picker-view',
@@ -29,8 +30,8 @@ export default defineComponent({
 
     useHandlers(props)
 
-    function onChange(e: SelectorModelValue) {
-      emit('change', e)
+    const onChange: PickerOnChange = (value, label) => {
+      emit('change', value, label)
     }
 
     function onUpdateValue(e: SelectorModelValue) {

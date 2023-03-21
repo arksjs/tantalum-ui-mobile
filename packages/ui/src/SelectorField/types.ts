@@ -21,7 +21,10 @@ export interface SelectorValueParser {
   (value: unknown): SelectorValue[]
 }
 
-export type SelectorOnChange = (payload: SelectorModelValue) => void
+export type SelectorOnChange = (
+  value: SelectorModelValue,
+  label: string
+) => void
 
 export type SelectorOnConfirm = (payload: SelectorDetail) => void
 

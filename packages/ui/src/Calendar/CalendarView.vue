@@ -489,7 +489,8 @@ export default defineComponent({
 
       timeValue = [start.timestamp, end.timestamp]
       emit('update:modelValue', getDetail().value)
-      emit('change', getDetail().value)
+      const { value, label } = getDetail()
+      emit('change', value, label)
     }
 
     function onSelect() {

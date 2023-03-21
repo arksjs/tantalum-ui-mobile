@@ -123,7 +123,8 @@ export default defineComponent({
         updateDetail(newDetail)
 
         emit('update:modelValue', getDetail().value)
-        emit('change', getDetail().value)
+        const { value, label } = getDetail()
+        emit('change', value, label)
       } else {
         updateDetail(newDetail)
       }

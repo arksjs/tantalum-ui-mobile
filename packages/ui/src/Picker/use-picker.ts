@@ -128,7 +128,8 @@ export function usePicker(
       updateDetail(newDetail)
 
       emit('update:modelValue', getDetail().value)
-      emit('change', getDetail().value)
+      const { value, label } = getDetail()
+      emit('change', value, label)
     }
   }
 
@@ -185,7 +186,8 @@ export function usePickerPopup(
 
       // 跟picker-view不一样，改变数值时机是确定按钮
       emit('update:modelValue', getDetail().value)
-      emit('change', getDetail().value)
+      const { value, label } = getDetail()
+      emit('change', value, label)
     } else {
       detail = newDetail
     }
@@ -673,7 +675,8 @@ export function usePickerView(
 
   function onChange() {
     emit('update:modelValue', getDetail().value)
-    emit('change', getDetail().value)
+    const { value, label } = getDetail()
+    emit('change', value, label)
   }
 
   watch(
