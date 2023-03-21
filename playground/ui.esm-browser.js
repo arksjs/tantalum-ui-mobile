@@ -6783,7 +6783,8 @@ var _sfc_script31 = defineComponent19({
       }
       timeValue = [start.timestamp, end.timestamp];
       emit("update:modelValue", getDetail().value);
-      emit("change", getDetail().value);
+      const { value, label } = getDetail();
+      emit("change", value, label);
     }
     function onSelect() {
       onChange();
@@ -7000,7 +7001,8 @@ var _sfc_script32 = defineComponent20({
       if (!isSameDetail(newDetail, detail)) {
         updateDetail(newDetail);
         emit("update:modelValue", getDetail().value);
-        emit("change", getDetail().value);
+        const { value, label } = getDetail();
+        emit("change", value, label);
       } else {
         updateDetail(newDetail);
       }
@@ -7158,7 +7160,8 @@ var _sfc_script33 = defineComponent21({
       }
       updateDetail(newDetail);
       emit("update:modelValue", getDetail().value);
-      emit("change", getDetail().value);
+      const { value, label } = getDetail();
+      emit("change", value, label);
     }
     watch9(() => props.modelValue, (val) => updateValue(val), {
       deep: true,
@@ -7730,7 +7733,8 @@ function usePicker(props, ctx, {
     if (!isSameDetail(newDetail, detail)) {
       updateDetail(newDetail);
       emit("update:modelValue", getDetail().value);
-      emit("change", getDetail().value);
+      const { value, label } = getDetail();
+      emit("change", value, label);
     }
   }
   watch11([() => props.modelValue, () => props.options], () => updateValue(props.modelValue), {
@@ -7766,7 +7770,8 @@ function usePickerPopup(props, { emit }, {
     if (!isSameDetail(newDetail, detail)) {
       detail = newDetail;
       emit("update:modelValue", getDetail().value);
-      emit("change", getDetail().value);
+      const { value, label } = getDetail();
+      emit("change", value, label);
     } else {
       detail = newDetail;
     }
@@ -8094,7 +8099,8 @@ function usePickerView(props, { emit }, { name, afterUpdate, handlers }) {
   }
   function onChange() {
     emit("update:modelValue", getDetail().value);
-    emit("change", getDetail().value);
+    const { value, label } = getDetail();
+    emit("change", value, label);
   }
   watch11([() => props.options, () => props.fieldNames], () => {
     updateOptions();
@@ -10607,9 +10613,9 @@ var _sfc_script60 = defineComponent44({
   setup(props, ctx) {
     const { emit } = ctx;
     useHandlers2(props);
-    function onChange(e) {
-      emit("change", e);
-    }
+    const onChange = (value, label) => {
+      emit("change", value, label);
+    };
     function onUpdateValue(e) {
       emit("update:modelValue", e);
     }
