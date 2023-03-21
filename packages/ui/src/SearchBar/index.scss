@@ -16,19 +16,21 @@
     }
   }
 
-  &_field {
-    flex: 1;
-    background-color: $background-color;
+  &:not(.mode-input) {
+    .ta-search_field {
+      flex: 1;
+      background-color: $background-color;
 
-    &.ghost {
-      background-color: $white-color;
-      border-color: transparent;
-
-      &:focus {
+      &.ghost {
+        background-color: $white-color;
         border-color: transparent;
-      }
 
-      @include box-shadow;
+        &:focus {
+          border-color: transparent;
+        }
+
+        @include box-shadow;
+      }
     }
   }
 
@@ -41,8 +43,7 @@
       }
 
       &_field {
-        height: 100%;
-        border-radius: 0;
+        flex: 1;
       }
     }
   }
