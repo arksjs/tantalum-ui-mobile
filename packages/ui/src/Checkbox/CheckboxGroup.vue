@@ -53,6 +53,9 @@ export default defineComponent({
         children.forEach(child => {
           if (child.getInputChecked()) {
             newVal.push(cloneData(child.getValue()))
+            child.setChecked(true)
+          } else {
+            child.setChecked(false)
           }
         })
 

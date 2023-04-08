@@ -11,9 +11,9 @@ export const getCheckStyles = (activeColor?: string) => {
   return obj
 }
 
-export const getCheckClasses = (disabled?: boolean) => [
+export const getCheckClasses = (checked: boolean, disabled?: boolean) => [
   'ta-horizontal-hairline',
-  { disabled: !!disabled }
+  { disabled: !!disabled, checked }
 ]
 
 export const getCheckGroupClasses = ({

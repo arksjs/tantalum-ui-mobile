@@ -5,7 +5,8 @@ import {
   inject,
   provide,
   shallowRef,
-  type SetupContext
+  type SetupContext,
+  ref
 } from 'vue'
 import { capitalize, type EmptyObject, isStringOrNumber } from '../helpers'
 import { useGroup, useGroupItem } from '../hooks'
@@ -43,6 +44,7 @@ export function useCheck(
     null
   )
   const inputEl = shallowRef<HTMLInputElement | null>(null)
+  const checked = ref(false)
 
   const name2 = computed(() => {
     return groupOptions?.props.name || props.name || ''
@@ -63,17 +65,17 @@ export function useCheck(
     return !!getInputEl().checked
   }
 
-  function setChecked(checked = true) {
-    getInputEl().checked = checked
+  function setChecked(_checked = true) {
+    checked.value = getInputEl().checked = _checked
   }
 
   function onChange(e: Event) {
     if (groupOptions) {
       groupOptions.onChange(uid)
     } else {
-      const checked = !!(e.target as HTMLInputElement).checked
-      emit('update:checked', checked)
-      emit('checkedChange', checked)
+      checked.value = !!(e.target as HTMLInputElement).checked
+      emit('update:checked', checked.value)
+      emit('checkedChange', checked.value)
     }
   }
 
@@ -85,10 +87,10 @@ export function useCheck(
       }
 
       const $input = getInputEl()
-      const checked = !!val
+      const _checked = !!val
 
-      if (checked !== $input.checked) {
-        $input.checked = checked
+      if (_checked !== $input.checked) {
+        checked.value = $input.checked = _checked
       }
     }
   )
@@ -103,11 +105,11 @@ export function useCheck(
   onMounted(() => {
     const $input = getInputEl()
 
-    let checked: boolean
+    let _checked: boolean
     if (groupOptions) {
       const groupValues = groupOptions.props.modelValue
 
-      checked =
+      _checked =
         name === 'checkbox'
           ? !!(
               Array.isArray(groupValues) &&
@@ -116,15 +118,17 @@ export function useCheck(
             )
           : props.checkedValue === groupValues
     } else {
-      checked = !!props.checked
+      _checked = !!props.checked
     }
 
-    if (checked !== $input.checked) {
-      $input.checked = $input.defaultChecked = checked
+    if (_checked !== $input.checked) {
+      checked.value = $input.checked = $input.defaultChecked = _checked
     }
   })
 
-  const classes = computed(() => getCheckClasses(disabled2.value))
+  const classes = computed(() =>
+    getCheckClasses(checked.value, disabled2.value)
+  )
 
   const styles = computed(() => {
     const { activeColor } = groupOptions?.props || props
@@ -138,7 +142,8 @@ export function useCheck(
     disabled2,
     onChange,
     classes,
-    styles
+    styles,
+    checked
   }
 }
 
