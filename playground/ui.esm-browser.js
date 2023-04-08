@@ -7308,12 +7308,12 @@ var getStyles2 = (color, activeColor) => {
   activeColor && (obj["--ta-active-color"] = activeColor);
   return obj;
 };
-var getClasses5 = (scrollThreshold, options2, hasSub) => {
+var getClasses5 = (noScrolling, hasSub) => {
   return [
     "ta-tab",
     {
-      "no--scroll": options2.length <= scrollThreshold,
-      "has--sub": hasSub
+      "no--scrolling": noScrolling,
+      "has--subtitle": hasSub
     }
   ];
 };
@@ -7454,9 +7454,6 @@ function useTab(props, { emit, expose }, { tabName }) {
   }
   function updatePos() {
     nextTick3(() => {
-      if (tabName === "TabBar") {
-        return;
-      }
       if (!listEl.value) {
         return;
       }
@@ -7522,6 +7519,12 @@ function useTab(props, { emit, expose }, { tabName }) {
     immediate: true
   });
   const styles = computed17(() => getStyles2(props.color, props.activeColor));
+  const noScrolling = computed17(() => {
+    if (tabName === "SideBar" || props.scrollThreshold == null) {
+      return false;
+    }
+    return options2.value.length <= props.scrollThreshold;
+  });
   const switchTo = (value) => _switchTo(value, false);
   expose({
     switchTo,
@@ -7536,6 +7539,7 @@ function useTab(props, { emit, expose }, { tabName }) {
     onChange,
     styles,
     updateUnderline,
+    noScrolling,
     switchTo,
     switchToIndex
   };
@@ -7556,7 +7560,7 @@ var _sfc_script34 = defineComponent22({
   emits: { ...tabEmits },
   setup(props, ctx) {
     const tab = useTab(props, ctx, { tabName: "Tab" });
-    const classes = computed18(() => getClasses5(props.scrollThreshold, tab.options2.value, tab.hasSub.value));
+    const classes = computed18(() => getClasses5(tab.noScrolling.value, tab.hasSub.value));
     return {
       classes,
       getItemClasses: getItemClasses2,
@@ -19368,9 +19372,18 @@ _sfc_script131.__file = "packages/ui/src/Switch/Switch.vue";
 var Switch_default = _sfc_script131;
 
 // vue:./TabBar.vue
-import { defineComponent as defineComponent105 } from "vue";
+import { defineComponent as defineComponent105, computed as computed65 } from "vue";
 
 // packages/ui/src/TabBar/util.ts
+var getClasses24 = (noScrolling) => {
+  return [
+    "ta-tab-bar",
+    "ta-horizontal-hairline",
+    {
+      "no--scrolling": noScrolling
+    }
+  ];
+};
 var getItemClasses7 = (index, activeIndex) => {
   return [
     "ta-tab-bar_item",
@@ -19389,14 +19402,17 @@ var _sfc_script132 = defineComponent105({
     ...tabProps,
     scrollThreshold: {
       type: Number,
-      default: 4
+      default: 5
     }
   },
   emits: { ...tabEmits },
   setup(props, ctx) {
+    const tab = useTab(props, ctx, { tabName: "TabBar" });
+    const classes = computed65(() => getClasses24(tab.noScrolling.value));
     return {
+      classes,
       getItemClasses: getItemClasses7,
-      ...useTab(props, ctx, { tabName: "TabBar" })
+      ...tab
     };
   }
 });
@@ -19405,13 +19421,14 @@ var _hoisted_1100 = {
   ref: "listEl"
 };
 var _hoisted_279 = ["onClick"];
-var _hoisted_360 = { class: "ta-tab-bar_item-text" };
+var _hoisted_360 = { class: "ta-tab-bar_item-inner" };
+var _hoisted_423 = { class: "ta-tab-bar_item-text" };
 function render127(_ctx, _cache) {
   const _component_TaImage = _resolveComponent61("TaImage");
   const _component_Icon = _resolveComponent61("Icon");
   const _component_Badge = _resolveComponent61("Badge");
   return _openBlock126(), _createElementBlock111("div", {
-    class: "ta-tab-bar ta-horizontal-hairline",
+    class: _normalizeClass65(_ctx.classes),
     style: _normalizeStyle32(_ctx.styles)
   }, [
     _createElementVNode89("ul", _hoisted_1100, [
@@ -19421,23 +19438,25 @@ function render127(_ctx, _cache) {
           key: item.value,
           onClick: ($event) => _ctx.onChange(item.value)
         }, [
-          _createVNode45(_component_Badge, _mergeProps11({ class: "ta-tab-bar_item-icon" }, item.badge), {
-            default: _withCtx32(() => [
-              item.iconLink ? (_openBlock126(), _createBlock48(_component_TaImage, {
-                key: 0,
-                src: index === _ctx.activeIndex ? item.activeIconLink : item.iconLink
-              }, null, 8, ["src"])) : item.icon ? (_openBlock126(), _createBlock48(_component_Icon, {
-                key: 1,
-                icon: index === _ctx.activeIndex ? item.activeIcon : item.icon
-              }, null, 8, ["icon"])) : _createCommentVNode48("v-if", true)
-            ]),
-            _: 2
-          }, 1040),
-          _createElementVNode89("span", _hoisted_360, _toDisplayString50(item.label), 1)
+          _createElementVNode89("div", _hoisted_360, [
+            _createVNode45(_component_Badge, _mergeProps11({ class: "ta-tab-bar_item-icon" }, item.badge), {
+              default: _withCtx32(() => [
+                item.iconLink ? (_openBlock126(), _createBlock48(_component_TaImage, {
+                  key: 0,
+                  src: index === _ctx.activeIndex ? item.activeIconLink : item.iconLink
+                }, null, 8, ["src"])) : item.icon ? (_openBlock126(), _createBlock48(_component_Icon, {
+                  key: 1,
+                  icon: index === _ctx.activeIndex ? item.activeIcon : item.icon
+                }, null, 8, ["icon"])) : _createCommentVNode48("v-if", true)
+              ]),
+              _: 2
+            }, 1040),
+            _createElementVNode89("span", _hoisted_423, _toDisplayString50(item.label), 1)
+          ])
         ], 10, _hoisted_279);
       }), 128))
     ], 512)
-  ], 4);
+  ], 6);
 }
 _sfc_script132.render = render127;
 _sfc_script132.__file = "packages/ui/src/TabBar/TabBar.vue";
@@ -19449,7 +19468,7 @@ var TabBar_default = _sfc_script132;
 import { ref as ref42, defineComponent as defineComponent106, provide as provide10, watch as watch37, shallowRef as shallowRef34 } from "vue";
 
 // packages/ui/src/TabView/util.ts
-var getClasses24 = (vertical) => ["ta-tab-view", { vertical }];
+var getClasses25 = (vertical) => ["ta-tab-view", { vertical }];
 
 // vue:./TabView.vue
 import { resolveComponent as _resolveComponent62, openBlock as _openBlock127, createBlock as _createBlock49, createCommentVNode as _createCommentVNode49, createElementVNode as _createElementVNode90, renderSlot as _renderSlot57, withCtx as _withCtx33, createVNode as _createVNode46, normalizeClass as _normalizeClass66, createElementBlock as _createElementBlock112 } from "vue";
@@ -19537,7 +19556,7 @@ var _sfc_script133 = defineComponent106({
     }
     provide10("taTabViewVertical", vertical.value);
     watch37(() => props.modelValue, (val) => val != null && _switchTo(val, true));
-    const classes = getClasses24(vertical.value);
+    const classes = getClasses25(vertical.value);
     const switchTo = (name) => _switchTo(name, false);
     expose({
       switchTo,
@@ -19882,7 +19901,7 @@ var _hoisted_1105 = {
 };
 var _hoisted_281 = /* @__PURE__ */ _createElementVNode91("div", { class: "ta-timeline-item_line" }, null, -1);
 var _hoisted_361 = { class: "ta-timeline-item_index" };
-var _hoisted_423 = { class: "ta-timeline-item_inner" };
+var _hoisted_424 = { class: "ta-timeline-item_inner" };
 var _hoisted_59 = {
   key: 0,
   class: "ta-timeline-item_title"
@@ -19899,7 +19918,7 @@ function render133(_ctx, _cache) {
         }, null, 4)
       ])
     ]),
-    _createElementVNode91("div", _hoisted_423, [
+    _createElementVNode91("div", _hoisted_424, [
       _ctx.title || _ctx.$slots.title ? (_openBlock131(), _createElementBlock116("div", _hoisted_59, [
         _renderSlot60(_ctx.$slots, "title", {}, () => [
           _createTextVNode26(_toDisplayString52(_ctx.title), 1)
