@@ -48,7 +48,7 @@ export default defineComponent({
     const tab = useTab(props, ctx, { tabName: 'Tab' })
 
     const classes = computed(() =>
-      getClasses(props.scrollThreshold, tab.options2.value, tab.hasSub.value)
+      getClasses(tab.noScrolling.value, tab.hasSub.value)
     )
 
     return {

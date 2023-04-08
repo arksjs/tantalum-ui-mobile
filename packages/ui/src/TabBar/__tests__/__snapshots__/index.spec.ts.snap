@@ -1,41 +1,49 @@
 // Vitest Snapshot v1
 
 exports[`TabBar > snapshot 1`] = `
-"<div class=\\"ta-tab-bar ta-horizontal-hairline\\">
+"<div class=\\"ta-tab-bar ta-horizontal-hairline no--scrolling\\">
   <ul class=\\"ta-tab-bar_list\\"></ul>
 </div>"
 `;
 
 exports[`TabBar > snapshot badgeList 1`] = `
-"<div class=\\"ta-tab-bar ta-horizontal-hairline\\">
+"<div class=\\"ta-tab-bar ta-horizontal-hairline no--scrolling\\">
   <ul class=\\"ta-tab-bar_list\\">
     <li class=\\"ta-tab-bar_item active\\">
-      <div class=\\"ta-badge ta-tab-bar_item-icon\\"><svg class=\\"ta-icon\\">
-          <use xlink:href=\\"#HomeOutlined\\"></use>
-        </svg>
-        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">热</div>
-      </div><span class=\\"ta-tab-bar_item-text\\">首页</span>
+      <div class=\\"ta-tab-bar_item-inner\\">
+        <div class=\\"ta-badge ta-tab-bar_item-icon\\"><svg class=\\"ta-icon\\">
+            <use xlink:href=\\"#HomeOutlined\\"></use>
+          </svg>
+          <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">热</div>
+        </div><span class=\\"ta-tab-bar_item-text\\">首页</span>
+      </div>
     </li>
     <li class=\\"ta-tab-bar_item\\">
-      <div class=\\"ta-badge ta-tab-bar_item-icon\\"><svg class=\\"ta-icon\\">
-          <use xlink:href=\\"#SearchOutlined\\"></use>
-        </svg>
-        <div class=\\"ta-badge_badge dot\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">1</div>
-      </div><span class=\\"ta-tab-bar_item-text\\">搜索</span>
+      <div class=\\"ta-tab-bar_item-inner\\">
+        <div class=\\"ta-badge ta-tab-bar_item-icon\\"><svg class=\\"ta-icon\\">
+            <use xlink:href=\\"#SearchOutlined\\"></use>
+          </svg>
+          <div class=\\"ta-badge_badge dot\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">1</div>
+        </div><span class=\\"ta-tab-bar_item-text\\">搜索</span>
+      </div>
     </li>
     <li class=\\"ta-tab-bar_item\\">
-      <div class=\\"ta-badge ta-tab-bar_item-icon\\"><svg class=\\"ta-icon\\">
-          <use xlink:href=\\"#UserOutlined\\"></use>
-        </svg>
-        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">1</div>
-      </div><span class=\\"ta-tab-bar_item-text\\">我的</span>
+      <div class=\\"ta-tab-bar_item-inner\\">
+        <div class=\\"ta-badge ta-tab-bar_item-icon\\"><svg class=\\"ta-icon\\">
+            <use xlink:href=\\"#UserOutlined\\"></use>
+          </svg>
+          <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">1</div>
+        </div><span class=\\"ta-tab-bar_item-text\\">我的</span>
+      </div>
     </li>
     <li class=\\"ta-tab-bar_item\\">
-      <div class=\\"ta-badge ta-tab-bar_item-icon\\"><svg class=\\"ta-icon\\">
-          <use xlink:href=\\"#SettingOutlined\\"></use>
-        </svg>
-        <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">99+</div>
-      </div><span class=\\"ta-tab-bar_item-text\\">设置</span>
+      <div class=\\"ta-tab-bar_item-inner\\">
+        <div class=\\"ta-badge ta-tab-bar_item-icon\\"><svg class=\\"ta-icon\\">
+            <use xlink:href=\\"#SettingOutlined\\"></use>
+          </svg>
+          <div class=\\"ta-badge_badge\\" style=\\"transform: translate3d(50%, -50%, 0px) scale(1); right: 0px; top: 0px;\\">99+</div>
+        </div><span class=\\"ta-tab-bar_item-text\\">设置</span>
+      </div>
     </li>
   </ul>
 </div>"

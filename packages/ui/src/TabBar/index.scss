@@ -29,26 +29,39 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    height: 100%;
+    height: inherit;
+    white-space: nowrap;
+    overflow-x: auto;
   }
 
   &_item {
-    flex: 1;
-    display: flex;
+    height: inherit;
+    display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: var(--ta-front-color);
-    font-size: 10px;
-    line-height: 14px;
     user-select: none;
+    min-width: 64px;
+
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
     &-icon {
       display: block;
       width: 28px;
       height: 28px;
       margin-bottom: 2px;
+    }
+
+    &-text {
+      font-size: 10px;
+      line-height: 14px;
+      text-align: center;
     }
 
     .ta-image {
@@ -63,6 +76,29 @@
 
     &.active {
       --ta-front-color: var(--ta-active-color);
+    }
+  }
+
+  &.no--scrolling {
+    .ta-tab-bar {
+      &_list {
+        display: flex;
+        padding: 0;
+        overflow: visible;
+      }
+
+      &_item {
+        flex: 1;
+        padding: 0;
+
+        &-text {
+          flex-grow: 1;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      }
     }
   }
 }

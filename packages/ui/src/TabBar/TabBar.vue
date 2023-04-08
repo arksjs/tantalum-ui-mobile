@@ -1,5 +1,5 @@
 <template>
-  <div class="ta-tab-bar ta-horizontal-hairline" :style="styles">
+  <div :class="classes" :style="styles">
     <ul class="ta-tab-bar_list" ref="listEl">
       <li
         :class="getItemClasses(index, activeIndex)"
@@ -7,30 +7,32 @@
         :key="item.value"
         @click="onChange(item.value)"
       >
-        <Badge class="ta-tab-bar_item-icon" v-bind="item.badge">
-          <TaImage
-            v-if="item.iconLink"
-            :src="index === activeIndex ? item.activeIconLink : item.iconLink"
-          />
-          <Icon
-            v-else-if="item.icon"
-            :icon="index === activeIndex ? item.activeIcon : item.icon"
-          />
-        </Badge>
-        <span class="ta-tab-bar_item-text">{{ item.label }}</span>
+        <div class="ta-tab-bar_item-inner">
+          <Badge class="ta-tab-bar_item-icon" v-bind="item.badge">
+            <TaImage
+              v-if="item.iconLink"
+              :src="index === activeIndex ? item.activeIconLink : item.iconLink"
+            />
+            <Icon
+              v-else-if="item.icon"
+              :icon="index === activeIndex ? item.activeIcon : item.icon"
+            />
+          </Badge>
+          <span class="ta-tab-bar_item-text">{{ item.label }}</span>
+        </div>
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { Image as TaImage } from '../Image'
 import { Icon } from '../Icon'
 import { Badge } from '../Badge'
 import { tabEmits, tabProps } from '../Tab/props'
 import { useTab } from '../Tab/use-tab'
-import { getItemClasses } from './util'
+import { getClasses, getItemClasses } from './util'
 import type { PropsToEmits } from '../helpers'
 import type { TabBarEmits } from './types'
 
@@ -41,14 +43,19 @@ export default defineComponent({
     ...tabProps,
     scrollThreshold: {
       type: Number,
-      default: 4
+      default: 5
     }
   },
   emits: { ...tabEmits } as PropsToEmits<TabBarEmits>,
   setup(props, ctx) {
+    const tab = useTab(props, ctx, { tabName: 'TabBar' })
+
+    const classes = computed(() => getClasses(tab.noScrolling.value))
+
     return {
+      classes,
       getItemClasses,
-      ...useTab(props, ctx, { tabName: 'TabBar' })
+      ...tab
     }
   }
 })

@@ -92,7 +92,7 @@
     }
   }
 
-  &.has--sub {
+  &.has--subtitle {
     height: 48px;
 
     .ta-tab {
@@ -119,7 +119,7 @@
     }
   }
 
-  &.no--scroll:not(.vertical) {
+  &.no--scrolling:not(.vertical) {
     .ta-tab {
       &_list {
         display: flex;

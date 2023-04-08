@@ -31,7 +31,9 @@ interface UseOptions {
 }
 
 export function useTab(
-  props: ExtractPropTypes<typeof tabProps>,
+  props: ExtractPropTypes<typeof tabProps> & {
+    scrollThreshold?: number
+  },
   { emit, expose }: SetupContext<typeof tabEmits>,
   { tabName }: UseOptions
 ) {
@@ -189,10 +191,6 @@ export function useTab(
 
   function updatePos() {
     nextTick(() => {
-      if (tabName === 'TabBar') {
-        return
-      }
-
       if (!listEl.value) {
         return
       }
@@ -289,6 +287,13 @@ export function useTab(
 
   const styles = computed(() => getStyles(props.color, props.activeColor))
 
+  const noScrolling = computed(() => {
+    if (tabName === 'SideBar' || props.scrollThreshold == null) {
+      return false
+    }
+    return options2.value.length <= props.scrollThreshold
+  })
+
   const switchTo = (value: string | number) => _switchTo(value, false)
 
   expose({
@@ -305,6 +310,7 @@ export function useTab(
     onChange,
     styles,
     updateUnderline,
+    noScrolling,
 
     switchTo,
     switchToIndex

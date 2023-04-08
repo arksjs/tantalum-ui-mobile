@@ -1,5 +1,4 @@
 import type { CSSProperties } from '../helpers'
-import type { HandleOptionItem } from './types'
 
 export const getStyles = (color?: string, activeColor?: string) => {
   const obj: CSSProperties = {}
@@ -10,16 +9,12 @@ export const getStyles = (color?: string, activeColor?: string) => {
   return obj
 }
 
-export const getClasses = (
-  scrollThreshold: number,
-  options2: HandleOptionItem[],
-  hasSub: boolean
-) => {
+export const getClasses = (noScrolling: boolean, hasSub: boolean) => {
   return [
     'ta-tab',
     {
-      'no--scroll': options2.length <= scrollThreshold,
-      'has--sub': hasSub
+      'no--scrolling': noScrolling,
+      'has--subtitle': hasSub
     }
   ]
 }
