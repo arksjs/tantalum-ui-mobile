@@ -731,11 +731,11 @@ var Easing = {
 };
 var uid = 0;
 var FrameTask = class {
-  constructor(ref44, id) {
+  constructor(ref45, id) {
     this.stop = function() {
-      if (ref44.idle) {
-        cancelAnimationFrame(ref44.idle);
-        ref44.done();
+      if (ref45.idle) {
+        cancelAnimationFrame(ref45.idle);
+        ref45.done();
         return true;
       }
       return false;
@@ -749,14 +749,14 @@ function frameTo(options) {
   const end = start + duration;
   const id = ++uid;
   function done() {
-    ref44.idle = null;
+    ref45.idle = null;
     complete && complete({ current, id });
   }
-  const ref44 = { idle: null, id, done };
+  const ref45 = { idle: null, id, done };
   let frameIndex = 0;
   let current = from;
   function step2() {
-    ref44.idle = requestAnimationFrame(function() {
+    ref45.idle = requestAnimationFrame(function() {
       const t = Date.now();
       if (t >= end) {
         current = to;
@@ -784,7 +784,7 @@ function frameTo(options) {
     id
   });
   step2();
-  return new FrameTask(ref44, id);
+  return new FrameTask(ref45, id);
 }
 function getStretchOffset(offset) {
   return Math.ceil(offset / Math.log(Math.abs(offset)));
@@ -8634,7 +8634,8 @@ import {
   watch as watch13,
   inject as inject7,
   provide as provide6,
-  shallowRef as shallowRef12
+  shallowRef as shallowRef12,
+  ref as ref13
 } from "vue";
 
 // packages/ui/src/Checkbox/util.ts
@@ -8643,9 +8644,9 @@ var getCheckStyles = (activeColor) => {
   activeColor && (obj["--ta-active-color"] = activeColor);
   return obj;
 };
-var getCheckClasses = (disabled) => [
+var getCheckClasses = (checked, disabled) => [
   "ta-horizontal-hairline",
-  { disabled: !!disabled }
+  { disabled: !!disabled, checked }
 ];
 var getCheckGroupClasses = ({
   inline,
@@ -8660,6 +8661,7 @@ function useCheck(props, { emit }, name) {
   const uid3 = Symbol();
   const groupOptions = inject7(`ta${capitalize(name)}Options`, null);
   const inputEl = shallowRef12(null);
+  const checked = ref13(false);
   const name2 = computed21(() => {
     return (groupOptions == null ? void 0 : groupOptions.props.name) || props.name || "";
   });
@@ -8677,16 +8679,16 @@ function useCheck(props, { emit }, name) {
   function getInputChecked() {
     return !!getInputEl().checked;
   }
-  function setChecked(checked = true) {
-    getInputEl().checked = checked;
+  function setChecked(_checked = true) {
+    checked.value = getInputEl().checked = _checked;
   }
   function onChange(e) {
     if (groupOptions) {
       groupOptions.onChange(uid3);
     } else {
-      const checked = !!e.target.checked;
-      emit("update:checked", checked);
-      emit("checkedChange", checked);
+      checked.value = !!e.target.checked;
+      emit("update:checked", checked.value);
+      emit("checkedChange", checked.value);
     }
   }
   watch13(() => props.checked, (val) => {
@@ -8694,9 +8696,9 @@ function useCheck(props, { emit }, name) {
       return;
     }
     const $input = getInputEl();
-    const checked = !!val;
-    if (checked !== $input.checked) {
-      $input.checked = checked;
+    const _checked = !!val;
+    if (_checked !== $input.checked) {
+      checked.value = $input.checked = _checked;
     }
   });
   useGroupItem(name, {
@@ -8707,18 +8709,18 @@ function useCheck(props, { emit }, name) {
   });
   onMounted13(() => {
     const $input = getInputEl();
-    let checked;
+    let _checked;
     if (groupOptions) {
       const groupValues = groupOptions.props.modelValue;
-      checked = name === "checkbox" ? !!(Array.isArray(groupValues) && props.checkedValue && groupValues.includes(props.checkedValue)) : props.checkedValue === groupValues;
+      _checked = name === "checkbox" ? !!(Array.isArray(groupValues) && props.checkedValue && groupValues.includes(props.checkedValue)) : props.checkedValue === groupValues;
     } else {
-      checked = !!props.checked;
+      _checked = !!props.checked;
     }
-    if (checked !== $input.checked) {
-      $input.checked = $input.defaultChecked = checked;
+    if (_checked !== $input.checked) {
+      checked.value = $input.checked = $input.defaultChecked = _checked;
     }
   });
-  const classes = computed21(() => getCheckClasses(disabled2.value));
+  const classes = computed21(() => getCheckClasses(checked.value, disabled2.value));
   const styles = computed21(() => {
     const { activeColor } = (groupOptions == null ? void 0 : groupOptions.props) || props;
     return getCheckStyles(activeColor);
@@ -8729,7 +8731,8 @@ function useCheck(props, { emit }, name) {
     disabled2,
     onChange,
     classes,
-    styles
+    styles,
+    checked
   };
 }
 function useCheckGroup(props, {
@@ -8917,7 +8920,7 @@ _sfc_script44.render = render44;
 _sfc_script44.__file = "packages/ui/src/Checkbox/Checkbox.vue";
 
 // vue:./CheckboxGroup.vue
-import { defineComponent as defineComponent29, ref as ref13 } from "vue";
+import { defineComponent as defineComponent29, ref as ref14 } from "vue";
 import { renderSlot as _renderSlot13, renderList as _renderList8, Fragment as _Fragment8, openBlock as _openBlock45, createElementBlock as _createElementBlock38, toDisplayString as _toDisplayString14, createTextVNode as _createTextVNode7, resolveComponent as _resolveComponent21, withCtx as _withCtx10, createBlock as _createBlock18, normalizeClass as _normalizeClass20 } from "vue";
 var isValue2 = (value) => isStringOrNumberArray(value);
 var _sfc_script45 = defineComponent29({
@@ -8936,7 +8939,7 @@ var _sfc_script45 = defineComponent29({
     change: isValue2
   },
   setup(props, ctx) {
-    const inputValue = ref13([]);
+    const inputValue = ref14([]);
     const { emit } = ctx;
     const group = useCheckGroup(props, {
       name: "checkbox",
@@ -8945,6 +8948,9 @@ var _sfc_script45 = defineComponent29({
         children.forEach((child) => {
           if (child.getInputChecked()) {
             newVal.push(cloneData(child.getValue()));
+            child.setChecked(true);
+          } else {
+            child.setChecked(false);
           }
         });
         inputValue.value = newVal;
@@ -9077,7 +9083,7 @@ _sfc_script46.__file = "packages/ui/src/CircleProgress/CircleProgress.vue";
 var CircleProgress_default = _sfc_script46;
 
 // vue:./Col.vue
-import { defineComponent as defineComponent31, inject as inject8, computed as computed23, ref as ref14 } from "vue";
+import { defineComponent as defineComponent31, inject as inject8, computed as computed23, ref as ref15 } from "vue";
 
 // packages/ui/src/Col/util.ts
 function rangeCol(number = 0) {
@@ -9127,7 +9133,7 @@ var _sfc_script47 = defineComponent31({
     }
   },
   setup(props) {
-    const defaultRowGutter = ref14([0, 0]);
+    const defaultRowGutter = ref15([0, 0]);
     const rowGutter = inject8("taRowGutter", defaultRowGutter);
     const styles = computed23(() => getColStyles(rowGutter.value));
     const classes = computed23(() => getColClasses(props));
@@ -9236,7 +9242,7 @@ _sfc_script48.render = render48;
 _sfc_script48.__file = "packages/ui/src/Collapse/Collapse.vue";
 
 // vue:./CollapseItem.vue
-import { defineComponent as defineComponent33, ref as ref15, computed as computed24, shallowRef as shallowRef13 } from "vue";
+import { defineComponent as defineComponent33, ref as ref16, computed as computed24, shallowRef as shallowRef13 } from "vue";
 
 // packages/ui/src/Collapse/util.ts
 var getItemClasses3 = (active) => [
@@ -9275,7 +9281,7 @@ var _sfc_script49 = defineComponent33({
     const { printItemIsolationWarn } = useException();
     const uid3 = Symbol();
     const bodyEl = shallowRef13(null);
-    const active = ref15(false);
+    const active = ref16(false);
     const { onChange } = useGroupItem(CollapseContext, {
       uid: uid3,
       show,
@@ -9485,7 +9491,7 @@ var Copy_default = _sfc_script51;
 import { defineComponent as defineComponent36, onMounted as onMounted15 } from "vue";
 
 // packages/ui/src/CountDown/use-count-time.ts
-import { onBeforeUnmount as onBeforeUnmount10, ref as ref16 } from "vue";
+import { onBeforeUnmount as onBeforeUnmount10, ref as ref17 } from "vue";
 
 // packages/ui/src/CountDown/util.ts
 function formatNumber(num) {
@@ -9524,7 +9530,7 @@ function getCountTime(time) {
 
 // packages/ui/src/CountDown/use-count-time.ts
 function useCountTime(onStep) {
-  const times = ref16(getDefaultCountTime());
+  const times = ref17(getDefaultCountTime());
   function update(time) {
     times.value = getCountTime(time);
   }
@@ -9665,7 +9671,7 @@ _sfc_script52.__file = "packages/ui/src/CountDown/CountDown.vue";
 var CountDown_default = _sfc_script52;
 
 // vue:./CountUp.vue
-import { defineComponent as defineComponent37, ref as ref17, watch as watch15 } from "vue";
+import { defineComponent as defineComponent37, ref as ref18, watch as watch15 } from "vue";
 
 // packages/ui/src/CountUp/util.ts
 var SpeedMap = /* @__PURE__ */ new Map([
@@ -9713,7 +9719,7 @@ var _sfc_script53 = defineComponent37({
     cancel: emitValidator
   },
   setup(props, { emit }) {
-    const content = ref17("");
+    const content = ref18("");
     let numberCache = getNumber(props.initialNumber, 0);
     const { getRunFrameTaskId, frameStart, frameStop } = useFrameTask();
     function cancel2() {
@@ -10922,7 +10928,7 @@ var Divider_default = _sfc_script64;
 import {
   defineComponent as defineComponent48,
   computed as computed27,
-  ref as ref18,
+  ref as ref19,
   nextTick as nextTick7,
   shallowRef as shallowRef16
 } from "vue";
@@ -10939,8 +10945,8 @@ var _sfc_script65 = defineComponent48({
   emits: { ...popupEmits },
   setup(props, ctx) {
     const { printPropError } = useException();
-    const top = ref18(-1);
-    const height = ref18(0);
+    const top = ref19(-1);
+    const height = ref19(0);
     const popupEl = shallowRef16(null);
     function updatePos() {
       const $target = querySelector(props.selector);
@@ -11014,7 +11020,7 @@ import {
   computed as computed28,
   defineComponent as defineComponent49,
   onMounted as onMounted16,
-  ref as ref19,
+  ref as ref20,
   shallowRef as shallowRef17,
   toRef as toRef4,
   watch as watch16
@@ -11084,11 +11090,11 @@ var _sfc_script66 = defineComponent49({
     const root = shallowRef17(null);
     const innerEl = shallowRef17(null);
     const contentEl = shallowRef17(null);
-    const rootStyle = ref19({
+    const rootStyle = ref20({
       width: null,
       height: null
     });
-    const isFixed = ref19(true);
+    const isFixed = ref20(true);
     const { safeAreaInsets: safeAreaInsets2 } = useSafeAreaInsets(toRef4(props, "enableSafeAreaInsets"));
     function updateSize() {
       if (!(root.value && innerEl.value && contentEl.value)) {
@@ -11162,7 +11168,7 @@ _sfc_script66.__file = "packages/ui/src/Fixed/Fixed.vue";
 var Fixed_default = _sfc_script66;
 
 // vue:./FlatList.vue
-import { computed as computed31, defineComponent as defineComponent52, onMounted as onMounted18, ref as ref21, shallowRef as shallowRef19 } from "vue";
+import { computed as computed31, defineComponent as defineComponent52, onMounted as onMounted18, ref as ref22, shallowRef as shallowRef19 } from "vue";
 
 // vue:./LoadMore.vue
 import { computed as computed29, defineComponent as defineComponent50 } from "vue";
@@ -11231,7 +11237,7 @@ var LoadMore_default = _sfc_script67;
 import {
   defineComponent as defineComponent51,
   computed as computed30,
-  ref as ref20,
+  ref as ref21,
   onMounted as onMounted17,
   watch as watch17,
   shallowRef as shallowRef18
@@ -11349,12 +11355,12 @@ var _sfc_script68 = defineComponent51({
     let _prevY = 0;
     let _prevX = 0;
     let coords;
-    const pullRefreshState = ref20(PullRefreshState.Pulling);
+    const pullRefreshState = ref21(PullRefreshState.Pulling);
     const root = shallowRef18(null);
-    const pullDistance = ref20(0);
-    const translateDuration = ref20(0);
-    const pullDirection = ref20("");
-    const pullIndicatorSafeArea = ref20({
+    const pullDistance = ref21(0);
+    const translateDuration = ref21(0);
+    const pullDirection = ref21("");
+    const pullIndicatorSafeArea = ref21({
       top: 0,
       right: 0,
       bottom: 0,
@@ -11730,7 +11736,7 @@ var _sfc_script69 = defineComponent52({
     const { locale } = useLocale();
     const scrollViewRef = shallowRef19(null);
     const virtualListRef = shallowRef19(null);
-    const wrapperSize = ref21(0);
+    const wrapperSize = ref22(0);
     let horizontal = false;
     if (props.initialWaterfallCount <= 1 && props.initialHorizontal) {
       horizontal = true;
@@ -12066,11 +12072,11 @@ _sfc_script73.__file = "packages/ui/src/Group/Group.vue";
 var Group_default = _sfc_script73;
 
 // vue:./ImagePreview.vue
-import { defineComponent as defineComponent60, reactive as reactive4, ref as ref23, watch as watch19 } from "vue";
+import { defineComponent as defineComponent60, reactive as reactive4, ref as ref24, watch as watch19 } from "vue";
 
 // vue:./Swiper.vue
 import {
-  ref as ref22,
+  ref as ref23,
   defineComponent as defineComponent58,
   onMounted as onMounted19,
   watch as watch18,
@@ -12191,8 +12197,8 @@ var _sfc_script75 = defineComponent58({
     const { printListItemNotFoundError } = useException();
     const root = shallowRef20(null);
     const listEl = shallowRef20(null);
-    const index = ref22(0);
-    const pagination = ref22([]);
+    const index = ref23(0);
+    const pagination = ref23([]);
     const direction = props.initialVertical ? "y" : "x";
     const directionGroup = props.initialVertical ? ["Y", "X", "Height", "Width"] : ["X", "Y", "Width", "Height"];
     const circular = !!props.initialCircular;
@@ -12691,10 +12697,10 @@ var _sfc_script77 = defineComponent60({
   },
   setup(props, ctx) {
     const { emit } = ctx;
-    const activeIndex = ref23(0);
+    const activeIndex = ref24(0);
     const images2 = reactive4([]);
-    const zoomAnimated = ref23(false);
-    const swiperInit = ref23(false);
+    const zoomAnimated = ref24(false);
+    const swiperInit = ref24(false);
     const popup = usePopupExtend(ctx);
     let coords;
     function onImageTouchStart(e, item) {
@@ -13021,13 +13027,13 @@ import {
   reactive as reactive6,
   computed as computed35,
   watch as watch21,
-  ref as ref25
+  ref as ref26
 } from "vue";
 
 // vue:./Order.vue
 import {
   defineComponent as defineComponent61,
-  ref as ref24,
+  ref as ref25,
   reactive as reactive5,
   onMounted as onMounted20,
   nextTick as nextTick8,
@@ -13116,12 +13122,12 @@ var _sfc_script79 = defineComponent61({
     const root = shallowRef22(null);
     const deleteButtonEl = shallowRef22(null);
     const positions = reactive5([]);
-    const dragOn = ref24(false);
-    const dragCurrent = ref24(-1);
-    const dragDelete = ref24(false);
-    const dragFixed = ref24(-1);
-    const deleting = ref24(false);
-    const orderHeight = ref24(0);
+    const dragOn = ref25(false);
+    const dragCurrent = ref25(-1);
+    const dragDelete = ref25(false);
+    const dragFixed = ref25(-1);
+    const deleting = ref25(false);
+    const orderHeight = ref25(0);
     const drag = {
       on: false,
       current: -1,
@@ -13677,10 +13683,10 @@ var _sfc_script82 = defineComponent63({
   setup(props, { emit }) {
     const { locale } = useLocale();
     const orderItems = reactive6([]);
-    const fileItems = ref25({});
-    const formValue = ref25([]);
-    const previewVisible = ref25(false);
-    const previewCurrent = ref25("");
+    const fileItems = ref26({});
+    const formValue = ref26([]);
+    const previewVisible = ref26(false);
+    const previewCurrent = ref26("");
     function onAddFiles(e) {
       const files = e.target.files || [];
       for (let i = 0; i < files.length; i++) {
@@ -14017,14 +14023,14 @@ _sfc_script82.__file = "packages/ui/src/ImageUploader/ImageUploader.vue";
 var ImageUploader_default = _sfc_script82;
 
 // vue:./IndexView.vue
-import { defineComponent as defineComponent68, onMounted as onMounted23, ref as ref28, shallowRef as shallowRef26, watch as watch24 } from "vue";
+import { defineComponent as defineComponent68, onMounted as onMounted23, ref as ref29, shallowRef as shallowRef26, watch as watch24 } from "vue";
 
 // vue:./StickyView.vue
 import {
   computed as computed37,
   defineComponent as defineComponent66,
   onMounted as onMounted22,
-  ref as ref27,
+  ref as ref28,
   watch as watch23,
   nextTick as nextTick9,
   shallowRef as shallowRef25
@@ -14034,7 +14040,7 @@ import {
 import {
   defineComponent as defineComponent64,
   computed as computed36,
-  ref as ref26,
+  ref as ref27,
   onMounted as onMounted21,
   watch as watch22,
   shallowRef as shallowRef23
@@ -14076,9 +14082,9 @@ var _sfc_script83 = defineComponent64({
     const root = shallowRef23(null);
     const container = shallowRef23(null);
     const contentEl = shallowRef23(null);
-    const width = ref26(null);
-    const height = ref26(null);
-    const isFixed = ref26(false);
+    const width = ref27(null);
+    const height = ref27(null);
+    const isFixed = ref27(false);
     function updateFixed() {
       if (!root.value || !container.value) {
         return;
@@ -14270,8 +14276,8 @@ var _sfc_script85 = defineComponent66({
     const fixedEl = shallowRef25(null);
     const stickyRef = shallowRef25(null);
     const itemsRef = shallowRef25(null);
-    const activeIndex = ref27(0);
-    const isSelfContainer = ref27(false);
+    const activeIndex = ref28(0);
+    const isSelfContainer = ref28(false);
     let cachedItems = [];
     let $items = [];
     let isSpecifyScrolling = false;
@@ -14576,8 +14582,8 @@ var _sfc_script87 = defineComponent68({
   },
   setup(props, { emit, expose }) {
     const bodyRef = shallowRef26(null);
-    const indexList = ref28([]);
-    const activeName = ref28();
+    const indexList = ref29([]);
+    const activeName = ref29();
     function updateActiveName(name) {
       if (name != null && nameInList(name) && name !== activeName.value) {
         activeName.value = name;
@@ -14788,7 +14794,7 @@ var IndexView_default = _sfc_script87;
 var IndexViewItem_default = _sfc_script88;
 
 // vue:./Input.vue
-import { computed as computed38, defineComponent as defineComponent70, onMounted as onMounted24, ref as ref29, watch as watch25 } from "vue";
+import { computed as computed38, defineComponent as defineComponent70, onMounted as onMounted24, ref as ref30, watch as watch25 } from "vue";
 
 // packages/ui/src/Input/util.ts
 var TYPE_NAMES2 = [
@@ -14956,9 +14962,9 @@ var _sfc_script89 = defineComponent70({
     ...formFocusEmits
   },
   setup(props, { emit, slots }) {
-    const active = ref29(false);
-    const isShowClear = ref29(false);
-    const inputValue = ref29("");
+    const active = ref30(false);
+    const isShowClear = ref30(false);
+    const inputValue = ref30("");
     const { inputEl, setFocus, setBlur, getInputValue, setInputValue } = useInput();
     function updateValue(val) {
       const newVal = getValue2(val, props.type);
@@ -15133,7 +15139,7 @@ import {
   computed as computed39,
   onMounted as onMounted25,
   onBeforeUnmount as onBeforeUnmount13,
-  ref as ref30,
+  ref as ref31,
   watch as watch26,
   shallowRef as shallowRef28
 } from "vue";
@@ -15215,8 +15221,8 @@ var _sfc_script90 = defineComponent71({
     closeClick: emitClickValidator
   },
   setup(props, { emit }) {
-    const marqueeX = ref30(0);
-    const marqueeDuration = ref30(0);
+    const marqueeX = ref31(0);
+    const marqueeDuration = ref31(0);
     const contentEl = shallowRef28(null);
     let marqueeTimer;
     function marqueeStep(x, pW) {
@@ -15712,7 +15718,7 @@ _sfc_script94.__file = "packages/ui/src/NumberKeyboard/NumberKeyboard.vue";
 var NumberKeyboard_default = _sfc_script94;
 
 // vue:./Pagination.vue
-import { computed as computed41, defineComponent as defineComponent74, ref as ref31, watch as watch27 } from "vue";
+import { computed as computed41, defineComponent as defineComponent74, ref as ref32, watch as watch27 } from "vue";
 
 // packages/ui/src/Pagination/util.ts
 var getTotal = (total) => Math.max(getNumber(total, 1), 1);
@@ -15736,7 +15742,7 @@ var _sfc_script95 = defineComponent74({
     change: (current) => isNumber(current)
   },
   setup(props, { emit }) {
-    const pageNum = ref31(-1);
+    const pageNum = ref32(-1);
     const totalNum = computed41(() => getTotal(props.total));
     function change(newPageNum) {
       pageNum.value = newPageNum;
@@ -15835,7 +15841,7 @@ import {
   defineComponent as defineComponent75,
   nextTick as nextTick10,
   onMounted as onMounted26,
-  ref as ref32,
+  ref as ref33,
   shallowRef as shallowRef29,
   watch as watch28
 } from "vue";
@@ -15940,8 +15946,8 @@ var _sfc_script96 = defineComponent75({
   emits: { ...popoverEmits },
   setup(props, ctx) {
     const container = shallowRef29(null);
-    const isShow = ref32(false);
-    const showPos = ref32(DEFAULT_POS);
+    const isShow = ref33(false);
+    const showPos = ref33(DEFAULT_POS);
     const popup = usePopup(props, ctx, {
       emitCallback(event, res) {
         if (event === "visibleStateChange") {
@@ -16477,7 +16483,7 @@ _sfc_script101.render = render98;
 _sfc_script101.__file = "packages/ui/src/Radio/Radio.vue";
 
 // vue:./RadioGroup.vue
-import { defineComponent as defineComponent81, ref as ref33 } from "vue";
+import { defineComponent as defineComponent81, ref as ref34 } from "vue";
 import { renderSlot as _renderSlot47, renderList as _renderList17, Fragment as _Fragment18, openBlock as _openBlock98, createElementBlock as _createElementBlock83, toDisplayString as _toDisplayString40, createTextVNode as _createTextVNode20, resolveComponent as _resolveComponent52, withCtx as _withCtx27, createBlock as _createBlock43, normalizeClass as _normalizeClass45 } from "vue";
 var isValue4 = (value) => isStringOrNumber(value);
 var _sfc_script102 = defineComponent81({
@@ -16496,7 +16502,7 @@ var _sfc_script102 = defineComponent81({
     change: isValue4
   },
   setup(props, ctx) {
-    const inputValue = ref33("");
+    const inputValue = ref34("");
     const { emit } = ctx;
     const group = useCheckGroup(props, {
       name: "radio",
@@ -16923,7 +16929,7 @@ _sfc_script103.__file = "packages/ui/src/Range/Range.vue";
 var Range_default = _sfc_script103;
 
 // vue:./Rate.vue
-import { computed as computed48, defineComponent as defineComponent83, ref as ref34, watch as watch30 } from "vue";
+import { computed as computed48, defineComponent as defineComponent83, ref as ref35, watch as watch30 } from "vue";
 
 // vue:./StarOutlined.vue
 import { createElementVNode as _createElementVNode71, openBlock as _openBlock100, createElementBlock as _createElementBlock85 } from "vue";
@@ -17037,7 +17043,7 @@ var _sfc_script106 = defineComponent83({
   emits: { ...formNumberValueEmits },
   setup(props, ctx) {
     const { emit } = ctx;
-    const inputValue = ref34(0);
+    const inputValue = ref35(0);
     function change(value, isHalf = false) {
       if (props.allowHalf && isHalf) {
         value -= 0.5;
@@ -17343,7 +17349,7 @@ import {
   computed as computed50,
   defineComponent as defineComponent85,
   provide as provide8,
-  ref as ref35,
+  ref as ref36,
   watch as watch31
 } from "vue";
 
@@ -17400,7 +17406,7 @@ var _sfc_script110 = defineComponent85({
     }
   },
   setup(props) {
-    const gutter = ref35([0, 0]);
+    const gutter = ref36([0, 0]);
     const styles = computed50(() => getRowStyles(gutter.value));
     const classes = computed50(() => getRowClasses(props));
     watch31(() => props.gutter, (val) => {
@@ -17433,7 +17439,7 @@ var Row_default = _sfc_script110;
 import {
   defineComponent as defineComponent87,
   onMounted as onMounted27,
-  ref as ref36,
+  ref as ref37,
   shallowRef as shallowRef30,
   watch as watch32,
   computed as computed51
@@ -17550,8 +17556,8 @@ var _sfc_script112 = defineComponent87({
   setup(props, { emit, expose }) {
     const sideRef = shallowRef30(null);
     const bodyRef = shallowRef30(null);
-    const tabList = ref36([]);
-    const activeName = ref36();
+    const tabList = ref37([]);
+    const activeName = ref37();
     function updateActiveName(name) {
       if (name != null && nameInList(name) && name !== activeName.value) {
         activeName.value = name;
@@ -17729,7 +17735,7 @@ import {
   defineComponent as defineComponent90,
   onBeforeMount as onBeforeMount2,
   onBeforeUnmount as onBeforeUnmount14,
-  ref as ref37,
+  ref as ref38,
   shallowRef as shallowRef32,
   watch as watch33
 } from "vue";
@@ -17936,11 +17942,11 @@ var _sfc_script116 = defineComponent90({
   },
   setup(props, { emit }) {
     const { locale } = useLocale();
-    const placeholder = ref37("");
-    const searchText = ref37("");
-    const initDropdown = ref37(false);
-    const suggestVisible = ref37(false);
-    const suggestList = ref37([]);
+    const placeholder = ref38("");
+    const searchText = ref38("");
+    const initDropdown = ref38(false);
+    const suggestVisible = ref38(false);
+    const suggestList = ref38([]);
     const innerEl = shallowRef32(null);
     function proxyEvent(e) {
       emitHook(e.type, searchText.value);
@@ -18497,7 +18503,7 @@ var SkeletonParagraph_default = _sfc_script119;
 var SkeletonTitle_default = _sfc_script118;
 
 // vue:./Slider.vue
-import { ref as ref38, defineComponent as defineComponent98, watch as watch34, nextTick as nextTick12 } from "vue";
+import { ref as ref39, defineComponent as defineComponent98, watch as watch34, nextTick as nextTick12 } from "vue";
 import { normalizeStyle as _normalizeStyle29, createElementVNode as _createElementVNode83, toDisplayString as _toDisplayString46, normalizeClass as _normalizeClass60, openBlock as _openBlock119, createElementBlock as _createElementBlock104 } from "vue";
 var _sfc_script124 = defineComponent98({
   name: "ta-slider",
@@ -18513,8 +18519,8 @@ var _sfc_script124 = defineComponent98({
     ...formNumberValueEmits
   },
   setup(props, ctx) {
-    const progress = ref38(0);
-    const inputValue = ref38(0);
+    const progress = ref39(0);
+    const inputValue = ref39(0);
     const { emit } = ctx;
     const {
       toInteger,
@@ -18754,7 +18760,7 @@ var Steps_default = _sfc_script125;
 var Step_default = _sfc_script126;
 
 // vue:./Stepper.vue
-import { onMounted as onMounted28, ref as ref39, defineComponent as defineComponent101, watch as watch35, computed as computed62 } from "vue";
+import { onMounted as onMounted28, ref as ref40, defineComponent as defineComponent101, watch as watch35, computed as computed62 } from "vue";
 
 // packages/ui/src/Stepper/util.ts
 var getClasses22 = (disabled) => {
@@ -18839,7 +18845,7 @@ var _sfc_script128 = defineComponent101({
     minusClick: emitClickValidator
   },
   setup(props, { emit }) {
-    const formValue = ref39("");
+    const formValue = ref40("");
     const nMin = computed62(() => getNumber(props.min, 1));
     const nMax = computed62(() => getNumber(props.max, Infinity));
     const nStep = computed62(() => getNumber(props.step, 1));
@@ -19060,7 +19066,7 @@ var Stopwatch_default = _sfc_script129;
 
 // vue:./SwipeCell.vue
 import {
-  ref as ref40,
+  ref as ref41,
   defineComponent as defineComponent103,
   computed as computed63,
   reactive as reactive8,
@@ -19118,8 +19124,8 @@ var _sfc_script130 = defineComponent103({
   },
   setup(props, ctx) {
     const buttonsEl = shallowRef33(null);
-    const translateX = ref40(0);
-    const duration = ref40(0);
+    const translateX = ref41(0);
+    const duration = ref41(0);
     const buttonTranslateXs = reactive8([]);
     let coords;
     let isShow = false;
@@ -19272,7 +19278,7 @@ var SwipeCell_default = _sfc_script130;
 var SwiperItem_default = _sfc_script76;
 
 // vue:./Switch.vue
-import { onMounted as onMounted29, ref as ref41, watch as watch36, defineComponent as defineComponent104, computed as computed64 } from "vue";
+import { onMounted as onMounted29, ref as ref42, watch as watch36, defineComponent as defineComponent104, computed as computed64 } from "vue";
 
 // packages/ui/src/Switch/util.ts
 var getClasses23 = (disabled) => {
@@ -19314,7 +19320,7 @@ var _sfc_script131 = defineComponent104({
   },
   setup(props, { emit }) {
     let isValueNull = props.modelValue == null;
-    const checked = ref41(false);
+    const checked = ref42(false);
     const { inputEl, setInputChecked, getInputChecked } = useInput();
     const classes = computed64(() => getClasses23(props.disabled));
     const styles = computed64(() => getStyles10(props));
@@ -19465,7 +19471,7 @@ _sfc_script132.__file = "packages/ui/src/TabBar/TabBar.vue";
 var TabBar_default = _sfc_script132;
 
 // vue:./TabView.vue
-import { ref as ref42, defineComponent as defineComponent106, provide as provide10, watch as watch37, shallowRef as shallowRef34 } from "vue";
+import { ref as ref43, defineComponent as defineComponent106, provide as provide10, watch as watch37, shallowRef as shallowRef34 } from "vue";
 
 // packages/ui/src/TabView/util.ts
 var getClasses25 = (vertical) => ["ta-tab-view", { vertical }];
@@ -19495,10 +19501,10 @@ var _sfc_script133 = defineComponent106({
   },
   setup(props, { emit, expose }) {
     const { printListItemNotFoundError } = useException();
-    const vertical = ref42(!!props.initialVertical);
+    const vertical = ref43(!!props.initialVertical);
     const swiperRef = shallowRef34(null);
-    const tabList = ref42([]);
-    const activeIndex = ref42(0);
+    const tabList = ref43([]);
+    const activeIndex = ref43(0);
     let itemNames = [];
     function getActiveIndexByName(name) {
       if (name) {
@@ -19730,7 +19736,7 @@ var TabView_default = _sfc_script133;
 var TabViewItem_default = _sfc_script134;
 
 // vue:./TimeAgo.vue
-import { defineComponent as defineComponent108, ref as ref43, toRef as toRef6, watch as watch38 } from "vue";
+import { defineComponent as defineComponent108, ref as ref44, toRef as toRef6, watch as watch38 } from "vue";
 
 // node_modules/.pnpm/timeago.js@4.0.2/node_modules/timeago.js/esm/lang/en_US.js
 var EN_US = ["second", "minute", "hour", "day", "week", "month", "year"];
@@ -19839,7 +19845,7 @@ var _sfc_script135 = defineComponent108({
     }
   },
   setup(props) {
-    const timeAgo = ref43("");
+    const timeAgo = ref44("");
     const { locale } = useLocale();
     function update() {
       const d = getDate(props);
