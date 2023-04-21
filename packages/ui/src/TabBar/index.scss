@@ -88,11 +88,11 @@
       }
 
       &_item {
-        flex: 1;
+        flex-grow: 0;
+        flex-shrink: 0;
         padding: 0;
 
         &-text {
-          flex-grow: 1;
           display: -webkit-box;
           -webkit-line-clamp: 1;
           -webkit-box-orient: vertical;
