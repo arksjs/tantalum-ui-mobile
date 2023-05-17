@@ -1,6 +1,6 @@
 {
   "name": "tantalum-ui-mobile",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "A Mobile UI Components built on Vue 3.x",
   "main": "lib/index.js",
   "module": "es/index.mjs",

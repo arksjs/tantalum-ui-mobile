@@ -5,5 +5,6 @@ export const getClasses = (props: { label?: string; disabled?: boolean }) => [
 
 export const getInputClasses = (label?: string) => [
   'ta-input_input',
+  'ellipsis',
   { placeholder: !label }
 ]
