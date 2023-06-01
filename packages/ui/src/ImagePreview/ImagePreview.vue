@@ -19,16 +19,18 @@
       @animated="onSwiperAnimated"
     >
       <SwiperItem v-for="(item, index) in images" :key="index">
-        <div class="ta-image-preview_image-container">
+        <div
+          class="ta-image-preview_image-container"
+          @touchstart="onImageTouchStart($event, item)"
+          @touchmove="onImageTouchMove($event, item)"
+          @touchend="onImageTouchEnd($event, item)"
+        >
           <TaImage
             :src="item.src"
             :mode="'aspectFit'"
             @load="onImageLoad"
             :class="{ animated: zoomAnimated }"
             :style="getImageStyles(item)"
-            @touchstart="onImageTouchStart($event, item)"
-            @touchmove="onImageTouchMove($event, item)"
-            @touchend="onImageTouchEnd($event, item)"
           />
         </div>
       </SwiperItem>
@@ -64,7 +66,8 @@ import {
   isString,
   isNumber,
   type PropsToEmits,
-  type EmptyObject
+  type EmptyObject,
+  getNumber
 } from '../helpers'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/props'
@@ -73,6 +76,7 @@ import type { SwiperOnActiveIndexChange } from '../Swiper/types'
 import type { ImageObject, DistanceOptions, ImagePreviewEmits } from './types'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import { getDistance, mergeLoadedData, getImageStyles } from './util'
+import type { OnVisibleStateChange } from '../popup/types'
 
 type ImageCoordsImage = {
   width: number
@@ -128,6 +132,11 @@ export default defineComponent({
     imageHighRendering: {
       type: Boolean,
       default: true
+    },
+    // 放大倍数
+    magnification: {
+      type: [Number, String],
+      default: 1
     }
   },
   emits: {
@@ -259,20 +268,23 @@ export default defineComponent({
         return
       }
 
-      e.preventDefault()
-      e.stopPropagation()
-
       if (coords.hasZoom) {
+        e.preventDefault()
+        e.stopPropagation()
+
         zoomAnimated.value = true
+        const magnification = getNumber(props.magnification, 1)
+        const maxWidth = item.naturalWidth * magnification
+        const maxHeight = item.naturalHeight * magnification
         if (item.width < item.initialWidth) {
           item.width = item.initialWidth
-        } else if (item.width > item.naturalWidth) {
-          item.width = item.naturalWidth
+        } else if (item.width > maxWidth) {
+          item.width = maxWidth
         }
         if (item.height < item.initialHeight) {
           item.height = item.initialHeight
-        } else if (item.height > item.naturalHeight) {
-          item.height = item.naturalHeight
+        } else if (item.height > maxHeight) {
+          item.height = maxHeight
         }
 
         const { offsetTop, offsetLeft } = getUpdateOffset(
@@ -285,6 +297,9 @@ export default defineComponent({
         )
         item.offsetTop = offsetTop
         item.offsetLeft = offsetLeft
+      } else if (coords.inMove) {
+        e.preventDefault()
+        e.stopPropagation()
       }
 
       if (e.touches.length > 0) {
@@ -353,14 +368,22 @@ export default defineComponent({
       }
     }
 
+    /**
+     * 重置图片为初始大小
+     * @param item ImageObject
+     */
+    function resetImageSize(item: ImageObject) {
+      item.width = item.initialWidth
+      item.height = item.initialHeight
+      item.offsetTop = 0
+      item.offsetLeft = 0
+    }
+
     function onSwiperAnimated() {
       images.forEach((item, index) => {
         if (index !== activeIndex.value) {
           // 切走的图片恢复原有大小
-          item.width = item.initialWidth
-          item.height = item.initialHeight
-          item.offsetTop = 0
-          item.offsetLeft = 0
+          resetImageSize(item)
         }
       })
     }
@@ -375,6 +398,17 @@ export default defineComponent({
 
     function onPreviewClick() {
       props.maskClosable && popup.customCancel('previewClick')
+    }
+
+    const onVisibleStateChange: OnVisibleStateChange = res => {
+      popup.onVisibleStateChange(res)
+
+      if (res.state === 'hidden') {
+        images.forEach(item => {
+          // 关闭时的图片恢复原有大小
+          resetImageSize(item)
+        })
+      }
     }
 
     const onImageLoad: ImageOnLoad = res => {
@@ -458,7 +492,8 @@ export default defineComponent({
       onPreviewClick,
       onImageLoad,
       CloseOutlined,
-      getImageStyles
+      getImageStyles,
+      onVisibleStateChange
     }
   }
 })

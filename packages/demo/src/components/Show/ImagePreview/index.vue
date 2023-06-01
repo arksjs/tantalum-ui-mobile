@@ -31,6 +31,7 @@
     v-model="current"
     :showClose="showClose"
     :imageHighRendering="false"
+    :magnification="1.2"
     @visibleStateChange="onVisibleStateChange"
     @cancel="onCancel"
     @change="onChange"
