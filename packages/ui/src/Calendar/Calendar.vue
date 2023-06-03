@@ -35,11 +35,7 @@ import { defineComponent, ref, shallowRef, watch } from 'vue'
 import { SelectorField } from '../SelectorField'
 import CalendarPopup from './CalendarPopup.vue'
 import { commonProps } from './props'
-import type {
-  CalendarSelectorDetail,
-  CalendarPopupRef,
-  CalendarEmits
-} from './types'
+import type { CalendarSelectorDetail, CalendarPopupRef, CalendarEmits } from './types'
 import { useHandlers } from '../Calendar/use-calendar'
 import { cloneDetail, isSameValue } from '../Picker/util'
 import { pickerEmits, pickerProps } from '../Picker/props'
@@ -92,9 +88,7 @@ export default defineComponent({
 
       fieldLabel.value = newDetail.label
       fieldValue.value =
-        detail.value != null
-          ? detail.valueArray.map(v => v.join('-')).join(',')
-          : ''
+        detail.value != null ? detail.valueArray.map(v => v.join('-')).join(',') : ''
     }
 
     function onFieldClick() {

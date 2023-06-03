@@ -20,24 +20,11 @@
       <slot v-else></slot>
     </div>
     <div class="ta-dialog_footer ta-horizontal-hairline">
-      <ButtonGroup
-        class="ta-dialog_footer-inner"
-        pattern="borderless"
-        size="large"
-      >
-        <TaButton
-          v-if="showCancel"
-          class="ta-dialog_button"
-          type="default"
-          @click="onCancelClick"
-        >
+      <ButtonGroup class="ta-dialog_footer-inner" pattern="borderless" size="large">
+        <TaButton v-if="showCancel" class="ta-dialog_button" type="default" @click="onCancelClick">
           {{ cancelText || locale.dialogCancelText }}
         </TaButton>
-        <TaButton
-          class="ta-dialog_button"
-          type="primary"
-          @click="onConfirmClick"
-        >
+        <TaButton class="ta-dialog_button" type="primary" @click="onConfirmClick">
           {{ confirmText || locale.dialogConfirmText }}
         </TaButton>
       </ButtonGroup>

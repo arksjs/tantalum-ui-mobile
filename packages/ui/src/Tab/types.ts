@@ -1,7 +1,4 @@
-import type {
-  BadgeOption,
-  BadgeProps as HandleBadgeOption
-} from '../Badge/types'
+import type { BadgeOption, BadgeProps as HandleBadgeOption } from '../Badge/types'
 import type { CSSProperties } from '../helpers'
 import type { IconData } from '../Icon/types'
 
@@ -47,8 +44,4 @@ export interface TabRef {
   switchToIndex: (index: number) => void
 }
 
-export type {
-  OnChange as TabOnChange,
-  OptionList as TabOptions,
-  OptionItem as TabOption
-}
+export type { OnChange as TabOnChange, OptionList as TabOptions, OptionItem as TabOption }

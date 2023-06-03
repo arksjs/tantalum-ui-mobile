@@ -9,15 +9,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  ref,
-  onMounted,
-  watch,
-  shallowRef,
-  type PropType
-} from 'vue'
+import { defineComponent, computed, ref, onMounted, watch, shallowRef, type PropType } from 'vue'
 import {
   widgetZIndex,
   selectorValidator,
@@ -117,8 +109,7 @@ export default defineComponent({
     useScroll(container, updateFixed)
 
     const resetContainer: ResetContainer = containSelector => {
-      container.value =
-        querySelector(containSelector) || document.documentElement
+      container.value = querySelector(containSelector) || document.documentElement
     }
 
     const styles = computed(() => getStyles(height.value ?? undefined))

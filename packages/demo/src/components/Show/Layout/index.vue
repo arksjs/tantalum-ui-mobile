@@ -29,22 +29,14 @@
   <ta-group title="左右偏移">
     <ta-row class="exp-layout-row">
       <ta-col class="exp-layout-col" :span="8">col-8</ta-col>
-      <ta-col class="exp-layout-col" :span="8" :offset="8"
-        >col-8 offset-8</ta-col
-      >
+      <ta-col class="exp-layout-col" :span="8" :offset="8">col-8 offset-8</ta-col>
     </ta-row>
     <ta-row class="exp-layout-row">
-      <ta-col class="exp-layout-col" :span="6" :offset="6"
-        >col-6 offset-6</ta-col
-      >
-      <ta-col class="exp-layout-col" :span="6" :offset="6"
-        >col-6 offset-6</ta-col
-      >
+      <ta-col class="exp-layout-col" :span="6" :offset="6">col-6 offset-6</ta-col>
+      <ta-col class="exp-layout-col" :span="6" :offset="6">col-6 offset-6</ta-col>
     </ta-row>
     <ta-row class="exp-layout-row">
-      <ta-col class="exp-layout-col" :span="12" :offset="6"
-        >col-12 offset-6</ta-col
-      >
+      <ta-col class="exp-layout-col" :span="12" :offset="6">col-12 offset-6</ta-col>
     </ta-row>
   </ta-group>
   <ta-group title="栅格排序">

@@ -13,8 +13,7 @@ export default defineComponent({
         },
         [
           slots.default && slots.default(),
-          slots.footer &&
-            h(FormFooter, null, () => slots.footer && slots.footer())
+          slots.footer && h(FormFooter, null, () => slots.footer && slots.footer())
         ]
       )
   }

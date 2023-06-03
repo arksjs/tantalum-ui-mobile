@@ -19,11 +19,7 @@ import { TaSwiper, TaSwiperItem } from 'tantalum-ui-mobile'
 组件导出的类型定义：
 
 ```ts
-import type {
-  SwiperOnActiveIndexChange,
-  SwiperOnAnimated,
-  SwiperRef
-} from 'tantalum-ui-mobile'
+import type { SwiperOnActiveIndexChange, SwiperOnAnimated, SwiperRef } from 'tantalum-ui-mobile'
 ```
 
 ## Swiper Props

@@ -1,4 +1,4 @@
-import type { CSSProperties } from '../helpers'
+import { getNumber, type CSSProperties } from '../helpers'
 
 export const getClasses = (disabled?: boolean) => {
   return ['ta-switch', { disabled: !!disabled }]
@@ -13,9 +13,7 @@ export const getStyles = (props: {
 
   props.color && (styles['--ta-color'] = props.color)
   props.activeColor && (styles['--ta-active-color'] = props.activeColor)
-  props.size != null &&
-    props.size > 0 &&
-    (styles['--ta-size'] = parseFloat(props.size as string) + 'px')
+  getNumber(props.size) > 0 && (styles['--ta-size'] = getNumber(props.size) + 'px')
 
   return styles
 }

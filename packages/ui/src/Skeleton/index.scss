@@ -11,12 +11,7 @@
 }
 
 @mixin skeleton-background {
-  background: linear-gradient(
-    90deg,
-    $divider-color 25%,
-    $border-color 37%,
-    $divider-color 63%
-  );
+  background: linear-gradient(90deg, $divider-color 25%, $border-color 37%, $divider-color 63%);
   background-size: 400% 100%;
 }
 

@@ -14,13 +14,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { colorValidator } from '../helpers'
-import {
-  getClasses,
-  getProgress,
-  getStyles,
-  getTrackClasses,
-  getTrackStyles
-} from './util'
+import { getClasses, getProgress, getStyles, getTrackClasses, getTrackStyles } from './util'
 
 export default defineComponent({
   name: 'ta-progress',

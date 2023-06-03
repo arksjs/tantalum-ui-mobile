@@ -50,29 +50,21 @@ describe('Drawer', () => {
         stubs: { teleport: true }
       }
     })
-    expect(wrapper.find('.ta-drawer_inner').classes()).toContain(
-      'placement--bottom'
-    )
+    expect(wrapper.find('.ta-drawer_inner').classes()).toContain('placement--bottom')
 
     await wrapper.setProps({
       placement: 'top'
     })
-    expect(wrapper.find('.ta-drawer_inner').classes()).toContain(
-      'placement--top'
-    )
+    expect(wrapper.find('.ta-drawer_inner').classes()).toContain('placement--top')
 
     await wrapper.setProps({
       placement: 'left'
     })
-    expect(wrapper.find('.ta-drawer_inner').classes()).toContain(
-      'placement--left'
-    )
+    expect(wrapper.find('.ta-drawer_inner').classes()).toContain('placement--left')
 
     await wrapper.setProps({
       placement: 'right'
     })
-    expect(wrapper.find('.ta-drawer_inner').classes()).toContain(
-      'placement--right'
-    )
+    expect(wrapper.find('.ta-drawer_inner').classes()).toContain('placement--right')
   })
 })

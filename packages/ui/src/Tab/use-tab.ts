@@ -8,23 +8,12 @@ import {
   type SetupContext,
   type ExtractPropTypes
 } from 'vue'
-import {
-  isNumber,
-  isObject,
-  isString,
-  isStringOrNumber,
-  isURL
-} from '../helpers'
+import { isNumber, isObject, isString, isStringOrNumber, isURL } from '../helpers'
 import { handleBadge } from '../Badge/util'
 import type { OptionItem, HandleOptionItem } from './types'
 import type { tabEmits, tabProps } from './props'
 import { getStyles } from './util'
-import {
-  useFrameTask,
-  useOnce,
-  useException,
-  useResizeObserver
-} from '../hooks'
+import { useFrameTask, useOnce, useException, useResizeObserver } from '../hooks'
 
 interface UseOptions {
   tabName: string
@@ -218,10 +207,7 @@ export function useTab(
         $activeItem[offsetSizeKey] > w
           ? ofs
           : Math.max(
-              Math.min(
-                ofs - (w - $activeItem[offsetSizeKey]) / 2,
-                $list[scrollSizeKey] - w
-              ),
+              Math.min(ofs - (w - $activeItem[offsetSizeKey]) / 2, $list[scrollSizeKey] - w),
               0
             )
 

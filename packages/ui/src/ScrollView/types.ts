@@ -21,9 +21,7 @@ export type OnRefreshing = (
 ) => void
 
 export type OnScrollToUpper = (payload: { direction: 'top' | 'left' }) => void
-export type OnScrollToLower = (payload: {
-  direction: 'bottom' | 'right'
-}) => void
+export type OnScrollToLower = (payload: { direction: 'bottom' | 'right' }) => void
 
 export interface ScrollViewProps {
   scrollX?: boolean // 允许横向滚动

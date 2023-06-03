@@ -87,9 +87,7 @@ export default defineComponent({
     }
 
     const classes = computed(() => getCellClasses(props))
-    const arrowClasses = computed(() =>
-      getCellArrowClasses(props.arrowDirection)
-    )
+    const arrowClasses = computed(() => getCellArrowClasses(props.arrowDirection))
 
     return {
       classes,

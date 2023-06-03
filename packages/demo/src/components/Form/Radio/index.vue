@@ -19,33 +19,21 @@
   <ta-group title="RadioGroup">
     <ta-cell label="默认">
       <ta-radio-group v-model="groupValue">
-        <ta-radio
-          v-for="item in options"
-          :key="item.value"
-          :checkedValue="item.value"
-        >
+        <ta-radio v-for="item in options" :key="item.value" :checkedValue="item.value">
           {{ item.label }}
         </ta-radio>
       </ta-radio-group>
     </ta-cell>
     <ta-cell label="内联">
       <ta-radio-group inline v-model="groupValue" activeColor="#8b1721">
-        <ta-radio
-          v-for="item in options"
-          :key="item.value"
-          :checkedValue="item.value"
-        >
+        <ta-radio v-for="item in options" :key="item.value" :checkedValue="item.value">
           {{ item.label }}
         </ta-radio>
       </ta-radio-group>
     </ta-cell>
     <ta-cell label="禁用">
       <ta-radio-group modelValue="man" disabled>
-        <ta-radio
-          v-for="item in options"
-          :key="item.value"
-          :checkedValue="item.value"
-        >
+        <ta-radio v-for="item in options" :key="item.value" :checkedValue="item.value">
           {{ item.label }}
         </ta-radio>
       </ta-radio-group>
@@ -57,11 +45,7 @@
   <ta-group title="事件监听">
     <ta-cell label="change">
       <ta-radio-group @change="onChange" name="gender">
-        <ta-radio
-          v-for="item in options"
-          :key="item.value"
-          :checkedValue="item.value"
-        >
+        <ta-radio v-for="item in options" :key="item.value" :checkedValue="item.value">
           {{ item.label }}
         </ta-radio>
       </ta-radio-group>

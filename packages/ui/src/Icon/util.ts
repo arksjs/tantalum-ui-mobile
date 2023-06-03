@@ -1,4 +1,4 @@
-import type { CSSProperties } from '../helpers'
+import { type CSSProperties, getNumber } from '../helpers'
 
 export const getIconStyles = (props: {
   size?: number | string
@@ -10,10 +10,10 @@ export const getIconStyles = (props: {
 
   props.color && (styles['--ta-icon-color'] = props.color)
 
-  if (props.width && props.width > 0 && props.height && props.height > 0) {
+  if (getNumber(props.width) > 0 && getNumber(props.height) > 0) {
     styles.width = props.width + 'px'
     styles.height = props.height + 'px'
-  } else if (props.size && props.size > 0) {
+  } else if (getNumber(props.size) > 0) {
     styles['--ta-icon-size'] = props.size + 'px'
   }
 

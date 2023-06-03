@@ -90,20 +90,14 @@ export function getColRows(options: OptionItem[], indexes: number[]) {
   return rows
 }
 
-function parseOptions(
-  options: UserOptionItem[] | UserOptionItem[][],
-  fieldNames: FieldNames
-) {
+function parseOptions(options: UserOptionItem[] | UserOptionItem[][], fieldNames: FieldNames) {
   const newOptions: OptionItem[] | OptionItem[][] = []
 
   if (Array.isArray(options)) {
     options.forEach(option => {
       if (Array.isArray(option)) {
         // 二维数组
-        const subOptions = parseOptions(
-          option as UserOptionItem[],
-          fieldNames
-        ) as OptionItem[]
+        const subOptions = parseOptions(option as UserOptionItem[], fieldNames) as OptionItem[]
 
         if (subOptions.length > 0) {
           ;(newOptions as OptionItem[][]).push(subOptions)
@@ -126,10 +120,7 @@ function parseOptions(
               : newOption[fieldNames.label]) as string,
             value: newOption[fieldNames.value] as string,
             disabled: newOption.disabled ? true : false,
-            children: parseOptions(
-              newOption[fieldNames.children],
-              fieldNames
-            ) as OptionItem[]
+            children: parseOptions(newOption[fieldNames.children], fieldNames) as OptionItem[]
           })
         }
       }
@@ -205,11 +196,7 @@ function validateCascadeCols(
     label.push(optionItem.label)
   }
 
-  function deep(
-    optionList: OptionItem[],
-    valueIndex: number,
-    indexes: number[]
-  ): boolean {
+  function deep(optionList: OptionItem[], valueIndex: number, indexes: number[]): boolean {
     const rows = getColRows(optionList, indexes)
 
     for (let i = 0; i < rows.length; i++) {
@@ -234,11 +221,7 @@ function validateCascadeCols(
     return false
   }
 
-  function virtualOptionsDeep(
-    index: number,
-    valueIndex: number,
-    parent?: ColRow
-  ): boolean {
+  function virtualOptionsDeep(index: number, valueIndex: number, parent?: ColRow): boolean {
     function row2OptionItem(row: ColRow) {
       return {
         label: row.label,
@@ -337,12 +320,8 @@ export function getFormatOptions(
 
   if (virtualHandler == null) {
     if (fieldNames) {
-      isString(fieldNames.label) &&
-        fieldNames.label &&
-        (newFieldNames.label = fieldNames.label)
-      isString(fieldNames.value) &&
-        fieldNames.value &&
-        (newFieldNames.value = fieldNames.value)
+      isString(fieldNames.label) && fieldNames.label && (newFieldNames.label = fieldNames.label)
+      isString(fieldNames.value) && fieldNames.value && (newFieldNames.value = fieldNames.value)
       isString(fieldNames.children) &&
         fieldNames.children &&
         (newFieldNames.children = fieldNames.children)

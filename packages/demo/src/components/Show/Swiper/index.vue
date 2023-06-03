@@ -55,12 +55,7 @@
     </ta-swiper>
   </ta-group>
   <ta-group title="自动轮播（切换时长设置为3000ms）">
-    <ta-swiper
-      class="exp-swiper-box"
-      indicator-dots
-      :autoplay="autoplay"
-      :interval="3000"
-    >
+    <ta-swiper class="exp-swiper-box" indicator-dots :autoplay="autoplay" :interval="3000">
       <ta-swiper-item v-for="url in imageUrls" :key="url">
         <ta-image class="exp-swiper-image" :src="url"></ta-image>
       </ta-swiper-item>

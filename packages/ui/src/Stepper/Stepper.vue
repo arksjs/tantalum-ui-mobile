@@ -42,11 +42,7 @@ import {
   isNumeric
 } from '../helpers'
 import { formatNumber, getRangeNumber, getClasses } from './util'
-import {
-  formStringValueEmits,
-  formItemProps,
-  formFocusEmits
-} from '../Form/form'
+import { formStringValueEmits, formItemProps, formFocusEmits } from '../Form/form'
 import { useInput } from '../Form/use-form'
 import PlusOutlined from '../Icon/icons/PlusOutlined'
 import MinusOutlined from '../Icon/icons/MinusOutlined'
@@ -168,10 +164,7 @@ export default defineComponent({
     watch(
       () => props.modelValue,
       val => {
-        if (
-          val != null &&
-          parseFloat(val.toString()) !== parseFloat(formValue.value)
-        ) {
+        if (val != null && parseFloat(val.toString()) !== parseFloat(formValue.value)) {
           updateValue(val)
         } else if (formValue.value === '') {
           // 针对首次没有值的情况，默认最小值

@@ -24,7 +24,4 @@ export interface TabViewRef {
   switchToIndex: (index: number) => void
 }
 
-export type {
-  OnChange as TabViewOnChange,
-  SwiperOnAnimated as TabViewOnAnimated
-}
+export type { OnChange as TabViewOnChange, SwiperOnAnimated as TabViewOnAnimated }

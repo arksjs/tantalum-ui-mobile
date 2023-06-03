@@ -29,9 +29,7 @@
       title="支付失败"
       description="内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现。"
     >
-      <div class="exp-result-extra">
-        在这里可以附加组件元素或者相应的提示文案，样式自定。
-      </div>
+      <div class="exp-result-extra">在这里可以附加组件元素或者相应的提示文案，样式自定。</div>
     </ta-result>
   </ta-group>
 </template>

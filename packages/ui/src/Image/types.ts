@@ -15,11 +15,7 @@ export type Mode =
   | 'bottom left'
   | 'bottom right'
 
-export type OnLoad = (payload: {
-  width: number
-  height: number
-  src: string
-}) => void
+export type OnLoad = (payload: { width: number; height: number; src: string }) => void
 
 export interface ImageProps {
   src?: string

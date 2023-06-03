@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import {
-  showToast,
-  type SelectorModelValue,
-  type CascaderOnSelect
-} from '@/index'
+import { showToast, type SelectorModelValue, type CascaderOnSelect } from '@/index'
 import { cascadeOptions } from '../Picker/data'
 
 const changeValue = ref([])
@@ -39,17 +35,9 @@ export default {
     <ta-cascader-view :options="[]" />
   </ta-group>
   <ta-group title="change 事件">
-    <ta-cascader-view
-      :options="cascadeOptions"
-      @change="onChange"
-      v-model="changeValue"
-    />
+    <ta-cascader-view :options="cascadeOptions" @change="onChange" v-model="changeValue" />
   </ta-group>
   <ta-group title="select 事件（跟 change 的区别是重复选一样的也触发）">
-    <ta-cascader-view
-      :options="cascadeOptions"
-      @select="onSelect"
-      v-model="selectValue"
-    />
+    <ta-cascader-view :options="cascadeOptions" @select="onSelect" v-model="selectValue" />
   </ta-group>
 </template>

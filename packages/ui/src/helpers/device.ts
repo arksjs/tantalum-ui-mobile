@@ -5,5 +5,4 @@ export const isMobile = isBrowser
     'ontouchstart' in document.documentElement
   : false
 
-export const isIOS =
-  isMobile && /(iPhone|iPod|iPad|ios)/i.test(navigator.userAgent)
+export const isIOS = isMobile && /(iPhone|iPod|iPad|ios)/i.test(navigator.userAgent)

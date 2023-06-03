@@ -11,10 +11,7 @@
       window.process = { env: {} }
       const darkKey = 'playground-prefer-dark'
       const saved = localStorage.getItem('playground-prefer-dark')
-      if (
-        saved !== 'false' ||
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-      ) {
+      if (saved !== 'false' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.documentElement.classList.add('dark')
       }
     </script>

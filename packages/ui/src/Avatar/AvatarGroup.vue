@@ -1,11 +1,7 @@
 <template>
   <div :class="classes">
     <slot></slot>
-    <Avatar
-      class="ta-avatar-group_count"
-      v-if="totalCount != null"
-      :color="countColor"
-    >
+    <Avatar class="ta-avatar-group_count" v-if="totalCount != null" :color="countColor">
       <span :class="countClasses">
         {{ showCount }}
       </span>

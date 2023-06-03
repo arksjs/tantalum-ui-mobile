@@ -35,8 +35,7 @@ export default defineComponent({
     function update() {
       const d = getDate(props)
 
-      timeAgo.value =
-        d == null ? '' : format(d, locale.value.lang.replace('-', '_'))
+      timeAgo.value = d == null ? '' : format(d, locale.value.lang.replace('-', '_'))
     }
 
     watch([() => props.time, () => props.formatTemplate], update, {

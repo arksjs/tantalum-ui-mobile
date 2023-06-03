@@ -25,9 +25,7 @@ export default defineComponent({
   setup(props) {
     const parentProps = useConsumer()
     const classes = computed(() => getParagraphClasses(props, parentProps))
-    const paragraphList = computed(() =>
-      getParagraphRowList(props, parentProps)
-    )
+    const paragraphList = computed(() => getParagraphRowList(props, parentProps))
 
     return {
       classes,

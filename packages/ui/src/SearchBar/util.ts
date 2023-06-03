@@ -12,12 +12,8 @@ export const getInnerClasses = (showCancel?: boolean) => [
   { 'has--cancel': !!showCancel }
 ]
 
-export const getInnerStyles = (background?: string) =>
-  ({ background } as CSSProperties)
+export const getInnerStyles = (background?: string) => ({ background } as CSSProperties)
 
-export const getFieldClasses = (ghost?: boolean) => [
-  'ta-search_field',
-  { ghost: !!ghost }
-]
+export const getFieldClasses = (ghost?: boolean) => ['ta-search_field', { ghost: !!ghost }]
 
 export const getSuggestStyles = (height: number) => ({ height: height + 'px' })

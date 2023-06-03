@@ -3,9 +3,7 @@
     <ta-cell label="开关"><ta-switch /></ta-cell>
   </ta-group>
   <ta-group title="自定义颜色/大小">
-    <ta-cell label="红色"
-      ><ta-switch activeColor="#8b1721" color="#d79996"
-    /></ta-cell>
+    <ta-cell label="红色"><ta-switch activeColor="#8b1721" color="#d79996" /></ta-cell>
     <ta-cell label="40px"><ta-switch size="40" /></ta-cell>
   </ta-group>
   <ta-group title="禁用">

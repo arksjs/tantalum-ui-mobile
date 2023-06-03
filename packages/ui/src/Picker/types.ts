@@ -94,9 +94,7 @@ export interface ShowPickerOptions extends PickerOptionsProps {
 /**
  * PickerView
  */
-export interface PickerViewProps
-  extends PickerCommonProps,
-    PickerOptionsProps {}
+export interface PickerViewProps extends PickerCommonProps, PickerOptionsProps {}
 
 export type PickerViewEmits = PickerCommonEmits
 
@@ -108,10 +106,7 @@ export interface PickerViewRef {
 /**
  * PickerPopup
  */
-export interface PickerPopupProps
-  extends PopupProps,
-    PickerCommonProps,
-    PickerOptionsProps {
+export interface PickerPopupProps extends PopupProps, PickerCommonProps, PickerOptionsProps {
   title?: string
 }
 
@@ -126,16 +121,11 @@ export interface PickerPopupRef extends PopupRef {
 /**
  * Picker
  */
-export interface PickerProps
-  extends FormItemCommonProps,
-    PickerCommonProps,
-    PickerOptionsProps {
+export interface PickerProps extends FormItemCommonProps, PickerCommonProps, PickerOptionsProps {
   placeholder?: string
 }
 
-export interface PickerEmits
-  extends FocusWithoutEventEmits,
-    PickerCommonEmits {}
+export interface PickerEmits extends FocusWithoutEventEmits, PickerCommonEmits {}
 
 export interface ScrollElement extends HTMLElement {
   scrolling?: boolean

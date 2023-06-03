@@ -4,23 +4,13 @@
     <ta-cell
       label="指定初始图片"
       isLink
-      @click="
-        show({ current: 'https://cdn.fox2.cn/vfox/swiper/different-2.jpg' })
-      "
+      @click="show({ current: 'https://cdn.fox2.cn/vfox/swiper/different-2.jpg' })"
     />
     <ta-cell label="展示关闭按钮" isLink @click="show({ showClose: true })" />
   </ta-group>
   <ta-group title="事件监听">
-    <ta-cell
-      label="change/cancel"
-      isLink
-      @click="show({ changeEvent: true })"
-    />
-    <ta-cell
-      label="visible-state-change"
-      isLink
-      @click="show({ visibleEvent: true })"
-    />
+    <ta-cell label="change/cancel" isLink @click="show({ changeEvent: true })" />
+    <ta-cell label="visible-state-change" isLink @click="show({ visibleEvent: true })" />
   </ta-group>
   <ta-group title="API">
     <ta-cell label="showImagePreview" isLink @click="onCallApi" />

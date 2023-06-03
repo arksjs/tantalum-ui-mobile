@@ -40,17 +40,8 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, shallowRef, watch } from 'vue'
 import { StickyView } from '../StickyView'
-import {
-  isSizeValue,
-  isString,
-  rangeInteger,
-  type PropsToEmits
-} from '../helpers'
-import type {
-  StickyViewOnResetItems,
-  StickyViewRef,
-  StickyViewOnChange
-} from '../StickyView/types'
+import { isSizeValue, isString, rangeInteger, type PropsToEmits } from '../helpers'
+import type { StickyViewOnResetItems, StickyViewRef, StickyViewOnChange } from '../StickyView/types'
 import { useOnce, useTouch } from '../hooks'
 import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer } from '../Sticky/types'
@@ -165,8 +156,7 @@ export default defineComponent({
         let offsetCount = 0
 
         if (y > 0) {
-          offsetCount =
-            Math.floor(y / size) + (y % size > size - offsetY ? 1 : 0)
+          offsetCount = Math.floor(y / size) + (y % size > size - offsetY ? 1 : 0)
         } else if (y < 0) {
           offsetCount = -Math.floor(-y / size) + (-y % size > offsetY ? -1 : 0)
         }
@@ -175,9 +165,7 @@ export default defineComponent({
           coords.isChange = true
 
           lazyDo(() => {
-            scrollToIndex(
-              rangeInteger(current + offsetCount, 0, indexList.value.length - 1)
-            )
+            scrollToIndex(rangeInteger(current + offsetCount, 0, indexList.value.length - 1))
           })
         }
 

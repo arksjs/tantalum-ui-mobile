@@ -12,12 +12,7 @@
       <TaButton type="primary" size="large" @click="onConfirmClick">
         {{ confirmText || locale.resultConfirmText }}
       </TaButton>
-      <TaButton
-        v-if="showBack"
-        type="default"
-        size="large"
-        @click="onCancelClick"
-      >
+      <TaButton v-if="showBack" type="default" size="large" @click="onCancelClick">
         {{ backText || locale.resultBackText }}
       </TaButton>
     </div>
@@ -28,11 +23,7 @@
 import { computed, defineComponent, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import { Button as TaButton } from '../Button'
-import {
-  createEnumsValidator,
-  emitClickValidator,
-  type PropsToEmits
-} from '../helpers'
+import { createEnumsValidator, emitClickValidator, type PropsToEmits } from '../helpers'
 import { useLocale } from '../ConfigProvider/context'
 import type { ResultEmits, ResultType } from './types'
 import InfoCircleFilled from '../Icon/icons/InfoCircleFilled'

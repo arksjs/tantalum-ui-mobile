@@ -50,9 +50,7 @@
   </ta-group>
   <ta-group title="其他">
     <ta-cell label="可关闭的">
-      <ta-tag type="primary" pattern="dark" size="large" closable>
-        标签
-      </ta-tag>
+      <ta-tag type="primary" pattern="dark" size="large" closable> 标签 </ta-tag>
     </ta-cell>
   </ta-group>
   <ta-group title="事件监听">

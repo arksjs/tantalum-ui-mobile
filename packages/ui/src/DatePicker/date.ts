@@ -52,14 +52,8 @@ const ModeColMap = new Map<Mode, ColMapItem>([
       colNames: ['year', 'month', 'day', 'hour', 'minute', 'second']
     }
   ],
-  [
-    'minute-second',
-    { template: 'mm:ss', isDateTime: false, colNames: ['minute', 'second'] }
-  ],
-  [
-    'hour-minute',
-    { template: 'HH:mm', isDateTime: false, colNames: ['hour', 'minute'] }
-  ],
+  ['minute-second', { template: 'mm:ss', isDateTime: false, colNames: ['minute', 'second'] }],
+  ['hour-minute', { template: 'HH:mm', isDateTime: false, colNames: ['hour', 'minute'] }],
   [
     'hour-minute-second',
     {
@@ -68,14 +62,8 @@ const ModeColMap = new Map<Mode, ColMapItem>([
       colNames: ['hour', 'minute', 'second']
     }
   ],
-  [
-    'day-hour',
-    { template: 'DD HH', isDateTime: true, colNames: ['day', 'hour'] }
-  ],
-  [
-    'month-day',
-    { template: 'MM-DD', isDateTime: false, colNames: ['month', 'day'] }
-  ],
+  ['day-hour', { template: 'DD HH', isDateTime: true, colNames: ['day', 'hour'] }],
+  ['month-day', { template: 'MM-DD', isDateTime: false, colNames: ['month', 'day'] }],
   [
     'month-day-hour',
     {
@@ -92,10 +80,7 @@ const ModeColMap = new Map<Mode, ColMapItem>([
       colNames: ['month', 'day', 'hour', 'minute']
     }
   ],
-  [
-    'year-month',
-    { template: 'YYYY-MM', isDateTime: false, colNames: ['year', 'month'] }
-  ],
+  ['year-month', { template: 'YYYY-MM', isDateTime: false, colNames: ['year', 'month'] }],
   [
     'year-month-day',
     {
@@ -138,11 +123,7 @@ function getCopMapItem(mode: Mode) {
 //   return num >= 10 ? num.toString() : '0' + num
 // }
 
-export const parseRows: RowsParser = (
-  index,
-  parent,
-  { minDate, maxDate, mode, filter }
-) => {
+export const parseRows: RowsParser = (index, parent, { minDate, maxDate, mode, filter }) => {
   const { colNames } = getCopMapItem(mode)
   const colName = colNames[index]
   const parentIndexes = parent?.indexes || []
@@ -186,10 +167,7 @@ export const parseRows: RowsParser = (
     for (let i = min, j = 0; i <= max; i++, j++) {
       d.setMonth(i - 1)
 
-      if (
-        d.getTime() >= minDate.getTime() &&
-        d.getTime() <= maxDate.getTime()
-      ) {
+      if (d.getTime() >= minDate.getTime() && d.getTime() <= maxDate.getTime()) {
         pushRow(i, j)
       }
     }
@@ -210,10 +188,7 @@ export const parseRows: RowsParser = (
     for (let i = min, j = 0; i <= max; i++, j++) {
       d.setDate(i)
 
-      if (
-        d.getTime() >= minDate.getTime() &&
-        d.getTime() <= maxDate.getTime()
-      ) {
+      if (d.getTime() >= minDate.getTime() && d.getTime() <= maxDate.getTime()) {
         pushRow(i, j)
       }
     }
@@ -256,10 +231,7 @@ export const parseRows: RowsParser = (
         djs = djs.second(i)
       }
 
-      if (
-        djs.valueOf() >= minDate.getTime() &&
-        djs.valueOf() <= maxDate.getTime()
-      ) {
+      if (djs.valueOf() >= minDate.getTime() && djs.valueOf() <= maxDate.getTime()) {
         pushRow(i, i)
       }
     }
@@ -299,9 +271,7 @@ export function array2Date(array: SelectorValue[], mode: Mode) {
     const colName = colNames[k]
     v = v as number
 
-    djs = djs[(colName === 'day' ? 'date' : colName) as 'hour'](
-      colName === 'month' ? v - 1 : v
-    )
+    djs = djs[(colName === 'day' ? 'date' : colName) as 'hour'](colName === 'month' ? v - 1 : v)
   })
 
   return djs.toDate()
@@ -312,14 +282,7 @@ export function getFormatTemplate(mode: Mode, template?: string) {
 }
 
 export function day2Array(djs: Dayjs | null, mode: Mode) {
-  const dNameIndexes: ColName[] = [
-    'year',
-    'month',
-    'day',
-    'hour',
-    'minute',
-    'second'
-  ]
+  const dNameIndexes: ColName[] = ['year', 'month', 'day', 'hour', 'minute', 'second']
 
   const { colNames } = getCopMapItem(mode)
   const valueArray: number[] = []

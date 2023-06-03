@@ -13,11 +13,7 @@ const coreImports = {
   vue: !isDev ? `./vue.runtime.esm-browser.js` : `./src/vue-dev-proxy`,
   'tantalum-ui-mobile': !isDev
     ? `./ui.esm-browser.js`
-    : genUnpkgLink(
-        'tantalum-ui-mobile',
-        undefined,
-        '/dist/index.esm-browser.js'
-      )
+    : genUnpkgLink('tantalum-ui-mobile', undefined, '/dist/index.esm-browser.js')
 }
 
 const welcomeCode = `\
@@ -57,9 +53,7 @@ export function appendStyle() {
     const link = document.createElement('link')
     link.rel = 'stylesheet'
     link.href = '${
-      !isDev
-        ? `./ui.css`
-        : genUnpkgLink('tantalum-ui-mobile', undefined, '/dist/index.css')
+      !isDev ? `./ui.css` : genUnpkgLink('tantalum-ui-mobile', undefined, '/dist/index.css')
     }'
     link.onload = resolve
     link.onerror = reject
@@ -114,11 +108,7 @@ export class ReplStore implements Store {
 
     this.initImportMap()
 
-    this.state.files[uiSetupFile] = new File(
-      uiSetupFile,
-      uiReplPluginCode,
-      !isDev
-    )
+    this.state.files[uiSetupFile] = new File(uiSetupFile, uiReplPluginCode, !isDev)
 
     watchEffect(() => compileFile(this, this.state.activeFile))
 
@@ -134,10 +124,7 @@ export class ReplStore implements Store {
   }
 
   addFile(fileOrFilename: string | File) {
-    const file =
-      typeof fileOrFilename === 'string'
-        ? new File(fileOrFilename)
-        : fileOrFilename
+    const file = typeof fileOrFilename === 'string' ? new File(fileOrFilename) : fileOrFilename
     this.state.files[file.filename] = file
     if (!file.hidden) this.setActive(file.filename)
   }
@@ -217,9 +204,7 @@ export class ReplStore implements Store {
     try {
       return JSON.parse(this.state.files['import-map.json'].code)
     } catch (e) {
-      this.state.errors = [
-        `Syntax error in import-map.json: ${(e as Error).message}`
-      ]
+      this.state.errors = [`Syntax error in import-map.json: ${(e as Error).message}`]
       return {}
     }
   }

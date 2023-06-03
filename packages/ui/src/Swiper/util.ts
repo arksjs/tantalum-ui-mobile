@@ -16,10 +16,7 @@ export const getIndicatorsClasses = (direction: string) => {
   ]
 }
 
-export const getPaginationItemClasses = (
-  pageIndex: number,
-  activeIndex: number
-) => {
+export const getPaginationItemClasses = (pageIndex: number, activeIndex: number) => {
   return [
     'ta-swiper_indicator',
     {
@@ -37,7 +34,6 @@ export const getPaginationItemStyles = (
   activeIndex: number
 ) => {
   return {
-    background:
-      pageIndex === activeIndex ? indicatorActiveColor : indicatorColor
+    background: pageIndex === activeIndex ? indicatorActiveColor : indicatorColor
   }
 }

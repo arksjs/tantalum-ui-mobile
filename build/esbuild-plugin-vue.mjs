@@ -1,21 +1,13 @@
 import path from 'path'
 import fs from 'fs'
 import md5 from 'md5'
-import {
-  parse,
-  compileTemplate,
-  compileScript,
-  rewriteDefault
-} from 'vue/compiler-sfc'
+import { parse, compileTemplate, compileScript, rewriteDefault } from 'vue/compiler-sfc'
 
 const VuePlugin = () => {
   return {
     name: 'vue',
     setup(build) {
-      const absPath = path.resolve(
-        process.cwd(),
-        build.initialOptions.absWorkingDir || ''
-      )
+      const absPath = path.resolve(process.cwd(), build.initialOptions.absWorkingDir || '')
 
       const resolvePath = (p, resolveDir) => {
         if (p.startsWith('.')) {
@@ -63,18 +55,14 @@ const VuePlugin = () => {
                 id,
                 source: template.content,
                 filename: filePath,
-                isProd:
-                  process.env.NODE_ENV === 'production' ||
-                  process.env.BUILD === 'production',
+                isProd: process.env.NODE_ENV === 'production' || process.env.BUILD === 'production',
                 slotted: sfc.descriptor.slotted
               }).code
             }`
 
           contents += `
           _sfc_script.render = render
-          _sfc_script.__file = '${path
-            .relative(absPath, filePath)
-            .replace(/\\/g, '/')}'
+          _sfc_script.__file = '${path.relative(absPath, filePath).replace(/\\/g, '/')}'
           `
         }
 

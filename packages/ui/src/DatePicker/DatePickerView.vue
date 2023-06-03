@@ -1,9 +1,5 @@
 <template>
-  <PickerView
-    class="ta-date-picker-view"
-    @update:modelValue="onUpdateValue"
-    @change="onChange"
-  >
+  <PickerView class="ta-date-picker-view" @update:modelValue="onUpdateValue" @change="onChange">
   </PickerView>
 </template>
 

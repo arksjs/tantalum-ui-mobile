@@ -1,12 +1,9 @@
 <template>
   <div class="ta-checkbox-group" :class="classes" ref="root">
     <slot>
-      <Checkbox
-        v-for="item in options2"
-        :key="item.value"
-        :checkedValue="item.value"
-        >{{ item.label }}</Checkbox
-      >
+      <Checkbox v-for="item in options2" :key="item.value" :checkedValue="item.value">{{
+        item.label
+      }}</Checkbox>
     </slot>
   </div>
 </template>
@@ -14,12 +11,7 @@
 <script lang="ts">
 import { defineComponent, ref, type PropType } from 'vue'
 import Checkbox from './Checkbox.vue'
-import {
-  isStringOrNumberArray,
-  cloneData,
-  isSameArray,
-  type PropsToEmits
-} from '../helpers'
+import { isStringOrNumberArray, cloneData, isSameArray, type PropsToEmits } from '../helpers'
 import { useCheckGroup } from './use-check'
 import type { CheckboxGroupEmits, ModelValue } from './types'
 import { checkGroupProps } from './props'
@@ -72,10 +64,7 @@ export default defineComponent({
         return newVal
       },
       watchValue({ children, value }) {
-        if (
-          isStringOrNumberArray(value) &&
-          !isSameArray(value, inputValue.value)
-        ) {
+        if (isStringOrNumberArray(value) && !isSameArray(value, inputValue.value)) {
           const newVal: ModelValue[] = []
 
           children.forEach(child => {

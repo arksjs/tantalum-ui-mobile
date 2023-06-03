@@ -14,18 +14,10 @@
     </ta-pagination>
   </ta-group>
   <ta-group title="CSS height=32px">
-    <ta-pagination
-      style="height: 32px"
-      v-model="current4"
-      :total="total"
-    ></ta-pagination>
+    <ta-pagination style="height: 32px" v-model="current4" :total="total"></ta-pagination>
   </ta-group>
   <ta-group title="事件监听 change">
-    <ta-pagination
-      v-model="current6"
-      :total="total"
-      @change="onChange"
-    ></ta-pagination>
+    <ta-pagination v-model="current6" :total="total" @change="onChange"></ta-pagination>
   </ta-group>
 </template>
 

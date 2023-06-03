@@ -1,10 +1,6 @@
 <template>
   <teleport to="body">
-    <div
-      :class="['ta-modal', popupClasses]"
-      :style="popupStyles"
-      v-bind="$attrs"
-    >
+    <div :class="['ta-modal', popupClasses]" :style="popupStyles" v-bind="$attrs">
       <div class="ta-mask" @click="onMaskClick"></div>
       <div class="ta-modal_box" :style="boxStyles" ref="popupInnerEl">
         <div class="ta-modal_box-inner">

@@ -18,11 +18,7 @@
         </ta-button>
       </div>
     </div>
-    <ta-cell
-      :label="'计次 ' + (laps.length - index)"
-      v-for="(item, index) in laps"
-      :key="item"
-    >
+    <ta-cell :label="'计次 ' + (laps.length - index)" v-for="(item, index) in laps" :key="item">
       {{ item }}
     </ta-cell>
   </ta-group>
@@ -41,11 +37,9 @@ export default defineComponent({
 
     const setLaps = (_laps: CountTime[] = []) => {
       laps.value = _laps.reverse().map(countTime => {
-        return `${
-          parseInt(countTime.fullHours) > 0
-            ? countTime.thousandsFullHours + ':'
-            : ''
-        }${countTime.minutes}:${countTime.seconds}.${countTime.milliseconds}`
+        return `${parseInt(countTime.fullHours) > 0 ? countTime.thousandsFullHours + ':' : ''}${
+          countTime.minutes
+        }:${countTime.seconds}.${countTime.milliseconds}`
       })
     }
 

@@ -71,9 +71,7 @@ function onCreateColor() {
       <pre>
       {{ themeCode }}
       </pre>
-      <ta-copy @success="showToast('复制成功')" :text="themeCode"
-        >复制代码
-      </ta-copy>
+      <ta-copy @success="showToast('复制成功')" :text="themeCode">复制代码 </ta-copy>
     </div>
   </ta-group>
 </template>

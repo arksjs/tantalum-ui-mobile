@@ -10,12 +10,7 @@ import {
 } from 'vue'
 import { capitalize, type EmptyObject, isStringOrNumber } from '../helpers'
 import { useGroup, useGroupItem } from '../hooks'
-import type {
-  ModelValue,
-  OptionItem,
-  CheckGroupCommonProps,
-  CheckCommonProps
-} from './types'
+import type { ModelValue, OptionItem, CheckGroupCommonProps, CheckCommonProps } from './types'
 import type { checkEmits } from './props'
 import { getCheckClasses, getCheckGroupClasses, getCheckStyles } from './util'
 
@@ -39,10 +34,7 @@ export function useCheck(
   name: string
 ) {
   const uid = Symbol()
-  const groupOptions = inject<GroupOptions | null>(
-    `ta${capitalize(name)}Options`,
-    null
-  )
+  const groupOptions = inject<GroupOptions | null>(`ta${capitalize(name)}Options`, null)
   const inputEl = shallowRef<HTMLInputElement | null>(null)
   const checked = ref(false)
 
@@ -126,9 +118,7 @@ export function useCheck(
     }
   })
 
-  const classes = computed(() =>
-    getCheckClasses(checked.value, disabled2.value)
-  )
+  const classes = computed(() => getCheckClasses(checked.value, disabled2.value))
 
   const styles = computed(() => {
     const { activeColor } = groupOptions?.props || props

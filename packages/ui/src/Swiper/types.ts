@@ -46,7 +46,4 @@ export interface SwiperRef {
   next: Noop
 }
 
-export type {
-  OnActiveIndexChange as SwiperOnActiveIndexChange,
-  OnAnimated as SwiperOnAnimated
-}
+export type { OnActiveIndexChange as SwiperOnActiveIndexChange, OnAnimated as SwiperOnAnimated }

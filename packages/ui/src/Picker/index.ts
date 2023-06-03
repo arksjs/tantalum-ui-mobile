@@ -5,10 +5,7 @@ import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
 import type { ShowPickerOptions, PickerDetail } from './types'
 
-const showPicker = createShowPopup<
-  ShowPickerOptions,
-  PopupSuccessConfirmArgs<PickerDetail>
->({
+const showPicker = createShowPopup<ShowPickerOptions, PopupSuccessConfirmArgs<PickerDetail>>({
   apiName: 'showPicker',
   component: PickerPopup,
   createHook: createConfirmHook

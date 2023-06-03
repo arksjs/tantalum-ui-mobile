@@ -1,8 +1,5 @@
 <template>
-  <label
-    class="ta-form-item ta-cell ta-horizontal-hairline"
-    :class="[validateStatus]"
-  >
+  <label class="ta-form-item ta-cell ta-horizontal-hairline" :class="[validateStatus]">
     <div class="ta-cell_header">
       <div class="ta-cell_label" v-if="label">
         {{ label }}

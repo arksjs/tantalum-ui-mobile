@@ -1,12 +1,7 @@
 import { popupZIndex, type CSSProperties } from '../helpers'
 import type { VisibleState } from './types'
 
-export const VISIBLE_STATE_TYPES: VisibleState[] = [
-  'show',
-  'shown',
-  'hide',
-  'hidden'
-]
+export const VISIBLE_STATE_TYPES: VisibleState[] = ['show', 'shown', 'hide', 'hidden']
 
 let zIndex = popupZIndex
 
@@ -14,11 +9,7 @@ export function getNewZIndex() {
   return zIndex++
 }
 
-export function getPopupStyles(
-  zIndex: number,
-  absTop: number | null,
-  isShow: boolean
-) {
+export function getPopupStyles(zIndex: number, absTop: number | null, isShow: boolean) {
   const styles: CSSProperties = {
     zIndex: zIndex
   }

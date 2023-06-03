@@ -66,11 +66,8 @@ describe('ActionSheet', () => {
       }
     })
 
-    expect(
-      wrapper
-        .findAll('.ta-action-sheet_list')[1]
-        .find('.ta-action-sheet_item')
-        .text()
-    ).toBe('cancelText')
+    expect(wrapper.findAll('.ta-action-sheet_list')[1].find('.ta-action-sheet_item').text()).toBe(
+      'cancelText'
+    )
   })
 })

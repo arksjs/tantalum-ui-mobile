@@ -77,12 +77,7 @@
 <script lang="ts">
 import { defineComponent, shallowRef, type PropType } from 'vue'
 import { Button as TaButton, ButtonGroup } from '../Button'
-import type {
-  ButtonOption,
-  NavBarEmits,
-  OnButtonClick,
-  OnTitleDbClick
-} from './types'
+import type { ButtonOption, NavBarEmits, OnButtonClick, OnTitleDbClick } from './types'
 import { useLocale } from '../ConfigProvider/context'
 import {
   isString,
@@ -104,10 +99,7 @@ const buttonsValidator = (items: ButtonOption[]) => {
   )
 }
 
-const emitClickValidator: VoidFnToBooleanFn<OnButtonClick> = (
-  payload,
-  buttonEl
-) =>
+const emitClickValidator: VoidFnToBooleanFn<OnButtonClick> = (payload, buttonEl) =>
   payload &&
   isNumber(payload.index) &&
   payload.item &&

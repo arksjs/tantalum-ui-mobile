@@ -1,10 +1,6 @@
 <template>
   <teleport to="body">
-    <div
-      :class="['ta-toast', popupClasses]"
-      :style="popupStyles"
-      v-bind="$attrs"
-    >
+    <div :class="['ta-toast', popupClasses]" :style="popupStyles" v-bind="$attrs">
       <div class="ta-toast_box">
         <ActivityIndicator
           class="ta-toast_icon"
@@ -12,16 +8,8 @@
           color="#ffffff"
           v-if="type === 'loading'"
         />
-        <Icon
-          v-else-if="type === 'success'"
-          class="ta-toast_icon"
-          :icon="CheckOutlined"
-        />
-        <Icon
-          v-else-if="type === 'fail'"
-          class="ta-toast_icon"
-          :icon="CloseOutlined"
-        />
+        <Icon v-else-if="type === 'success'" class="ta-toast_icon" :icon="CheckOutlined" />
+        <Icon v-else-if="type === 'fail'" class="ta-toast_icon" :icon="CloseOutlined" />
         <Icon v-else-if="icon" class="ta-toast_icon" :icon="icon" />
         <div class="ta-toast_text">
           {{ title }}
@@ -37,11 +25,7 @@ import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
 import { usePopup } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/props'
-import {
-  createEnumsValidator,
-  iconValidator,
-  type PropsToEmits
-} from '../helpers'
+import { createEnumsValidator, iconValidator, type PropsToEmits } from '../helpers'
 import type { StateType, ToastEmits } from './types'
 import CheckOutlined from '../Icon/icons/CheckOutlined'
 import CloseOutlined from '../Icon/icons/CloseOutlined'

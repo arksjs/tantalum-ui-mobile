@@ -15,20 +15,10 @@
   </ta-group>
   <ta-group title="设置样式">
     <ta-cell label="自定义颜色">
-      <ta-price
-        class="exp-price-custom-color"
-        price="1234.56"
-        symbol="￥"
-        thousands
-      />
+      <ta-price class="exp-price-custom-color" price="1234.56" symbol="￥" thousands />
     </ta-cell>
     <ta-cell label="自定义大小">
-      <ta-price
-        class="exp-price-custom-size"
-        price="1234.56"
-        symbol="￥"
-        thousands
-      />
+      <ta-price class="exp-price-custom-size" price="1234.56" symbol="￥" thousands />
     </ta-cell>
   </ta-group>
 </template>

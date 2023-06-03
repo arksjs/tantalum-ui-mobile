@@ -1,10 +1,4 @@
-import {
-  isNumber,
-  isString,
-  returnTrue,
-  emitFocusValidator,
-  type PropsToEmits
-} from '../helpers'
+import { isNumber, isString, returnTrue, emitFocusValidator, type PropsToEmits } from '../helpers'
 import type { FocusEmits, FocusWithoutEventEmits } from './types'
 
 export const formItemProps = {

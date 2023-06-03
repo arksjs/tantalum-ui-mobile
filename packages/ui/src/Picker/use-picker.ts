@@ -1,11 +1,6 @@
 import { nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import type { SetupContext } from 'vue'
-import {
-  cloneData,
-  isSameArray,
-  type Noop,
-  type PropsToEmits
-} from '../helpers'
+import { cloneData, isSameArray, type Noop, type PropsToEmits } from '../helpers'
 import type {
   ColRow,
   OptionItem,
@@ -133,14 +128,10 @@ export function usePicker(
     }
   }
 
-  watch(
-    [() => props.modelValue, () => props.options],
-    () => updateValue(props.modelValue),
-    {
-      deep: true,
-      immediate: true
-    }
-  )
+  watch([() => props.modelValue, () => props.options], () => updateValue(props.modelValue), {
+    deep: true,
+    immediate: true
+  })
 
   watch([isInitPopup, popupVisible], ([isInit, visible]) => {
     if (isInit && visible) {
@@ -253,11 +244,7 @@ export function usePickerPopup(
 
 interface ViewUseOptions {
   name: 'cascader' | 'picker'
-  afterUpdate: (
-    valueArray: SelectorValue[],
-    labelArray: string[],
-    cols: Col[]
-  ) => void
+  afterUpdate: (valueArray: SelectorValue[], labelArray: string[], cols: Col[]) => void
   handlers: PickerHandlers
 }
 
@@ -279,8 +266,7 @@ export function usePickerView(
 
   const isPicker = name === 'picker'
 
-  const optionsHandler: PickerOptionsHandler | null =
-    handlers.optionsHandler || null
+  const optionsHandler: PickerOptionsHandler | null = handlers.optionsHandler || null
 
   function updateOptions() {
     const { options, isCascade: isCascade2 } = getFormatOptions(
@@ -318,11 +304,7 @@ export function usePickerView(
   }
 
   function getDetail() {
-    return formatter(
-      cloneData(currentValues.value),
-      cloneData(currentLabels.value),
-      handlers
-    )
+    return formatter(cloneData(currentValues.value), cloneData(currentLabels.value), handlers)
   }
 
   function addCache(item: { value: string | number; label: string }) {
@@ -624,18 +606,13 @@ export function usePickerView(
    * @summary 主要用于一些日期啥的，可以默认当天
    */
   function getCascadeDefaultSelecteds() {
-    const selecteds = handlers.defaultValueGetter
-      ? handlers.defaultValueGetter()
-      : []
+    const selecteds = handlers.defaultValueGetter ? handlers.defaultValueGetter() : []
 
     if (selecteds.length > 0) {
       return selecteds
     }
 
-    function getFirstSelected(
-      values: SelectorValue[],
-      optionList: OptionItem[]
-    ): SelectorValue[] {
+    function getFirstSelected(values: SelectorValue[], optionList: OptionItem[]): SelectorValue[] {
       const optionItem = optionList[0]
 
       if (optionItem) {
@@ -703,8 +680,7 @@ export function usePickerView(
   // picker 要默认数据
   if (
     isPicker &&
-    (!isValidValue(props.modelValue) ||
-      !isSameValue(props.modelValue, currentValues.value))
+    (!isValidValue(props.modelValue) || !isSameValue(props.modelValue, currentValues.value))
   ) {
     // 如果传入的数据
     onChange()
@@ -730,10 +706,7 @@ type PickerFormatter = (
   handlers: PickerHandlers
 ) => SelectorDetail
 
-type PickerParser = (
-  value: unknown,
-  handlers: PickerHandlers
-) => SelectorValue[]
+type PickerParser = (value: unknown, handlers: PickerHandlers) => SelectorValue[]
 
 const formatter: PickerFormatter = (valueArray, labelArray, handlers) => {
   const defaultLabel = handlers.labelFormatter(labelArray)

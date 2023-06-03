@@ -48,10 +48,7 @@ export function useGroup<P extends AnyObject, T extends AnyObject>(
   }
 }
 
-export function useGroupItem<P extends AnyObject, T extends AnyObject>(
-  name: string,
-  object: T
-) {
+export function useGroupItem<P extends AnyObject, T extends AnyObject>(name: string, object: T) {
   const group = inject<GroupContext | null>(getKey(name), null)
 
   group && group.addItem(object)

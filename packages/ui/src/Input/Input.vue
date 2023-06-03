@@ -55,11 +55,7 @@ import { computed, defineComponent, onMounted, ref, watch } from 'vue'
 import { Icon } from '../Icon'
 import { isStringOrNumber, type OnFocus, type PropsToEmits } from '../helpers'
 import { getClasses, getInputMode, getMaxLength, getValue } from './util'
-import {
-  formFocusEmits,
-  formItemProps,
-  formStringValueEmits
-} from '../Form/form'
+import { formFocusEmits, formItemProps, formStringValueEmits } from '../Form/form'
 import { useInput } from '../Form/use-form'
 import CloseCircleFilled from '../Icon/icons/CloseCircleFilled'
 import type { InputEmits } from './types'
@@ -112,8 +108,7 @@ export default defineComponent({
     const isShowClear = ref(false)
     const inputValue = ref('')
 
-    const { inputEl, setFocus, setBlur, getInputValue, setInputValue } =
-      useInput()
+    const { inputEl, setFocus, setBlur, getInputValue, setInputValue } = useInput()
 
     function updateValue(val: string | number) {
       const newVal = getValue(val, props.type)

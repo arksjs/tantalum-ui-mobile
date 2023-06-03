@@ -36,32 +36,14 @@
           {{ showValue ? progressValue[1] : '' }}
         </div>
       </div>
-      <input
-        type="hidden"
-        :name="name"
-        :disabled="disabled"
-        :value="inputValue"
-      />
+      <input type="hidden" :name="name" :disabled="disabled" :value="inputValue" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  watch,
-  nextTick,
-  reactive,
-  computed,
-  type PropType
-} from 'vue'
-import {
-  cloneData,
-  isNumberArray,
-  isSameArray,
-  isString,
-  type PropsToEmits
-} from '../helpers'
+import { defineComponent, watch, nextTick, reactive, computed, type PropType } from 'vue'
+import { cloneData, isNumberArray, isSameArray, isString, type PropsToEmits } from '../helpers'
 import { formItemProps } from '../Form/form'
 import { slideProps } from '../Slider/props'
 import { useSlide } from '../Slider/use-slide'
@@ -117,10 +99,7 @@ export default defineComponent({
         if (thumb) {
           index = parseInt($target.dataset.index as string)
         } else {
-          if (
-            Math.abs(progressValue[0] - newVal) >
-            Math.abs(progressValue[1] - newVal)
-          ) {
+          if (Math.abs(progressValue[0] - newVal) > Math.abs(progressValue[1] - newVal)) {
             index = 1
           }
         }
@@ -166,10 +145,7 @@ export default defineComponent({
     }
 
     function emitModel() {
-      if (
-        props.modelValue == null ||
-        getValue() !== valueHandler(props.modelValue)
-      ) {
+      if (props.modelValue == null || getValue() !== valueHandler(props.modelValue)) {
         emit('update:modelValue', getValue())
         return true
       }

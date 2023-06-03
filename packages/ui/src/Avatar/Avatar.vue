@@ -1,12 +1,7 @@
 <template>
   <Badge :class="classes" :style="styles" v-bind="{ ...$attrs, ...badge2 }">
     <slot>
-      <TaImage
-        class="ta-avatar_image"
-        :src="src"
-        mode="aspectFill"
-        :loadingIcon="UserOutlined"
-      />
+      <TaImage class="ta-avatar_image" :src="src" mode="aspectFill" :loadingIcon="UserOutlined" />
     </slot>
     <template #badge>
       <Icon v-if="gender === 'man'" :icon="ManOutlined" />
@@ -65,9 +60,7 @@ export default defineComponent({
 
     const size2 = computed(() => getAvatarSize(props, groupOptions))
     const shape2 = computed(() => getAvatarShape(props, !!groupOptions))
-    const classes = computed(() =>
-      getAvatarClasses(props, size2.value, shape2.value)
-    )
+    const classes = computed(() => getAvatarClasses(props, size2.value, shape2.value))
     const styles = computed(() => getAvatarStyles(props, size2.value))
     const badge2 = computed(() => getBadgeProps(props))
 

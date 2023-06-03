@@ -73,23 +73,17 @@ export interface DatePickerCommonProps {
 export type DatePickerViewProps = DatePickerCommonProps
 export type DatePickerViewEmits = PickerCommonEmits
 
-export interface DatePickerPopupProps
-  extends PopupProps,
-    DatePickerCommonProps {
+export interface DatePickerPopupProps extends PopupProps, DatePickerCommonProps {
   title?: string
 }
 export interface DatePickerPopupEmits extends PopupEmits, PickerCommonEmits {
   onConfirm?: OnConfirm
 }
 
-export interface DatePickerProps
-  extends FormItemCommonProps,
-    DatePickerCommonProps {
+export interface DatePickerProps extends FormItemCommonProps, DatePickerCommonProps {
   placeholder?: string
 }
-export interface DatePickerEmits
-  extends FocusWithoutEventEmits,
-    PickerCommonEmits {}
+export interface DatePickerEmits extends FocusWithoutEventEmits, PickerCommonEmits {}
 
 export type {
   Mode as DatePickerMode,

@@ -38,9 +38,7 @@ describe('NumberKeyboard', () => {
       }
     })
 
-    expect(
-      wrapper.find('.ta-number-keyboard_right-column').exists()
-    ).toBeTruthy()
+    expect(wrapper.find('.ta-number-keyboard_right-column').exists()).toBeTruthy()
   })
 
   test('type="rightColumn" and customKey=["00", "."]', () => {

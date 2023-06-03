@@ -1,12 +1,9 @@
 <template>
   <div class="ta-radio-group" :class="classes" ref="root">
     <slot>
-      <Radio
-        v-for="item in options2"
-        :key="item.value"
-        :checkedValue="item.value"
-        >{{ item.label }}</Radio
-      >
+      <Radio v-for="item in options2" :key="item.value" :checkedValue="item.value">{{
+        item.label
+      }}</Radio>
     </slot>
   </div>
 </template>

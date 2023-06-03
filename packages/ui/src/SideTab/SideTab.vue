@@ -8,10 +8,7 @@
         @click="onChange(item.value)"
       >
         <Badge class="ta-side-tab_item-inner" v-bind="item.badge">
-          <Icon
-            v-if="item.icon"
-            :icon="index === activeIndex ? item.activeIcon : item.icon"
-          />
+          <Icon v-if="item.icon" :icon="index === activeIndex ? item.activeIcon : item.icon" />
           <span class="ta-side-tab_item-text">{{ item.label }}</span>
         </Badge>
       </li>

@@ -1,11 +1,6 @@
 <template>
   <ta-group title="基础用法">
-    <ta-tab-view
-      class="exp-tabView"
-      v-model="value"
-      @change="onChange"
-      ref="tabViewRef"
-    >
+    <ta-tab-view class="exp-tabView" v-model="value" @change="onChange" ref="tabViewRef">
       <ta-tab-view-item name="Tab 1">
         <ta-scroll-view
           class="exp-tabView-scroll-view"
@@ -14,10 +9,7 @@
           scroll-x
           @refreshing="onRefreshing"
         >
-          <ta-empty
-            class="exp-tabView-empty"
-            description="Tab 1 下拉刷新"
-          ></ta-empty>
+          <ta-empty class="exp-tabView-empty" description="Tab 1 下拉刷新"></ta-empty>
         </ta-scroll-view>
       </ta-tab-view-item>
       <ta-tab-view-item name="Tab 2">
@@ -26,11 +18,7 @@
     </ta-tab-view>
   </ta-group>
   <ta-group title="垂直">
-    <ta-tab-view
-      class="exp-tabView"
-      :initialVertical="true"
-      :scrollThreshold="1"
-    >
+    <ta-tab-view class="exp-tabView" :initialVertical="true" :scrollThreshold="1">
       <ta-tab-view-item name="Tab 1">
         <ta-scroll-view
           class="exp-tabView-scroll-view"
@@ -38,10 +26,7 @@
           scroll-y
           @refreshing="onRefreshing"
         >
-          <ta-empty
-            class="exp-tabView-empty"
-            description="Tab 1 下拉刷新"
-          ></ta-empty>
+          <ta-empty class="exp-tabView-empty" description="Tab 1 下拉刷新"></ta-empty>
         </ta-scroll-view>
       </ta-tab-view-item>
       <ta-tab-view-item name="Tab 2">
@@ -53,11 +38,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, shallowRef } from 'vue'
-import type {
-  ScrollViewOnRefreshing,
-  TabViewOnChange,
-  TabViewRef
-} from '@/index'
+import type { ScrollViewOnRefreshing, TabViewOnChange, TabViewRef } from '@/index'
 
 export default defineComponent({
   name: 'ExpTabView',

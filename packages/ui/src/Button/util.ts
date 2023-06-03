@@ -1,10 +1,4 @@
-import type {
-  ShapeType,
-  PatternType,
-  ButtonProps,
-  FormType,
-  ButtonGroupProps
-} from './types'
+import type { ShapeType, PatternType, ButtonProps, FormType, ButtonGroupProps } from './types'
 import {
   getColorGroups,
   isColorValue,
@@ -15,12 +9,7 @@ import {
   type CSSProperties
 } from '../helpers'
 
-export const BUTTON_SHAPE_TYPES: ShapeType[] = [
-  'rectangle',
-  'round',
-  'circle',
-  'square'
-]
+export const BUTTON_SHAPE_TYPES: ShapeType[] = ['rectangle', 'round', 'circle', 'square']
 
 export const BUTTON_PATTERN_TYPES: PatternType[] = [
   'default',
@@ -38,10 +27,7 @@ export const getCommonClasses = (props: ButtonGroupProps) => [
   'shape--' + getEnumsValue(BUTTON_SHAPE_TYPES, props.shape)
 ]
 
-export const getButtonClasses = (
-  props: ButtonProps,
-  groupProps?: ButtonGroupProps
-) => [
+export const getButtonClasses = (props: ButtonProps, groupProps?: ButtonGroupProps) => [
   'ta-button',
   {
     'has--icon': props.loading || props.icon,

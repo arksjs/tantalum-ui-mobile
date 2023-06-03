@@ -15,11 +15,7 @@
       <div class="ta-popover_text">{{ content }}</div>
     </div>
     <div class="ta-pop-dialog_footer ta-horizontal-hairline">
-      <ButtonGroup
-        class="ta-pop-dialog_footer-inner"
-        pattern="borderless"
-        size="middle"
-      >
+      <ButtonGroup class="ta-pop-dialog_footer-inner" pattern="borderless" size="middle">
         <TaButton v-if="showCancel" type="default" @click="onCancelClick">
           {{ cancelText || locale.popDialogCancelText }}
         </TaButton>

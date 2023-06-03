@@ -1,9 +1,6 @@
 import { rangeInteger, type CSSProperties } from '../helpers'
 
-export const getClasses = (fixedBar?: boolean) => [
-  'ta-progress',
-  { 'fixed-bar': !!fixedBar }
-]
+export const getClasses = (fixedBar?: boolean) => ['ta-progress', { 'fixed-bar': !!fixedBar }]
 
 export const getTrackClasses = (animated?: boolean) => [
   'ta-progress_track',
@@ -22,5 +19,4 @@ export const getStyles = (color?: string) => {
   return styles
 }
 
-export const getProgress = (percentage: number | string) =>
-  rangeInteger(percentage, 0, 100) + '%'
+export const getProgress = (percentage: number | string) => rangeInteger(percentage, 0, 100) + '%'

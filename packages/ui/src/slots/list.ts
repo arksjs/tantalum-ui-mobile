@@ -1,10 +1,4 @@
-import {
-  isVNode,
-  Fragment,
-  type Component,
-  type VNode,
-  type VNodeNormalizedChildren
-} from 'vue'
+import { isVNode, Fragment, type Component, type VNode, type VNodeNormalizedChildren } from 'vue'
 import { isObject } from '../helpers'
 
 /**
@@ -24,20 +18,13 @@ export function getComponentVNodeItems(
   }
 
   const nameRegex =
-    componentName instanceof RegExp
-      ? componentName
-      : new RegExp(`^${componentName}$`)
+    componentName instanceof RegExp ? componentName : new RegExp(`^${componentName}$`)
 
   for (const child of children) {
     if (isVNode(child)) {
       if (child.type === Fragment) {
-        newChildren = newChildren.concat(
-          getComponentVNodeItems(child.children, componentName)
-        )
-      } else if (
-        isObject(child.type) &&
-        nameRegex.test((child.type as Component).name ?? '')
-      ) {
+        newChildren = newChildren.concat(getComponentVNodeItems(child.children, componentName))
+      } else if (isObject(child.type) && nameRegex.test((child.type as Component).name ?? '')) {
         newChildren.push(child)
       }
     }

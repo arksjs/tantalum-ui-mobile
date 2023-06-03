@@ -49,30 +49,10 @@ export default {
         </div>
       </template>
     </ta-virtual-list>
-    <ta-cell
-      label="scrollToIndex({ index: 49999 })"
-      isLink
-      @click="scrollToIndex(49999)"
-    ></ta-cell>
-    <ta-cell
-      label="同上加 viewPosition=0.5"
-      isLink
-      @click="scrollToIndex(49999, 0.5)"
-    ></ta-cell>
-    <ta-cell
-      label="同上加 viewPosition=1"
-      isLink
-      @click="scrollToIndex(49999, 1)"
-    ></ta-cell>
-    <ta-cell
-      label="scrollTo({ offset: 200 })"
-      isLink
-      @click="scrollTo(200)"
-    ></ta-cell>
-    <ta-cell
-      label="scrollToEnd(true)"
-      isLink
-      @click="scrollToEnd(true)"
-    ></ta-cell>
+    <ta-cell label="scrollToIndex({ index: 49999 })" isLink @click="scrollToIndex(49999)"></ta-cell>
+    <ta-cell label="同上加 viewPosition=0.5" isLink @click="scrollToIndex(49999, 0.5)"></ta-cell>
+    <ta-cell label="同上加 viewPosition=1" isLink @click="scrollToIndex(49999, 1)"></ta-cell>
+    <ta-cell label="scrollTo({ offset: 200 })" isLink @click="scrollTo(200)"></ta-cell>
+    <ta-cell label="scrollToEnd(true)" isLink @click="scrollToEnd(true)"></ta-cell>
   </ta-group>
 </template>

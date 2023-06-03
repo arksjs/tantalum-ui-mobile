@@ -73,10 +73,9 @@ describe('Result', () => {
         backText
       }
     })
-    expect(
-      wrapper
-        .findAllComponents('.ta-button')
-        .map(v => v.find('.ta-button').text())
-    ).toEqual([confirmText, backText])
+    expect(wrapper.findAllComponents('.ta-button').map(v => v.find('.ta-button').text())).toEqual([
+      confirmText,
+      backText
+    ])
   })
 })

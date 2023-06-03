@@ -1,10 +1,4 @@
-import type {
-  AnyObject,
-  FnArgs,
-  Noop,
-  UniqueID,
-  ViewPosition
-} from '../helpers'
+import type { AnyObject, FnArgs, Noop, UniqueID, ViewPosition } from '../helpers'
 
 export interface ScrollToOptions {
   offset: number

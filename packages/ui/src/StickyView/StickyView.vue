@@ -49,11 +49,7 @@ import {
 import StickyViewList from './StickyViewList.vue'
 import { useScroll, useException, useOnce } from '../hooks'
 import { emitChangeValidator } from './props'
-import type {
-  StickyViewEmits,
-  StickyViewItem,
-  StickyViewListRef
-} from './types'
+import type { StickyViewEmits, StickyViewItem, StickyViewListRef } from './types'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import { getClasses, getFixedStyles, FIXED_HEIGHT } from './util'
 
@@ -86,12 +82,7 @@ export default defineComponent({
       if (Array.isArray(items)) {
         return (
           items.filter(item => {
-            return !(
-              item &&
-              isNumber(item.index) &&
-              isString(item.name) &&
-              isString(item.title)
-            )
+            return !(item && isNumber(item.index) && isString(item.name) && isString(item.title))
           }).length === 0
         )
       }
@@ -120,8 +111,7 @@ export default defineComponent({
 
     function getItemTitle(index: number) {
       return (
-        (cachedItems[index]?.title || '') +
-        `<span>${cachedItems[index]?.description || ''}</span>`
+        (cachedItems[index]?.title || '') + `<span>${cachedItems[index]?.description || ''}</span>`
       )
     }
 
@@ -178,8 +168,7 @@ export default defineComponent({
       const offsetTops = getOffsetTops()
 
       const current = offsetTops[_index]
-      const next =
-        offsetTops[nextIndex] != null ? offsetTops[nextIndex] : Infinity
+      const next = offsetTops[nextIndex] != null ? offsetTops[nextIndex] : Infinity
       const first = offsetTops[0]
 
       if (scrollTop < first) {
@@ -189,10 +178,7 @@ export default defineComponent({
           activeIndex.value = nextIndex
           updateTitle(nextIndex, 0)
 
-          if (
-            offsetTops[nextIndex + 1] &&
-            scrollTop >= offsetTops[nextIndex + 1]
-          ) {
+          if (offsetTops[nextIndex + 1] && scrollTop >= offsetTops[nextIndex + 1]) {
             // 超过了
             updateFixed(scrollTop)
           } else if (!isSpecifyScrolling) {
@@ -228,10 +214,8 @@ export default defineComponent({
 
     function getOffsetTops() {
       const offset =
-        getRelativeOffset(
-          getListEl() as HTMLElement,
-          container.value as HTMLElement
-        ).offsetTop - getSizeValue(props.offsetTop)
+        getRelativeOffset(getListEl() as HTMLElement, container.value as HTMLElement).offsetTop -
+        getSizeValue(props.offsetTop)
 
       return $items.map($el => {
         return $el.offsetTop + offset
@@ -279,8 +263,7 @@ export default defineComponent({
     useScroll(container, () => updateFixed(null))
 
     const resetContainer: ResetContainer = containSelector => {
-      const newEl =
-        querySelector(containSelector) || (root.value as HTMLElement)
+      const newEl = querySelector(containSelector) || (root.value as HTMLElement)
 
       if (newEl === container.value) {
         return

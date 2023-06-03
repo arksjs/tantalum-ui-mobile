@@ -1,11 +1,6 @@
 <template>
   <ta-group title="Sticky View">
-    <ta-sticky-view
-      ref="viewRef"
-      class="exp-sticky-box"
-      v-model="activeName"
-      @change="onChange"
-    >
+    <ta-sticky-view ref="viewRef" class="exp-sticky-box" v-model="activeName" @change="onChange">
       <ta-sticky-view-item v-for="i in 4" :key="i" :name="`Sticky ${i}`">
         <div :class="`exp-sticky-box-${i}`"></div>
       </ta-sticky-view-item>

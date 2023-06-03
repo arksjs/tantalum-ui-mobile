@@ -1,6 +1,7 @@
-import { resolve } from 'path'
-import svgSprites from 'rollup-plugin-svg-sprites'
+import { fileURLToPath, URL } from 'node:url'
+
 import { defineConfig } from 'vite'
+import svgSprites from 'rollup-plugin-svg-sprites'
 import vue from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
 
@@ -20,9 +21,11 @@ export default defineConfig({
   },
   base: './',
   resolve: {
-    alias: [{ find: '@', replacement: resolve('../ui/src') }]
+    alias: {
+      '@': fileURLToPath(new URL('../ui/src', import.meta.url))
+    }
   },
   build: {
-    outDir: '../docs/docs/.vitepress/dist/demo'
+    outDir: fileURLToPath(new URL('../docs/docs/.vitepress/dist/demo', import.meta.url))
   }
 })

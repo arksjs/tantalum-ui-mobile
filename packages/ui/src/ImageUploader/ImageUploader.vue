@@ -8,11 +8,7 @@
       @update:items="onUpdateOrderItems"
     >
       <template #default="{ id }">
-        <div
-          :class="updateButtonClasses"
-          v-if="id === addButtonID"
-          @contextmenu.prevent="noop"
-        >
+        <div :class="updateButtonClasses" v-if="id === addButtonID" @contextmenu.prevent="noop">
           <Icon :icon="PlusOutlined" />
           <input
             type="file"
@@ -55,14 +51,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  computed,
-  watch,
-  ref,
-  type PropType
-} from 'vue'
+import { defineComponent, reactive, computed, watch, ref, type PropType } from 'vue'
 import { Button as TaButton } from '../Button'
 import { Icon } from '../Icon'
 import { Order } from '../Order'
@@ -478,9 +467,7 @@ export default defineComponent({
 
     const accept2 = computed(() => getAccepts(props.accept).join(', '))
 
-    const updateButtonClasses = computed(() =>
-      getUploadButtonClasses(props.disabled)
-    )
+    const updateButtonClasses = computed(() => getUploadButtonClasses(props.disabled))
 
     watch(() => props.modelValue, updateUploadedList, {
       immediate: true,

@@ -35,9 +35,7 @@
         </div>
       </SwiperItem>
     </Swiper>
-    <div class="ta-image-preview_pagination">
-      {{ activeIndex + 1 }} / {{ urls.length }}
-    </div>
+    <div class="ta-image-preview_pagination">{{ activeIndex + 1 }} / {{ urls.length }}</div>
     <div class="ta-image-preview_close">
       <slot name="close" :activeIndex="activeIndex">
         <TaButton
@@ -243,10 +241,7 @@ export default defineComponent({
           const { offsetTop, offsetLeft } = getUpdateOffset(
             {
               top: Math.max(0, Math.min(scroll.maxTop, scroll.top + offsetY)),
-              left: Math.max(
-                0,
-                Math.min(scroll.maxLeft, scroll.left + offsetX)
-              ),
+              left: Math.max(0, Math.min(scroll.maxLeft, scroll.left + offsetX)),
               isScrollValue: true
             },
             item
@@ -312,11 +307,7 @@ export default defineComponent({
     }
 
     function getUpdateOffset(
-      {
-        top,
-        left,
-        isScrollValue
-      }: { top: number; left: number; isScrollValue: boolean },
+      { top, left, isScrollValue }: { top: number; left: number; isScrollValue: boolean },
       item: ImageObject
     ) {
       const { clientHeight, clientWidth } = document.documentElement
@@ -336,11 +327,7 @@ export default defineComponent({
       } else {
         const diff = (item.width - clientWidth) / 2
 
-        offsetLeft = rangeNumber(
-          isScrollValue ? diff - left : left,
-          -diff,
-          diff
-        )
+        offsetLeft = rangeNumber(isScrollValue ? diff - left : left, -diff, diff)
       }
 
       return {

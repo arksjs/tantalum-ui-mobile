@@ -106,25 +106,22 @@ import { isVoidField } from '@formily/core'
 
 export default connect(
   TaFormItem,
-  mapProps(
-    { validateStatus: true, title: 'label', required: true },
-    (props, field) => {
-      if (isVoidField(field)) return props
-      if (!field) return props
+  mapProps({ validateStatus: true, title: 'label', required: true }, (props, field) => {
+    if (isVoidField(field)) return props
+    if (!field) return props
 
-      const getMessage = () => {
-        if (field.validating) return
-        if (props.error) return props.error
-        if (field.selfErrors.length) return field.selfErrors
-        // if (field.selfWarnings.length) return split(field.selfWarnings)
-        // if (field.selfSuccesses.length) return split(field.selfSuccesses)
-      }
-
-      return {
-        error: getMessage()
-      }
+    const getMessage = () => {
+      if (field.validating) return
+      if (props.error) return props.error
+      if (field.selfErrors.length) return field.selfErrors
+      // if (field.selfWarnings.length) return split(field.selfWarnings)
+      // if (field.selfSuccesses.length) return split(field.selfSuccesses)
     }
-  )
+
+    return {
+      error: getMessage()
+    }
+  })
 )
 ```
 
@@ -154,9 +151,7 @@ export default connect(
     />
     <FormConsumer>
       <template #default="{ form }">
-        <pre class="exp-form-json">{{
-          JSON.stringify(form.values, null, 2)
-        }}</pre>
+        <pre class="exp-form-json">{{ JSON.stringify(form.values, null, 2) }}</pre>
         <ta-form-footer>
           <ta-button
             type="primary"

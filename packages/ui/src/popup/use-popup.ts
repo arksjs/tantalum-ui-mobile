@@ -1,5 +1,4 @@
 import { computed, onMounted, ref, watch, inject, shallowRef } from 'vue'
-import type { SetupContext } from 'vue'
 import {
   noop,
   addClassName,
@@ -56,13 +55,10 @@ export function usePopup(
   props: PopupProps & {
     showMask?: boolean
   },
-  ctx: SetupContext<any>,
+  ctx: any,
   useOptions: UseOptions
 ) {
-  const { emitHook, cancelHook } = useEmitHook(
-    ctx.emit,
-    useOptions.emitCallback
-  )
+  const { emitHook, cancelHook } = useEmitHook(ctx.emit, useOptions.emitCallback)
   // const isParent = inject<boolean>('taPopupExtend', false)
 
   const isShow = ref(false)
@@ -196,9 +192,7 @@ export function usePopup(
     props.visible && show()
   })
 
-  const popupStyles = computed(() =>
-    getPopupStyles(zIndex.value, absTop.value, isShow.value)
-  )
+  const popupStyles = computed(() => getPopupStyles(zIndex.value, absTop.value, isShow.value))
 
   const popupClasses = computed(() => [
     'ta-popup',
@@ -233,7 +227,7 @@ export function usePopup(
   }
 }
 
-export function usePopupExtend<T>({ emit }: SetupContext<any>) {
+export function usePopupExtend<T>({ emit }: any) {
   const popupRef = shallowRef<PopupRef | null>(null)
   const isShow = ref(false)
 

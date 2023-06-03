@@ -1,10 +1,6 @@
 <template>
   <teleport to="body">
-    <div
-      :class="['ta-drawer', popupClasses]"
-      :style="popupStyles"
-      v-bind="$attrs"
-    >
+    <div :class="['ta-drawer', popupClasses]" :style="popupStyles" v-bind="$attrs">
       <div class="ta-mask" @click="onMaskClick"></div>
       <div :class="innerClasses" :style="innerStyles" ref="popupInnerEl">
         <slot name="header">
@@ -12,9 +8,7 @@
             v-if="hasHeader"
             class="ta-drawer_header"
             :title="title"
-            :rightButtons="
-              showClose ? [{ icon: CloseOutlined, text: 'close' }] : []
-            "
+            :rightButtons="showClose ? [{ icon: CloseOutlined, text: 'close' }] : []"
             :iconOnly="true"
             @rightButtonClick="onHeaderRightClick"
           >
@@ -84,13 +78,9 @@ export default defineComponent({
       initialEnableBlurCancel: props.initialEnableBlurCancel
     })
 
-    const { safeAreaInsets } = useSafeAreaInsets(
-      toRef(props, 'enableSafeAreaInsets')
-    )
+    const { safeAreaInsets } = useSafeAreaInsets(toRef(props, 'enableSafeAreaInsets'))
 
-    const hasHeader = computed(
-      () => !!(props.title || props.showClose || ctx.slots.header)
-    )
+    const hasHeader = computed(() => !!(props.title || props.showClose || ctx.slots.header))
 
     const innerStyles = computed(() =>
       getInnerStyles({

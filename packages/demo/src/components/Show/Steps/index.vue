@@ -33,9 +33,7 @@
   </ta-group>
   <ta-group title="横向（不要标题 & 小点）">
     <ta-steps :activeIndex="1" horizontal dot>
-      <ta-step v-for="(item, index) in orderSteps" :key="index">{{
-        item.content
-      }}</ta-step>
+      <ta-step v-for="(item, index) in orderSteps" :key="index">{{ item.content }}</ta-step>
     </ta-steps>
   </ta-group>
   <ta-group title="Slot title">
@@ -45,8 +43,7 @@
       </ta-step>
       <ta-step>
         <template #title>
-          【珠海市】【珠海一部】快递小哥正在派件（<a href="tel:10000">10000</a
-          >）
+          【珠海市】【珠海一部】快递小哥正在派件（<a href="tel:10000">10000</a>）
         </template>
         2021-04-13 11:22:16
       </ta-step>
@@ -57,10 +54,7 @@
   </ta-group>
   <ta-fixed>
     <div class="exp-steps-next">
-      <ta-button
-        @click="stepIndex = (stepIndex + 1) % steps.length"
-        type="primary"
-      >
+      <ta-button @click="stepIndex = (stepIndex + 1) % steps.length" type="primary">
         下一步
       </ta-button>
     </div>

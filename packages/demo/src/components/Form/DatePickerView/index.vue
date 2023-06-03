@@ -18,18 +18,11 @@ export default {
 </script>
 
 <template>
-  <ta-notice-bar
-    class="top-notice-bar"
-    title="基础展示参数可以参考 DatePicker"
-  />
+  <ta-notice-bar class="top-notice-bar" title="基础展示参数可以参考 DatePicker" />
   <ta-group title="initialMode=datetime">
     <ta-date-picker-view initialMode="datetime" v-model="dateTimeValue" />
   </ta-group>
   <ta-group title="change 事件">
-    <ta-date-picker-view
-      initialMode="date"
-      v-model="changeValue"
-      @change="onChange"
-    />
+    <ta-date-picker-view initialMode="date" v-model="changeValue" @change="onChange" />
   </ta-group>
 </template>

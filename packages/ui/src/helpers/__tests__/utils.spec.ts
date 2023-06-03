@@ -1,10 +1,4 @@
-import {
-  isNumeric,
-  isEmpty,
-  kebabCase2CamelCase,
-  camelCase2KebabCase,
-  isObject
-} from '../util'
+import { isNumeric, isEmpty, kebabCase2CamelCase, camelCase2KebabCase, isObject } from '../util'
 
 describe('isObject', () => {
   test('{}, { a:1 } is object', () => {

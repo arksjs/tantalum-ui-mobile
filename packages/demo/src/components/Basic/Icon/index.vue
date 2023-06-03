@@ -25,35 +25,19 @@
     <div class="exp-icon-flex">
       <ta-row :gutter="[16, 16]" align="bottom">
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon"
-            size="16"
-            icon="CheckCircleOutlined"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon" size="16" icon="CheckCircleOutlined"></ta-icon>
           <span class="exp-icon-text">16px</span>
         </ta-col>
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon"
-            size="24"
-            icon="CheckCircleOutlined"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon" size="24" icon="CheckCircleOutlined"></ta-icon>
           <span class="exp-icon-text">24px</span>
         </ta-col>
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon"
-            size="32"
-            icon="CheckCircleOutlined"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon" size="32" icon="CheckCircleOutlined"></ta-icon>
           <span class="exp-icon-text">32px</span>
         </ta-col>
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon"
-            size="40"
-            icon="CheckCircleOutlined"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon" size="40" icon="CheckCircleOutlined"></ta-icon>
           <span class="exp-icon-text">40px</span>
         </ta-col>
       </ta-row>
@@ -63,31 +47,19 @@
     <div class="exp-icon-flex">
       <ta-row :gutter="[16, 16]" align="bottom">
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon color-primary"
-            icon="CheckCircleOutlined"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon color-primary" icon="CheckCircleOutlined"></ta-icon>
           <span class="exp-icon-text">蓝色</span>
         </ta-col>
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon color-success"
-            icon="CheckCircleOutlined"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon color-success" icon="CheckCircleOutlined"></ta-icon>
           <span class="exp-icon-text">绿色</span>
         </ta-col>
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon color-warning"
-            icon="CheckCircleOutlined"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon color-warning" icon="CheckCircleOutlined"></ta-icon>
           <span class="exp-icon-text">橙色</span>
         </ta-col>
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon color-danger"
-            icon="CheckCircleOutlined"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon color-danger" icon="CheckCircleOutlined"></ta-icon>
           <span class="exp-icon-text">红色</span>
         </ta-col>
       </ta-row>
@@ -101,24 +73,15 @@
           <span class="exp-icon-text">QQ</span>
         </ta-col>
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon color-success"
-            :icon="WechatSvg"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon color-success" :icon="WechatSvg"></ta-icon>
           <span class="exp-icon-text">微信</span>
         </ta-col>
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon color-warning"
-            :icon="TaobaoSvg"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon color-warning" :icon="TaobaoSvg"></ta-icon>
           <span class="exp-icon-text">淘宝</span>
         </ta-col>
         <ta-col :span="6">
-          <ta-icon
-            class="exp-icon-icon color-danger"
-            :icon="WeiboSvg"
-          ></ta-icon>
+          <ta-icon class="exp-icon-icon color-danger" :icon="WeiboSvg"></ta-icon>
           <span class="exp-icon-text">微博</span>
         </ta-col>
       </ta-row>

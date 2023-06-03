@@ -30,9 +30,7 @@ export const getContentStyles = ({
   } as CSSProperties
 }
 
-export const getIndicatorStyles = (
-  pullIndicatorSafeArea: PullIndicatorSafeArea
-) => {
+export const getIndicatorStyles = (pullIndicatorSafeArea: PullIndicatorSafeArea) => {
   return {
     padding: `${pullIndicatorSafeArea.top}px ${pullIndicatorSafeArea.right}px ${pullIndicatorSafeArea.bottom}px ${pullIndicatorSafeArea.left}px`
   }
@@ -55,9 +53,7 @@ export const getClasses = ({
   }
 ]
 
-export const getPullRefreshClasses = (
-  pullDirection: PullDirectionOrDefault
-) => [
+export const getPullRefreshClasses = (pullDirection: PullDirectionOrDefault) => [
   'ta-scroll-view_pull-refresh',
   'direction--' + (pullDirection || 'unknown')
 ]

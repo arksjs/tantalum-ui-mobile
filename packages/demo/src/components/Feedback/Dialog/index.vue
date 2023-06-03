@@ -87,12 +87,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue'
-import {
-  showToast,
-  showDialog,
-  type PopupOnVisibleStateChange,
-  type PopupOnCancel
-} from '@/index'
+import { showToast, showDialog, type PopupOnVisibleStateChange, type PopupOnCancel } from '@/index'
 
 interface DialogArgs {
   title?: string

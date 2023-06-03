@@ -41,25 +41,18 @@ export default defineComponent({
     const root = shallowRef<HTMLElement | null>(null)
     const handlers = inject<Partial<PickerHandlers>>('taPickerHandlers', {})
 
-    const {
-      getDetail,
-      cols,
-      isCascade,
-      update,
-      updateColSelected,
-      getValuesByRow,
-      onChange
-    } = usePickerView(props, ctx, {
-      name: 'picker',
-      afterUpdate: updatePos,
-      handlers: mergeHandlers(
-        {
-          formatter: props.formatter,
-          parser: props.parser
-        },
-        handlers
-      )
-    })
+    const { getDetail, cols, isCascade, update, updateColSelected, getValuesByRow, onChange } =
+      usePickerView(props, ctx, {
+        name: 'picker',
+        afterUpdate: updatePos,
+        handlers: mergeHandlers(
+          {
+            formatter: props.formatter,
+            parser: props.parser
+          },
+          handlers
+        )
+      })
 
     function updatePos() {
       nextTick(() => {

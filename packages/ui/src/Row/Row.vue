@@ -5,23 +5,10 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  provide,
-  ref,
-  watch,
-  type PropType
-} from 'vue'
+import { computed, defineComponent, provide, ref, watch, type PropType } from 'vue'
 import type { JustifyType, AlignType, UserGutter } from './types'
 import { createEnumsValidator, isNumberArray, isNumeric } from '../helpers'
-import {
-  getRowClasses,
-  getRowStyles,
-  parseGutter,
-  JUSTIFY_TYPES,
-  ALIGN_TYPES
-} from './util'
+import { getRowClasses, getRowStyles, parseGutter, JUSTIFY_TYPES, ALIGN_TYPES } from './util'
 
 export default defineComponent({
   name: 'ta-row',

@@ -31,10 +31,7 @@ import {
 组件导出的类型定义：
 
 ```ts
-import type {
-  SkeletonAvatarShape,
-  SkeletonButtonShape
-} from 'tantalum-ui-mobile'
+import type { SkeletonAvatarShape, SkeletonButtonShape } from 'tantalum-ui-mobile'
 ```
 
 ## Skeleton Props

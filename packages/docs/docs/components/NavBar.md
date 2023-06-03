@@ -82,10 +82,7 @@ type Payload = {
 ### 左侧区域自定义（#left）
 
 ```vue
-<ta-nav-bar
-  title="标题"
-  :right-buttons="[{ icon: 'MenuOutlined', text: '菜单' }]"
->
+<ta-nav-bar title="标题" :right-buttons="[{ icon: 'MenuOutlined', text: '菜单' }]">
   <template #left>Left Slot</template>
 </ta-nav-bar>
 ```

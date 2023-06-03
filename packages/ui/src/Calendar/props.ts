@@ -1,18 +1,6 @@
 import type { PropType } from 'vue'
-import {
-  getNumber,
-  isInNumberRange,
-  isInteger,
-  createEnumsValidator,
-  isNumber
-} from '../helpers'
-import type {
-  DayHandler,
-  Mode,
-  ValueFormatter,
-  ValueParser,
-  CalendarSelectorDetail
-} from './types'
+import { getNumber, isInNumberRange, isInteger, createEnumsValidator, isNumber } from '../helpers'
+import type { DayHandler, Mode, ValueFormatter, ValueParser, CalendarSelectorDetail } from './types'
 import { isPickerDetail } from '../Picker/props'
 import type { SelectorModelValue } from '../SelectorField/types'
 import { MODE_NAMES } from './util'
@@ -60,6 +48,4 @@ export const commonProps = {
 }
 
 export const calendarDetailValidator = (payload: CalendarSelectorDetail) =>
-  isPickerDetail(payload) &&
-  isNumber(payload.rangeCount) &&
-  Array.isArray(payload.valueArray)
+  isPickerDetail(payload) && isNumber(payload.rangeCount) && Array.isArray(payload.valueArray)

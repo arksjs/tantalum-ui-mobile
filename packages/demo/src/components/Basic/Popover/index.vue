@@ -38,9 +38,7 @@
           id="popoverTop2"
           shape="circle"
           icon="UpOutlined"
-          @click="
-            ;(placement = 'top'), (selector = '#popoverTop2'), (visible = true)
-          "
+          @click=";(placement = 'top'), (selector = '#popoverTop2'), (visible = true)"
         >
           上
         </ta-button>
@@ -51,11 +49,7 @@
           id="popoverLeft2"
           shape="circle"
           icon="LeftOutlined"
-          @click="
-            ;(placement = 'left'),
-              (selector = '#popoverLeft2'),
-              (visible = true)
-          "
+          @click=";(placement = 'left'), (selector = '#popoverLeft2'), (visible = true)"
         >
           左
         </ta-button>
@@ -65,11 +59,7 @@
           id="popoverRight2"
           shape="circle"
           icon="RightOutlined"
-          @click="
-            ;(placement = 'right'),
-              (selector = '#popoverRight2'),
-              (visible = true)
-          "
+          @click=";(placement = 'right'), (selector = '#popoverRight2'), (visible = true)"
         >
           右
         </ta-button>
@@ -80,11 +70,7 @@
           id="popoverBottom2"
           shape="circle"
           icon="DownOutlined"
-          @click="
-            ;(placement = 'bottom'),
-              (selector = '#popoverBottom2'),
-              (visible = true)
-          "
+          @click=";(placement = 'bottom'), (selector = '#popoverBottom2'), (visible = true)"
         >
           下
         </ta-button>
@@ -100,8 +86,7 @@
         icon="PlusOutlined"
         @click="
           ;(selector = '#popoverLongContent'),
-            (content =
-              '这是气泡内容这是气泡内容这是气泡内容这是气泡内容这是气泡内容这是气泡内容'),
+            (content = '这是气泡内容这是气泡内容这是气泡内容这是气泡内容这是气泡内容这是气泡内容'),
             (visible = true)
         "
       >
@@ -125,9 +110,7 @@
         id="popoverEvent"
         shape="circle"
         icon="PlusOutlined"
-        @click="
-          ;(selector = '#popoverEvent'), (visibleEvent = true), (visible = true)
-        "
+        @click=";(selector = '#popoverEvent'), (visibleEvent = true), (visible = true)"
       >
       </ta-button>
     </ta-cell>
@@ -163,12 +146,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import {
-  showToast,
-  showPopover,
-  type PlacementType,
-  type PopupOnVisibleStateChange
-} from '@/index'
+import { showToast, showPopover, type PlacementType, type PopupOnVisibleStateChange } from '@/index'
 
 export default defineComponent({
   name: 'ExpPopover',

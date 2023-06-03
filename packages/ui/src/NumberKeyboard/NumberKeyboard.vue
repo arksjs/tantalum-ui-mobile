@@ -27,23 +27,14 @@
             </div>
           </li>
         </ul>
-        <div
-          class="ta-number-keyboard_right-column"
-          v-if="type === 'rightColumn'"
-        >
+        <div class="ta-number-keyboard_right-column" v-if="type === 'rightColumn'">
           <div class="ta-number-keyboard_backspace">
-            <div
-              class="ta-number-keyboard_button"
-              @click="onNumberClick(backspaceItem)"
-            >
+            <div class="ta-number-keyboard_button" @click="onNumberClick(backspaceItem)">
               <Icon :icon="BackspaceOutlined" />
             </div>
           </div>
           <div class="ta-number-keyboard_confirm">
-            <div
-              class="ta-number-keyboard_confirm-button"
-              @click="onConfirmClick"
-            >
+            <div class="ta-number-keyboard_confirm-button" @click="onConfirmClick">
               {{ locale.numberKeyboardConfirmText }}
             </div>
           </div>
@@ -70,11 +61,7 @@ import { popupEmits, popupExtendProps } from '../popup/props'
 import type { OnCancel, OnVisibleStateChange } from '../popup/types'
 import { useLocale } from '../ConfigProvider/context'
 import { formStringValueEmits } from '../Form/form'
-import type {
-  NumberKeyboardItem,
-  KeyboardType,
-  NumberKeyboardEmits
-} from './types'
+import type { NumberKeyboardItem, KeyboardType, NumberKeyboardEmits } from './types'
 import BackspaceOutlined from '../Icon/icons/BackspaceOutlined'
 import KeyboardOutlined from '../Icon/icons/KeyboardOutlined'
 import { getBodyClasses, isShowHeaderConfirm } from './util'

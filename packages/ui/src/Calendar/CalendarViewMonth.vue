@@ -2,19 +2,13 @@
   <div class="ta-calendar-view_month-caption">
     {{ month.caption }}
   </div>
-  <div
-    class="ta-calendar-view_days"
-    :data-index="monthIndex"
-    @click="onDaysClick"
-  >
+  <div class="ta-calendar-view_days" :data-index="monthIndex" @click="onDaysClick">
     <div
       class="ta-calendar-view_day"
       :class="{
         disabled: day.state === 'disabled',
         selected:
-          day.state === 'selected' ||
-          day.state === 'startSelected' ||
-          day.state === 'endSelected',
+          day.state === 'selected' || day.state === 'startSelected' || day.state === 'endSelected',
         'in-range': mode === 'range' && day.state === 'selected'
       }"
       v-for="(day, dayIndex) in month.days"

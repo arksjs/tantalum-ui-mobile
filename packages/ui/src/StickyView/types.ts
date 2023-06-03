@@ -37,7 +37,4 @@ export interface StickyViewItem extends Required<StickyViewItemProps> {
   index: number
 }
 
-export type {
-  OnChange as StickyViewOnChange,
-  OnResetItems as StickyViewOnResetItems
-}
+export type { OnChange as StickyViewOnChange, OnResetItems as StickyViewOnResetItems }

@@ -63,9 +63,7 @@ export default {
 <template>
   <ta-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Cascader" />
   <ta-group title="基础用法">
-    <ta-cell label="v-model" isLink @click="visible = true">{{
-      popupValue
-    }}</ta-cell>
+    <ta-cell label="v-model" isLink @click="visible = true">{{ popupValue }}</ta-cell>
   </ta-group>
   <ta-group title="事件监听">
     <ta-cell

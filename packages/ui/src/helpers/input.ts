@@ -3,10 +3,7 @@
  * @param value 值
  * @param decimalLength 小数位
  */
-export function formatInputNumber(
-  value: string | number,
-  decimalLength = -1
-): string {
+export function formatInputNumber(value: string | number, decimalLength = -1): string {
   if (value == null || value === '') {
     return ''
   }

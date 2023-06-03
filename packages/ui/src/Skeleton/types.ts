@@ -32,7 +32,4 @@ export interface SkeletonParagraphProps extends SkeletonCommonProps {
 
 export type SkeletonTitleProps = SkeletonCommonProps
 
-export type {
-  AvatarShape as SkeletonAvatarShape,
-  ButtonShape as SkeletonButtonShape
-}
+export type { AvatarShape as SkeletonAvatarShape, ButtonShape as SkeletonButtonShape }

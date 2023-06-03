@@ -48,19 +48,11 @@ const buildIndex = async () => {
     .sort()
     .map(v => `import '../${v}'`)
 
-  await fs.promises.writeFile(
-    resolveCore('./src/style/index.ts'),
-    paths.join(`\n`) + `\n`,
-    'utf-8'
-  )
+  await fs.promises.writeFile(resolveCore('./src/style/index.ts'), paths.join(`\n`) + `\n`, 'utf-8')
 }
 
 export const buildSrcFullStyle = async () => {
-  await execa('gulp', [
-    'buildStyleImportFilePathsCache',
-    '--gulpfile',
-    './build/gulpfile.js'
-  ])
+  await execa('gulp', ['buildStyleImportFilePathsCache', '--gulpfile', './build/gulpfile.js'])
   await buildIndex()
   await buildIndexScss()
 }

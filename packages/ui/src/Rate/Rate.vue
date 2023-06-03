@@ -11,12 +11,7 @@
     @mouseleave="onTouchEnd"
     @dragstart="onDragStart"
   >
-    <input
-      :name="name"
-      type="hidden"
-      :value="inputValue"
-      :disabled="disabled"
-    />
+    <input :name="name" type="hidden" :value="inputValue" :disabled="disabled" />
     <div
       class="ta-rate_item"
       :class="{
@@ -52,13 +47,7 @@ import { useTouch } from '../hooks'
 import StarOutlined from '../Icon/icons/StarOutlined'
 import StarFilled from '../Icon/icons/StarFilled'
 import type { IconData } from '../Icon/types'
-import {
-  getClasses,
-  getStyles,
-  isIntegerOrHalf,
-  DEFAULT_COUNT,
-  getMax
-} from './util'
+import { getClasses, getStyles, isIntegerOrHalf, DEFAULT_COUNT, getMax } from './util'
 import type { RateEmits } from './types'
 
 interface RateCoords {
@@ -180,8 +169,7 @@ export default defineComponent({
         let offsetCount = 0
 
         if (x > 0) {
-          offsetCount =
-            Math.floor(x / size) + (x % size >= size - offsetX ? 1 : 0)
+          offsetCount = Math.floor(x / size) + (x % size >= size - offsetX ? 1 : 0)
         } else if (x < 0) {
           offsetCount = -Math.floor(-x / size) + (-x % size > offsetX ? -1 : 0)
         }
@@ -193,9 +181,7 @@ export default defineComponent({
             : current + offsetCount > max.value
             ? false
             : perOffsetX === 0 ||
-              (perOffsetX > 0
-                ? perOffsetX < size / 2
-                : size + perOffsetX < size / 2)
+              (perOffsetX > 0 ? perOffsetX < size / 2 : size + perOffsetX < size / 2)
 
         coords.isChange = true
 

@@ -37,11 +37,7 @@ import { Tab } from '../Tab'
 import { SideTab } from '../SideTab'
 import { Swiper } from '../Swiper'
 import { useException } from '../hooks'
-import type {
-  SwiperOnActiveIndexChange,
-  SwiperOnAnimated,
-  SwiperRef
-} from '../Swiper/types'
+import type { SwiperOnActiveIndexChange, SwiperOnAnimated, SwiperRef } from '../Swiper/types'
 import { emitChangeValidator } from '../Swiper/props'
 import { getClasses } from './util'
 import type { TabViewEmits } from './types'

@@ -45,22 +45,10 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  ref,
-  onMounted,
-  watch,
-  shallowRef,
-  type PropType
-} from 'vue'
+import { defineComponent, computed, ref, onMounted, watch, shallowRef, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
-import {
-  string2StringArray,
-  type PropsToEmits,
-  isStringOrStringArray
-} from '../helpers'
+import { string2StringArray, type PropsToEmits, isStringOrStringArray } from '../helpers'
 import { useTouch, useScrollTo } from '../hooks'
 import { useLocale } from '../ConfigProvider/context'
 import {
@@ -184,14 +172,8 @@ export default defineComponent({
      */
     function onScroll() {
       const { upperThreshold, lowerThreshold, scrollX, scrollY } = props
-      const {
-        scrollTop,
-        scrollLeft,
-        scrollWidth,
-        scrollHeight,
-        clientHeight,
-        clientWidth
-      } = root.value as HTMLElement
+      const { scrollTop, scrollLeft, scrollWidth, scrollHeight, clientHeight, clientWidth } =
+        root.value as HTMLElement
 
       let isToLowerY = false
       let isToUpperY = false
@@ -210,10 +192,7 @@ export default defineComponent({
 
       // 上下滚动
       if (scrollY) {
-        if (
-          scrollTop + clientHeight + lowerThreshold >= scrollHeight &&
-          scrollTop > _prevY
-        ) {
+        if (scrollTop + clientHeight + lowerThreshold >= scrollHeight && scrollTop > _prevY) {
           isToLowerY = true
         } else if (scrollTop <= upperThreshold && scrollTop < _prevY) {
           isToUpperY = true
@@ -222,10 +201,7 @@ export default defineComponent({
 
       // 左右滚动
       if (scrollX) {
-        if (
-          scrollLeft + clientWidth + lowerThreshold >= scrollWidth &&
-          scrollLeft > _prevX
-        ) {
+        if (scrollLeft + clientWidth + lowerThreshold >= scrollWidth && scrollLeft > _prevX) {
           isToLowerX = true
         } else if (scrollLeft <= upperThreshold && scrollLeft < _prevX) {
           isToUpperX = true
@@ -316,12 +292,8 @@ export default defineComponent({
         scrollAnimated: props.scrollAnimated
       })
     )
-    const pullRefreshClasses = computed(() =>
-      getPullRefreshClasses(pullDirection.value)
-    )
-    const loadMoreClasses = computed(() =>
-      getLoadMoreClasses(pullDirection.value)
-    )
+    const pullRefreshClasses = computed(() => getPullRefreshClasses(pullDirection.value))
+    const loadMoreClasses = computed(() => getLoadMoreClasses(pullDirection.value))
     const contentStyles = computed(() =>
       getContentStyles({
         translateDuration: translateDuration.value,
@@ -329,25 +301,15 @@ export default defineComponent({
         pullDistance: pullDistance.value
       })
     )
-    const indicatorStyles = computed(() =>
-      getIndicatorStyles(pullIndicatorSafeArea.value)
-    )
-    const allowPullDirections = computed(() =>
-      string2StringArray(props.enablePullDirections)
-    )
+    const indicatorStyles = computed(() => getIndicatorStyles(pullIndicatorSafeArea.value))
+    const allowPullDirections = computed(() => string2StringArray(props.enablePullDirections))
 
     const { onTouchStart, onTouchMove, onTouchEnd, onDragStart } = useTouch({
       onStart(e) {
         const { pageX, pageY } = e.touchObject
         const $scroll = root.value as HTMLElement
-        const {
-          scrollHeight,
-          scrollTop,
-          clientHeight,
-          scrollLeft,
-          scrollWidth,
-          clientWidth
-        } = $scroll
+        const { scrollHeight, scrollTop, clientHeight, scrollLeft, scrollWidth, clientWidth } =
+          $scroll
 
         coords = {
           pageX,
@@ -375,19 +337,13 @@ export default defineComponent({
         if (scrollTop === 0 && allowPullDirections.value.includes('down')) {
           directions.push('down')
         }
-        if (
-          scrollTop + clientHeight >= scrollHeight &&
-          allowPullDirections.value.includes('up')
-        ) {
+        if (scrollTop + clientHeight >= scrollHeight && allowPullDirections.value.includes('up')) {
           directions.push('up')
         }
         if (scrollLeft === 0 && allowPullDirections.value.includes('right')) {
           directions.push('right')
         }
-        if (
-          scrollLeft + clientWidth >= scrollWidth &&
-          allowPullDirections.value.includes('left')
-        ) {
+        if (scrollLeft + clientWidth >= scrollWidth && allowPullDirections.value.includes('left')) {
           directions.push('left')
         }
 
@@ -451,8 +407,7 @@ export default defineComponent({
             coords.directions = coords.directions.filter(v => {
               return (
                 ['left', 'right'].includes(v) &&
-                ((v === 'right' && offsetX > 0) ||
-                  (v === 'left' && offsetX < 0))
+                ((v === 'right' && offsetX > 0) || (v === 'left' && offsetX < 0))
               )
             })
           }
@@ -514,9 +469,7 @@ export default defineComponent({
             ) // 除于2比不除更好拉一点
         }
 
-        pullDistance.value = ['down', 'right'].includes(pullDirection.value)
-          ? distance
-          : -distance
+        pullDistance.value = ['down', 'right'].includes(pullDirection.value) ? distance : -distance
       },
       onEnd() {
         if (!coords) {

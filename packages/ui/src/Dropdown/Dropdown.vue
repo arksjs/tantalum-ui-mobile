@@ -16,22 +16,10 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  ref,
-  nextTick,
-  shallowRef,
-  type PropType
-} from 'vue'
+import { defineComponent, computed, ref, nextTick, shallowRef, type PropType } from 'vue'
 import { usePopup } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/props'
-import {
-  selectorValidator,
-  querySelector,
-  type PropsToEmits,
-  type Selector
-} from '../helpers'
+import { selectorValidator, querySelector, type PropsToEmits, type Selector } from '../helpers'
 import { useException } from '../hooks'
 import type { DropdownEmits } from './types'
 

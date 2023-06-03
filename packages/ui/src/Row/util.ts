@@ -36,9 +36,7 @@ export const getRowClasses = (props: RowProps) => {
   props.justify &&
     JUSTIFY_TYPES.includes(props.justify) &&
     classes.push(`justify--${props.justify}`)
-  props.align &&
-    ALIGN_TYPES.includes(props.align) &&
-    classes.push(`align--${props.align}`)
+  props.align && ALIGN_TYPES.includes(props.align) && classes.push(`align--${props.align}`)
 
   return classes
 }

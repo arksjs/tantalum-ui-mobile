@@ -20,13 +20,7 @@
         :key="item"
         class="ta-swiper_indicator"
         :class="getPaginationItemClasses(item, index)"
-        :style="
-          getPaginationItemStyles(
-            { indicatorActiveColor, indicatorColor },
-            item,
-            index
-          )
-        "
+        :style="getPaginationItemStyles({ indicatorActiveColor, indicatorColor }, item, index)"
       ></span>
     </div>
     <template v-if="navigationButtons && pagination.length > 1">
@@ -40,14 +34,7 @@
 </template>
 
 <script lang="ts">
-import {
-  ref,
-  defineComponent,
-  onMounted,
-  watch,
-  onBeforeUnmount,
-  shallowRef
-} from 'vue'
+import { ref, defineComponent, onMounted, watch, onBeforeUnmount, shallowRef } from 'vue'
 import { Icon } from '../Icon'
 import {
   isNumber,
@@ -169,11 +156,7 @@ export default defineComponent({
 
       if (len === 0) {
         goTo(0)
-      } else if (
-        isNumber(activeIndex) &&
-        activeIndex >= 0 &&
-        activeIndex < len
-      ) {
+      } else if (isNumber(activeIndex) && activeIndex >= 0 && activeIndex < len) {
         if (activeIndex !== index.value) {
           // 通过props设置的activeIndex不emit change
           isEmitChange = !isProp
@@ -217,9 +200,7 @@ export default defineComponent({
       $items.forEach(($item, index) => {
         if (offset != null && offset < 0) {
           if (slideIndex === 0 && index === lastIndex) {
-            $item.style.transform = getTransformStyleValue(
-              -itemSize * itemCount
-            )
+            $item.style.transform = getTransformStyleValue(-itemSize * itemCount)
           } else {
             $item.style.transform = ''
           }
@@ -231,9 +212,7 @@ export default defineComponent({
           }
         } else {
           if (slideIndex === 0 && index === lastIndex) {
-            $item.style.transform = getTransformStyleValue(
-              -itemSize * itemCount
-            )
+            $item.style.transform = getTransformStyleValue(-itemSize * itemCount)
           } else if (slideIndex === lastIndex && index === 0) {
             $item.style.transform = getTransformStyleValue(itemSize * itemCount)
           } else {
@@ -257,9 +236,7 @@ export default defineComponent({
     function getTransformStyleValue(size: number) {
       return (
         'translate3d(' +
-        (direction === 'x'
-          ? size + 'px, 0px, 0px'
-          : '0px, ' + size + 'px, 0px') +
+        (direction === 'x' ? size + 'px, 0px, 0px' : '0px, ' + size + 'px, 0px') +
         ')'
       )
     }
@@ -377,18 +354,13 @@ export default defineComponent({
       frameNumber: number
     ) {
       durationTimer = requestAnimationFrame(() => {
-        const transform = window.getComputedStyle(
-          listEl.value as HTMLElement
-        ).transform
+        const transform = window.getComputedStyle(listEl.value as HTMLElement).transform
 
-        const currentSize = transform
-          .slice(7, transform.length - 1)
-          .split(', ')[direction === 'y' ? 5 : 4]
+        const currentSize = transform.slice(7, transform.length - 1).split(', ')[
+          direction === 'y' ? 5 : 4
+        ]
 
-        if (
-          parseFloat(currentSize).toFixed(2) === transSize.toFixed(2) ||
-          frameNumber > 0
-        ) {
+        if (parseFloat(currentSize).toFixed(2) === transSize.toFixed(2) || frameNumber > 0) {
           // 校对清楚再回调
           playing = false
 
@@ -443,8 +415,7 @@ export default defineComponent({
         }
         itemSize = _itemSize
 
-        root.value.style[('overflow' + directionGroup[0]) as 'overflowY'] =
-          'hidden'
+        root.value.style[('overflow' + directionGroup[0]) as 'overflowY'] = 'hidden'
 
         listEl.value.style.cssText = CSSProperties2CssText({
           WebkitBackfaceVisibility: 'hidden',
@@ -474,10 +445,7 @@ export default defineComponent({
       stop()
       props.autoplay &&
         $items.length > 1 &&
-        (autoplayTimer = window.setInterval(
-          () => next(),
-          getNumber(props.interval)
-        ))
+        (autoplayTimer = window.setInterval(() => next(), getNumber(props.interval)))
     }
 
     /**
@@ -556,8 +524,7 @@ export default defineComponent({
 
         if (
           !circular &&
-          ((active === 0 && offsetX < 0) ||
-            (active === getLastIndex() && offsetX > 0))
+          ((active === 0 && offsetX < 0) || (active === getLastIndex() && offsetX > 0))
         ) {
           transSize += props.bounces ? getStretchOffset(offsetX) : 0
         } else {
@@ -580,9 +547,7 @@ export default defineComponent({
           emit('click')
         } else if (coords) {
           const offsetX =
-            direction === 'x'
-              ? coords.startX - coords.stopX
-              : coords.startY - coords.stopY
+            direction === 'x' ? coords.startX - coords.stopX : coords.startY - coords.stopY
           let absX = Math.abs(offsetX)
           const active = index.value
 

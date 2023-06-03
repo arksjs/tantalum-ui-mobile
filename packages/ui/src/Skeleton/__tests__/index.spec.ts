@@ -29,9 +29,7 @@ describe('Skeleton', () => {
       }
     })
     expect(wrapper.findComponent(SkeletonTitle).classes()).toContain('animated')
-    expect(wrapper.findComponent(SkeletonParagraph).classes()).toContain(
-      'animated'
-    )
+    expect(wrapper.findComponent(SkeletonParagraph).classes()).toContain('animated')
   })
 
   test('loading', async () => {
@@ -52,12 +50,7 @@ describe('Skeleton', () => {
   test('slot layout', () => {
     const wrapper = mount(Skeleton, {
       slots: {
-        layout: [
-          SkeletonImage,
-          SkeletonTitle,
-          SkeletonParagraph,
-          SkeletonButton
-        ]
+        layout: [SkeletonImage, SkeletonTitle, SkeletonParagraph, SkeletonButton]
       }
     })
 

@@ -19,10 +19,7 @@ import { TaSwipeCell } from 'tantalum-ui-mobile'
 组件导出的类型定义：
 
 ```ts
-import type {
-  SwipeCellButtonOption,
-  SwipeCellOnButtonClick
-} from 'tantalum-ui-mobile'
+import type { SwipeCellButtonOption, SwipeCellOnButtonClick } from 'tantalum-ui-mobile'
 ```
 
 ## Props

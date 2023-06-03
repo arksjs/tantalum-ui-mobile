@@ -9,11 +9,7 @@
       :arrowDirection="active ? 'up' : 'down'"
       @click="onClick"
     />
-    <div
-      class="ta-collapse-item_body ta-horizontal-hairline"
-      style="display: none"
-      ref="bodyEl"
-    >
+    <div class="ta-collapse-item_body ta-horizontal-hairline" style="display: none" ref="bodyEl">
       <div class="ta-collapse-item_content">
         <slot></slot>
       </div>
@@ -26,11 +22,7 @@ import { defineComponent, ref, computed, shallowRef, type PropType } from 'vue'
 import { Cell } from '../Cell'
 import { iconValidator, isBoolean, type PropsToEmits } from '../helpers'
 import { useException, useGroupItem } from '../hooks'
-import type {
-  CollapseContextValue,
-  CollapseItemEmits,
-  CollapseContextItemRef
-} from './types'
+import type { CollapseContextValue, CollapseItemEmits, CollapseContextItemRef } from './types'
 import type { IconData } from '../Icon/types'
 import { getItemClasses } from './util'
 import { CollapseContext } from './context'
@@ -65,16 +57,16 @@ export default defineComponent({
     const bodyEl = shallowRef<HTMLElement | null>(null)
     const active = ref(false)
 
-    const { onChange } = useGroupItem<
-      CollapseContextValue,
-      CollapseContextItemRef
-    >(CollapseContext, {
-      uid,
-      show,
-      hide,
-      getName: () => props.name,
-      getActive: () => active.value
-    })
+    const { onChange } = useGroupItem<CollapseContextValue, CollapseContextItemRef>(
+      CollapseContext,
+      {
+        uid,
+        show,
+        hide,
+        getName: () => props.name,
+        getActive: () => active.value
+      }
+    )
 
     function handleChange(uid: symbol) {
       if (onChange) {

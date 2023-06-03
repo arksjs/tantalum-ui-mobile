@@ -24,8 +24,6 @@ describe('ActivityIndicator', () => {
       props: { color }
     })
 
-    expect(wrapper.find('.ta-loading-icon_thumb').attributes('stroke')).toBe(
-      color
-    )
+    expect(wrapper.find('.ta-loading-icon_thumb').attributes('stroke')).toBe(color)
   })
 })

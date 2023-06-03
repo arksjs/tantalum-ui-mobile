@@ -36,6 +36,5 @@ export const virtualListProps = {
   }
 }
 
-export const emitVisibleItemsChangeValidator = (
-  payload: OnVisibleItemsChangePayload
-) => payload && Array.isArray(payload.items)
+export const emitVisibleItemsChangeValidator = (payload: OnVisibleItemsChangePayload) =>
+  payload && Array.isArray(payload.items)

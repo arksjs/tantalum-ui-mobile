@@ -74,11 +74,7 @@ export default {
       />
     </ta-cell>
     <ta-cell label="禁用">
-      <ta-cascader
-        :modelValue="disableValue"
-        :options="cascadeOptions"
-        disabled
-      />
+      <ta-cascader :modelValue="disableValue" :options="cascadeOptions" disabled />
     </ta-cell>
   </ta-group>
   <ta-group title="事件监听">

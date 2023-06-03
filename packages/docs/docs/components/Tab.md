@@ -19,13 +19,7 @@ import { TaTab } from 'tantalum-ui-mobile'
 组件导出的类型定义：
 
 ```ts
-import type {
-  TabOnChange,
-  TabOptions,
-  TabOption,
-  BadgeOption,
-  TabRef
-} from 'tantalum-ui-mobile'
+import type { TabOnChange, TabOptions, TabOption, BadgeOption, TabRef } from 'tantalum-ui-mobile'
 ```
 
 ## Props

@@ -14,14 +14,13 @@ type UpperCases = StringToUnion<'ABCDEFGH'> | StringToUnion<'IJKLMNOPQRSTUVXYZ'>
  * for-bar-baz -> forBarBaz
  */
 type ConcatDash<S extends string> = `-${S}`
-export type CamelCase<S extends string> =
-  S extends `${infer L}-${infer M}${infer R}`
-    ? M extends '-'
-      ? `${L}-${CamelCase<ConcatDash<R>>}`
-      : M extends Uppercase<M>
-      ? `${L}-${M}${CamelCase<R>}`
-      : `${L}${Uppercase<M>}${CamelCase<R>}`
-    : S
+export type CamelCase<S extends string> = S extends `${infer L}-${infer M}${infer R}`
+  ? M extends '-'
+    ? `${L}-${CamelCase<ConcatDash<R>>}`
+    : M extends Uppercase<M>
+    ? `${L}-${M}${CamelCase<R>}`
+    : `${L}${Uppercase<M>}${CamelCase<R>}`
+  : S
 
 /**
  * FooBarBaz -> for-bar-baz
@@ -40,9 +39,9 @@ type DelFirst<T extends string, U extends string> = T extends `-${string}`
   : U
 export type KebabCase<T extends string> = DelFirst<T, Split<T>>
 
-export type UnionToIntersection<T> = (
-  T extends any ? (x: T) => any : never
-) extends (x: infer R) => any
+export type UnionToIntersection<T> = (T extends any ? (x: T) => any : never) extends (
+  x: infer R
+) => any
   ? R
   : never
 
@@ -126,10 +125,7 @@ export function isNumber(object: unknown): object is number {
  * @returns boolean
  */
 export function isNumeric(object: unknown): object is number | string {
-  return (
-    isNumber(object) ||
-    (typeof object === 'string' && isNumber(parseFloat(object)))
-  )
+  return isNumber(object) || (typeof object === 'string' && isNumber(parseFloat(object)))
 }
 
 /**
@@ -149,8 +145,7 @@ export function isInteger(object: unknown): object is number {
 export function isSymbol(object: unknown): object is symbol {
   return (
     typeof object === 'symbol' ||
-    (isObject(object) &&
-      Object.prototype.toString.call(object) === '[object Symbol]')
+    (isObject(object) && Object.prototype.toString.call(object) === '[object Symbol]')
   )
 }
 
@@ -198,27 +193,25 @@ const createArrayValidator = (itemValidator: (item: unknown) => boolean) => {
  * @param object 值
  * @returns boolean
  */
-export const isNumberArray = createArrayValidator(
-  object => typeof object === 'number'
-) as (object: unknown) => object is number[]
+export const isNumberArray = createArrayValidator(object => typeof object === 'number') as (
+  object: unknown
+) => object is number[]
 
 /**
  * 是否String[]
  * @param object 值
  * @returns boolean
  */
-export const isStringArray = createArrayValidator(
-  object => typeof object === 'string'
-) as (object: unknown) => object is string[]
+export const isStringArray = createArrayValidator(object => typeof object === 'string') as (
+  object: unknown
+) => object is string[]
 
 /**
  * 是否string或string[]
  * @param object 值
  * @returns boolean
  */
-export function isStringOrStringArray(
-  object: unknown
-): object is string | string[] {
+export function isStringOrStringArray(object: unknown): object is string | string[] {
   return !!(isStringArray(object) || isString(object))
 }
 
@@ -236,18 +229,18 @@ export const string2StringArray = (object: unknown) => {
  * @param object 值
  * @returns boolean
  */
-export const isStringOrNumberArray = createArrayValidator(object =>
-  isStringOrNumber(object)
-) as (object: unknown) => object is (number | string)[]
+export const isStringOrNumberArray = createArrayValidator(object => isStringOrNumber(object)) as (
+  object: unknown
+) => object is (number | string)[]
 
 /**
  * 是否Date[]
  * @param object 值
  * @returns boolean
  */
-export const isDateArray = createArrayValidator(
-  object => object instanceof Date
-) as (object: unknown) => object is Date[]
+export const isDateArray = createArrayValidator(object => object instanceof Date) as (
+  object: unknown
+) => object is Date[]
 
 /**
  * 是否相同的数组
@@ -363,10 +356,7 @@ function hasOwnProperty(object: AnyObject, key: string) {
  * @param object 对象
  * @param callback 遍历回调
  */
-export function objectForEach(
-  object: unknown,
-  callback: (value: unknown, key: string) => void
-) {
+export function objectForEach(object: unknown, callback: (value: unknown, key: string) => void) {
   if (isObject(object)) {
     const obj = object as AnyObject
 
@@ -439,11 +429,7 @@ export function capitalize(value: string) {
 }
 
 export const getNumber = (num?: string | number, defaultNum = 0) => {
-  return num == null
-    ? defaultNum
-    : typeof num === 'string'
-    ? parseFloat(num)
-    : num
+  return num == null ? defaultNum : typeof num === 'string' ? parseFloat(num) : num
 }
 
 /**
@@ -464,11 +450,7 @@ export function rangeNumber(number: number, min: number, max: number) {
  * @param max 最大值
  * @returns 限定整数
  */
-export function rangeInteger(
-  number: number | string,
-  min: number,
-  max: number
-) {
+export function rangeInteger(number: number | string, min: number, max: number) {
   const num = getNumber(number, min)
 
   return rangeNumber(Math.round(num), Math.ceil(min), Math.floor(max))
@@ -517,10 +499,7 @@ export const isURL = (object: unknown) => {
  * @param len 数组长度
  * @returns 数组
  */
-export const getSameValueArray: <T>(value: T, len: number) => T[] = (
-  value,
-  len
-) => {
+export const getSameValueArray: <T>(value: T, len: number) => T[] = (value, len) => {
   const newArr = []
 
   for (let i = 0; i < len; i++) {

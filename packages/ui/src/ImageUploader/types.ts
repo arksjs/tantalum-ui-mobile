@@ -17,10 +17,7 @@ export interface UploadHandlers {
 }
 
 export type BeforeUploadReturn = boolean | Promise<boolean | File> | void
-export type BeforeUpload = (
-  file: File,
-  handlers: BeforeUploadHandlers
-) => BeforeUploadReturn
+export type BeforeUpload = (file: File, handlers: BeforeUploadHandlers) => BeforeUploadReturn
 export type UploadReady = (file: File, handlers: UploadHandlers) => void
 
 export type OnDelete = (payload: {

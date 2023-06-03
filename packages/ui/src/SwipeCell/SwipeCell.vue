@@ -35,14 +35,7 @@
 </template>
 
 <script lang="ts">
-import {
-  ref,
-  defineComponent,
-  computed,
-  reactive,
-  shallowRef,
-  type PropType
-} from 'vue'
+import { ref, defineComponent, computed, reactive, shallowRef, type PropType } from 'vue'
 import {
   cloneData,
   rangeNumber,
@@ -169,12 +162,10 @@ export default defineComponent({
 
         for (let i = 0, len = $children.length; i < len; i++) {
           buttonTranslateXs[i] =
-            (($children[i] as HTMLElement).offsetLeft * (buttonsW - max)) /
-            buttonsW
+            (($children[i] as HTMLElement).offsetLeft * (buttonsW - max)) / buttonsW
         }
 
-        translateX.value =
-          max + (x > buttonsW ? getStretchOffset(x - buttonsW) : 0)
+        translateX.value = max + (x > buttonsW ? getStretchOffset(x - buttonsW) : 0)
         duration.value = 0
 
         e.stopPropagation()

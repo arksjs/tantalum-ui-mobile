@@ -11,13 +11,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch, type PropType } from 'vue'
-import {
-  getNumber,
-  isNumber,
-  rangeInteger,
-  colorValidator,
-  isString
-} from '../helpers'
+import { getNumber, isNumber, rangeInteger, colorValidator, isString } from '../helpers'
 import {
   DEFAULT_MAX_COUNT,
   getBadgeClasses,
@@ -82,7 +76,7 @@ export default defineComponent({
         return
       }
 
-      const currentIsShow = props.showZero || content2.value > 0
+      const currentIsShow = props.showZero || (isNumber(content2.value) && content2.value > 0)
       const isReadyToHide = !props.showZero && val === 0
 
       if (!currentIsShow || isReadyToHide) {
@@ -102,17 +96,8 @@ export default defineComponent({
         frameStart({
           from: content2.value as number,
           to,
-          duration: Math.min(
-            Math.abs(to - (content2.value as number)) * 50,
-            1000
-          ),
-          progress: ({
-            current,
-            frameIndex
-          }: {
-            current: number
-            frameIndex: number
-          }) => {
+          duration: Math.min(Math.abs(to - (content2.value as number)) * 50, 1000),
+          progress: ({ current, frameIndex }: { current: number; frameIndex: number }) => {
             if (frameIndex % 3 === 0) {
               content2.value = Math.round(current)
             }

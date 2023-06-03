@@ -14,8 +14,7 @@ export const popupProps = {
 }
 
 export const popupEmits: PropsToEmits<PopupEmits> = {
-  visibleStateChange: payload =>
-    payload && VISIBLE_STATE_TYPES.includes(payload.state),
+  visibleStateChange: payload => payload && VISIBLE_STATE_TYPES.includes(payload.state),
   'update:visible': visible => isBoolean(visible),
   cancel: payload => payload && isString(payload.source),
   confirm: payload => !!payload

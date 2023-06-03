@@ -5,10 +5,7 @@
         <ta-input v-model="baseForm.nickname" placeholder="请输入昵称" />
       </ta-form-item>
       <ta-form-item label="性别">
-        <ta-radio-group
-          v-model="baseForm.gender"
-          :options="genderOptions"
-        ></ta-radio-group>
+        <ta-radio-group v-model="baseForm.gender" :options="genderOptions"></ta-radio-group>
       </ta-form-item>
       <template #footer>
         <ta-button type="primary" @click="onBaseSubmit">提交</ta-button>
@@ -28,10 +25,7 @@
         name="avatar"
         title="头像"
         required
-        :component="[
-          TaImageUploader,
-          { uploadReady: hookUpload, columnNumber: 1, maxCount: 1 }
-        ]"
+        :component="[TaImageUploader, { uploadReady: hookUpload, columnNumber: 1, maxCount: 1 }]"
         :decorator="[FormItem]"
       />
       <Field
@@ -57,10 +51,7 @@
         name="season"
         title="季节"
         required
-        :component="[
-          TaPicker,
-          { options: multiOptions, placeholder: '选择季节' }
-        ]"
+        :component="[TaPicker, { options: multiOptions, placeholder: '选择季节' }]"
         :decorator="[FormItem]"
       />
       <Field
@@ -105,18 +96,10 @@
         :component="[TaStepper, { max: 10, step: 0.2, decimalLength: 1 }]"
         :decorator="[FormItem]"
       />
-      <Field
-        name="agree"
-        title="认可"
-        required
-        :component="[TaSwitch]"
-        :decorator="[FormItem]"
-      />
+      <Field name="agree" title="认可" required :component="[TaSwitch]" :decorator="[FormItem]" />
       <FormConsumer>
         <template #default="{ form }">
-          <pre class="exp-form-json">{{
-            JSON.stringify(form.values, null, 2)
-          }}</pre>
+          <pre class="exp-form-json">{{ JSON.stringify(form.values, null, 2) }}</pre>
           <ta-form-footer>
             <ta-button
               type="primary"

@@ -1,11 +1,7 @@
 import type { FocusWithoutEventEmits, FormItemCommonProps } from '../Form/types'
 import type { PickerCommonEmits } from '../Picker/types'
 import type { PopupEmits, PopupProps, PopupRef } from '../popup/types'
-import type {
-  SelectorModelValue,
-  SelectorDetail,
-  SelectorOnChange
-} from '../SelectorField/types'
+import type { SelectorModelValue, SelectorDetail, SelectorOnChange } from '../SelectorField/types'
 
 export interface CalendarSelectorDetail extends SelectorDetail {
   valueArray: number[][]
@@ -118,17 +114,13 @@ export interface CalendarPopupRef extends PopupRef, CalendarViewRef {}
 /**
  * Calendar
  */
-export interface CalendarProps
-  extends FormItemCommonProps,
-    CalendarCommonProps {
+export interface CalendarProps extends FormItemCommonProps, CalendarCommonProps {
   placeholder?: string
   showConfirm?: boolean
   showClose?: boolean
 }
 
-export interface CalendarEmits
-  extends FocusWithoutEventEmits,
-    PickerCommonEmits {}
+export interface CalendarEmits extends FocusWithoutEventEmits, PickerCommonEmits {}
 
 export type {
   ValueFormatter as CalendarValueFormatter,

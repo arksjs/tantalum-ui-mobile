@@ -12,8 +12,7 @@
     >
       {{
         parseInt(countTime.fullHours) > 0
-          ? (thousands ? countTime.thousandsFullHours : countTime.fullHours) +
-            ':'
+          ? (thousands ? countTime.thousandsFullHours : countTime.fullHours) + ':'
           : ''
       }}{{ countTime.minutes }}:{{ countTime.seconds
       }}{{ showMilliseconds ? '.' + countTime.milliseconds : '' }}
@@ -53,12 +52,10 @@ export default defineComponent({
     let startTime = 0
     let laps: CountTime[] = []
 
-    const { times, timeStop, timeUpdate, timeStart } = useCountTime(
-      ({ update }) => {
-        time = Date.now() - startTime
-        update(time)
-      }
-    )
+    const { times, timeStop, timeUpdate, timeStart } = useCountTime(({ update }) => {
+      time = Date.now() - startTime
+      update(time)
+    })
 
     function doing() {
       return startTime > 0

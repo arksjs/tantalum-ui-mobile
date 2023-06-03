@@ -1,4 +1,1 @@
-export const getClasses = (horizontal: boolean) => [
-  'ta-flat-list',
-  { horizontal }
-]
+export const getClasses = (horizontal: boolean) => ['ta-flat-list', { horizontal }]

@@ -1,10 +1,5 @@
 <template>
-  <svg
-    class="ta-loading-icon"
-    :height="size"
-    :width="size"
-    viewBox="0 0 1024 1024"
-  >
+  <svg class="ta-loading-icon" :height="size" :width="size" viewBox="0 0 1024 1024">
     <circle
       class="ta-loading-icon_track"
       r="448"

@@ -8,12 +8,7 @@
   </ta-group>
   <ta-group title="textarea">
     <div class="exp-input-box">
-      <ta-input
-        type="textarea"
-        placeholder="showLimit=true"
-        showLimit
-        maxlength="200"
-      />
+      <ta-input type="textarea" placeholder="showLimit=true" showLimit maxlength="200" />
     </div>
   </ta-group>
   <ta-group title="Slot prepend/append">
@@ -62,23 +57,12 @@
       <ta-input type="text" modelValue="禁用文本" disabled />
     </ta-cell>
     <ta-cell label="可清除 showClear">
-      <ta-input
-        type="text"
-        placeholder="请输入文本"
-        modelValue="文本内容"
-        showClear
-      />
+      <ta-input type="text" placeholder="请输入文本" modelValue="文本内容" showClear />
     </ta-cell>
   </ta-group>
   <ta-group title="事件监听">
     <ta-cell label="input">
-      <ta-input
-        type="text"
-        placeholder="请输入文本"
-        showClear
-        v-model="value"
-        @input="onInput"
-      />
+      <ta-input type="text" placeholder="请输入文本" showClear v-model="value" @input="onInput" />
     </ta-cell>
     <ta-cell label="change">
       <ta-input

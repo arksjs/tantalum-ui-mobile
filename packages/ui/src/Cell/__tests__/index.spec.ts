@@ -47,9 +47,7 @@ describe('Cell', () => {
 
     // isLink
     expect(wrapper.find('.ta-cell_link-icon').exists()).toBeTruthy()
-    expect(wrapper.find('.ta-cell_link-icon').classes()).toContain(
-      'arrow--right'
-    )
+    expect(wrapper.find('.ta-cell_link-icon').classes()).toContain('arrow--right')
 
     // arrowDirection
     await wrapper.setProps({
@@ -59,15 +57,11 @@ describe('Cell', () => {
     await wrapper.setProps({
       arrowDirection: 'down'
     })
-    expect(wrapper.find('.ta-cell_link-icon').classes()).toContain(
-      'arrow--down'
-    )
+    expect(wrapper.find('.ta-cell_link-icon').classes()).toContain('arrow--down')
     await wrapper.setProps({
       arrowDirection: 'left'
     })
-    expect(wrapper.find('.ta-cell_link-icon').classes()).toContain(
-      'arrow--left'
-    )
+    expect(wrapper.find('.ta-cell_link-icon').classes()).toContain('arrow--left')
   })
 
   test('slots', () => {

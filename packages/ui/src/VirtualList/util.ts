@@ -1,9 +1,6 @@
 import type { CSSProperties } from '../helpers'
 
-export const getClasses = (horizontal: boolean) => [
-  'ta-virtual-list',
-  { horizontal }
-]
+export const getClasses = (horizontal: boolean) => ['ta-virtual-list', { horizontal }]
 
 export const getListStyles = (horizontal: boolean, max: number) => {
   const styles: CSSProperties = {}

@@ -45,26 +45,10 @@
   <ta-group title="角标">
     <ta-cell label="gender">
       <div class="exp-avatar-list">
-        <ta-avatar
-          shape="square"
-          gender="man"
-          src="https://cdn.fox2.cn/vfox/avatar/1.png"
-        />
-        <ta-avatar
-          shape="square"
-          gender="woman"
-          src="https://cdn.fox2.cn/vfox/avatar/2.png"
-        />
-        <ta-avatar
-          shape="circle"
-          gender="man"
-          src="https://cdn.fox2.cn/vfox/avatar/3.png"
-        />
-        <ta-avatar
-          shape="circle"
-          gender="woman"
-          src="https://cdn.fox2.cn/vfox/avatar/4.png"
-        />
+        <ta-avatar shape="square" gender="man" src="https://cdn.fox2.cn/vfox/avatar/1.png" />
+        <ta-avatar shape="square" gender="woman" src="https://cdn.fox2.cn/vfox/avatar/2.png" />
+        <ta-avatar shape="circle" gender="man" src="https://cdn.fox2.cn/vfox/avatar/3.png" />
+        <ta-avatar shape="circle" gender="woman" src="https://cdn.fox2.cn/vfox/avatar/4.png" />
       </div>
     </ta-cell>
     <ta-cell label="badge">

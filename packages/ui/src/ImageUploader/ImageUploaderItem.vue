@@ -1,19 +1,11 @@
 <template>
-  <div
-    class="ta-image-uploader_item"
-    @contextmenu.prevent="noop"
-    @click="onClick(item)"
-  >
+  <div class="ta-image-uploader_item" @contextmenu.prevent="noop" @click="onClick(item)">
     <TaImage :src="item.url" :draggable="false" :mode="imageMode" />
     <div
       class="ta-image-uploader_item-status"
       v-if="item.status !== 'uploaded' && item.status !== 'reading'"
     >
-      <ActivityIndicator
-        v-if="item.status === 'uploading'"
-        :size="40"
-        color="#ffffff"
-      />
+      <ActivityIndicator v-if="item.status === 'uploading'" :size="40" color="#ffffff" />
       <Icon :icon="DeleteOutlined" v-else-if="item.status === 'failed'" />
       <span>{{ item.message }}</span>
     </div>

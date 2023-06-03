@@ -29,10 +29,7 @@ export interface ScrollToEnd {
  * @param callback onScroll
  * @returns off fn
  */
-export function useScroll(
-  elRef: Ref<HTMLElement | null>,
-  callback: EventListener
-) {
+export function useScroll(elRef: Ref<HTMLElement | null>, callback: EventListener) {
   return useEvent(elRef, 'scroll', callback)
 }
 

@@ -5,10 +5,7 @@ import { createConfirmHook, createShowPopup } from '../popup/api'
 import type { PopupSuccessConfirmArgs } from '../popup/types'
 import type { ShowCalendarOptions, CalendarDetail } from './types'
 
-const showCalendar = createShowPopup<
-  ShowCalendarOptions,
-  PopupSuccessConfirmArgs<CalendarDetail>
->({
+const showCalendar = createShowPopup<ShowCalendarOptions, PopupSuccessConfirmArgs<CalendarDetail>>({
   apiName: 'showCalendar',
   component: CalendarPopup,
   createHook: createConfirmHook
