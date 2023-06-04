@@ -1,3 +1,3 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`PopMenu > snapshot 1`] = `"<popover-stub selector=\\"body\\" visible=\\"false\\" maskclosable=\\"true\\" placement=\\"bottom\\" showmask=\\"true\\" content=\\"\\" class=\\"ta-pop-dialog\\"></popover-stub>"`;

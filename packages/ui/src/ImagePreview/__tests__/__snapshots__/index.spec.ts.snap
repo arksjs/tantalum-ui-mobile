@@ -1,3 +1,3 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`ImagePreview > snapshot 1`] = `"<modal-stub visible=\\"false\\" maskclosable=\\"true\\" showclose=\\"false\\" class=\\"ta-image-preview\\"></modal-stub>"`;

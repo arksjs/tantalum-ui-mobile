@@ -1,8 +1,8 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`ImageUploader > snapshot 1`] = `
 "<div class=\\"ta-image-uploader\\">
   <order-stub items=\\"[object Object]\\" columnnumber=\\"3\\" deletable=\\"true\\" aspectratio=\\"1\\"></order-stub><input type=\\"hidden\\" name=\\"\\" value=\\"\\">
 </div>
-<image-preview-stub urls=\\"\\" visible=\\"false\\" maskclosable=\\"true\\" modelvalue=\\"\\" showclose=\\"true\\" navigationbuttons=\\"false\\" imagehighrendering=\\"true\\" class=\\"ta-image-uploader_preview\\"></image-preview-stub>"
+<image-preview-stub urls=\\"\\" visible=\\"false\\" maskclosable=\\"true\\" modelvalue=\\"\\" showclose=\\"true\\" navigationbuttons=\\"false\\" imagehighrendering=\\"true\\" magnification=\\"1\\" class=\\"ta-image-uploader_preview\\"></image-preview-stub>"
 `;

@@ -1,7 +1,7 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Drawer > snapshot 1`] = `
-"<teleport-stub>
+"<teleport-stub to=\\"body\\">
   <div class=\\"ta-drawer ta-popup\\" style=\\"z-index: 2000; display: none;\\">
     <div class=\\"ta-mask\\"></div>
     <div class=\\"ta-drawer_inner ta-horizontal-hairline placement--bottom\\" style=\\"padding: 0px 0px 0px 0px;\\">

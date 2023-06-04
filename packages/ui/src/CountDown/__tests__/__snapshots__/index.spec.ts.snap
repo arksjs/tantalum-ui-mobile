@@ -1,3 +1,3 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CountDown > snapshot 1`] = `"<div class=\\"ta-count-down\\">0:00:00</div>"`;

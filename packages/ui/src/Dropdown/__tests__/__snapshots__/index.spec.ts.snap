@@ -1,7 +1,7 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Dropdown > snapshot 1`] = `
-"<teleport-stub>
+"<teleport-stub to=\\"body\\">
   <div class=\\"ta-dropdown ta-popup\\" style=\\"z-index: 2000; top: 100vh;\\">
     <div class=\\"ta-mask\\"></div>
     <div class=\\"ta-dropdown_inner\\"></div>

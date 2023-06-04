@@ -1,8 +1,8 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Sticky > snapshot 1`] = `
 "<div class=\\"ta-sticky\\">
-  <teleport-stub>
+  <teleport-stub to=\\"body\\" disabled=\\"true\\">
     <div class=\\"ta-sticky_content\\"></div>
   </teleport-stub>
 </div>"
