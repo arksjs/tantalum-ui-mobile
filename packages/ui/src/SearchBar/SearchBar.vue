@@ -39,11 +39,7 @@
         {{ locale.searchBarCancelText }}
       </TaButton>
     </form>
-    <Dropdown
-      :selector="innerEl ?? undefined"
-      v-if="initDropdown"
-      v-model:visible="suggestVisible"
-    >
+    <Dropdown :selector="innerEl ?? undefined" v-if="initDropdown" v-model:visible="suggestVisible">
       <template #default="{ height }">
         <div :style="getSuggestStyles(height)">
           <div class="ta-search_suggest-list">
@@ -55,9 +51,7 @@
               clickable
               @click="onSuggestItemClick(item.text)"
             >
-              <Tag size="middle" v-for="tag in item.tags" :key="tag">{{
-                tag
-              }}</Tag>
+              <Tag size="middle" v-for="tag in item.tags" :key="tag">{{ tag }}</Tag>
             </Cell>
           </div>
         </div>
@@ -155,8 +149,7 @@ export default defineComponent({
     input: emitValidator,
     focus: emitValidator,
     blur: emitValidator,
-    search: payload =>
-      payload && isString(payload.text) && isString(payload.source),
+    search: payload => payload && isString(payload.text) && isString(payload.source),
     fieldClick: payload => payload && isString(payload.text)
   } as PropsToEmits<SearchBarEmits>,
   setup(props, { emit }) {

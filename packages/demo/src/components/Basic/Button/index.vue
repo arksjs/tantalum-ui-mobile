@@ -83,41 +83,15 @@
   <ta-group title="附带图标">
     <ul class="exp-button-group">
       <li>
-        <ta-button type="danger" shape="square" icon="HeartOutlined">
-        </ta-button>
-        <ta-button
-          type="primary"
-          pattern="solid"
-          shape="square"
-          icon="EditOutlined"
-        >
-        </ta-button>
-        <ta-button
-          type="success"
-          pattern="dashed"
-          shape="square"
-          icon="CheckOutlined"
-        >
-        </ta-button>
+        <ta-button type="danger" shape="square" icon="HeartOutlined"> </ta-button>
+        <ta-button type="primary" pattern="solid" shape="square" icon="EditOutlined"> </ta-button>
+        <ta-button type="success" pattern="dashed" shape="square" icon="CheckOutlined"> </ta-button>
         <ta-button type="danger" icon="SearchOutlined">搜索</ta-button>
       </li>
       <li>
-        <ta-button type="primary" shape="circle" icon="SearchOutlined">
-        </ta-button>
-        <ta-button
-          type="success"
-          pattern="solid"
-          shape="circle"
-          icon="EditOutlined"
-        >
-        </ta-button>
-        <ta-button
-          type="danger"
-          pattern="dashed"
-          shape="circle"
-          icon="CheckOutlined"
-        >
-        </ta-button>
+        <ta-button type="primary" shape="circle" icon="SearchOutlined"> </ta-button>
+        <ta-button type="success" pattern="solid" shape="circle" icon="EditOutlined"> </ta-button>
+        <ta-button type="danger" pattern="dashed" shape="circle" icon="CheckOutlined"> </ta-button>
         <ta-button type="default" loading shape="round">加载中</ta-button>
       </li>
     </ul>
@@ -125,74 +99,30 @@
   <ta-group title="large 尺寸">
     <ul class="exp-button-group">
       <li>
-        <ta-button
-          type="danger"
-          size="large"
-          shape="circle"
-          icon="HeartOutlined"
-        >
-        </ta-button>
+        <ta-button type="danger" size="large" shape="circle" icon="HeartOutlined"> </ta-button>
         <ta-button type="danger" size="large" disabled>危险</ta-button>
-        <ta-button type="default" size="large" loading shape="round"
-          >加载中</ta-button
-        >
+        <ta-button type="default" size="large" loading shape="round">加载中</ta-button>
       </li>
       <li>
-        <ta-button
-          type="warning"
-          size="large"
-          shape="square"
-          icon="BorderOutlined"
-        >
-        </ta-button>
-        <ta-button
-          type="primary"
-          size="large"
-          pattern="solid"
-          icon="PlusOutlined"
-          >主要</ta-button
-        >
+        <ta-button type="warning" size="large" shape="square" icon="BorderOutlined"> </ta-button>
+        <ta-button type="primary" size="large" pattern="solid" icon="PlusOutlined">主要</ta-button>
         <ta-button type="success" size="large" pattern="dashed">成功</ta-button>
-        <ta-button type="danger" size="large" pattern="borderless"
-          >危险</ta-button
-        >
+        <ta-button type="danger" size="large" pattern="borderless">危险</ta-button>
       </li>
     </ul>
   </ta-group>
   <ta-group title="small 尺寸">
     <ul class="exp-button-group">
       <li>
-        <ta-button
-          type="danger"
-          size="small"
-          shape="circle"
-          icon="HeartOutlined"
-        >
-        </ta-button>
+        <ta-button type="danger" size="small" shape="circle" icon="HeartOutlined"> </ta-button>
         <ta-button type="danger" size="small" disabled>危险</ta-button>
-        <ta-button type="default" size="small" loading shape="round"
-          >加载中</ta-button
-        >
+        <ta-button type="default" size="small" loading shape="round">加载中</ta-button>
       </li>
       <li>
-        <ta-button
-          type="warning"
-          size="small"
-          shape="square"
-          icon="SearchOutlined"
-        >
-        </ta-button>
-        <ta-button
-          type="primary"
-          size="small"
-          pattern="solid"
-          icon="PlusOutlined"
-          >主要</ta-button
-        >
+        <ta-button type="warning" size="small" shape="square" icon="SearchOutlined"> </ta-button>
+        <ta-button type="primary" size="small" pattern="solid" icon="PlusOutlined">主要</ta-button>
         <ta-button type="success" size="small" pattern="dashed">成功</ta-button>
-        <ta-button type="danger" size="small" pattern="borderless"
-          >危险</ta-button
-        >
+        <ta-button type="danger" size="small" pattern="borderless">危险</ta-button>
       </li>
     </ul>
   </ta-group>
@@ -260,11 +190,7 @@
       </li>
       <li>
         <ta-button-group :shape="shape" pattern="solid">
-          <ta-button
-            type="primary"
-            shape="round"
-            icon="LeftOutlined"
-          ></ta-button>
+          <ta-button type="primary" shape="round" icon="LeftOutlined"></ta-button>
           <ta-button type="primary" icon="HomeOutlined"></ta-button>
         </ta-button-group>
         <ta-button-group shape="round" pattern="gradient">

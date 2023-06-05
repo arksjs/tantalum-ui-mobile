@@ -12,11 +12,7 @@
       </div>
     </div>
     <div class="ta-calendar-view_body" ref="bodyEl">
-      <VirtualList
-        :ids="months.map(v => v.caption)"
-        :itemSize="getItemSize"
-        @scroll="onScroll"
-      >
+      <VirtualList :ids="months.map(v => v.caption)" :itemSize="getItemSize" @scroll="onScroll">
         <template #default="{ index }">
           <ViewMonth
             :month="months[index]"
@@ -32,14 +28,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  onMounted,
-  reactive,
-  ref,
-  shallowRef,
-  watch
-} from 'vue'
+import { defineComponent, onMounted, reactive, ref, shallowRef, watch } from 'vue'
 import {
   dayjs,
   isSameArray,
@@ -153,9 +142,7 @@ export default defineComponent({
             const { rangeCount, hasDisabled } = getRangeInfo(_start, _end)
 
             if (hasDisabled) {
-              printPropError(
-                `The range of "${VALUE_KEY}" contains disabled days.`
-              )
+              printPropError(`The range of "${VALUE_KEY}" contains disabled days.`)
             } else if (rangeCount > props.maxRange) {
               printPropError(
                 `The range of "${VALUE_KEY}" contains ${rangeCount} days, no more than ${props.maxRange} days.`
@@ -166,9 +153,7 @@ export default defineComponent({
               updateStates()
             }
           } else {
-            printPropError(
-              `The range of "${VALUE_KEY}" is not in the optional range.`
-            )
+            printPropError(`The range of "${VALUE_KEY}" is not in the optional range.`)
           }
         } else {
           const select = getSelectedInfo(timeArr[0])
@@ -178,9 +163,7 @@ export default defineComponent({
             setSelected('end', null)
             updateStates()
           } else {
-            printPropError(
-              `The range of "${VALUE_KEY}" is not in the optional range.`
-            )
+            printPropError(`The range of "${VALUE_KEY}" is not in the optional range.`)
           }
         }
       }
@@ -192,9 +175,7 @@ export default defineComponent({
       if (day) {
         name === 'start' ? (start = day) : (end = day)
       } else {
-        name === 'start'
-          ? (start = getDefaultSelectDay())
-          : (end = getDefaultSelectDay())
+        name === 'start' ? (start = getDefaultSelectDay()) : (end = getDefaultSelectDay())
       }
     }
 
@@ -202,9 +183,7 @@ export default defineComponent({
       let state = ''
 
       if (
-        (mode === 'range' &&
-          timestamp >= start.timestamp &&
-          timestamp <= end.timestamp) ||
+        (mode === 'range' && timestamp >= start.timestamp && timestamp <= end.timestamp) ||
         timestamp === start.timestamp
       ) {
         state = 'selected'
@@ -267,11 +246,7 @@ export default defineComponent({
       let day2 = day.startOf('month')
 
       // 头部周偏移占位
-      for (
-        let i = 0, len = day2.day() - getFirstDayOfWeek(props.firstDayOfWeek);
-        i < len;
-        i++
-      ) {
+      for (let i = 0, len = day2.day() - getFirstDayOfWeek(props.firstDayOfWeek); i < len; i++) {
         month.days.push({
           cover: true,
           text: '',
@@ -315,9 +290,7 @@ export default defineComponent({
 
       if (props.maxDate instanceof Date) {
         if (props.maxDate.getTime() < minTimestamp) {
-          printPropError(
-            'The value of "maxDate" cannot be less than the value of "minDate".'
-          )
+          printPropError('The value of "maxDate" cannot be less than the value of "minDate".')
           maxTimestamp = getMaxTime(minTimestamp)
         } else {
           maxTimestamp = getTimeByDate(props.maxDate)
@@ -377,11 +350,7 @@ export default defineComponent({
       updateBodyFixed(bodyScrollTop)
     }
 
-    function dayInfo2SelectDay(
-      day: DayInfo,
-      monthIndex: number,
-      dayIndex: number
-    ): SelectDay {
+    function dayInfo2SelectDay(day: DayInfo, monthIndex: number, dayIndex: number): SelectDay {
       return {
         dateString: day.dateString,
         timestamp: day.timestamp,
@@ -405,9 +374,7 @@ export default defineComponent({
         return
       }
 
-      const monthIndex = parseInt(
-        (e.currentTarget as HTMLElement).dataset.index as string
-      )
+      const monthIndex = parseInt((e.currentTarget as HTMLElement).dataset.index as string)
       const dayIndex = parseInt($day.dataset.index as string)
       const day = months[monthIndex].days[dayIndex]
 
@@ -511,9 +478,7 @@ export default defineComponent({
     ) {
       let hasDisabled = false
       let rangeCount =
-        start.monthIndex === end.monthIndex && start.dayIndex === end.dayIndex
-          ? 1
-          : 2
+        start.monthIndex === end.monthIndex && start.dayIndex === end.dayIndex ? 1 : 2
 
       for (let i = start.monthIndex; i <= end.monthIndex; i++) {
         for (
@@ -555,24 +520,17 @@ export default defineComponent({
       }
 
       bodyTitleEl.value.textContent = t
-      bodyTitleEl.value.style.cssText = CSSProperties2CssText(
-        getViewBodyTitleStyles(tY)
-      )
+      bodyTitleEl.value.style.cssText = CSSProperties2CssText(getViewBodyTitleStyles(tY))
     }
 
     function updateBodyFixed(scrollTop: number) {
       const h = 28
       const $items: HTMLElement[] = bodyEl.value
-        ? [].slice.call(
-            bodyEl.value.querySelectorAll('.ta-virtual-list_item'),
-            0
-          )
+        ? [].slice.call(bodyEl.value.querySelectorAll('.ta-virtual-list_item'), 0)
         : []
 
       function getItemName(vIndex: number) {
-        const realIndex = $items[vIndex]
-          ? parseInt($items[vIndex].dataset.index as string)
-          : -1
+        const realIndex = $items[vIndex] ? parseInt($items[vIndex].dataset.index as string) : -1
 
         return realIndex === -1 ? '' : months[realIndex].caption
       }
@@ -585,16 +543,13 @@ export default defineComponent({
       const _index = monthActiveIndex
       const nextIndex = _index + 1
       const offsetTops = $items.map($el => {
-        const matches = $el.style.cssText.match(
-          /translate3d\(\w+,\s*(\d+)px,\s*\w+\)/
-        )
+        const matches = $el.style.cssText.match(/translate3d\(\w+,\s*(\d+)px,\s*\w+\)/)
 
         return matches && matches[1] ? parseFloat(matches[1]) : -1
       })
 
       const current = offsetTops[_index]
-      const next =
-        offsetTops[nextIndex] != null ? offsetTops[nextIndex] : Infinity
+      const next = offsetTops[nextIndex] != null ? offsetTops[nextIndex] : Infinity
       const first = offsetTops[0]
 
       if (scrollTop < first) {
@@ -604,10 +559,7 @@ export default defineComponent({
           monthActiveIndex = nextIndex
           updateBodyTitle(getItemName(nextIndex), 0)
 
-          if (
-            offsetTops[nextIndex + 1] &&
-            scrollTop >= offsetTops[nextIndex + 1]
-          ) {
+          if (offsetTops[nextIndex + 1] && scrollTop >= offsetTops[nextIndex + 1]) {
             // 超过了
             updateBodyFixed(scrollTop)
           }

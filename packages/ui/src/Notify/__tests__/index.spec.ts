@@ -22,37 +22,27 @@ describe('Notify', () => {
       }
     })
 
-    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain(
-      'type--default'
-    )
+    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain('type--default')
 
     await wrapper.setProps({
       type: 'primary'
     })
-    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain(
-      'type--primary'
-    )
+    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain('type--primary')
 
     await wrapper.setProps({
       type: 'success'
     })
-    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain(
-      'type--success'
-    )
+    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain('type--success')
 
     await wrapper.setProps({
       type: 'warning'
     })
-    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain(
-      'type--warning'
-    )
+    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain('type--warning')
 
     await wrapper.setProps({
       type: 'danger'
     })
-    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain(
-      'type--danger'
-    )
+    expect(wrapper.findComponent('.ta-notice-bar').classes()).toContain('type--danger')
   })
 
   test('title', () => {

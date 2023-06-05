@@ -1,9 +1,4 @@
-import {
-  PLACEMENT_TYPES,
-  capitalize,
-  getEnumsValue,
-  type CSSProperties
-} from '../helpers'
+import { PLACEMENT_TYPES, capitalize, getEnumsValue, type CSSProperties } from '../helpers'
 import type { SafeAreaInsets } from '../hooks'
 import type { FixedProps } from './types'
 
@@ -15,10 +10,7 @@ export const getInnerClasses = (props: FixedProps, fixed: boolean) => {
   ]
 }
 
-export const getInnerStyles = (
-  props: FixedProps,
-  safeAreaInsets: SafeAreaInsets
-) => {
+export const getInnerStyles = (props: FixedProps, safeAreaInsets: SafeAreaInsets) => {
   const styles: CSSProperties = {
     background: props.background
   }
@@ -26,8 +18,7 @@ export const getInnerStyles = (
   if (props.fixed) {
     if (props.enableSafeAreaInsets && safeAreaInsets.support) {
       const placement = getEnumsValue(PLACEMENT_TYPES, props.placement)
-      styles[('padding' + capitalize(placement)) as 'paddingTop'] =
-        safeAreaInsets[placement] + 'px'
+      styles[('padding' + capitalize(placement)) as 'paddingTop'] = safeAreaInsets[placement] + 'px'
     }
 
     styles.zIndex = props.zIndex
@@ -36,13 +27,7 @@ export const getInnerStyles = (
   return styles
 }
 
-export const getStyles = ({
-  width,
-  height
-}: {
-  width: number | null
-  height: number | null
-}) => {
+export const getStyles = ({ width, height }: { width: number | null; height: number | null }) => {
   return {
     width: width == null ? null : width + 'px',
     height: height == null ? null : height + 'px'

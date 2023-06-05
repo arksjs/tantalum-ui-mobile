@@ -11,18 +11,16 @@
     <ta-cell label="中文显示" class="exp-countDown-box">
       <ta-count-down :initialTiming="time3">
         <template #default="countDown">
-          {{ countDown.fullHours }}时{{ countDown.minutes }}分{{
-            countDown.seconds
-          }}秒
+          {{ countDown.fullHours }}时{{ countDown.minutes }}分{{ countDown.seconds }}秒
         </template>
       </ta-count-down>
     </ta-cell>
     <ta-cell label="毫秒" class="exp-countDown-box">
       <ta-count-down :initialTiming="time5">
         <template #default="countDown">
-          {{ countDown.fullHours }}:{{ countDown.minutes }}:{{
-            countDown.seconds
-          }}.{{ countDown.milliseconds }}
+          {{ countDown.fullHours }}:{{ countDown.minutes }}:{{ countDown.seconds }}.{{
+            countDown.milliseconds
+          }}
         </template>
       </ta-count-down>
     </ta-cell>
@@ -47,9 +45,7 @@
           ref="countDownRef"
         ></ta-count-down>
       </div>
-      <ta-button @click="onSwitch" size="small">{{
-        paused ? '恢复' : '暂停'
-      }}</ta-button>
+      <ta-button @click="onSwitch" size="small">{{ paused ? '恢复' : '暂停' }}</ta-button>
       <ta-button @click="onReset" size="small" type="danger"> 重置 </ta-button>
     </ta-cell>
   </ta-group>

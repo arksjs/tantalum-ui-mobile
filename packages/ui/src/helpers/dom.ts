@@ -45,9 +45,7 @@ export function getRelativeOffset(
   }
 
   $el = $el as HTMLElement
-  $relativeEl = (
-    $relativeEl === document ? document.documentElement : $relativeEl
-  ) as HTMLElement
+  $relativeEl = ($relativeEl === document ? document.documentElement : $relativeEl) as HTMLElement
 
   let offsetTop = $el.offsetTop
   let offsetLeft = $el.offsetLeft
@@ -60,10 +58,7 @@ export function getRelativeOffset(
   }
 
   if ($el.offsetParent && $el.offsetParent !== $relativeEl) {
-    const parent = getRelativeOffset(
-      $el.offsetParent as HTMLElement,
-      $relativeEl
-    )
+    const parent = getRelativeOffset($el.offsetParent as HTMLElement, $relativeEl)
 
     offsetTop += parent.offsetTop
     offsetLeft += parent.offsetLeft
@@ -135,9 +130,7 @@ export function querySelector(selector: unknown) {
   return $el ?? null
 }
 
-function isPage(
-  $el: HTMLElement | Document | Window
-): $el is Document | Window {
+function isPage($el: HTMLElement | Document | Window): $el is Document | Window {
   return (
     $el === document ||
     $el === document.documentElement ||
@@ -190,7 +183,5 @@ export function getElementItems(
   $list: HTMLElement | null | undefined,
   itemClassName: string
 ): HTMLElement[] {
-  return $list
-    ? [].slice.call($list.querySelectorAll(`.${itemClassName}`), 0)
-    : []
+  return $list ? [].slice.call($list.querySelectorAll(`.${itemClassName}`), 0) : []
 }

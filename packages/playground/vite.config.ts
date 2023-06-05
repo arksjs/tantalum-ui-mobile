@@ -8,14 +8,10 @@ function copyVuePlugin(): Plugin {
   return {
     name: 'copy-vue',
     generateBundle() {
-      const filePath = path.resolve(
-        __dirname,
-        './node_modules/vue/dist/vue.runtime.esm-browser.js'
-      )
+      const filePath = path.resolve(__dirname, './node_modules/vue/dist/vue.runtime.esm-browser.js')
       if (!fs.existsSync(filePath)) {
         throw new Error(
-          `vue.runtime.esm-browser.js not built. ` +
-            `Run "nr build vue -f esm-browser" first.`
+          `vue.runtime.esm-browser.js not built. ` + `Run "nr build vue -f esm-browser" first.`
         )
       }
       this.emitFile({
@@ -33,9 +29,7 @@ function copyUIPlugin(): Plugin {
     generateBundle() {
       const jsPath = path.resolve(__dirname, '../../dist/index.esm-browser.js')
       if (!fs.existsSync(jsPath)) {
-        throw new Error(
-          `index.esm-browser.js not built. Run "pnpm build" first.`
-        )
+        throw new Error(`index.esm-browser.js not built. Run "pnpm build" first.`)
       }
       this.emitFile({
         type: 'asset',
@@ -46,10 +40,7 @@ function copyUIPlugin(): Plugin {
       this.emitFile({
         type: 'asset',
         fileName: 'ui.css',
-        source: fs.readFileSync(
-          path.resolve(__dirname, '../../dist/index.css'),
-          'utf-8'
-        )
+        source: fs.readFileSync(path.resolve(__dirname, '../../dist/index.css'), 'utf-8')
       })
     }
   }

@@ -103,10 +103,7 @@ interface LongPressCoords {
  * @param {Element} $el 绑定的元素
  * @param {Function} callback 回调函数
  */
-export function addLongPressEvent(
-  $el: HTMLElement,
-  callback: LongPressEventCallback
-) {
+export function addLongPressEvent($el: HTMLElement, callback: LongPressEventCallback) {
   let coords: LongPressCoords | null
 
   const object = {
@@ -148,10 +145,7 @@ export function addLongPressEvent(
 
       const { pageX, pageY } = touchEvent.getTouch(e)
 
-      if (
-        Math.abs(pageX - coords.startX) >= 10 ||
-        Math.abs(pageY - coords.startY) >= 10
-      ) {
+      if (Math.abs(pageX - coords.startX) >= 10 || Math.abs(pageY - coords.startY) >= 10) {
         coords = null
       }
     },

@@ -33,12 +33,7 @@ const menuList = [
 ]
 
 const navBarTitle = computed(() => {
-  return (
-    ($route.name &&
-      typeof $route.name === 'string' &&
-      $route.name.replace('Exp', '')) ||
-    ''
-  )
+  return ($route.name && typeof $route.name === 'string' && $route.name.replace('Exp', '')) || ''
 })
 
 const onMenuChange: SideTabOnChange = value => {
@@ -96,12 +91,7 @@ const activeValue = computed(() => {
         <component :is="Component" />
       </keep-alive>
     </router-view>
-    <ta-drawer
-      ref="drawer"
-      title="Menu"
-      placement="right"
-      v-model:visible="menuVisible"
-    >
+    <ta-drawer ref="drawer" title="Menu" placement="right" v-model:visible="menuVisible">
       <ta-side-tab
         :options="menuList"
         :modelValue="activeValue"

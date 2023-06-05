@@ -1,11 +1,7 @@
 <template>
   <ta-group title="基础用法">
     <div class="exp-sideTab-box">
-      <ta-side-tab
-        ref="sideTabRef"
-        :options="tabList"
-        v-model="activeValue"
-      ></ta-side-tab>
+      <ta-side-tab ref="sideTabRef" :options="tabList" v-model="activeValue"></ta-side-tab>
     </div>
   </ta-group>
   <ta-group title="Mix">

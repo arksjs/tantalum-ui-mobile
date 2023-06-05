@@ -25,15 +25,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  ref,
-  nextTick,
-  watch,
-  shallowRef
-} from 'vue'
+import { computed, defineComponent, onMounted, ref, nextTick, watch, shallowRef } from 'vue'
 import {
   cloneData,
   isNumber,
@@ -86,11 +78,7 @@ export default defineComponent({
     let horizontal = false
 
     if (props.initialWaterfallCount > 1) {
-      for (
-        let i = 0, len = rangeInteger(props.initialWaterfallCount, 2, 5);
-        i < len;
-        i++
-      ) {
+      for (let i = 0, len = rangeInteger(props.initialWaterfallCount, 2, 5); i < len; i++) {
         cols.value.push(0)
       }
     } else {
@@ -111,9 +99,7 @@ export default defineComponent({
             throw new Error()
           }
         } catch (error) {
-          printPropError(
-            `The "itemSize" function return value should be a Number type.`
-          )
+          printPropError(`The "itemSize" function return value should be a Number type.`)
         }
       } else if (isNumber(props.itemSize)) {
         return props.itemSize
@@ -163,9 +149,7 @@ export default defineComponent({
     }
 
     function getScrollSize() {
-      return scrollEl.value
-        ? scrollEl.value[horizontal ? 'scrollLeft' : 'scrollTop']
-        : 0
+      return scrollEl.value ? scrollEl.value[horizontal ? 'scrollLeft' : 'scrollTop'] : 0
     }
 
     // 是否计算完列表
@@ -234,10 +218,7 @@ export default defineComponent({
       if (index === -1) {
         return calcGroups[0]
       } else {
-        while (
-          index !== 0 &&
-          !isRecycled(calcGroups[index].offset, scrollSize)
-        ) {
+        while (index !== 0 && !isRecycled(calcGroups[index].offset, scrollSize)) {
           index--
         }
         return calcGroups[index]
@@ -253,11 +234,7 @@ export default defineComponent({
      */
     function updateItems(source?: string) {
       const scrollSize = getScrollSize()
-      const approvedItemVisibleScale = rangeNumber(
-        props.approvedItemVisibleScale,
-        0,
-        1
-      )
+      const approvedItemVisibleScale = rangeNumber(props.approvedItemVisibleScale, 0, 1)
 
       const newList: RenderItem[] = []
       const newVisibleIndexList: number[] = []
@@ -294,8 +271,7 @@ export default defineComponent({
                 offset,
                 otherOffset: `${colMinIndex * 100}%`,
                 itemSize,
-                otherSizePx:
-                  newCols.length > 1 ? `calc(100% / ${newCols.length})` : '100%'
+                otherSizePx: newCols.length > 1 ? `calc(100% / ${newCols.length})` : '100%'
               },
               cols.value,
               horizontal
@@ -303,9 +279,7 @@ export default defineComponent({
             size: itemSize
           })
 
-          if (
-            isVisible(offset, itemSize, scrollSize, approvedItemVisibleScale)
-          ) {
+          if (isVisible(offset, itemSize, scrollSize, approvedItemVisibleScale)) {
             newVisibleIndexList.push(item.index)
           }
 
@@ -381,8 +355,7 @@ export default defineComponent({
     ) {
       return (
         scrollSize <= offset + itemSize - itemSize * approvedItemVisibleScale &&
-        scrollSize >=
-          offset - wrapperSize.value + itemSize * approvedItemVisibleScale
+        scrollSize >= offset - wrapperSize.value + itemSize * approvedItemVisibleScale
       )
     }
 
@@ -408,9 +381,7 @@ export default defineComponent({
       }
     }
 
-    const listStyles = computed(() =>
-      getListStyles(horizontal, Math.max(...cols.value))
-    )
+    const listStyles = computed(() => getListStyles(horizontal, Math.max(...cols.value)))
 
     /**
      * 主动通知列表发生了一个事件，以使列表重新计算可视区域
@@ -504,11 +475,7 @@ export default defineComponent({
       const startCos = calcGroups[getNearsetIndex(index, 'index')]
       const newCols = cloneData(startCos.cols)
 
-      for (
-        let i = startCos.index, len = Math.min(index, list.value.length - 1);
-        i <= len;
-        i++
-      ) {
+      for (let i = startCos.index, len = Math.min(index, list.value.length - 1); i <= len; i++) {
         const item = list.value[i]
 
         if (item.size === -1) {

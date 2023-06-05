@@ -1,10 +1,5 @@
 <template>
-  <button
-    :class="classes"
-    :disabled="disabled"
-    :type="realFormType"
-    :style="styles"
-  >
+  <button :class="classes" :disabled="disabled" :type="realFormType" :style="styles">
     <Icon v-if="loading" :icon="LoadingOutlined" :spin="true" />
     <Icon v-else-if="icon" :icon="icon" />
     <span><slot>button</slot></span>
@@ -89,9 +84,7 @@ export default defineComponent({
     const { groupOptions } = useButtonConsumer()
 
     const classes = computed(() => getButtonClasses(props, groupOptions))
-    const realFormType = computed(() =>
-      getEnumsValue(FORM_TYPES, props.formType)
-    )
+    const realFormType = computed(() => getEnumsValue(FORM_TYPES, props.formType))
     const styles = computed(() => getButtonStyles(props.color))
 
     return {

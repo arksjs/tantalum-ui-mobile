@@ -16,9 +16,7 @@ export const getStyles = (
   }
 
   return {
-    transform: `translate3d(${_offset[0]}px, ${
-      _offset[1] - safeAreaInsets.bottom
-    }px, 0px)`,
+    transform: `translate3d(${_offset[0]}px, ${_offset[1] - safeAreaInsets.bottom}px, 0px)`,
     display: isShow ? null : 'none'
   } as CSSProperties
 }

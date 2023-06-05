@@ -8,12 +8,7 @@
   </ta-group>
   <ta-group title="事件监听">
     <div class="exp-copy-pad">
-      <ta-copy
-        class="exp-copy-box"
-        text="复制的文本2"
-        @success="onSuccess"
-        @error="onError"
-      >
+      <ta-copy class="exp-copy-box" text="复制的文本2" @success="onSuccess" @error="onError">
         <ta-button type="primary">点击复制</ta-button>
       </ta-copy>
     </div>

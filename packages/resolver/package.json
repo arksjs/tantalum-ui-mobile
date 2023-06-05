@@ -28,6 +28,6 @@
     "lib/"
   ],
   "peerDependencies": {
-    "unplugin-vue-components": "^0.17.15"
+    "unplugin-vue-components": "^0.24.1"
   }
 }

@@ -1,11 +1,5 @@
 import type { PropType } from 'vue'
-import {
-  isNumber,
-  isStringOrNumber,
-  colorValidator,
-  type PropsToEmits,
-  isString
-} from '../helpers'
+import { isNumber, isStringOrNumber, colorValidator, type PropsToEmits, isString } from '../helpers'
 import type { OptionItem, OptionList, TabCommonEmits } from './types'
 
 export const tabEmits: PropsToEmits<TabCommonEmits> = {
@@ -23,11 +17,7 @@ export const tabProps = {
 
           if (isStringOrNumber(option)) {
             //
-          } else if (
-            option &&
-            isString(option.label) &&
-            isStringOrNumber(option.value)
-          ) {
+          } else if (option && isString(option.label) && isStringOrNumber(option.value)) {
             //
           } else {
             return false

@@ -25,9 +25,8 @@ export default defineComponent({
     return () => {
       const children = slots.default?.()
 
-      const newChildren = getComponentVNodeItems(children, 'ta-step').map(
-        (child, index) =>
-          cloneVNode(child, { index, activeIndex: props.activeIndex })
+      const newChildren = getComponentVNodeItems(children, 'ta-step').map((child, index) =>
+        cloneVNode(child, { index, activeIndex: props.activeIndex })
       )
 
       return h(

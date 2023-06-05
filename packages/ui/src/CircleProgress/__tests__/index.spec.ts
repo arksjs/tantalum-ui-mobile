@@ -37,12 +37,8 @@ describe('CircleProgress', () => {
     const wrapper = shallowMount(CircleProgress, {
       props: { percentage: 0, strokeWidth: 2 }
     })
-    expect(
-      wrapper.find('.ta-circle-progress_text').attributes('style')
-    ).toContain('padding: 2px;')
-    expect(
-      wrapper.get('.ta-circle-progress_bar').attributes('strokewidth')
-    ).toBe('2')
+    expect(wrapper.find('.ta-circle-progress_text').attributes('style')).toContain('padding: 2px;')
+    expect(wrapper.get('.ta-circle-progress_bar').attributes('strokewidth')).toBe('2')
   })
 
   test('slot default', () => {

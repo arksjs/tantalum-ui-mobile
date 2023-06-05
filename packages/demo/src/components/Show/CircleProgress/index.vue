@@ -8,9 +8,7 @@
   <ta-group title="参数设置">
     <ul class="exp-circleProgress-list">
       <li>
-        <ta-circle-progress :percentage="percentage" color="#ff4d4f">
-          color
-        </ta-circle-progress>
+        <ta-circle-progress :percentage="percentage" color="#ff4d4f"> color </ta-circle-progress>
       </li>
       <li>
         <ta-circle-progress :percentage="percentage" :strokeWidth="2">
@@ -18,9 +16,7 @@
         </ta-circle-progress>
       </li>
       <li>
-        <ta-circle-progress :percentage="percentage" :size="80">
-          size
-        </ta-circle-progress>
+        <ta-circle-progress :percentage="percentage" :size="80"> size </ta-circle-progress>
       </li>
     </ul>
   </ta-group>

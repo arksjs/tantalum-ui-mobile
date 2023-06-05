@@ -49,8 +49,7 @@ export default defineComponent({
     }
   },
   emits: {
-    end: payload =>
-      payload && isNumber(payload.startTime) && isNumber(payload.endTime),
+    end: payload => payload && isNumber(payload.startTime) && isNumber(payload.endTime),
     pause: pauseOrResumeValidator,
     resume: pauseOrResumeValidator
   } as PropsToEmits<CountDownEmits>,
@@ -62,24 +61,22 @@ export default defineComponent({
     let remainTime = 0
     let paused = false
 
-    const { times, timeStart, timeStop, timeUpdate } = useCountTime(
-      ({ update, stop }) => {
-        remainTime = expiredTime - Date.now()
+    const { times, timeStart, timeStop, timeUpdate } = useCountTime(({ update, stop }) => {
+      remainTime = expiredTime - Date.now()
 
-        if (remainTime > 0) {
-          update(remainTime)
-        } else {
-          remainTime = 0
-          update(remainTime)
-          emit('end', {
-            startTime,
-            endTime: expiredTime
-          })
+      if (remainTime > 0) {
+        update(remainTime)
+      } else {
+        remainTime = 0
+        update(remainTime)
+        emit('end', {
+          startTime,
+          endTime: expiredTime
+        })
 
-          stop()
-        }
+        stop()
       }
-    )
+    })
 
     function pause() {
       if (paused) {

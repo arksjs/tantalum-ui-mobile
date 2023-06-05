@@ -7,13 +7,7 @@ import {
   SIZE_TYPES,
   type CSSProperties
 } from '../helpers'
-import type {
-  AvatarGroupProps,
-  AvatarProps,
-  Gender,
-  ShapeType,
-  AvatarSize
-} from './types'
+import type { AvatarGroupProps, AvatarProps, Gender, ShapeType, AvatarSize } from './types'
 import type { BadgeProps } from '../Badge/types'
 import { handleBadge } from '../Badge/util'
 
@@ -21,10 +15,7 @@ export const AVATAR_SHAPE_TYPES: ShapeType[] = ['circle', 'square']
 
 export const GENDER_TYPES: Gender[] = ['woman', 'man']
 
-export const getAvatarSize = (
-  props: AvatarProps,
-  parentProps?: AvatarGroupProps
-) => {
+export const getAvatarSize = (props: AvatarProps, parentProps?: AvatarGroupProps) => {
   const size = parentProps?.size ?? props.size
   return isNumber(size) ? size : getEnumsValue(SIZE_TYPES, size)
 }
@@ -32,24 +23,16 @@ export const getAvatarSize = (
 export const getAvatarShape = (props: AvatarProps, hasGroup?: boolean) =>
   getEnumsValue(AVATAR_SHAPE_TYPES, hasGroup ? 'circle' : props.shape)
 
-export const getGroupClasses = (count: number) => [
-  'ta-avatar-group',
-  'count--' + (count || 1)
-]
+export const getGroupClasses = (count: number) => ['ta-avatar-group', 'count--' + (count || 1)]
 
 export const getGroupCountClasses = (showCount: string) => [
   'ta-avatar-group_count-number',
   'size--' + showCount.length
 ]
 
-export const getShowCount = (count?: number | string) =>
-  simpleNumber(getNumber(count))
+export const getShowCount = (count?: number | string) => simpleNumber(getNumber(count))
 
-export const getAvatarClasses = (
-  props: AvatarProps,
-  size: AvatarSize,
-  shape: ShapeType
-) => [
+export const getAvatarClasses = (props: AvatarProps, size: AvatarSize, shape: ShapeType) => [
   'ta-avatar',
   'size--' + size,
   'shape--' + shape,

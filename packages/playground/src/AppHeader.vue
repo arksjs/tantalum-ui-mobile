@@ -7,10 +7,7 @@ import Share from './icons/ShareIcon.vue'
 function toggleDark() {
   const cls = document.documentElement.classList
   cls.toggle('dark')
-  localStorage.setItem(
-    'vue-sfc-playground-prefer-dark',
-    String(cls.contains('dark'))
-  )
+  localStorage.setItem('vue-sfc-playground-prefer-dark', String(cls.contains('dark')))
 }
 
 async function copyLink() {

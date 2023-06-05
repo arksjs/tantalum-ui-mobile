@@ -20,30 +20,22 @@ describe('Fixed', () => {
       }
     })
 
-    expect(wrapper.find('.ta-fixed_inner').classes()).toContain(
-      'placement--bottom'
-    )
+    expect(wrapper.find('.ta-fixed_inner').classes()).toContain('placement--bottom')
 
     await wrapper.setProps({
       placement: 'top'
     })
-    expect(wrapper.find('.ta-fixed_inner').classes()).toContain(
-      'placement--top'
-    )
+    expect(wrapper.find('.ta-fixed_inner').classes()).toContain('placement--top')
 
     await wrapper.setProps({
       placement: 'left'
     })
-    expect(wrapper.find('.ta-fixed_inner').classes()).toContain(
-      'placement--left'
-    )
+    expect(wrapper.find('.ta-fixed_inner').classes()).toContain('placement--left')
 
     await wrapper.setProps({
       placement: 'right'
     })
-    expect(wrapper.find('.ta-fixed_inner').classes()).toContain(
-      'placement--right'
-    )
+    expect(wrapper.find('.ta-fixed_inner').classes()).toContain('placement--right')
   })
 
   test('background', () => {
@@ -67,15 +59,11 @@ describe('Fixed', () => {
         stubs: { teleport: true }
       }
     })
-    expect(wrapper.find('.ta-fixed_inner').attributes('style')).toContain(
-      'z-index: 1'
-    )
+    expect(wrapper.find('.ta-fixed_inner').attributes('style')).toContain('z-index: 1')
 
     await wrapper.setProps({
       zIndex: 10
     })
-    expect(wrapper.find('.ta-fixed_inner').attributes('style')).toContain(
-      'z-index: 10'
-    )
+    expect(wrapper.find('.ta-fixed_inner').attributes('style')).toContain('z-index: 10')
   })
 })

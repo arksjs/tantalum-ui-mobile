@@ -28,12 +28,7 @@ import { defineComponent, toRef, type PropType } from 'vue'
 import { Drawer } from '../Drawer'
 import { NoticeBar } from '../NoticeBar'
 import { popupEmits, popupProps } from '../popup/props'
-import {
-  iconValidator,
-  type PropsToEmits,
-  type StateType,
-  type EmptyObject
-} from '../helpers'
+import { iconValidator, type PropsToEmits, type StateType, type EmptyObject } from '../helpers'
 import type { IconData } from '../Icon/types'
 import { useDelay } from '../hooks'
 import type { NotifyEmits } from './types'

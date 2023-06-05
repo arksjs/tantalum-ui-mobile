@@ -19,11 +19,7 @@ import { TaToast } from 'tantalum-ui-mobile'
 组件导出的类型定义：
 
 ```ts
-import type {
-  ToastType,
-  VisibleState,
-  PopupOnVisibleStateChange
-} from 'tantalum-ui-mobile'
+import type { ToastType, VisibleState, PopupOnVisibleStateChange } from 'tantalum-ui-mobile'
 ```
 
 ## Props

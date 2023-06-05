@@ -54,9 +54,7 @@
     >
       <template #indicator="slotProps">
         <div class="exp-scrollView-indicator">
-          方向：{{ slotProps.pullDirection }} 状态：{{
-            slotProps.pullRefreshState
-          }}
+          方向：{{ slotProps.pullDirection }} 状态：{{ slotProps.pullRefreshState }}
         </div>
       </template>
       <div class="exp-scrollView-h-400">

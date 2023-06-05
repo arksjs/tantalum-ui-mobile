@@ -34,10 +34,7 @@ const externalPlugin = (esm = false) => {
           // import add .mjs
           if (!/[A-Za-z]+\./.test(path)) {
             // Exclude the ./a.css
-            if (
-              /helpers|hooks|locale|slots/.test(path) ||
-              /\/[A-Z][^/]+$/.test(path)
-            ) {
+            if (/helpers|hooks|locale|slots/.test(path) || /\/[A-Z][^/]+$/.test(path)) {
               // add  /index.mjs
               path += '/index.mjs'
             } else {
@@ -74,16 +71,13 @@ const buildCompsCjs = async (entryPoints, deps) => {
     outdir: resolve('./lib/'),
     format: 'cjs',
     bundle: true,
+    platform: 'node',
     target: ['es2019']
   })
 }
 
 export const getFilePaths = async () => {
-  await execa('gulp', [
-    'buildFilePathsCache',
-    '--gulpfile',
-    './build/gulpfile.js'
-  ])
+  await execa('gulp', ['buildFilePathsCache', '--gulpfile', './build/gulpfile.js'])
 
   const fileStrPath = resolve('./build/ts-files.txt')
   const fileStr = await fs.promises.readFile(fileStrPath, 'utf-8')
@@ -94,8 +88,8 @@ export const getFilePaths = async () => {
     .split(`\n`)
     .filter(function (path) {
       return (
-        !['style/index.ts', 'types.ts', '.d.ts', 'umd.ts', '__tests__'].some(
-          v => path.includes(v)
+        !['style/index.ts', 'types.ts', '.d.ts', 'umd.ts', '__tests__'].some(v =>
+          path.includes(v)
         ) && path !== ''
       )
     })
@@ -122,11 +116,7 @@ export const buildSrcCompEntry = async () => {
     imports.push(`export { default as Ta${name} } from '../${name}'\n`)
   }
 
-  await fs.promises.writeFile(
-    resolveCore('./src/components/index.ts'),
-    imports.join(''),
-    'utf-8'
-  )
+  await fs.promises.writeFile(resolveCore('./src/components/index.ts'), imports.join(''), 'utf-8')
 
   // // install.ts
   // await fs.promises.writeFile(
@@ -142,9 +132,5 @@ export const buildSrcCompEntry = async () => {
     apiImports.push(`export { ${array.join(', ')} } from '../${name}'\n`)
   }
 
-  await fs.promises.writeFile(
-    resolveCore('./src/components/api.ts'),
-    apiImports.join(''),
-    'utf-8'
-  )
+  await fs.promises.writeFile(resolveCore('./src/components/api.ts'), apiImports.join(''), 'utf-8')
 }

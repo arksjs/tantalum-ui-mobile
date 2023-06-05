@@ -29,11 +29,7 @@
           id="popMenuTop2"
           shape="circle"
           icon="UpOutlined"
-          @click="
-            ;(placement2 = 'top'),
-              (selector2 = '#popMenuTop2'),
-              (visible2 = true)
-          "
+          @click=";(placement2 = 'top'), (selector2 = '#popMenuTop2'), (visible2 = true)"
         >
           上
         </ta-button>
@@ -44,11 +40,7 @@
           id="popMenuLeft2"
           shape="circle"
           icon="LeftOutlined"
-          @click="
-            ;(placement2 = 'left'),
-              (selector2 = '#popMenuLeft2'),
-              (visible2 = true)
-          "
+          @click=";(placement2 = 'left'), (selector2 = '#popMenuLeft2'), (visible2 = true)"
         >
           左
         </ta-button>
@@ -58,11 +50,7 @@
           id="popMenuRight2"
           shape="circle"
           icon="RightOutlined"
-          @click="
-            ;(placement2 = 'right'),
-              (selector2 = '#popMenuRight2'),
-              (visible2 = true)
-          "
+          @click=";(placement2 = 'right'), (selector2 = '#popMenuRight2'), (visible2 = true)"
         >
           右
         </ta-button>
@@ -73,11 +61,7 @@
           id="popMenuBottom2"
           shape="circle"
           icon="DownOutlined"
-          @click="
-            ;(placement2 = 'bottom'),
-              (selector2 = '#popMenuBottom2'),
-              (visible2 = true)
-          "
+          @click=";(placement2 = 'bottom'), (selector2 = '#popMenuBottom2'), (visible2 = true)"
         >
           下
         </ta-button>
@@ -91,9 +75,7 @@
         id="popMenuEvent"
         shape="circle"
         icon="MenuOutlined"
-        @click="
-          ;(selector = '#popMenuEvent'), (showEvent = true), (visible = true)
-        "
+        @click=";(selector = '#popMenuEvent'), (showEvent = true), (visible = true)"
       >
       </ta-button>
     </ta-cell>
@@ -103,11 +85,7 @@
         id="popMenuPopupEvent"
         shape="circle"
         icon="MenuOutlined"
-        @click="
-          ;(selector = '#popMenuPopupEvent'),
-            (visibleEvent = true),
-            (visible = true)
-        "
+        @click=";(selector = '#popMenuPopupEvent'), (visibleEvent = true), (visible = true)"
       >
       </ta-button>
     </ta-cell>

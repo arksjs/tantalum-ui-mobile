@@ -16,11 +16,7 @@ import {
 } from '../helpers'
 import { useGroup } from '../hooks'
 import { CollapseContext } from './context'
-import type {
-  CollapseContextValue,
-  CollapseEmits,
-  CollapseContextItemRef
-} from './types'
+import type { CollapseContextValue, CollapseEmits, CollapseContextItemRef } from './types'
 
 export default defineComponent({
   name: 'ta-collapse',
@@ -42,18 +38,13 @@ export default defineComponent({
   setup(props, { emit }) {
     let activeNames: string[] = []
 
-    const { children } = useGroup<CollapseContextValue, CollapseContextItemRef>(
-      CollapseContext,
-      {
-        onChange,
-        hasGroup: true
-      }
-    )
+    const { children } = useGroup<CollapseContextValue, CollapseContextItemRef>(CollapseContext, {
+      onChange,
+      hasGroup: true
+    })
 
     function updateValue(val: string | string[]) {
-      let values = cloneData(
-        isStringArray(val) ? val : isString(val) ? [val] : []
-      )
+      let values = cloneData(isStringArray(val) ? val : isString(val) ? [val] : [])
 
       if (props.accordion) {
         // 手风琴模式只保留一个值
@@ -84,18 +75,14 @@ export default defineComponent({
       if (props.accordion) {
         children.forEach(child => {
           if (child.uid === uid) {
-            child.getActive() &&
-              child.getName() &&
-              activeNames.push(child.getName())
+            child.getActive() && child.getName() && activeNames.push(child.getName())
           } else {
             child.hide()
           }
         })
       } else {
         children.forEach(child => {
-          child.getActive() &&
-            child.getName() &&
-            activeNames.push(child.getName())
+          child.getActive() && child.getName() && activeNames.push(child.getName())
         })
       }
 

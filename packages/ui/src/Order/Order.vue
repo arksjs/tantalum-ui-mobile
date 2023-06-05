@@ -20,10 +20,7 @@
       v-for="(item, index) in positions"
       :key="item.id"
     >
-      <span
-        class="ta-order_item-ratio"
-        :style="getItemRatioStyles(aspectRatio)"
-      ></span>
+      <span class="ta-order_item-ratio" :style="getItemRatioStyles(aspectRatio)"></span>
       <div class="ta-order_item-inner">
         <slot :id="item.id" :index="index"> </slot>
       </div>
@@ -39,9 +36,7 @@
     <div class="ta-order_delete-button" ref="deleteButtonEl">
       <Icon :icon="DeleteOutlined" />
       <span>{{
-        deleting
-          ? locale.orderDeleteButtonActiveText
-          : locale.orderDeleteButtonText
+        deleting ? locale.orderDeleteButtonActiveText : locale.orderDeleteButtonText
       }}</span>
     </div>
   </Drawer>
@@ -79,13 +74,7 @@ import type { OnVisibleStateChange } from '../popup/types'
 import { useLocale } from '../ConfigProvider/context'
 import type { Item, OrderEmits, Position } from './types'
 import DeleteOutlined from '../Icon/icons/DeleteOutlined'
-import {
-  getClasses,
-  getItemClasses,
-  getItemRatioStyles,
-  getItemStyles,
-  getStyles
-} from './util'
+import { getClasses, getItemClasses, getItemRatioStyles, getItemStyles, getStyles } from './util'
 
 interface TargetObject {
   id: string | number
@@ -137,10 +126,7 @@ export default defineComponent({
   emits: {
     'update:items': itemsValidator,
     delete: payload =>
-      payload &&
-      isNumber(payload.index) &&
-      payload.item &&
-      isStringOrNumber(payload.item.id)
+      payload && isNumber(payload.index) && payload.item && isStringOrNumber(payload.item.id)
   } as PropsToEmits<OrderEmits>,
   setup(props, { emit }) {
     const { locale } = useLocale()
@@ -475,10 +461,7 @@ export default defineComponent({
           max as number
         )
 
-        if (
-          (imgsMode.moveShift > 0 && imgsMode.moveShift != shift) ||
-          imgsMode.shift != shift
-        ) {
+        if ((imgsMode.moveShift > 0 && imgsMode.moveShift != shift) || imgsMode.shift != shift) {
           // 计算位置
           sort.splice(imgsMode.shift, 1)
           sort.splice(shift, 0, index)

@@ -1,10 +1,6 @@
 <template>
   <teleport to="body">
-    <div
-      :class="['ta-popover', popupClasses]"
-      :style="popupStyles"
-      v-bind="$attrs"
-    >
+    <div :class="['ta-popover', popupClasses]" :style="popupStyles" v-bind="$attrs">
       <div class="ta-mask" @click="onMaskClick"></div>
       <div class="ta-popover_inner" :style="innerStyles" ref="popupInnerEl">
         <i class="ta-popover_arrow" :style="arrowStyles"></i>
@@ -19,15 +15,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  nextTick,
-  onMounted,
-  ref,
-  shallowRef,
-  watch
-} from 'vue'
+import { computed, defineComponent, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import { popoverProps, popoverEmits } from '../Popover/props'
 import { cloneData, querySelector, type PropsToEmits } from '../helpers'
 import { usePopup } from '../popup/use-popup'
@@ -78,20 +66,12 @@ export default defineComponent({
         return
       }
 
-      showPos.value = getShowPos(
-        container.value,
-        popup.popupInnerEl.value,
-        props.placement
-      )
+      showPos.value = getShowPos(container.value, popup.popupInnerEl.value, props.placement)
     }
 
-    const arrowStyles = computed(() =>
-      getArrowStyles(isShow.value, showPos.value)
-    )
+    const arrowStyles = computed(() => getArrowStyles(isShow.value, showPos.value))
 
-    const innerStyles = computed(() =>
-      getInnerStyles(isShow.value, showPos.value)
-    )
+    const innerStyles = computed(() => getInnerStyles(isShow.value, showPos.value))
 
     watch(
       () => props.showMask,

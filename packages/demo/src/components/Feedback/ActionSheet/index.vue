@@ -1,24 +1,12 @@
 <template>
   <ta-group title="基础用法">
     <ta-cell label="默认" isLink @click="visible = true"></ta-cell>
-    <ta-cell
-      label="展示标题"
-      isLink
-      @click=";(title = '标题'), (visible = true)"
-    ></ta-cell>
-    <ta-cell
-      label="展示取消按钮"
-      isLink
-      @click=";(showCancel = true), (visible = true)"
-    ></ta-cell>
+    <ta-cell label="展示标题" isLink @click=";(title = '标题'), (visible = true)"></ta-cell>
+    <ta-cell label="展示取消按钮" isLink @click=";(showCancel = true), (visible = true)"></ta-cell>
     <ta-cell
       label="设置取消按钮文案"
       isLink
-      @click="
-        ;(showCancel = true),
-          (cancelText = '自定义取消按钮文案'),
-          (visible = true)
-      "
+      @click=";(showCancel = true), (cancelText = '自定义取消按钮文案'), (visible = true)"
     ></ta-cell>
   </ta-group>
   <ta-group title="options 扩展">

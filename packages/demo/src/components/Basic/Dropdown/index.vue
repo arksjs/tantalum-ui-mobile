@@ -11,11 +11,7 @@
     <ta-cell
       label="visible-state-change"
       id="dropdownCellEvent"
-      @click="
-        ;(selector = '#dropdownCellEvent'),
-          (visibleEvent = true),
-          (visible = true)
-      "
+      @click=";(selector = '#dropdownCellEvent'), (visibleEvent = true), (visible = true)"
     />
   </ta-group>
   <ta-dropdown

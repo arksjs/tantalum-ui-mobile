@@ -13,11 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import {
-  showToast,
-  type SwipeCellButtonOption,
-  type SwipeCellOnButtonClick
-} from '@/index'
+import { showToast, type SwipeCellButtonOption, type SwipeCellOnButtonClick } from '@/index'
 
 export default defineComponent({
   name: 'ExpSwipeCell',

@@ -16,9 +16,7 @@ describe('NoticeBar', () => {
     const wrapper = mount(NoticeBar, {
       props: { marquee: true }
     })
-    expect(wrapper.find('.ta-notice-bar_content-inner').classes()).toContain(
-      'marquee'
-    )
+    expect(wrapper.find('.ta-notice-bar_content-inner').classes()).toContain('marquee')
   })
 
   test('leftIcon', () => {

@@ -53,12 +53,7 @@
           <span class="exp-image-text">widthFix</span>
         </ta-col>
         <ta-col :span="8">
-          <ta-image
-            class="exp-image-image"
-            :src="imageUrl"
-            mode="top"
-            :aspect-ratio="1"
-          ></ta-image>
+          <ta-image class="exp-image-image" :src="imageUrl" mode="top" :aspect-ratio="1"></ta-image>
           <span class="exp-image-text">top</span>
         </ta-col>
         <ta-col :span="8">
@@ -131,27 +126,15 @@
     <div class="exp-image-flex">
       <ta-row :gutter="[16, 16]" align="bottom">
         <ta-col :span="8">
-          <ta-image
-            class="exp-image-image"
-            :src="imageUrl"
-            :aspect-ratio="1"
-          ></ta-image>
+          <ta-image class="exp-image-image" :src="imageUrl" :aspect-ratio="1"></ta-image>
           <span class="exp-image-text">aspect-ratio=1</span>
         </ta-col>
         <ta-col :span="8">
-          <ta-image
-            class="exp-image-image"
-            :src="imageUrl"
-            :aspect-ratio="1.5"
-          ></ta-image>
+          <ta-image class="exp-image-image" :src="imageUrl" :aspect-ratio="1.5"></ta-image>
           <span class="exp-image-text">aspect-ratio=1.5</span>
         </ta-col>
         <ta-col :span="8">
-          <ta-image
-            class="exp-image-image"
-            :src="imageUrl"
-            :aspect-ratio="0.5"
-          ></ta-image>
+          <ta-image class="exp-image-image" :src="imageUrl" :aspect-ratio="0.5"></ta-image>
           <span class="exp-image-text">aspect-ratio=0.5</span>
         </ta-col>
       </ta-row>
@@ -164,11 +147,7 @@
           <ta-image class="exp-image-image" :aspect-ratio="1"></ta-image>
         </ta-col>
         <ta-col :span="8">
-          <ta-image
-            class="exp-image-image"
-            src="error"
-            :aspect-ratio="1"
-          ></ta-image>
+          <ta-image class="exp-image-image" src="error" :aspect-ratio="1"></ta-image>
         </ta-col>
       </ta-row>
     </div>
@@ -177,18 +156,10 @@
     <div class="exp-image-flex">
       <ta-row :gutter="[16, 16]">
         <ta-col :span="8">
-          <ta-image
-            class="exp-image-image"
-            :src="imageUrl"
-            auto-height
-          ></ta-image>
+          <ta-image class="exp-image-image" :src="imageUrl" auto-height></ta-image>
         </ta-col>
         <ta-col :span="8">
-          <ta-image
-            class="exp-image-image"
-            auto-height
-            :aspect-ratio="1"
-          ></ta-image>
+          <ta-image class="exp-image-image" auto-height :aspect-ratio="1"></ta-image>
         </ta-col>
       </ta-row>
     </div>
@@ -197,12 +168,7 @@
     <div class="exp-image-flex">
       <ta-row :gutter="[16, 16]">
         <ta-col :span="8">
-          <ta-image
-            class="exp-image-image"
-            :src="imageUrl"
-            :aspect-ratio="1"
-            lazy-load
-          ></ta-image>
+          <ta-image class="exp-image-image" :src="imageUrl" :aspect-ratio="1" lazy-load></ta-image>
         </ta-col>
       </ta-row>
     </div>

@@ -3,15 +3,13 @@
     <slot></slot>
     <span class="ta-price_symbol" v-if="symbol">{{ symbol }}</span>
     <span class="ta-price_integer">{{ priceStr.split('.')[0] }}</span>
-    <span class="ta-price_decimal" v-if="decimalDigits > 0"
-      >.{{ priceStr.split('.')[1] }}</span
-    >
+    <span class="ta-price_decimal" v-if="hasDecimal">.{{ priceStr.split('.')[1] }}</span>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { isNumeric } from '../helpers'
+import { getNumber, isNumeric } from '../helpers'
 import { getPrice } from './util'
 
 export default defineComponent({
@@ -41,8 +39,10 @@ export default defineComponent({
   },
   setup(props) {
     const priceStr = computed(() => getPrice(props))
+    const hasDecimal = computed(() => getNumber(props.decimalDigits) > 0)
 
     return {
+      hasDecimal,
       priceStr
     }
   }

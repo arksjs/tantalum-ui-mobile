@@ -16,8 +16,5 @@ export const getCellClasses = (props: CellProps) => {
 }
 
 export const getCellArrowClasses = (arrowDirection?: ArrowDirection) => {
-  return [
-    'ta-cell_link-icon',
-    'arrow--' + getEnumsValue(LINK_ICON_NAMES, arrowDirection)
-  ]
+  return ['ta-cell_link-icon', 'arrow--' + getEnumsValue(LINK_ICON_NAMES, arrowDirection)]
 }

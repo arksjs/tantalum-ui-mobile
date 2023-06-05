@@ -1,15 +1,7 @@
-import {
-  isObject,
-  isURL,
-  isString,
-  type AnyObject,
-  type UnionToIntersection
-} from './util'
+import { isObject, isURL, isString, type AnyObject, type UnionToIntersection } from './util'
 import { isColorValue } from './color'
 
-export type VoidFnToBooleanFn<VoidFn> = VoidFn extends (
-  ...args: infer Args
-) => void
+export type VoidFnToBooleanFn<VoidFn> = VoidFn extends (...args: infer Args) => void
   ? (...args: Args) => boolean
   : never
 
@@ -30,9 +22,7 @@ export type PropsToEmits<P> = Required<P> extends infer T
   ? T extends ObjectEmitsOptions
     ? {
         [K in string &
-          OnEventToEvent<
-            string & keyof Required<T>
-          >]: T[EventToOnEvent<K>] extends null
+          OnEventToEvent<string & keyof Required<T>>]: T[EventToOnEvent<K>] extends null
           ? never
           : VoidFnToBooleanFn<T[EventToOnEvent<K>]>
       } extends infer E
@@ -41,10 +31,7 @@ export type PropsToEmits<P> = Required<P> extends infer T
           [x: string]: (...args: any[]) => any
         }
         ? E & {
-            'update:modelValue': E['change'] extends (
-              arg: infer Arg0,
-              ...rest: any[]
-            ) => boolean
+            'update:modelValue': E['change'] extends (arg: infer Arg0, ...rest: any[]) => boolean
               ? (value: Arg0) => boolean
               : never
           }
@@ -53,10 +40,7 @@ export type PropsToEmits<P> = Required<P> extends infer T
     : Record<string, never>
   : Record<string, never>
 
-export type EmitFn<
-  Options,
-  Event extends keyof Options = keyof Options
-> = UnionToIntersection<
+export type EmitFn<Options, Event extends keyof Options = keyof Options> = UnionToIntersection<
   {
     [key in Event]: Options[key] extends (...args: infer Args) => any
       ? (event: key, ...args: Args) => void
@@ -65,9 +49,7 @@ export type EmitFn<
 >
 
 export const selectorValidator = (value?: string | HTMLElement | Document) => {
-  return (
-    isString(value) || value instanceof HTMLElement || value instanceof Document
-  )
+  return isString(value) || value instanceof HTMLElement || value instanceof Document
 }
 
 export const createEnumsValidator = (enums: readonly string[]) => {
@@ -76,10 +58,7 @@ export const createEnumsValidator = (enums: readonly string[]) => {
   }
 }
 
-export function getEnumsValue<T extends readonly any[]>(
-  enums: T,
-  value?: string
-): T[number] {
+export function getEnumsValue<T extends readonly any[]>(enums: T, value?: string): T[number] {
   return enums.includes(value as T[number]) ? (value as T[number]) : enums[0]
 }
 

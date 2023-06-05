@@ -1,7 +1,7 @@
 <template>
   <div :class="classes" ref="root">
     <span
-      v-if="!autoHeight && aspectRatio != null && aspectRatio > 0"
+      v-if="!autoHeight && aspectRatio != null"
       class="ta-image_ratio"
       :style="ratioStyles"
     ></span>
@@ -11,12 +11,7 @@
     <i class="ta-image_error" v-if="error">
       <Icon :icon="errorIcon" :size="iconSize" />
     </i>
-    <img
-      v-if="currentSrc"
-      :class="imgClasses"
-      :src="currentSrc"
-      @dragstart="onDrag"
-    />
+    <img v-if="currentSrc" :class="imgClasses" :src="currentSrc" @dragstart="onDrag" />
   </div>
 </template>
 
@@ -102,11 +97,7 @@ export default defineComponent({
     }
   },
   emits: {
-    load: payload =>
-      payload &&
-      payload.width > 0 &&
-      payload.height > 0 &&
-      isString(payload.src),
+    load: payload => payload && payload.width > 0 && payload.height > 0 && isString(payload.src),
     error: emitErrorValidator
   } as PropsToEmits<ImageEmits>,
   setup(props, { emit }) {
@@ -165,9 +156,7 @@ export default defineComponent({
     )
 
     const classes = computed(() => getClasses(props.autoHeight))
-    const imgClasses = computed(() =>
-      getImgClasses(props.mode, props.autoHeight)
-    )
+    const imgClasses = computed(() => getImgClasses(props.mode, props.autoHeight))
     const ratioStyles = computed(() => getRatioStyles(props.aspectRatio))
 
     return {

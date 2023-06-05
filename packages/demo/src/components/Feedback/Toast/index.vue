@@ -1,16 +1,10 @@
 <template>
   <ta-group title="基础用法">
-    <ta-cell
-      label="纯文字"
-      isLink
-      @click="onShowToast({ title: '提示文本' })"
-    ></ta-cell>
+    <ta-cell label="纯文字" isLink @click="onShowToast({ title: '提示文本' })"></ta-cell>
     <ta-cell
       label="长文字"
       isLink
-      @click="
-        onShowToast({ title: '提示文本提示文本提示文本提示文本提示文本' })
-      "
+      @click="onShowToast({ title: '提示文本提示文本提示文本提示文本提示文本' })"
     ></ta-cell>
     <ta-cell
       label="成功"
@@ -37,9 +31,7 @@
     <ta-cell
       label="警告"
       isLink
-      @click="
-        onShowToast({ title: '警告文本', icon: 'ExclamationCircleOutlined' })
-      "
+      @click="onShowToast({ title: '警告文本', icon: 'ExclamationCircleOutlined' })"
     ></ta-cell>
   </ta-group>
   <ta-group title="其他">
@@ -61,11 +53,7 @@
       @click="showToast({ title: '提示文本', duration: 5000 })"
     ></ta-cell>
     <ta-cell label="hideToast" isLink @click="hideToast()"></ta-cell>
-    <ta-cell
-      label="showLoading"
-      isLink
-      @click="showLoading({ title: '加载中' })"
-    ></ta-cell>
+    <ta-cell label="showLoading" isLink @click="showLoading({ title: '加载中' })"></ta-cell>
     <ta-cell label="hideLoading" isLink @click="hideLoading()"></ta-cell>
   </ta-group>
   <ta-toast
@@ -80,13 +68,7 @@
 
 <script lang="ts">
 import { defineComponent, onBeforeUnmount, ref } from 'vue'
-import {
-  showToast,
-  showLoading,
-  hideToast,
-  hideLoading,
-  type ToastType
-} from '@/index'
+import { showToast, showLoading, hideToast, hideLoading, type ToastType } from '@/index'
 
 interface showArgs {
   icon?: any

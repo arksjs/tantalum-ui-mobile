@@ -5,48 +5,17 @@
   </ta-group>
   <ta-group title="包含图标">
     <ta-cell label="单元格" content="内容" icon="EditOutlined"></ta-cell>
-    <ta-cell
-      label="单元格"
-      content="内容"
-      description="描述信息"
-      icon="EditOutlined"
-    ></ta-cell>
+    <ta-cell label="单元格" content="内容" description="描述信息" icon="EditOutlined"></ta-cell>
   </ta-group>
   <ta-group title="展示箭头">
     <ta-cell label="单元格" isLink></ta-cell>
-    <ta-cell
-      label="单元格"
-      content="内容"
-      isLink
-      arrow-direction="down"
-    ></ta-cell>
-    <ta-cell
-      label="单元格"
-      content="内容"
-      isLink
-      arrow-direction="left"
-    ></ta-cell>
-    <ta-cell
-      label="单元格"
-      description="描述信息"
-      isLink
-      arrow-direction="up"
-    ></ta-cell>
-    <ta-cell
-      label="单元格"
-      content="内容"
-      description="描述信息"
-      isLink
-    ></ta-cell>
+    <ta-cell label="单元格" content="内容" isLink arrow-direction="down"></ta-cell>
+    <ta-cell label="单元格" content="内容" isLink arrow-direction="left"></ta-cell>
+    <ta-cell label="单元格" description="描述信息" isLink arrow-direction="up"></ta-cell>
+    <ta-cell label="单元格" content="内容" description="描述信息" isLink></ta-cell>
   </ta-group>
   <ta-group title="其他">
-    <ta-cell
-      label="必填"
-      content="内容"
-      isLink
-      arrow-direction="down"
-      required
-    ></ta-cell>
+    <ta-cell label="必填" content="内容" isLink arrow-direction="down" required></ta-cell>
   </ta-group>
   <ta-group title="事件监听">
     <ta-cell

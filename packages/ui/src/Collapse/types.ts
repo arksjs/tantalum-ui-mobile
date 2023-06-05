@@ -26,10 +26,7 @@ export interface CollapseItemEmits {
   onToggle?: ItemOnToggle
 }
 
-export type {
-  OnChange as CollapseOnChange,
-  ItemOnToggle as CollapseItemOnToggle
-}
+export type { OnChange as CollapseOnChange, ItemOnToggle as CollapseItemOnToggle }
 
 export interface CollapseContextValue extends GroupContextValue {
   onChange?: (uid: symbol) => void

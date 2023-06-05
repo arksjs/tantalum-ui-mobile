@@ -45,9 +45,7 @@ export const getBadgeStyles = (props: BadgeProps) => {
 
   const styles: CSSProperties = {
     transform: `translate3d(50%, -50%, 0px) scale(${
-      (isString(props.content) && props.content) ||
-      props.showZero ||
-      (props.content && props.content > 0)
+      (isString(props.content) && props.content) || props.showZero || getNumber(props.content) > 0
         ? 1
         : 0
     })`,
@@ -71,11 +69,7 @@ export const getDefaultContent = (props: BadgeProps) => {
   return isString(props.content)
     ? props.content
     : isNumber(props.content)
-    ? rangeInteger(
-        props.content,
-        0,
-        getNumber(props.maxCount, DEFAULT_MAX_COUNT)
-      )
+    ? rangeInteger(props.content, 0, getNumber(props.maxCount, DEFAULT_MAX_COUNT))
     : 0
 }
 

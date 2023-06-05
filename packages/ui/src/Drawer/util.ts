@@ -1,9 +1,4 @@
-import {
-  PLACEMENT_TYPES,
-  getEnumsValue,
-  type CSSProperties,
-  type PlacementType
-} from '../helpers'
+import { PLACEMENT_TYPES, getEnumsValue, type CSSProperties, type PlacementType } from '../helpers'
 import type { SafeAreaInsets } from '../hooks'
 
 export const getInnerStyles = ({

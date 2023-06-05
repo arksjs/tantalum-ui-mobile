@@ -8,15 +8,10 @@
         @click="onChange(item.value)"
       >
         <Badge class="ta-tab_item-inner" v-bind="item.badge">
-          <Icon
-            v-if="item.icon"
-            :icon="index === activeIndex ? item.activeIcon : item.icon"
-          />
+          <Icon v-if="item.icon" :icon="index === activeIndex ? item.activeIcon : item.icon" />
           <span class="ta-tab_item-text">{{ item.label }}</span>
         </Badge>
-        <span class="ta-tab_item-sub-text" v-if="hasSub">{{
-          item.subLabel
-        }}</span>
+        <span class="ta-tab_item-sub-text" v-if="hasSub">{{ item.subLabel }}</span>
       </li>
     </ul>
     <span class="ta-tab_underline" ref="underlineEl"></span>
@@ -47,9 +42,7 @@ export default defineComponent({
   setup(props, ctx) {
     const tab = useTab(props, ctx, { tabName: 'Tab' })
 
-    const classes = computed(() =>
-      getClasses(tab.noScrolling.value, tab.hasSub.value)
-    )
+    const classes = computed(() => getClasses(tab.noScrolling.value, tab.hasSub.value))
 
     return {
       classes,

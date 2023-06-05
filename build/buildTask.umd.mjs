@@ -4,7 +4,7 @@ import vuePlugin from './esbuild-plugin-vue.mjs'
 import { rollup } from 'rollup'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 import { getCoreDeps, getPath } from './utils.mjs'
 
 const { resolveCore, resolve } = getPath(import.meta.url)

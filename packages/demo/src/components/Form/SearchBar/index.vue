@@ -30,11 +30,7 @@
     </ta-search-bar>
   </ta-group>
   <ta-group title="事件监听（readonly=true）">
-    <ta-search-bar
-      readonly
-      :placeholders="placeholders"
-      @field-click="onClick"
-    />
+    <ta-search-bar readonly :placeholders="placeholders" @field-click="onClick" />
   </ta-group>
 </template>
 

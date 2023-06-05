@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="ta-circle-progress"
-    :style="{ fontSize: Math.max(9, nSize * 0.17 * 0.875) + 'px' }"
-  >
+  <div class="ta-circle-progress" :style="{ fontSize: Math.max(9, nSize * 0.17 * 0.875) + 'px' }">
     <LoadingIcon
       class="ta-circle-progress_bar"
       :size="nSize"
@@ -52,9 +49,7 @@ export default defineComponent({
   setup(props) {
     const nSize = computed(() => parseFloat(props.size as string))
     const rate = computed(() => rangeInteger(props.percentage, 0, 100) / 100)
-    const progress = computed(
-      () => rangeInteger(props.percentage, 0, 100) + '%'
-    )
+    const progress = computed(() => rangeInteger(props.percentage, 0, 100) + '%')
     const fontSize = computed(() => getFontSize(nSize.value))
 
     return {

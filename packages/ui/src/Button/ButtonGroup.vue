@@ -8,11 +8,7 @@
 import { computed, defineComponent, type PropType } from 'vue'
 import { createEnumsValidator, SIZE_TYPES, type SizeType } from '../helpers'
 import type { PatternType, ShapeType } from './types'
-import {
-  getGroupClasses,
-  BUTTON_PATTERN_TYPES,
-  BUTTON_SHAPE_TYPES
-} from './util'
+import { getGroupClasses, BUTTON_PATTERN_TYPES, BUTTON_SHAPE_TYPES } from './util'
 import { useButtonProvider } from './context'
 
 export default defineComponent({

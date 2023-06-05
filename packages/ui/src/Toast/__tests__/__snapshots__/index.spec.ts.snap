@@ -1,7 +1,7 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Toast > snapshot 1`] = `
-"<teleport-stub>
+"<teleport-stub to=\\"body\\">
   <div class=\\"ta-toast ta-popup dismask\\" style=\\"z-index: 2000; display: none;\\">
     <div class=\\"ta-toast_box\\">
       <!--v-if-->

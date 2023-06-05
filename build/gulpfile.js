@@ -31,10 +31,7 @@ function sass2Css() {
  * @returns stream
  */
 function copySass() {
-  return gulp
-    .src(`${corePath}/src/**/*.scss`)
-    .pipe(gulp.dest(destEs))
-    .pipe(gulp.dest(destLib))
+  return gulp.src(`${corePath}/src/**/*.scss`).pipe(gulp.dest(destEs)).pipe(gulp.dest(destLib))
 }
 
 /**
@@ -157,12 +154,7 @@ function buildStyleImportFilePathsCache() {
     .pipe(fs.createWriteStream('style-files.txt', 'utf-8'))
 }
 
-exports.build = gulp.series(
-  sass2Css,
-  copySass,
-  buildStyleImport,
-  buildSassImport
-)
+exports.build = gulp.series(sass2Css, copySass, buildStyleImport, buildSassImport)
 exports.buildFilePathsCache = buildFilePathsCache
 exports.copyDeclaration = copyDeclaration
 exports.compressCss = compressCss

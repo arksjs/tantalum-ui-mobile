@@ -68,8 +68,5 @@ export function simpleNumber(number: number) {
 export function thousands(number: number | string) {
   const str = number.toString()
 
-  return str.replace(
-    str.indexOf('.') > -1 ? /(\d)(?=(\d{3})+\.)/g : /(\d)(?=(?:\d{3})+$)/g,
-    '$1,'
-  )
+  return str.replace(str.indexOf('.') > -1 ? /(\d)(?=(\d{3})+\.)/g : /(\d)(?=(?:\d{3})+$)/g, '$1,')
 }

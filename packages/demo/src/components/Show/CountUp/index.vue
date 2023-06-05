@@ -7,11 +7,7 @@
       <ta-count-up :initialNumber="initialNumber" :number="number" thousands />
     </ta-cell>
     <ta-cell label="小数位 decimalDigits=2">
-      <ta-count-up
-        :initialNumber="initialNumber"
-        :number="number"
-        :decimalDigits="2"
-      />
+      <ta-count-up :initialNumber="initialNumber" :number="number" :decimalDigits="2" />
     </ta-cell>
   </ta-group>
   <ta-group title="速度">
@@ -63,21 +59,14 @@
           @cancel="onCancel"
         />
       </div>
-      <ta-button @click="cancel" size="small">{{
-        isCancel ? '开始' : '取消'
-      }}</ta-button>
+      <ta-button @click="cancel" size="small">{{ isCancel ? '开始' : '取消' }}</ta-button>
     </ta-cell>
   </ta-group>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import {
-  TaCountUp,
-  type CountUpOnAnimated,
-  type CountUpOnCancel,
-  showToast
-} from '@/index'
+import { TaCountUp, type CountUpOnAnimated, type CountUpOnCancel, showToast } from '@/index'
 
 export default defineComponent({
   name: 'ExpCountUp',

@@ -13,18 +13,8 @@ export * from './components/api'
 export * from './components/index'
 export default UI
 
-export type {
-  FnArgs,
-  StateType,
-  PlacementType,
-  SizeType,
-  ViewPosition
-} from './helpers'
-export type {
-  PopupVisibleState,
-  PopupOnVisibleStateChange,
-  PopupOnCancel
-} from './popup/types'
+export type { FnArgs, StateType, PlacementType, SizeType, ViewPosition } from './helpers'
+export type { PopupVisibleState, PopupOnVisibleStateChange, PopupOnCancel } from './popup/types'
 export type { ButtonShape, ButtonPattern } from './Button/types'
 export type {
   SelectorValueParser,
@@ -64,10 +54,7 @@ export type {
   CalendarMode,
   CalendarDetail
 } from './Calendar/types'
-export type {
-  ActionSheetOption,
-  ActionSheetOnConfirm
-} from './ActionSheet/types'
+export type { ActionSheetOption, ActionSheetOnConfirm } from './ActionSheet/types'
 export type { PopMenuOption, PopMenuOnConfirm } from './PopMenu/types'
 export type { ImagePreviewOnChange } from './ImagePreview/types'
 export type {
@@ -86,41 +73,16 @@ export type {
   ScrollViewOnScroll
 } from './ScrollView/types'
 export type { TabOnChange, TabOptions, TabOption, TabRef } from './Tab/types'
-export type {
-  TabBarOnChange,
-  TabBarOptions,
-  TabBarOption,
-  TabBarRef
-} from './TabBar/types'
-export type {
-  SideTabOnChange,
-  SideTabOptions,
-  SideBarOption,
-  SideBarRef
-} from './SideTab/types'
-export type {
-  SwiperOnActiveIndexChange,
-  SwiperOnAnimated,
-  SwiperRef
-} from './Swiper/types'
-export type {
-  TabViewOnChange,
-  TabViewOnAnimated,
-  TabViewRef
-} from './TabView/types'
+export type { TabBarOnChange, TabBarOptions, TabBarOption, TabBarRef } from './TabBar/types'
+export type { SideTabOnChange, SideTabOptions, SideBarOption, SideBarRef } from './SideTab/types'
+export type { SwiperOnActiveIndexChange, SwiperOnAnimated, SwiperRef } from './Swiper/types'
+export type { TabViewOnChange, TabViewOnAnimated, TabViewRef } from './TabView/types'
 export type { ToastType } from './Toast/types'
-export type {
-  SwipeCellButtonOption,
-  SwipeCellOnButtonClick
-} from './SwipeCell/types'
+export type { SwipeCellButtonOption, SwipeCellOnButtonClick } from './SwipeCell/types'
 export type { StickyViewOnChange, StickyViewRef } from './StickyView/types'
 export type { ScrollTabOnChange, ScrollTabRef } from './ScrollTab/types'
 export type { IndexViewOnChange, IndexViewRef } from './IndexView/types'
-export type {
-  NavBarButtonOption,
-  NavBarOnButtonClick,
-  NavBarOnTitleDbClick
-} from './NavBar/types'
+export type { NavBarButtonOption, NavBarOnButtonClick, NavBarOnTitleDbClick } from './NavBar/types'
 export type { SkeletonAvatarShape, SkeletonButtonShape } from './Skeleton/types'
 export type { CollapseOnChange, CollapseItemOnToggle } from './Collapse/types'
 export type {
@@ -130,17 +92,9 @@ export type {
   CountDownOnResume,
   CountDownRef
 } from './CountDown/types'
-export type {
-  CountUpSpeed,
-  CountUpOnCancel,
-  CountUpOnAnimated,
-  CountUpRef
-} from './CountUp/types'
+export type { CountUpSpeed, CountUpOnCancel, CountUpOnAnimated, CountUpRef } from './CountUp/types'
 export type { StopwatchOnStop, StopwatchRef } from './Stopwatch/types'
-export type {
-  VirtualListOnVisibleItemsChange,
-  VirtualListRef
-} from './VirtualList/types'
+export type { VirtualListOnVisibleItemsChange, VirtualListRef } from './VirtualList/types'
 export type {
   FlatListOnEndReached,
   FlatListOnVisibleItemsChange,

@@ -1,7 +1,7 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Popover > snapshot 1`] = `
-"<teleport-stub>
+"<teleport-stub to=\\"body\\">
   <div class=\\"ta-popover ta-popup\\" style=\\"z-index: 2000; display: none;\\">
     <div class=\\"ta-mask\\"></div>
     <div class=\\"ta-popover_inner\\" style=\\"max-width: -16px; max-height: -16px;\\"><i class=\\"ta-popover_arrow\\" style=\\"left: 200vw; top: 200vh;\\"></i>

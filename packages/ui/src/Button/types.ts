@@ -3,12 +3,7 @@ import type { IconData } from '../Icon/types'
 
 export type ShapeType = 'rectangle' | 'round' | 'circle' | 'square'
 
-export type PatternType =
-  | 'default'
-  | 'solid'
-  | 'dashed'
-  | 'borderless'
-  | 'gradient'
+export type PatternType = 'default' | 'solid' | 'dashed' | 'borderless' | 'gradient'
 
 export type FormType = 'button' | 'submit' | 'reset'
 

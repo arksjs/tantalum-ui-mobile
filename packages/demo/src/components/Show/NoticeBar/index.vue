@@ -4,16 +4,10 @@
     <ta-notice-bar class="exp-noticeBar-item" :title="text2" />
   </ta-group>
   <ta-group title="跑马灯">
-    <ta-notice-bar class="exp-noticeBar-item" marquee :title="text2">
-    </ta-notice-bar>
+    <ta-notice-bar class="exp-noticeBar-item" marquee :title="text2"> </ta-notice-bar>
   </ta-group>
   <ta-group title="左侧图标">
-    <ta-notice-bar
-      class="exp-noticeBar-item"
-      left-icon="SoundOutlined"
-      :title="text1"
-      marquee
-    />
+    <ta-notice-bar class="exp-noticeBar-item" left-icon="SoundOutlined" :title="text1" marquee />
   </ta-group>
   <ta-group title="mode closable/clickable">
     <ta-notice-bar

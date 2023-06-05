@@ -11,10 +11,7 @@
     @update:visible="onUpdateVisible"
     ref="popupRef"
   >
-    <ul
-      class="ta-pop-menu_list ta-pop-menu_list"
-      v-if="options2 && options2.length > 0"
-    >
+    <ul class="ta-pop-menu_list ta-pop-menu_list" v-if="options2 && options2.length > 0">
       <li
         :class="getItemClasses(item)"
         v-for="(item, index) in options2"
@@ -52,10 +49,7 @@ export default defineComponent({
   emits: {
     ...popoverEmits,
     confirm: payload =>
-      payload &&
-      isNumber(payload.index) &&
-      payload.item &&
-      isString(payload.item.name)
+      payload && isNumber(payload.index) && payload.item && isString(payload.item.name)
   } as PropsToEmits<PopMenuEmits>,
   setup(props, ctx) {
     const popup = usePopupExtend<Detail>(ctx)

@@ -1,0 +1,13 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "packages/**/*", "packages/**/*.vue", "ui.d.ts"],
+  "exclude": ["node_modules", "**/__tests__/*", "**/style/*.ts"],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["packages/ui/src/*"],
+      "@arksjs/test-utils/*": ["packages/test-utils/*"]
+    }
+  }
+}

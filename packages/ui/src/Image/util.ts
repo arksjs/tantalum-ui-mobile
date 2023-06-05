@@ -1,9 +1,4 @@
-import {
-  camelCase2KebabCase,
-  getNumber,
-  getEnumsValue,
-  type CSSProperties
-} from '../helpers'
+import { camelCase2KebabCase, getNumber, getEnumsValue, type CSSProperties } from '../helpers'
 import type { Mode } from './types'
 
 export const MODE_NAMES: Mode[] = [
@@ -31,9 +26,10 @@ export const getClasses = (autoHeight?: boolean) => [
 export const getImgClasses = (mode?: Mode, autoHeight?: boolean) => [
   'ta-image_img',
   'mode--' +
-    camelCase2KebabCase(
-      autoHeight ? 'widthFix' : getEnumsValue(MODE_NAMES, mode)
-    ).replace(/\s+/g, '-')
+    camelCase2KebabCase(autoHeight ? 'widthFix' : getEnumsValue(MODE_NAMES, mode)).replace(
+      /\s+/g,
+      '-'
+    )
 ]
 
 export const getRatioStyles = (aspectRatio?: number | string) => {

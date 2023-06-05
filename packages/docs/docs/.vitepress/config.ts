@@ -27,8 +27,7 @@ export default defineConfig({
   ],
   themeConfig: {
     editLink: {
-      pattern:
-        'https://github.com/arksjs/tantalum-ui-mobile/edit/main/packages/docs/docs/:path',
+      pattern: 'https://github.com/arksjs/tantalum-ui-mobile/edit/main/packages/docs/docs/:path',
       text: 'Edit this page on GitHub'
     },
     nav: [
@@ -58,9 +57,7 @@ export default defineConfig({
       '/components/': getComponentsSideBar(),
       '/': getGuideSideBar()
     },
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/arksjs/tantalum-ui-mobile' }
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/arksjs/tantalum-ui-mobile' }],
     logo: '/logo.svg',
     algolia: {
       appId: '3QN7BVCVD6',

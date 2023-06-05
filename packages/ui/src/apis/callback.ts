@@ -1,8 +1,4 @@
-import type {
-  ApiOptionsComplete,
-  ApiOptionsFail,
-  ApiOptionsSuccess
-} from './types'
+import type { ApiOptionsComplete, ApiOptionsFail, ApiOptionsSuccess } from './types'
 import { Exception, noop, type AnyObject } from '../helpers'
 
 /**
@@ -15,10 +11,7 @@ export function getCallbackFns(options: AnyObject): {
   complete: ApiOptionsComplete
 } {
   return {
-    success:
-      typeof options.success === 'function'
-        ? options.success
-        : noop.bind(options),
+    success: typeof options.success === 'function' ? options.success : noop.bind(options),
     fail(error: Error | string) {
       if (typeof options.fail === 'function') {
         ;(options.fail as ApiOptionsFail)(new Exception(error))
@@ -26,9 +19,6 @@ export function getCallbackFns(options: AnyObject): {
         console.error(error)
       }
     },
-    complete:
-      typeof options.complete === 'function'
-        ? options.complete
-        : noop.bind(options)
+    complete: typeof options.complete === 'function' ? options.complete : noop.bind(options)
   }
 }

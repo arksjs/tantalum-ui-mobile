@@ -38,7 +38,6 @@ export const getButtonStyles = ({
   duration: number
   index: number
 }) => ({
-  transform:
-    'translate3d(-' + (buttonTranslateXs[index] || 0) + 'px, 0px, 0px)',
+  transform: 'translate3d(-' + (buttonTranslateXs[index] || 0) + 'px, 0px, 0px)',
   transitionDuration: duration + 's'
 })

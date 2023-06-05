@@ -116,8 +116,6 @@ describe('CollapseItem', () => {
       }
     })
 
-    expect(wrapper.find('.ta-collapse-item_header').classes()).toContain(
-      'disabled'
-    )
+    expect(wrapper.find('.ta-collapse-item_header').classes()).toContain('disabled')
   })
 })

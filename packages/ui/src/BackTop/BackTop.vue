@@ -9,15 +9,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  computed,
-  toRef,
-  ref,
-  onMounted,
-  shallowRef,
-  type PropType
-} from 'vue'
+import { defineComponent, computed, toRef, ref, onMounted, shallowRef, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import {
   getScrollTop,
@@ -70,17 +62,12 @@ export default defineComponent({
       emit('click', e)
     }
 
-    const { safeAreaInsets } = useSafeAreaInsets(
-      toRef(props, 'enableSafeAreaInsets')
-    )
+    const { safeAreaInsets } = useSafeAreaInsets(toRef(props, 'enableSafeAreaInsets'))
 
-    const styles = computed(() =>
-      getStyles(props.offset, isShow.value, safeAreaInsets)
-    )
+    const styles = computed(() => getStyles(props.offset, isShow.value, safeAreaInsets))
 
     function updateShow() {
-      isShow.value =
-        getScrollTop() >= getNumber(props.visibleHeight, DEFAULT_VISIBLE_HEIGHT)
+      isShow.value = getScrollTop() >= getNumber(props.visibleHeight, DEFAULT_VISIBLE_HEIGHT)
     }
 
     useScroll(docEl, updateShow)

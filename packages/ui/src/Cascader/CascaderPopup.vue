@@ -27,11 +27,7 @@ import { Drawer } from '../Drawer'
 import CascaderView from './CascaderView.vue'
 import { usePopupExtend } from '../popup/use-popup'
 import type { CascaderDetail, CascaderPopupEmits } from './types'
-import {
-  pickerPopupEmits,
-  commonProps,
-  pickerPopupProps
-} from '../Picker/props'
+import { pickerPopupEmits, commonProps, pickerPopupProps } from '../Picker/props'
 import { usePickerPopup } from '../Picker/use-picker'
 import { mergeHandlers } from '../Picker/util'
 import type { PropsToEmits } from '../helpers'

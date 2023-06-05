@@ -21,11 +21,7 @@ import {
   watch,
   type PropType
 } from 'vue'
-import {
-  createEnumsValidator,
-  PLACEMENT_TYPES,
-  type PlacementType
-} from '../helpers'
+import { createEnumsValidator, PLACEMENT_TYPES, type PlacementType } from '../helpers'
 import { useSafeAreaInsets, useResizeObserver } from '../hooks'
 import { getStyles, getInnerClasses, getInnerStyles } from './util'
 
@@ -73,9 +69,7 @@ export default defineComponent({
     })
     const isFixed = ref(true)
 
-    const { safeAreaInsets } = useSafeAreaInsets(
-      toRef(props, 'enableSafeAreaInsets')
-    )
+    const { safeAreaInsets } = useSafeAreaInsets(toRef(props, 'enableSafeAreaInsets'))
 
     function updateSize() {
       if (!(root.value && innerEl.value && contentEl.value)) {

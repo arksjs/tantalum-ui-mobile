@@ -1,7 +1,4 @@
-export const getClasses = (props: {
-  loading?: boolean
-  vertical?: boolean
-}) => [
+export const getClasses = (props: { loading?: boolean; vertical?: boolean }) => [
   'ta-load-more',
   'ta-horizontal-hairline',
   {

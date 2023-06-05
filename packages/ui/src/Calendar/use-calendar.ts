@@ -57,10 +57,7 @@ function sourceFormatter(timeArray: number[], mode: Mode) {
         if (start === end) {
           detail.label = startDjs.format('YYYY-MM-DD')
         } else {
-          detail.label = [
-            startDjs.format('MM-DD'),
-            endDjs.format('MM-DD')
-          ].join(' ~ ')
+          detail.label = [startDjs.format('MM-DD'), endDjs.format('MM-DD')].join(' ~ ')
         }
 
         detail.rangeCount = Math.floor((end - start) / (24 * 3600 * 1000)) + 1

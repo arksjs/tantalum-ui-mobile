@@ -12,10 +12,7 @@ export function useProvider(props: AvatarGroupProps) {
 }
 
 export function useConsumer() {
-  const groupOptions = inject<AvatarGroupProps | undefined>(
-    CONTEXT_KEY,
-    undefined
-  )
+  const groupOptions = inject<AvatarGroupProps | undefined>(CONTEXT_KEY, undefined)
 
   useChildCountConsumer(KEY)
 

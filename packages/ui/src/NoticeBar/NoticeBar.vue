@@ -10,11 +10,7 @@
         </slot>
       </div>
     </div>
-    <div
-      v-if="rightIcon2"
-      class="ta-notice-bar_right-icon"
-      @click="onRightIconClick"
-    >
+    <div v-if="rightIcon2" class="ta-notice-bar_right-icon" @click="onRightIconClick">
       <Icon :icon="rightIcon2" />
     </div>
   </div>
@@ -46,12 +42,7 @@ import type { Mode, NoticeBarEmits } from './types'
 import RightOutlined from '../Icon/icons/RightOutlined'
 import CloseOutlined from '../Icon/icons/CloseOutlined'
 import type { IconData } from '../Icon/types'
-import {
-  getClasses,
-  getContentClasses,
-  getContentStyles,
-  getStyles
-} from './util'
+import { getClasses, getContentClasses, getContentStyles, getStyles } from './util'
 
 const modeMaps = new Map<Mode, IconData | null>([
   ['default', null],

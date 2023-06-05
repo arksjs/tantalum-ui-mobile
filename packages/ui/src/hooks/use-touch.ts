@@ -30,8 +30,7 @@ export function useTouch({
     ;(e as UseTouchEvent).touchObject = getTouch(e)
     e.currentTarget instanceof HTMLElement &&
       ((e as UseTouchEvent).touchCurrentElement = e.currentTarget)
-    e.target instanceof HTMLElement &&
-      ((e as UseTouchEvent).touchTargetElement = e.target)
+    e.target instanceof HTMLElement && ((e as UseTouchEvent).touchTargetElement = e.target)
     return e as UseTouchEvent
   }
 

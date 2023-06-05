@@ -24,10 +24,7 @@
       </li>
     </ul>
     <ul class="ta-action-sheet_list" v-if="showCancel">
-      <li
-        class="ta-action-sheet_item ta-horizontal-hairline"
-        @click="onCancelClick"
-      >
+      <li class="ta-action-sheet_item ta-horizontal-hairline" @click="onCancelClick">
         <div class="ta-action-sheet_item-inner align--center">
           <span>{{ cancelText || locale.actionSheetCancelText }}</span>
         </div>
@@ -43,19 +40,11 @@ import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupExtendProps } from '../popup/props'
 import type { Option, Detail, OnConfirm, ActionSheetEmits } from './types'
 import { useLocale } from '../ConfigProvider/context'
-import {
-  isNumber,
-  isString,
-  type PropsToEmits,
-  type VoidFnToBooleanFn
-} from '../helpers'
+import { isNumber, isString, type PropsToEmits, type VoidFnToBooleanFn } from '../helpers'
 import { getItemClasses, getOptions } from './util'
 
 const confirmValidator: VoidFnToBooleanFn<OnConfirm> = payload =>
-  payload &&
-  isNumber(payload.index) &&
-  payload.item &&
-  isString(payload.item.name)
+  payload && isNumber(payload.index) && payload.item && isString(payload.item.name)
 
 export default defineComponent({
   name: 'ta-action-sheet',

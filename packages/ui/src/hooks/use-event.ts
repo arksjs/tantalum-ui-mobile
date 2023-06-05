@@ -43,11 +43,7 @@ function useFn(elRef: ElRef, fn: (el: HTMLElement) => Noop) {
  * @param elRef html element ref
  * @returns 取消函数
  */
-export function useEvent(
-  elRef: ElRef,
-  event = touchEvent.touchstart,
-  callback: EventListener
-) {
+export function useEvent(elRef: ElRef, event = touchEvent.touchstart, callback: EventListener) {
   return useFn(elRef, el => addEvent(event, callback, el))
 }
 
@@ -56,11 +52,7 @@ export function useEvent(
  * @param elRef html element ref
  * @returns 取消函数
  */
-export function useStop(
-  elRef: ElRef,
-  event = touchEvent.touchstart,
-  callback?: EventListener
-) {
+export function useStop(elRef: ElRef, event = touchEvent.touchstart, callback?: EventListener) {
   const onStop: EventListener = e => {
     callback && callback(e)
     e.stopPropagation()

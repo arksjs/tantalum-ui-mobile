@@ -1,21 +1,9 @@
 <template>
   <ta-group title="基础用法">
     <ta-cell label="主要" isLink @click="show({ title: '通知文本' })"></ta-cell>
-    <ta-cell
-      label="成功"
-      isLink
-      @click="show({ title: '成功文本', type: 'success' })"
-    ></ta-cell>
-    <ta-cell
-      label="警告"
-      isLink
-      @click="show({ title: '警告文本', type: 'warning' })"
-    ></ta-cell>
-    <ta-cell
-      label="危险"
-      isLink
-      @click="show({ title: '危险文本', type: 'danger' })"
-    ></ta-cell>
+    <ta-cell label="成功" isLink @click="show({ title: '成功文本', type: 'success' })"></ta-cell>
+    <ta-cell label="警告" isLink @click="show({ title: '警告文本', type: 'warning' })"></ta-cell>
+    <ta-cell label="危险" isLink @click="show({ title: '危险文本', type: 'danger' })"></ta-cell>
   </ta-group>
   <ta-group title="自定义图标">
     <ta-cell
@@ -95,12 +83,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import {
-  showNotify,
-  hideNotify,
-  type StateType,
-  type PopupOnCancel
-} from '@/index'
+import { showNotify, hideNotify, type StateType, type PopupOnCancel } from '@/index'
 
 interface showArgs {
   icon?: any

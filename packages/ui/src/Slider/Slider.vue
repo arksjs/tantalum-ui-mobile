@@ -12,24 +12,12 @@
       @dragstart="onDragStart"
     >
       <div class="ta-slider_box">
-        <div
-          class="ta-slider_track"
-          :style="{ width: progress * 100 + '%' }"
-        ></div>
-        <div
-          class="ta-slider_thumb"
-          data-thumb="true"
-          :style="{ left: progress * 100 + '%' }"
-        >
+        <div class="ta-slider_track" :style="{ width: progress * 100 + '%' }"></div>
+        <div class="ta-slider_thumb" data-thumb="true" :style="{ left: progress * 100 + '%' }">
           {{ showValue ? inputValue : '' }}
         </div>
       </div>
-      <input
-        type="hidden"
-        :name="name"
-        :disabled="disabled"
-        :value="inputValue"
-      />
+      <input type="hidden" :name="name" :disabled="disabled" :value="inputValue" />
     </div>
   </div>
 </template>
@@ -87,10 +75,7 @@ export default defineComponent({
     })
 
     function emitModel() {
-      if (
-        props.modelValue == null ||
-        inputValue.value !== toInteger(props.modelValue)
-      ) {
+      if (props.modelValue == null || inputValue.value !== toInteger(props.modelValue)) {
         emit('update:modelValue', inputValue.value)
         return true
       }

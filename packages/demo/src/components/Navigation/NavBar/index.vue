@@ -47,10 +47,7 @@
     </ta-nav-bar>
   </ta-group>
   <ta-group title="Slot left / right">
-    <ta-nav-bar
-      title="标题"
-      :rightButtons="[{ icon: 'MenuOutlined', text: '菜单' }]"
-    >
+    <ta-nav-bar title="标题" :rightButtons="[{ icon: 'MenuOutlined', text: '菜单' }]">
       <template #left>
         <div class="exp-navBar-left">Left Slot</div>
       </template>
@@ -63,16 +60,12 @@
     <ta-nav-bar title="标题" showBack showHome>
       <template #left>
         <div class="exp-navBar-left">
-          <ta-button type="primary" icon="LeftOutlined" size="small">
-            返回
-          </ta-button>
+          <ta-button type="primary" icon="LeftOutlined" size="small"> 返回 </ta-button>
         </div>
       </template>
       <template #right>
         <div class="exp-navBar-right">
-          <ta-button type="primary" icon="MenuOutlined" size="small">
-            菜单
-          </ta-button>
+          <ta-button type="primary" icon="MenuOutlined" size="small"> 菜单 </ta-button>
         </div>
       </template>
     </ta-nav-bar>

@@ -21,11 +21,7 @@
     />
   </ta-group>
   <ta-group title="禁用删除">
-    <ta-image-uploader
-      v-model="imageList2"
-      :deletable="false"
-      :uploadReady="hookUpload"
-    />
+    <ta-image-uploader v-model="imageList2" :deletable="false" :uploadReady="hookUpload" />
   </ta-group>
   <ta-group title="禁用上传">
     <ta-image-uploader disabled />
@@ -51,10 +47,7 @@ export default defineComponent({
     ])
     const imageList3 = reactive<string[]>([])
 
-    const hookBeforeUpload: ImageUploaderBeforeUpload = (
-      file,
-      { formatSize }
-    ) => {
+    const hookBeforeUpload: ImageUploaderBeforeUpload = (file, { formatSize }) => {
       if (file.size > 1024 * 1024) {
         showToast(`上传图片不能大于 ${formatSize(1024 * 1024)}`)
         return false

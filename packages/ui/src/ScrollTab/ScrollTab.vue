@@ -36,29 +36,13 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  onMounted,
-  ref,
-  shallowRef,
-  watch,
-  computed
-} from 'vue'
+import { defineComponent, onMounted, ref, shallowRef, watch, computed } from 'vue'
 import { Tab } from '../Tab'
 import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
-import {
-  isSizeValue,
-  isString,
-  getSizeValue,
-  type PropsToEmits
-} from '../helpers'
-import type {
-  StickyViewOnResetItems,
-  StickyViewRef,
-  StickyViewOnChange
-} from '../StickyView/types'
+import { isSizeValue, isString, getSizeValue, type PropsToEmits } from '../helpers'
+import type { StickyViewOnResetItems, StickyViewRef, StickyViewOnChange } from '../StickyView/types'
 import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import type { ScrollTabEmits } from './types'
@@ -159,8 +143,7 @@ export default defineComponent({
     }
 
     const viewOffsetTop = computed(
-      () =>
-        getSizeValue(props.stickyOffsetTop) + (props.sideBar ? 0 : TAB_HEIGHT)
+      () => getSizeValue(props.stickyOffsetTop) + (props.sideBar ? 0 : TAB_HEIGHT)
     )
 
     const classes = computed(() => getClasses(props.sideBar))

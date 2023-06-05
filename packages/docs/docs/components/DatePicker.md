@@ -7,11 +7,7 @@
 ## Import
 
 ```js
-import {
-  TaDatePicker,
-  TaDatePickerPopup,
-  TaDatePickerView
-} from 'tantalum-ui-mobile'
+import { TaDatePicker, TaDatePickerPopup, TaDatePickerView } from 'tantalum-ui-mobile'
 ```
 
 具体的引入方式可以参考[引入组件](../guide/import.md)。
@@ -237,10 +233,7 @@ interface SelectorValueParser {
 
 ```ts
 interface DatePickerOptionFilter {
-  (
-    number: number,
-    type: 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second'
-  ): boolean
+  (number: number, type: 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second'): boolean
 }
 ```
 

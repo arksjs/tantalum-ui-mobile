@@ -13,10 +13,10 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@formily/core": "^2.0.18",
-    "@formily/vue": "^2.0.18",
     "@arksjs/test-utils": "^workspace: *",
     "@arksjs/ui-icons": "^workspace: *",
+    "@formily/core": "^2.2.24",
+    "@formily/vue": "^2.2.24",
     "tantalum-ui-mobile": "^workspace: *"
   },
   "devDependencies": {

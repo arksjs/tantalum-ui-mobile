@@ -1,41 +1,14 @@
 {
-  "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    // Required in Vite
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["esnext", "dom", "dom.iterable"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "paths": {
-      "@/*": ["packages/ui/src/*"],
-      "@arksjs/test-utils/*": ["packages/test-utils/*"]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
     },
-    "resolveJsonModule": true,
-    // See <https://github.com/vuejs/vue-cli/pull/5688>
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext",
-    "types": ["vite/client", "vitest/globals"],
-    "useDefineForClassFields": true,
-    // Enforce using `import type` instead of `import` for types
-    "importsNotUsedAsValues": "error",
-    // See <https://devblogs.microsoft.com/typescript/announcing-typescript-4-5-beta/#preserve-value-imports>
-    "preserveValueImports": true,
-    // `"noImplicitThis": true` is part of `strict`
-    // Added again here in case some users decide to disable `strict`.
-    // This enables stricter inference for data properties on `this`.
-    "noImplicitThis": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": [
-    "packages/ui/**/*.ts",
-    "packages/ui/**/*.tsx",
-    "packages/ui/**/*.vue"
-  ],
-  "exclude": ["node_modules", "**/__tests__/*", "**/style/*.ts"]
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ]
 }

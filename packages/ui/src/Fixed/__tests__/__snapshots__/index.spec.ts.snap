@@ -1,8 +1,8 @@
-// Vitest Snapshot v1
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Fixed > snapshot 1`] = `
 "<div class=\\"ta-fixed\\">
-  <teleport-stub>
+  <teleport-stub to=\\"body\\" disabled=\\"false\\">
     <div class=\\"ta-fixed_inner placement--bottom fixed\\" style=\\"z-index: 1;\\">
       <div class=\\"ta-fixed_content-wrapper\\"></div>
     </div>

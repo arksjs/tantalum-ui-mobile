@@ -106,20 +106,12 @@ export default {
   </ta-group>
   <ta-group title="filter">
     <ta-cell label="秒步进5">
-      <ta-date-picker
-        initialMode="datetime"
-        :filter="filter"
-        v-model="filterValue"
-      />
+      <ta-date-picker initialMode="datetime" :filter="filter" v-model="filterValue" />
     </ta-cell>
   </ta-group>
   <ta-group title="formatTemplate">
     <ta-cell label="YYYY年MM月DD日">
-      <ta-date-picker
-        initialMode="date"
-        formatTemplate="YYYY年MM月DD日"
-        v-model="formatValue"
-      />
+      <ta-date-picker initialMode="date" formatTemplate="YYYY年MM月DD日" v-model="formatValue" />
     </ta-cell>
   </ta-group>
   <ta-group title="disabled">

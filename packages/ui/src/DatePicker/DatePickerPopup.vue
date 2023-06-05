@@ -14,21 +14,14 @@
         class="ta-drawer_header"
         :title="title"
         :leftButtons="[{ text: locale.datePickerCancelText, type: 'primary' }]"
-        :rightButtons="[
-          { text: locale.datePickerConfirmText, type: 'primary' }
-        ]"
+        :rightButtons="[{ text: locale.datePickerConfirmText, type: 'primary' }]"
         :iconOnly="false"
         @leftButtonClick="onHeaderLeftClick"
         @rightButtonClick="onHeaderRightClick"
       >
       </NavBar>
     </template>
-    <PickerView
-      ref="viewRef"
-      :modelValue="modelValue"
-      :formatter="formatter"
-      :parser="parser"
-    />
+    <PickerView ref="viewRef" :modelValue="modelValue" :formatter="formatter" :parser="parser" />
   </Drawer>
 </template>
 
@@ -38,11 +31,7 @@ import { PickerView } from '../Picker'
 import { Drawer } from '../Drawer'
 import { NavBar } from '../NavBar'
 import { usePopupExtend } from '../popup/use-popup'
-import {
-  pickerPopupProps,
-  pickerPopupEmits,
-  isPickerDetail
-} from '../Picker/props'
+import { pickerPopupProps, pickerPopupEmits, isPickerDetail } from '../Picker/props'
 import { usePickerPopup } from '../Picker/use-picker'
 import { commonProps } from './props'
 import { useHandlers } from '../DatePicker/use-date-picker'

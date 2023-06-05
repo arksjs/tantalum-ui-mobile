@@ -1,28 +1,8 @@
 import { provide } from 'vue'
-import {
-  getEnumsValue,
-  rangeNumber,
-  returnTrue,
-  dayjs,
-  type Dayjs,
-  isString
-} from '../helpers'
-import type {
-  PickerOptionsHandler,
-  PickerLabelFormatter,
-  PickerHandlers
-} from '../Picker/types'
-import type {
-  SelectorValueParser,
-  SelectorValueFormatter
-} from '../SelectorField/types'
-import {
-  array2Date,
-  day2Array,
-  getFormatTemplate,
-  MODE_NAMES,
-  parseRows
-} from './date'
+import { getEnumsValue, rangeNumber, returnTrue, dayjs, type Dayjs, isString } from '../helpers'
+import type { PickerOptionsHandler, PickerLabelFormatter, PickerHandlers } from '../Picker/types'
+import type { SelectorValueParser, SelectorValueFormatter } from '../SelectorField/types'
+import { array2Date, day2Array, getFormatTemplate, MODE_NAMES, parseRows } from './date'
 import type { DatePickerCommonProps } from './types'
 import { getMaxDate, getMinDate, handleMinMaxDate } from './util'
 
@@ -55,12 +35,7 @@ export function useHandlers(props: DatePickerCommonProps) {
 
     if (value instanceof Date) {
       djs = dayjs(value)
-    } else if (
-      props.formatTemplate &&
-      value != null &&
-      value !== '' &&
-      isString(value)
-    ) {
+    } else if (props.formatTemplate && value != null && value !== '' && isString(value)) {
       djs = dayjs(value as string, props.formatTemplate, true)
     }
 
@@ -73,17 +48,13 @@ export function useHandlers(props: DatePickerCommonProps) {
       props.maxDate ?? defaultMaxDate
     )
 
-    return parser(
-      new Date(rangeNumber(Date.now(), minDate.getTime(), maxDate.getTime()))
-    )
+    return parser(new Date(rangeNumber(Date.now(), minDate.getTime(), maxDate.getTime())))
   }
 
   const labelFormatter: PickerLabelFormatter = array => {
     return array.length === 0
       ? ''
-      : dayjs(array2Date(array, mode)).format(
-          getFormatTemplate(mode, props.formatTemplate)
-        )
+      : dayjs(array2Date(array, mode)).format(getFormatTemplate(mode, props.formatTemplate))
   }
 
   const formatter: SelectorValueFormatter = (valueArray, labelArray) => {

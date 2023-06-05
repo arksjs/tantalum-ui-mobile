@@ -10,10 +10,7 @@
       ref="inputEl"
     />
     <div class="ta-checkbox_box">
-      <Icon
-        class="ta-checkbox_icon"
-        :icon="circle ? CircleOutlined : BorderOutlined"
-      />
+      <Icon class="ta-checkbox_icon" :icon="circle ? CircleOutlined : BorderOutlined" />
       <Icon
         class="ta-checkbox_checked-icon"
         :icon="circle ? CheckCircleFilled : CheckSquareFilled"

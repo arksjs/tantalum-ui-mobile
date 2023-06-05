@@ -13,8 +13,7 @@ export function getDuration(diff: number, speed: Speed) {
   }
 
   return Math.max(
-    Math.abs(diff) *
-      (SpeedMap.get(speed as 'normal') || (SpeedMap.get('normal') as number)),
+    Math.abs(diff) * (SpeedMap.get(speed as 'normal') || (SpeedMap.get('normal') as number)),
     1000
   )
 }

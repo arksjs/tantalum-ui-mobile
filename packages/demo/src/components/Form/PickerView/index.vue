@@ -28,11 +28,7 @@ export default {
 <template>
   <ta-notice-bar class="top-notice-bar" title="基础展示参数可以参考 Picker" />
   <ta-group title="单列">
-    <ta-picker-view
-      :options="options"
-      @change="onChange"
-      v-model="colValue"
-    ></ta-picker-view>
+    <ta-picker-view :options="options" @change="onChange" v-model="colValue"></ta-picker-view>
   </ta-group>
   <ta-group title="多列">
     <ta-picker-view

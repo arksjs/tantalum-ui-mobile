@@ -24,24 +24,13 @@ interface Coords {
 
 interface UseOptions {
   getValue: ($target: HTMLElement) => number
-  move: (args: {
-    value: number
-    progress: number
-    $target: HTMLElement
-  }) => void
-  end: (args: {
-    value: number
-    isChange: boolean
-    $target: HTMLElement
-  }) => void
+  move: (args: { value: number; progress: number; $target: HTMLElement }) => void
+  end: (args: { value: number; isChange: boolean; $target: HTMLElement }) => void
 }
 
 const thumbW = 24
 
-export function useSlide(
-  props: SlideCommonProps,
-  { move, end, getValue }: UseOptions
-) {
+export function useSlide(props: SlideCommonProps, { move, end, getValue }: UseOptions) {
   let coords: Coords | null
   let tempValue = 0
 
@@ -110,8 +99,7 @@ export function useSlide(
         thumb,
         thumbW,
         clientStartX: clientX,
-        thumbXInTrack: getRelativeOffset($target, e.touchCurrentElement)
-          .offsetLeft,
+        thumbXInTrack: getRelativeOffset($target, e.touchCurrentElement).offsetLeft,
         trackX: trackRects.left,
         trackW: trackRects.width - thumbW,
         moved: false,
@@ -147,10 +135,7 @@ export function useSlide(
     onEnd(e) {
       if (coords) {
         if (!coords.thumb && !coords.moved) {
-          updateByX(
-            coords.clientStartX - coords.trackX - coords.thumbW / 2,
-            coords
-          )
+          updateByX(coords.clientStartX - coords.trackX - coords.thumbW / 2, coords)
         }
 
         if (coords.thumb) {

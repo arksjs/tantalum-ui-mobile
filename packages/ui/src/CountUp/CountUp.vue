@@ -17,8 +17,7 @@ import type { CountUpEmits, OnCancel, Speed } from './types'
 import { getDuration, SpeedMap } from './util'
 import { useFrameTask } from '../hooks'
 
-const emitValidator: VoidFnToBooleanFn<OnCancel> = payload =>
-  payload && isNumber(payload.number)
+const emitValidator: VoidFnToBooleanFn<OnCancel> = payload => payload && isNumber(payload.number)
 
 export default defineComponent({
   name: 'ta-count-up',

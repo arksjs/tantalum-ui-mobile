@@ -61,9 +61,7 @@ const onRangeConfirm: CalendarOnConfirm = res => {
 }
 
 function addOneDay() {
-  popupValue.value = dayjs(popupValue.value, template, true)
-    .add(1, 'day')
-    .format(template)
+  popupValue.value = dayjs(popupValue.value, template, true).add(1, 'day').format(template)
 }
 </script>
 
@@ -96,11 +94,7 @@ export default {
         }
       "
     />
-    <ta-cell
-      label="initialMode=range"
-      isLink
-      @click="popupRangeVisible = true"
-    />
+    <ta-cell label="initialMode=range" isLink @click="popupRangeVisible = true" />
   </ta-group>
   <ta-group title="事件监听">
     <ta-cell

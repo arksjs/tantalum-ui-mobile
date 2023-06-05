@@ -1,20 +1,7 @@
-import {
-  formatInputDigit,
-  formatInputNumber,
-  getNumber,
-  getEnumsValue
-} from '../helpers'
+import { formatInputDigit, formatInputNumber, getNumber, getEnumsValue } from '../helpers'
 import type { Mode } from './types'
 
-const TYPE_NAMES = [
-  'text',
-  'number',
-  'digit',
-  'tel',
-  'password',
-  'search',
-  'textarea'
-] as const
+const TYPE_NAMES = ['text', 'number', 'digit', 'tel', 'password', 'search', 'textarea'] as const
 
 export const getInputMode = (_type?: string) => {
   let mode: Mode = 'none'

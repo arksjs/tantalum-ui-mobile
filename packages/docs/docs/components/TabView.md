@@ -19,11 +19,7 @@ import { TaTabView, TaTabViewItem } from 'tantalum-ui-mobile'
 组件导出的类型定义：
 
 ```ts
-import type {
-  TabViewOnChange,
-  TabViewOnAnimated,
-  TabViewRef
-} from 'tantalum-ui-mobile'
+import type { TabViewOnChange, TabViewOnAnimated, TabViewRef } from 'tantalum-ui-mobile'
 ```
 
 ## TabView

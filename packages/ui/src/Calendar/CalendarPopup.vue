@@ -26,11 +26,7 @@
       @select="onViewSelect"
     />
     <div class="ta-calendar-popup_confirm" v-if="showConfirm">
-      <TaButton
-        type="primary"
-        size="large"
-        @click="onConfirmClick"
-        :disabled="valueSize == 0"
+      <TaButton type="primary" size="large" @click="onConfirmClick" :disabled="valueSize == 0"
         >{{ locale.calendarConfirmText }}
       </TaButton>
     </div>
@@ -38,14 +34,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  nextTick,
-  onMounted,
-  ref,
-  shallowRef,
-  watch
-} from 'vue'
+import { defineComponent, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import CalendarView from './CalendarView.vue'
 import { Drawer } from '../Drawer'
 import { Button as TaButton } from '../Button'

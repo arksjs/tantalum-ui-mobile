@@ -53,11 +53,7 @@ export function loadNow(vm: LoadObject) {
   )
 }
 
-function loadImageAsync(
-  item: LoadObject,
-  resolve: (res: LoadedResource) => void,
-  reject: OnError
-) {
+function loadImageAsync(item: LoadObject, resolve: (res: LoadedResource) => void, reject: OnError) {
   const image = new Image()
   if (!item || !item.src) {
     const err = new Error('The "src" is required.')

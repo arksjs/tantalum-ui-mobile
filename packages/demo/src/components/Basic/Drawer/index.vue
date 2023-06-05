@@ -22,16 +22,8 @@
     ></ta-cell>
   </ta-group>
   <ta-group title="无标题">
-    <ta-cell
-      label="底部弹出"
-      isLink
-      @click="show({ placement: 'bottom' })"
-    ></ta-cell>
-    <ta-cell
-      label="右侧弹出"
-      isLink
-      @click="show({ placement: 'right' })"
-    ></ta-cell>
+    <ta-cell label="底部弹出" isLink @click="show({ placement: 'bottom' })"></ta-cell>
+    <ta-cell label="右侧弹出" isLink @click="show({ placement: 'right' })"></ta-cell>
   </ta-group>
   <ta-group title="展示关闭按钮">
     <ta-cell

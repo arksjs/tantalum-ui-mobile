@@ -1,11 +1,6 @@
 <template>
   <div class="ta-cascader-view">
-    <Tab
-      class="ta-cascader-view_header"
-      :options="tabs"
-      :scrollThreshold="0"
-      v-model="tabIndex"
-    />
+    <Tab class="ta-cascader-view_header" :options="tabs" :scrollThreshold="0" v-model="tabIndex" />
     <div class="ta-cascader-view_body">
       <div
         class="ta-cascader-view_group ta-vertical-hairline"

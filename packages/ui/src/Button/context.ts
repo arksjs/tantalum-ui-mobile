@@ -12,10 +12,7 @@ export function useButtonProvider(props: ButtonGroupProps) {
 }
 
 export function useButtonConsumer() {
-  const groupOptions = inject<ButtonGroupProps | undefined>(
-    CONTEXT_KEY,
-    undefined
-  )
+  const groupOptions = inject<ButtonGroupProps | undefined>(CONTEXT_KEY, undefined)
 
   useChildCountConsumer(KEY)
 

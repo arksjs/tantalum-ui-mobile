@@ -60,14 +60,8 @@ import type {
 } from '../VirtualList/types'
 import { useLocale } from '../ConfigProvider/context'
 import type { OnRefreshing, OnScroll, PullDirection } from '../ScrollView/types'
-import {
-  emitRefreshingValidator,
-  emitScrollValidator
-} from '../ScrollView/props'
-import {
-  emitVisibleItemsChangeValidator,
-  virtualListProps
-} from '../VirtualList/props'
+import { emitRefreshingValidator, emitScrollValidator } from '../ScrollView/props'
+import { emitVisibleItemsChangeValidator, virtualListProps } from '../VirtualList/props'
 import { getClasses } from './util'
 import { isNumber, type PropsToEmits } from '../helpers'
 import type { FlatListEmits } from './types'
@@ -101,9 +95,7 @@ export default defineComponent({
   } as PropsToEmits<FlatListEmits>,
   setup(props, { emit }) {
     const { locale } = useLocale()
-    const scrollViewRef = shallowRef<InstanceType<typeof ScrollView> | null>(
-      null
-    )
+    const scrollViewRef = shallowRef<InstanceType<typeof ScrollView> | null>(null)
     const virtualListRef = shallowRef<VirtualListRef | null>(null)
 
     const wrapperSize = ref(0)

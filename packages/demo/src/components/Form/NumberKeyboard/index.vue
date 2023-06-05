@@ -37,11 +37,7 @@
         @close="onClose"
       ></ta-number-keyboard>
     </ta-cell>
-    <ta-cell
-      label="1个自定义值（customKey=['.']）"
-      isLink
-      @click="visible5 = true"
-    >
+    <ta-cell label="1个自定义值（customKey=['.']）" isLink @click="visible5 = true">
       <ta-number-keyboard
         v-model:visible="visible5"
         type="rightColumn"
@@ -51,11 +47,7 @@
         @close="onClose"
       ></ta-number-keyboard>
     </ta-cell>
-    <ta-cell
-      label="2个自定义值（customKey=['00', '.']）"
-      isLink
-      @click="visible6 = true"
-    >
+    <ta-cell label="2个自定义值（customKey=['00', '.']）" isLink @click="visible6 = true">
       <ta-number-keyboard
         v-model:visible="visible6"
         type="rightColumn"
@@ -79,20 +71,13 @@
     </ta-cell>
     <ta-form-item name="number" label="双向绑定" @click="visible8 = true">
       <ta-input v-model="value" readonly />
-      <ta-number-keyboard
-        v-model:visible="visible8"
-        v-model="value"
-      ></ta-number-keyboard>
+      <ta-number-keyboard v-model:visible="visible8" v-model="value"></ta-number-keyboard>
     </ta-form-item>
   </ta-group>
 </template>
 
 <script lang="ts">
-import {
-  type NumberKeyboardOnClose,
-  type NumberKeyboardOnDelete,
-  showToast
-} from '@/index'
+import { type NumberKeyboardOnClose, type NumberKeyboardOnDelete, showToast } from '@/index'
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({

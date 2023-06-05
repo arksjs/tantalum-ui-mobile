@@ -27,9 +27,7 @@ export interface ShowCascaderOptions extends CascaderOptionsProps {
 /**
  * CascaderView
  */
-export interface CascaderViewProps
-  extends PickerCommonProps,
-    CascaderOptionsProps {}
+export interface CascaderViewProps extends PickerCommonProps, CascaderOptionsProps {}
 
 export interface CascaderViewEmits extends PickerCommonEmits {
   onSelect?: OnSelect
@@ -40,10 +38,7 @@ export type CascaderViewRef = PickerViewRef
 /**
  * CascaderPopup
  */
-export interface CascaderPopupProps
-  extends PopupProps,
-    PickerCommonProps,
-    CascaderOptionsProps {}
+export interface CascaderPopupProps extends PopupProps, PickerCommonProps, CascaderOptionsProps {}
 
 export interface CascaderPopupEmits extends PopupEmits, PickerCommonEmits {
   onConfirm?: OnConfirm
@@ -61,9 +56,7 @@ export interface CascaderProps
   placeholder?: string
 }
 
-export interface CascaderEmits
-  extends FocusWithoutEventEmits,
-    PickerCommonEmits {}
+export interface CascaderEmits extends FocusWithoutEventEmits, PickerCommonEmits {}
 
 export type {
   OnSelect as CascaderOnSelect,

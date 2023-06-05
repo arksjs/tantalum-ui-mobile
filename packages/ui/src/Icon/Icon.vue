@@ -1,11 +1,5 @@
 <template>
-  <component
-    :is="component"
-    class="ta-icon"
-    :class="{ spin }"
-    :style="styles"
-    :iconName="iconName"
-  >
+  <component :is="component" class="ta-icon" :class="{ spin }" :style="styles" :iconName="iconName">
   </component>
 </template>
 
@@ -47,12 +41,8 @@ export default defineComponent({
   },
   setup(props) {
     const styles = computed(() => getIconStyles(props))
-    const component = computed(() =>
-      isSvgComponent(props.icon) ? props.icon : SpriteSVG
-    )
-    const iconName = computed(() =>
-      isSvgComponent(props.icon) ? null : props.icon
-    )
+    const component = computed(() => (isSvgComponent(props.icon) ? props.icon : SpriteSVG))
+    const iconName = computed(() => (isSvgComponent(props.icon) ? null : props.icon))
 
     return {
       iconName,

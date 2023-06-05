@@ -61,17 +61,9 @@ export default {
 </script>
 
 <template>
-  <ta-notice-bar
-    class="top-notice-bar"
-    title="基础展示参数可以参考 DatePicker"
-  />
+  <ta-notice-bar class="top-notice-bar" title="基础展示参数可以参考 DatePicker" />
   <ta-group title="基础用法">
-    <ta-cell
-      label="默认"
-      isLink
-      @click="visible = true"
-      :content="popupValue"
-    />
+    <ta-cell label="默认" isLink @click="visible = true" :content="popupValue" />
   </ta-group>
   <ta-group title="事件监听">
     <ta-cell

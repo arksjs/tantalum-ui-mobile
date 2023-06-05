@@ -5,12 +5,5 @@ import SkeletonParagraph from './SkeletonParagraph.vue'
 import SkeletonButton from './SkeletonButton.vue'
 import SkeletonImage from './SkeletonImage.vue'
 
-export {
-  Skeleton,
-  SkeletonAvatar,
-  SkeletonTitle,
-  SkeletonParagraph,
-  SkeletonButton,
-  SkeletonImage
-}
+export { Skeleton, SkeletonAvatar, SkeletonTitle, SkeletonParagraph, SkeletonButton, SkeletonImage }
 export default Skeleton

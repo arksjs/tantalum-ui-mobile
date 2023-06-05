@@ -19,10 +19,7 @@ import { TaPopover } from 'tantalum-ui-mobile'
 组件导出的类型定义：
 
 ```ts
-import type {
-  VisibleState,
-  PopupOnVisibleStateChange
-} from 'tantalum-ui-mobile'
+import type { VisibleState, PopupOnVisibleStateChange } from 'tantalum-ui-mobile'
 ```
 
 ## Props

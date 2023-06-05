@@ -58,21 +58,13 @@
   >
   </ta-modal>
   <ta-modal v-model:visible="visible2">
-    <ta-image
-      class="exp-image-image"
-      :src="imageUrl"
-      :aspectRatio="1"
-    ></ta-image>
+    <ta-image class="exp-image-image" :src="imageUrl" :aspectRatio="1"></ta-image>
   </ta-modal>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import {
-  type PopupOnCancel,
-  type PopupOnVisibleStateChange,
-  showToast
-} from '@/index'
+import { type PopupOnCancel, type PopupOnVisibleStateChange, showToast } from '@/index'
 
 export default defineComponent({
   name: 'ExpModal',

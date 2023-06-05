@@ -14,8 +14,7 @@ export const getClasses = (props: TagProps) => {
 
   return [
     'ta-tag',
-    'type--' +
-      (hasColor ? STATE_TYPES[1] : getEnumsValue(STATE_TYPES, props.type)),
+    'type--' + (hasColor ? STATE_TYPES[1] : getEnumsValue(STATE_TYPES, props.type)),
     'size--' + getEnumsValue(SIZE_TYPES, props.size),
     'pattern--' +
       (hasColor && props.pattern !== 'plain'

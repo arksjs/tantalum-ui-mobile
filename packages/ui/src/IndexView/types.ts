@@ -1,7 +1,4 @@
-import type {
-  StickyViewItemProps,
-  StickyViewOnChange
-} from '../StickyView/types'
+import type { StickyViewItemProps, StickyViewOnChange } from '../StickyView/types'
 
 export interface IndexViewProps {
   modelValue?: string

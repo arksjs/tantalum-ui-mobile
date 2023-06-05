@@ -16,11 +16,7 @@
         id="popDialogNoCancel"
         shape="circle"
         icon="DeleteOutlined"
-        @click="
-          ;(selector = '#popDialogNoCancel'),
-            (showCancel = false),
-            (visible = true)
-        "
+        @click=";(selector = '#popDialogNoCancel'), (showCancel = false), (visible = true)"
       >
       </ta-button>
     </ta-cell>
@@ -58,11 +54,7 @@
           id="popDialogTop2"
           shape="circle"
           icon="UpOutlined"
-          @click="
-            ;(placement2 = 'top'),
-              (selector2 = '#popDialogTop2'),
-              (visible2 = true)
-          "
+          @click=";(placement2 = 'top'), (selector2 = '#popDialogTop2'), (visible2 = true)"
         >
           上
         </ta-button>
@@ -73,11 +65,7 @@
           id="popDialogLeft2"
           shape="circle"
           icon="LeftOutlined"
-          @click="
-            ;(placement2 = 'left'),
-              (selector2 = '#popDialogLeft2'),
-              (visible2 = true)
-          "
+          @click=";(placement2 = 'left'), (selector2 = '#popDialogLeft2'), (visible2 = true)"
         >
           左
         </ta-button>
@@ -87,11 +75,7 @@
           id="popDialogRight2"
           shape="circle"
           icon="RightOutlined"
-          @click="
-            ;(placement2 = 'right'),
-              (selector2 = '#popDialogRight2'),
-              (visible2 = true)
-          "
+          @click=";(placement2 = 'right'), (selector2 = '#popDialogRight2'), (visible2 = true)"
         >
           右
         </ta-button>
@@ -102,11 +86,7 @@
           id="popDialogBottom2"
           shape="circle"
           icon="DownOutlined"
-          @click="
-            ;(placement2 = 'bottom'),
-              (selector2 = '#popDialogBottom2'),
-              (visible2 = true)
-          "
+          @click=";(placement2 = 'bottom'), (selector2 = '#popDialogBottom2'), (visible2 = true)"
         >
           下
         </ta-button>
@@ -120,9 +100,7 @@
         id="popDialogEvent"
         shape="circle"
         icon="DeleteOutlined"
-        @click="
-          ;(selector = '#popDialogEvent'), (showEvent = true), (visible = true)
-        "
+        @click=";(selector = '#popDialogEvent'), (showEvent = true), (visible = true)"
       >
       </ta-button>
     </ta-cell>
@@ -132,11 +110,7 @@
         id="popDialogPopupEvent"
         shape="circle"
         icon="DeleteOutlined"
-        @click="
-          ;(selector = '#popDialogPopupEvent'),
-            (visibleEvent = true),
-            (visible = true)
-        "
+        @click=";(selector = '#popDialogPopupEvent'), (visibleEvent = true), (visible = true)"
       >
       </ta-button>
     </ta-cell>

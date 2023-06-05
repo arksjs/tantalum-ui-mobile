@@ -87,19 +87,11 @@
         --ta-front-color: #fff;
       }
 
-      background-image: linear-gradient(
-        90deg,
-        var(--ta-light-color) 0%,
-        var(--ta-color) 100%
-      );
+      background-image: linear-gradient(90deg, var(--ta-light-color) 0%, var(--ta-color) 100%);
       border-color: transparent !important;
 
       &:not(:disabled):active {
-        background-image: linear-gradient(
-          90deg,
-          var(--ta-color) 0%,
-          var(--ta-dark-color) 100%
-        );
+        background-image: linear-gradient(90deg, var(--ta-color) 0%, var(--ta-dark-color) 100%);
       }
     }
 

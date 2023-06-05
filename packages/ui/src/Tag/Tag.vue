@@ -2,12 +2,7 @@
   <div :class="classes" :style="styles" ref="root">
     <slot></slot>
     <button class="ta-tag_close" v-if="closable">
-      <Icon
-        :icon="CloseOutlined"
-        @mousedown.stop="noop"
-        @touchstart.stop="noop"
-        @click="onClose"
-      />
+      <Icon :icon="CloseOutlined" @mousedown.stop="noop" @touchstart.stop="noop" @click="onClose" />
     </button>
   </div>
 </template>

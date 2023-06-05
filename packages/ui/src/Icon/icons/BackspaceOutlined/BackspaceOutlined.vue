@@ -1,9 +1,5 @@
 <template>
-  <svg
-    viewBox="0 0 1024 1024"
-    enable-background="new 0 0 1024 1024"
-    focusable="false"
-  >
+  <svg viewBox="0 0 1024 1024" enable-background="new 0 0 1024 1024" focusable="false">
     <path
       fill-rule="evenodd"
       clip-rule="evenodd"

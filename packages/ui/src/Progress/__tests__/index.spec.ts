@@ -42,8 +42,6 @@ describe('Progress', () => {
       }
     })
 
-    expect(wrapper.find('.ta-progress_text').find('span').html()).toBe(
-      '<span>Sale 50%</span>'
-    )
+    expect(wrapper.find('.ta-progress_text').find('span').html()).toBe('<span>Sale 50%</span>')
   })
 })

@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "files": ["../packages/ui/src/index.ts"],
   "compilerOptions": {
     "declaration": true,

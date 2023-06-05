@@ -19,12 +19,7 @@ import { TaButton, TaButtonGroup } from 'tantalum-ui-mobile'
 组件导出的类型定义：
 
 ```ts
-import type {
-  SizeType,
-  StateType,
-  ButtonShape,
-  ButtonPattern
-} from 'tantalum-ui-mobile'
+import type { SizeType, StateType, ButtonShape, ButtonPattern } from 'tantalum-ui-mobile'
 ```
 
 ## Button Props

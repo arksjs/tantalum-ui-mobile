@@ -10,17 +10,13 @@
     <ta-cell label="换色 activeColor='#F5A511'"
       ><ta-rate modelValue="3" activeColor="#F5A511"
     /></ta-cell>
-    <ta-cell label="变小 size='16px'"
-      ><ta-rate modelValue="3" size="16"
-    /></ta-cell>
+    <ta-cell label="变小 size='16px'"><ta-rate modelValue="3" size="16" /></ta-cell>
   </ta-group>
   <ta-group title="自定义数量">
     <ta-cell label="count=8"><ta-rate count="8" /></ta-cell>
   </ta-group>
   <ta-group title="半星">
-    <ta-cell label="modelValue=2.5"
-      ><ta-rate allow-half v-model="value" :count="count"
-    /></ta-cell>
+    <ta-cell label="modelValue=2.5"><ta-rate allow-half v-model="value" :count="count" /></ta-cell>
   </ta-group>
   <ta-group title="状态">
     <ta-cell label="只读"><ta-rate readonly :modelValue="3" /></ta-cell>
