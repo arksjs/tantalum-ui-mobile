@@ -4,7 +4,9 @@
   position: relative;
 
   &.self {
-    overflow-y: auto;
+    .ta-sticky-view_content {
+      height: 100%;
+    }
   }
 
   &_top {
@@ -63,6 +65,10 @@
       margin-left: 10px;
       font-size: 12px;
       color: $font3-color;
+    }
+
+    .ta-sticky-view.disabled-header & {
+      display: none;
     }
   }
 }

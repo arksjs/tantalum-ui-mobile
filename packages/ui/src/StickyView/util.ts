@@ -1,7 +1,8 @@
-export const getClasses = (isSelfContainer: boolean) => [
+export const getClasses = (isSelfContainer: boolean, disabledHeader: boolean) => [
   'ta-sticky-view',
   {
-    self: isSelfContainer
+    self: isSelfContainer,
+    'disabled-header': disabledHeader
   }
 ]
 

@@ -1,3 +1,4 @@
+import type { OnRefreshing, PullRefreshTexts } from '../ScrollView/types'
 import type { ResetContainer } from '../Sticky/types'
 
 export type OnResetItems = (items: StickyViewItem[]) => void
@@ -25,6 +26,7 @@ export interface StickyViewProps {
 export interface StickyViewEmits {
   onChange?: OnChange
   onResetItems?: OnResetItems
+  onPullRefreshing?: OnRefreshing
 }
 
 export interface StickyViewItemProps {
@@ -37,4 +39,9 @@ export interface StickyViewItem extends Required<StickyViewItemProps> {
   index: number
 }
 
-export type { OnChange as StickyViewOnChange, OnResetItems as StickyViewOnResetItems }
+export type {
+  OnChange as StickyViewOnChange,
+  OnResetItems as StickyViewOnResetItems,
+  OnRefreshing as StickyViewOnPullRefreshing,
+  PullRefreshTexts as StickyViewPullRefreshTexts
+}

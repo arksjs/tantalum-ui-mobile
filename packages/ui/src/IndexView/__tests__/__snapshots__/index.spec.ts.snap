@@ -7,7 +7,14 @@ exports[`IndexView > snapshot 1`] = `
   </div>
   <div class=\\"ta-index-view_body\\">
     <div class=\\"ta-sticky-view\\">
-      <div class=\\"ta-sticky-view_list\\"></div>
+      <div class=\\"ta-scroll-view ta-sticky-view_content\\">
+        <div class=\\"ta-scroll-view_inner\\">
+          <div class=\\"ta-scroll-view_content\\" style=\\"transition: transform 0ms; transform: translate3d(0px, 0, 0);\\">
+            <div class=\\"ta-sticky-view_list\\"></div>
+            <!--v-if-->
+          </div>
+        </div>
+      </div>
       <div class=\\"ta-sticky ta-sticky-view_top\\">
         <!--teleport start-->
         <div class=\\"ta-sticky_content\\">

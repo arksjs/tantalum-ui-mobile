@@ -3,7 +3,6 @@
 .ta-scroll-tab {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
   position: relative;
   background-color: $background-color;
 
@@ -15,6 +14,11 @@
 
   &_body {
     flex: 1;
+    height: calc(100% - 40px);
+
+    .ta-sticky-view {
+      height: 100%;
+    }
   }
 
   &.is-side-bar {
@@ -23,6 +27,10 @@
     .ta-scroll-tab {
       &_bar {
         width: 80px;
+        height: 100%;
+      }
+
+      &_body {
         height: 100%;
       }
     }

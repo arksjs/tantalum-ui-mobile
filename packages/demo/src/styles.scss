@@ -303,6 +303,10 @@ body {
     color: $title-color;
   }
 
+  &-boxes {
+    // height: calc(100vh - 52px - 44px);
+  }
+
   &-box {
     height: 1000px;
 

@@ -67,6 +67,7 @@ export type {
 } from './SearchBar/types'
 export type {
   ScrollViewPullDirection,
+  ScrollViewPullRefreshTexts,
   ScrollViewOnScrollToUpper,
   ScrollViewOnScrollToLower,
   ScrollViewOnRefreshing,
@@ -79,8 +80,18 @@ export type { SwiperOnActiveIndexChange, SwiperOnAnimated, SwiperRef } from './S
 export type { TabViewOnChange, TabViewOnAnimated, TabViewRef } from './TabView/types'
 export type { ToastType } from './Toast/types'
 export type { SwipeCellButtonOption, SwipeCellOnButtonClick } from './SwipeCell/types'
-export type { StickyViewOnChange, StickyViewRef } from './StickyView/types'
-export type { ScrollTabOnChange, ScrollTabRef } from './ScrollTab/types'
+export type {
+  StickyViewOnChange,
+  StickyViewOnPullRefreshing,
+  StickyViewPullRefreshTexts,
+  StickyViewRef
+} from './StickyView/types'
+export type {
+  ScrollTabOnChange,
+  ScrollTabOnPullRefreshing,
+  ScrollTabPullRefreshTexts,
+  ScrollTabRef
+} from './ScrollTab/types'
 export type { IndexViewOnChange, IndexViewRef } from './IndexView/types'
 export type { NavBarButtonOption, NavBarOnButtonClick, NavBarOnTitleDbClick } from './NavBar/types'
 export type { SkeletonAvatarShape, SkeletonButtonShape } from './Skeleton/types'

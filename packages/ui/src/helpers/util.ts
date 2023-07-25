@@ -84,6 +84,15 @@ export function camelCase2KebabCase(name: string) {
 }
 
 /**
+ * 首字母大写
+ * @param name 字符串
+ * @returns string
+ */
+export function upperFirst(str: string) {
+  return str.slice(0, 1).toUpperCase() + str.slice(1)
+}
+
+/**
  * 是否字符串
  * @param object 值
  * @returns boolean

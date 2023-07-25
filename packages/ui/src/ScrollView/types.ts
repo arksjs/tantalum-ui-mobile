@@ -23,6 +23,15 @@ export type OnRefreshing = (
 export type OnScrollToUpper = (payload: { direction: 'top' | 'left' }) => void
 export type OnScrollToLower = (payload: { direction: 'bottom' | 'right' }) => void
 
+export type PullRefreshTexts = {
+  holding?: string
+  refreshing?: string
+  pullingUp?: string
+  pullingDown?: string
+  pullingLeft?: string
+  pullingRight?: string
+}
+
 export interface ScrollViewProps {
   scrollX?: boolean // 允许横向滚动
   scrollY?: boolean // 允许纵向滚动
@@ -33,6 +42,7 @@ export interface ScrollViewProps {
   scrollLeft?: number // 设置横向滚动条位置
   enablePullDirections?: PullDirection | PullDirection[] // 下拉刷新方向
   pullRefreshThreshold?: number // 下拉刷新阈值
+  pullRefreshTexts?: PullRefreshTexts // 下拉刷新提示文案
 }
 
 export interface ScrollViewEmits {
@@ -57,6 +67,7 @@ export interface ScrollViewRef {
 
 export type {
   PullDirection as ScrollViewPullDirection,
+  PullRefreshTexts as ScrollViewPullRefreshTexts,
   OnScrollToUpper as ScrollViewOnScrollToUpper,
   OnScrollToLower as ScrollViewOnScrollToLower,
   OnRefreshing as ScrollViewOnRefreshing,

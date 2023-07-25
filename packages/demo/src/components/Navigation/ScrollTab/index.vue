@@ -3,12 +3,17 @@
     <!-- <div class="exp-scrollTab-header">占位头部</div> -->
     <ta-scroll-tab
       ref="scrollTabRef"
-      class="exp-scrollTab-boxs"
+      class="exp-scrollTab-boxes"
       :sideBar="true"
+      :enablePullRefreshDown="true"
+      :enablePullRefreshUp="true"
+      :documentContainer="true"
+      :pullRefreshTexts="texts"
       v-model="value"
       :stickyOffsetTop="offsetTop"
       :stickyOffsetBottom="offsetBottom"
       @change="onChange"
+      @pullRefreshing="onPullRefreshing"
     >
       <ta-scroll-tab-item name="Dust Red">
         <div class="exp-scrollTab-box box-1"></div>
@@ -52,7 +57,12 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
-import type { ScrollTabOnChange, ScrollTabRef } from '@/index'
+import type {
+  ScrollTabOnChange,
+  ScrollTabOnPullRefreshing,
+  ScrollTabPullRefreshTexts,
+  ScrollTabRef
+} from '@/index'
 
 export default defineComponent({
   name: 'ExpScrollTab',
@@ -62,6 +72,17 @@ export default defineComponent({
 
     const onChange: ScrollTabOnChange = res => {
       console.log('change', res)
+    }
+
+    const onPullRefreshing: ScrollTabOnPullRefreshing = ({ pullDirection }, loadComplete) => {
+      console.log(pullDirection)
+      setTimeout(() => loadComplete(), 2000)
+    }
+
+    const texts: ScrollTabPullRefreshTexts = {
+      pullingDown: '下拉刷新2',
+      holding: '松开刷新2',
+      refreshing: '刷新中2'
     }
 
     onMounted(() => {
@@ -74,7 +95,9 @@ export default defineComponent({
 
       offsetTop: 52,
       offsetBottom: 12,
+      texts,
 
+      onPullRefreshing,
       onChange
     }
   }

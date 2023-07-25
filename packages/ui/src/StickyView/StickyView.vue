@@ -1,8 +1,17 @@
 <template>
   <div ref="root" :class="classes">
-    <StickyViewList ref="itemsRef" @resetItems="resetItems">
-      <slot></slot>
-    </StickyViewList>
+    <ScrollView
+      class="ta-sticky-view_content"
+      :enablePullDirections="enablePullDirections"
+      :scrollY="isSelfContainer"
+      :pullRefreshTexts="pullRefreshTexts"
+      @refreshing="onPullRefreshing"
+      ref="scrollViewRef"
+    >
+      <StickyViewList ref="itemsRef" @resetItems="resetItems">
+        <slot></slot>
+      </StickyViewList>
+    </ScrollView>
     <Sticky
       v-show="!disabledHeader"
       :offsetTop="offsetTop"
@@ -30,6 +39,7 @@ import {
   type PropType,
   type VNode
 } from 'vue'
+import { ScrollView } from '../ScrollView'
 import { Sticky } from '../Sticky'
 import {
   CSSProperties2CssText,
@@ -49,13 +59,22 @@ import {
 import StickyViewList from './StickyViewList.vue'
 import { useScroll, useException, useOnce } from '../hooks'
 import { emitChangeValidator } from './props'
-import type { StickyViewEmits, StickyViewItem, StickyViewListRef } from './types'
+import type {
+  StickyViewEmits,
+  StickyViewItem,
+  StickyViewListRef,
+  StickyViewRef,
+  StickyViewOnPullRefreshing,
+  StickyViewPullRefreshTexts
+} from './types'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import { getClasses, getFixedStyles, FIXED_HEIGHT } from './util'
+import type { ScrollViewRef } from '../ScrollView/types'
+import { emitRefreshingValidator } from '../ScrollView/props'
 
 export default defineComponent({
   name: 'ta-sticky-view',
-  components: { Sticky, StickyViewList },
+  components: { Sticky, StickyViewList, ScrollView },
   props: {
     modelValue: {
       type: String
@@ -73,6 +92,20 @@ export default defineComponent({
     disabledHeader: {
       type: Boolean,
       default: false
+    },
+    // 允许上拉刷新
+    enablePullRefreshUp: {
+      type: Boolean,
+      default: false
+    },
+    // 允许下拉刷新
+    enablePullRefreshDown: {
+      type: Boolean,
+      default: false
+    },
+    // 下拉刷新提示文案
+    pullRefreshTexts: {
+      type: Object as PropType<StickyViewPullRefreshTexts>
     }
   },
   emits: {
@@ -87,7 +120,8 @@ export default defineComponent({
         )
       }
       return false
-    }
+    },
+    pullRefreshing: emitRefreshingValidator
   } as PropsToEmits<StickyViewEmits>,
   setup(props, { emit, expose }) {
     const { printListItemNotFoundError } = useException()
@@ -95,6 +129,7 @@ export default defineComponent({
     const container = shallowRef<HTMLElement | null>(null)
     const fixedEl = shallowRef<HTMLElement | null>(null)
     const stickyRef = shallowRef<StickyRef | null>(null)
+    const scrollViewRef = shallowRef<ScrollViewRef | null>(null)
     const itemsRef = shallowRef<StickyViewListRef | null>(null)
     const activeIndex = ref(0)
     const isSelfContainer = ref(false)
@@ -166,7 +201,6 @@ export default defineComponent({
       const _index = activeIndex.value
       const nextIndex = _index + 1
       const offsetTops = getOffsetTops()
-
       const current = offsetTops[_index]
       const next = offsetTops[nextIndex] != null ? offsetTops[nextIndex] : Infinity
       const first = offsetTops[0]
@@ -214,8 +248,10 @@ export default defineComponent({
 
     function getOffsetTops() {
       const offset =
-        getRelativeOffset(getListEl() as HTMLElement, container.value as HTMLElement).offsetTop -
-        getSizeValue(props.offsetTop)
+        getRelativeOffset(
+          getListEl() as HTMLElement,
+          (isSelfContainer.value ? root.value : container.value) as HTMLElement
+        ).offsetTop - getSizeValue(props.offsetTop)
 
       return $items.map($el => {
         return $el.offsetTop + offset
@@ -263,14 +299,20 @@ export default defineComponent({
     useScroll(container, () => updateFixed(null))
 
     const resetContainer: ResetContainer = containSelector => {
-      const newEl = querySelector(containSelector) || (root.value as HTMLElement)
+      const selfEl = scrollViewRef.value?.getScrollEl()
+
+      if (!selfEl) {
+        return
+      }
+
+      const newEl = querySelector(containSelector) || selfEl
 
       if (newEl === container.value) {
         return
       }
 
       container.value = newEl
-      isSelfContainer.value = container.value === root.value
+      isSelfContainer.value = container.value === selfEl
       stickyRef.value?.resetContainer(newEl)
 
       updateFixed(null)
@@ -326,30 +368,50 @@ export default defineComponent({
 
     watch(() => props.modelValue, updateValue)
 
+    const enablePullDirections = computed(() => {
+      const directions: ('up' | 'down')[] = []
+      if (isSelfContainer.value) {
+        if (props.enablePullRefreshUp) {
+          directions.push('up')
+        }
+        if (props.enablePullRefreshDown) {
+          directions.push('down')
+        }
+      }
+      return directions
+    })
+
+    const onPullRefreshing: StickyViewOnPullRefreshing = (payload, loadComplete) => {
+      emit('pullRefreshing', payload, loadComplete)
+    }
+
     onMounted(() => {
       resetContainer(props.containSelector)
-
       $items = getElementItems(getListEl(), 'ta-sticky-view-item')
       // 首次设置 modelValue 非string类型认为是没配置，不做更新
       props.modelValue != null && updateValue(props.modelValue)
     })
 
-    const classes = computed(() => getClasses(isSelfContainer.value))
+    const classes = computed(() => getClasses(isSelfContainer.value, props.disabledHeader))
 
     expose({
       scrollTo,
       scrollToIndex,
       scrollToOffset,
       resetContainer
-    })
+    } as StickyViewRef)
 
     return {
       root,
+      isSelfContainer,
       fixedEl,
       itemsRef,
       stickyRef,
+      scrollViewRef,
       classes,
       resetItems,
+      enablePullDirections,
+      onPullRefreshing,
 
       scrollTo,
       scrollToIndex,

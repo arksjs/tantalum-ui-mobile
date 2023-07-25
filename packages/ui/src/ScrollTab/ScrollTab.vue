@@ -25,9 +25,13 @@
         :offsetTop="viewOffsetTop"
         :modelValue="modelValue"
         :disabledHeader="!sideBar"
+        :enablePullRefreshUp="enablePullRefreshUp"
+        :enablePullRefreshDown="enablePullRefreshDown"
+        :pullRefreshTexts="pullRefreshTexts"
         ref="bodyRef"
         @resetItems="onResetItems"
         @change="onStickyViewChange"
+        @pullRefreshing="onPullRefreshing"
       >
         <slot></slot>
       </StickyView>
@@ -36,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, shallowRef, watch, computed } from 'vue'
+import { defineComponent, onMounted, ref, shallowRef, watch, computed, type PropType } from 'vue'
 import { Tab } from '../Tab'
 import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
@@ -45,10 +49,16 @@ import { isSizeValue, isString, getSizeValue, type PropsToEmits } from '../helpe
 import type { StickyViewOnResetItems, StickyViewRef, StickyViewOnChange } from '../StickyView/types'
 import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
-import type { ScrollTabEmits } from './types'
+import type {
+  ScrollTabEmits,
+  ScrollTabOnPullRefreshing,
+  ScrollTabPullRefreshTexts,
+  ScrollTabRef
+} from './types'
 import type { SideTabOnChange } from '../SideTab/types'
 import { getClasses } from './util'
 import { TAB_HEIGHT } from '../Tab/util'
+import { emitRefreshingValidator } from '../ScrollView/props'
 
 export default defineComponent({
   name: 'ta-scroll-tab',
@@ -70,11 +80,31 @@ export default defineComponent({
     sideBar: {
       type: Boolean,
       default: true
+    },
+    // 允许上拉刷新
+    enablePullRefreshUp: {
+      type: Boolean,
+      default: false
+    },
+    // 允许下拉刷新
+    enablePullRefreshDown: {
+      type: Boolean,
+      default: false
+    },
+    // 下拉刷新提示文案
+    pullRefreshTexts: {
+      type: Object as PropType<ScrollTabPullRefreshTexts>
+    },
+    // 滚动挂在到document上
+    documentContainer: {
+      type: Boolean,
+      default: true
     }
   },
   emits: {
     'update:modelValue': name => isString(name),
-    change: emitChangeValidator
+    change: emitChangeValidator,
+    pullRefreshing: emitRefreshingValidator
   } as PropsToEmits<ScrollTabEmits>,
   setup(props, { emit, expose }) {
     const sideRef = shallowRef<StickyRef | null>(null)
@@ -146,6 +176,10 @@ export default defineComponent({
       () => getSizeValue(props.stickyOffsetTop) + (props.sideBar ? 0 : TAB_HEIGHT)
     )
 
+    const onPullRefreshing: ScrollTabOnPullRefreshing = (payload, loadComplete) => {
+      emit('pullRefreshing', payload, loadComplete)
+    }
+
     const classes = computed(() => getClasses(props.sideBar))
 
     watch(
@@ -154,7 +188,7 @@ export default defineComponent({
     )
 
     onMounted(() => {
-      resetContainer(document.documentElement)
+      resetContainer(props.documentContainer ? document.documentElement : undefined)
       updateActiveName(props.modelValue)
       if (activeName.value == null && tabList.value.length > 0) {
         // 首次要写入一个
@@ -166,7 +200,7 @@ export default defineComponent({
       scrollTo,
       scrollToIndex,
       resetContainer
-    })
+    } as ScrollTabRef)
 
     return {
       viewOffsetTop,
@@ -178,6 +212,7 @@ export default defineComponent({
       onTabChange,
       onStickyViewChange,
       onResetItems,
+      onPullRefreshing,
 
       scrollTo,
       scrollToIndex,

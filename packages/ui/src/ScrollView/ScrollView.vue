@@ -14,6 +14,7 @@
   >
     <div class="ta-scroll-view_inner">
       <div class="ta-scroll-view_content" :style="contentStyles">
+        <slot></slot>
         <div v-if="allowPullDirections.length > 0" :class="pullRefreshClasses">
           <slot
             v-bind:pullDirection="pullDirection"
@@ -28,17 +29,10 @@
                 :size="18"
               />
               <Icon class="ta-load-more_icon" v-else :icon="CircleOutlined" />
-              <span class="ta-load-more_content">{{
-                pullRefreshState === PullRefreshState.Refreshing
-                  ? locale.scrollViewRefreshingText
-                  : pullRefreshState === PullRefreshState.Holding
-                  ? locale.scrollViewHoldingText
-                  : locale.scrollViewPullingTexts[pullDirection]
-              }}</span>
+              <span class="ta-load-more_content">{{ pullRefreshText }}</span>
             </div></slot
           >
         </div>
-        <slot></slot>
       </div>
     </div>
   </div>
@@ -48,7 +42,12 @@
 import { defineComponent, computed, ref, onMounted, watch, shallowRef, type PropType } from 'vue'
 import { Icon } from '../Icon'
 import { ActivityIndicator } from '../ActivityIndicator'
-import { string2StringArray, type PropsToEmits, isStringOrStringArray } from '../helpers'
+import {
+  string2StringArray,
+  upperFirst,
+  type PropsToEmits,
+  isStringOrStringArray
+} from '../helpers'
 import { useTouch, useScrollTo } from '../hooks'
 import { useLocale } from '../ConfigProvider/context'
 import {
@@ -60,8 +59,10 @@ import {
 import type {
   PullDirection,
   PullDirectionOrDefault,
+  PullRefreshTexts,
   PullIndicatorSafeArea,
-  ScrollViewEmits
+  ScrollViewEmits,
+  ScrollViewRef
 } from './types'
 import CircleOutlined from '../Icon/icons/CircleOutlined'
 import {
@@ -133,6 +134,10 @@ export default defineComponent({
     pullRefreshThreshold: {
       type: Number,
       default: 48
+    },
+    // 下拉刷新提示文案
+    pullRefreshTexts: {
+      type: Object as PropType<PullRefreshTexts>
     }
   },
   emits: {
@@ -141,9 +146,8 @@ export default defineComponent({
     scroll: emitScrollValidator,
     refreshing: emitRefreshingValidator
   } as PropsToEmits<ScrollViewEmits>,
-  setup(props, ctx) {
+  setup(props, { emit, expose }) {
     const { locale } = useLocale()
-    const { emit } = ctx
     let _isToLowerOrUpperY = ScrollState.Upper
     let _isToLowerOrUpperX = ScrollState.Upper
     let _prevY = 0
@@ -301,6 +305,22 @@ export default defineComponent({
         pullDistance: pullDistance.value
       })
     )
+    const pullRefreshText = computed(() => {
+      if (pullRefreshState.value === PullRefreshState.Refreshing) {
+        return props.pullRefreshTexts?.refreshing ?? locale.value.scrollViewRefreshingText
+      }
+      if (pullRefreshState.value === PullRefreshState.Holding) {
+        return props.pullRefreshTexts?.holding ?? locale.value.scrollViewHoldingText
+      }
+      const _pullDirection = pullDirection.value === '' ? 'down' : pullDirection.value
+
+      return (
+        (props.pullRefreshTexts &&
+          props.pullRefreshTexts[`pulling${upperFirst(_pullDirection)}` as 'pullingUp']) ??
+        locale.value.scrollViewPullingTexts[_pullDirection]
+      )
+    })
+
     const indicatorStyles = computed(() => getIndicatorStyles(pullIndicatorSafeArea.value))
     const allowPullDirections = computed(() => string2StringArray(props.enablePullDirections))
 
@@ -328,7 +348,7 @@ export default defineComponent({
         }
 
         pullDistance.value = 0
-        translateDuration.value = 0
+        translateDuration.value = 1
         pullDirection.value = ''
 
         // 猜想可能刷新的方向，0-4个都有可能
@@ -465,7 +485,7 @@ export default defineComponent({
             pullRefreshThreshold +
             Math.ceil(
               (distance - pullRefreshThreshold) /
-                Math.log(Math.abs(distance - pullRefreshThreshold) / 2)
+                Math.max(1, Math.log(Math.abs(distance - pullRefreshThreshold) / 2))
             ) // 除于2比不除更好拉一点
         }
 
@@ -500,8 +520,15 @@ export default defineComponent({
 
     const { scrollToOffset, scrollToEnd } = useScrollTo(root)
 
+    expose({
+      scrollTo: scrollToOffset,
+      scrollToEnd,
+      getScrollEl: () => root.value
+    } as ScrollViewRef)
+
     return {
       allowPullDirections,
+      pullRefreshText,
       pullRefreshState,
       pullDistance,
       pullDirection,
