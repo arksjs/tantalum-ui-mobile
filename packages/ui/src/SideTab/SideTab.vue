@@ -1,5 +1,5 @@
 <template>
-  <div class="ta-side-tab">
+  <div class="ta-side-tab" :style="styles">
     <ul class="ta-side-tab_list" ref="listEl">
       <li
         :class="getItemClasses(index, activeIndex)"

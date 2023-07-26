@@ -13,7 +13,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { type PropType, defineComponent } from 'vue'
+import type { ScrollTabItemTabItemProps } from './types'
 
 export default defineComponent({
   name: 'ta-scroll-tab-item',
@@ -27,6 +28,9 @@ export default defineComponent({
     name: {
       type: String,
       required: true
+    },
+    tabItemProps: {
+      type: Object as PropType<ScrollTabItemTabItemProps>
     }
   }
 })

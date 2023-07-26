@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes">
+  <div :class="classes" :style="styles">
     <ul class="ta-tab_list" ref="listEl" @scroll="updateUnderline">
       <li
         :class="getItemClasses(index, activeIndex)"

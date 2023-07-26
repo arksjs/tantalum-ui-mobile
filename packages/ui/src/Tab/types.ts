@@ -1,5 +1,4 @@
 import type { BadgeOption, BadgeProps as HandleBadgeOption } from '../Badge/types'
-import type { CSSProperties } from '../helpers'
 import type { IconData } from '../Icon/types'
 
 export interface OptionItem {
@@ -26,7 +25,6 @@ export interface TabCommonProps {
   options: OptionList
   color?: string
   activeColor?: string
-  style?: CSSProperties
 }
 
 export interface TabCommonEmits {

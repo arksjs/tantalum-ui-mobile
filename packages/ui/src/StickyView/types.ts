@@ -1,4 +1,5 @@
-import type { OnRefreshing, PullRefreshTexts } from '../ScrollView/types'
+import type { OptionItem } from '../Tab/types'
+import type { Noop } from '../helpers'
 import type { ResetContainer } from '../Sticky/types'
 
 export type OnResetItems = (items: StickyViewItem[]) => void
@@ -35,7 +36,22 @@ export interface StickyViewItemProps {
   description?: string
 }
 
+export type PullRefreshTexts = {
+  holding?: string
+  refreshing?: string
+  pullingUp?: string
+  pullingDown?: string
+}
+
+export type OnRefreshing = (
+  payload: {
+    pullDirection: 'up' | 'down'
+  },
+  loadComplete: Noop
+) => void
+
 export interface StickyViewItem extends Required<StickyViewItemProps> {
+  tabItemProps: Omit<OptionItem, 'label' | 'value'>
   index: number
 }
 

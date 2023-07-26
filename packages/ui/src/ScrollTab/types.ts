@@ -1,5 +1,10 @@
-import type { OnRefreshing, PullRefreshTexts } from '../ScrollView/types'
-import type { StickyViewItemProps, StickyViewOnChange } from '../StickyView/types'
+import type { OptionItem, TabProps } from '../Tab/types'
+import type {
+  StickyViewItemProps,
+  StickyViewOnChange,
+  OnRefreshing,
+  PullRefreshTexts
+} from '../StickyView/types'
 
 export interface ScrollTabProps {
   modelValue?: string
@@ -18,6 +23,10 @@ export interface ScrollTabRef {
   scrollTo: (name: string) => void
   scrollToIndex: (index: number) => void
 }
+
+export type ScrollTabTabProp = Omit<TabProps, 'modelValue' | 'options'>
+
+export type ScrollTabItemTabItemProps = Omit<OptionItem, 'label' | 'value'>
 
 export type {
   StickyViewOnChange as ScrollTabOnChange,

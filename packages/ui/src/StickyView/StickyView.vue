@@ -64,12 +64,11 @@ import type {
   StickyViewItem,
   StickyViewListRef,
   StickyViewRef,
-  StickyViewOnPullRefreshing,
   StickyViewPullRefreshTexts
 } from './types'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import { getClasses, getFixedStyles, FIXED_HEIGHT } from './util'
-import type { ScrollViewRef } from '../ScrollView/types'
+import type { ScrollViewRef, OnRefreshing } from '../ScrollView/types'
 import { emitRefreshingValidator } from '../ScrollView/props'
 
 export default defineComponent({
@@ -342,7 +341,8 @@ export default defineComponent({
           index,
           name: item.props?.name || '',
           title: item.props?.title || item.props?.name || '',
-          description: item.props?.description || ''
+          description: item.props?.description || '',
+          tabItemProps: item.props?.tabItemProps || {}
         }
       })
 
@@ -381,8 +381,8 @@ export default defineComponent({
       return directions
     })
 
-    const onPullRefreshing: StickyViewOnPullRefreshing = (payload, loadComplete) => {
-      emit('pullRefreshing', payload, loadComplete)
+    const onPullRefreshing: OnRefreshing = (payload, loadComplete) => {
+      emit('pullRefreshing', payload as { pullDirection: 'down' | 'up' }, loadComplete)
     }
 
     onMounted(() => {

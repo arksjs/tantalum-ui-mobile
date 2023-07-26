@@ -7,13 +7,17 @@
         :offsetBottom="sideBar ? stickyOffsetBottom : undefined"
       >
         <Tab
+          class="ta-scroll-tab_tab"
           v-if="!sideBar && tabList.length > 0"
+          v-bind="tabProps"
           :options="tabList"
           :modelValue="activeName"
           @change="onTabChange"
         />
         <SideTab
+          class="ta-scroll-tab_tab"
           v-else-if="sideBar && tabList.length > 0"
+          v-bind="tabProps"
           :options="tabList"
           :modelValue="activeName"
           @change="onTabChange"
@@ -53,7 +57,8 @@ import type {
   ScrollTabEmits,
   ScrollTabOnPullRefreshing,
   ScrollTabPullRefreshTexts,
-  ScrollTabRef
+  ScrollTabRef,
+  ScrollTabTabProp
 } from './types'
 import type { SideTabOnChange } from '../SideTab/types'
 import { getClasses } from './util'
@@ -99,6 +104,9 @@ export default defineComponent({
     documentContainer: {
       type: Boolean,
       default: true
+    },
+    tabProps: {
+      type: Object as PropType<ScrollTabTabProp>
     }
   },
   emits: {
@@ -166,6 +174,7 @@ export default defineComponent({
     const onResetItems: StickyViewOnResetItems = items => {
       tabList.value = items.map(item => {
         return {
+          ...item.tabItemProps,
           value: item.name,
           label: item.title || item.name
         }
