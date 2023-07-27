@@ -30,7 +30,7 @@
     display: inline-flex;
     flex: 0 0 auto;
     vertical-align: top;
-    color: $font2-color;
+    color: $title-color;
     background-color: $white-color;
 
     &::after {
@@ -43,10 +43,6 @@
     &:last-child::after {
       content: none;
     }
-  }
-
-  &_group:last-child {
-    color: $title-color;
   }
 
   &_list {
