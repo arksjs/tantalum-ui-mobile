@@ -247,15 +247,16 @@ export default defineComponent({
 
     function getOffsetTops() {
       const offset =
-        getRelativeOffset(
-          getListEl() as HTMLElement,
-          (isSelfContainer.value ? root.value : container.value) as HTMLElement
-        ).offsetTop - getSizeValue(props.offsetTop)
+        getRelativeOffset(getListEl() as HTMLElement, container.value!).offsetTop - diffTop.value
 
       return $items.map($el => {
         return $el.offsetTop + offset
       })
     }
+
+    const diffTop = computed(() => {
+      return isSelfContainer.value ? 0 : getSizeValue(props.offsetTop)
+    })
 
     /**
      * 滚到到指定位置
@@ -273,8 +274,7 @@ export default defineComponent({
       if ($items[newIndex]) {
         if (newIndex != activeIndex.value && container.value) {
           scrollToOffset(
-            getRelativeOffset($items[newIndex], container.value).offsetTop -
-              getSizeValue(props.offsetTop)
+            getRelativeOffset($items[newIndex], container.value).offsetTop - diffTop.value
           )
         }
       } else {
