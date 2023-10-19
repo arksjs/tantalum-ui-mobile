@@ -83,12 +83,14 @@ export type { SwipeCellButtonOption, SwipeCellOnButtonClick } from './SwipeCell/
 export type {
   StickyViewOnChange,
   StickyViewOnPullRefreshing,
+  StickyViewOnScroll,
   StickyViewPullRefreshTexts,
   StickyViewRef
 } from './StickyView/types'
 export type {
   ScrollTabOnChange,
   ScrollTabOnPullRefreshing,
+  ScrollTabOnScroll,
   ScrollTabPullRefreshTexts,
   ScrollTabRef
 } from './ScrollTab/types'

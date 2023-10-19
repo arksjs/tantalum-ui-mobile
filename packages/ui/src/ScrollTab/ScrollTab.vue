@@ -36,6 +36,7 @@
         @resetItems="onResetItems"
         @change="onStickyViewChange"
         @pullRefreshing="onPullRefreshing"
+        @scroll="onScroll"
       >
         <slot></slot>
       </StickyView>
@@ -50,20 +51,25 @@ import { SideTab } from '../SideTab'
 import { Sticky } from '../Sticky'
 import { StickyView } from '../StickyView'
 import { isSizeValue, isString, getSizeValue, type PropsToEmits } from '../helpers'
-import type { StickyViewOnResetItems, StickyViewRef, StickyViewOnChange } from '../StickyView/types'
+import type {
+  StickyViewOnResetItems,
+  StickyViewRef,
+  StickyViewOnChange,
+  StickyViewOnScroll,
+  StickyViewOnPullRefreshing
+} from '../StickyView/types'
 import { emitChangeValidator } from '../StickyView/props'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import type {
   ScrollTabEmits,
-  ScrollTabOnPullRefreshing,
   ScrollTabPullRefreshTexts,
   ScrollTabRef,
   ScrollTabTabProp
 } from './types'
-import type { SideTabOnChange } from '../SideTab/types'
 import { getClasses } from './util'
 import { TAB_HEIGHT } from '../Tab/util'
-import { emitRefreshingValidator } from '../ScrollView/props'
+import { emitRefreshingValidator, emitScrollValidator } from '../ScrollView/props'
+import type { TabOnChange } from '../Tab/types'
 
 export default defineComponent({
   name: 'ta-scroll-tab',
@@ -112,7 +118,8 @@ export default defineComponent({
   emits: {
     'update:modelValue': name => isString(name),
     change: emitChangeValidator,
-    pullRefreshing: emitRefreshingValidator
+    pullRefreshing: emitRefreshingValidator,
+    scroll: emitScrollValidator
   } as PropsToEmits<ScrollTabEmits>,
   setup(props, { emit, expose }) {
     const sideRef = shallowRef<StickyRef | null>(null)
@@ -142,7 +149,7 @@ export default defineComponent({
       return false
     }
 
-    const onTabChange: SideTabOnChange = (name, index) => {
+    const onTabChange: TabOnChange = (_, index) => {
       scrollToIndex(index)
     }
 
@@ -185,8 +192,12 @@ export default defineComponent({
       () => getSizeValue(props.stickyOffsetTop) + (props.sideBar ? 0 : TAB_HEIGHT)
     )
 
-    const onPullRefreshing: ScrollTabOnPullRefreshing = (payload, loadComplete) => {
+    const onPullRefreshing: StickyViewOnPullRefreshing = (payload, loadComplete) => {
       emit('pullRefreshing', payload, loadComplete)
+    }
+
+    const onScroll: StickyViewOnScroll = payload => {
+      emit('scroll', payload)
     }
 
     const classes = computed(() => getClasses(props.sideBar))
@@ -222,6 +233,7 @@ export default defineComponent({
       onStickyViewChange,
       onResetItems,
       onPullRefreshing,
+      onScroll,
 
       scrollTo,
       scrollToIndex,

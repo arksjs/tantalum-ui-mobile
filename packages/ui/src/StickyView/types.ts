@@ -1,6 +1,7 @@
 import type { OptionItem } from '../Tab/types'
 import type { Noop } from '../helpers'
 import type { ResetContainer } from '../Sticky/types'
+import type { OnScroll } from '../ScrollView/types'
 
 export type OnResetItems = (items: StickyViewItem[]) => void
 
@@ -28,6 +29,7 @@ export interface StickyViewEmits {
   onChange?: OnChange
   onResetItems?: OnResetItems
   onPullRefreshing?: OnRefreshing
+  onScroll?: OnScroll
 }
 
 export interface StickyViewItemProps {
@@ -59,5 +61,6 @@ export type {
   OnChange as StickyViewOnChange,
   OnResetItems as StickyViewOnResetItems,
   OnRefreshing as StickyViewOnPullRefreshing,
-  PullRefreshTexts as StickyViewPullRefreshTexts
+  PullRefreshTexts as StickyViewPullRefreshTexts,
+  OnScroll as StickyViewOnScroll
 }

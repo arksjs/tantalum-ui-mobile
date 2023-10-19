@@ -6,6 +6,7 @@
       :scrollY="isSelfContainer"
       :pullRefreshTexts="pullRefreshTexts"
       @refreshing="onPullRefreshing"
+      @scroll="onScroll"
       ref="scrollViewRef"
     >
       <StickyViewList ref="itemsRef" @resetItems="resetItems">
@@ -68,8 +69,8 @@ import type {
 } from './types'
 import type { ResetContainer, StickyRef } from '../Sticky/types'
 import { getClasses, getFixedStyles, FIXED_HEIGHT } from './util'
-import type { ScrollViewRef, OnRefreshing } from '../ScrollView/types'
-import { emitRefreshingValidator } from '../ScrollView/props'
+import type { ScrollViewRef, OnRefreshing, OnScroll } from '../ScrollView/types'
+import { emitRefreshingValidator, emitScrollValidator } from '../ScrollView/props'
 
 export default defineComponent({
   name: 'ta-sticky-view',
@@ -120,7 +121,8 @@ export default defineComponent({
       }
       return false
     },
-    pullRefreshing: emitRefreshingValidator
+    pullRefreshing: emitRefreshingValidator,
+    scroll: emitScrollValidator
   } as PropsToEmits<StickyViewEmits>,
   setup(props, { emit, expose }) {
     const { printListItemNotFoundError } = useException()
@@ -385,6 +387,10 @@ export default defineComponent({
       emit('pullRefreshing', payload as { pullDirection: 'down' | 'up' }, loadComplete)
     }
 
+    const onScroll: OnScroll = payload => {
+      emit('scroll', payload)
+    }
+
     onMounted(() => {
       resetContainer(props.containSelector)
       $items = getElementItems(getListEl(), 'ta-sticky-view-item')
@@ -412,6 +418,7 @@ export default defineComponent({
       resetItems,
       enablePullDirections,
       onPullRefreshing,
+      onScroll,
 
       scrollTo,
       scrollToIndex,

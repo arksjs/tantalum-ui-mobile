@@ -56,9 +56,11 @@ import type { StickyViewOnChange, StickyViewRef } from 'tantalum-ui-mobile'
 
 ### StickyView Events
 
-| 事件   | 描述       | 回调函数参数                        | TypeScript 函数    |
-| ------ | ---------- | ----------------------------------- | ------------------ |
-| change | 切换时触发 | (name: string, activeIndex: number) | StickyViewOnChange |
+| 事件       | 描述           | 回调函数参数                                                                                                            | TypeScript 函数            |
+| ---------- | -------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| change     | 切换时触发     | (name: string, activeIndex: number)                                                                                     | StickyViewOnChange         |
+| refreshing | 下拉刷新时触发 | payload: ( pullDirection: 'up' \| 'down', done: () => void ) 其中 pullDirection 指下拉的方向，done 指刷新完毕回调的函数 | StickyViewOnPullRefreshing |
+| scroll     | 滚动时触发     | payload: { scrollLeft: number, scrollTop: number, scrollWidth: number, scrollHeight: number }                           | StickyViewOnScroll         |
 
 ### StickyView Slots
 

@@ -2,6 +2,7 @@ import type { OptionItem, TabProps } from '../Tab/types'
 import type {
   StickyViewItemProps,
   StickyViewOnChange,
+  StickyViewOnScroll,
   OnRefreshing,
   PullRefreshTexts
 } from '../StickyView/types'
@@ -15,6 +16,7 @@ export interface ScrollTabProps {
 export interface ScrollTabEmits {
   onChange?: StickyViewOnChange
   onPullRefreshing?: OnRefreshing
+  onScroll?: StickyViewOnScroll
 }
 
 export type ScrollTabItemProps = StickyViewItemProps
@@ -31,5 +33,6 @@ export type ScrollTabItemTabItemProps = Omit<OptionItem, 'label' | 'value'>
 export type {
   StickyViewOnChange as ScrollTabOnChange,
   OnRefreshing as ScrollTabOnPullRefreshing,
+  StickyViewOnScroll as ScrollTabOnScroll,
   PullRefreshTexts as ScrollTabPullRefreshTexts
 }
