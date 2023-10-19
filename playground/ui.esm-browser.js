@@ -28,9 +28,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// node_modules/.pnpm/dayjs@1.11.9/node_modules/dayjs/dayjs.min.js
+// node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/dayjs.min.js
 var require_dayjs_min = __commonJS({
-  "node_modules/.pnpm/dayjs@1.11.9/node_modules/dayjs/dayjs.min.js"(exports, module) {
+  "node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/dayjs.min.js"(exports, module) {
     !function(t, e) {
       "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : (t = "undefined" != typeof globalThis ? globalThis : t || self).dayjs = e();
     }(exports, function() {
@@ -57,9 +57,9 @@ var require_dayjs_min = __commonJS({
         return void 0 === t2;
       } }, g = "en", D = {};
       D[g] = M;
-      var p = function(t2) {
-        return t2 instanceof b;
-      }, S = function t2(e2, n2, r2) {
+      var p = "$isDayjsObject", S = function(t2) {
+        return t2 instanceof _ || !(!t2 || !t2[p]);
+      }, w = function t2(e2, n2, r2) {
         var i2;
         if (!e2)
           return g;
@@ -74,18 +74,18 @@ var require_dayjs_min = __commonJS({
           D[a2] = e2, i2 = a2;
         }
         return !r2 && i2 && (g = i2), i2 || !r2 && g;
-      }, w = function(t2, e2) {
-        if (p(t2))
+      }, O = function(t2, e2) {
+        if (S(t2))
           return t2.clone();
         var n2 = "object" == typeof e2 ? e2 : {};
-        return n2.date = t2, n2.args = arguments, new b(n2);
-      }, O = v;
-      O.l = S, O.i = p, O.w = function(t2, e2) {
-        return w(t2, { locale: e2.$L, utc: e2.$u, x: e2.$x, $offset: e2.$offset });
+        return n2.date = t2, n2.args = arguments, new _(n2);
+      }, b = v;
+      b.l = w, b.i = S, b.w = function(t2, e2) {
+        return O(t2, { locale: e2.$L, utc: e2.$u, x: e2.$x, $offset: e2.$offset });
       };
-      var b = function() {
+      var _ = function() {
         function M2(t2) {
-          this.$L = S(t2.locale, null, true), this.parse(t2);
+          this.$L = w(t2.locale, null, true), this.parse(t2), this.$x = this.$x || t2.x || {}, this[p] = true;
         }
         var m2 = M2.prototype;
         return m2.parse = function(t2) {
@@ -93,7 +93,7 @@ var require_dayjs_min = __commonJS({
             var e2 = t3.date, n2 = t3.utc;
             if (null === e2)
               return /* @__PURE__ */ new Date(NaN);
-            if (O.u(e2))
+            if (b.u(e2))
               return /* @__PURE__ */ new Date();
             if (e2 instanceof Date)
               return new Date(e2);
@@ -105,33 +105,33 @@ var require_dayjs_min = __commonJS({
               }
             }
             return new Date(e2);
-          }(t2), this.$x = t2.x || {}, this.init();
+          }(t2), this.init();
         }, m2.init = function() {
           var t2 = this.$d;
           this.$y = t2.getFullYear(), this.$M = t2.getMonth(), this.$D = t2.getDate(), this.$W = t2.getDay(), this.$H = t2.getHours(), this.$m = t2.getMinutes(), this.$s = t2.getSeconds(), this.$ms = t2.getMilliseconds();
         }, m2.$utils = function() {
-          return O;
+          return b;
         }, m2.isValid = function() {
           return !(this.$d.toString() === l);
         }, m2.isSame = function(t2, e2) {
-          var n2 = w(t2);
+          var n2 = O(t2);
           return this.startOf(e2) <= n2 && n2 <= this.endOf(e2);
         }, m2.isAfter = function(t2, e2) {
-          return w(t2) < this.startOf(e2);
+          return O(t2) < this.startOf(e2);
         }, m2.isBefore = function(t2, e2) {
-          return this.endOf(e2) < w(t2);
+          return this.endOf(e2) < O(t2);
         }, m2.$g = function(t2, e2, n2) {
-          return O.u(t2) ? this[e2] : this.set(n2, t2);
+          return b.u(t2) ? this[e2] : this.set(n2, t2);
         }, m2.unix = function() {
           return Math.floor(this.valueOf() / 1e3);
         }, m2.valueOf = function() {
           return this.$d.getTime();
         }, m2.startOf = function(t2, e2) {
-          var n2 = this, r2 = !!O.u(e2) || e2, f2 = O.p(t2), l2 = function(t3, e3) {
-            var i2 = O.w(n2.$u ? Date.UTC(n2.$y, e3, t3) : new Date(n2.$y, e3, t3), n2);
+          var n2 = this, r2 = !!b.u(e2) || e2, f2 = b.p(t2), l2 = function(t3, e3) {
+            var i2 = b.w(n2.$u ? Date.UTC(n2.$y, e3, t3) : new Date(n2.$y, e3, t3), n2);
             return r2 ? i2 : i2.endOf(a);
           }, $2 = function(t3, e3) {
-            return O.w(n2.toDate()[t3].apply(n2.toDate("s"), (r2 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e3)), n2);
+            return b.w(n2.toDate()[t3].apply(n2.toDate("s"), (r2 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e3)), n2);
           }, y2 = this.$W, M3 = this.$M, m3 = this.$D, v2 = "set" + (this.$u ? "UTC" : "");
           switch (f2) {
             case h5:
@@ -156,7 +156,7 @@ var require_dayjs_min = __commonJS({
         }, m2.endOf = function(t2) {
           return this.startOf(t2, false);
         }, m2.$set = function(t2, e2) {
-          var n2, o2 = O.p(t2), f2 = "set" + (this.$u ? "UTC" : ""), l2 = (n2 = {}, n2[a] = f2 + "Date", n2[d] = f2 + "Date", n2[c] = f2 + "Month", n2[h5] = f2 + "FullYear", n2[u] = f2 + "Hours", n2[s] = f2 + "Minutes", n2[i] = f2 + "Seconds", n2[r] = f2 + "Milliseconds", n2)[o2], $2 = o2 === a ? this.$D + (e2 - this.$W) : e2;
+          var n2, o2 = b.p(t2), f2 = "set" + (this.$u ? "UTC" : ""), l2 = (n2 = {}, n2[a] = f2 + "Date", n2[d] = f2 + "Date", n2[c] = f2 + "Month", n2[h5] = f2 + "FullYear", n2[u] = f2 + "Hours", n2[s] = f2 + "Minutes", n2[i] = f2 + "Seconds", n2[r] = f2 + "Milliseconds", n2)[o2], $2 = o2 === a ? this.$D + (e2 - this.$W) : e2;
           if (o2 === c || o2 === h5) {
             var y2 = this.clone().set(d, 1);
             y2.$d[l2]($2), y2.init(), this.$d = y2.set(d, Math.min(this.$D, y2.daysInMonth())).$d;
@@ -166,13 +166,13 @@ var require_dayjs_min = __commonJS({
         }, m2.set = function(t2, e2) {
           return this.clone().$set(t2, e2);
         }, m2.get = function(t2) {
-          return this[O.p(t2)]();
+          return this[b.p(t2)]();
         }, m2.add = function(r2, f2) {
           var d2, l2 = this;
           r2 = Number(r2);
-          var $2 = O.p(f2), y2 = function(t2) {
-            var e2 = w(l2);
-            return O.w(e2.date(e2.date() + Math.round(t2 * r2)), l2);
+          var $2 = b.p(f2), y2 = function(t2) {
+            var e2 = O(l2);
+            return b.w(e2.date(e2.date() + Math.round(t2 * r2)), l2);
           };
           if ($2 === c)
             return this.set(c, this.$M + r2);
@@ -183,17 +183,17 @@ var require_dayjs_min = __commonJS({
           if ($2 === o)
             return y2(7);
           var M3 = (d2 = {}, d2[s] = e, d2[u] = n, d2[i] = t, d2)[$2] || 1, m3 = this.$d.getTime() + r2 * M3;
-          return O.w(m3, this);
+          return b.w(m3, this);
         }, m2.subtract = function(t2, e2) {
           return this.add(-1 * t2, e2);
         }, m2.format = function(t2) {
           var e2 = this, n2 = this.$locale();
           if (!this.isValid())
             return n2.invalidDate || l;
-          var r2 = t2 || "YYYY-MM-DDTHH:mm:ssZ", i2 = O.z(this), s2 = this.$H, u2 = this.$m, a2 = this.$M, o2 = n2.weekdays, c2 = n2.months, f2 = n2.meridiem, h6 = function(t3, n3, i3, s3) {
+          var r2 = t2 || "YYYY-MM-DDTHH:mm:ssZ", i2 = b.z(this), s2 = this.$H, u2 = this.$m, a2 = this.$M, o2 = n2.weekdays, c2 = n2.months, f2 = n2.meridiem, h6 = function(t3, n3, i3, s3) {
             return t3 && (t3[n3] || t3(e2, r2)) || i3[n3].slice(0, s3);
           }, d2 = function(t3) {
-            return O.s(s2 % 12 || 12, t3, "0");
+            return b.s(s2 % 12 || 12, t3, "0");
           }, $2 = f2 || function(t3, e3, n3) {
             var r3 = t3 < 12 ? "AM" : "PM";
             return n3 ? r3.toLowerCase() : r3;
@@ -204,11 +204,11 @@ var require_dayjs_min = __commonJS({
                 case "YY":
                   return String(e2.$y).slice(-2);
                 case "YYYY":
-                  return O.s(e2.$y, 4, "0");
+                  return b.s(e2.$y, 4, "0");
                 case "M":
                   return a2 + 1;
                 case "MM":
-                  return O.s(a2 + 1, 2, "0");
+                  return b.s(a2 + 1, 2, "0");
                 case "MMM":
                   return h6(n2.monthsShort, a2, c2, 3);
                 case "MMMM":
@@ -216,7 +216,7 @@ var require_dayjs_min = __commonJS({
                 case "D":
                   return e2.$D;
                 case "DD":
-                  return O.s(e2.$D, 2, "0");
+                  return b.s(e2.$D, 2, "0");
                 case "d":
                   return String(e2.$W);
                 case "dd":
@@ -228,7 +228,7 @@ var require_dayjs_min = __commonJS({
                 case "H":
                   return String(s2);
                 case "HH":
-                  return O.s(s2, 2, "0");
+                  return b.s(s2, 2, "0");
                 case "h":
                   return d2(1);
                 case "hh":
@@ -240,13 +240,13 @@ var require_dayjs_min = __commonJS({
                 case "m":
                   return String(u2);
                 case "mm":
-                  return O.s(u2, 2, "0");
+                  return b.s(u2, 2, "0");
                 case "s":
                   return String(e2.$s);
                 case "ss":
-                  return O.s(e2.$s, 2, "0");
+                  return b.s(e2.$s, 2, "0");
                 case "SSS":
-                  return O.s(e2.$ms, 3, "0");
+                  return b.s(e2.$ms, 3, "0");
                 case "Z":
                   return i2;
               }
@@ -256,8 +256,8 @@ var require_dayjs_min = __commonJS({
         }, m2.utcOffset = function() {
           return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
         }, m2.diff = function(r2, d2, l2) {
-          var $2, y2 = this, M3 = O.p(d2), m3 = w(r2), v2 = (m3.utcOffset() - this.utcOffset()) * e, g2 = this - m3, D2 = function() {
-            return O.m(y2, m3);
+          var $2, y2 = this, M3 = b.p(d2), m3 = O(r2), v2 = (m3.utcOffset() - this.utcOffset()) * e, g2 = this - m3, D2 = function() {
+            return b.m(y2, m3);
           };
           switch (M3) {
             case h5:
@@ -287,7 +287,7 @@ var require_dayjs_min = __commonJS({
             default:
               $2 = g2;
           }
-          return l2 ? $2 : O.a($2);
+          return l2 ? $2 : b.a($2);
         }, m2.daysInMonth = function() {
           return this.endOf(c).$D;
         }, m2.$locale = function() {
@@ -295,10 +295,10 @@ var require_dayjs_min = __commonJS({
         }, m2.locale = function(t2, e2) {
           if (!t2)
             return this.$L;
-          var n2 = this.clone(), r2 = S(t2, e2, true);
+          var n2 = this.clone(), r2 = w(t2, e2, true);
           return r2 && (n2.$L = r2), n2;
         }, m2.clone = function() {
-          return O.w(this.$d, this);
+          return b.w(this.$d, this);
         }, m2.toDate = function() {
           return new Date(this.valueOf());
         }, m2.toJSON = function() {
@@ -308,23 +308,23 @@ var require_dayjs_min = __commonJS({
         }, m2.toString = function() {
           return this.$d.toUTCString();
         }, M2;
-      }(), _ = b.prototype;
-      return w.prototype = _, [["$ms", r], ["$s", i], ["$m", s], ["$H", u], ["$W", a], ["$M", c], ["$y", h5], ["$D", d]].forEach(function(t2) {
-        _[t2[1]] = function(e2) {
+      }(), k = _.prototype;
+      return O.prototype = k, [["$ms", r], ["$s", i], ["$m", s], ["$H", u], ["$W", a], ["$M", c], ["$y", h5], ["$D", d]].forEach(function(t2) {
+        k[t2[1]] = function(e2) {
           return this.$g(e2, t2[0], t2[1]);
         };
-      }), w.extend = function(t2, e2) {
-        return t2.$i || (t2(e2, b, w), t2.$i = true), w;
-      }, w.locale = S, w.isDayjs = p, w.unix = function(t2) {
-        return w(1e3 * t2);
-      }, w.en = D[g], w.Ls = D, w.p = {}, w;
+      }), O.extend = function(t2, e2) {
+        return t2.$i || (t2(e2, _, O), t2.$i = true), O;
+      }, O.locale = w, O.isDayjs = S, O.unix = function(t2) {
+        return O(1e3 * t2);
+      }, O.en = D[g], O.Ls = D, O.p = {}, O;
     });
   }
 });
 
-// node_modules/.pnpm/dayjs@1.11.9/node_modules/dayjs/plugin/toArray.js
+// node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/plugin/toArray.js
 var require_toArray = __commonJS({
-  "node_modules/.pnpm/dayjs@1.11.9/node_modules/dayjs/plugin/toArray.js"(exports, module) {
+  "node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/plugin/toArray.js"(exports, module) {
     !function(t, e) {
       "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : (t = "undefined" != typeof globalThis ? globalThis : t || self).dayjs_plugin_toArray = e();
     }(exports, function() {
@@ -338,9 +338,9 @@ var require_toArray = __commonJS({
   }
 });
 
-// node_modules/.pnpm/dayjs@1.11.9/node_modules/dayjs/plugin/customParseFormat.js
+// node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/plugin/customParseFormat.js
 var require_customParseFormat = __commonJS({
-  "node_modules/.pnpm/dayjs@1.11.9/node_modules/dayjs/plugin/customParseFormat.js"(exports, module) {
+  "node_modules/.pnpm/dayjs@1.11.10/node_modules/dayjs/plugin/customParseFormat.js"(exports, module) {
     !function(e, t) {
       "object" == typeof exports && "undefined" != typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define(t) : (e = "undefined" != typeof globalThis ? globalThis : e || self).dayjs_plugin_customParseFormat = t();
     }(exports, function() {
@@ -15533,7 +15533,8 @@ var _sfc_script85 = defineComponent66({
       }
       return false;
     },
-    pullRefreshing: emitRefreshingValidator
+    pullRefreshing: emitRefreshingValidator,
+    scroll: emitScrollValidator
   },
   setup(props, { emit, expose }) {
     const { printListItemNotFoundError } = useException();
@@ -15742,6 +15743,9 @@ var _sfc_script85 = defineComponent66({
     const onPullRefreshing = (payload, loadComplete) => {
       emit("pullRefreshing", payload, loadComplete);
     };
+    const onScroll = (payload) => {
+      emit("scroll", payload);
+    };
     onMounted22(() => {
       resetContainer(props.containSelector);
       $items = getElementItems(getListEl(), "ta-sticky-view-item");
@@ -15765,6 +15769,7 @@ var _sfc_script85 = defineComponent66({
       resetItems,
       enablePullDirections,
       onPullRefreshing,
+      onScroll,
       scrollTo: scrollTo2,
       scrollToIndex,
       scrollToOffset,
@@ -15794,6 +15799,7 @@ function render82(_ctx, _cache) {
         scrollY: _ctx.isSelfContainer,
         pullRefreshTexts: _ctx.pullRefreshTexts,
         onRefreshing: _ctx.onPullRefreshing,
+        onScroll: _ctx.onScroll,
         ref: "scrollViewRef"
       }, {
         default: _withCtx20(() => [
@@ -15810,7 +15816,7 @@ function render82(_ctx, _cache) {
         ]),
         _: 3
         /* FORWARDED */
-      }, 8, ["enablePullDirections", "scrollY", "pullRefreshTexts", "onRefreshing"]),
+      }, 8, ["enablePullDirections", "scrollY", "pullRefreshTexts", "onRefreshing", "onScroll"]),
       _withDirectives(_createVNode29(_component_Sticky, {
         offsetTop: _ctx.offsetTop,
         containSelector: _ctx.containSelector,
@@ -19287,7 +19293,8 @@ var _sfc_script112 = defineComponent87({
   emits: {
     "update:modelValue": (name) => isString(name),
     change: emitChangeValidator2,
-    pullRefreshing: emitRefreshingValidator
+    pullRefreshing: emitRefreshingValidator,
+    scroll: emitScrollValidator
   },
   setup(props, { emit, expose }) {
     const sideRef = shallowRef30(null);
@@ -19307,7 +19314,7 @@ var _sfc_script112 = defineComponent87({
       }
       return false;
     }
-    const onTabChange = (name, index) => {
+    const onTabChange = (_, index) => {
       scrollToIndex(index);
     };
     const onStickyViewChange = (name, index) => {
@@ -19343,6 +19350,9 @@ var _sfc_script112 = defineComponent87({
     const onPullRefreshing = (payload, loadComplete) => {
       emit("pullRefreshing", payload, loadComplete);
     };
+    const onScroll = (payload) => {
+      emit("scroll", payload);
+    };
     const classes = computed51(() => getClasses18(props.sideBar));
     watch32(
       () => props.modelValue,
@@ -19371,6 +19381,7 @@ var _sfc_script112 = defineComponent87({
       onStickyViewChange,
       onResetItems,
       onPullRefreshing,
+      onScroll,
       scrollTo: scrollTo2,
       scrollToIndex,
       resetContainer
@@ -19428,14 +19439,15 @@ function render109(_ctx, _cache) {
           ref: "bodyRef",
           onResetItems: _ctx.onResetItems,
           onChange: _ctx.onStickyViewChange,
-          onPullRefreshing: _ctx.onPullRefreshing
+          onPullRefreshing: _ctx.onPullRefreshing,
+          onScroll: _ctx.onScroll
         }, {
           default: _withCtx30(() => [
             _renderSlot50(_ctx.$slots, "default")
           ]),
           _: 3
           /* FORWARDED */
-        }, 8, ["offsetTop", "modelValue", "disabledHeader", "enablePullRefreshUp", "enablePullRefreshDown", "pullRefreshTexts", "onResetItems", "onChange", "onPullRefreshing"])
+        }, 8, ["offsetTop", "modelValue", "disabledHeader", "enablePullRefreshUp", "enablePullRefreshDown", "pullRefreshTexts", "onResetItems", "onChange", "onPullRefreshing", "onScroll"])
       ])
     ],
     2

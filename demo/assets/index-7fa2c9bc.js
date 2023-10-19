@@ -1,1 +1,0 @@
-import{$ as e,a0 as a,a1 as t,a2 as i}from"./index-25260ca1.js";const s=a({apiName:"showNotify",component:e,createHook:t,singleMode:!0,hookOptions:o=>(o.duration==null&&(o.duration=1500),o)}),n=i({apiName:"hideNotify"});export{n as h,s};
