@@ -29,15 +29,15 @@ import type {
 
 ## Props
 
-| 属性                 | 类型             | 默认值 | 必填 | 说明                                   |
-| -------------------- | ---------------- | ------ | ---- | -------------------------------------- |
-| v-model:visible      | boolean          | false  | 否   | 是否显示                               |
-| v-model              | string           |        | 否   | 指定当前显示的图片 url                 |
-| urls                 | string[]         |        | 否   | 图片 url 数组                          |
-| show-close           | boolean          | false  | 否   | 是否显示关闭按钮，显示按钮后展示头部栏 |
-| navigation-buttons   | boolean          | false  | 否   | 是否展示上一页/下一页按钮              |
-| image-high-rendering | boolean          | true   | 否   | 高清渲染，开启后图片按物理分辨率展示   |
-| magnification        | string \| number | true   | 否   | 大于 1 放大后会产生模糊                |
+| 属性                 | 类型             | 默认值 | 必填 | 说明                                          |
+| -------------------- | ---------------- | ------ | ---- | --------------------------------------------- |
+| v-model:visible      | boolean          | false  | 否   | 是否显示                                      |
+| v-model              | string           |        | 否   | 指定当前显示的图片 url                        |
+| urls                 | string[]         |        | 否   | 图片 url 数组                                 |
+| show-close           | boolean          | false  | 否   | 是否显示关闭按钮，显示按钮后展示头部栏        |
+| navigation-buttons   | boolean          | false  | 否   | 是否展示上一页/下一页按钮                     |
+| image-high-rendering | boolean          | true   | 否   | 高清渲染，开启后图片按物理分辨率展示          |
+| magnification        | string \| number | 1      | 否   | 如果图片本身不够高清，大于 1 放大后会产生模糊 |
 
 ## Events
 
@@ -77,6 +77,7 @@ import type {
 | showClose          | boolean                                | false  | 否   | 是否显示关闭按钮，显示按钮后展示头部栏                                   |
 | navigationButtons  | boolean                                | false  | 否   | 是否展示上一页/下一页按钮                                                |
 | imageHighRendering | boolean                                | true   | 否   | 高清渲染，开启后图片按物理分辨率展示                                     |
+| magnification      | string \| number                       | 1      | 否   | 如果图片本身不够高清，大于 1 放大后会产生模糊                            |
 | success            | (payload: { cancel: boolean }) => void |        | 否   | 接口调用成功（在用户做出选择后，如取消，选择选项）的回调函数             |
 | fail               | (e: Error) => void                     |        | 否   | 接口调用失败（如传入错误的参数）的回调函数（不传入 fail 遇错误直接抛出） |
 | complete           | () => void                             |        | 否   | 弹窗关闭或调用失败的回调函数                                             |

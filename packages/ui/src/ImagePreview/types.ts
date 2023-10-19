@@ -20,6 +20,7 @@ interface CommonOptions {
   showClose?: boolean
   navigationButtons?: boolean
   imageHighRendering?: boolean
+  magnification?: number | string
 }
 
 export interface ShowImagePreviewOptions extends CommonOptions {
