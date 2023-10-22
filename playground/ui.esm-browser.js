@@ -12463,13 +12463,13 @@ var _sfc_script68 = defineComponent51({
         if (scrollTop === 0 && allowPullDirections.value.includes("down")) {
           directions.push("down");
         }
-        if (scrollTop + clientHeight >= scrollHeight && allowPullDirections.value.includes("up")) {
+        if (scrollTop + clientHeight >= scrollHeight - 1 && allowPullDirections.value.includes("up")) {
           directions.push("up");
         }
         if (scrollLeft === 0 && allowPullDirections.value.includes("right")) {
           directions.push("right");
         }
-        if (scrollLeft + clientWidth >= scrollWidth && allowPullDirections.value.includes("left")) {
+        if (scrollLeft + clientWidth >= scrollWidth - 1 && allowPullDirections.value.includes("left")) {
           directions.push("left");
         }
         if (directions[0]) {

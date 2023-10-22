@@ -1,1 +1,0 @@
-import{a9 as e}from"./index-22032423.js";const n="YYYY年MM月DD日",m=(t,o)=>{const r=t.length===0?"":o==="range"?t.map(a=>e(a).format(n)).join(" ~ "):e(t[0]).format(n);return{value:r,label:r}},p=(t,o)=>o==="range"?t?t.split(" ~ ").map(r=>e(r,n,!0).toDate()):[]:t?[e(t,n,!0).toDate()]:[];export{m as f,p,n as t};
