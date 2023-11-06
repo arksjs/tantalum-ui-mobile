@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,e as l}from"./app.f1e12e8f.js";const i=JSON.parse('{"title":"\u4E3B\u9898\u5B9A\u5236","description":"","frontmatter":{},"headers":[],"relativePath":"guide/theme.md"}'),p={name:"guide/theme.md"},o=l("",13),e=[o];function c(r,D,t,y,C,F){return a(),n("div",null,e)}const d=s(p,[["render",c]]);export{i as __pageData,d as default};

@@ -773,7 +773,8 @@ __export(components_exports, {
   TaTimeline: () => Timeline_default,
   TaTimelineItem: () => TimelineItem_default,
   TaToast: () => Toast_default,
-  TaVirtualList: () => VirtualList_default
+  TaVirtualList: () => VirtualList_default,
+  TaWatermark: () => Watermark_default
 });
 
 // vue:./ActionSheet.vue
@@ -824,11 +825,11 @@ var Easing = {
 };
 var uid = 0;
 var FrameTask = class {
-  constructor(ref45, id) {
+  constructor(ref46, id) {
     this.stop = function() {
-      if (ref45.idle) {
-        cancelAnimationFrame(ref45.idle);
-        ref45.done();
+      if (ref46.idle) {
+        cancelAnimationFrame(ref46.idle);
+        ref46.done();
         return true;
       }
       return false;
@@ -842,14 +843,14 @@ function frameTo(options) {
   const end = start + duration;
   const id = ++uid;
   function done() {
-    ref45.idle = null;
+    ref46.idle = null;
     complete && complete({ current, id });
   }
-  const ref45 = { idle: null, id, done };
+  const ref46 = { idle: null, id, done };
   let frameIndex = 0;
   let current = from;
   function step2() {
-    ref45.idle = requestAnimationFrame(function() {
+    ref46.idle = requestAnimationFrame(function() {
       const t = Date.now();
       if (t >= end) {
         current = to;
@@ -877,7 +878,7 @@ function frameTo(options) {
     id
   });
   step2();
-  return new FrameTask(ref45, id);
+  return new FrameTask(ref46, id);
 }
 function getStretchOffset(offset) {
   return Math.ceil(offset / Math.log(Math.abs(offset)));
@@ -2552,6 +2553,9 @@ function CSSProperties2CssText(object) {
   });
   return arr.join("; ");
 }
+function getPixelRatio() {
+  return window.devicePixelRatio || 1;
+}
 
 // packages/ui/src/Icon/util.ts
 var getIconStyles = (props) => {
@@ -3133,6 +3137,33 @@ function useTouch({
   };
 }
 
+// packages/ui/src/hooks/use-mutation-observer.ts
+import { onBeforeUnmount as onBeforeUnmount9, watch as watch3 } from "vue";
+function useMutationObserver(container, callback, options) {
+  if (typeof MutationObserver === "undefined") {
+    return noop;
+  }
+  const mo = new MutationObserver((mutationRecords) => {
+    callback(mutationRecords);
+  });
+  useMounted(() => {
+    on2();
+    watch3(container, () => {
+      off2();
+      on2();
+    });
+  });
+  function on2() {
+    console.log(container.value, options);
+    container.value && mo.observe(container.value, options);
+  }
+  function off2() {
+    mo.disconnect();
+  }
+  onBeforeUnmount9(off2);
+  return off2;
+}
+
 // packages/ui/src/Button/context.ts
 var KEY = "Button";
 var CONTEXT_KEY = `ta${KEY}GroupOptions`;
@@ -3685,7 +3716,7 @@ _sfc_script8.__file = "packages/ui/src/NavBar/NavBar.vue";
 var NavBar_default = _sfc_script8;
 
 // packages/ui/src/popup/use-popup.ts
-import { computed as computed5, onMounted as onMounted6, ref as ref2, watch as watch3, inject as inject5, shallowRef as shallowRef3 } from "vue";
+import { computed as computed5, onMounted as onMounted6, ref as ref2, watch as watch4, inject as inject5, shallowRef as shallowRef3 } from "vue";
 
 // packages/ui/src/popup/util.ts
 var VISIBLE_STATE_TYPES = ["show", "shown", "hide", "hidden"];
@@ -3832,7 +3863,7 @@ function usePopup(props, ctx, useOptions) {
     "ta-popup",
     { visible: visible2.value, dismask: props.showMask === false }
   ]);
-  watch3(
+  watch4(
     () => props.visible,
     (val) => {
       val ? show() : hide();
@@ -4567,7 +4598,7 @@ var ActivityIndicator_default = _sfc_script13;
 import { defineComponent as defineComponent12, computed as computed12 } from "vue";
 
 // vue:./Badge.vue
-import { computed as computed10, defineComponent as defineComponent10, ref as ref3, watch as watch4 } from "vue";
+import { computed as computed10, defineComponent as defineComponent10, ref as ref3, watch as watch5 } from "vue";
 
 // packages/ui/src/Badge/util.ts
 function handleBadge(badge) {
@@ -4668,7 +4699,7 @@ var _sfc_script14 = defineComponent10({
     const badgeClasses = computed10(() => getBadgeClasses(props));
     const badgeStyles = computed10(() => getBadgeStyles(props));
     const showCount = computed10(() => getShowContent(props, content2.value));
-    watch4([() => props.content, () => props.maxCount], ([val, max]) => {
+    watch5([() => props.content, () => props.maxCount], ([val, max]) => {
       frameStop();
       if (isString(val)) {
         content2.value = val;
@@ -4756,8 +4787,8 @@ import {
   defineComponent as defineComponent11,
   onMounted as onMounted7,
   ref as ref4,
-  watch as watch5,
-  onBeforeUnmount as onBeforeUnmount9,
+  watch as watch6,
+  onBeforeUnmount as onBeforeUnmount10,
   computed as computed11,
   shallowRef as shallowRef4
 } from "vue";
@@ -5070,8 +5101,8 @@ var _sfc_script17 = defineComponent11({
       }
     }
     onMounted7(() => props.src && load(props.src));
-    onBeforeUnmount9(() => removeComponentFromLazy(uid3));
-    watch5(
+    onBeforeUnmount10(() => removeComponentFromLazy(uid3));
+    watch6(
       () => props.src,
       (val) => load(val)
     );
@@ -5567,7 +5598,7 @@ var BackTop_default = _sfc_script24;
 var ButtonGroup_default = _sfc_script5;
 
 // vue:./Calendar.vue
-import { defineComponent as defineComponent21, ref as ref9, shallowRef as shallowRef9, watch as watch9 } from "vue";
+import { defineComponent as defineComponent21, ref as ref9, shallowRef as shallowRef9, watch as watch10 } from "vue";
 
 // vue:./SelectorField.vue
 import { computed as computed15, defineComponent as defineComponent15 } from "vue";
@@ -5676,10 +5707,10 @@ _sfc_script26.__file = "packages/ui/src/SelectorField/SelectorField.vue";
 var SelectorField_default = _sfc_script26;
 
 // vue:./CalendarPopup.vue
-import { defineComponent as defineComponent20, nextTick as nextTick2, onMounted as onMounted11, ref as ref8, shallowRef as shallowRef8, watch as watch8 } from "vue";
+import { defineComponent as defineComponent20, nextTick as nextTick2, onMounted as onMounted11, ref as ref8, shallowRef as shallowRef8, watch as watch9 } from "vue";
 
 // vue:./CalendarView.vue
-import { defineComponent as defineComponent19, onMounted as onMounted10, reactive as reactive3, ref as ref7, shallowRef as shallowRef7, watch as watch7 } from "vue";
+import { defineComponent as defineComponent19, onMounted as onMounted10, reactive as reactive3, ref as ref7, shallowRef as shallowRef7, watch as watch8 } from "vue";
 
 // vue:./Toast.vue
 import { defineComponent as defineComponent16, toRef as toRef3 } from "vue";
@@ -6459,7 +6490,7 @@ _sfc_script29.render = render29;
 _sfc_script29.__file = "packages/ui/src/Calendar/CalendarViewMonth.vue";
 
 // vue:./VirtualList.vue
-import { computed as computed16, defineComponent as defineComponent18, onMounted as onMounted9, ref as ref6, nextTick, watch as watch6, shallowRef as shallowRef6 } from "vue";
+import { computed as computed16, defineComponent as defineComponent18, onMounted as onMounted9, ref as ref6, nextTick, watch as watch7, shallowRef as shallowRef6 } from "vue";
 
 // packages/ui/src/VirtualList/props.ts
 var virtualListProps = {
@@ -6867,7 +6898,7 @@ var _sfc_script30 = defineComponent18({
         }
       }
     };
-    watch6(
+    watch7(
       () => props.ids,
       (val) => {
         dataToList(val);
@@ -7404,7 +7435,7 @@ var _sfc_script31 = defineComponent19({
       var _a, _b;
       return Math.ceil(((_b = (_a = months[index]) == null ? void 0 : _a.days.length) != null ? _b : 0) / 7) * 64 + 28;
     }
-    watch7(
+    watch8(
       [() => props.minDate, () => props.maxDate, locale],
       () => {
         updateOptions();
@@ -7415,7 +7446,7 @@ var _sfc_script31 = defineComponent19({
         immediate: true
       }
     );
-    watch7(
+    watch8(
       () => props.modelValue,
       (val) => updateValue(val),
       {
@@ -7583,7 +7614,7 @@ var _sfc_script32 = defineComponent20({
     if (isValidValue(props.modelValue)) {
       detail.value = cloneData(props.modelValue);
     }
-    watch8(
+    watch9(
       () => props.modelValue,
       () => {
         nextTick2(() => {
@@ -7734,7 +7765,7 @@ var _sfc_script33 = defineComponent21({
       const { value, label } = getDetail();
       emit("change", value, label);
     }
-    watch9(
+    watch10(
       () => props.modelValue,
       (val) => updateValue(val),
       {
@@ -7742,7 +7773,7 @@ var _sfc_script33 = defineComponent21({
         immediate: true
       }
     );
-    watch9([isInitPopup, popupVisible], ([isInit, visible]) => {
+    watch10([isInitPopup, popupVisible], ([isInit, visible]) => {
       if (isInit && visible) {
         emit("focus");
       } else if (!visible) {
@@ -7828,7 +7859,7 @@ import { defineComponent as defineComponent26 } from "vue";
 import { defineComponent as defineComponent25 } from "vue";
 
 // vue:./CascaderView.vue
-import { defineComponent as defineComponent24, ref as ref12, watch as watch12, nextTick as nextTick5 } from "vue";
+import { defineComponent as defineComponent24, ref as ref12, watch as watch13, nextTick as nextTick5 } from "vue";
 
 // vue:./Tab.vue
 import { computed as computed18, defineComponent as defineComponent22 } from "vue";
@@ -7876,7 +7907,7 @@ var tabProps = {
 import {
   getCurrentInstance as getCurrentInstance3,
   ref as ref10,
-  watch as watch10,
+  watch as watch11,
   computed as computed17,
   nextTick as nextTick3,
   shallowRef as shallowRef10
@@ -8097,11 +8128,11 @@ function useTab(props, { emit, expose }, { tabName }) {
   if (tabName === "Tab") {
     useResizeObserver(listEl, updateUnderline);
   }
-  watch10(
+  watch11(
     () => props.modelValue,
     (val) => val != null && _switchTo(val, true)
   );
-  watch10(() => props.options, updateOptions, {
+  watch11(() => props.options, updateOptions, {
     deep: true,
     immediate: true
   });
@@ -8318,7 +8349,7 @@ _sfc_script35.__file = "packages/ui/src/Empty/Empty.vue";
 var Empty_default = _sfc_script35;
 
 // packages/ui/src/Picker/use-picker.ts
-import { nextTick as nextTick4, onMounted as onMounted12, ref as ref11, shallowRef as shallowRef11, watch as watch11 } from "vue";
+import { nextTick as nextTick4, onMounted as onMounted12, ref as ref11, shallowRef as shallowRef11, watch as watch12 } from "vue";
 function getDefaultDetail(handlers) {
   return formatter([], [], handlers);
 }
@@ -8390,11 +8421,11 @@ function usePicker(props, ctx, {
       emit("change", value, label);
     }
   }
-  watch11([() => props.modelValue, () => props.options], () => updateValue(props.modelValue), {
+  watch12([() => props.modelValue, () => props.options], () => updateValue(props.modelValue), {
     deep: true,
     immediate: true
   });
-  watch11([isInitPopup, popupVisible], ([isInit, visible]) => {
+  watch12([isInitPopup, popupVisible], ([isInit, visible]) => {
     if (isInit && visible) {
       emit("focus");
     } else if (!visible) {
@@ -8443,7 +8474,7 @@ function usePickerPopup(props, { emit }, {
     var _a;
     return ((_a = viewRef.value) == null ? void 0 : _a.getDetail()) || getDefaultDetail(handlers);
   }
-  watch11(
+  watch12(
     () => props.visible,
     (val) => {
       var _a;
@@ -8452,7 +8483,7 @@ function usePickerPopup(props, { emit }, {
       }
     }
   );
-  watch11(
+  watch12(
     () => props.modelValue,
     (val) => {
       nextTick4(() => {
@@ -8772,7 +8803,7 @@ function usePickerView(props, { emit }, { name, afterUpdate, handlers }) {
     const { value, label } = getDetail();
     emit("change", value, label);
   }
-  watch11(
+  watch12(
     [() => props.options, () => props.fieldNames],
     () => {
       updateOptions();
@@ -8783,7 +8814,7 @@ function usePickerView(props, { emit }, { name, afterUpdate, handlers }) {
       immediate: true
     }
   );
-  watch11(
+  watch12(
     () => props.modelValue,
     (val) => updateValue(val),
     {
@@ -8903,7 +8934,7 @@ var _sfc_script36 = defineComponent24({
         parser: props.parser
       })
     });
-    watch12(
+    watch13(
       [locale, selectedTabs],
       ([newLocale, newOptions]) => {
         tabs.value = newOptions.map((v) => {
@@ -9352,7 +9383,7 @@ var checkProps = {
 import {
   computed as computed21,
   onMounted as onMounted13,
-  watch as watch13,
+  watch as watch14,
   inject as inject7,
   provide as provide6,
   shallowRef as shallowRef12,
@@ -9412,7 +9443,7 @@ function useCheck(props, { emit }, name) {
       emit("checkedChange", checked.value);
     }
   }
-  watch13(
+  watch14(
     () => props.checked,
     (val) => {
       if (groupOptions) {
@@ -9472,7 +9503,7 @@ function useCheckGroup(props, {
   function onChange(uid3) {
     _updateValue(true, uid3);
   }
-  watch13(
+  watch14(
     () => props.modelValue,
     (value) => {
       watchValue({ children, value });
@@ -9961,7 +9992,7 @@ _sfc_script47.__file = "packages/ui/src/Col/Col.vue";
 var Col_default = _sfc_script47;
 
 // vue:./Collapse.vue
-import { defineComponent as defineComponent32, onMounted as onMounted14, watch as watch14 } from "vue";
+import { defineComponent as defineComponent32, onMounted as onMounted14, watch as watch15 } from "vue";
 
 // packages/ui/src/Collapse/context.ts
 var CollapseContext = "collapse";
@@ -10029,7 +10060,7 @@ var _sfc_script48 = defineComponent32({
       emit("change", cloneData(activeNames));
     }
     onMounted14(() => updateValue(props.modelValue));
-    watch14(() => props.modelValue, updateValue, {
+    watch15(() => props.modelValue, updateValue, {
       deep: true
     });
     return {};
@@ -10314,7 +10345,7 @@ var Copy_default = _sfc_script51;
 import { defineComponent as defineComponent36, onMounted as onMounted15 } from "vue";
 
 // packages/ui/src/CountDown/use-count-time.ts
-import { onBeforeUnmount as onBeforeUnmount10, ref as ref17 } from "vue";
+import { onBeforeUnmount as onBeforeUnmount11, ref as ref17 } from "vue";
 
 // packages/ui/src/CountDown/util.ts
 function formatNumber(num) {
@@ -10368,7 +10399,7 @@ function useCountTime(onStep) {
   function stop() {
     cancelAnimationFrame(timer);
   }
-  onBeforeUnmount10(stop);
+  onBeforeUnmount11(stop);
   return {
     times,
     timeStart: start,
@@ -10501,7 +10532,7 @@ _sfc_script52.__file = "packages/ui/src/CountDown/CountDown.vue";
 var CountDown_default = _sfc_script52;
 
 // vue:./CountUp.vue
-import { defineComponent as defineComponent37, ref as ref18, watch as watch15 } from "vue";
+import { defineComponent as defineComponent37, ref as ref18, watch as watch16 } from "vue";
 
 // packages/ui/src/CountUp/util.ts
 var SpeedMap = /* @__PURE__ */ new Map([
@@ -10585,7 +10616,7 @@ var _sfc_script53 = defineComponent37({
         }
       });
     }
-    watch15(
+    watch16(
       () => props.number,
       (val) => {
         if (val != null && getNumber(val) !== numberCache) {
@@ -11937,7 +11968,7 @@ import {
   ref as ref20,
   shallowRef as shallowRef17,
   toRef as toRef4,
-  watch as watch16
+  watch as watch17
 } from "vue";
 
 // packages/ui/src/Fixed/util.ts
@@ -12033,7 +12064,7 @@ var _sfc_script66 = defineComponent49({
     const innerClasses = computed28(() => getInnerClasses2(props, isFixed.value));
     const innerStyles = computed28(() => getInnerStyles2(props, safeAreaInsets2));
     useResizeObserver(contentEl, updateSize);
-    watch16([() => props.fixed, () => props.spaceHold], updateSize);
+    watch17([() => props.fixed, () => props.spaceHold], updateSize);
     onMounted16(() => {
       updateSize();
     });
@@ -12182,7 +12213,7 @@ _sfc_script67.__file = "packages/ui/src/LoadMore/LoadMore.vue";
 var LoadMore_default = _sfc_script67;
 
 // vue:./ScrollView.vue
-import { defineComponent as defineComponent51, computed as computed30, ref as ref21, onMounted as onMounted17, watch as watch17, shallowRef as shallowRef18 } from "vue";
+import { defineComponent as defineComponent51, computed as computed30, ref as ref21, onMounted as onMounted17, watch as watch18, shallowRef as shallowRef18 } from "vue";
 
 // packages/ui/src/ScrollView/props.ts
 var emitScrollValidator = (payload) => payload && isNumber(payload.scrollTop) && isNumber(payload.scrollLeft);
@@ -12408,7 +12439,7 @@ var _sfc_script68 = defineComponent51({
       }
     }
     onMounted17(() => updateScroll);
-    watch17([() => props.scrollLeft, () => props.scrollTop], updateScroll);
+    watch18([() => props.scrollLeft, () => props.scrollTop], updateScroll);
     const classes = computed30(
       () => getClasses8({
         scrollX: props.scrollX,
@@ -13110,10 +13141,10 @@ _sfc_script73.__file = "packages/ui/src/Group/Group.vue";
 var Group_default = _sfc_script73;
 
 // vue:./ImagePreview.vue
-import { defineComponent as defineComponent60, reactive as reactive4, ref as ref24, watch as watch19 } from "vue";
+import { defineComponent as defineComponent60, reactive as reactive4, ref as ref24, watch as watch20 } from "vue";
 
 // vue:./Swiper.vue
-import { ref as ref23, defineComponent as defineComponent58, onMounted as onMounted19, watch as watch18, onBeforeUnmount as onBeforeUnmount11, shallowRef as shallowRef20 } from "vue";
+import { ref as ref23, defineComponent as defineComponent58, onMounted as onMounted19, watch as watch19, onBeforeUnmount as onBeforeUnmount12, shallowRef as shallowRef20 } from "vue";
 
 // vue:./SwiperItems.vue
 import { defineComponent as defineComponent57 } from "vue";
@@ -13532,10 +13563,10 @@ var _sfc_script75 = defineComponent58({
         start();
       }
     });
-    watch18([() => props.autoplay, () => props.interval], () => {
+    watch19([() => props.autoplay, () => props.interval], () => {
       start();
     });
-    watch18(
+    watch19(
       () => props.activeIndex,
       (val) => _swipeTo(getNumber(val), true)
     );
@@ -13546,7 +13577,7 @@ var _sfc_script75 = defineComponent58({
         _swipeTo(getNumber(activeIndex), true);
       }
     });
-    onBeforeUnmount11(() => {
+    onBeforeUnmount12(() => {
       clearTimeout(durationTimer);
       stop();
       $items = [];
@@ -13981,7 +14012,7 @@ var _sfc_script77 = defineComponent60({
     };
     const onImageLoad = (res) => {
       if (props.imageHighRendering) {
-        const dpr = window.devicePixelRatio || 1;
+        const dpr = getPixelRatio();
         res.width = res.width / dpr;
         res.height = res.height / dpr;
       }
@@ -13992,7 +14023,7 @@ var _sfc_script77 = defineComponent60({
         }
       }
     };
-    watch19(
+    watch20(
       () => props.urls,
       () => {
         const map = {};
@@ -14024,14 +14055,14 @@ var _sfc_script77 = defineComponent60({
         deep: true
       }
     );
-    watch19(
+    watch20(
       () => props.modelValue,
       (val) => updateCurrent(val),
       {
         immediate: true
       }
     );
-    watch19(popup.isShow, () => {
+    watch20(popup.isShow, () => {
       swiperInit.value = true;
     });
     return {
@@ -14160,7 +14191,7 @@ var showImagePreview = createShowPopup({
 var ImagePreview_default = _sfc_script77;
 
 // vue:./ImageUploader.vue
-import { defineComponent as defineComponent63, reactive as reactive6, computed as computed35, watch as watch21, ref as ref26 } from "vue";
+import { defineComponent as defineComponent63, reactive as reactive6, computed as computed35, watch as watch22, ref as ref26 } from "vue";
 
 // vue:./Order.vue
 import {
@@ -14169,8 +14200,8 @@ import {
   reactive as reactive5,
   onMounted as onMounted20,
   nextTick as nextTick8,
-  watch as watch20,
-  onBeforeUnmount as onBeforeUnmount12,
+  watch as watch21,
+  onBeforeUnmount as onBeforeUnmount13,
   onBeforeMount,
   computed as computed34,
   shallowRef as shallowRef22
@@ -14538,7 +14569,7 @@ var _sfc_script79 = defineComponent61({
         }
       }
     });
-    watch20(() => props.items, updateItemsData, {
+    watch21(() => props.items, updateItemsData, {
       deep: true
     });
     onBeforeMount(() => {
@@ -14547,7 +14578,7 @@ var _sfc_script79 = defineComponent61({
     onMounted20(() => {
       updateItemsData();
     });
-    onBeforeUnmount12(() => {
+    onBeforeUnmount13(() => {
       clearTimeout(onTimer);
       clearTimeout(lazyTimer);
     });
@@ -15142,11 +15173,11 @@ var _sfc_script82 = defineComponent63({
     }
     const accept2 = computed35(() => getAccepts(props.accept).join(", "));
     const updateButtonClasses = computed35(() => getUploadButtonClasses(props.disabled));
-    watch21(() => props.modelValue, updateUploadedList, {
+    watch22(() => props.modelValue, updateUploadedList, {
       immediate: true,
       deep: true
     });
-    watch21(() => props.maxCount, updateUploadButton);
+    watch22(() => props.maxCount, updateUploadButton);
     updateUploadButton();
     return {
       formValue,
@@ -15266,7 +15297,7 @@ _sfc_script82.__file = "packages/ui/src/ImageUploader/ImageUploader.vue";
 var ImageUploader_default = _sfc_script82;
 
 // vue:./IndexView.vue
-import { defineComponent as defineComponent68, onMounted as onMounted23, ref as ref29, shallowRef as shallowRef26, watch as watch24 } from "vue";
+import { defineComponent as defineComponent68, onMounted as onMounted23, ref as ref29, shallowRef as shallowRef26, watch as watch25 } from "vue";
 
 // vue:./StickyView.vue
 import {
@@ -15274,13 +15305,13 @@ import {
   defineComponent as defineComponent66,
   onMounted as onMounted22,
   ref as ref28,
-  watch as watch23,
+  watch as watch24,
   nextTick as nextTick9,
   shallowRef as shallowRef25
 } from "vue";
 
 // vue:./Sticky.vue
-import { defineComponent as defineComponent64, computed as computed36, ref as ref27, onMounted as onMounted21, watch as watch22, shallowRef as shallowRef23 } from "vue";
+import { defineComponent as defineComponent64, computed as computed36, ref as ref27, onMounted as onMounted21, watch as watch23, shallowRef as shallowRef23 } from "vue";
 
 // packages/ui/src/Sticky/util.ts
 var getStyles5 = (height) => {
@@ -15373,7 +15404,7 @@ var _sfc_script83 = defineComponent64({
       var _a;
       return getStyles5((_a = height.value) != null ? _a : void 0);
     });
-    watch22(
+    watch23(
       () => props.disabled,
       () => updateFixed()
     );
@@ -15727,7 +15758,7 @@ var _sfc_script85 = defineComponent66({
         printListItemNotFoundError("modelValue", true);
       }
     }
-    watch23(() => props.modelValue, updateValue);
+    watch24(() => props.modelValue, updateValue);
     const enablePullDirections = computed37(() => {
       const directions = [];
       if (isSelfContainer.value) {
@@ -16016,7 +16047,7 @@ var _sfc_script87 = defineComponent68({
         };
       });
     };
-    watch24(
+    watch25(
       () => props.modelValue,
       (val) => updateActiveName(val)
     );
@@ -16151,7 +16182,7 @@ var IndexView_default = _sfc_script87;
 var IndexViewItem_default = _sfc_script88;
 
 // vue:./Input.vue
-import { computed as computed38, defineComponent as defineComponent70, onMounted as onMounted24, ref as ref30, watch as watch25 } from "vue";
+import { computed as computed38, defineComponent as defineComponent70, onMounted as onMounted24, ref as ref30, watch as watch26 } from "vue";
 
 // packages/ui/src/Input/util.ts
 var TYPE_NAMES2 = ["text", "number", "digit", "tel", "password", "search", "textarea"];
@@ -16374,13 +16405,13 @@ var _sfc_script89 = defineComponent70({
         readonly: props.readonly
       })
     );
-    watch25(
+    watch26(
       () => props.modelValue,
       (val) => {
         val != inputValue.value && updateValue(val != null ? val : "");
       }
     );
-    watch25(
+    watch26(
       () => props.focus,
       (val) => {
         val ? setFocus() : setBlur();
@@ -16388,7 +16419,7 @@ var _sfc_script89 = defineComponent70({
     );
     const maxLength = computed38(() => getMaxLength(props.maxlength));
     let timer;
-    watch25([inputValue, active], ([ipVal, isActive]) => {
+    watch26([inputValue, active], ([ipVal, isActive]) => {
       clearTimeout(timer);
       if (ipVal && isActive) {
         timer = window.setTimeout(() => isShowClear.value = true, 200);
@@ -16508,9 +16539,9 @@ import {
   defineComponent as defineComponent71,
   computed as computed39,
   onMounted as onMounted25,
-  onBeforeUnmount as onBeforeUnmount13,
+  onBeforeUnmount as onBeforeUnmount14,
   ref as ref31,
-  watch as watch26,
+  watch as watch27,
   shallowRef as shallowRef28
 } from "vue";
 
@@ -16638,8 +16669,8 @@ var _sfc_script90 = defineComponent71({
       }
     };
     onMounted25(() => props.marquee && startMarquee());
-    onBeforeUnmount13(() => stopMarquee());
-    watch26([() => props.marquee, () => props.title], () => {
+    onBeforeUnmount14(() => stopMarquee());
+    watch27([() => props.marquee, () => props.title], () => {
       resetMarquee();
     });
     const rightIcon2 = computed39(() => {
@@ -17182,7 +17213,7 @@ _sfc_script94.__file = "packages/ui/src/NumberKeyboard/NumberKeyboard.vue";
 var NumberKeyboard_default = _sfc_script94;
 
 // vue:./Pagination.vue
-import { computed as computed41, defineComponent as defineComponent74, ref as ref32, watch as watch27 } from "vue";
+import { computed as computed41, defineComponent as defineComponent74, ref as ref32, watch as watch28 } from "vue";
 
 // packages/ui/src/Pagination/util.ts
 var getTotal = (total) => Math.max(getNumber(total, 1), 1);
@@ -17223,7 +17254,7 @@ var _sfc_script95 = defineComponent74({
       );
       change(newPageNum);
     }
-    watch27(
+    watch28(
       () => props.modelValue,
       (val) => {
         if (isNumeric2(val)) {
@@ -17314,7 +17345,7 @@ var popoverProps = {
 var popoverEmits = { ...popupEmits };
 
 // vue:./Popover.vue
-import { computed as computed42, defineComponent as defineComponent75, nextTick as nextTick10, onMounted as onMounted26, ref as ref33, shallowRef as shallowRef29, watch as watch28 } from "vue";
+import { computed as computed42, defineComponent as defineComponent75, nextTick as nextTick10, onMounted as onMounted26, ref as ref33, shallowRef as shallowRef29, watch as watch29 } from "vue";
 
 // packages/ui/src/Popover/util.ts
 var DEFAULT_POS = {
@@ -17448,7 +17479,7 @@ var _sfc_script96 = defineComponent75({
     }
     const arrowStyles = computed42(() => getArrowStyles(isShow.value, showPos.value));
     const innerStyles = computed42(() => getInnerStyles3(isShow.value, showPos.value));
-    watch28(
+    watch29(
       () => props.showMask,
       (val) => {
         popup.setEnableBlurCancel(!val);
@@ -17457,7 +17488,7 @@ var _sfc_script96 = defineComponent75({
         immediate: true
       }
     );
-    watch28(
+    watch29(
       () => props.selector,
       (val) => container.value = querySelector(val)
     );
@@ -18172,7 +18203,7 @@ var Radio_default = _sfc_script101;
 var RadioGroup_default = _sfc_script102;
 
 // vue:./Range.vue
-import { defineComponent as defineComponent82, watch as watch29, nextTick as nextTick11, reactive as reactive7, computed as computed47 } from "vue";
+import { defineComponent as defineComponent82, watch as watch30, nextTick as nextTick11, reactive as reactive7, computed as computed47 } from "vue";
 
 // packages/ui/src/Slider/props.ts
 var slideProps = {
@@ -18433,11 +18464,11 @@ var _sfc_script103 = defineComponent82({
         progress[1] = value2Progress(newVal[1]);
       }
     }
-    watch29(
+    watch30(
       () => props.modelValue,
       (val) => updateValue(val)
     );
-    watch29([() => props.min, () => props.max], () => {
+    watch30([() => props.min, () => props.max], () => {
       nextTick11(() => {
         updateValue(progressValue);
         if (emitModel()) {
@@ -18551,7 +18582,7 @@ _sfc_script103.__file = "packages/ui/src/Range/Range.vue";
 var Range_default = _sfc_script103;
 
 // vue:./Rate.vue
-import { computed as computed48, defineComponent as defineComponent83, ref as ref35, watch as watch30 } from "vue";
+import { computed as computed48, defineComponent as defineComponent83, ref as ref35, watch as watch31 } from "vue";
 
 // vue:./StarOutlined.vue
 import { createElementVNode as _createElementVNode71, openBlock as _openBlock100, createElementBlock as _createElementBlock85 } from "vue";
@@ -18757,7 +18788,7 @@ var _sfc_script106 = defineComponent83({
       inputValue.value = value;
     }
     updateValue();
-    watch30(() => props.modelValue, updateValue);
+    watch31(() => props.modelValue, updateValue);
     return {
       inputValue,
       classes,
@@ -19034,7 +19065,7 @@ _sfc_script109.__file = "packages/ui/src/Result/Result.vue";
 var Result_default = _sfc_script109;
 
 // vue:./Row.vue
-import { computed as computed50, defineComponent as defineComponent85, provide as provide8, ref as ref36, watch as watch31 } from "vue";
+import { computed as computed50, defineComponent as defineComponent85, provide as provide8, ref as ref36, watch as watch32 } from "vue";
 
 // packages/ui/src/Row/util.ts
 var JUSTIFY_TYPES = [
@@ -19095,7 +19126,7 @@ var _sfc_script110 = defineComponent85({
     const gutter = ref36([0, 0]);
     const styles = computed50(() => getRowStyles(gutter.value));
     const classes = computed50(() => getRowClasses(props));
-    watch31(
+    watch32(
       () => props.gutter,
       (val) => {
         gutter.value = parseGutter(val);
@@ -19132,7 +19163,7 @@ _sfc_script110.__file = "packages/ui/src/Row/Row.vue";
 var Row_default = _sfc_script110;
 
 // vue:./ScrollTab.vue
-import { defineComponent as defineComponent87, onMounted as onMounted27, ref as ref37, shallowRef as shallowRef30, watch as watch32, computed as computed51 } from "vue";
+import { defineComponent as defineComponent87, onMounted as onMounted27, ref as ref37, shallowRef as shallowRef30, watch as watch33, computed as computed51 } from "vue";
 
 // vue:./SideTab.vue
 import { defineComponent as defineComponent86 } from "vue";
@@ -19354,7 +19385,7 @@ var _sfc_script112 = defineComponent87({
       emit("scroll", payload);
     };
     const classes = computed51(() => getClasses18(props.sideBar));
-    watch32(
+    watch33(
       () => props.modelValue,
       (val) => updateActiveName(val)
     );
@@ -19521,10 +19552,10 @@ import {
   computed as computed53,
   defineComponent as defineComponent90,
   onBeforeMount as onBeforeMount2,
-  onBeforeUnmount as onBeforeUnmount14,
+  onBeforeUnmount as onBeforeUnmount15,
   ref as ref38,
   shallowRef as shallowRef32,
-  watch as watch33
+  watch as watch34
 } from "vue";
 
 // vue:./Tag.vue
@@ -19825,7 +19856,7 @@ var _sfc_script116 = defineComponent90({
       }
     };
     const phsStop = () => clearTimeout(phTimer);
-    watch33(
+    watch34(
       () => props.placeholders,
       (val) => {
         phsStop();
@@ -19851,7 +19882,7 @@ var _sfc_script116 = defineComponent90({
       isTimerReady = true;
       phsStart();
     });
-    onBeforeUnmount14(() => phsStop());
+    onBeforeUnmount15(() => phsStop());
     const classes = computed53(() => getClasses20(props.inputMode));
     const innerClasses = computed53(() => getInnerClasses3(props.showCancel));
     const innerStyles = computed53(() => getInnerStyles4(props.background));
@@ -20410,7 +20441,7 @@ var SkeletonParagraph_default = _sfc_script119;
 var SkeletonTitle_default = _sfc_script118;
 
 // vue:./Slider.vue
-import { ref as ref39, defineComponent as defineComponent98, watch as watch34, nextTick as nextTick12 } from "vue";
+import { ref as ref39, defineComponent as defineComponent98, watch as watch35, nextTick as nextTick12 } from "vue";
 import { normalizeStyle as _normalizeStyle31, createElementVNode as _createElementVNode83, toDisplayString as _toDisplayString46, normalizeClass as _normalizeClass60, openBlock as _openBlock119, createElementBlock as _createElementBlock104 } from "vue";
 var _sfc_script124 = defineComponent98({
   name: "ta-slider",
@@ -20474,11 +20505,11 @@ var _sfc_script124 = defineComponent98({
         progress.value = value2Progress(newVal);
       }
     }
-    watch34(
+    watch35(
       () => props.modelValue,
       (val) => updateValue(val)
     );
-    watch34([() => props.min, () => props.max], () => {
+    watch35([() => props.min, () => props.max], () => {
       nextTick12(() => {
         updateValue(inputValue.value);
         if (emitModel()) {
@@ -20724,7 +20755,7 @@ var Steps_default = _sfc_script125;
 var Step_default = _sfc_script126;
 
 // vue:./Stepper.vue
-import { onMounted as onMounted28, ref as ref40, defineComponent as defineComponent101, watch as watch35, computed as computed62 } from "vue";
+import { onMounted as onMounted28, ref as ref40, defineComponent as defineComponent101, watch as watch36, computed as computed62 } from "vue";
 
 // packages/ui/src/Stepper/util.ts
 var getClasses22 = (disabled) => {
@@ -20865,7 +20896,7 @@ var _sfc_script128 = defineComponent101({
     onMounted28(() => {
       setInputValue(formValue.value);
     });
-    watch35(
+    watch36(
       () => props.modelValue,
       (val) => {
         if (val != null && parseFloat(val.toString()) !== parseFloat(formValue.value)) {
@@ -21293,7 +21324,7 @@ var SwipeCell_default = _sfc_script130;
 var SwiperItem_default = _sfc_script76;
 
 // vue:./Switch.vue
-import { onMounted as onMounted29, ref as ref42, watch as watch36, defineComponent as defineComponent104, computed as computed64 } from "vue";
+import { onMounted as onMounted29, ref as ref42, watch as watch37, defineComponent as defineComponent104, computed as computed64 } from "vue";
 
 // packages/ui/src/Switch/util.ts
 var getClasses23 = (disabled) => {
@@ -21351,7 +21382,7 @@ var _sfc_script131 = defineComponent104({
     onMounted29(() => {
       setInputChecked(checked.value);
     });
-    watch36(
+    watch37(
       () => props.modelValue,
       (val) => {
         if (isBoolean(val) && val !== checked.value) {
@@ -21528,7 +21559,7 @@ _sfc_script132.__file = "packages/ui/src/TabBar/TabBar.vue";
 var TabBar_default = _sfc_script132;
 
 // vue:./TabView.vue
-import { ref as ref43, defineComponent as defineComponent106, provide as provide10, watch as watch37, shallowRef as shallowRef34 } from "vue";
+import { ref as ref43, defineComponent as defineComponent106, provide as provide10, watch as watch38, shallowRef as shallowRef34 } from "vue";
 
 // packages/ui/src/TabView/util.ts
 var getClasses25 = (vertical) => ["ta-tab-view", { vertical }];
@@ -21619,7 +21650,7 @@ var _sfc_script133 = defineComponent106({
       });
     }
     provide10("taTabViewVertical", vertical.value);
-    watch37(
+    watch38(
       () => props.modelValue,
       (val) => val != null && _switchTo(val, true)
     );
@@ -21797,7 +21828,7 @@ var TabView_default = _sfc_script133;
 var TabViewItem_default = _sfc_script134;
 
 // vue:./TimeAgo.vue
-import { defineComponent as defineComponent108, ref as ref44, toRef as toRef6, watch as watch38 } from "vue";
+import { defineComponent as defineComponent108, ref as ref44, toRef as toRef6, watch as watch39 } from "vue";
 
 // node_modules/.pnpm/timeago.js@4.0.2/node_modules/timeago.js/esm/lang/en_US.js
 var EN_US = ["second", "minute", "hour", "day", "week", "month", "year"];
@@ -21915,10 +21946,10 @@ var _sfc_script135 = defineComponent108({
       const d = getDate(props);
       timeAgo.value = d == null ? "" : format(d, locale.value.lang.replace("-", "_"));
     }
-    watch38([() => props.time, () => props.formatTemplate], update, {
+    watch39([() => props.time, () => props.formatTemplate], update, {
       immediate: true
     });
-    watch38(locale, () => update());
+    watch39(locale, () => update());
     useTimer(update, toRef6(props, "interval"));
     return {
       timeAgo
@@ -22038,6 +22069,402 @@ var Timeline_default = _sfc_script136;
 // packages/ui/src/TimelineItem/index.ts
 var TimelineItem_default = _sfc_script137;
 
+// vue:./Watermark.vue
+import {
+  computed as computed66,
+  onBeforeUnmount as onBeforeUnmount16,
+  onMounted as onMounted30,
+  ref as ref45,
+  shallowRef as shallowRef35,
+  watch as watch40,
+  defineComponent as defineComponent111
+} from "vue";
+
+// packages/ui/src/Watermark/use-clips.ts
+var FontGap = 3;
+function prepareCanvas(width, height, ratio = 1) {
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  const realWidth = width * ratio;
+  const realHeight = height * ratio;
+  canvas.setAttribute("width", `${realWidth}px`);
+  canvas.setAttribute("height", `${realHeight}px`);
+  ctx.save();
+  return [ctx, canvas, realWidth, realHeight];
+}
+function useClips() {
+  function getClips(content, rotate, ratio, width, height, font, gapX, gapY) {
+    const [ctx, canvas, contentWidth, contentHeight] = prepareCanvas(width, height, ratio);
+    if (content instanceof HTMLImageElement) {
+      ctx.drawImage(content, 0, 0, contentWidth, contentHeight);
+    } else {
+      const { color, fontSize, fontStyle, fontWeight, fontFamily, textAlign, textBaseline } = font;
+      const mergedFontSize = Number(fontSize) * ratio;
+      ctx.font = `${fontStyle} normal ${fontWeight} ${mergedFontSize}px/${height}px ${fontFamily}`;
+      ctx.fillStyle = color;
+      ctx.textAlign = textAlign;
+      ctx.textBaseline = textBaseline;
+      const contents = Array.isArray(content) ? content : [content];
+      contents == null ? void 0 : contents.forEach((item, index) => {
+        ctx.fillText(item != null ? item : "", contentWidth / 2, index * (mergedFontSize + FontGap * ratio));
+      });
+    }
+    const angle = Math.PI / 180 * Number(rotate);
+    const maxSize = Math.max(width, height);
+    const [rCtx, rCanvas, realMaxSize] = prepareCanvas(maxSize, maxSize, ratio);
+    rCtx.translate(realMaxSize / 2, realMaxSize / 2);
+    rCtx.rotate(angle);
+    if (contentWidth > 0 && contentHeight > 0) {
+      rCtx.drawImage(canvas, -contentWidth / 2, -contentHeight / 2);
+    }
+    function getRotatePos(x, y) {
+      const targetX = x * Math.cos(angle) - y * Math.sin(angle);
+      const targetY = x * Math.sin(angle) + y * Math.cos(angle);
+      return [targetX, targetY];
+    }
+    let left = 0;
+    let right = 0;
+    let top = 0;
+    let bottom = 0;
+    const halfWidth = contentWidth / 2;
+    const halfHeight = contentHeight / 2;
+    const points = [
+      [0 - halfWidth, 0 - halfHeight],
+      [0 + halfWidth, 0 - halfHeight],
+      [0 + halfWidth, 0 + halfHeight],
+      [0 - halfWidth, 0 + halfHeight]
+    ];
+    points.forEach(([x, y]) => {
+      const [targetX, targetY] = getRotatePos(x, y);
+      left = Math.min(left, targetX);
+      right = Math.max(right, targetX);
+      top = Math.min(top, targetY);
+      bottom = Math.max(bottom, targetY);
+    });
+    const cutLeft = left + realMaxSize / 2;
+    const cutTop = top + realMaxSize / 2;
+    const cutWidth = right - left;
+    const cutHeight = bottom - top;
+    const realGapX = gapX * ratio;
+    const realGapY = gapY * ratio;
+    const filledWidth = (cutWidth + realGapX) * 2;
+    const filledHeight = cutHeight + realGapY;
+    const [fCtx, fCanvas] = prepareCanvas(filledWidth, filledHeight);
+    function drawImg(targetX = 0, targetY = 0) {
+      fCtx.drawImage(
+        rCanvas,
+        cutLeft,
+        cutTop,
+        cutWidth,
+        cutHeight,
+        targetX,
+        targetY,
+        cutWidth,
+        cutHeight
+      );
+    }
+    drawImg();
+    drawImg(cutWidth + realGapX, -cutHeight / 2 - realGapY / 2);
+    drawImg(cutWidth + realGapX, +cutHeight / 2 + realGapY / 2);
+    return [fCanvas.toDataURL(), filledWidth / ratio, filledHeight / ratio];
+  }
+  return getClips;
+}
+
+// packages/ui/src/Watermark/util.ts
+var reRendering = (mutation, watermarkElement) => {
+  let flag = false;
+  if (mutation.removedNodes.length && watermarkElement) {
+    flag = Array.from(mutation.removedNodes).includes(watermarkElement);
+  }
+  if (mutation.type === "attributes" && mutation.target === watermarkElement) {
+    flag = true;
+  }
+  return flag;
+};
+
+// vue:./Watermark.vue
+import { renderSlot as _renderSlot61, normalizeStyle as _normalizeStyle36, openBlock as _openBlock132, createElementBlock as _createElementBlock117 } from "vue";
+var _sfc_script138 = defineComponent111({
+  name: "ta-watermark",
+  props: {
+    /**
+     * @description The z-index of the appended watermark element
+     */
+    zIndex: {
+      type: Number,
+      default: 9
+    },
+    /**
+     * @description The rotation angle of the watermark
+     */
+    rotate: {
+      type: Number,
+      default: -22
+    },
+    /**
+     * @description The width of the watermark
+     */
+    width: Number,
+    /**
+     * @description The height of the watermark
+     */
+    height: Number,
+    /**
+     * @description Image source, it is recommended to export 2x or 3x image, high priority (support base64 format)
+     */
+    image: String,
+    /**
+     * @description Watermark text content
+     */
+    content: {
+      type: [String, Array],
+      default: "Watermark"
+    },
+    /**
+     * @description Text style
+     */
+    font: {
+      type: Object
+    },
+    /**
+     * @description The spacing between watermarks
+     */
+    gap: {
+      type: Array,
+      default: () => [100, 100]
+    },
+    /**
+     * @description The offset of the watermark from the upper left corner of the container. The default is gap/2
+     */
+    offset: {
+      type: Array
+    }
+  },
+  setup(props) {
+    const style = {
+      position: "relative"
+    };
+    const color = computed66(() => {
+      var _a, _b;
+      return (_b = (_a = props.font) == null ? void 0 : _a.color) != null ? _b : "rgba(0,0,0,.15)";
+    });
+    const fontSize = computed66(() => {
+      var _a, _b;
+      return (_b = (_a = props.font) == null ? void 0 : _a.fontSize) != null ? _b : 16;
+    });
+    const fontWeight = computed66(() => {
+      var _a, _b;
+      return (_b = (_a = props.font) == null ? void 0 : _a.fontWeight) != null ? _b : "normal";
+    });
+    const fontStyle = computed66(() => {
+      var _a, _b;
+      return (_b = (_a = props.font) == null ? void 0 : _a.fontStyle) != null ? _b : "normal";
+    });
+    const fontFamily = computed66(() => {
+      var _a, _b;
+      return (_b = (_a = props.font) == null ? void 0 : _a.fontFamily) != null ? _b : "sans-serif";
+    });
+    const textAlign = computed66(() => {
+      var _a, _b;
+      return (_b = (_a = props.font) == null ? void 0 : _a.textAlign) != null ? _b : "center";
+    });
+    const textBaseline = computed66(() => {
+      var _a, _b;
+      return (_b = (_a = props.font) == null ? void 0 : _a.textBaseline) != null ? _b : "top";
+    });
+    const gapX = computed66(() => props.gap[0]);
+    const gapY = computed66(() => props.gap[1]);
+    const gapXCenter = computed66(() => gapX.value / 2);
+    const gapYCenter = computed66(() => gapY.value / 2);
+    const offsetLeft = computed66(() => {
+      var _a, _b;
+      return (_b = (_a = props.offset) == null ? void 0 : _a[0]) != null ? _b : gapXCenter.value;
+    });
+    const offsetTop = computed66(() => {
+      var _a, _b;
+      return (_b = (_a = props.offset) == null ? void 0 : _a[1]) != null ? _b : gapYCenter.value;
+    });
+    const getMarkStyle = () => {
+      const markStyle = {
+        zIndex: props.zIndex,
+        position: "absolute",
+        left: 0,
+        top: 0,
+        width: "100%",
+        height: "100%",
+        pointerEvents: "none",
+        backgroundRepeat: "repeat"
+      };
+      let positionLeft = offsetLeft.value - gapXCenter.value;
+      let positionTop = offsetTop.value - gapYCenter.value;
+      if (positionLeft > 0) {
+        markStyle.left = `${positionLeft}px`;
+        markStyle.width = `calc(100% - ${positionLeft}px)`;
+        positionLeft = 0;
+      }
+      if (positionTop > 0) {
+        markStyle.top = `${positionTop}px`;
+        markStyle.height = `calc(100% - ${positionTop}px)`;
+        positionTop = 0;
+      }
+      markStyle.backgroundPosition = `${positionLeft}px ${positionTop}px`;
+      return markStyle;
+    };
+    const containerRef = shallowRef35(null);
+    const watermarkRef = shallowRef35();
+    const stopObservation = ref45(false);
+    const destroyWatermark = () => {
+      if (watermarkRef.value) {
+        watermarkRef.value.remove();
+        watermarkRef.value = void 0;
+      }
+    };
+    const appendWatermark = (base64Url, markWidth) => {
+      var _a;
+      if (containerRef.value && watermarkRef.value) {
+        stopObservation.value = true;
+        watermarkRef.value.setAttribute(
+          "style",
+          CSSProperties2CssText({
+            ...getMarkStyle(),
+            backgroundImage: `url('${base64Url}')`,
+            backgroundSize: `${Math.floor(markWidth)}px`
+          })
+        );
+        (_a = containerRef.value) == null ? void 0 : _a.append(watermarkRef.value);
+        setTimeout(() => {
+          stopObservation.value = false;
+        });
+      }
+    };
+    const getMarkSize = (ctx) => {
+      let defaultWidth = 120;
+      let defaultHeight = 64;
+      const image = props.image;
+      const content = props.content;
+      const width = props.width;
+      const height = props.height;
+      if (!image && ctx.measureText) {
+        ctx.font = `${Number(fontSize.value)}px ${fontFamily.value}`;
+        const contents = Array.isArray(content) ? content : [content];
+        const sizes = contents.map((item) => {
+          const metrics = ctx.measureText(item);
+          return [metrics.width, metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent];
+        });
+        defaultWidth = Math.ceil(Math.max(...sizes.map((size) => size[0])));
+        defaultHeight = Math.ceil(Math.max(...sizes.map((size) => size[1]))) * contents.length + (contents.length - 1) * FontGap;
+      }
+      return [width != null ? width : defaultWidth, height != null ? height : defaultHeight];
+    };
+    const getClips = useClips();
+    const renderWatermark = () => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      const image = props.image;
+      const content = props.content;
+      const rotate = props.rotate;
+      if (ctx) {
+        if (!watermarkRef.value) {
+          watermarkRef.value = document.createElement("div");
+        }
+        const ratio = getPixelRatio();
+        const [markWidth, markHeight] = getMarkSize(ctx);
+        const drawCanvas = (drawContent) => {
+          const [textClips, clipWidth] = getClips(
+            drawContent || "",
+            rotate,
+            ratio,
+            markWidth,
+            markHeight,
+            {
+              color: color.value,
+              fontSize: fontSize.value,
+              fontStyle: fontStyle.value,
+              fontWeight: fontWeight.value,
+              fontFamily: fontFamily.value,
+              textAlign: textAlign.value,
+              textBaseline: textBaseline.value
+            },
+            gapX.value,
+            gapY.value
+          );
+          appendWatermark(textClips, clipWidth);
+        };
+        if (image) {
+          const img = new Image();
+          img.onload = () => {
+            drawCanvas(img);
+          };
+          img.onerror = () => {
+            drawCanvas(content);
+          };
+          img.crossOrigin = "anonymous";
+          img.referrerPolicy = "no-referrer";
+          img.src = image;
+        } else {
+          drawCanvas(content);
+        }
+      }
+    };
+    onMounted30(() => {
+      renderWatermark();
+    });
+    watch40(
+      () => props,
+      () => {
+        renderWatermark();
+      },
+      {
+        deep: true,
+        flush: "post"
+      }
+    );
+    onBeforeUnmount16(() => {
+      destroyWatermark();
+    });
+    const onMutate = (mutations) => {
+      if (stopObservation.value) {
+        return;
+      }
+      mutations.forEach((mutation) => {
+        if (reRendering(mutation, watermarkRef.value)) {
+          destroyWatermark();
+          renderWatermark();
+        }
+      });
+    };
+    useMutationObserver(containerRef, onMutate, {
+      attributes: true,
+      childList: true
+      // 需要补充监听水印被删除
+    });
+    return {
+      containerRef,
+      style
+    };
+  }
+});
+function render134(_ctx, _cache) {
+  return _openBlock132(), _createElementBlock117(
+    "div",
+    {
+      ref: "containerRef",
+      style: _normalizeStyle36([_ctx.style])
+    },
+    [
+      _renderSlot61(_ctx.$slots, "default")
+    ],
+    4
+    /* STYLE */
+  );
+}
+_sfc_script138.render = render134;
+_sfc_script138.__file = "packages/ui/src/Watermark/Watermark.vue";
+
+// packages/ui/src/Watermark/index.ts
+var Watermark_default = _sfc_script138;
+
 // packages/ui/src/index.ts
 var UI = {
   install(app) {
@@ -22151,6 +22578,7 @@ export {
   TimelineItem_default as TaTimelineItem,
   Toast_default as TaToast,
   VirtualList_default as TaVirtualList,
+  Watermark_default as TaWatermark,
   src_default as default,
   hideLoading,
   hideNotify,
