@@ -103,6 +103,7 @@ declare module 'vue' {
     TaTimelineItem: typeof import('tantalum-ui-mobile/es')['TaTimelineItem']
     TaToast: typeof import('tantalum-ui-mobile/es')['TaToast']
     TaVirtualList: typeof import('tantalum-ui-mobile/es')['TaVirtualList']
+    TaWatermark: typeof import('tantalum-ui-mobile/es')['TaWatermark']
   }
 }
 

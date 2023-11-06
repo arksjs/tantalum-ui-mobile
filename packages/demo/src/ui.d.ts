@@ -103,6 +103,7 @@ declare module 'vue' {
     TaTimelineItem: typeof import('packages/ui/src')['TaTimelineItem']
     TaToast: typeof import('packages/ui/src')['TaToast']
     TaVirtualList: typeof import('packages/ui/src')['TaVirtualList']
+    TaWatermark: typeof import('packages/ui/src')['TaWatermark']
   }
 }
 

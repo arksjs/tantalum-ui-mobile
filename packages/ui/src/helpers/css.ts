@@ -33,3 +33,8 @@ export function CSSProperties2CssText(object: CSSProperties) {
 
   return arr.join('; ')
 }
+
+/** Returns the ratio of the device's physical pixel resolution to the css pixel resolution */
+export function getPixelRatio() {
+  return window.devicePixelRatio || 1
+}

@@ -408,6 +408,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/ActivityIndicator',
     name: 'ExpActivityIndicator',
     component: () => import('../components/Show/ActivityIndicator/index.vue')
+  },
+  {
+    path: '/Watermark',
+    name: 'ExpWatermark',
+    component: () => import('../components/Other/Watermark/index.vue')
   }
 ]
 

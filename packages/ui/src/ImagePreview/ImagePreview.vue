@@ -63,9 +63,10 @@ import {
   rangeNumber,
   isString,
   isNumber,
+  getPixelRatio,
+  getNumber,
   type PropsToEmits,
-  type EmptyObject,
-  getNumber
+  type EmptyObject
 } from '../helpers'
 import { usePopupExtend } from '../popup/use-popup'
 import { popupEmits, popupProps } from '../popup/props'
@@ -400,7 +401,7 @@ export default defineComponent({
 
     const onImageLoad: ImageOnLoad = res => {
       if (props.imageHighRendering) {
-        const dpr = window.devicePixelRatio || 1
+        const dpr = getPixelRatio()
         res.width = res.width / dpr
         res.height = res.height / dpr
       }

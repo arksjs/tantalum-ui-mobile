@@ -203,7 +203,10 @@ export const navConfig = [
   {
     name: 'Other',
     zhName: '其他',
-    list: [{ name: 'Copy', zhName: '复制' }]
+    list: [
+      { name: 'Copy', zhName: '复制' },
+      { name: 'Watermark', zhName: '水印' }
+    ]
   },
   {
     name: 'Design',
