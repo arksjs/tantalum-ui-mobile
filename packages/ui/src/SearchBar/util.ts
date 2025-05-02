@@ -16,4 +16,4 @@ export const getInnerStyles = (background?: string) => ({ background } as CSSPro
 
 export const getFieldClasses = (ghost?: boolean) => ['ta-search_field', { ghost: !!ghost }]
 
-export const getSuggestStyles = (height: number) => ({ height: height + 'px' })
+export const getSuggestStyles = (height: number) => ({ maxHeight: height + 'px' })

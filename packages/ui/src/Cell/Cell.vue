@@ -5,8 +5,8 @@
         <slot name="icon"></slot>
       </div>
       <div class="ta-cell_icon" v-else-if="icon"><Icon :icon="icon" /></div>
-      <div class="ta-cell_label" v-if="label">
-        {{ label }}
+      <div class="ta-cell_label" v-if="label || $slots.label">
+        <slot name="label">{{ label }}</slot>
         <span class="ta-cell_required" v-if="required">*</span>
       </div>
       <div class="ta-cell_content">

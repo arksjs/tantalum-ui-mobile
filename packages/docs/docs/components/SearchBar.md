@@ -44,6 +44,8 @@ import type {
 | maxlength            | number          | 100    | 否   | 最大长度                                                    |
 | focus                | boolean         | false  | 否   | 加载时是否获取焦点                                          |
 | show-cancel          | boolean         | false  | 否   | 是否展示取消按钮                                            |
+| highlight            | boolean         | false  | 否   | 是否高亮匹配的搜索结果                                      |
+| empty-text           | string          |        | 否   | 设置后是否在搜索无结果时搜索无结果模块                      |
 
 ## Events
 
@@ -79,3 +81,13 @@ const suggestList = [
   }
 ]
 ```
+
+## Slots
+
+### 内容区（#empty）
+
+```vue
+<span>暂无搜索结果</span>
+```
+
+注：添加 slot 后 `empty-text` prop 属性失效。

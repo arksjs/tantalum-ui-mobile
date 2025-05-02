@@ -41,18 +41,25 @@
     </form>
     <Dropdown :selector="innerEl ?? undefined" v-if="initDropdown" v-model:visible="suggestVisible">
       <template #default="{ height }">
-        <div :style="getSuggestStyles(height)">
-          <div class="ta-search_suggest-list">
+        <div class="ta-search_suggest" :style="getSuggestStyles(height)">
+          <div class="ta-search_suggest-list" v-if="suggestList.length > 0">
             <Cell
               v-for="item in suggestList"
               :key="item.text"
-              :label="item.text.toString()"
               class="ta-search_suggest-item"
               clickable
               @click="onSuggestItemClick(item.text)"
             >
+              <template #label>
+                <div class="ta-search_suggest-item-text" v-html="highlightText(item.text)"></div>
+              </template>
               <Tag size="middle" v-for="tag in item.tags" :key="tag">{{ tag }}</Tag>
             </Cell>
+          </div>
+          <div class="ta-search_suggest-empty" v-if="showEmpty">
+            <slot name="empty">
+              <Empty :description="emptyText" type="search" />
+            </slot>
           </div>
         </div>
       </template>
@@ -77,6 +84,7 @@ import { Button as TaButton } from '../Button'
 import { Dropdown } from '../Dropdown'
 import { Cell } from '../Cell'
 import { Tag } from '../Tag'
+import { Empty } from '../Empty'
 import {
   isString,
   isStringArray,
@@ -104,7 +112,7 @@ const emitValidator: VoidFnToBooleanFn<OnInput> = (payload, setSuggestList) =>
 
 export default defineComponent({
   name: 'ta-search-bar',
-  components: { Icon, TaInput, TaButton, Dropdown, Cell, Tag },
+  components: { Icon, TaInput, TaButton, Dropdown, Cell, Tag, Empty },
   props: {
     ghost: {
       type: Boolean,
@@ -142,6 +150,15 @@ export default defineComponent({
     inputMode: {
       type: Boolean,
       default: false
+    },
+    // 是否高亮搜索匹配的文本
+    highlight: {
+      type: Boolean,
+      default: false
+    },
+    // 搜索为空时显示的文本
+    emptyText: {
+      type: String
     }
   },
   emits: {
@@ -152,7 +169,7 @@ export default defineComponent({
     search: payload => payload && isString(payload.text) && isString(payload.source),
     fieldClick: payload => payload && isString(payload.text)
   } as PropsToEmits<SearchBarEmits>,
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const { locale } = useLocale()
     const placeholder = ref('')
     const searchText = ref('')
@@ -160,6 +177,14 @@ export default defineComponent({
     const suggestVisible = ref(false)
     const suggestList = ref<SuggestItem[]>([])
     const innerEl = shallowRef<HTMLFormElement | null>(null)
+
+    const showEmpty = computed(() => {
+      return !!(
+        suggestList.value.length === 0 &&
+        searchText.value &&
+        (props.emptyText || slots.empty)
+      )
+    })
 
     function proxyEvent(e: Event) {
       emitHook(e.type, searchText.value)
@@ -200,8 +225,7 @@ export default defineComponent({
       }
 
       suggestList.value = newList
-
-      if (newList.length > 0) {
+      if (newList.length > 0 || showEmpty.value) {
         initDropdown.value = true
         suggestVisible.value = true
       } else {
@@ -282,6 +306,20 @@ export default defineComponent({
       }
     )
 
+    function highlightText(text: number | string) {
+      if (!props.highlight) {
+        return text.toString().trim()
+      }
+
+      return text
+        .toString()
+        .trim()
+        .replace(
+          new RegExp(searchText.value, 'gi'),
+          match => `<span class="highlight">${match}</span>`
+        )
+    }
+
     onBeforeMount(() => {
       isTimerReady = true
       phsStart()
@@ -314,7 +352,9 @@ export default defineComponent({
       locale,
       setSuggestList: (res: SuggestList) => setSuggestList(res, false),
       SearchOutlined,
-      innerEl
+      innerEl,
+      highlightText,
+      showEmpty
     }
   }
 })

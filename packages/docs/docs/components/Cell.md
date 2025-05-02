@@ -47,3 +47,11 @@ import type { CellArrowDirection } from 'tantalum-ui-mobile'
 ```
 
 注：添加 slot 后 `content` prop 属性失效。
+
+### 左侧标签区（#label）
+
+```vue
+<span>文本</span>
+```
+
+注：添加 slot 后 `label` prop 属性失效。

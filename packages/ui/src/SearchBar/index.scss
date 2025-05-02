@@ -74,7 +74,8 @@
 
   &_suggest {
     overflow-y: auto;
-    background-color: $background-color;
+
+    // background-color: $background-color;
 
     &::before {
       content: '';
@@ -88,6 +89,12 @@
       .ta-cell {
         &_label {
           font-size: 15px;
+        }
+      }
+
+      &-text {
+        .highlight {
+          color: $danger-color;
         }
       }
     }
